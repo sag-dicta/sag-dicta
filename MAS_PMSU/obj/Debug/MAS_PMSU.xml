@@ -1,0 +1,1876 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MAS_PMSU
+</name>
+</assembly>
+<members>
+<member name="T:MAS_PMSU.My.MyWebExtension">
+ <summary>
+ Módulo usado para definir las propiedades que están disponibles en el espacio de nombres My para proyectos web.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:MAS_PMSU.My.MyWebExtension.Computer">
+ <summary>
+ Devuelve información sobre el equipo host.
+ </summary>
+</member>
+<member name="P:MAS_PMSU.My.MyWebExtension.User">
+ <summary>
+ Devuelve información del usuario web actual.
+ </summary>
+</member>
+<member name="P:MAS_PMSU.My.MyWebExtension.Request">
+ <summary>
+ Devuelve un objeto Request.
+ </summary>
+</member>
+<member name="P:MAS_PMSU.My.MyWebExtension.Response">
+ <summary>
+ Devuelve un objeto Response.
+ </summary>
+</member>
+<member name="P:MAS_PMSU.My.MyWebExtension.Log">
+ <summary>
+ Devuelve el objeto de registro Asp.
+ </summary>
+</member>
+<member name="T:MAS_PMSU.My.Resources.Resources">
+<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+</summary>
+</member>
+<member name="P:MAS_PMSU.My.Resources.Resources.ResourceManager">
+<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member>
+<member name="P:MAS_PMSU.My.Resources.Resources.Culture">
+<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2DataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20opsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumen2RowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal._mas_cafecomp19_20prodnoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20prodRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystal.mas_cafecomp19_20resumenfirmRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20opsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20resumen2TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20prodnoTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20prodTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.mas_cafecomp19_20resumenfirmTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateUpdatedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateInsertedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateDeletedRows(MAS_PMSU.BDCrystal,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateAll(MAS_PMSU.BDCrystal)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:MAS_PMSU.BDCrystalTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+<member name="F:MAS_PMSU.LPlanesSA._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Inicio._Label1">
+<summary>
+Control Label1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Login._Image1">
+<summary>
+Control Image1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Login._TxtUsuario">
+<summary>
+Control TxtUsuario.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Login._TxtContrasena">
+<summary>
+Control TxtContrasena.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Login._chkRememberMe">
+<summary>
+Control chkRememberMe.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Login._Button1">
+<summary>
+Control Button1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Login._dvMessage">
+<summary>
+Control dvMessage.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Login._lblMessage">
+<summary>
+Control lblMessage.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro._LabelTot">
+<summary>
+Control LabelTot.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro2._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro2._LabelTot">
+<summary>
+Control LabelTot.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro2._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro2._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_registro2._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtCiclo">
+<summary>
+Control TxtCiclo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._lblTotalClientes">
+<summary>
+Control lblTotalClientes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._Label1">
+<summary>
+Control Label1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._BConfirm">
+<summary>
+Control BConfirm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._BBorrarsi">
+<summary>
+Control BBorrarsi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._BBorrarno">
+<summary>
+Control BBorrarno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtID4">
+<summary>
+Control TxtID4.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtTabla">
+<summary>
+Control TxtTabla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtNom3">
+<summary>
+Control TxtNom3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtAreatotal">
+<summary>
+Control TxtAreatotal.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtAreaproduccion">
+<summary>
+Control TxtAreaproduccion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtAreaplantilla">
+<summary>
+Control TxtAreaplantilla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtQQPROD">
+<summary>
+Control TxtQQPROD.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtQQESTIM">
+<summary>
+Control TxtQQESTIM.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtQQFERT">
+<summary>
+Control TxtQQFERT.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtQQFERT2">
+<summary>
+Control TxtQQFERT2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtQQFERT3">
+<summary>
+Control TxtQQFERT3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtGAN1">
+<summary>
+Control TxtGAN1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtGAN2">
+<summary>
+Control TxtGAN2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._TxtGAN3">
+<summary>
+Control TxtGAN3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._Div5">
+<summary>
+Control Div5.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._Label6">
+<summary>
+Control Label6.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._BGuardar7">
+<summary>
+Control BGuardar7.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msubcs_visitaat._BSalir7">
+<summary>
+Control BSalir7.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtCiclo">
+<summary>
+Control TxtCiclo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtProductor">
+<summary>
+Control TxtProductor.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._lblTotalClientes">
+<summary>
+Control lblTotalClientes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._BAgregar">
+<summary>
+Control BAgregar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._Label1">
+<summary>
+Control Label1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._BConfirm">
+<summary>
+Control BConfirm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._BBorrarsi">
+<summary>
+Control BBorrarsi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._BBorrarno">
+<summary>
+Control BBorrarno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtID">
+<summary>
+Control TxtID.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtTabla">
+<summary>
+Control TxtTabla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtNom">
+<summary>
+Control TxtNom.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtCicloD">
+<summary>
+Control TxtCicloD.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtVariedad">
+<summary>
+Control TxtVariedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtCategoria">
+<summary>
+Control TxtCategoria.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtAreaSemb">
+<summary>
+Control TxtAreaSemb.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtDia">
+<summary>
+Control TxtDia.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtMes">
+<summary>
+Control TxtMes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtAno">
+<summary>
+Control TxtAno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._TxtPronostico">
+<summary>
+Control TxtPronostico.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._Div5">
+<summary>
+Control Div5.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._Label6">
+<summary>
+Control Label6.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._BGuardar">
+<summary>
+Control BGuardar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasa._BSalir">
+<summary>
+Control BSalir.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtCiclo">
+<summary>
+Control TxtCiclo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._lblTotalClientes">
+<summary>
+Control lblTotalClientes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._BAgregar">
+<summary>
+Control BAgregar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._Label1">
+<summary>
+Control Label1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._BConfirm">
+<summary>
+Control BConfirm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._BBorrarsi">
+<summary>
+Control BBorrarsi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._BBorrarno">
+<summary>
+Control BBorrarno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtID">
+<summary>
+Control TxtID.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtNom">
+<summary>
+Control TxtNom.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtCicloD">
+<summary>
+Control TxtCicloD.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtVariedad">
+<summary>
+Control TxtVariedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtDia">
+<summary>
+Control TxtDia.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtMes">
+<summary>
+Control TxtMes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtAno">
+<summary>
+Control TxtAno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtAreaSemb">
+<summary>
+Control TxtAreaSemb.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtAreaPerdida">
+<summary>
+Control TxtAreaPerdida.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtCausasPerdida">
+<summary>
+Control TxtCausasPerdida.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtProduccion">
+<summary>
+Control TxtProduccion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtSemilla">
+<summary>
+Control TxtSemilla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtConsumo">
+<summary>
+Control TxtConsumo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._Txtbasura">
+<summary>
+Control Txtbasura.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._Div5">
+<summary>
+Control Div5.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._Label6">
+<summary>
+Control Label6.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._BGuardar">
+<summary>
+Control BGuardar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._BSalir">
+<summary>
+Control BSalir.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtNom2">
+<summary>
+Control TxtNom2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtCicloD2">
+<summary>
+Control TxtCicloD2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtVariedad2">
+<summary>
+Control TxtVariedad2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtareaSemb2">
+<summary>
+Control TxtareaSemb2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtProduccion2">
+<summary>
+Control TxtProduccion2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtInsumos">
+<summary>
+Control TxtInsumos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtMano">
+<summary>
+Control TxtMano.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtEquipo">
+<summary>
+Control TxtEquipo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtOtros">
+<summary>
+Control TxtOtros.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtInscri">
+<summary>
+Control TxtInscri.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._TxtAcond">
+<summary>
+Control TxtAcond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._Div1">
+<summary>
+Control Div1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._Label2">
+<summary>
+Control Label2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._BGuardar2">
+<summary>
+Control BGuardar2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuventas._BSalir2">
+<summary>
+Control BSalir2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtCiclo">
+<summary>
+Control TxtCiclo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._lblTotalClientes">
+<summary>
+Control lblTotalClientes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._BAgregar">
+<summary>
+Control BAgregar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._Label1">
+<summary>
+Control Label1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._BConfirm">
+<summary>
+Control BConfirm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._BBorrarsi">
+<summary>
+Control BBorrarsi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._BBorrarno">
+<summary>
+Control BBorrarno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtID">
+<summary>
+Control TxtID.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtNom">
+<summary>
+Control TxtNom.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtCicloD">
+<summary>
+Control TxtCicloD.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtVariedad">
+<summary>
+Control TxtVariedad.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtDia">
+<summary>
+Control TxtDia.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtMes">
+<summary>
+Control TxtMes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtAno">
+<summary>
+Control TxtAno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtAreaSemb">
+<summary>
+Control TxtAreaSemb.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtAreaPerdida">
+<summary>
+Control TxtAreaPerdida.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtCausasPerdida">
+<summary>
+Control TxtCausasPerdida.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtProduccion">
+<summary>
+Control TxtProduccion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtSemilla">
+<summary>
+Control TxtSemilla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtConsumo">
+<summary>
+Control TxtConsumo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._Txtbasura">
+<summary>
+Control Txtbasura.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._Div5">
+<summary>
+Control Div5.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._Label6">
+<summary>
+Control Label6.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._BGuardar">
+<summary>
+Control BGuardar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._BSalir">
+<summary>
+Control BSalir.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtNom2">
+<summary>
+Control TxtNom2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtCicloD2">
+<summary>
+Control TxtCicloD2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtVariedad2">
+<summary>
+Control TxtVariedad2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtareaSemb2">
+<summary>
+Control TxtareaSemb2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtProduccion2">
+<summary>
+Control TxtProduccion2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtInsumos">
+<summary>
+Control TxtInsumos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtMano">
+<summary>
+Control TxtMano.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtEquipo">
+<summary>
+Control TxtEquipo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtOtros">
+<summary>
+Control TxtOtros.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtInscri">
+<summary>
+Control TxtInscri.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._TxtAcond">
+<summary>
+Control TxtAcond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._Div1">
+<summary>
+Control Div1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._Label2">
+<summary>
+Control Label2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._BGuardar2">
+<summary>
+Control BGuardar2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msuinscripsenasaprocos._BSalir2">
+<summary>
+Control BSalir2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoops._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoops._TxtEntrenador">
+<summary>
+Control TxtEntrenador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoops._cmborganizacion">
+<summary>
+Control cmborganizacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoops._LabelTot">
+<summary>
+Control LabelTot.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoops._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoops._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoops._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoproductores._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoproductores._TxtEntrenador">
+<summary>
+Control TxtEntrenador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoproductores._cmborganizacion">
+<summary>
+Control cmborganizacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoproductores._LabelTot">
+<summary>
+Control LabelTot.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoproductores._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoproductores._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.msumercadoproductores._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.WebForm5._TextBox1">
+<summary>
+Control TextBox1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.WebForm5._Button1">
+<summary>
+Control Button1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Paginas._head">
+<summary>
+Control head.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Paginas._form1">
+<summary>
+Control form1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Paginas._LoginView1">
+<summary>
+Control LoginView1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Paginas._ContentPlaceHolder1">
+<summary>
+Control ContentPlaceHolder1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.principal._head">
+<summary>
+Control head.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.principal._form1">
+<summary>
+Control form1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.principal._LoginView1">
+<summary>
+Control LoginView1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.principal._ContentPlaceHolder1">
+<summary>
+Control ContentPlaceHolder1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+</members>
+</doc>

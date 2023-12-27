@@ -1,0 +1,820 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{3BE0038C-428C-405B-9C5E-82523FDBB805}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MAS_PTNS</RootNamespace>
+    <AssemblyName>MAS_PTNS</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>MAS_PTNS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>MAS_PTNS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML">
+      <HintPath>..\..\..\..\..\..\Downloads\MAS_app-Nuevo\MAS_app\MAS_app\bin\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net40\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net40\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net40\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net40\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net40\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net40\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net40\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Connector Net 6.9.8\Assemblies\v4.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="blank.html" />
+    <Content Include="buttons.html" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="flot.html" />
+    <Content Include="forms.aspx" />
+    <Content Include="forms.html" />
+    <Content Include="grid.html" />
+    <Content Include="gulpfile.js" />
+    <Content Include="icons.html" />
+    <Content Include="imagenes\form_logo.png" />
+    <Content Include="imagenes\Logo_color_MAS2.png" />
+    <Content Include="index.aspx" />
+    <Content Include="index.html" />
+    <Content Include="login.html" />
+    <Content Include="LPlanesSA.aspx" />
+    <Content Include="morris.html" />
+    <Content Include="notifications.html" />
+    <Content Include="pages\bpasdiagnosticos.aspx" />
+    <Content Include="pages\Busquedacodigos.aspx" />
+    <Content Include="pages\catacioneshumres.aspx" />
+    <Content Include="pages\catacionesres.aspx" />
+    <Content Include="pages\capacitacionesops.aspx" />
+    <Content Include="pages\catacionhumreg.aspx" />
+    <Content Include="pages\catacionreg.aspx" />
+    <Content Include="pages\compfrijolprimase2019.aspx" />
+    <Content Include="pages\compfrijolprimaseconv2019.aspx" />
+    <Content Include="pages\compfrijolprimasef2019.aspx" />
+    <Content Include="pages\compfrijolprimasefconv2019.aspx" />
+    <Content Include="pages\compromisosopsase19_20.aspx" />
+    <Content Include="pages\compromisosopsaseconv19_20.aspx" />
+    <Content Include="pages\compromisosopsaseferfin19_20.aspx" />
+    <Content Include="pages\compromisosopsasen18_19.aspx" />
+    <Content Include="pages\compromisosopsfotase19_20.aspx" />
+    <Content Include="pages\compromisosopsfotaseconv19_20.aspx" />
+    <Content Include="pages\detplanilla.aspx" />
+    <Content Include="pages\entregasreg.aspx" />
+    <Content Include="pages\entregasres.aspx" />
+    <Content Include="pages\entrenamientos.aspx" />
+    <Content Include="pages\entrenamientoscalidad2019.aspx" />
+    <Content Include="pages\Inicio.aspx" />
+    <Content Include="pages\Login.aspx" />
+    <Content Include="pages\msuinscripsenasa.aspx" />
+    <Content Include="pages\opsfortalecidasupdate.aspx" />
+    <Content Include="pages\opssituacionfinanciera.aspx" />
+    <Content Include="pages\precioscafe18_19.aspx" />
+    <Content Include="pages\preciosfrijol.aspx" />
+    <Content Include="pages\pruebamodal.aspx" />
+    <Content Include="pages\registro_ecas.aspx" />
+    <Content Include="pages\entrenamientoscalidad.aspx" />
+    <Content Include="pages\registro_socializaciones.aspx" />
+    <Content Include="pages\reportcompromisos19_20.aspx" />
+    <Content Include="pages\reportcompromisosops19_20.aspx" />
+    <Content Include="pages\reportdetcomfrijolpri19.aspx" />
+    <Content Include="pages\reportrescomfrijolpri19.aspx" />
+    <Content Include="pages\WebForm1.aspx" />
+    <Content Include="pages\WebForm3.aspx" />
+    <Content Include="pages\WebForm4.aspx" />
+    <Content Include="pages\WebForm5.aspx" />
+    <Content Include="panels-wells.html" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\wells.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\utilities.less" />
+    <Content Include="Content\bootstrap\type.less" />
+    <Content Include="Content\bootstrap\tooltip.less" />
+    <Content Include="Content\bootstrap\thumbnails.less" />
+    <Content Include="Content\bootstrap\theme.less" />
+    <Content Include="Content\bootstrap\tables.less" />
+    <Content Include="Content\bootstrap\scaffolding.less" />
+    <Content Include="Content\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\bootstrap\responsive-embed.less" />
+    <Content Include="Content\bootstrap\progress-bars.less" />
+    <Content Include="Content\bootstrap\print.less" />
+    <Content Include="Content\bootstrap\popovers.less" />
+    <Content Include="Content\bootstrap\panels.less" />
+    <Content Include="Content\bootstrap\pagination.less" />
+    <Content Include="Content\bootstrap\pager.less" />
+    <Content Include="Content\bootstrap\normalize.less" />
+    <Content Include="Content\bootstrap\navs.less" />
+    <Content Include="Content\bootstrap\navbar.less" />
+    <Content Include="Content\bootstrap\modals.less" />
+    <Content Include="Content\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\bootstrap\mixins\size.less" />
+    <Content Include="Content\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\bootstrap\mixins\resize.less" />
+    <Content Include="Content\bootstrap\mixins\reset-text.less" />
+    <Content Include="Content\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\bootstrap\mixins\panels.less" />
+    <Content Include="Content\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\bootstrap\mixins\labels.less" />
+    <Content Include="Content\bootstrap\mixins\image.less" />
+    <Content Include="Content\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\bootstrap\mixins\grid.less" />
+    <Content Include="Content\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\bootstrap\mixins\forms.less" />
+    <Content Include="Content\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Content\bootstrap\media.less" />
+    <Content Include="Content\bootstrap\list-group.less" />
+    <Content Include="Content\bootstrap\labels.less" />
+    <Content Include="Content\bootstrap\jumbotron.less" />
+    <Content Include="Content\bootstrap\input-groups.less" />
+    <Content Include="Content\bootstrap\grid.less" />
+    <Content Include="Content\bootstrap\glyphicons.less" />
+    <Content Include="Content\bootstrap\forms.less" />
+    <Content Include="Content\bootstrap\dropdowns.less" />
+    <Content Include="Content\bootstrap\component-animations.less" />
+    <Content Include="Content\bootstrap\code.less" />
+    <Content Include="Content\bootstrap\close.less" />
+    <Content Include="Content\bootstrap\carousel.less" />
+    <Content Include="Content\bootstrap\buttons.less" />
+    <Content Include="Content\bootstrap\button-groups.less" />
+    <Content Include="Content\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\bootstrap\bootstrap.less" />
+    <Content Include="Content\bootstrap\badges.less" />
+    <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <Content Include="WebForm2.aspx" />
+    <Content Include="BDCrystal.xsc">
+      <DependentUpon>BDCrystal.xsd</DependentUpon>
+    </Content>
+    <None Include="BDCrystal.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BDCrystal.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="BDCrystal.xss">
+      <DependentUpon>BDCrystal.xsd</DependentUpon>
+    </Content>
+    <None Include="My Project\PublishProfiles\Perfil.pubxml" />
+    <Content Include="Paginas.Master" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="tables.html" />
+    <Content Include="typography.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="autenticacion.vb" />
+    <Compile Include="BDCrystal.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDCrystal.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="forms.aspx.designer.vb">
+      <DependentUpon>forms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forms.aspx.vb">
+      <DependentUpon>forms.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.vb">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.vb">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="LPlanesSA.aspx.designer.vb">
+      <DependentUpon>LPlanesSA.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LPlanesSA.aspx.vb">
+      <DependentUpon>LPlanesSA.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="pages\bpasdiagnosticos.aspx.designer.vb">
+      <DependentUpon>bpasdiagnosticos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\bpasdiagnosticos.aspx.vb">
+      <DependentUpon>bpasdiagnosticos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\Busquedacodigos.aspx.designer.vb">
+      <DependentUpon>Busquedacodigos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Busquedacodigos.aspx.vb">
+      <DependentUpon>Busquedacodigos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\catacioneshumres.aspx.designer.vb">
+      <DependentUpon>catacioneshumres.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\catacioneshumres.aspx.vb">
+      <DependentUpon>catacioneshumres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\catacionesres.aspx.designer.vb">
+      <DependentUpon>catacionesres.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\catacionesres.aspx.vb">
+      <DependentUpon>catacionesres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\capacitacionesops.aspx.designer.vb">
+      <DependentUpon>capacitacionesops.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\capacitacionesops.aspx.vb">
+      <DependentUpon>capacitacionesops.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\catacionhumreg.aspx.designer.vb">
+      <DependentUpon>catacionhumreg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\catacionhumreg.aspx.vb">
+      <DependentUpon>catacionhumreg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\catacionreg.aspx.designer.vb">
+      <DependentUpon>catacionreg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\catacionreg.aspx.vb">
+      <DependentUpon>catacionreg.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\compfrijolprimase2019.aspx.designer.vb">
+      <DependentUpon>compfrijolprimase2019.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compfrijolprimase2019.aspx.vb">
+      <DependentUpon>compfrijolprimase2019.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compfrijolprimaseconv2019.aspx.designer.vb">
+      <DependentUpon>compfrijolprimaseconv2019.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compfrijolprimaseconv2019.aspx.vb">
+      <DependentUpon>compfrijolprimaseconv2019.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compfrijolprimasef2019.aspx.designer.vb">
+      <DependentUpon>compfrijolprimasef2019.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compfrijolprimasef2019.aspx.vb">
+      <DependentUpon>compfrijolprimasef2019.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compfrijolprimasefconv2019.aspx.designer.vb">
+      <DependentUpon>compfrijolprimasefconv2019.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compfrijolprimasefconv2019.aspx.vb">
+      <DependentUpon>compfrijolprimasefconv2019.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compromisosopsase19_20.aspx.designer.vb">
+      <DependentUpon>compromisosopsase19_20.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compromisosopsase19_20.aspx.vb">
+      <DependentUpon>compromisosopsase19_20.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compromisosopsaseconv19_20.aspx.designer.vb">
+      <DependentUpon>compromisosopsaseconv19_20.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compromisosopsaseconv19_20.aspx.vb">
+      <DependentUpon>compromisosopsaseconv19_20.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compromisosopsaseferfin19_20.aspx.designer.vb">
+      <DependentUpon>compromisosopsaseferfin19_20.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compromisosopsaseferfin19_20.aspx.vb">
+      <DependentUpon>compromisosopsaseferfin19_20.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compromisosopsasen18_19.aspx.designer.vb">
+      <DependentUpon>compromisosopsasen18_19.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compromisosopsasen18_19.aspx.vb">
+      <DependentUpon>compromisosopsasen18_19.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compromisosopsfotase19_20.aspx.designer.vb">
+      <DependentUpon>compromisosopsfotase19_20.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compromisosopsfotase19_20.aspx.vb">
+      <DependentUpon>compromisosopsfotase19_20.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\compromisosopsfotaseconv19_20.aspx.designer.vb">
+      <DependentUpon>compromisosopsfotaseconv19_20.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\compromisosopsfotaseconv19_20.aspx.vb">
+      <DependentUpon>compromisosopsfotaseconv19_20.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\CRCompromisosFirma.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRCompromisosFirma.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\CRCompromisosFirmafpr19.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRCompromisosFirmafpr19.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\CRCompromisosOPS.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRCompromisosOPS.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\CRCompromisosOPSfpr19.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRCompromisosOPSfpr19.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\detplanilla.aspx.designer.vb">
+      <DependentUpon>detplanilla.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\detplanilla.aspx.vb">
+      <DependentUpon>detplanilla.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\entregasreg.aspx.designer.vb">
+      <DependentUpon>entregasreg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\entregasreg.aspx.vb">
+      <DependentUpon>entregasreg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\entregasres.aspx.designer.vb">
+      <DependentUpon>entregasres.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\entregasres.aspx.vb">
+      <DependentUpon>entregasres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\entrenamientos.aspx.designer.vb">
+      <DependentUpon>entrenamientos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\entrenamientos.aspx.vb">
+      <DependentUpon>entrenamientos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\entrenamientoscalidad2019.aspx.designer.vb">
+      <DependentUpon>entrenamientoscalidad2019.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\entrenamientoscalidad2019.aspx.vb">
+      <DependentUpon>entrenamientoscalidad2019.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Inicio.aspx.designer.vb">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Inicio.aspx.vb">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\Login.aspx.designer.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Login.aspx.vb">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\msuinscripsenasa.aspx.designer.vb">
+      <DependentUpon>msuinscripsenasa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\msuinscripsenasa.aspx.vb">
+      <DependentUpon>msuinscripsenasa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\opsfortalecidasupdate.aspx.designer.vb">
+      <DependentUpon>opsfortalecidasupdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\opsfortalecidasupdate.aspx.vb">
+      <DependentUpon>opsfortalecidasupdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\opssituacionfinanciera.aspx.designer.vb">
+      <DependentUpon>opssituacionfinanciera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\opssituacionfinanciera.aspx.vb">
+      <DependentUpon>opssituacionfinanciera.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\precioscafe18_19.aspx.designer.vb">
+      <DependentUpon>precioscafe18_19.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\precioscafe18_19.aspx.vb">
+      <DependentUpon>precioscafe18_19.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\preciosfrijol.aspx.designer.vb">
+      <DependentUpon>preciosfrijol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\preciosfrijol.aspx.vb">
+      <DependentUpon>preciosfrijol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\pruebamodal.aspx.designer.vb">
+      <DependentUpon>pruebamodal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\pruebamodal.aspx.vb">
+      <DependentUpon>pruebamodal.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\registro_ecas.aspx.designer.vb">
+      <DependentUpon>registro_ecas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\registro_ecas.aspx.vb">
+      <DependentUpon>registro_ecas.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\entrenamientoscalidad.aspx.designer.vb">
+      <DependentUpon>entrenamientoscalidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\entrenamientoscalidad.aspx.vb">
+      <DependentUpon>entrenamientoscalidad.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\registro_socializaciones.aspx.designer.vb">
+      <DependentUpon>registro_socializaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\registro_socializaciones.aspx.vb">
+      <DependentUpon>registro_socializaciones.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\reportcompromisos19_20.aspx.designer.vb">
+      <DependentUpon>reportcompromisos19_20.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\reportcompromisos19_20.aspx.vb">
+      <DependentUpon>reportcompromisos19_20.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\reportcompromisosops19_20.aspx.designer.vb">
+      <DependentUpon>reportcompromisosops19_20.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\reportcompromisosops19_20.aspx.vb">
+      <DependentUpon>reportcompromisosops19_20.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\reportdetcomfrijolpri19.aspx.designer.vb">
+      <DependentUpon>reportdetcomfrijolpri19.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\reportdetcomfrijolpri19.aspx.vb">
+      <DependentUpon>reportdetcomfrijolpri19.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\reportrescomfrijolpri19.aspx.designer.vb">
+      <DependentUpon>reportrescomfrijolpri19.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\reportrescomfrijolpri19.aspx.vb">
+      <DependentUpon>reportrescomfrijolpri19.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\WebForm1.aspx.designer.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\WebForm1.aspx.vb">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\WebForm3.aspx.designer.vb">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\WebForm3.aspx.vb">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\WebForm4.aspx.designer.vb">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\WebForm4.aspx.vb">
+      <DependentUpon>WebForm4.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\WebForm5.aspx.designer.vb">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\WebForm5.aspx.vb">
+      <DependentUpon>WebForm5.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Paginas.Master.designer.vb">
+      <DependentUpon>Paginas.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas.Master.vb">
+      <DependentUpon>Paginas.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="principal.Master.designer.vb">
+      <DependentUpon>principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="principal.Master.vb">
+      <DependentUpon>principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.vb">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.vb">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\CRCompromisosFirma.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRCompromisosFirma.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\CRCompromisosFirmafpr19.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRCompromisosFirmafpr19.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\CRCompromisosOPS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRCompromisosOPS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\CRCompromisosOPSfpr19.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRCompromisosOPSfpr19.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include=".gitignore" />
+    <Content Include="bower.json" />
+    <Content Include="LICENSE" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="packages.config" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="principal.Master" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="dist\" />
+    <Folder Include="js\" />
+    <Folder Include="less\" />
+    <Folder Include="vendor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>Off</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>7416</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7416/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

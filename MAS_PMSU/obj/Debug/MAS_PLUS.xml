@@ -1,0 +1,480 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MAS_PLUS
+</name>
+</assembly>
+<members>
+<member name="T:MAS_PLUS.My.MyWebExtension">
+ <summary>
+ Módulo usado para definir las propiedades que están disponibles en el espacio de nombres My para proyectos web.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:MAS_PLUS.My.MyWebExtension.Computer">
+ <summary>
+ Devuelve información sobre el equipo host.
+ </summary>
+</member>
+<member name="P:MAS_PLUS.My.MyWebExtension.User">
+ <summary>
+ Devuelve información del usuario web actual.
+ </summary>
+</member>
+<member name="P:MAS_PLUS.My.MyWebExtension.Request">
+ <summary>
+ Devuelve un objeto Request.
+ </summary>
+</member>
+<member name="P:MAS_PLUS.My.MyWebExtension.Response">
+ <summary>
+ Devuelve un objeto Response.
+ </summary>
+</member>
+<member name="P:MAS_PLUS.My.MyWebExtension.Log">
+ <summary>
+ Devuelve el objeto de registro Asp.
+ </summary>
+</member>
+<member name="T:MAS_PLUS.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:MAS_PLUS.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:MAS_PLUS.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="F:MAS_PLUS.LPlanesSA._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.bpasdiagnosticos._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.bpasdiagnosticos._TxtEntrenador">
+<summary>
+Control TxtEntrenador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.bpasdiagnosticos._cmborganizacion">
+<summary>
+Control cmborganizacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.bpasdiagnosticos._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.bpasdiagnosticos._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.bpasdiagnosticos._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.entrenamientos._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.entrenamientos._TxtEntrenador">
+<summary>
+Control TxtEntrenador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.entrenamientos._TxtEca">
+<summary>
+Control TxtEca.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.entrenamientos._TxtModulo">
+<summary>
+Control TxtModulo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.entrenamientos._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.entrenamientos._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.entrenamientos._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.Inicio._Label1">
+<summary>
+Control Label1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.Login._Image1">
+<summary>
+Control Image1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.Login._TxtUsuario">
+<summary>
+Control TxtUsuario.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.Login._TxtContrasena">
+<summary>
+Control TxtContrasena.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.Login._chkRememberMe">
+<summary>
+Control chkRememberMe.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.Login._Button1">
+<summary>
+Control Button1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.Login._dvMessage">
+<summary>
+Control dvMessage.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.Login._lblMessage">
+<summary>
+Control lblMessage.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_ecas._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_ecas._TxtEntrenador">
+<summary>
+Control TxtEntrenador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_ecas._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_ecas._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_ecas._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_organizaciones._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_organizaciones._TxtEntrenador">
+<summary>
+Control TxtEntrenador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_organizaciones._cmborganizacion">
+<summary>
+Control cmborganizacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_organizaciones._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_organizaciones._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_organizaciones._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_productor._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_productor._TxtEntrenador">
+<summary>
+Control TxtEntrenador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_productor._cmborganizacion">
+<summary>
+Control cmborganizacion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_productor._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_productor._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_productor._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_socializaciones._TxtDepto">
+<summary>
+Control TxtDepto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_socializaciones._TxtEntrenador">
+<summary>
+Control TxtEntrenador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_socializaciones._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_socializaciones._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.registro_socializaciones._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.principal._head">
+<summary>
+Control head.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.principal._LoginView1">
+<summary>
+Control LoginView1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PLUS.principal._ContentPlaceHolder1">
+<summary>
+Control ContentPlaceHolder1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+</members>
+</doc>

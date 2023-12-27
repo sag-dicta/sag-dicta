@@ -1,0 +1,197 @@
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\ApplicationInsights.config
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MAS_PMSU.dll.config
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MAS_PMSU.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MAS_PMSU.pdb
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MAS_PMSU.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\BouncyCastle.Crypto.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\ClosedXML.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.CrystalReports.Design.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportSource.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.Shared.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.Web.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\DocumentFormat.OpenXml.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\FastMember.Signed.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\itextsharp.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MySql.Data.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\QRCoder.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Buffers.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.IO.FileSystem.Primitives.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.IO.Packaging.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Memory.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Numerics.Vectors.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Xceed.Document.NET.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Xceed.Words.NET.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.presentation.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\stdole.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\ClosedXML.pdb
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\ClosedXML.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\DocumentFormat.OpenXml.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\itextsharp.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Memory.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Buffers.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Numerics.Vectors.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.pdb
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.presentation.pdb
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.presentation.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\MAS_PMSU.Resources.resources
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.GenerateResource.cache
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.CoreCompileInputs.cache
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.CopyComplete
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\MAS_PMSU.dll
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\MAS_PMSU.xml
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\MAS_PMSU.pdb
+C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.AssemblyReference.cache
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\ApplicationInsights.config
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MAS_PMSU.dll.config
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MAS_PMSU.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MAS_PMSU.pdb
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MAS_PMSU.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\BouncyCastle.Crypto.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\ClosedXML.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.CrystalReports.Design.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportSource.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.Shared.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.Web.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\DocumentFormat.OpenXml.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\FastMember.Signed.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\itextsharp.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\MySql.Data.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\QRCoder.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Buffers.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.IO.FileSystem.Primitives.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.IO.Packaging.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Memory.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Numerics.Vectors.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Xceed.Document.NET.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Xceed.Words.NET.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\stdole.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\ClosedXML.pdb
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\ClosedXML.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\DocumentFormat.OpenXml.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\itextsharp.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Memory.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Buffers.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Numerics.Vectors.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.pdb
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.presentation.pdb
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\bin\zxing.presentation.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.AssemblyReference.cache
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\MAS_PMSU.Resources.resources
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.GenerateResource.cache
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.CoreCompileInputs.cache
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.CopyComplete
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\MAS_PMSU.dll
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\MAS_PMSU.xml
+C:\Users\josek\Downloads\proyecto\SAG-DICTA\IHMA_PORTAL\MAS_PMSU\obj\Release\MAS_PMSU.pdb
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\ApplicationInsights.config
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\MAS_PMSU.dll.config
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\MAS_PMSU.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\MAS_PMSU.pdb
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\MAS_PMSU.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\BouncyCastle.Crypto.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\ClosedXML.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.CrystalReports.Design.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportSource.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.Shared.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.Web.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\DocumentFormat.OpenXml.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\FastMember.Signed.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\itextsharp.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Microsoft.Threading.Tasks.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\MySql.Data.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\QRCoder.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Buffers.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.IO.FileSystem.Primitives.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.IO.Packaging.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Memory.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Numerics.Vectors.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Xceed.Document.NET.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Xceed.Words.NET.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\stdole.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\ClosedXML.pdb
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\ClosedXML.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\DocumentFormat.OpenXml.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\itextsharp.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Memory.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Microsoft.Threading.Tasks.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Buffers.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Numerics.Vectors.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\zxing.pdb
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\zxing.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\zxing.presentation.pdb
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\bin\zxing.presentation.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.AssemblyReference.cache
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\MAS_PMSU.Resources.resources
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.GenerateResource.cache
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.CoreCompileInputs.cache
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\SAG_DICTA.vbproj.CopyComplete
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\MAS_PMSU.dll
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\MAS_PMSU.xml
+C:\Users\josek\Source\Repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\MAS_PMSU.pdb
