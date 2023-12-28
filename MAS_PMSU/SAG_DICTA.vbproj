@@ -266,6 +266,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\agregarMultiplicador.aspx" />
     <Content Include="pages\Cambiopassword.aspx" />
     <Content Include="pages\ErrorPage.aspx" />
     <Content Include="pages\Inicio.aspx" />
@@ -2139,6 +2140,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="pages\agregarMultiplicador.aspx.designer.vb">
+      <DependentUpon>agregarMultiplicador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\agregarMultiplicador.aspx.vb">
+      <DependentUpon>agregarMultiplicador.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="pages\ErrorPage.aspx.designer.vb">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
     </Compile>

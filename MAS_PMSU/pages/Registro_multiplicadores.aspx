@@ -63,7 +63,7 @@ REGISTRO DE MULTIPLICADORES
 </h3>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connIHMA %>" ProviderName="<%$ ConnectionStrings:connIHMA.ProviderName %>"></asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
 <asp:GridView ID="GridDatos" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
 GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small">
 <FooterStyle BackColor="#40E0D0" Font-Bold="True" ForeColor="White" />
