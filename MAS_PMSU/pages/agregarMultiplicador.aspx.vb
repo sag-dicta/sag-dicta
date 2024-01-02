@@ -1,11 +1,14 @@
 ﻿Imports System.IO
 Imports CrystalDecisions.CrystalReports.Engine
 Imports MySql.Data.MySqlClient
+Imports ClosedXML.Excel
 
 Public Class agregarMultiplicador
     Inherits System.Web.UI.Page
     Dim conn As String = ConfigurationManager.ConnectionStrings("connSAG").ConnectionString
-    Dim sentencia As String
+
+    Dim sentencia, identity As String
+    Dim nuevo As Boolean
     Dim validarflag As Integer
     Dim id2 As String = "1"
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -15,9 +18,11 @@ Public Class agregarMultiplicador
 
             Else
                 llenarcomboDepto()
+                llenarcomboDeptoGrid()
                 VerificarTextBox()
                 llenatxtproductor()
                 btnGuardarLote.Visible = True
+                btnRegresar.Visible = True
             End If
         End If
     End Sub
@@ -34,7 +39,7 @@ Public Class agregarMultiplicador
             Using connection As New MySqlConnection(connectionString)
                 connection.Open()
 
-                Dim query As String = "INSERT INTO registro_multiplicadores (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
+                Dim query As String = "INSERT INTO sag_registro_senasa (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
                 cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
                 @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
                 @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis)"
@@ -425,9 +430,6 @@ Public Class agregarMultiplicador
 
         adap.Fill(ds, "")
 
-
-
-
         Dim nombre As String
 
         nombre = " _" + Today
@@ -442,7 +444,6 @@ Public Class agregarMultiplicador
         Response.ClearHeaders()
 
         rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
-
 
         Response.End()
     End Sub
@@ -466,4 +467,126 @@ Public Class agregarMultiplicador
         End If
         Return esValida
     End Function
+
+
+    '********************************************************************************************************************
+
+    Protected Sub PageDropDownList_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        ' Recupera la fila.
+        Dim pagerRow As GridViewRow = GridDatos.BottomPagerRow
+        ' Recupera el control DropDownList...
+        Dim pageList As DropDownList = CType(pagerRow.Cells(0).FindControl("PageDropDownList"), DropDownList)
+        ' Se Establece la propiedad PageIndex para visualizar la página seleccionada...
+        GridDatos.PageIndex = pageList.SelectedIndex
+        llenagrid()
+        'Quita el mensaje de información si lo hubiera...
+        'lblInfo.Text = ""
+    End Sub
+
+    Sub llenagrid()
+        Dim cadena As String = "nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
+        Dim c1 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+
+        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        End If
+
+        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = "Todos") Then
+            c4 = " "
+        Else
+            c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+
+        BAgregar.Visible = True
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 " & c1 & c3 & c4
+        'Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `registro_multiplicadores` WHERE 1 = 1 "
+
+        GridDatos.DataBind()
+    End Sub
+    Private Sub llenarcomboDeptoGrid()
+        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        TxtDepto.DataSource = DtCombo
+        TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
+        TxtDepto.DataTextField = DtCombo.Columns(2).ToString
+        TxtDepto.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtMunicipio.Items.Insert(0, newitem)
+
+    End Sub
+
+    Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
+        llenarmunicipioGrid()
+    End Sub
+
+    Private Sub llenarmunicipioGrid()
+        Dim departamento As String = DevolverValorDepart(TxtDepto.SelectedItem.Text)
+        Dim StrCombo As String = "SELECT * FROM tb_municipio WHERE CODIGO_DEPARTAMENTO = " & departamento & ""
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        TxtMunicipio.DataSource = DtCombo
+        TxtMunicipio.DataValueField = DtCombo.Columns(0).ToString()
+        TxtMunicipio.DataTextField = DtCombo.Columns(3).ToString
+        TxtMunicipio.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtMunicipio.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub TxtMunicipio_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtMunicipio.SelectedIndexChanged
+        llenarcomboProductor()
+    End Sub
+
+    Private Sub llenarcomboProductor()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT * FROM sag_registro_senasa WHERE municipio = '" & TxtMunicipio.SelectedValue & "' "
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        TxtMultiplicador.DataSource = DtCombo
+        TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
+        TxtMultiplicador.DataTextField = DtCombo.Columns(1).ToString()
+        TxtMultiplicador.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtMultiplicador.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
+
+        DivCrearNuevo.Visible = True
+        DivGrid.Visible = False
+
+        If (TxtMultiplicador.SelectedIndex <> 0) Then
+            txtNombreRe.Text = TxtMultiplicador.SelectedValue
+        End If
+
+        'If (TxtMunicipio.SelectedIndex <> 0) Then
+        'gb_municipio_new.SelectedValue = TxtMunicipio.SelectedValue
+        'End If
+
+        'If (TxtDepto.SelectedIndex <> 0) Then
+        'gb_departamento_new.SelectedValue = TxtDepto.SelectedValue
+        'End If
+
+        'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+
+    End Sub
+
+    Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
+        Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+    End Sub
 End Class
