@@ -51,9 +51,6 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i> Registro de multilplcadores</a>
                         </div>
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i> Registro de multilplcadores 2</a>
-                        </div>
                     </div>
                 </li>
 

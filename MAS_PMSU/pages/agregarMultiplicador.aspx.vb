@@ -17,10 +17,11 @@ Public Class agregarMultiplicador
             If IsPostBack Then
 
             Else
-                llenarcomboDepto()
+                'llenarcomboDepto()
                 llenarcomboDeptoGrid()
                 VerificarTextBox()
                 llenatxtproductor()
+                llenagrid()
                 btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
             End If
@@ -136,7 +137,7 @@ Public Class agregarMultiplicador
 
     Private Function DevolverValorDepart(cadena As String)
 
-        If gb_departamento_new.SelectedItem.Text <> "" Then
+        If TxtDepto.SelectedItem.Text <> "Todos" Then
             Dim codigoDepartamento As String = ""
             Dim StrCombo As String = "SELECT CODIGO_DEPARTAMENTO FROM tb_departamentos WHERE NOMBRE = @nombre"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -484,28 +485,28 @@ Public Class agregarMultiplicador
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
+        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
 
-        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
-            c1 = " "
-        Else
-            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
-        End If
-
-        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-            c3 = " "
-        Else
-            c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        End If
-
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
-            c4 = " "
-        Else
-            c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        End If
+        'If (TxtMultiplicador.SelectedItem.Text = "") Then
+        '    c1 = " "
+        'Else
+        '    c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        'End If
+        '
+        'If (TxtMunicipio.SelectedItem.Text = "Todos") Then
+        '    c3 = " "
+        'Else
+        '    c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        'End If
+        '
+        'If (TxtDepto.SelectedItem.Text = "Todos") Then
+        '    c4 = " "
+        'Else
+        '    c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        'End If
 
         BAgregar.Visible = True
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 " & c1 & c3 & c4
@@ -524,7 +525,7 @@ Public Class agregarMultiplicador
         TxtDepto.DataTextField = DtCombo.Columns(2).ToString
         TxtDepto.DataBind()
         Dim newitem As New ListItem("Todos", "Todos")
-        TxtMunicipio.Items.Insert(0, newitem)
+        TxtDepto.Items.Insert(0, newitem)
 
     End Sub
 
@@ -553,7 +554,7 @@ Public Class agregarMultiplicador
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_senasa WHERE municipio = '" & TxtMunicipio.SelectedValue & "' "
+        StrCombo = "SELECT * FROM sag_registro_senasa WHERE municipio = '" & TxtMunicipio.SelectedItem.text & "' "
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable

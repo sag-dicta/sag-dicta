@@ -94,8 +94,6 @@
                                             <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
                                             <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
 
-                                            <asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />
-
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
