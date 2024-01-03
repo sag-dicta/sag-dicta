@@ -85,7 +85,12 @@ Public Class agregarMultiplicador
                     cmd.ExecuteNonQuery()
                     connection.Close()
 
-                    Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!') </script>")
+                    'Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!') </script>")
+
+                    Label3.Text = "¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
                     Button1.Visible = True
                     Button2.Visible = True
@@ -94,7 +99,6 @@ Public Class agregarMultiplicador
                 End Using
             End Using
         End If
-
 
     End Sub
 
@@ -721,124 +725,6 @@ Public Class agregarMultiplicador
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         exportar()
-    End Sub
-
-    Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
-        Dim fecha2 As Date
-
-        Dim index As Integer = Convert.ToInt32(e.CommandArgument)
-
-        If (e.CommandName = "Editar") Then
-
-            Dim gvrow As GridViewRow = GridDatos.Rows(index)
-
-            Dim Str As String = "SELECT * FROM `mas+bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim adap As New MySqlDataAdapter(Str, conn4)
-            Dim dt As New DataTable
-            adap.Fill(dt)
-
-            nuevo = False
-
-            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
-
-            TxtNom.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-            TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
-            Dim vv As String = dt.Rows(0)("Tipo_cultivo").ToString()
-
-            TxtVariedad.Items.Clear()
-            If vv = "Frijol" Then
-                DDL_Tipos.SelectedIndex = 1
-                TxtVariedad.Items.Insert(0, "")
-                TxtVariedad.Items.Insert(1, "Amadeus-77")
-                TxtVariedad.Items.Insert(2, "Carrizalito")
-                TxtVariedad.Items.Insert(3, "Deorho")
-                TxtVariedad.Items.Insert(4, "Azabache")
-                TxtVariedad.Items.Insert(5, "Paraisito mejorado PM-2")
-                TxtVariedad.Items.Insert(6, "Honduras nutritivo")
-                TxtVariedad.Items.Insert(7, "Inta Cárdenas")
-                TxtVariedad.Items.Insert(8, "Lenca precoz")
-                TxtVariedad.Items.Insert(9, "Rojo chortí")
-                TxtVariedad.Items.Insert(10, "Tolupan rojo")
-            Else
-                DDL_Tipos.SelectedIndex = 2
-                TxtVariedad.Items.Insert(0, "")
-                TxtVariedad.Items.Insert(1, "Dicta Maya")
-                TxtVariedad.Items.Insert(2, "Dicta Victoria")
-                TxtVariedad.Items.Insert(3, "Otra especificar")
-            End If
-
-            TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
-            TxtCategoria.Text = dt.Rows(0)("CATEGORIA").ToString()
-
-            fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
-            TxtDia.SelectedValue = fecha2.Day
-            TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
-            TxtAno.SelectedValue = fecha2.Year
-
-            TxtAreaSemb.Text = dt.Rows(0)("INVENTARIO_EN_DICTA").ToString()
-            TxtPronostico.Text = dt.Rows(0)("SEMILLA_A_PRODUCIR").ToString()
-
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
-
-        End If
-
-        If (e.CommandName = "Eliminar") Then
-            Dim gvrow As GridViewRow = GridDatos.Rows(index)
-
-            Dim Str As String = "SELECT * FROM `mas+bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim adap As New MySqlDataAdapter(Str, conn4)
-            Dim dt As New DataTable
-            adap.Fill(dt)
-
-            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
-
-            If txt_habilitado.Text = "NO" Then
-
-                Label3.Text = "Para este ciclo ya ha finalizado el tiempo para eliminar, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
-            Else
-
-                Label1.Text = "¿Esta seguro que desea eliminar el registro?"
-                BConfirm.Visible = False
-
-                BBorrarsi.Visible = True
-                BBorrarno.Visible = True
-
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-            End If
-        End If
-    End Sub
-
-    Protected Sub GridDatos_DataBound(sender As Object, e As EventArgs) Handles GridDatos.DataBound
-        If (GridDatos.Rows.Count > 0) Then
-            ' Recupera la el PagerRow...
-            Dim pagerRow As GridViewRow = GridDatos.BottomPagerRow
-            ' Recupera los controles DropDownList y label...
-            Dim pageList As DropDownList = CType(pagerRow.Cells(0).FindControl("PageDropDownList"), DropDownList)
-            Dim pageLabel As Label = CType(pagerRow.Cells(0).FindControl("CurrentPageLabel"), Label)
-            If Not pageList Is Nothing Then
-                ' Se crean los valores del DropDownList tomando el número total de páginas...
-                Dim i As Integer
-                For i = 0 To GridDatos.PageCount - 1
-                    ' Se crea un objeto ListItem para representar la �gina...
-                    Dim pageNumber As Integer = i + 1
-                    Dim item As ListItem = New ListItem(pageNumber.ToString())
-                    If i = GridDatos.PageIndex Then
-                        item.Selected = True
-                    End If
-                    ' Se añade el ListItem a la colección de Items del DropDownList...
-                    pageList.Items.Add(item)
-                Next i
-            End If
-            If Not pageLabel Is Nothing Then
-                ' Calcula el nº de �gina actual...
-                Dim currentPage As Integer = GridDatos.PageIndex + 1
-                ' Actualiza el Label control con la �gina actual.
-                pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
-            End If
-        End If
     End Sub
 
 End Class

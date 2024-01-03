@@ -42,7 +42,6 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
                                 <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
                                 <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" Visible="true" />
                             </div>
@@ -52,11 +51,10 @@
                                 <div class="table-responsive">
                                     <h4>
                                         <span style="float: right;"><small># Multiplicadores:</small>
-                                        <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
+                                            <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                     </h4>
                                     <p>&nbsp;</p>
                                     <p>&nbsp;</p>
-                                    <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
                                     <asp:GridView ID="GridDatos" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
                                         GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small">
@@ -123,27 +121,6 @@
                             </div>
                         </div>
 
-                        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <%--  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                    &times;</button>--%>
-                                        <h4 class="modal-title" id="ModalTitle2">MAS 2.0 - DICTA - MSU</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
-                                    </div>
-                                    <div class="modal-footer" style="text-align: center">
-                                        <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
-                                        <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
-                                        <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
-                                        <%--<asp:Button ID="Button2" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />--%>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -345,6 +322,27 @@
             <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
         </div>
 
+    </div>
+
+    <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
+    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ModalTitle2">SAG - DICTA</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="Label3" runat="server" Text="Mensaje Predeterminado - Label3"></asp:Label>
+                </div>
+                <div class="modal-footer" style="text-align: center">
+                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
+                    <%--<asp:Button ID="Button2" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />--%>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript">
