@@ -49,7 +49,7 @@
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i> Registro de multilplcadores</a>
+                            <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i> Registro de multilplicadores</a>
                         </div>
                     </div>
                 </li>

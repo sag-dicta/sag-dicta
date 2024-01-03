@@ -217,7 +217,6 @@ C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\Microsoft.Threading
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\MySql.Data.dll
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\QRCoder.dll
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Buffers.dll
-C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.IO.FileSystem.Primitives.dll
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.IO.Packaging.dll
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Memory.dll
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.Numerics.Vectors.dll
@@ -261,3 +260,4 @@ C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\SAG_DICTA.v
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\MAS_PMSU.dll
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\MAS_PMSU.xml
 C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\obj\Release\MAS_PMSU.pdb
+C:\Users\se7en\source\repos\sag-dicta\sag-dicta\MAS_PMSU\bin\System.IO.FileSystem.Primitives.dll

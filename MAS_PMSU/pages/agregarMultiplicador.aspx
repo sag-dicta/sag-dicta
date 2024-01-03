@@ -43,17 +43,17 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-                                <%--                                <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
+                                <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
                                 <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" Visible="true" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
-                                    <h3>
-                                        <span style="float: right;"><small># Lotes:</small>
-                                            <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
-                                    </h3>
+                                    <h4>
+                                        <span style="float: right;"><small># Multiplicadores:</small>
+                                        <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
+                                    </h4>
                                     <p>&nbsp;</p>
                                     <p>&nbsp;</p>
                                     <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
@@ -90,13 +90,13 @@
                                                 <HeaderStyle CssClass="hide" />
                                                 <ItemStyle CssClass="hide" />
                                             </asp:BoundField>
+                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
+                                            <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
+                                            <asp:BoundField DataField="nombre_finca" HeaderText="NOMBRE DE LA FINCA" />
                                             <asp:BoundField DataField="nombre_productor" HeaderText="PRODUCTOR" />
                                             <asp:BoundField DataField="no_registro_productor" HeaderText="No. REGISTRO" />
                                             <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
                                             <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
-                                            <asp:BoundField DataField="nombre_finca" HeaderText="NOMBRE DE LA FINCA" />
-                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
-                                            <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -255,7 +255,7 @@
                                         <asp:Label ID="lb_dept_new" class="label label-warning" runat="server" Text=""></asp:Label>
                                         <asp:TextBox CssClass="form-control" ID="txtCodDep" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
                                         <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                            <asp:ListItem Text=" "></asp:ListItem>
+                                            <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -264,8 +264,8 @@
                                     <div class="form-group">
                                         <label>Municipio</label><asp:Label ID="lb_mun_new" class="label label-warning" runat="server" Text=""></asp:Label>
                                         <asp:TextBox CssClass="form-control" ID="TxtCodMun" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
-                                        <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                            <asp:ListItem Text=" "></asp:ListItem>
+                                        <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox" Enabled="false">
+                                            <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -274,8 +274,8 @@
                                     <div class="form-group">
                                         <label>Aldea</label>
                                         <asp:Label ID="lb_aldea_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                            <asp:ListItem Text=" "></asp:ListItem>
+                                        <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox" Enabled="false">
+                                            <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -284,8 +284,8 @@
                                     <div class="form-group">
                                         <label>Caserio</label>
                                         <asp:Label ID="lb_caserio_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                            <asp:ListItem Text=" "></asp:ListItem>
+                                        <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox" Enabled="false">
+                                            <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -308,9 +308,10 @@
 
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Croquis del Lote</label>
+                                <label>Croquis del Lote:</label>
                                 <asp:Label ID="Label5" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:Label ID="Label25" runat="server" Text="" class="label label-warning" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                <br />
+                                <asp:Label ID="Label25" runat="server" Text="" class="label label-warning" Visible="false">Subir archivo PNG/JPG/JPEG</asp:Label>
                                 <!-- Agrega el control FileUpload para cargar una imagen -->
                                 <asp:FileUpload ID="fileUpload" runat="server" PostBackUrl="SolicitudInscripcionDeLotes.aspx" accept=".png,.jpg,.jpeg" />
                             </div>
@@ -324,24 +325,24 @@
 
         <div>
             <label></label>
-            <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
-            <br />
-            <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote" Visible="false" />
-            <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
-        </div>
-
-        <div>
-            <label></label>
             <asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
             <br />
-            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir Hoja de Datos del Lote Registrado" OnClick="descargaPDF" Visible="false" />
+            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir Hoja de Datos del Multiplicador" OnClick="descargaPDF" Visible="false" />
         </div>
 
         <div>
             <label></label>
             <asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
             <br />
-            <asp:Button CssClass="btn btn-primary" ID="Button2" runat="server" Text="Nuevo" OnClick="vaciar" Visible="false" />
+            <asp:Button CssClass="btn btn-success" ID="Button2" runat="server" Text="Nuevo Multiplicador" OnClick="vaciar" Visible="false" />
+        </div>
+
+        <div>
+            <label></label>
+            <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
+            <br />
+            <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote" Visible="false" />
+            <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
         </div>
 
     </div>

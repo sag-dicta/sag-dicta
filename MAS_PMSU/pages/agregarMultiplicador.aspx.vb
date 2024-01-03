@@ -110,15 +110,21 @@ Public Class agregarMultiplicador
         txtIdentidadRe.Text = " "
         TxtTelefonoRe.Text = " "
         TxtNombreFinca.Text = " "
-        gb_departamento_new.SelectedItem.Text = " "
+        gb_departamento_new.SelectedIndex = 0
+
         gb_municipio_new.SelectedItem.Text = " "
+        gb_municipio_new.Enabled = False
+
         gb_aldea_new.SelectedItem.Text = " "
+        gb_aldea_new.Enabled = False
+
         gb_caserio_new.SelectedItem.Text = " "
+        gb_caserio_new.Enabled = False
+
         TxtPersonaFinca.Text = " "
         TxtLote.Text = " "
         'FileUpload
         VerificarTextBox()
-        Response.Redirect("agregarMultiplicador.aspx")
     End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
@@ -137,7 +143,7 @@ Public Class agregarMultiplicador
 
     Private Function DevolverValorDepart(cadena As String)
 
-        If TxtDepto.SelectedItem.Text <> "Todos" Then
+        If TxtDepto.SelectedItem.Text <> " " Then
             Dim codigoDepartamento As String = ""
             Dim StrCombo As String = "SELECT CODIGO_DEPARTAMENTO FROM tb_departamentos WHERE NOMBRE = @nombre"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -185,6 +191,11 @@ Public Class agregarMultiplicador
         VerificarTextBox()
     End Function
     Private Sub llenarmunicipio()
+        gb_municipio_new.Enabled = True
+        gb_aldea_new.SelectedItem.Text = " "
+        gb_aldea_new.Enabled = False
+        gb_caserio_new.SelectedItem.Text = " "
+        gb_caserio_new.Enabled = False
         Dim departamento As String = DevolverValorDepart(gb_departamento_new.SelectedItem.Text)
         Dim StrCombo As String = "SELECT * FROM tb_municipio WHERE CODIGO_DEPARTAMENTO = " & departamento & ""
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -201,6 +212,9 @@ Public Class agregarMultiplicador
     End Sub
 
     Private Sub llenarAldea()
+        gb_aldea_new.Enabled = True
+        gb_caserio_new.SelectedItem.Text = " "
+        gb_caserio_new.Enabled = False
         Dim municipio As String = DevolverValorMuni(gb_municipio_new.SelectedItem.Text)
         Dim StrCombo As String = "SELECT * FROM tb_aldea WHERE CODIGO_MUNICIPIO = " & municipio & ""
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -217,6 +231,7 @@ Public Class agregarMultiplicador
     End Sub
 
     Private Sub llenarCaserio()
+        gb_caserio_new.Enabled = True
         Dim aldea As String = DevolverValorAlde(gb_aldea_new.SelectedItem.Text)
         Dim StrCombo As String = "SELECT * FROM tb_caserios WHERE CODIGO_ALDEA = " & aldea & ""
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -262,6 +277,7 @@ Public Class agregarMultiplicador
     End Sub
 
     Protected Sub gb_municipio_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_municipio_new.SelectedIndexChanged
+        gb_caserio_new.Enabled = False
         llenarAldea()
         VerificarTextBox()
     End Sub
@@ -484,6 +500,10 @@ Public Class agregarMultiplicador
         'lblInfo.Text = ""
     End Sub
 
+    Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
+        lblTotalClientes.Text = e.AffectedRows.ToString()
+    End Sub
+
     Sub llenagrid()
         Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
         Dim c1 As String = ""
@@ -527,14 +547,31 @@ Public Class agregarMultiplicador
         TxtDepto.Items.Insert(0, newitem)
 
     End Sub
+    Private Function DevolverValorDepart2(cadena As String)
 
+        If TxtDepto.SelectedItem.Text <> "Todos" Then
+            Dim codigoDepartamento As String = ""
+            Dim StrCombo As String = "SELECT CODIGO_DEPARTAMENTO FROM tb_departamentos WHERE NOMBRE = @nombre"
+            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+            adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
+            Dim DtCombo As New DataTable
+            adaptcombo.Fill(DtCombo)
+            txtCodDep.Text = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString
+            codigoDepartamento = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString()
+            Return codigoDepartamento
+        End If
+
+        Return 0
+        VerificarTextBox()
+    End Function
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         llenarmunicipioGrid()
+        llenarcomboProductor2()
         llenagrid()
     End Sub
 
     Private Sub llenarmunicipioGrid()
-        Dim departamento As String = DevolverValorDepart(TxtDepto.SelectedItem.Text)
+        Dim departamento As String = DevolverValorDepart2(TxtDepto.SelectedItem.Text)
         Dim StrCombo As String = "SELECT * FROM tb_municipio WHERE CODIGO_DEPARTAMENTO = " & departamento & ""
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -555,14 +592,29 @@ Public Class agregarMultiplicador
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_senasa WHERE municipio = '" & TxtMunicipio.SelectedItem.text & "' "
+        StrCombo = "SELECT * FROM sag_registro_senasa WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
         TxtMultiplicador.DataSource = DtCombo
         TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtMultiplicador.DataTextField = DtCombo.Columns(1).ToString()
+        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
+        TxtMultiplicador.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtMultiplicador.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboProductor2()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT * FROM sag_registro_senasa WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' "
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        TxtMultiplicador.DataSource = DtCombo
+        TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
+        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
         TxtMultiplicador.DataBind()
         Dim newitem As New ListItem("Todos", "Todos")
         TxtMultiplicador.Items.Insert(0, newitem)
@@ -576,13 +628,17 @@ Public Class agregarMultiplicador
             txtNombreRe.Text = TxtMultiplicador.SelectedValue
         End If
 
-        'If (TxtMunicipio.SelectedIndex <> 0) Then
-        'gb_municipio_new.SelectedValue = TxtMunicipio.SelectedValue
-        'End If
+        If TxtDepto.SelectedIndex <> 0 Then
+            gb_departamento_new.SelectedIndex = TxtDepto.SelectedIndex
+            llenarmunicipio()
 
-        'If (TxtDepto.SelectedIndex <> 0) Then
-        'gb_departamento_new.SelectedValue = TxtDepto.SelectedValue
-        'End If
+            If TxtMunicipio.SelectedIndex = 0 Then
+                gb_municipio_new.SelectedIndex = 0
+            Else
+                gb_municipio_new.SelectedIndex = TxtMunicipio.SelectedIndex
+                llenarAldea()
+            End If
+        End If
 
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
@@ -595,4 +651,194 @@ Public Class agregarMultiplicador
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
         Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
     End Sub
+
+    Private Sub exportar()
+
+        Dim query As String = ""
+        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+
+        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        End If
+
+        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
+            c2 = " "
+        Else
+            c2 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM sag_registro_senasa WHERE 1 = 1 " & c1 & c2 & c3
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "sag_registro_senasa"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Registro de Multiplicador  " & Today & " " & TxtMultiplicador.SelectedItem.Text & " " & TxtDepto.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
+    End Sub
+
+    Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
+        exportar()
+    End Sub
+
+    Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
+        Dim fecha2 As Date
+
+        Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+
+        If (e.CommandName = "Editar") Then
+
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            Dim Str As String = "SELECT * FROM `mas+bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn4)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            nuevo = False
+
+            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
+
+            TxtNom.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+            TxtCicloD.Text = dt.Rows(0)("CICLO").ToString()
+            Dim vv As String = dt.Rows(0)("Tipo_cultivo").ToString()
+
+            TxtVariedad.Items.Clear()
+            If vv = "Frijol" Then
+                DDL_Tipos.SelectedIndex = 1
+                TxtVariedad.Items.Insert(0, "")
+                TxtVariedad.Items.Insert(1, "Amadeus-77")
+                TxtVariedad.Items.Insert(2, "Carrizalito")
+                TxtVariedad.Items.Insert(3, "Deorho")
+                TxtVariedad.Items.Insert(4, "Azabache")
+                TxtVariedad.Items.Insert(5, "Paraisito mejorado PM-2")
+                TxtVariedad.Items.Insert(6, "Honduras nutritivo")
+                TxtVariedad.Items.Insert(7, "Inta Cárdenas")
+                TxtVariedad.Items.Insert(8, "Lenca precoz")
+                TxtVariedad.Items.Insert(9, "Rojo chortí")
+                TxtVariedad.Items.Insert(10, "Tolupan rojo")
+            Else
+                DDL_Tipos.SelectedIndex = 2
+                TxtVariedad.Items.Insert(0, "")
+                TxtVariedad.Items.Insert(1, "Dicta Maya")
+                TxtVariedad.Items.Insert(2, "Dicta Victoria")
+                TxtVariedad.Items.Insert(3, "Otra especificar")
+            End If
+
+            TxtVariedad.Text = dt.Rows(0)("VARIEDAD").ToString()
+            TxtCategoria.Text = dt.Rows(0)("CATEGORIA").ToString()
+
+            fecha2 = dt.Rows(0)("FECHA_SIEMBRA").ToString()
+            TxtDia.SelectedValue = fecha2.Day
+            TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
+            TxtAno.SelectedValue = fecha2.Year
+
+            TxtAreaSemb.Text = dt.Rows(0)("INVENTARIO_EN_DICTA").ToString()
+            TxtPronostico.Text = dt.Rows(0)("SEMILLA_A_PRODUCIR").ToString()
+
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+
+        End If
+
+        If (e.CommandName = "Eliminar") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            Dim Str As String = "SELECT * FROM `mas+bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn4)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            txt_habilitado.Text = dt.Rows(0)("Habilitado").ToString()
+
+            If txt_habilitado.Text = "NO" Then
+
+                Label3.Text = "Para este ciclo ya ha finalizado el tiempo para eliminar, por favor si desea actualizar el registro realizar la solicitud mediante correo electronico"
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
+            Else
+
+                Label1.Text = "¿Esta seguro que desea eliminar el registro?"
+                BConfirm.Visible = False
+
+                BBorrarsi.Visible = True
+                BBorrarno.Visible = True
+
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+            End If
+        End If
+    End Sub
+
+    Protected Sub GridDatos_DataBound(sender As Object, e As EventArgs) Handles GridDatos.DataBound
+        If (GridDatos.Rows.Count > 0) Then
+            ' Recupera la el PagerRow...
+            Dim pagerRow As GridViewRow = GridDatos.BottomPagerRow
+            ' Recupera los controles DropDownList y label...
+            Dim pageList As DropDownList = CType(pagerRow.Cells(0).FindControl("PageDropDownList"), DropDownList)
+            Dim pageLabel As Label = CType(pagerRow.Cells(0).FindControl("CurrentPageLabel"), Label)
+            If Not pageList Is Nothing Then
+                ' Se crean los valores del DropDownList tomando el número total de páginas...
+                Dim i As Integer
+                For i = 0 To GridDatos.PageCount - 1
+                    ' Se crea un objeto ListItem para representar la �gina...
+                    Dim pageNumber As Integer = i + 1
+                    Dim item As ListItem = New ListItem(pageNumber.ToString())
+                    If i = GridDatos.PageIndex Then
+                        item.Selected = True
+                    End If
+                    ' Se añade el ListItem a la colección de Items del DropDownList...
+                    pageList.Items.Add(item)
+                Next i
+            End If
+            If Not pageLabel Is Nothing Then
+                ' Calcula el nº de �gina actual...
+                Dim currentPage As Integer = GridDatos.PageIndex + 1
+                ' Actualiza el Label control con la �gina actual.
+                pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
+            End If
+        End If
+    End Sub
+
 End Class

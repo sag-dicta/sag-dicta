@@ -509,33 +509,6 @@ Partial Public Class agregarMultiplicador
     Protected WithEvents fileUpload As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
-    '''Control LabelGuardar.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents LabelGuardar As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control btnGuardarLote.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnGuardarLote As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control btnRegresar.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnRegresar As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control Label18.
     '''</summary>
     '''<remarks>
@@ -570,4 +543,31 @@ Partial Public Class agregarMultiplicador
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control LabelGuardar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents LabelGuardar As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control btnGuardarLote.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnGuardarLote As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control btnRegresar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnRegresar As Global.System.Web.UI.WebControls.Button
 End Class
