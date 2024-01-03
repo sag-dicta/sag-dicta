@@ -32,14 +32,16 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Seleccione Multiplicador:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True"></asp:DropDownList>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text=" "></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-<%--                                <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
+                                <%--                                <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
                                 <asp:Button ID="BAgregar" runat="server" Text="Agregar Inscripcion" CssClass="btn btn-success" Visible="true" />
                             </div>
                         </div>
@@ -169,13 +171,13 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Cedula de Identidad</label><asp:Label ID="Lb_CedulaIdentidad" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtIdentidad" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Extendida En :</label><asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TextBox1" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
@@ -187,13 +189,13 @@
                                 <asp:TextBox CssClass="form-control" ID="TxtResidencia" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Telefono</label><asp:Label ID="LblTelefono" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtTelefono" runat="server" AutoPostBack="true" MaxLength="9" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>No. De Registro de Productor</label><asp:Label ID="LbNoRegistro" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtNoRegistro" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
@@ -208,13 +210,13 @@
                                 <asp:TextBox CssClass="form-control" ID="txtNombreRe" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Identidad del Multiplicador:</label><asp:Label ID="lbIdentidadRe" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtIdentidadRe" runat="server" AutoPostBack="true" MaxLength="13" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Telefono del Multiplicador:</label><asp:Label ID="LbTelefonoRe" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtTelefonoRe" runat="server" AutoPostBack="true" MaxLength="8" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
@@ -244,54 +246,58 @@
                         </div>
 
                         <section id="todoDeptos" runat="server">
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label>Departamento</label>
-                                    <asp:Label ID="lb_dept_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox CssClass="form-control" ID="txtCodDep" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
-                                    <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                        <asp:ListItem Text=" "></asp:ListItem>
-                                    </asp:DropDownList>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Departamento</label>
+                                        <asp:Label ID="lb_dept_new" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox CssClass="form-control" ID="txtCodDep" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
+                                        <asp:DropDownList CssClass="form-control" ID="gb_departamento_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:ListItem Text=" "></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label>Municipio</label><asp:Label ID="lb_mun_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox CssClass="form-control" ID="TxtCodMun" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
-                                    <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                        <asp:ListItem Text=" "></asp:ListItem>
-                                    </asp:DropDownList>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Municipio</label><asp:Label ID="lb_mun_new" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox CssClass="form-control" ID="TxtCodMun" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
+                                        <asp:DropDownList CssClass="form-control" ID="gb_municipio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:ListItem Text=" "></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label>Aldea</label>
-                                    <asp:Label ID="lb_aldea_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                        <asp:ListItem Text=" "></asp:ListItem>
-                                    </asp:DropDownList>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Aldea</label>
+                                        <asp:Label ID="lb_aldea_new" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:DropDownList CssClass="form-control" ID="gb_aldea_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:ListItem Text=" "></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label>Caserio</label>
-                                    <asp:Label ID="lb_caserio_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                        <asp:ListItem Text=" "></asp:ListItem>
-                                    </asp:DropDownList>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Caserio</label>
+                                        <asp:Label ID="lb_caserio_new" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:DropDownList CssClass="form-control" ID="gb_caserio_new" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:ListItem Text=" "></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
                                 </div>
+
                             </div>
                         </section>
-                        <div class="col-lg-3">
+
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Encargado de la finca</label><asp:Label ID="LblPersonaFinca" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtPersonaFinca" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Nombre o numero de Lote</label><asp:Label ID="LbLote" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtLote" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>

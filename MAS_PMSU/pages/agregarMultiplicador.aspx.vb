@@ -17,7 +17,7 @@ Public Class agregarMultiplicador
             If IsPostBack Then
 
             Else
-                'llenarcomboDepto()
+                llenarcomboDepto()
                 llenarcomboDeptoGrid()
                 VerificarTextBox()
                 llenatxtproductor()
@@ -490,7 +490,7 @@ Public Class agregarMultiplicador
         Dim c3 As String = ""
         Dim c4 As String = ""
 
-        'If (TxtMultiplicador.SelectedItem.Text = "") Then
+        'If (TxtMultiplicador.SelectedItem.Text = " ") Then
         '    c1 = " "
         'Else
         '    c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
@@ -531,6 +531,7 @@ Public Class agregarMultiplicador
 
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         llenarmunicipioGrid()
+        llenagrid()
     End Sub
 
     Private Sub llenarmunicipioGrid()
@@ -549,6 +550,7 @@ Public Class agregarMultiplicador
     End Sub
     Protected Sub TxtMunicipio_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtMunicipio.SelectedIndexChanged
         llenarcomboProductor()
+        llenagrid()
     End Sub
 
     Private Sub llenarcomboProductor()
