@@ -490,27 +490,26 @@ Public Class agregarMultiplicador
         Dim c3 As String = ""
         Dim c4 As String = ""
 
-        'If (TxtMultiplicador.SelectedItem.Text = " ") Then
-        '    c1 = " "
-        'Else
-        '    c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
-        'End If
-        '
-        'If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-        '    c3 = " "
-        'Else
-        '    c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        'End If
-        '
-        'If (TxtDepto.SelectedItem.Text = "Todos") Then
-        '    c4 = " "
-        'Else
-        '    c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        'End If
+        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        End If
+
+        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = "Todos") Then
+            c4 = " "
+        Else
+            c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
 
         BAgregar.Visible = True
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 " & c1 & c3 & c4
-        'Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `registro_multiplicadores` WHERE 1 = 1 "
 
         GridDatos.DataBind()
     End Sub
@@ -587,6 +586,10 @@ Public Class agregarMultiplicador
 
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
+    End Sub
+
+    Protected Sub TxtMultiplicador_SelectedIndexChanged(sender As Object, e As EventArgs)
+        llenagrid()
     End Sub
 
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click

@@ -26,14 +26,16 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Seleccione Municipio:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtMunicipio" runat="server" AutoPostBack="True"></asp:DropDownList>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtMunicipio" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="Todos"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Seleccione Multiplicador:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True">
-                                        <asp:ListItem Text=" "></asp:ListItem>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True" OnSelectedIndexChanged="TxtMultiplicador_SelectedIndexChanged">
+                                        <asp:ListItem Text="Todos"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
