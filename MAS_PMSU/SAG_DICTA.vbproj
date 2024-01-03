@@ -357,6 +357,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="data\DataSetMultiplicador.xsc">
+      <DependentUpon>DataSetMultiplicador.xsd</DependentUpon>
+    </Content>
+    <None Include="data\DataSetMultiplicador.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetMultiplicador.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="data\DataSetMultiplicador.xss">
+      <DependentUpon>DataSetMultiplicador.xsd</DependentUpon>
+    </Content>
     <None Include="My Project\PublishProfiles\Perfil.pubxml" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -2140,12 +2151,23 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="data\DataSetMultiplicador.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetMultiplicador.xsd</DependentUpon>
+    </Compile>
     <Compile Include="pages\agregarMultiplicador.aspx.designer.vb">
       <DependentUpon>agregarMultiplicador.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\agregarMultiplicador.aspx.vb">
       <DependentUpon>agregarMultiplicador.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\AgregarMultiplicadorReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgregarMultiplicadorReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="pages\ErrorPage.aspx.designer.vb">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
@@ -2238,6 +2260,10 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\AgregarMultiplicadorReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AgregarMultiplicadorReport.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -2488,7 +2514,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="data\" />
     <Folder Include="dist\" />
     <Folder Include="less\" />
     <Folder Include="vendor\NewFolder1\" />
