@@ -34,70 +34,147 @@ Public Class agregarMultiplicador
             LabelGuardar.Visible = True
             LabelGuardar.Text = "Ingrese toda la información para poder guardarla"
         Else
-            LabelGuardar.Visible = False
-            LabelGuardar.Text = ""
-            Dim connectionString As String = conn
-            Using connection As New MySqlConnection(connectionString)
-                connection.Open()
+            If btnGuardarLote.Text = "Guardar" Then
+                LabelGuardar.Visible = False
+                LabelGuardar.Text = ""
+                Dim connectionString As String = conn
+                Using connection As New MySqlConnection(connectionString)
+                    connection.Open()
 
-                Dim query As String = "INSERT INTO sag_registro_senasa (nombre_productor, representante_legar, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
-                cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
+                    Dim query As String = "INSERT INTO sag_registro_senasa (nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
+                cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, estado) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
                 @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
-                @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis)"
+                @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @estado)"
 
-                Dim fechaConvertida As DateTime
+                    Dim fechaConvertida As DateTime
 
 
-                If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                    fechaConvertida.ToString("dd-MM-yyyy")
-                End If
-
-                Using cmd As New MySqlCommand(query, connection)
-
-                    cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
-                    cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
-                    cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
                     If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                        cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                    End If
-                    cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
-                    cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
-                    cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
-                    cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
-                    cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
-                    cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
-                    cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
-                    cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
-                    cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
-                    cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
-                    cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
-                    cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
-                    cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
-                    If fileUpload.HasFile Then
-                        ' Obtener el contenido del archivo
-                        Dim fileBytes As Byte() = fileUpload.FileBytes
-
-
-                        cmd.Parameters.AddWithValue("@croquis", fileBytes)
+                        fechaConvertida.ToString("dd-MM-yyyy")
                     End If
 
+                    Using cmd As New MySqlCommand(query, connection)
 
-                    cmd.ExecuteNonQuery()
-                    connection.Close()
+                        cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
+                        cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
+                        cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
+                        If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
+                            cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                        End If
+                        cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
+                        cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
+                        cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
+                        cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
+                        cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
+                        cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
+                        cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
+                        cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
+                        cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
+                        If fileUpload.HasFile Then
+                            ' Obtener el contenido del archivo
+                            Dim fileBytes As Byte() = fileUpload.FileBytes
 
-                    'Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!') </script>")
 
-                    Label3.Text = "¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!"
-                    BBorrarsi.Visible = False
-                    BBorrarno.Visible = False
-                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                            cmd.Parameters.AddWithValue("@croquis", fileBytes)
+                        End If
+                        cmd.Parameters.AddWithValue("@estado", "1")
 
-                    Button1.Visible = True
-                    Button2.Visible = True
-                    btnGuardarLote.Visible = False
+                        cmd.ExecuteNonQuery()
+                        connection.Close()
+
+                        'Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!') </script>")
+
+                        Label3.Text = "¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!"
+                        BBorrarsi.Visible = False
+                        BBorrarno.Visible = False
+                        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                        Button1.Visible = True
+                        Button2.Visible = True
+                        btnGuardarLote.Visible = False
+
+                    End Using
+                End Using
+            Else
+                LabelGuardar.Visible = False
+                LabelGuardar.Text = ""
+                Dim connectionString As String = conn
+                Using connection As New MySqlConnection(connectionString)
+                    connection.Open()
+
+                    Dim query As String = "UPDATE sag_registro_senasa 
+                    SET nombre_productor = @nombre_productor,
+                        representante_legal = @representante_legal,
+                        identidad_productor = @identidad_productor,
+                        extendida = @extendida,
+                        residencia_productor = @residencia_productor,
+                        telefono_productor = @telefono_productor,
+                        no_registro_productor = @no_registro_productor,
+                        nombre_multiplicador = @nombre_multiplicador,
+                        cedula_multiplicador = @cedula_multiplicador,
+                        telefono_multiplicador = @telefono_multiplicador,
+                        nombre_finca = @nombre_finca,
+                        departamento = @departamento,
+                        municipio = @municipio,
+                        aldea = @aldea,
+                        caserio = @caserio,
+                        nombre_persona_finca = @nombre_persona_finca,
+                        nombre_lote = @nombre_lote,
+                        croquis = @croquis
+                    WHERE id = " & txtID.Text & ""
+
+                    Dim fechaConvertida As DateTime
+
+                    If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
+                        fechaConvertida.ToString("dd-MM-yyyy")
+                    End If
+
+                    Using cmd As New MySqlCommand(query, connection)
+
+                        cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
+                        cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
+                        cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
+                        If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
+                            cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                        End If
+                        cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
+                        cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
+                        cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
+                        cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
+                        cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
+                        cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
+                        cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
+                        cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
+                        cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
+                        If fileUpload.HasFile Then
+                            ' Obtener el contenido del archivo
+                            Dim fileBytes As Byte() = fileUpload.FileBytes
+                            cmd.Parameters.AddWithValue("@croquis", fileBytes)
+                        End If
+
+
+                        cmd.ExecuteNonQuery()
+                        connection.Close()
+
+                        'Response.Write("<script>window.alert('¡Se ha editado correctamente la solicitud del Multiplicador o Estación!') </script>")
+                        Label3.Text = "¡Se ha editado correctamente la solicitud del Multiplicador o Estación!"
+                        BBorrarsi.Visible = False
+                        BBorrarno.Visible = False
+                        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                        btnGuardarLote.Visible = False
+
+                    End Using
 
                 End Using
-            End Using
+            End If
         End If
 
     End Sub
@@ -532,7 +609,7 @@ Public Class agregarMultiplicador
         End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
 
         GridDatos.DataBind()
     End Sub
@@ -727,9 +804,73 @@ Public Class agregarMultiplicador
     End Sub
 
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
-        Dim fecha2 As Date
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+        If (e.CommandName = "Editar") Then
+            btnGuardarLote.Text = "Editar"
+            Button1.Visible = False
+            Button2.Visible = False
+            DivCrearNuevo.Visible = True
+            DivGrid.Visible = False
+
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            nuevo = False
+            txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            txt_nombre_prod_new.Text = dt.Rows(0)("nombre_productor").ToString()
+            Txt_Representante_Legal.Text = dt.Rows(0)("representante_legal").ToString()
+            TxtIdentidad.Text = dt.Rows(0)("identidad_productor").ToString()
+            TextBox1.Text = DirectCast(dt.Rows(0)("extendida"), DateTime).ToString("yyyy-MM-dd")
+            TxtResidencia.Text = dt.Rows(0)("residencia_productor").ToString()
+            TxtTelefono.Text = dt.Rows(0)("telefono_productor").ToString()
+            txtNoRegistro.Text = dt.Rows(0)("no_registro_productor").ToString()
+            txtNombreRe.Text = dt.Rows(0)("nombre_multiplicador").ToString()
+            txtIdentidadRe.Text = dt.Rows(0)("cedula_multiplicador").ToString()
+            TxtTelefonoRe.Text = dt.Rows(0)("telefono_multiplicador").ToString()
+            TxtNombreFinca.Text = dt.Rows(0)("nombre_finca").ToString()
+            SeleccionarItemEnDropDownList(gb_departamento_new, dt.Rows(0)("departamento").ToString())
+            llenarmunicipio()
+            SeleccionarItemEnDropDownList(gb_municipio_new, dt.Rows(0)("municipio").ToString())
+            llenarAldea()
+            SeleccionarItemEnDropDownList(gb_aldea_new, dt.Rows(0)("aldea").ToString())
+            llenarCaserio()
+            SeleccionarItemEnDropDownList(gb_caserio_new, dt.Rows(0)("caserio").ToString())
+            TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
+            TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
+        End If
+
+        If (e.CommandName = "Eliminar") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim query As String = "UPDATE sag_registro_senasa 
+                    SET estado = @estado
+                WHERE id = " & txtID.Text & ""
+
+                Using cmd As New MySqlCommand(query, connection)
+
+                    cmd.Parameters.AddWithValue("@estado", "0")
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
+
+                    Label3.Text = "¡Se ha eliminado correctamente la solicitud del Multiplicador o Estación!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                End Using
+
+            End Using
+            'Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+        End If
 
         If (e.CommandName = "Imprimir") Then
 
@@ -796,4 +937,15 @@ Public Class agregarMultiplicador
             End If
         End If
     End Sub
+
+    Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
+        For Each item As ListItem In Prodname.Items
+            If item.Text = DtCombo Then
+                Prodname.SelectedValue = item.Value
+                Return True ' Se encontró una coincidencia, devolver verdadero
+            End If
+        Next
+        ' No se encontró ninguna coincidencia
+        Return 0
+    End Function
 End Class

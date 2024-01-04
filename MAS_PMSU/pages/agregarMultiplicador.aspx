@@ -294,6 +294,7 @@
                                 <asp:Label ID="Label25" runat="server" Text="" class="label label-warning" Visible="false">Subir archivo PNG/JPG/JPEG</asp:Label>
                                 <!-- Agrega el control FileUpload para cargar una imagen -->
                                 <asp:FileUpload ID="fileUpload" runat="server" PostBackUrl="SolicitudInscripcionDeLotes.aspx" accept=".png,.jpg,.jpeg" />
+                                <asp:TextBox ID="txtID" runat="server" Visible="false"></asp:TextBox>
                             </div>
                         </div>
                     </div>

@@ -473,6 +473,15 @@ Partial Public Class agregarMultiplicador
     Protected WithEvents fileUpload As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
+    '''Control txtID.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtID As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control Label18.
     '''</summary>
     '''<remarks>
