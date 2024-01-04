@@ -848,28 +848,12 @@ Public Class agregarMultiplicador
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            Dim connectionString As String = conn
-            Using connection As New MySqlConnection(connectionString)
-                connection.Open()
 
-                Dim query As String = "UPDATE sag_registro_senasa 
-                    SET estado = @estado
-                WHERE id = " & txtID.Text & ""
-
-                Using cmd As New MySqlCommand(query, connection)
-
-                    cmd.Parameters.AddWithValue("@estado", "0")
-                    cmd.ExecuteNonQuery()
-                    connection.Close()
-
-                    Label3.Text = "¡Se ha eliminado correctamente la solicitud del Multiplicador o Estación!"
-                    BBorrarsi.Visible = False
-                    BBorrarno.Visible = False
-                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-                End Using
-
-            End Using
-            'Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+            Label3.Text = "¿Desea eliminar la solicitud del Multiplicador o Estación?"
+            BBorrarsi.Visible = True
+            BBorrarno.Visible = True
+            BConfirm.Visible = False
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
 
         If (e.CommandName = "Imprimir") Then
@@ -948,4 +932,27 @@ Public Class agregarMultiplicador
         ' No se encontró ninguna coincidencia
         Return 0
     End Function
+
+    Protected Sub elminar(sender As Object, e As EventArgs) Handles BBorrarsi.Click
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "UPDATE sag_registro_senasa 
+                    SET estado = @estado
+                WHERE id = " & txtID.Text & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+
+                cmd.Parameters.AddWithValue("@estado", "0")
+                cmd.ExecuteNonQuery()
+                connection.Close()
+
+                Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+            End Using
+
+        End Using
+
+    End Sub
+
 End Class
