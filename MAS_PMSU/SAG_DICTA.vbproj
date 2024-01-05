@@ -266,6 +266,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\AgregarVehiculo.aspx" />
     <Content Include="pages\agregarMultiplicador.aspx" />
     <Content Include="pages\Cambiopassword.aspx" />
     <Content Include="pages\ErrorPage.aspx" />
@@ -2155,6 +2156,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetMultiplicador.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="pages\AgregarVehiculo.aspx.designer.vb">
+      <DependentUpon>AgregarVehiculo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\AgregarVehiculo.aspx.vb">
+      <DependentUpon>AgregarVehiculo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\agregarMultiplicador.aspx.designer.vb">
       <DependentUpon>agregarMultiplicador.aspx</DependentUpon>
