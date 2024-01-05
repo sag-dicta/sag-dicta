@@ -13,7 +13,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Registro de Multiplicador o Estación</h1>
+            <h1 class="page-header">Registro de Vehiculo</h1>
         </div>
     </div>
 
@@ -27,6 +27,9 @@
                                 <div class="form-group">
                                     <label>Seleccione Tipo:</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDLTipoGrid" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="Todos" Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="Camion" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="Trailer" Value="2"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -87,13 +90,10 @@
                                                 <HeaderStyle CssClass="hide" />
                                                 <ItemStyle CssClass="hide" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
-                                            <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
-                                            <asp:BoundField DataField="nombre_finca" HeaderText="NOMBRE DE LA FINCA" />
-                                            <asp:BoundField DataField="nombre_productor" HeaderText="PRODUCTOR" />
-                                            <asp:BoundField DataField="no_registro_productor" HeaderText="No. REGISTRO" />
-                                            <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
-                                            <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
+                                            <asp:BoundField DataField="tipo" HeaderText="TIPO" />
+                                            <asp:BoundField DataField="marca" HeaderText="MARCA" />
+                                            <asp:BoundField DataField="color" HeaderText="COLOR" />
+                                            <asp:BoundField DataField="no_placa" HeaderText="N° DE PLACA" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -139,13 +139,6 @@
 
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Nombre o identificador:</label>
-                                <asp:Label ID="LblNombre" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtNombre" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
-                            </div>
-                        </div>
 
                         <div class="col-lg-3">
                             <div class="form-group">
@@ -153,7 +146,9 @@
                                 <asp:Label ID="lbTipo" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtTipo" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
                                 <asp:DropDownList CssClass="form-control" ID="DDLTipo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" " Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="Camion" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Trailer" Value="2"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -162,7 +157,7 @@
                             <div class="form-group">
                                 <label>Marca:</label>
                                 <asp:Label ID="LblMarca" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtMarca" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtMarca" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
 
@@ -178,7 +173,7 @@
                             <div class="form-group">
                                 <label>Color:</label>
                                 <asp:Label ID="LblColor" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtColor" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtColor" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
 
@@ -197,14 +192,14 @@
             <label></label>
             <asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
             <br />
-            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir Hoja de Datos del Multiplicador" OnClick="descargaPDF" Visible="false" />
+            <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir Hoja de Datos del Vehiculo" OnClick="descargaPDF" Visible="false" />
         </div>
 
         <div>
             <label></label>
             <asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
             <br />
-            <asp:Button CssClass="btn btn-success" ID="Button2" runat="server" Text="Nuevo Multiplicador" OnClick="vaciar" Visible="false" />
+            <asp:Button CssClass="btn btn-success" ID="Button2" runat="server" Text="Nuevo Vehiculo" OnClick="vaciar" Visible="false" />
         </div>
 
         <div>
@@ -271,6 +266,22 @@
                     return false;
                 else
                     return true;
+            }
+
+            return false;
+        }
+    </script>
+
+    <script type="text/javascript">
+        function lettersOnly(event) {
+            var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
+
+            // Un-comment to discover a key that I have forgotten to take into account...
+            //alert(keyCodeEntered);
+
+            // Check if the key code corresponds to a letter (a-z or A-Z)
+            if ((keyCodeEntered >= 65 && keyCodeEntered <= 90) || (keyCodeEntered >= 97 && keyCodeEntered <= 122)) {
+                return true;
             }
 
             return false;
