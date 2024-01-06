@@ -41,6 +41,15 @@ Partial Public Class principal
     Protected WithEvents OpcProv As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control Li1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Li1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''Control contaler.
     '''</summary>
     '''<remarks>

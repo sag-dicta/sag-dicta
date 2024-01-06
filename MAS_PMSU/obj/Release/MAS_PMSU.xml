@@ -118,6 +118,384 @@ Update Order Option
 Used to sort self-referenced table's rows
 </summary>
 </member>
+<member name="F:MAS_PMSU.AgregarConductor._ScriptManager1">
+<summary>
+Control ScriptManager1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._DivGrid">
+<summary>
+Control DivGrid.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._DDLNombreGrid">
+<summary>
+Control DDLNombreGrid.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._DDLTipoGrid">
+<summary>
+Control DDLTipoGrid.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._DDLIdenVehi">
+<summary>
+Control DDLIdenVehi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._BAgregar">
+<summary>
+Control BAgregar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._lblTotalClientes">
+<summary>
+Control lblTotalClientes.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._SqlDataSource1">
+<summary>
+Control SqlDataSource1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._GridDatos">
+<summary>
+Control GridDatos.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LinkButton1">
+<summary>
+Control LinkButton1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._DivCrearNuevo">
+<summary>
+Control DivCrearNuevo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LblNombCond">
+<summary>
+Control LblNombCond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._TxtNombCond">
+<summary>
+Control TxtNombCond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._DDLNombCond">
+<summary>
+Control DDLNombCond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._BtnNewMoto">
+<summary>
+Control BtnNewMoto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LblDNICond">
+<summary>
+Control LblDNICond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._TxtDNICond">
+<summary>
+Control TxtDNICond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LblTelfCond">
+<summary>
+Control LblTelfCond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._TxtTelfCond">
+<summary>
+Control TxtTelfCond.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LblNombre">
+<summary>
+Control LblNombre.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._TxtNombre">
+<summary>
+Control TxtNombre.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._DDLNombre">
+<summary>
+Control DDLNombre.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._lbTipo">
+<summary>
+Control lbTipo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._txtTipo">
+<summary>
+Control txtTipo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LblMarca">
+<summary>
+Control LblMarca.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._TxtMarca">
+<summary>
+Control TxtMarca.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LblPlaca">
+<summary>
+Control LblPlaca.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._TxtPlaca">
+<summary>
+Control TxtPlaca.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LblColor">
+<summary>
+Control LblColor.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._TxtColor">
+<summary>
+Control TxtColor.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._txtID">
+<summary>
+Control txtID.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._Label18">
+<summary>
+Control Label18.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._Button1">
+<summary>
+Control Button1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._Label23">
+<summary>
+Control Label23.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._Button2">
+<summary>
+Control Button2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._LabelGuardar">
+<summary>
+Control LabelGuardar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._btnAsignar">
+<summary>
+Control btnAsignar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._btnRegresar">
+<summary>
+Control btnRegresar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._Label3">
+<summary>
+Control Label3.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._BConfirm">
+<summary>
+Control BConfirm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._BBorrarsi">
+<summary>
+Control BBorrarsi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarConductor._BBorrarno">
+<summary>
+Control BBorrarno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.AgregarVehiculo._ScriptManager1">
 <summary>
 Control ScriptManager1.
@@ -1912,6 +2290,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.principal._OpcProv">
 <summary>
 Control OpcProv.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.principal._Li1">
+<summary>
+Control Li1.
 </summary>
 <remarks>
 Campo generado automáticamente.
