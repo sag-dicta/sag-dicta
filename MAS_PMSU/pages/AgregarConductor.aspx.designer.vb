@@ -212,6 +212,15 @@ Partial Public Class AgregarConductor
     Protected WithEvents DDLNombre As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control Button3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control lbTipo.
     '''</summary>
     '''<remarks>

@@ -93,7 +93,7 @@ Public Class AgregarConductor
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
-                        Button1.Visible = True
+                        Button1.Visible = False
                         Button2.Visible = True
                         btnGuardarLote.Visible = False
 
@@ -762,12 +762,17 @@ Public Class AgregarConductor
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
-                Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+                Response.Redirect(String.Format("~/pages/AgregarVehiculo.aspx"))
             End Using
 
         End Using
 
     End Sub
+
+    Protected Sub Button3_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/AgregarVehiculo.aspx"))
+    End Sub
+
     Protected Sub BtnNewMoto_Click(sender As Object, e As EventArgs)
         DDLNombCond.Visible = False
         TxtNombCond.Visible = True

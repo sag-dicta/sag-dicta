@@ -110,7 +110,7 @@
                                             <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="HOJA DE DATOS" CommandName="Imprimir">
+                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="HOJA DE DATOS" CommandName="Imprimir" Visible="false">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>
@@ -196,7 +196,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="row">
+                    <div class="row" style="align-items: flex-end;">
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Identificador del Vehiculo:</label>
@@ -208,7 +208,13 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <asp:Button ID="Button3" runat="server" Text="Nuevo Vehiculo" CssClass="btn btn-success" Visible="true" OnClick="Button3_Click"/>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
@@ -331,6 +337,22 @@
                     return false;
                 else
                     return true;
+            }
+
+            return false;
+        }
+    </script>
+
+    <script type="text/javascript">
+        function lettersOnly(event) {
+            var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
+
+            // Un-comment to discover a key that I have forgotten to take into account...
+            //alert(keyCodeEntered);
+
+            // Check if the key code corresponds to a letter (a-z or A-Z)
+            if ((keyCodeEntered >= 65 && keyCodeEntered <= 90) || (keyCodeEntered >= 97 && keyCodeEntered <= 122)) {
+                return true;
             }
 
             return false;
