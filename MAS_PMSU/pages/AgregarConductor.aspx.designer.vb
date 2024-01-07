@@ -131,24 +131,6 @@ Partial Public Class AgregarConductor
     Protected WithEvents TxtNombCond As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control DDLNombCond.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DDLNombCond As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control BtnNewMoto.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents BtnNewMoto As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control LblDNICond.
     '''</summary>
     '''<remarks>

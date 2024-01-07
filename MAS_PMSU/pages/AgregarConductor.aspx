@@ -96,13 +96,14 @@
                                                 <HeaderStyle CssClass="hide" />
                                                 <ItemStyle CssClass="hide" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
-                                            <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
-                                            <asp:BoundField DataField="nombre_finca" HeaderText="NOMBRE DE LA FINCA" />
-                                            <asp:BoundField DataField="nombre_productor" HeaderText="PRODUCTOR" />
-                                            <asp:BoundField DataField="no_registro_productor" HeaderText="No. REGISTRO" />
-                                            <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
-                                            <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
+                                            <asp:BoundField DataField="nombre" HeaderText="NOMBRE DEL MOTORISTA" />
+                                            <asp:BoundField DataField="DNI" HeaderText="CEDULA DEL MOTORISTA" />
+                                            <asp:BoundField DataField="telefono" HeaderText="TELEFONO DEL MOTORISTA" />
+                                            <asp:BoundField DataField="tipo" HeaderText="TIPO DE VEHICULO" />
+                                            <asp:BoundField DataField="marca" HeaderText="MARCA DEL VEHICULO" />
+                                            <asp:BoundField DataField="color" HeaderText="COLOR DEL VEHICULO" />
+                                            <asp:BoundField DataField="no_placa" HeaderText="NO. DE PLACA DEL VEHICULO" />
+                                            <asp:BoundField DataField="CodVehi" HeaderText="INDENTIFICADOR DEL VEHICULO" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -147,24 +148,13 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="row" style="align-items: flex-end;">
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Nombre del Conductor:</label>
                                 <asp:Label ID="LblNombCond" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtNombCond" runat="server" AutoPostBack="true" Visible="false"></asp:TextBox>
-                                <asp:DropDownList CssClass="form-control" ID="DDLNombCond" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
-                                    <asp:ListItem Text=" " Value="0"></asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:TextBox CssClass="form-control" ID="TxtNombCond" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
-
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <asp:Button ID="BtnNewMoto" runat="server" Text="Nuevo Motorista" CssClass="btn btn-success" Visible="true" OnClick="BtnNewMoto_Click"/>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="row">
 
@@ -172,7 +162,7 @@
                             <div class="form-group">
                                 <label>DNI:</label>
                                 <asp:Label ID="LblDNICond" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtDNICond" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtDNICond" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
 
@@ -180,7 +170,7 @@
                             <div class="form-group">
                                 <label>Telefono:</label>
                                 <asp:Label ID="LblTelfCond" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtTelfCond" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtTelfCond" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
 
@@ -202,7 +192,7 @@
                                 <label>Identificador del Vehiculo:</label>
                                 <asp:Label ID="LblNombre" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="TxtNombre" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
-                                <asp:DropDownList CssClass="form-control" ID="DDLNombre" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
+                                <asp:DropDownList CssClass="form-control" ID="DDLNombre" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLNombre_SelectedIndexChanged">
                                     <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>

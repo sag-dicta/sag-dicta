@@ -17,8 +17,9 @@ Public Class AgregarConductor
             If IsPostBack Then
 
             Else
-                llenarcomboDepto()
-                llenarcomboDeptoGrid()
+                llenarDDLIdenVehi()
+                llenarDDLTipoGrid()
+                llenarNombre()
                 VerificarTextBox()
                 llenatxtproductor()
                 llenagrid()
@@ -41,54 +42,24 @@ Public Class AgregarConductor
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "INSERT INTO sag_registro_senasa (nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
-                cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, estado) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
-                @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
-                @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @estado)"
-
-                    Dim fechaConvertida As DateTime
-
-
-                    'If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                    '    fechaConvertida.ToString("dd-MM-yyyy")
-                    'End If
+                    Dim query As String = "INSERT INTO sag_registro_vehiculo_motorista (nombre, DNI, telefono, tipo, marca, color, no_placa, estado, CodVehi) VALUES (@nombre, @DNI, @telefono, @tipo, @marca, @color, @no_placa, @estado, @CodVehi)"
 
                     Using cmd As New MySqlCommand(query, connection)
 
-                        'cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
-                        'cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
-                        'cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
-                        'If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                        '    cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                        'End If
-                        'cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
-                        'cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
-                        'cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
-                        'cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
-                        'cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
-                        'cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
-                        'cmd.Parameters.AddWithValue("@nombre_finca", TxtNombre.Text)
-                        'cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
-                        'cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
-                        'cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
-                        'cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
-                        'cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
-                        'cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
-                        'If FileUpload.HasFile Then
-                        '    ' Obtener el contenido del archivo
-                        '    Dim fileBytes As Byte() = FileUpload.FileBytes
-
-
-                        '    cmd.Parameters.AddWithValue("@croquis", fileBytes)
-                        'End If
+                        cmd.Parameters.AddWithValue("@nombre", TxtNombCond.Text)
+                        cmd.Parameters.AddWithValue("@DNI", TxtDNICond.Text)
+                        cmd.Parameters.AddWithValue("@telefono", TxtTelfCond.Text)
+                        cmd.Parameters.AddWithValue("@tipo", txtTipo.Text)
+                        cmd.Parameters.AddWithValue("@marca", TxtMarca.Text)
+                        cmd.Parameters.AddWithValue("@color", TxtColor.Text)
+                        cmd.Parameters.AddWithValue("@no_placa", TxtPlaca.Text)
                         cmd.Parameters.AddWithValue("@estado", "1")
+                        cmd.Parameters.AddWithValue("@CodVehi", DDLNombre.SelectedItem.Text)
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
 
-                        'Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!') </script>")
-
-                        Label3.Text = "¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!"
+                        Label3.Text = "¡Se ha registrado correctamente la asignación de un motorista a un vehiculo!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
@@ -106,66 +77,23 @@ Public Class AgregarConductor
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "UPDATE sag_registro_senasa 
-                    SET nombre_productor = @nombre_productor,
-                        representante_legal = @representante_legal,
-                        identidad_productor = @identidad_productor,
-                        extendida = @extendida,
-                        residencia_productor = @residencia_productor,
-                        telefono_productor = @telefono_productor,
-                        no_registro_productor = @no_registro_productor,
-                        nombre_multiplicador = @nombre_multiplicador,
-                        cedula_multiplicador = @cedula_multiplicador,
-                        telefono_multiplicador = @telefono_multiplicador,
-                        nombre_finca = @nombre_finca,
-                        departamento = @departamento,
-                        municipio = @municipio,
-                        aldea = @aldea,
-                        caserio = @caserio,
-                        nombre_persona_finca = @nombre_persona_finca,
-                        nombre_lote = @nombre_lote,
-                        croquis = @croquis
+                    Dim query As String = "UPDATE sag_registro_vehiculo_motorista
+                    SET nombre = @nombre, 
+                        DNI = @DNI, 
+                        telefono = @telefono
                     WHERE id = " & txtID.Text & ""
-
-                    Dim fechaConvertida As DateTime
-
-                    'If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                    '    fechaConvertida.ToString("dd-MM-yyyy")
-                    'End If
 
                     Using cmd As New MySqlCommand(query, connection)
 
-                        'cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
-                        'cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
-                        'cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
-                        'If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                        '    cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                        'End If
-                        'cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
-                        'cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
-                        'cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
-                        'cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
-                        'cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
-                        'cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
-                        'cmd.Parameters.AddWithValue("@nombre_finca", TxtNombre.Text)
-                        'cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
-                        'cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
-                        'cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
-                        'cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
-                        'cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
-                        'cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
-                        'If FileUpload.HasFile Then
-                        '    ' Obtener el contenido del archivo
-                        '    Dim fileBytes As Byte() = FileUpload.FileBytes
-                        '    cmd.Parameters.AddWithValue("@croquis", fileBytes)
-                        'End If
-
+                        cmd.Parameters.AddWithValue("@nombre", TxtNombCond.Text)
+                        cmd.Parameters.AddWithValue("@DNI", TxtDNICond.Text)
+                        cmd.Parameters.AddWithValue("@telefono", TxtTelfCond.Text)
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
 
                         'Response.Write("<script>window.alert('¡Se ha editado correctamente la solicitud del Multiplicador o Estación!') </script>")
-                        Label3.Text = "¡Se ha editado correctamente la solicitud del Multiplicador o Estación!"
+                        Label3.Text = "¡Se ha editado correctamente los datos del motorista!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
@@ -180,50 +108,18 @@ Public Class AgregarConductor
     End Sub
 
     Protected Sub vaciar(sender As Object, e As EventArgs)
-        'txt_nombre_prod_new.Text = " "
-        'Txt_Representante_Legal.Text = " "
-        'TxtIdentidad.Text = " "
-        'TextBox1.Text = " "
-        'TxtResidencia.Text = " "
-        'TxtTelefono.Text = " "
-        'txtNoRegistro.Text = " "
-        'txtNombreRe.Text = " "
-        'txtIdentidadRe.Text = " "
-        'TxtTelefonoRe.Text = " "
-        'TxtNombre.Text = " "
-        'gb_departamento_new.SelectedIndex = 0
+        TxtNombCond.Text = ""
+        TxtDNICond.Text = ""
+        TxtTelfCond.Text = ""
+        SeleccionarItemEnDropDownList(DDLNombre, " ")
+        txtTipo.Text = ""
+        TxtMarca.Text = ""
+        TxtColor.Text = ""
+        TxtPlaca.Text = ""
+        Button2.Visible = False
+        btnGuardarLote.Visible = True
 
-        'gb_municipio_new.SelectedItem.Text = " "
-        'gb_municipio_new.Enabled = False
-
-        'gb_aldea_new.SelectedItem.Text = " "
-        'gb_aldea_new.Enabled = False
-
-        'gb_caserio_new.SelectedItem.Text = " "
-        'gb_caserio_new.Enabled = False
-
-        'TxtPersonaFinca.Text = " "
-        'TxtLote.Text = " "
-        'FileUpload
-        DDLNombCond.Visible = True
-        TxtNombCond.Visible = False
-        TxtDNICond.Enabled = False
-        TxtTelfCond.Enabled = False
         VerificarTextBox()
-    End Sub
-    Private Sub llenarcomboDepto()
-        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        'gb_departamento_new.DataSource = DtCombo
-        'gb_departamento_new.DataValueField = DtCombo.Columns(0).ToString()
-        'gb_departamento_new.DataTextField = DtCombo.Columns(2).ToString
-        'gb_departamento_new.DataBind()
-        'Dim newitem As New ListItem(" ", " ")
-        'gb_departamento_new.Items.Insert(0, newitem)
-        'VerificarTextBox()
     End Sub
 
     Protected Sub buscar_productor(sender As Object, e As EventArgs)
@@ -231,158 +127,104 @@ Public Class AgregarConductor
     End Sub
 
     Protected Sub VerificarTextBox()
+        If String.IsNullOrEmpty(TxtNombCond.Text) Then
+            LblNombCond.Text = "*"
+            validarflag = 0
+        Else
+            LblNombCond.Text = ""
+            validarflag = 1
+        End If
 
-        'If String.IsNullOrEmpty(txt_nombre_prod_new.Text) Then
-        '    lb_nombre_new.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lb_nombre_new.Text = ""
-        '    validarflag = 1
-        'End If
+        If String.IsNullOrEmpty(TxtDNICond.Text) Then
+            LblDNICond.Text = "*"
+            validarflag = 0
+        Else
+            LblDNICond.Text = ""
+            validarflag = 1
+        End If
 
-        'If String.IsNullOrEmpty(Txt_Representante_Legal.Text) Then
-        '    LB_RepresentanteLegal.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    LB_RepresentanteLegal.Text = ""
-        '    validarflag = 1
-        'End If
+        If String.IsNullOrEmpty(TxtTelfCond.Text) Then
+            LblTelfCond.Text = "*"
+            validarflag = 0
+        Else
+            LblTelfCond.Text = ""
+            validarflag = 1
+        End If
 
-        'If String.IsNullOrEmpty(TxtIdentidad.Text) Then
-        '    Lb_CedulaIdentidad.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    Lb_CedulaIdentidad.Text = ""
-        '    validarflag = 1
-        'End If
+        If String.IsNullOrEmpty(txtTipo.Text) Then
+            lbTipo.Text = "*"
+            validarflag = 0
+        Else
+            lbTipo.Text = ""
+            validarflag = 1
+        End If
 
-        'If String.IsNullOrEmpty(TextBox1.Text) Then
-        '    Label1.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    Label1.Text = ""
-        '    validarflag = 1
-        'End If
+        If String.IsNullOrEmpty(TxtMarca.Text) Then
+            LblMarca.Text = "*"
+            validarflag = 0
+        Else
+            LblMarca.Text = ""
+            validarflag = 1
+        End If
 
-        'If String.IsNullOrEmpty(TxtResidencia.Text) Then
-        '    LbResidencia.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    LbResidencia.Text = ""
-        '    validarflag = 1
-        'End If
+        If String.IsNullOrEmpty(TxtPlaca.Text) Then
+            LblPlaca.Text = "*"
+            validarflag = 0
+        Else
+            LblPlaca.Text = ""
+            validarflag = 1
+        End If
 
-        'If String.IsNullOrEmpty(TxtTelefono.Text) Then
-        '    LblTelefono.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    LblTelefono.Text = ""
-        '    validarflag = 1
-        'End If
+        If String.IsNullOrEmpty(TxtColor.Text) Then
+            LblColor.Text = "*"
+            validarflag = 0
+        Else
+            LblColor.Text = ""
+            validarflag = 1
+        End If
 
-        'If String.IsNullOrEmpty(txtNoRegistro.Text) Then
-        '    LbNoRegistro.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    LbNoRegistro.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If String.IsNullOrEmpty(txtNombreRe.Text) Then
-        '    lbNombreRe.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lbNombreRe.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If String.IsNullOrEmpty(txtIdentidadRe.Text) Then
-        '    lbIdentidadRe.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lbIdentidadRe.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If String.IsNullOrEmpty(TxtTelefonoRe.Text) Then
-        '    LbTelefonoRe.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    LbTelefonoRe.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If String.IsNullOrEmpty(TxtNombre.Text) Then
-        '    LblNombreFinca.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    LblNombreFinca.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If (gb_departamento_new.SelectedItem.Text = " ") Then
-        '    lb_dept_new.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lb_dept_new.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If (gb_municipio_new.SelectedItem.Text = " ") Then
-        '    lb_mun_new.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lb_mun_new.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If (gb_aldea_new.SelectedItem.Text = " ") Then
-        '    lb_aldea_new.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lb_aldea_new.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If (gb_caserio_new.SelectedItem.Text = " ") Then
-        '    lb_caserio_new.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lb_caserio_new.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If String.IsNullOrEmpty(TxtPersonaFinca.Text) Then
-        '    LblPersonaFinca.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    LblPersonaFinca.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If String.IsNullOrEmpty(TxtLote.Text) Then
-        '    LbLote.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    LbLote.Text = ""
-        '    validarflag = 1
-        'End If
-
-        'If FileUpload.HasFile AndAlso EsExtensionValida(FileUpload.FileName) Then
-        '    validarflag = 1
-        'Else
-        '    validarflag = 0
-        '    Label25.Visible = True
-        'End If
     End Sub
 
+    Private Sub llenarDDLNombre()
+        Dim StrCombo As String = "SELECT DISTINCT CodVehi FROM sag_vehiculo WHERE estado = 1 ORDER BY marca ASC;"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLNombre.DataSource = DtCombo
+        DDLNombre.DataValueField = DtCombo.Columns(0).ToString()
+        DDLNombre.DataTextField = DtCombo.Columns(0).ToString
+        DDLNombre.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DDLNombre.Items.Insert(0, newitem)
+    End Sub
+
+    Protected Sub separarIdentificador()
+        Dim cadena As String = DDLNombre.SelectedItem.Text
+
+        Dim partes() As String = cadena.Split("-"c)
+
+        If partes.Length >= 4 Then
+            Dim marca As String = partes(0)
+            Dim tipo As String = partes(1)
+            Dim color As String = partes(2)
+            Dim placa As String = partes(3)
+
+            TxtMarca.Text = marca
+            txtTipo.Text = tipo
+            TxtColor.Text = color
+            TxtPlaca.Text = placa
+        End If
+
+    End Sub
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Dim rptdocument As New ReportDocument
         'nombre de dataset
         Dim ds As New DataSetMultiplicador
         Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
         Dim adap As New MySqlDataAdapter(Str, conn)
-        adap.SelectCommand.Parameters.AddWithValue("@valor", TxtNombre.Text)
+        adap.SelectCommand.Parameters.AddWithValue("@valor", TxtPlaca.Text)
         Dim dt As New DataTable
 
         'nombre de la vista del data set
@@ -447,7 +289,7 @@ Public Class AgregarConductor
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
+        Dim cadena As String = "id, nombre, DNI, telefono, tipo, marca, color, no_placa, estado, CodVehi"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -455,71 +297,44 @@ Public Class AgregarConductor
         If (DDLNombreGrid.SelectedItem.Text = "Todos") Then
             c3 = " "
         Else
-            c3 = "AND municipio = '" & DDLNombreGrid.SelectedItem.Text & "' "
+            c3 = "AND nombre = '" & DDLNombreGrid.SelectedItem.Text & "' "
         End If
 
         If (DDLTipoGrid.SelectedItem.Text = "Todos") Then
             c4 = " "
         Else
-            c4 = "AND departamento = '" & DDLTipoGrid.SelectedItem.Text & "' "
+            c4 = "AND tipo = '" & DDLTipoGrid.SelectedItem.Text & "' "
+        End If
+
+        If (DDLIdenVehi.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND CodVehi = '" & DDLIdenVehi.SelectedItem.Text & "' "
         End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_vehiculo_motorista` WHERE 1 = 1 AND estado = '1' " & c3 & c4 & c1
 
         GridDatos.DataBind()
     End Sub
-    Private Sub llenarcomboDeptoGrid()
-        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        DDLTipoGrid.DataSource = DtCombo
-        DDLTipoGrid.DataValueField = DtCombo.Columns(0).ToString()
-        DDLTipoGrid.DataTextField = DtCombo.Columns(2).ToString
-        DDLTipoGrid.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        DDLTipoGrid.Items.Insert(0, newitem)
-
-    End Sub
-    Private Function DevolverValorDepart2(cadena As String)
-
-        If DDLTipoGrid.SelectedItem.Text <> "Todos" Then
-            Dim codigoDepartamento As String = ""
-            Dim StrCombo As String = "SELECT CODIGO_DEPARTAMENTO FROM tb_departamentos WHERE NOMBRE = @nombre"
-            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-            adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
-            Dim DtCombo As New DataTable
-            adaptcombo.Fill(DtCombo)
-            'txtCodDep.Text = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString
-            codigoDepartamento = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString()
-            Return codigoDepartamento
-        End If
-
-        Return 0
-        VerificarTextBox()
-    End Function
-    Protected Sub DDLTipoGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLTipoGrid.SelectedIndexChanged
-        llenarmunicipioGrid()
-        llenagrid()
-    End Sub
-
-    Private Sub llenarmunicipioGrid()
-        Dim departamento As String = DevolverValorDepart2(DDLTipoGrid.SelectedItem.Text)
-        Dim StrCombo As String = "SELECT * FROM tb_municipio WHERE CODIGO_DEPARTAMENTO = " & departamento & ""
+    Private Sub llenarNombre()
+        Dim StrCombo As String = "SELECT nombre FROM sag_registro_vehiculo_motorista ORDER BY marca ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
 
         DDLNombreGrid.DataSource = DtCombo
         DDLNombreGrid.DataValueField = DtCombo.Columns(0).ToString()
-        DDLNombreGrid.DataTextField = DtCombo.Columns(3).ToString
+        DDLNombreGrid.DataTextField = DtCombo.Columns(0).ToString
         DDLNombreGrid.DataBind()
         Dim newitem As New ListItem("Todos", "Todos")
         DDLNombreGrid.Items.Insert(0, newitem)
+
     End Sub
+
     Protected Sub DDLNombreGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLNombreGrid.SelectedIndexChanged
+        llenarDDLTipoGrid()
+        llenarDDLIdenVehi()
         llenagrid()
     End Sub
 
@@ -527,20 +342,18 @@ Public Class AgregarConductor
 
         DivCrearNuevo.Visible = True
         DivGrid.Visible = False
-
-        'If DDLTipoGrid.SelectedIndex <> 0 Then
-        '    gb_departamento_new.SelectedIndex = DDLTipoGrid.SelectedIndex
-        '    llenarmunicipio()
-
-        '    If DDLNombreGrid.SelectedIndex = 0 Then
-        '        gb_municipio_new.SelectedIndex = 0
-        '    Else
-        '        gb_municipio_new.SelectedIndex = DDLNombreGrid.SelectedIndex
-        '        llenarAldea()
+        llenarDDLNombre()
+        'If DDLTipoGrid.SelectedIndex = 0 Then
+        '    DDLTipo.SelectedValue = 0
+        '
+        'Else
+        '    SeleccionarItemEnDropDownList(DDLTipo, DDLTipoGrid.SelectedItem.Text)
+        '    If DDLMarcaGrid.SelectedItem.Text <> "Todos" Then
+        '        TxtMarca.Text = DDLMarcaGrid.SelectedItem.Text
         '    End If
         'End If
 
-        'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+        VerificarTextBox()
 
     End Sub
 
@@ -549,30 +362,30 @@ Public Class AgregarConductor
     End Sub
 
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
-        Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+        Response.Redirect(String.Format("~/pages/AgregarConductor.aspx"))
     End Sub
 
     Private Sub exportar()
 
         Dim query As String = ""
-        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
+        Dim cadena As String = "id, tipo, marca, color, no_placa"
         Dim c1 As String = ""
-        Dim c2 As String = ""
+        Dim c4 As String = ""
         Dim c3 As String = ""
 
-        If (DDLNombreGrid.SelectedItem.Text = "Todos") Then
-            c2 = " "
-        Else
-            c2 = "AND municipio = '" & DDLNombreGrid.SelectedItem.Text & "' "
-        End If
+        ' If (DDLMarcaGrid.SelectedItem.Text = "Todos") Then
+        '     c3 = " "
+        ' Else
+        '     c3 = "AND marca = '" & DDLMarcaGrid.SelectedItem.Text & "' "
+        ' End If
+        '
+        ' If (DDLTipoGrid.SelectedItem.Text = "Todos") Then
+        '     c4 = " "
+        ' Else
+        '     c4 = "AND tipo = '" & DDLTipoGrid.SelectedItem.Text & "' "
+        ' End If
 
-        If (DDLTipoGrid.SelectedItem.Text = "Todos") Then
-            c3 = " "
-        Else
-            c3 = "AND departamento = '" & DDLTipoGrid.SelectedItem.Text & "' "
-        End If
-
-        query = "SELECT " & cadena & " FROM sag_registro_senasa WHERE 1 = 1 " & c1 & c2 & c3
+        query = "SELECT " & cadena & " FROM `sag_registro_vehiculo_motorista` WHERE 1 = 1 AND estado = '1' " & c3 & c4
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -583,7 +396,7 @@ Public Class AgregarConductor
                         sda.Fill(ds)
 
                         'Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_registro_senasa"
+                        ds.Tables(0).TableName = "sag_vehiculo"
 
                         Using wb As New XLWorkbook()
                             For Each dt As DataTable In ds.Tables
@@ -599,7 +412,7 @@ Public Class AgregarConductor
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Registro de Multiplicador  " & Today & " " & DDLTipoGrid.SelectedItem.Text & ".xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=Registro de vehiculo  " & Today & " " & DDLTipoGrid.SelectedItem.Text & ".xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
@@ -629,33 +442,18 @@ Public Class AgregarConductor
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT * FROM sag_registro_vehiculo_motorista WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
             nuevo = False
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            'txt_nombre_prod_new.Text = dt.Rows(0)("nombre_productor").ToString()
-            'Txt_Representante_Legal.Text = dt.Rows(0)("representante_legal").ToString()
-            'TxtIdentidad.Text = dt.Rows(0)("identidad_productor").ToString()
-            'TextBox1.Text = DirectCast(dt.Rows(0)("extendida"), DateTime).ToString("yyyy-MM-dd")
-            'TxtResidencia.Text = dt.Rows(0)("residencia_productor").ToString()
-            'TxtTelefono.Text = dt.Rows(0)("telefono_productor").ToString()
-            'txtNoRegistro.Text = dt.Rows(0)("no_registro_productor").ToString()
-            'txtNombreRe.Text = dt.Rows(0)("nombre_multiplicador").ToString()
-            'txtIdentidadRe.Text = dt.Rows(0)("cedula_multiplicador").ToString()
-            'TxtTelefonoRe.Text = dt.Rows(0)("telefono_multiplicador").ToString()
-            'TxtNombre.Text = dt.Rows(0)("nombre_finca").ToString()
-            'SeleccionarItemEnDropDownList(gb_departamento_new, dt.Rows(0)("departamento").ToString())
-            'llenarmunicipio()
-            'SeleccionarItemEnDropDownList(gb_municipio_new, dt.Rows(0)("municipio").ToString())
-            'llenarAldea()
-            'SeleccionarItemEnDropDownList(gb_aldea_new, dt.Rows(0)("aldea").ToString())
-            'llenarCaserio()
-            'SeleccionarItemEnDropDownList(gb_caserio_new, dt.Rows(0)("caserio").ToString())
-            'TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
-            'TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
+            'SeleccionarItemEnDropDownList(DDLTipo, dt.Rows(0)("tipo").ToString())
+            TxtMarca.Text = dt.Rows(0)("marca").ToString()
+            TxtPlaca.Text = dt.Rows(0)("no_placa").ToString()
+            TxtColor.Text = dt.Rows(0)("color").ToString()
+
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -663,7 +461,7 @@ Public Class AgregarConductor
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            Label3.Text = "¿Desea eliminar la solicitud del Multiplicador o Estación?"
+            Label3.Text = "¿Desea eliminar el registro del vehiculo?"
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False
@@ -676,14 +474,14 @@ Public Class AgregarConductor
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
+            Dim Str As String = "SELECT * FROM sag_registro_vehiculo_motorista WHERE nombre_multiplicador = @valor"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
             Dim dt As New DataTable
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "sag_registro_senasa")
+            adap.Fill(ds, "sag_registro_vehiculo_motorista")
 
             Dim nombre As String
 
@@ -717,7 +515,7 @@ Public Class AgregarConductor
                 ' Se crean los valores del DropDownList tomando el número total de páginas...
                 Dim i As Integer
                 For i = 0 To GridDatos.PageCount - 1
-                    ' Se crea un objeto ListItem para representar la �gina...
+                    ' Se crea un objeto ListItem para representar la  gina...
                     Dim pageNumber As Integer = i + 1
                     Dim item As ListItem = New ListItem(pageNumber.ToString())
                     If i = GridDatos.PageIndex Then
@@ -728,9 +526,9 @@ Public Class AgregarConductor
                 Next i
             End If
             If Not pageLabel Is Nothing Then
-                ' Calcula el nº de �gina actual...
+                ' Calcula el nº de  gina actual...
                 Dim currentPage As Integer = GridDatos.PageIndex + 1
-                ' Actualiza el Label control con la �gina actual.
+                ' Actualiza el Label control con la  gina actual.
                 pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
             End If
         End If
@@ -752,7 +550,7 @@ Public Class AgregarConductor
         Using connection As New MySqlConnection(connectionString)
             connection.Open()
 
-            Dim query As String = "UPDATE sag_registro_senasa 
+            Dim query As String = "UPDATE sag_registro_vehiculo_motorista 
                     SET estado = @estado
                 WHERE id = " & txtID.Text & ""
 
@@ -762,22 +560,86 @@ Public Class AgregarConductor
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
-                Response.Redirect(String.Format("~/pages/AgregarVehiculo.aspx"))
+                Response.Redirect(String.Format("~/pages/AgregarConductor.aspx"))
             End Using
 
         End Using
 
+    End Sub
+    Private Sub llenarDDLIdenVehi()
+        Dim StrCombo As String = "SELECT DISTINCT CodVehi FROM sag_registro_vehiculo_motorista WHERE estado = 1"
+
+        If DDLTipoGrid.SelectedItem.Text <> "Todos" Then
+            StrCombo += " AND tipo = '" & DDLTipoGrid.SelectedItem.Text & "' "
+        End If
+
+        If DDLNombreGrid.SelectedItem.Text <> "Todos" Then
+            StrCombo += " And nombre = '" & DDLNombreGrid.SelectedItem.Text & "' "
+        End If
+
+        StrCombo += " ORDER BY marca ASC;"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLIdenVehi.DataSource = DtCombo
+        DDLIdenVehi.DataValueField = DtCombo.Columns(0).ToString()
+        DDLIdenVehi.DataTextField = DtCombo.Columns(0).ToString
+        DDLIdenVehi.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLIdenVehi.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub DDLIdenVehi_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLIdenVehi.SelectedIndexChanged
+        llenagrid()
+    End Sub
+    Private Sub llenarDDLTipoGrid()
+        Dim StrCombo As String
+        If DDLNombreGrid.SelectedItem.Text = "Todos" Then
+            StrCombo = "SELECT DISTINCT tipo FROM sag_registro_vehiculo_motorista WHERE estado = 1 ORDER BY marca ASC;"
+        Else
+            StrCombo = "SELECT DISTINCT tipo FROM sag_registro_vehiculo_motorista WHERE estado = 1 AND nombre = '" & DDLNombreGrid.SelectedItem.Text & "' ORDER BY marca ASC;"
+        End If
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLTipoGrid.DataSource = DtCombo
+        DDLTipoGrid.DataValueField = DtCombo.Columns(0).ToString()
+        DDLTipoGrid.DataTextField = DtCombo.Columns(0).ToString
+        DDLTipoGrid.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLTipoGrid.Items.Insert(0, newitem)
+    End Sub
+
+    Protected Sub DDLNombre_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If DDLNombre.SelectedItem.Text = " " Then
+            TxtMarca.Text = ""
+            txtTipo.Text = ""
+            TxtColor.Text = ""
+            TxtPlaca.Text = ""
+            VerificarTextBox()
+        Else
+            separarIdentificador()
+            VerificarTextBox()
+        End If
+    End Sub
+
+    Protected Sub DDLTipoGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLTipoGrid.SelectedIndexChanged
+        llenarDDLIdenVehi()
+        llenagrid()
     End Sub
 
     Protected Sub Button3_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/AgregarVehiculo.aspx"))
     End Sub
 
-    Protected Sub BtnNewMoto_Click(sender As Object, e As EventArgs)
-        DDLNombCond.Visible = False
-        TxtNombCond.Visible = True
-        TxtDNICond.Enabled = True
-        TxtTelfCond.Enabled = True
-
-    End Sub
+    'Protected Sub BtnNewMoto_Click(sender As Object, e As EventArgs)
+    '    DDLNombCond.Visible = False
+    '    TxtNombCond.Visible = True
+    '    TxtDNICond.Enabled = True
+    '    TxtTelfCond.Enabled = True
+    '
+    'End Sub
 End Class

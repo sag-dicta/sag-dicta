@@ -113,6 +113,8 @@ Public Class AgregarVehiculo
         TxtMarca.Text = ""
         TxtColor.Text = ""
         TxtPlaca.Text = ""
+        Button2.Visible = False
+        btnGuardarLote.Visible = True
         VerificarTextBox()
     End Sub
 
