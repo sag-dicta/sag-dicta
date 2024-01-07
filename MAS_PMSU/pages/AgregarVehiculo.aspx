@@ -41,6 +41,14 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Seleccione Identificador del Vehiculo:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDLIdenVehi" runat="server" AutoPostBack="True">
+                                        <asp:ListItem Text="Todos"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
@@ -51,10 +59,10 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
-                                    <h4>
-                                        <span style="float: right;"><small># Multiplicadores:</small>
-                                            <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
-                                    </h4>
+                                    <h5>
+                                        <span style="float: right;"><small># Vehiculos:</small>
+                                        <asp:Label ID="lblTotalClientes" runat="server" CssClass="label"/></span>
+                                    </h5>
                                     <p>&nbsp;</p>
                                     <p>&nbsp;</p>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
@@ -64,7 +72,7 @@
                                         <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                         <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                                         <EmptyDataTemplate>
-                                            ¡No hay multiplicadores inscritos!
+                                            ¡No hay vehiculos con esas caracteristicas!
                                         </EmptyDataTemplate>
                                         <%--Paginador...--%>
                                         <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
@@ -94,6 +102,7 @@
                                             <asp:BoundField DataField="marca" HeaderText="MARCA" />
                                             <asp:BoundField DataField="color" HeaderText="COLOR" />
                                             <asp:BoundField DataField="no_placa" HeaderText="N° DE PLACA" />
+                                            <asp:BoundField DataField="CodVehi" HeaderText="IDENTIFICADOR" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -101,7 +110,7 @@
                                             <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="HOJA DE DATOS" CommandName="Imprimir">
+                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="HOJA DE DATOS" CommandName="Imprimir" Visible="false">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>
@@ -184,6 +193,15 @@
                         </div>
 
                     </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Identificador del Vehiculo:</label>
+                                <asp:Label ID="LblIdenVehi" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="TxtIdenVehi" runat="server" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -218,7 +236,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="ModalTitle2">SAG - DICTA</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="close" data-dismiss="DeleteModal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <asp:Label ID="Label3" runat="server" Text="Mensaje Predeterminado - Label3"></asp:Label>

@@ -22,7 +22,7 @@ Public Class AgregarConductor
                 VerificarTextBox()
                 llenatxtproductor()
                 llenagrid()
-                btnAsignar.Visible = True
+                btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
             End If
         End If
@@ -34,7 +34,7 @@ Public Class AgregarConductor
             LabelGuardar.Visible = True
             LabelGuardar.Text = "Ingrese toda la información para poder guardarla"
         Else
-            If btnAsignar.Text = "Guardar" Then
+            If btnGuardarLote.Text = "Guardar" Then
                 LabelGuardar.Visible = False
                 LabelGuardar.Text = ""
                 Dim connectionString As String = conn
@@ -95,7 +95,7 @@ Public Class AgregarConductor
 
                         Button1.Visible = True
                         Button2.Visible = True
-                        btnAsignar.Visible = False
+                        btnGuardarLote.Visible = False
 
                     End Using
                 End Using
@@ -169,7 +169,7 @@ Public Class AgregarConductor
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-                        btnAsignar.Visible = False
+                        btnGuardarLote.Visible = False
 
                     End Using
 
@@ -621,7 +621,7 @@ Public Class AgregarConductor
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
         If (e.CommandName = "Editar") Then
-            btnAsignar.Text = "Editar"
+            btnGuardarLote.Text = "Editar"
             Button1.Visible = False
             Button2.Visible = False
             DivCrearNuevo.Visible = True

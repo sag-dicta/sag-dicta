@@ -50,6 +50,15 @@ Partial Public Class AgregarVehiculo
     Protected WithEvents DDLMarcaGrid As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control DDLIdenVehi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDLIdenVehi As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control BAgregar.
     '''</summary>
     '''<remarks>
@@ -192,6 +201,24 @@ Partial Public Class AgregarVehiculo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtID As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control LblIdenVehi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents LblIdenVehi As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtIdenVehi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtIdenVehi As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label18.

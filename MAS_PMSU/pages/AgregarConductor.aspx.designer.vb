@@ -338,13 +338,13 @@ Partial Public Class AgregarConductor
     Protected WithEvents LabelGuardar As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control btnAsignar.
+    '''Control btnGuardarLote.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnAsignar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnGuardarLote As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control btnRegresar.

@@ -17,9 +17,10 @@ Public Class AgregarVehiculo
             If IsPostBack Then
 
             Else
-                'llenarcomboDepto()
+                llenarDDLIdenVehi()
+                llenarDDLMarcaGrid()
                 'llenarcomboDeptoGrid()
-                'VerificarTextBox()
+                VerificarTextBox()
                 llenatxtproductor()
                 llenagrid()
                 btnGuardarLote.Visible = True
@@ -41,7 +42,7 @@ Public Class AgregarVehiculo
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "INSERT INTO sag_vehiculo (tipo, marca, color, no_placa, estado) VALUES (@tipo, @marca, @color, @no_placa, @estado)"
+                    Dim query As String = "INSERT INTO sag_vehiculo (tipo, marca, color, no_placa, estado, CodVehi) VALUES (@tipo, @marca, @color, @no_placa, @estado, @CodVehi)"
 
                     Using cmd As New MySqlCommand(query, connection)
 
@@ -50,6 +51,7 @@ Public Class AgregarVehiculo
                         cmd.Parameters.AddWithValue("@color", TxtColor.Text)
                         cmd.Parameters.AddWithValue("@no_placa", TxtPlaca.Text)
                         cmd.Parameters.AddWithValue("@estado", "1")
+                        cmd.Parameters.AddWithValue("@CodVehi", TxtIdenVehi.Text)
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
@@ -59,7 +61,7 @@ Public Class AgregarVehiculo
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
-                        Button1.Visible = True
+                        Button1.Visible = False
                         Button2.Visible = True
                         btnGuardarLote.Visible = False
 
@@ -76,7 +78,8 @@ Public Class AgregarVehiculo
                     SET tipo = @tipo, 
                         marca = @marca, 
                         color = @color, 
-                        no_placa = @no_placa
+                        no_placa = @no_placa,
+                        CodVehi= @CodVehi
                     WHERE id = " & txtID.Text & ""
 
                     Using cmd As New MySqlCommand(query, connection)
@@ -85,7 +88,7 @@ Public Class AgregarVehiculo
                         cmd.Parameters.AddWithValue("@marca", TxtMarca.Text)
                         cmd.Parameters.AddWithValue("@color", TxtColor.Text)
                         cmd.Parameters.AddWithValue("@no_placa", TxtPlaca.Text)
-
+                        cmd.Parameters.AddWithValue("@CodVehi", TxtIdenVehi.Text)
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
@@ -111,20 +114,6 @@ Public Class AgregarVehiculo
         TxtColor.Text = ""
         TxtPlaca.Text = ""
         VerificarTextBox()
-    End Sub
-    Private Sub llenarcomboDepto()
-        Dim StrCombo As String = "SELECT * FROM sag_vehiculo"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        'gb_departamento_new.DataSource = DtCombo
-        'gb_departamento_new.DataValueField = DtCombo.Columns(0).ToString()
-        'gb_departamento_new.DataTextField = DtCombo.Columns(2).ToString
-        'gb_departamento_new.DataBind()
-        'Dim newitem As New ListItem(" ", " ")
-        'gb_departamento_new.Items.Insert(0, newitem)
-        'VerificarTextBox()
     End Sub
 
     Protected Sub buscar_productor(sender As Object, e As EventArgs)
@@ -164,8 +153,21 @@ Public Class AgregarVehiculo
             LblColor.Text = ""
             validarflag = 1
         End If
+
+        CrearIdentificador()
+
     End Sub
 
+    Protected Sub CrearIdentificador()
+        Dim marca As String = TxtMarca.Text
+        Dim tipo As String = DDLTipo.SelectedItem.Text
+        Dim color As String = TxtColor.Text
+        Dim placa As String = TxtPlaca.Text
+
+        Dim resultado As String = String.Format("{0}-{1}-{2}-{3}", marca, tipo, color, placa)
+
+        TxtIdenVehi.Text = resultado
+    End Sub
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Dim rptdocument As New ReportDocument
         'nombre de dataset
@@ -237,7 +239,7 @@ Public Class AgregarVehiculo
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, tipo, marca, color, no_placa"
+        Dim cadena As String = "id, tipo, marca, color, no_placa, CodVehi"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -254,8 +256,14 @@ Public Class AgregarVehiculo
             c4 = "AND tipo = '" & DDLTipoGrid.SelectedItem.Text & "' "
         End If
 
+        If (DDLIdenVehi.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND CodVehi = '" & DDLIdenVehi.SelectedItem.Text & "' "
+        End If
+
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_vehiculo` WHERE 1 = 1 AND estado = '1' " & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_vehiculo` WHERE 1 = 1 AND estado = '1' " & c3 & c4 & c1
 
         GridDatos.DataBind()
     End Sub
@@ -291,47 +299,44 @@ Public Class AgregarVehiculo
     '    VerificarTextBox()
     'End Function
     Protected Sub DDLTipoGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLTipoGrid.SelectedIndexChanged
-        llenarmunicipioGrid()
+        llenarDDLMarcaGrid()
+        llenarDDLIdenVehi()
         llenagrid()
     End Sub
 
-    Private Sub llenarmunicipioGrid()
-        Dim departamento As String = DDLTipoGrid.SelectedItem.Text
-        Dim newitem As New ListItem("Todos", "Todos")
-        If DDLTipoGrid.SelectedItem.Text <> "Todos" Then
-            Dim StrCombo As String = "SELECT DISTINCT marca FROM sag_vehiculo WHERE tipo = '" & departamento & "'"
-            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-            Dim DtCombo As New DataTable
-            adaptcombo.Fill(DtCombo)
+    'Private Sub llenarmunicipioGrid()
+    '    Dim departamento As String = DDLTipoGrid.SelectedItem.Text
+    '    Dim newitem As New ListItem("Todos", "Todos")
+    '    If DDLTipoGrid.SelectedItem.Text <> "Todos" Then
+    '        Dim StrCombo As String = "SELECT DISTINCT marca FROM sag_vehiculo WHERE tipo = '" & departamento & "'"
+    '        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+    '        Dim DtCombo As New DataTable
+    '        adaptcombo.Fill(DtCombo)
 
-            Dim todosNulos As Boolean = True
+    '        Dim todosNulos As Boolean = True
 
+    '        For Each row As DataRow In DtCombo.Rows
+    '            For Each column As DataColumn In DtCombo.Columns
+    '                If Not IsDBNull(row(column)) Then
+    '                    todosNulos = False
+    '                    Exit For
+    '                End If
+    '            Next
 
-            For Each row As DataRow In DtCombo.Rows
-                For Each column As DataColumn In DtCombo.Columns
-                    If Not IsDBNull(row(column)) Then
-                        todosNulos = False
-                        Exit For
-                    End If
-                Next
-
-                If Not todosNulos Then
-                    DDLMarcaGrid.DataSource = DtCombo
-                    DDLMarcaGrid.DataValueField = DtCombo.Columns(0).ToString()
-                    DDLMarcaGrid.DataTextField = DtCombo.Columns(0).ToString()
-                    DDLMarcaGrid.DataBind()
-                    DDLMarcaGrid.Items.Insert(0, newitem)
-                Else
-                    DDLMarcaGrid.Items.Insert(0, newitem)
-                End If
-            Next
-        Else
-            DDLMarcaGrid.Items.Insert(0, newitem)
-        End If
-    End Sub
-    Protected Sub DDLMarcaGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLMarcaGrid.SelectedIndexChanged
-        llenagrid()
-    End Sub
+    '            If Not todosNulos Then
+    '                DDLMarcaGrid.DataSource = DtCombo
+    '                DDLMarcaGrid.DataValueField = DtCombo.Columns(0).ToString()
+    '                DDLMarcaGrid.DataTextField = DtCombo.Columns(0).ToString()
+    '                DDLMarcaGrid.DataBind()
+    '                DDLMarcaGrid.Items.Insert(0, newitem)
+    '            Else
+    '                DDLMarcaGrid.Items.Insert(0, newitem)
+    '            End If
+    '        Next
+    '    Else
+    '        DDLMarcaGrid.Items.Insert(0, newitem)
+    '    End If
+    'End Sub
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
 
@@ -348,6 +353,7 @@ Public Class AgregarVehiculo
             End If
         End If
 
+        VerificarTextBox()
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
     End Sub
@@ -448,6 +454,8 @@ Public Class AgregarVehiculo
             TxtMarca.Text = dt.Rows(0)("marca").ToString()
             TxtPlaca.Text = dt.Rows(0)("no_placa").ToString()
             TxtColor.Text = dt.Rows(0)("color").ToString()
+
+            CrearIdentificador()
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -560,5 +568,54 @@ Public Class AgregarVehiculo
         End Using
 
     End Sub
+    Private Sub llenarDDLIdenVehi()
+        Dim StrCombo As String = "SELECT DISTINCT CodVehi FROM sag_vehiculo WHERE estado = 1"
 
+        If DDLTipoGrid.SelectedItem.Text <> "Todos" Then
+            StrCombo += " AND tipo = '" & DDLTipoGrid.SelectedItem.Text & "' "
+        End If
+
+        If DDLMarcaGrid.SelectedItem.Text <> "Todos" Then
+            StrCombo += " And marca = '" & DDLMarcaGrid.SelectedItem.Text & "' "
+        End If
+
+        StrCombo += " ORDER BY marca ASC;"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLIdenVehi.DataSource = DtCombo
+        DDLIdenVehi.DataValueField = DtCombo.Columns(0).ToString()
+        DDLIdenVehi.DataTextField = DtCombo.Columns(0).ToString
+        DDLIdenVehi.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLIdenVehi.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub DDLIdenVehi_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLIdenVehi.SelectedIndexChanged
+        llenagrid()
+    End Sub
+    Private Sub llenarDDLMarcaGrid()
+        Dim StrCombo As String
+        If DDLTipoGrid.SelectedItem.Text = "Todos" Then
+            StrCombo = "SELECT DISTINCT marca FROM sag_vehiculo WHERE estado = 1 ORDER BY marca ASC;"
+        Else
+            StrCombo = "SELECT DISTINCT marca FROM sag_vehiculo WHERE estado = 1 AND tipo = '" & DDLTipoGrid.SelectedItem.Text & "' ORDER BY marca ASC;"
+        End If
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLMarcaGrid.DataSource = DtCombo
+        DDLMarcaGrid.DataValueField = DtCombo.Columns(0).ToString()
+        DDLMarcaGrid.DataTextField = DtCombo.Columns(0).ToString
+        DDLMarcaGrid.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLMarcaGrid.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub DDLMarcaGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLMarcaGrid.SelectedIndexChanged
+        llenarDDLIdenVehi()
+        llenagrid()
+    End Sub
 End Class

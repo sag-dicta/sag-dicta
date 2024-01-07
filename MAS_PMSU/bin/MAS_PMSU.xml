@@ -442,9 +442,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AgregarConductor._btnAsignar">
+<member name="F:MAS_PMSU.AgregarConductor._btnGuardarLote">
 <summary>
-Control btnAsignar.
+Control btnGuardarLote.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -526,6 +526,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AgregarVehiculo._DDLMarcaGrid">
 <summary>
 Control DDLMarcaGrid.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarVehiculo._DDLIdenVehi">
+<summary>
+Control DDLIdenVehi.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -670,6 +679,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AgregarVehiculo._txtID">
 <summary>
 Control txtID.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarVehiculo._LblIdenVehi">
+<summary>
+Control LblIdenVehi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregarVehiculo._TxtIdenVehi">
+<summary>
+Control TxtIdenVehi.
 </summary>
 <remarks>
 Campo generado automáticamente.

@@ -271,7 +271,7 @@
             <label></label>
             <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
             <br />
-            <asp:Button CssClass="btn btn-primary" ID="btnAsignar" runat="server" Text="Asignar" OnClick="guardarSoli_lote" Visible="false" />
+            <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote" Visible="false" />
             <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
         </div>
 
