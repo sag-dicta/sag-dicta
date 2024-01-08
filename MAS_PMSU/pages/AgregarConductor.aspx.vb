@@ -80,7 +80,12 @@ Public Class AgregarConductor
                     Dim query As String = "UPDATE sag_registro_vehiculo_motorista
                     SET nombre = @nombre, 
                         DNI = @DNI, 
-                        telefono = @telefono
+                        telefono = @telefono, 
+                        tipo = @tipo, 
+                        marca = @marca, 
+                        color = @color, 
+                        no_placa = @no_placa, 
+                        CodVehi = @CodVehi
                     WHERE id = " & txtID.Text & ""
 
                     Using cmd As New MySqlCommand(query, connection)
@@ -88,6 +93,11 @@ Public Class AgregarConductor
                         cmd.Parameters.AddWithValue("@nombre", TxtNombCond.Text)
                         cmd.Parameters.AddWithValue("@DNI", TxtDNICond.Text)
                         cmd.Parameters.AddWithValue("@telefono", TxtTelfCond.Text)
+                        cmd.Parameters.AddWithValue("@tipo", txtTipo.Text)
+                        cmd.Parameters.AddWithValue("@marca", TxtMarca.Text)
+                        cmd.Parameters.AddWithValue("@color", TxtColor.Text)
+                        cmd.Parameters.AddWithValue("@no_placa", TxtPlaca.Text)
+                        cmd.Parameters.AddWithValue("@CodVehi", DDLNombre.SelectedItem.Text)
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
@@ -132,7 +142,7 @@ Public Class AgregarConductor
             validarflag = 0
         Else
             LblNombCond.Text = ""
-            validarflag = 1
+            validarflag = +1
         End If
 
         If String.IsNullOrEmpty(TxtDNICond.Text) Then
@@ -140,7 +150,7 @@ Public Class AgregarConductor
             validarflag = 0
         Else
             LblDNICond.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         If String.IsNullOrEmpty(TxtTelfCond.Text) Then
@@ -148,7 +158,7 @@ Public Class AgregarConductor
             validarflag = 0
         Else
             LblTelfCond.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         If String.IsNullOrEmpty(txtTipo.Text) Then
@@ -156,7 +166,7 @@ Public Class AgregarConductor
             validarflag = 0
         Else
             lbTipo.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         If String.IsNullOrEmpty(TxtMarca.Text) Then
@@ -164,7 +174,7 @@ Public Class AgregarConductor
             validarflag = 0
         Else
             LblMarca.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         If String.IsNullOrEmpty(TxtPlaca.Text) Then
@@ -172,7 +182,7 @@ Public Class AgregarConductor
             validarflag = 0
         Else
             LblPlaca.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         If String.IsNullOrEmpty(TxtColor.Text) Then
@@ -180,9 +190,14 @@ Public Class AgregarConductor
             validarflag = 0
         Else
             LblColor.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
+        If validarflag = 7 Then
+            validarflag = 1
+        Else
+            validarflag = 0
+        End If
     End Sub
 
     Private Sub llenarDDLNombre()
@@ -357,10 +372,6 @@ Public Class AgregarConductor
 
     End Sub
 
-    Protected Sub TxtMultiplicador_SelectedIndexChanged(sender As Object, e As EventArgs)
-        llenagrid()
-    End Sub
-
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
         Response.Redirect(String.Format("~/pages/AgregarConductor.aspx"))
     End Sub
@@ -368,24 +379,30 @@ Public Class AgregarConductor
     Private Sub exportar()
 
         Dim query As String = ""
-        Dim cadena As String = "id, tipo, marca, color, no_placa"
+        Dim cadena As String = "id, nombre, DNI, telefono, tipo, marca, color, no_placa, estado, CodVehi"
         Dim c1 As String = ""
         Dim c4 As String = ""
         Dim c3 As String = ""
 
-        ' If (DDLMarcaGrid.SelectedItem.Text = "Todos") Then
-        '     c3 = " "
-        ' Else
-        '     c3 = "AND marca = '" & DDLMarcaGrid.SelectedItem.Text & "' "
-        ' End If
-        '
-        ' If (DDLTipoGrid.SelectedItem.Text = "Todos") Then
-        '     c4 = " "
-        ' Else
-        '     c4 = "AND tipo = '" & DDLTipoGrid.SelectedItem.Text & "' "
-        ' End If
+        If (DDLNombreGrid.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = "AND nombre = '" & DDLNombreGrid.SelectedItem.Text & "' "
+        End If
 
-        query = "SELECT " & cadena & " FROM `sag_registro_vehiculo_motorista` WHERE 1 = 1 AND estado = '1' " & c3 & c4
+        If (DDLTipoGrid.SelectedItem.Text = "Todos") Then
+            c4 = " "
+        Else
+            c4 = "AND tipo = '" & DDLTipoGrid.SelectedItem.Text & "' "
+        End If
+
+        If (DDLIdenVehi.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND CodVehi = '" & DDLIdenVehi.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM `sag_registro_vehiculo_motorista` WHERE 1 = 1 AND estado = '1' " & c3 & c4 & c1
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -396,7 +413,7 @@ Public Class AgregarConductor
                         sda.Fill(ds)
 
                         'Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_vehiculo"
+                        ds.Tables(0).TableName = "sag_registro_vehiculo_motorista"
 
                         Using wb As New XLWorkbook()
                             For Each dt As DataTable In ds.Tables
@@ -412,7 +429,7 @@ Public Class AgregarConductor
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Registro de vehiculo  " & Today & " " & DDLTipoGrid.SelectedItem.Text & ".xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=Registro de motorista  " & Today & " " & DDLNombreGrid.SelectedItem.Text & ".xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
@@ -434,6 +451,7 @@ Public Class AgregarConductor
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
         If (e.CommandName = "Editar") Then
+            llenarDDLNombre()
             btnGuardarLote.Text = "Editar"
             Button1.Visible = False
             Button2.Visible = False
@@ -442,14 +460,20 @@ Public Class AgregarConductor
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM sag_registro_vehiculo_motorista WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT * FROM sag_registro_vehiculo_motorista WHERE ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
             nuevo = False
+
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            'SeleccionarItemEnDropDownList(DDLTipo, dt.Rows(0)("tipo").ToString())
+
+            TxtNombCond.Text = dt.Rows(0)("nombre").ToString()
+            TxtDNICond.Text = dt.Rows(0)("DNI").ToString()
+            TxtTelfCond.Text = dt.Rows(0)("telefono").ToString()
+            SeleccionarItemEnDropDownList(DDLNombre, dt.Rows(0)("CodVehi").ToString())
+            txtTipo.Text = dt.Rows(0)("tipo").ToString()
             TxtMarca.Text = dt.Rows(0)("marca").ToString()
             TxtPlaca.Text = dt.Rows(0)("no_placa").ToString()
             TxtColor.Text = dt.Rows(0)("color").ToString()
@@ -461,7 +485,7 @@ Public Class AgregarConductor
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            Label3.Text = "¿Desea eliminar el registro del vehiculo?"
+            Label3.Text = "¿Desea eliminar el registro de motorista?"
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False

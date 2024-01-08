@@ -129,7 +129,7 @@ Public Class AgregarVehiculo
             validarflag = 0
         Else
             lbTipo.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         If String.IsNullOrEmpty(TxtMarca.Text) Then
@@ -137,7 +137,7 @@ Public Class AgregarVehiculo
             validarflag = 0
         Else
             LblMarca.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         If String.IsNullOrEmpty(TxtPlaca.Text) Then
@@ -145,7 +145,7 @@ Public Class AgregarVehiculo
             validarflag = 0
         Else
             LblPlaca.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         If String.IsNullOrEmpty(TxtColor.Text) Then
@@ -153,11 +153,16 @@ Public Class AgregarVehiculo
             validarflag = 0
         Else
             LblColor.Text = ""
-            validarflag = 1
+            validarflag += 1
         End If
 
         CrearIdentificador()
 
+        If validarflag = 4 Then
+            validarflag = 1
+        Else
+            validarflag = 0
+        End If
     End Sub
 
     Protected Sub CrearIdentificador()

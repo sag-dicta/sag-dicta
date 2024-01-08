@@ -394,4 +394,23 @@
             return false;
         }
     </script>
+
+    <script type="text/javascript">
+        function lettersOnly(event) {
+            var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
+
+            // Un-comment to discover a key that I have forgotten to take into account...
+            // alert(keyCodeEntered);
+
+            // Check if the key code corresponds to a letter (a-z or A-Z), a space, or an accent
+            if ((keyCodeEntered >= 65 && keyCodeEntered <= 90) || // A-Z
+                (keyCodeEntered >= 97 && keyCodeEntered <= 122) || // a-z
+                keyCodeEntered === 32 || // space
+                (keyCodeEntered >= 192 && keyCodeEntered <= 255)) { // accented characters
+                return true;
+            }
+
+            return false;
+        }
+    </script>
 </asp:Content>
