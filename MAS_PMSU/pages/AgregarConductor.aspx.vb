@@ -68,6 +68,7 @@ Public Class AgregarConductor
                         Button2.Visible = True
                         btnGuardarLote.Visible = False
 
+                        vehiculo_Ocupado(DDLNombre.SelectedItem.Text)
                     End Using
                 End Using
             Else
@@ -109,6 +110,10 @@ Public Class AgregarConductor
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
                         btnGuardarLote.Visible = False
 
+                        If DDLNombre.SelectedItem.Text <> TxtNombre.Text Then
+                            vehiculo_Ocupado(DDLNombre.SelectedItem.Text)
+                            editar_vehiculo_Ocupado(TxtNombre.Text)
+                        End If
                     End Using
 
                 End Using
@@ -457,6 +462,8 @@ Public Class AgregarConductor
             Button2.Visible = False
             DivCrearNuevo.Visible = True
             DivGrid.Visible = False
+            TxtNombre.Visible = True
+
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
@@ -468,6 +475,10 @@ Public Class AgregarConductor
             nuevo = False
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            TxtNombre.Text = dt.Rows(0)("CodVehi").ToString()
+            Dim cantidadElementos As Integer = DDLNombre.Items.Count
+            Dim newitem2 As New ListItem(TxtNombre.Text, TxtNombre.Text)
+            DDLNombre.Items.Insert(cantidadElementos, newitem2)
 
             TxtNombCond.Text = dt.Rows(0)("nombre").ToString()
             TxtDNICond.Text = dt.Rows(0)("DNI").ToString()
@@ -484,6 +495,7 @@ Public Class AgregarConductor
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            Txtidvehiculoelimi.Text = HttpUtility.HtmlDecode(gvrow.Cells(8).Text).ToString
 
             Label3.Text = "¿Desea eliminar el registro de motorista?"
             BBorrarsi.Visible = True
@@ -584,6 +596,7 @@ Public Class AgregarConductor
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
+                editar_vehiculo_Ocupado(Txtidvehiculoelimi.Text)
                 Response.Redirect(String.Format("~/pages/AgregarConductor.aspx"))
             End Using
 
@@ -657,6 +670,40 @@ Public Class AgregarConductor
 
     Protected Sub Button3_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/AgregarVehiculo.aspx"))
+    End Sub
+
+    Protected Sub vehiculo_Ocupado(valor1 As String)
+        Dim conex As New MySqlConnection(conn)
+
+        conex.Open()
+        Dim cmd2 As New MySqlCommand()
+        Dim Sql As String
+        Sql = "UPDATE sag_vehiculo
+        SET estado = 0
+        WHERE CodVehi = '" & valor1 & "'"
+
+        cmd2.Connection = conex
+        cmd2.CommandText = Sql
+
+        cmd2.ExecuteNonQuery()
+        conex.Close()
+    End Sub
+
+    Protected Sub editar_vehiculo_Ocupado(valor1 As String)
+        Dim conex As New MySqlConnection(conn)
+
+        conex.Open()
+        Dim cmd2 As New MySqlCommand()
+        Dim Sql As String
+        Sql = "UPDATE sag_vehiculo
+        SET estado = 1
+        WHERE CodVehi = '" & valor1 & "'"
+
+        cmd2.Connection = conex
+        cmd2.CommandText = Sql
+
+        cmd2.ExecuteNonQuery()
+        conex.Close()
     End Sub
 
     'Protected Sub BtnNewMoto_Click(sender As Object, e As EventArgs)

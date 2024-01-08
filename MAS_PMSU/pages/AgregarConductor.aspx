@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
-                                <asp:Button ID="BAgregar" runat="server" Text="Asignar Vehiculo a Motorista" CssClass="btn btn-success" Visible="true" />
+                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Motorista" CssClass="btn btn-success" Visible="true" />
                             </div>
                         </div>
                         <div class="row">
@@ -93,8 +93,8 @@
                                         <Columns>
 
                                             <asp:BoundField DataField="ID">
-                                                <HeaderStyle CssClass="hide" />
-                                                <ItemStyle CssClass="hide" />
+                                                <HeaderStyle CssClass="hide"/>
+                                                <ItemStyle CssClass="hide"/>
                                             </asp:BoundField>
                                             <asp:BoundField DataField="nombre" HeaderText="NOMBRE DEL MOTORISTA" />
                                             <asp:BoundField DataField="DNI" HeaderText="CEDULA DEL MOTORISTA" />
@@ -191,16 +191,24 @@
                             <div class="form-group">
                                 <label>Identificador del Vehiculo:</label>
                                 <asp:Label ID="LblNombre" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtNombre" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
+                                
                                 <asp:DropDownList CssClass="form-control" ID="DDLNombre" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLNombre_SelectedIndexChanged">
                                     <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
 
-                        <div class="col-lg-3">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <asp:Button ID="Button3" runat="server" Text="Nuevo Vehiculo" CssClass="btn btn-success" Visible="true" OnClick="Button3_Click"/>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Vehiculo asignado en este momento:</label>
+                                <asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="TxtNombre" runat="server" AutoPostBack="true" ReadOnly="true" Visible="false"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -241,6 +249,7 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <asp:TextBox ID="txtID" runat="server" Visible="false"></asp:TextBox>
+                                <asp:TextBox ID="Txtidvehiculoelimi" runat="server" Visible="false"></asp:TextBox>
                             </div>
                         </div>
 

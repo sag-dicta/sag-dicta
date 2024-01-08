@@ -176,15 +176,6 @@ Partial Public Class AgregarConductor
     Protected WithEvents LblNombre As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control TxtNombre.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtNombre As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Control DDLNombre.
     '''</summary>
     '''<remarks>
@@ -201,6 +192,24 @@ Partial Public Class AgregarConductor
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Label1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtNombre.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtNombre As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control lbTipo.
@@ -282,6 +291,15 @@ Partial Public Class AgregarConductor
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtID As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Txtidvehiculoelimi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Txtidvehiculoelimi As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control Label18.
