@@ -272,6 +272,7 @@
     <Content Include="pages\Cambiopassword.aspx" />
     <Content Include="pages\ErrorPage.aspx" />
     <Content Include="pages\Inicio.aspx" />
+    <Content Include="pages\InscripcionLotes.aspx" />
     <Content Include="pages\Login.aspx" />
     <Content Include="pages\Registro_multiplicadores.aspx" />
     <Content Include="panels-wells.html" />
@@ -2246,6 +2247,13 @@
     </Compile>
     <Compile Include="pages\Inicio.aspx.vb">
       <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\InscripcionLotes.aspx.designer.vb">
+      <DependentUpon>InscripcionLotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\InscripcionLotes.aspx.vb">
+      <DependentUpon>InscripcionLotes.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\Login.aspx.designer.vb">
