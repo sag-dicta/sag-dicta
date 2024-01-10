@@ -34,145 +34,87 @@ Public Class InscripcionLotes
             LabelGuardar.Visible = True
             LabelGuardar.Text = "Ingrese toda la información para poder guardarla"
         Else
-            If btnGuardarLote.Text = "Guardar" Then
+            If btnGuardarLote.Text = "Actualizar" Then
                 LabelGuardar.Visible = False
                 LabelGuardar.Text = ""
                 Dim connectionString As String = conn
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "INSERT INTO sag_registro_senasa (nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
-                cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, estado) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
-                @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
-                @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @estado)"
-
-                    Dim fechaConvertida As DateTime
-
-
-                    If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                        fechaConvertida.ToString("dd-MM-yyyy")
-                    End If
-
-                    Using cmd As New MySqlCommand(query, connection)
-
-                        cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
-                        cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
-                        cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
-                        If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                            cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                        End If
-                        cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
-                        cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
-                        cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
-                        cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
-                        cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
-                        cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
-                        cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
-                        cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
-                        cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
-                        If fileUpload.HasFile Then
-                            ' Obtener el contenido del archivo
-                            Dim fileBytes As Byte() = fileUpload.FileBytes
-
-
-                            cmd.Parameters.AddWithValue("@croquis", fileBytes)
-                        End If
-                        cmd.Parameters.AddWithValue("@estado", "1")
-
-                        cmd.ExecuteNonQuery()
-                        connection.Close()
-
-                        'Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!') </script>")
-
-                        Label3.Text = "¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!"
-                        BBorrarsi.Visible = False
-                        BBorrarno.Visible = False
-                        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-
-                        Button1.Visible = True
-                        Button2.Visible = True
-                        btnGuardarLote.Visible = False
-
-                    End Using
-                End Using
-            Else
-                LabelGuardar.Visible = False
-                LabelGuardar.Text = ""
-                Dim connectionString As String = conn
-                Using connection As New MySqlConnection(connectionString)
-                    connection.Open()
-
-                    Dim query As String = "UPDATE sag_registro_senasa 
-                    SET nombre_productor = @nombre_productor,
-                        representante_legal = @representante_legal,
-                        identidad_productor = @identidad_productor,
-                        extendida = @extendida,
-                        residencia_productor = @residencia_productor,
-                        telefono_productor = @telefono_productor,
-                        no_registro_productor = @no_registro_productor,
-                        nombre_multiplicador = @nombre_multiplicador,
-                        cedula_multiplicador = @cedula_multiplicador,
-                        telefono_multiplicador = @telefono_multiplicador,
-                        nombre_finca = @nombre_finca,
-                        departamento = @departamento,
-                        municipio = @municipio,
-                        aldea = @aldea,
-                        caserio = @caserio,
-                        nombre_persona_finca = @nombre_persona_finca,
-                        nombre_lote = @nombre_lote,
-                        croquis = @croquis
+                    Dim query As String = "UPDATE sag_registro_senasa SET
+                        tipo_cultivo = @tipo_cultivo,
+                        variedad = @variedad,
+                        productor = @productor,
+                        no_lote = @no_lote,
+                        fecha_analisis = @fecha_analisis,
+                        ano_produ = @ano_produ,
+                        categoria_semilla = @categoria_semilla,
+                        tipo_semilla = @tipo_semilla,
+                        cultivo_semilla = @cultivo_semilla,
+                        variedad_frijol = @variedad_frijol,
+                        variedad_maiz = @variedad_maiz,
+                        superficie_hectarea = @superficie_hectarea,
+                        fecha_aprox_siembra = @fecha_aprox_siembra,
+                        fecha_aprox_cosecha = @fecha_aprox_cosecha,
+                        produccion_est_hectareas = @produccion_est_hectareas,
+                        destino = @destino
                     WHERE id = " & txtID.Text & ""
 
-                    Dim fechaConvertida As DateTime
-
-                    If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                        fechaConvertida.ToString("dd-MM-yyyy")
-                    End If
+                    Dim fechaConvertida2 As DateTime
+                    Dim fechaConvertida3 As DateTime
+                    Dim fechaConvertida4 As DateTime
 
                     Using cmd As New MySqlCommand(query, connection)
 
-                        cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
-                        cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
-                        cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
-                        If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                            cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                        cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
+                        Dim selectedValue As String = CmbTipoSemilla.SelectedValue
+                        If selectedValue = "Frijol" Then
+                            cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
+                        ElseIf selectedValue = "Maiz" Then
+                            cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
                         End If
-                        cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
-                        cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
-                        cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
-                        cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
-                        cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
-                        cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
-                        cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
-                        cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
-                        cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
-                        If fileUpload.HasFile Then
-                            ' Obtener el contenido del archivo
-                            Dim fileBytes As Byte() = fileUpload.FileBytes
-                            cmd.Parameters.AddWithValue("@croquis", fileBytes)
+                        cmd.Parameters.AddWithValue("@productor", txtprodsem.Text)
+                        cmd.Parameters.AddWithValue("@no_lote", TextBox3.Text)
+                        If DateTime.TryParse(TextBox4.Text, fechaConvertida2) Then
+                            cmd.Parameters.AddWithValue("@fecha_analisis", fechaConvertida2.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
                         End If
+                        cmd.Parameters.AddWithValue("@ano_produ", TextBox6.Text)
 
+                        cmd.Parameters.AddWithValue("@categoria_semilla", DdlCategoria.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@tipo_semilla", DdlTipo.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@cultivo_semilla", DropDownList3.SelectedItem.Text)
+                        Dim selectedValue2 As String = DropDownList3.SelectedItem.Text
+                        If selectedValue = "Frijol" Then
+                            cmd.Parameters.AddWithValue("@variedad_frijol", DropDownList1.SelectedItem.Text)
+                        Else
+                            cmd.Parameters.AddWithValue("@variedad_frijol", DBNull.Value)
+                        End If
+                        If selectedValue = "Maiz" Then
+                            cmd.Parameters.AddWithValue("@variedad_maiz", DropDownList2.SelectedItem.Text)
+                        Else
+                            cmd.Parameters.AddWithValue("@variedad_maiz", DBNull.Value)
+                        End If
+                        cmd.Parameters.AddWithValue("@superficie_hectarea", Convert.ToDouble(TxtHectareas.Text))
+                        If DateTime.TryParse(TxtFechaSiembra.Text, fechaConvertida3) Then
+                            cmd.Parameters.AddWithValue("@fecha_aprox_siembra", fechaConvertida3.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                        End If
+                        If DateTime.TryParse(TxtCosecha.Text, fechaConvertida4) Then
+                            cmd.Parameters.AddWithValue("@fecha_aprox_cosecha", fechaConvertida4.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                        End If
+                        cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
+                        cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
 
-                        'Response.Write("<script>window.alert('¡Se ha editado correctamente la solicitud del Multiplicador o Estación!') </script>")
-                        Label3.Text = "¡Se ha editado correctamente la solicitud del Multiplicador o Estación!"
+                        Label3.Text = "¡Se ha registrado correctamente la el lote o inscripcion de SENASA!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
                         btnGuardarLote.Visible = False
 
                     End Using
-
                 End Using
             End If
         End If
@@ -369,148 +311,151 @@ Public Class InscripcionLotes
     End Sub
 
     Protected Sub VerificarTextBox()
-
-        If String.IsNullOrEmpty(txt_nombre_prod_new.Text) Then
-            lb_nombre_new.Text = "*"
+        '1
+        If String.IsNullOrEmpty(CmbTipoSemilla.Text) Then
+            Label2.Text = "*"
             validarflag = 0
         Else
-            lb_nombre_new.Text = ""
-            validarflag = 1
+            Label2.Text = ""
+            validarflag += 1
+        End If
+        '2
+        If CmbTipoSemilla.SelectedItem.Text = "Frijol" Then
+            If String.IsNullOrEmpty(DropDownList5.Text) Then
+                Label4.Text = "*"
+                validarflag = 0
+            Else
+                Label4.Text = ""
+                validarflag += 1
+            End If
+        Else
+            If String.IsNullOrEmpty(DropDownList6.Text) Then
+                Label6.Text = "*"
+                validarflag = 0
+            Else
+                Label6.Text = ""
+                validarflag += 1
+            End If
+        End If
+        '3
+        If String.IsNullOrEmpty(txtprodsem.Text) Then
+            Label22.Text = "*"
+            validarflag = 0
+        Else
+            Label22.Text = ""
+            validarflag += 1
+        End If
+        '4
+        If String.IsNullOrEmpty(TextBox3.Text) Then
+            Label8.Text = "*"
+            validarflag = 0
+        Else
+            Label8.Text = ""
+            validarflag += 1
+        End If
+        '5
+        If String.IsNullOrEmpty(TextBox4.Text) Then
+            Label9.Text = "*"
+            validarflag = 0
+        Else
+            Label9.Text = ""
+            validarflag += 1
+        End If
+        '6
+        If String.IsNullOrEmpty(TextBox6.Text) Then
+            Label10.Text = "*"
+            validarflag = 0
+        Else
+            Label10.Text = ""
+            validarflag += 1
+        End If
+        '7
+        If String.IsNullOrEmpty(DdlCategoria.Text) Then
+            Label7.Text = "*"
+            validarflag = 0
+        Else
+            Label7.Text = ""
+            validarflag += 1
+        End If
+        '8
+        If String.IsNullOrEmpty(DdlTipo.Text) Then
+            Label11.Text = "*"
+            validarflag = 0
+        Else
+            Label11.Text = ""
+            validarflag += 1
+        End If
+        '9
+        If String.IsNullOrEmpty(DropDownList3.Text) Then
+            Label12.Text = "*"
+            validarflag = 0
+        Else
+            Label12.Text = ""
+            validarflag += 1
+        End If
+        '10
+        If DropDownList3.SelectedItem.Text = "Frijol" Then
+            If String.IsNullOrEmpty(DropDownList1.Text) Then
+                Label15.Text = "*"
+                validarflag = 0
+            Else
+                Label15.Text = ""
+                validarflag += 1
+            End If
+        Else
+            If String.IsNullOrEmpty(DropDownList2.Text) Then
+                Label16.Text = "*"
+                validarflag = 0
+            Else
+                validarflag += 1
+                Label16.Text = ""
+            End If
+        End If
+        '11
+        If String.IsNullOrEmpty(TxtHectareas.Text) Then
+            Label13.Text = "*"
+            validarflag = 0
+        Else
+            Label13.Text = ""
+            validarflag += 1
+        End If
+        '12
+        If String.IsNullOrEmpty(TxtFechaSiembra.Text) Then
+            Label17.Text = "*"
+            validarflag = 0
+        Else
+            Label17.Text = ""
+            validarflag += 1
+        End If
+        '13
+        If String.IsNullOrEmpty(TxtCosecha.Text) Then
+            Label19.Text = "*"
+            validarflag = 0
+        Else
+            Label19.Text = ""
+            validarflag += 1
+        End If
+        '14
+        If String.IsNullOrEmpty(TxtProHectareas.Text) Then
+            Label20.Text = "*"
+            validarflag = 0
+        Else
+            Label20.Text = ""
+            validarflag += 1
+        End If
+        '15
+        If String.IsNullOrEmpty(DropDownList4.Text) Then
+            Label24.Text = "*"
+            validarflag = 0
+        Else
+            Label24.Text = ""
+            validarflag += 1
         End If
 
-        If String.IsNullOrEmpty(Txt_Representante_Legal.Text) Then
-            LB_RepresentanteLegal.Text = "*"
-            validarflag = 0
-        Else
-            LB_RepresentanteLegal.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtIdentidad.Text) Then
-            Lb_CedulaIdentidad.Text = "*"
-            validarflag = 0
-        Else
-            Lb_CedulaIdentidad.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TextBox1.Text) Then
-            Label1.Text = "*"
-            validarflag = 0
-        Else
-            Label1.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtResidencia.Text) Then
-            LbResidencia.Text = "*"
-            validarflag = 0
-        Else
-            LbResidencia.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtTelefono.Text) Then
-            LblTelefono.Text = "*"
-            validarflag = 0
-        Else
-            LblTelefono.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(txtNoRegistro.Text) Then
-            LbNoRegistro.Text = "*"
-            validarflag = 0
-        Else
-            LbNoRegistro.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(txtNombreRe.Text) Then
-            lbNombreRe.Text = "*"
-            validarflag = 0
-        Else
-            lbNombreRe.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(txtIdentidadRe.Text) Then
-            lbIdentidadRe.Text = "*"
-            validarflag = 0
-        Else
-            lbIdentidadRe.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtTelefonoRe.Text) Then
-            LbTelefonoRe.Text = "*"
-            validarflag = 0
-        Else
-            LbTelefonoRe.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtNombreFinca.Text) Then
-            LblNombreFinca.Text = "*"
-            validarflag = 0
-        Else
-            LblNombreFinca.Text = ""
-            validarflag = 1
-        End If
-
-        If (gb_departamento_new.SelectedItem.Text = " ") Then
-            lb_dept_new.Text = "*"
-            validarflag = 0
-        Else
-            lb_dept_new.Text = ""
-            validarflag = 1
-        End If
-
-        If (gb_municipio_new.SelectedItem.Text = " ") Then
-            lb_mun_new.Text = "*"
-            validarflag = 0
-        Else
-            lb_mun_new.Text = ""
-            validarflag = 1
-        End If
-
-        If (gb_aldea_new.SelectedItem.Text = " ") Then
-            lb_aldea_new.Text = "*"
-            validarflag = 0
-        Else
-            lb_aldea_new.Text = ""
-            validarflag = 1
-        End If
-
-        If (gb_caserio_new.SelectedItem.Text = " ") Then
-            lb_caserio_new.Text = "*"
-            validarflag = 0
-        Else
-            lb_caserio_new.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtPersonaFinca.Text) Then
-            LblPersonaFinca.Text = "*"
-            validarflag = 0
-        Else
-            LblPersonaFinca.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtLote.Text) Then
-            LbLote.Text = "*"
-            validarflag = 0
-        Else
-            LbLote.Text = ""
-            validarflag = 1
-        End If
-
-        If fileUpload.HasFile AndAlso EsExtensionValida(fileUpload.FileName) Then
+        If validarflag = 15 Then
             validarflag = 1
         Else
             validarflag = 0
-            Label25.Visible = True
         End If
     End Sub
 
@@ -608,7 +553,6 @@ Public Class InscripcionLotes
             c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        BAgregar.Visible = True
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
 
         GridDatos.DataBind()
@@ -699,37 +643,37 @@ Public Class InscripcionLotes
         Dim newitem As New ListItem("Todos", "Todos")
         TxtMultiplicador.Items.Insert(0, newitem)
     End Sub
-    Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
-
-        DivCrearNuevo.Visible = True
-        DivGrid.Visible = False
-
-        If (TxtMultiplicador.SelectedIndex <> 0) Then
-            txtNombreRe.Text = TxtMultiplicador.SelectedValue
-        End If
-
-        If TxtDepto.SelectedIndex <> 0 Then
-            gb_departamento_new.SelectedIndex = TxtDepto.SelectedIndex
-            llenarmunicipio()
-
-            If TxtMunicipio.SelectedIndex = 0 Then
-                gb_municipio_new.SelectedIndex = 0
-            Else
-                gb_municipio_new.SelectedIndex = TxtMunicipio.SelectedIndex
-                llenarAldea()
-            End If
-        End If
-
-        'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
-
-    End Sub
+    'Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
+    '
+    '    DivCrearNuevo.Visible = True
+    '    DivGrid.Visible = False
+    '
+    '    If (TxtMultiplicador.SelectedIndex <> 0) Then
+    '        txtNombreRe.Text = TxtMultiplicador.SelectedValue
+    '    End If
+    '
+    '    If TxtDepto.SelectedIndex <> 0 Then
+    '        gb_departamento_new.SelectedIndex = TxtDepto.SelectedIndex
+    '        llenarmunicipio()
+    '
+    '        If TxtMunicipio.SelectedIndex = 0 Then
+    '            gb_municipio_new.SelectedIndex = 0
+    '        Else
+    '            gb_municipio_new.SelectedIndex = TxtMunicipio.SelectedIndex
+    '            llenarAldea()
+    '        End If
+    '    End If
+    '
+    '    'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+    '
+    'End Sub
 
     Protected Sub TxtMultiplicador_SelectedIndexChanged(sender As Object, e As EventArgs)
         llenagrid()
     End Sub
 
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
-        Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+        Response.Redirect(String.Format("~/pages/InscripcionLotes.aspx"))
     End Sub
 
     Private Sub exportar()
@@ -807,21 +751,20 @@ Public Class InscripcionLotes
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
         If (e.CommandName = "Editar") Then
-            btnGuardarLote.Text = "Editar"
-            Button1.Visible = False
-            Button2.Visible = False
             DivCrearNuevo.Visible = True
             DivGrid.Visible = False
 
-            Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            Dim cadena As String = "nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,croquis,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino"
+            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
-
+            'Dim todosNulos As Boolean = True
             nuevo = False
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
             txt_nombre_prod_new.Text = dt.Rows(0)("nombre_productor").ToString()
             Txt_Representante_Legal.Text = dt.Rows(0)("representante_legal").ToString()
             TxtIdentidad.Text = dt.Rows(0)("identidad_productor").ToString()
@@ -839,9 +782,54 @@ Public Class InscripcionLotes
             llenarAldea()
             SeleccionarItemEnDropDownList(gb_aldea_new, dt.Rows(0)("aldea").ToString())
             llenarCaserio()
+            gb_aldea_new.Enabled = False
+            gb_caserio_new.Enabled = False
+            gb_municipio_new.Enabled = False
             SeleccionarItemEnDropDownList(gb_caserio_new, dt.Rows(0)("caserio").ToString())
             TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
             TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
+
+            SeleccionarItemEnDropDownList(CmbTipoSemilla, If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString()))
+
+            If dt.Rows(0)("tipo_cultivo").ToString() = "Frijol" Then
+                VariedadFrijol.Visible = True
+                VariedadMaiz.Visible = False
+                SeleccionarItemEnDropDownList(DropDownList5, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
+            Else
+                VariedadFrijol.Visible = False
+                VariedadMaiz.Visible = True
+                SeleccionarItemEnDropDownList(DropDownList6, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
+            End If
+
+            txtprodsem.Text = If(dt.Rows(0)("productor") Is DBNull.Value, String.Empty, dt.Rows(0)("productor").ToString())
+            TextBox3.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
+            TextBox4.Text = If(dt.Rows(0)("fecha_analisis") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_analisis"), DateTime).ToString("yyyy-MM-dd"))
+            TextBox6.Text = If(dt.Rows(0)("ano_produ") Is DBNull.Value, String.Empty, dt.Rows(0)("ano_produ").ToString())
+
+
+            SeleccionarItemEnDropDownList(DdlCategoria, If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString()))
+            SeleccionarItemEnDropDownList(DdlTipo, If(dt.Rows(0)("tipo_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_semilla").ToString()))
+            SeleccionarItemEnDropDownList(DropDownList3, If(dt.Rows(0)("cultivo_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("cultivo_semilla").ToString()))
+
+
+            If dt.Rows(0)("cultivo_semilla").ToString() = "Frijol" Then
+                variedadfrijol2.Visible = True
+                variedadmaiz2.Visible = False
+                SeleccionarItemEnDropDownList(DropDownList1, If(dt.Rows(0)("variedad_frijol") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad_frijol").ToString()))
+            Else
+                variedadfrijol2.Visible = False
+                variedadmaiz2.Visible = True
+                SeleccionarItemEnDropDownList(DropDownList2, If(dt.Rows(0)("variedad_maiz") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad_maiz").ToString()))
+            End If
+
+            TxtHectareas.Text = If(dt.Rows(0)("superficie_hectarea") Is DBNull.Value, String.Empty, dt.Rows(0)("superficie_hectarea").ToString())
+
+            TxtFechaSiembra.Text = If(dt.Rows(0)("fecha_aprox_siembra") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_aprox_siembra"), DateTime).ToString("yyyy-MM-dd"))
+            TxtCosecha.Text = If(dt.Rows(0)("fecha_aprox_cosecha") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_aprox_cosecha"), DateTime).ToString("yyyy-MM-dd"))
+            TxtProHectareas.Text = If(dt.Rows(0)("produccion_est_hectareas") Is DBNull.Value, String.Empty, dt.Rows(0)("produccion_est_hectareas").ToString())
+
+            SeleccionarItemEnDropDownList(DropDownList4, If(dt.Rows(0)("destino") Is DBNull.Value, String.Empty, dt.Rows(0)("destino").ToString()))
+            VerificarTextBox()
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -965,14 +953,18 @@ Public Class InscripcionLotes
 
         ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
         If selectedValue = "Frijol" Then
+            DropDownList6.SelectedIndex = 0
             VariedadFrijol.Visible = True
             VariedadMaiz.Visible = False
         ElseIf selectedValue = "Maiz" Then
             VariedadMaiz.Visible = True
             VariedadFrijol.Visible = False
+            DropDownList5.SelectedIndex = 0
         Else
             VariedadMaiz.Visible = False
             VariedadFrijol.Visible = False
+            DropDownList5.SelectedIndex = 0
+            DropDownList6.SelectedIndex = 0
         End If
 
         VerificarTextBox()
@@ -984,18 +976,20 @@ Public Class InscripcionLotes
 
         ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
         If selectedValue = "Frijol" Then
+            DropDownList2.SelectedIndex = 0
             variedadfrijol2.Visible = True
             variedadmaiz2.Visible = False
         ElseIf selectedValue = "Maiz" Then
             variedadmaiz2.Visible = True
             variedadfrijol2.Visible = False
+            DropDownList1.SelectedIndex = 0
         Else
             variedadmaiz2.Visible = False
             variedadfrijol2.Visible = False
+            DropDownList1.SelectedIndex = 0
+            DropDownList2.SelectedIndex = 0
         End If
 
         VerificarTextBox()
     End Sub
-
-
 End Class
