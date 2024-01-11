@@ -499,18 +499,6 @@ Public Class InscripcionLotes
         End If
     End Sub
 
-    Private Function EsExtensionValida(fileName As String) As Boolean
-        Dim extension As String = Path.GetExtension(fileName)
-        Dim esValida As Boolean = False
-        If extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
-            esValida = True
-        End If
-        Return esValida
-    End Function
-
-
     '********************************************************************************************************************
 
     Protected Sub PageDropDownList_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
@@ -753,6 +741,8 @@ Public Class InscripcionLotes
         If (e.CommandName = "Editar") Then
             DivCrearNuevo.Visible = True
             DivGrid.Visible = False
+            div_nuevo_prod.Visible = False
+
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
@@ -837,11 +827,15 @@ Public Class InscripcionLotes
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            Label3.Text = "¿Desea eliminar la solicitud del Multiplicador o Estación?"
-            BBorrarsi.Visible = True
-            BBorrarno.Visible = True
-            BConfirm.Visible = False
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+            div_nuevo_prod.Visible = True
+            DivGrid.Visible = False
+            DivCrearNuevo.Visible = False
+
+            'Label3.Text = "¿Desea eliminar la solicitud del Multiplicador o Estación?"
+            'BBorrarsi.Visible = True
+            'BBorrarno.Visible = True
+            'BConfirm.Visible = False
+            'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
 
         If (e.CommandName = "Imprimir") Then
@@ -992,4 +986,74 @@ Public Class InscripcionLotes
 
         VerificarTextBox()
     End Sub
+
+    Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
+        Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream
+            Dim length As Integer = fileUpload.PostedFile.ContentLength
+            Dim bytes As Byte() = New Byte(length - 1) {}
+            stream.Read(bytes, 0, length)
+            Return bytes
+        End Using
+    End Function
+
+    Protected Function ValidarFormulario() As Boolean
+        Dim esValido As Boolean = True
+        Label18.Visible = False
+        Label21.Visible = False
+        If Not FileUploadPagoTGR.HasFile OrElse Not EsExtensionValida(FileUploadPagoTGR.FileName) Then
+            Label18.Visible = True
+            esValido = False
+        End If
+        If Not FileUploadEtiquetaSemilla.HasFile OrElse Not EsExtensionValida(FileUploadEtiquetaSemilla.FileName) Then
+            Label21.Visible = True
+            esValido = False
+        End If
+
+        Return esValido
+    End Function
+
+    Protected Sub BtnUpload_Click(sender As Object, e As EventArgs) Handles BtnUpload.Click
+
+        If ValidarFormulario() Then
+
+            Dim connectionString As String = conn
+            Using conn As New MySqlConnection(connectionString)
+                conn.Open()
+                Dim bytesFichaSemilla As Byte() = FileUploadToBytes(FileUploadEtiquetaSemilla)
+                Dim bytesPagoTGR As Byte() = FileUploadToBytes(FileUploadPagoTGR)
+
+                ' Actualizar bytes en la base de datos
+                Dim query As String = "UPDATE sag_registro_senasa SET certificado_origen_semilla = @certificado_origen_semilla, factura_comercio = @factura_comercio WHERE ID=" & txtID.Text & " "
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@certificado_origen_semilla", bytesFichaSemilla)
+                    cmd.Parameters.AddWithValue("@factura_comercio", bytesPagoTGR)
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
+
+            Label23.Visible = False
+            Label25.Visible = True
+            BtnUpload.Visible = False
+        Else
+            Label23.Visible = True
+            Label25.Visible = False
+            BtnUpload.Visible = True
+        End If
+
+    End Sub
+    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Response.Redirect(String.Format("~/pages/InscripcionLotes.aspx"))
+
+    End Sub
+
+    Private Function EsExtensionValida(fileName As String) As Boolean
+        Dim extension As String = Path.GetExtension(fileName)
+        Dim esValida As Boolean = False
+        If extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
+            esValida = True
+        End If
+        Return esValida
+    End Function
 End Class

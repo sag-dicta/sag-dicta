@@ -98,10 +98,10 @@
                                             <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
                                             <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
 
-                                            <asp:ButtonField ButtonType="Button" Text="Actualizar" ControlStyle-CssClass="btn btn-warning" HeaderText="Actualizar" CommandName="Editar">
+                                            <asp:ButtonField ButtonType="Button" Text="Actualizar" ControlStyle-CssClass="btn btn-warning" HeaderText="ACTUALIZAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-danger" HeaderText="Subir Recibos" CommandName="Eliminar">
+                                            <asp:ButtonField ButtonType="Button" Text="INSCRIBIR LOTE" ControlStyle-CssClass="btn btn-danger" HeaderText="INSCRIPCION SENASA" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                             <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="HOJA DE DATOS" CommandName="Imprimir">
@@ -536,6 +536,78 @@
             <br />
             <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Actualizar" OnClick="guardarSoli_lote" Visible="false" />
             <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
+        </div>
+
+    </div>
+
+    <div id="div_nuevo_prod" runat="server">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"></h1>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <asp:Label ID="laBEL5" runat="server" Text=""></asp:Label>INSCRIPCIÒN 
+
+                                    <asp:TextBox ID="TextBox2" Visible="false" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TextBox5" Visible="false" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TextBox7" Visible="false" runat="server"></asp:TextBox>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <div class="form-group">
+                                        <h3>Subir archivos</h3>
+                                        <br />
+                                        <br />
+                                        <div class="mb-3">
+                                            <label for="FileUploadPagoTGR" class="form-label">Factura Comercial:</label>
+                                            <asp:Label ID="Label18" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                            <asp:FileUpload ID="FileUploadPagoTGR" runat="server" class="form-control" accept=".png,.jpg,.jpeg"/>
+                                        </div>
+                                        <br />
+                                        <div class="mb-3">
+                                            <label for="TxtSemillaQQ">Certficado De Origen De La Semilla</label>
+                                            <asp:Label ID="Label21" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                            <asp:FileUpload ID="FileUploadEtiquetaSemilla" runat="server" class="form-control" accept=".png,.jpg,.jpeg"/>
+                                        </div>
+                                        <br />
+
+                                        <asp:Label ID="Label23" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Antes debes ingresar toda la información</asp:Label>
+                                        <asp:Label ID="Label25" runat="server" Text="" BackColor="Green" ForeColor="White" Visible="false">Archivos ingresados con exito</asp:Label>
+                                        <br />
+                                        <asp:Button ID="BtnUpload" runat="server" Text="Guardar" OnClick="BtnUpload_Click" AutoPostBack="false" class="btn btn-primary" />
+                                        <asp:Button ID="Button1" runat="server" Text="Regresar" AutoPostBack="True" class="btn btn-primary" />
+                                        <hr />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="DeleteModal4" tabindex="-1" role="dialog" aria-labelledby="ModalTitle5" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="ModalTitle5">REDPASH</h4>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="Label26" runat="server" Text="El productor no tiene ningun lote registrado. ¿Desea agregarlo?"></asp:Label>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <asp:Button ID="Button6" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
