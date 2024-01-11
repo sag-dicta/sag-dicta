@@ -464,6 +464,24 @@ Partial Public Class InscripcionLotes
     Protected WithEvents PanelC As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control Label22.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label22 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtprodsem.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtprodsem As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control Label2.
     '''</summary>
     '''<remarks>
@@ -498,15 +516,6 @@ Partial Public Class InscripcionLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents maiz As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Section1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Section1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control VariedadFrijol.
@@ -671,24 +680,6 @@ Partial Public Class InscripcionLotes
     Protected WithEvents OtroMaizv1 As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
-    '''Control Label22.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label22 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control txtprodsem.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtprodsem As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Control Label8.
     '''</summary>
     '''<remarks>
@@ -806,15 +797,6 @@ Partial Public Class InscripcionLotes
     Protected WithEvents certificada As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
-    '''Control Section3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Section3 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
     '''Control Label11.
     '''</summary>
     '''<remarks>
@@ -894,15 +876,6 @@ Partial Public Class InscripcionLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents maizcultivo As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Section4.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Section4 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control variedadfrijol2.
@@ -1011,15 +984,6 @@ Partial Public Class InscripcionLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Tolupanrojov As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Section5.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Section5 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control variedadmaiz2.
