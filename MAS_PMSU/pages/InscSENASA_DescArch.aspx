@@ -20,13 +20,6 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label>Seleccione Ciclo:</label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtCiclo" runat="server" AutoPostBack="True">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
                                 <label>Seleccione Departamento:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True"></asp:DropDownList>
                             </div>
@@ -55,7 +48,7 @@
                                 <p>&nbsp;</p>
                                 <p>&nbsp;</p>
                                 <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:conn_REDPASH %>" ProviderName="<%$ ConnectionStrings:conn_REDPASH.ProviderName %>"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
                                 <asp:GridView ID="GridDatos" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
                                     GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small">
                                     <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -89,21 +82,18 @@
                                             <ItemStyle CssClass="hide" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
-                                        <asp:BoundField DataField="Productor" HeaderText="PRODUCTOR" />
-                                        <asp:BoundField DataField="CICLO" HeaderText="CICLO" />
-                                        <asp:BoundField DataField="NOMBRE_LOTE_FINCA" HeaderText="NUMERO DE LOTE" />
+                                        <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
+                                        <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
+                                        <asp:BoundField DataField="nombre_lote" HeaderText="NUMERO DE LOTE" />
                                         
                                        
 
                                         <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
 
-                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Ficha de Lote" CommandName="FichaLote">
+                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="FACTURA DE COMERCIO" CommandName="FichaLote">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Pago de TGR" CommandName="PagoTGR">
-                                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
-                                        </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Etiqueta de Semilla Registrada" CommandName="Etiqueta">
+                                        <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="CERTIFICADO DE ORIGEN DE SEMILLA" CommandName="PagoTGR">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
                                     </Columns>

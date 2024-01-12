@@ -6,14 +6,13 @@ Imports MySql.Data.MySqlClient
 
 Public Class InscSENASA_DescArch
     Inherits System.Web.UI.Page
-    Dim conn As String = ConfigurationManager.ConnectionStrings("conn_REDPASH").ConnectionString
+    Dim conn As String = ConfigurationManager.ConnectionStrings("connSAG").ConnectionString
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Page.MaintainScrollPositionOnPostBack = True
         If User.Identity.IsAuthenticated = True Then
             If IsPostBack Then
 
             Else
-                llenarcomboCiclo()
                 llenarcomboDepto()
                 Dim newitem As New ListItem(" ", " ")
                 TxtProductor.Items.Insert(0, newitem)
@@ -26,19 +25,19 @@ Public Class InscSENASA_DescArch
 
     End Sub
 
-    Private Sub llenarcomboCiclo()
-        Dim StrCombo As String = "SELECT * FROM redpash_ciclo"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        TxtCiclo.DataSource = DtCombo
-        TxtCiclo.DataValueField = DtCombo.Columns(0).ToString()
-        TxtCiclo.DataTextField = DtCombo.Columns(1).ToString
-        TxtCiclo.DataBind()
-        Dim newitem As New ListItem(" ", " ")
-        TxtCiclo.Items.Insert(0, newitem)
-    End Sub
+    'Private Sub llenarcomboCiclo()
+    '    Dim StrCombo As String = "SELECT * FROM redpash_ciclo"
+    '    Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+    '    Dim DtCombo As New DataTable
+    '    adaptcombo.Fill(DtCombo)
+    '
+    '    TxtCiclo.DataSource = DtCombo
+    '    TxtCiclo.DataValueField = DtCombo.Columns(0).ToString()
+    '    TxtCiclo.DataTextField = DtCombo.Columns(1).ToString
+    '    TxtCiclo.DataBind()
+    '    Dim newitem As New ListItem(" ", " ")
+    '    TxtCiclo.Items.Insert(0, newitem)
+    'End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -55,14 +54,14 @@ Public Class InscSENASA_DescArch
 
     Private Sub llenarcomboProductor()
         If TxtDepto.SelectedItem.Text <> " " Then
-            Dim StrCombo As String = "SELECT DISTINCT Productor FROM bcs_inscripcion_senasa WHERE departamento = @nombre ORDER BY Productor ASC"
+            Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_senasa WHERE departamento = @nombre AND estado = 1 ORDER BY nombre_multiplicador ASC"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
             TxtProductor.DataSource = DtCombo
-            TxtProductor.DataValueField = "Productor"
-            TxtProductor.DataTextField = "Productor"
+            TxtProductor.DataValueField = "nombre_multiplicador"
+            TxtProductor.DataTextField = "nombre_multiplicador"
             TxtProductor.DataBind()
             Dim newitem As New ListItem(" ", " ")
             TxtProductor.Items.Insert(0, newitem)
@@ -85,12 +84,6 @@ Public Class InscSENASA_DescArch
         Dim c7 As String = ""
         Dim c8 As String = ""
 
-        If (TxtCiclo.SelectedItem.Text = " ") Then
-            c3 = " "
-        Else
-            c3 = "AND ciclo = '" & TxtCiclo.SelectedItem.Text & "' "
-        End If
-
         If (TxtDepto.SelectedItem.Text = " ") Then
             c4 = " "
         Else
@@ -100,17 +93,11 @@ Public Class InscSENASA_DescArch
         If (TxtProductor.SelectedItem.Text = " ") Then
             c1 = " "
         Else
-            c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
+            c1 = "AND nombre_multiplicador = '" & TxtProductor.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM bcs_inscripcion_senasa WHERE Estado = '1' " & c1 & c3 & c4 & " ORDER BY Departamento,Productor,CICLO"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM sag_registro_senasa WHERE Estado = '1' " & c1 & c4 & " ORDER BY Departamento, nombre_multiplicador"
         GridDatos.DataBind()
-    End Sub
-
-    Protected Sub TxtCiclo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtCiclo.SelectedIndexChanged
-        '    'llenarcomboDepto()
-        '    'llenarcomboProductor()
-        llenagrid()
     End Sub
 
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
@@ -138,7 +125,7 @@ Public Class InscSENASA_DescArch
         If (e.CommandName = "FichaLote") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT IMAGEN_FICHA FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT factura_comercio FROM `sag_registro_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -159,13 +146,13 @@ Public Class InscSENASA_DescArch
                         Using command As New MySqlCommand(Str, connection)
                             Using reader As MySqlDataReader = command.ExecuteReader()
                                 If reader.Read() Then
-                                    Dim imageData As Byte() = DirectCast(reader("IMAGEN_FICHA"), Byte())
+                                    Dim imageData As Byte() = DirectCast(reader("factura_comercio"), Byte())
                                     Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
                                     Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
                                     ' Configura la respuesta HTTP para descargar la imagen
                                     HttpContext.Current.Response.Clear()
                                     HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
-                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=FICHA_INSCRIPCION_LOTE_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=FACTURA_COMERCIO_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
                                     HttpContext.Current.Response.BinaryWrite(imageData)
                                     HttpContext.Current.Response.Flush()
                                     HttpContext.Current.Response.End()
@@ -188,7 +175,7 @@ Public Class InscSENASA_DescArch
         If (e.CommandName = "PagoTGR") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT IMAGEN_PAGO_TGR FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT certificado_origen_semilla FROM `sag_registro_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -209,13 +196,13 @@ Public Class InscSENASA_DescArch
                         Using command As New MySqlCommand(Str, connection)
                             Using reader As MySqlDataReader = command.ExecuteReader()
                                 If reader.Read() Then
-                                    Dim imageData As Byte() = DirectCast(reader("IMAGEN_PAGO_TGR"), Byte())
+                                    Dim imageData As Byte() = DirectCast(reader("certificado_origen_semilla"), Byte())
                                     Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
                                     Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
                                     ' Configura la respuesta HTTP para descargar la imagen
                                     HttpContext.Current.Response.Clear()
                                     HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
-                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=PAGO_TGR_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=CERTIFICADO_ORIGEN_SEMILLA" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
                                     HttpContext.Current.Response.BinaryWrite(imageData)
                                     HttpContext.Current.Response.Flush()
                                     HttpContext.Current.Response.End()
@@ -224,55 +211,6 @@ Public Class InscSENASA_DescArch
                         End Using
                     End Using
 
-                    TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-                Else
-                    BBorrarsi.Visible = False
-                    BConfirm.Visible = True
-                    BBorrarno.Visible = False
-                    Label1.Text = "¡No hay archivo para descarga!"
-                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-                End If
-            Next
-        End If
-
-        If (e.CommandName = "Etiqueta") Then
-
-            Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim Str As String = "SELECT IMAGEN_ETIQUETA_SEMILLA FROM `bcs_inscripcion_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim adap As New MySqlDataAdapter(Str, conn)
-            Dim dt As New DataTable
-            adap.Fill(dt)
-
-            Dim todosNulos As Boolean = True
-
-            For Each row As DataRow In dt.Rows
-                For Each column As DataColumn In dt.Columns
-                    If Not IsDBNull(row(column)) Then
-                        todosNulos = False
-                        Exit For
-                    End If
-                Next
-
-                If Not todosNulos Then
-                    Using connection As New MySqlConnection(conn)
-                        connection.Open()
-                        Using command As New MySqlCommand(Str, connection)
-                            Using reader As MySqlDataReader = command.ExecuteReader()
-                                If reader.Read() Then
-                                    Dim imageData As Byte() = DirectCast(reader("IMAGEN_ETIQUETA_SEMILLA"), Byte())
-                                    Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
-                                    ' Configura la respuesta HTTP para descargar la imagen
-                                    HttpContext.Current.Response.Clear()
-                                    HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
-                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=ETIQUETA_SEMILLA_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
-                                    HttpContext.Current.Response.BinaryWrite(imageData)
-                                    HttpContext.Current.Response.Flush()
-                                    HttpContext.Current.Response.End()
-                                End If
-                            End Using
-                        End Using
-                    End Using
                     TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
                 Else
                     BBorrarsi.Visible = False
@@ -320,24 +258,20 @@ Public Class InscSENASA_DescArch
         ' Verifica si es una fila de datos y no el encabezado o el pie de página
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los valores de los campos IMAGEN_FICHA, IMAGEN_PAGO_TGR, e IMAGEN_ETIQUETA_SEMILLA
-            Dim imagenFicha As String = DataBinder.Eval(e.Row.DataItem, "IMAGEN_FICHA").ToString()
-            Dim imagenPagoTGR As String = DataBinder.Eval(e.Row.DataItem, "IMAGEN_PAGO_TGR").ToString()
-            Dim imagenEtiqueta As String = DataBinder.Eval(e.Row.DataItem, "IMAGEN_ETIQUETA_SEMILLA").ToString()
+            Dim imagenFicha As String = DataBinder.Eval(e.Row.DataItem, "factura_comercio").ToString()
+            Dim imagenPagoTGR As String = DataBinder.Eval(e.Row.DataItem, "certificado_origen_semilla").ToString()
 
             ' Encuentra los botones en la fila por índice
             Dim indexFicha As Integer = 5 ' Índice del ButtonField para Ficha de Lote
             Dim indexPagoTGR As Integer = 6 ' Índice del ButtonField para Pago de TGR
-            Dim indexEtiqueta As Integer = 7 ' Índice del ButtonField para Etiqueta de Semilla Registrada
 
             ' Encuentra los botones en la fila
             Dim btnFicha As Button = CType(e.Row.Cells(indexFicha).Controls(0), Button)
             Dim btnPagoTGR As Button = CType(e.Row.Cells(indexPagoTGR).Controls(0), Button)
-            Dim btnEtiqueta As Button = CType(e.Row.Cells(indexEtiqueta).Controls(0), Button)
 
             ' Oculta los botones según las condiciones que necesites
             btnFicha.Visible = Not String.IsNullOrEmpty(imagenFicha)
             btnPagoTGR.Visible = Not String.IsNullOrEmpty(imagenPagoTGR)
-            btnEtiqueta.Visible = Not String.IsNullOrEmpty(imagenEtiqueta)
         End If
     End Sub
 
@@ -364,14 +298,11 @@ Public Class InscSENASA_DescArch
 
         Dim query As String = ""
 
-        If TxtCiclo.SelectedValue = "Todos" Then
-            query = "SELECT * FROM `bcs_inscripcion_senasa` where Estado = '1' ORDER BY Departamento,Productor,CICLO "
+        query = "SELECT * FROM `bcs_inscripcion_senasa` where Estado = '1' ORDER BY Departamento,Productor"
+        If (TxtDepto.SelectedValue = " Todos") Then
+            query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Estado = '1' ORDER BY Departamento,Productor "
         Else
-            If (TxtDepto.SelectedValue = " Todos") Then
-                query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE CICLO='" & TxtCiclo.SelectedValue & "'  AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            Else
-                query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE CICLO='" & TxtCiclo.SelectedValue & "' AND Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor,CICLO "
-            End If
+            query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor "
         End If
 
         Using con As New MySqlConnection(conn)
@@ -439,31 +370,20 @@ Public Class InscSENASA_DescArch
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
         limpiar()
-        If TxtCiclo.SelectedItem.Text <> " " Then
 
-            TxtID.Text = ""
+        TxtID.Text = ""
 
-            ' Dim fecha2 As Date
+        ' Dim fecha2 As Date
 
-            TxtNom.Text = TxtProductor.SelectedItem.Text
-            TxtCicloD.Text = TxtCiclo.SelectedItem.Text
-            TxtVariedad.SelectedIndex = 0
+        TxtNom.Text = TxtProductor.SelectedItem.Text
+        TxtVariedad.SelectedIndex = 0
             TxtCategoria.SelectedIndex = 0
             obtener_numero_lote(TxtProductor.SelectedItem.Text)
 
-            'fecha2 = Now
-            'TxtDia.SelectedValue = fecha2.Day
-            'TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
-            'TxtAno.SelectedValue = fecha2.Year
-
-
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
-        Else
-
-            Label3.Text = "Para este ciclo ya ha finalizado el tiempo para agregar registros, por favor si desea agregar el registro realizar la solicitud mediante correo electronico"
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
-
-        End If
+        'fecha2 = Now
+        'TxtDia.SelectedValue = fecha2.Day
+        'TxtMes.SelectedIndex = Convert.ToInt32(fecha2.Month - 1)
+        'TxtAno.SelectedValue = fecha2.Year
 
     End Sub
 
@@ -486,7 +406,6 @@ Public Class InscSENASA_DescArch
             cmd2.CommandText = Sql
 
             cmd2.Parameters.AddWithValue("@Productor", TxtProductor.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@CICLO", TxtCiclo.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)    'REVISADO
@@ -651,7 +570,7 @@ Public Class InscSENASA_DescArch
     End Sub
 
     Protected Sub limpiarFiltros(sender As Object, e As EventArgs)
-        Response.Redirect("Registro_Portal_Sag.aspx")
+        Response.Redirect("InscSENASA_DescArch.aspx")
     End Sub
 
     Protected Sub BtnUpload_Click(sender As Object, e As EventArgs) Handles BtnUpload.Click
@@ -726,7 +645,6 @@ Public Class InscSENASA_DescArch
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Dim rptdocument As New ReportDocument
         Dim productor As String = TxtProductor.SelectedItem.Text
-        Dim ciclo As String = TxtCiclo.SelectedItem.Text
         'nombre de dataset
         Dim ds As New DataSetMultiplicador
         Dim Str As String = "SELECT * FROM vista_inscripcion_senasa_lote WHERE Productor = '" & productor & "' AND CICLO = '" & ciclo & "'"

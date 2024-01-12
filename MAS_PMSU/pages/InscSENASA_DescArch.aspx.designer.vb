@@ -23,15 +23,6 @@ Partial Public Class InscSENASA_DescArch
     Protected WithEvents panelmasiso As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control TxtCiclo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtCiclo As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Control TxtDepto.
     '''</summary>
     '''<remarks>
