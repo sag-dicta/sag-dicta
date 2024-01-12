@@ -90,21 +90,21 @@
                                                 <HeaderStyle CssClass="hide" />
                                                 <ItemStyle CssClass="hide" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
-                                            <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
-                                            <asp:BoundField DataField="nombre_finca" HeaderText="NOMBRE DE LA FINCA" />
-                                            <asp:BoundField DataField="nombre_productor" HeaderText="PRODUCTOR" />
-                                            <asp:BoundField DataField="no_registro_productor" HeaderText="No. REGISTRO" />
-                                            <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
-                                            <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
+                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="Multiplicador" />
+                                            <asp:BoundField DataField="cedula_multiplicador" HeaderText="Cedula" />
+                                            <asp:BoundField DataField="nombre_finca" HeaderText="Nombre de la Finca" />
+                                            <asp:BoundField DataField="nombre_productor" HeaderText="Productor" />
+                                            <asp:BoundField DataField="no_registro_productor" HeaderText="No. Registro" />
+                                            <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
+                                            <asp:BoundField DataField="municipio" HeaderText="Municipio" />
 
-                                            <asp:ButtonField ButtonType="Button" Text="Actualizar" ControlStyle-CssClass="btn btn-warning" HeaderText="ACTUALIZAR" CommandName="Editar">
+                                            <asp:ButtonField ButtonType="Button" Text="Agregar" ControlStyle-CssClass="btn btn-warning" HeaderText="Información del Lote" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="INSCRIBIR LOTE" ControlStyle-CssClass="btn btn-danger" HeaderText="INSCRIPCION SENASA" CommandName="Eliminar">
+                                            <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-danger" HeaderText="Archivos de Inscripción" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="HOJA DE DATOS" CommandName="Imprimir">
+                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="Imprimir Información" CommandName="Imprimir">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>
@@ -120,9 +120,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-2">
                                 <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
+                            </div>
+                            <div class="col-lg-4">
+                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary" Text="Ver los Archivos Subidos"><span class="glyphicon glyphicon-save"></span>&nbsp;Ver los Archivos Subidos</asp:LinkButton>
                             </div>
                         </div>
 
@@ -540,32 +543,17 @@
 
     </div>
 
-    <div id="div_nuevo_prod" runat="server">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header"></h1>
-            </div>
+    <div id="div_nuevo_prod" runat="server" visible="false">
 
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <asp:Label ID="laBEL5" runat="server" Text=""></asp:Label>INSCRIPCIÒN 
-
-                                    <asp:TextBox ID="TextBox2" Visible="false" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="TextBox5" Visible="false" runat="server"></asp:TextBox>
-                            <asp:TextBox ID="TextBox7" Visible="false" runat="server"></asp:TextBox>
-                        </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
 
                                     <div class="form-group">
-                                        <h3>Subir archivos</h3>
-                                        <br />
-                                        <br />
+                                        <h4>Subir archivos</h4>
                                         <div class="mb-3">
                                             <label for="FileUploadPagoTGR" class="form-label">Factura Comercial:</label>
                                             <asp:Label ID="Label18" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
@@ -592,7 +580,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         
         <div class="modal fade" id="DeleteModal4" tabindex="-1" role="dialog" aria-labelledby="ModalTitle5" aria-hidden="true">
             <div class="modal-dialog">

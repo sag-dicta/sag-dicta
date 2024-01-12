@@ -476,7 +476,7 @@ Public Class InscripcionLotes
 
         nombre = " Datos del Multiplicador " + Today
 
-        rptdocument.Load(Server.MapPath("~/pages/AgregarMultiplicadorReport.rpt"))
+        rptdocument.Load(Server.MapPath("~/pages/AgregarMultiplicadorReport2.rpt"))
 
         rptdocument.SetDataSource(ds)
         Response.Buffer = False
@@ -518,7 +518,7 @@ Public Class InscripcionLotes
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
+        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio, nombre_lote, certificado_origen_semilla, factura_comercio"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -734,7 +734,9 @@ Public Class InscripcionLotes
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         exportar()
     End Sub
-
+    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
+        Response.Redirect(String.Format("~/pages/InscSENASA_DescArch.aspx"))
+    End Sub
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
@@ -857,7 +859,7 @@ Public Class InscripcionLotes
 
             nombre = " Datos del Multiplicador " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
 
-            rptdocument.Load(Server.MapPath("~/pages/AgregarMultiplicadorReport.rpt"))
+            rptdocument.Load(Server.MapPath("~/pages/AgregarMultiplicadorReport2.rpt"))
 
             rptdocument.SetDataSource(ds)
             Response.Buffer = False
@@ -1056,4 +1058,46 @@ Public Class InscripcionLotes
         End If
         Return esValida
     End Function
+
+
+    Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            ' Obtén los datos de la fila actual
+            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "nombre_lote").ToString()
+            Dim tipoSemilla As String = DataBinder.Eval(e.Row.DataItem, "certificado_origen_semilla").ToString()
+            Dim tipoSemilla2 As String = DataBinder.Eval(e.Row.DataItem, "factura_comercio").ToString()
+
+            ' Encuentra los botones en la fila por índice
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(8).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnEliminar As Button = DirectCast(e.Row.Cells(9).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(10).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+
+            ' Modifica el texto y el color de los botones según la lógica que desees
+            If Not String.IsNullOrEmpty(estimadoProduccion) Then
+                btnEditar.Text = "Editar Lote"
+                btnEditar.CssClass = "btn btn-info"
+                btnEditar.ControlStyle.CssClass = "btn btn-info"
+            Else
+                btnEditar.Text = "Agregar Lote"
+                btnEditar.CssClass = "btn btn-success"
+                btnEditar.ControlStyle.CssClass = "btn btn-success"
+            End If
+
+            If Not String.IsNullOrEmpty(tipoSemilla) And Not String.IsNullOrEmpty(tipoSemilla2) Then
+                btnEliminar.Text = "Editar Archivos"
+                btnEliminar.CssClass = "btn btn-info"
+                btnEliminar.ControlStyle.CssClass = "btn btn-info"
+            Else
+                btnEliminar.Text = "Agregar Archivos"
+                btnEliminar.CssClass = "btn btn-success"
+                btnEliminar.ControlStyle.CssClass = "btn btn-success"
+            End If
+
+            If btnEditar.Text = "Editar Lote" And btnEliminar.Text = "Editar Archivos" Then
+                btnImprimir.Visible = True
+            Else
+                btnImprimir.Visible = False
+            End If
+        End If
+    End Sub
 End Class

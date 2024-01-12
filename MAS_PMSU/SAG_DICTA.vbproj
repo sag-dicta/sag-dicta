@@ -273,6 +273,7 @@
     <Content Include="pages\ErrorPage.aspx" />
     <Content Include="pages\Inicio.aspx" />
     <Content Include="pages\InscripcionLotes.aspx" />
+    <Content Include="pages\InscSENASA_DescArch.aspx" />
     <Content Include="pages\Login.aspx" />
     <Content Include="pages\Registro_multiplicadores.aspx" />
     <Content Include="panels-wells.html" />
@@ -2166,6 +2167,12 @@
       <DependentUpon>AgregarConductor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="pages\AgregarMultiplicadorReport2.vb">
+      <DependentUpon>AgregarMultiplicadorReport2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="pages\AgregarVehiculo.aspx.designer.vb">
       <DependentUpon>AgregarVehiculo.aspx</DependentUpon>
     </Compile>
@@ -2256,6 +2263,13 @@
       <DependentUpon>InscripcionLotes.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="pages\InscSENASA_DescArch.aspx.designer.vb">
+      <DependentUpon>InscSENASA_DescArch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\InscSENASA_DescArch.aspx.vb">
+      <DependentUpon>InscSENASA_DescArch.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="pages\Login.aspx.designer.vb">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
@@ -2284,6 +2298,10 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\AgregarMultiplicadorReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AgregarMultiplicadorReport2.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\AgregarMultiplicadorReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
