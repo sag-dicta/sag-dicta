@@ -518,7 +518,7 @@ Public Class InscripcionLotes
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio, nombre_lote, certificado_origen_semilla, factura_comercio"
+        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio, no_lote, certificado_origen_semilla, factura_comercio"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -1063,7 +1063,7 @@ Public Class InscripcionLotes
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los datos de la fila actual
-            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "nombre_lote").ToString()
+            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "no_lote").ToString()
             Dim tipoSemilla As String = DataBinder.Eval(e.Row.DataItem, "certificado_origen_semilla").ToString()
             Dim tipoSemilla2 As String = DataBinder.Eval(e.Row.DataItem, "factura_comercio").ToString()
 
@@ -1075,7 +1075,7 @@ Public Class InscripcionLotes
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
                 btnEditar.Text = "Editar Lote"
-                btnEditar.CssClass = "btn btn-info"
+                btnEditar.CssClass = "btn btn-primary"
                 btnEditar.ControlStyle.CssClass = "btn btn-info"
             Else
                 btnEditar.Text = "Agregar Lote"
@@ -1085,7 +1085,7 @@ Public Class InscripcionLotes
 
             If Not String.IsNullOrEmpty(tipoSemilla) And Not String.IsNullOrEmpty(tipoSemilla2) Then
                 btnEliminar.Text = "Editar Archivos"
-                btnEliminar.CssClass = "btn btn-info"
+                btnEliminar.CssClass = "btn btn-primary"
                 btnEliminar.ControlStyle.CssClass = "btn btn-info"
             Else
                 btnEliminar.Text = "Agregar Archivos"

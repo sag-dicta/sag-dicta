@@ -712,4 +712,7 @@ Public Class InscSENASA_DescArch
             DDL_Tipo.SelectedIndex = 0
         End If
     End Sub
+    Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
+        Response.Redirect(String.Format("~/pages/InscripcionLotes.aspx"))
+    End Sub
 End Class
