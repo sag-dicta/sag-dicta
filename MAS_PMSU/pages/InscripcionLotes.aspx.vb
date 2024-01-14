@@ -853,7 +853,7 @@ Public Class InscripcionLotes
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "sag_registro_senasa")
+            adap.Fill(ds, "sag_registro_senasa1")
 
             Dim nombre As String
 
@@ -1058,8 +1058,6 @@ Public Class InscripcionLotes
         End If
         Return esValida
     End Function
-
-
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los datos de la fila actual
@@ -1076,21 +1074,21 @@ Public Class InscripcionLotes
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
                 btnEditar.Text = "Editar Lote"
                 btnEditar.CssClass = "btn btn-primary"
-                btnEditar.ControlStyle.CssClass = "btn btn-info"
+                btnEditar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
             Else
                 btnEditar.Text = "Agregar Lote"
                 btnEditar.CssClass = "btn btn-success"
-                btnEditar.ControlStyle.CssClass = "btn btn-success"
+                btnEditar.Style("background-color") = "#28a745" ' Establece el color de fondo directamente
             End If
 
             If Not String.IsNullOrEmpty(tipoSemilla) And Not String.IsNullOrEmpty(tipoSemilla2) Then
                 btnEliminar.Text = "Editar Archivos"
                 btnEliminar.CssClass = "btn btn-primary"
-                btnEliminar.ControlStyle.CssClass = "btn btn-info"
+                btnEliminar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
             Else
                 btnEliminar.Text = "Agregar Archivos"
                 btnEliminar.CssClass = "btn btn-success"
-                btnEliminar.ControlStyle.CssClass = "btn btn-success"
+                btnEliminar.Style("background-color") = "#28a745" ' Establece el color de fondo directamente
             End If
 
             If btnEditar.Text = "Editar Lote" And btnEliminar.Text = "Editar Archivos" Then
@@ -1100,4 +1098,6 @@ Public Class InscripcionLotes
             End If
         End If
     End Sub
+
+
 End Class
