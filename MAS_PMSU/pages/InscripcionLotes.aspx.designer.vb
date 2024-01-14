@@ -491,6 +491,51 @@ Partial Public Class InscripcionLotes
     Protected WithEvents txtprodsem As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control Label5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control categoria_origen_ddl.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents categoria_origen_ddl As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control basica1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents basica1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control registrada1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents registrada1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control certificada1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents certificada1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
     '''Control Label2.
     '''</summary>
     '''<remarks>

@@ -42,6 +42,7 @@ Public Class InscripcionLotes
                     connection.Open()
 
                     Dim query As String = "UPDATE sag_registro_senasa SET
+                        categoria_origen = @categoria_origen,
                         tipo_cultivo = @tipo_cultivo,
                         variedad = @variedad,
                         productor = @productor,
@@ -66,6 +67,7 @@ Public Class InscripcionLotes
 
                     Using cmd As New MySqlCommand(query, connection)
 
+                        cmd.Parameters.AddWithValue("@categoria_origen", categoria_origen_ddl.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
                         Dim selectedValue As String = CmbTipoSemilla.SelectedValue
                         If selectedValue = "Frijol" Then
@@ -451,8 +453,16 @@ Public Class InscripcionLotes
             Label24.Text = ""
             validarflag += 1
         End If
+        '16
+        If String.IsNullOrEmpty(categoria_origen_ddl.Text) Then
+            Label5.Text = "*"
+            validarflag = 0
+        Else
+            Label5.Text = ""
+            validarflag += 1
+        End If
 
-        If validarflag = 15 Then
+        If validarflag = 16 Then
             validarflag = 1
         Else
             validarflag = 0
@@ -748,7 +758,7 @@ Public Class InscripcionLotes
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,croquis,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino"
+            Dim cadena As String = "nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,croquis,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino, categoria_origen"
             Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
@@ -794,6 +804,7 @@ Public Class InscripcionLotes
             End If
 
             txtprodsem.Text = If(dt.Rows(0)("productor") Is DBNull.Value, String.Empty, dt.Rows(0)("productor").ToString())
+            SeleccionarItemEnDropDownList(categoria_origen_ddl, If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString()))
             TextBox3.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
             TextBox4.Text = If(dt.Rows(0)("fecha_analisis") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_analisis"), DateTime).ToString("yyyy-MM-dd"))
             TextBox6.Text = If(dt.Rows(0)("ano_produ") Is DBNull.Value, String.Empty, dt.Rows(0)("ano_produ").ToString())

@@ -321,6 +321,17 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="form-group">
+                                        <label>Categoria</label><asp:Label ID="Label5" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:DropDownList CssClass="form-control" ID="categoria_origen_ddl" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:ListItem Text=""></asp:ListItem>
+                                            <asp:ListItem id="basica1" Text="Basica"></asp:ListItem>
+                                            <asp:ListItem id="registrada1" Text="Registrada"></asp:ListItem>
+                                            <asp:ListItem id="certificada1" Text="Certificada"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
                                         <label>Cultivo</label><asp:Label ID="Label2" class="label label-warning" runat="server" Text=""></asp:Label>
                                         <asp:DropDownList CssClass="form-control" ID="CmbTipoSemilla" runat="server" AutoPostBack="true" OnSelectedIndexChanged="CmbTipoSemilla_SelectedIndexChanged">
                                             <asp:ListItem Text=""></asp:ListItem>
