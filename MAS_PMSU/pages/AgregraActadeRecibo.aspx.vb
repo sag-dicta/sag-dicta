@@ -95,7 +95,7 @@ Public Class AgregraActadeRecibo
         End If
 
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & c2
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND no_lote IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
 
         GridDatos.DataBind()
     End Sub
