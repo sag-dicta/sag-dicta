@@ -27,7 +27,7 @@ Public Class AgregraActadeRecibo
         End If
     End Sub
     Protected Sub vaciar(sender As Object, e As EventArgs)
-        Response.Redirect("ActaRecepcionSemilla.aspx")
+        Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
     End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
@@ -164,12 +164,73 @@ Public Class AgregraActadeRecibo
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "Editar") Then
-
-
-
             DivGrid.Visible = "false"
             DivActa.Visible = "true"
+            btnGuardarActa.Visible = True
+            BtnNuevo.Visible = True
+
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            Dim cadena As String = "fecha_acta, nombre_productor, departamento, municipio, aldea, caserio, nombre_lote, tipo_cultivo, variedad, categoria_semilla, porcentaje_humedad, no_sacos, peso_humedo_QQ"
+            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
+            CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
+            txtProcedencia.Text = Textrespaldo.Text
+            txtProductor.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
+            txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
+            txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
+            txtCategoria.Text = If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString())
+            txtLote.Text = If(dt.Rows(0)("nombre_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_lote").ToString())
+            txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
+            txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
+            txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
         End If
+
+        If (e.CommandName = "Eliminar") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+
+            Label103.Text = "¿Desea eliminar la informacion almacenada de esta acta de recibo de productos para multiplicadores de semilla de DICTA?
+                              
+                            *NOTA: Solo se elimira la informacion que habia ingresado el usuario, de la tabla no se eliminara."
+            BBorrarsi.Visible = True
+            BBorrarno.Visible = True
+            BConfirm.Visible = False
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        End If
+    End Sub
+
+    Protected Sub elminar(sender As Object, e As EventArgs) Handles BBorrarsi.Click
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "UPDATE sag_registro_senasa 
+                    SET fecha_acta = @fecha_acta,
+                        porcentaje_humedad = @porcentaje_humedad,
+                        no_sacos = @no_sacos,
+                        peso_humedo_QQ = @peso_humedo_QQ
+                WHERE id = " & TxtID.Text & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+
+                cmd.Parameters.AddWithValue("@fecha_acta", DBNull.Value)
+                cmd.Parameters.AddWithValue("@porcentaje_humedad", DBNull.Value)
+                cmd.Parameters.AddWithValue("@no_sacos", DBNull.Value)
+                cmd.Parameters.AddWithValue("@peso_humedo_QQ", DBNull.Value)
+                cmd.ExecuteNonQuery()
+                connection.Close()
+                Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
+            End Using
+
+        End Using
+
     End Sub
     Protected Sub PageDropDownList_SelectedIndexChanged(sender As Object, e As EventArgs)
         ' Recupera la fila.
@@ -237,106 +298,145 @@ Public Class AgregraActadeRecibo
     End Sub
 
     Protected Sub btnGuardarActa_Click(sender As Object, e As EventArgs)
-        ' Verifica si los elementos no están vacíos
-        If Not String.IsNullOrWhiteSpace(txtFechaSiembra.Text) AndAlso
-            Not String.IsNullOrWhiteSpace(txtProductor.Text) AndAlso
-            Not String.IsNullOrWhiteSpace(txtProductor.Text) Then
-
-            validarflag = 0
-            Verificar()
-            If validarflag = 0 Then
-                btnGuardarActa.Visible = False
-                BtnImprimir.Visible = False
-                BtnNuevo.Visible = True
-
-                'Funcion para guardar en la BD
-                GuardarActa()
-
-            Else
-                Label103.Text = "Debe ingresar toda la informacion primero"
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-            End If
-
+        'validarflag = 0
+        Verificar()
+        If validarflag = 1 Then
+            'Funcion para guardar en la BD
+            GuardarActa()
         Else
-            ' Si algún elemento está vacío, muestra mensajes en las Label correspondientes
-            'If String.IsNullOrWhiteSpace(txtFechaSiembra.Text) Then
-            '    Label14.Text = "Fecha de recepción es obligatoria"
-            'Else
-            '    Label14.Text = ""
-            'End If
-
-            'If String.IsNullOrWhiteSpace(txt_nombre_prod_new.Text) Then
-            '    lb_nombre_new.Text = "Nombre del productor es obligatorio"
-            'Else
-            '    lb_nombre_new.Text = ""
-            'End If
-
-            'If String.IsNullOrWhiteSpace(TxtCeduIden.Text) Then
-            '    Label1.Text = "Cédula de Identidad es obligatoria"
-            'Else
-            '    Label1.Text = ""
-            'End If
-
-            'If String.IsNullOrWhiteSpace(DDL_cultivo.SelectedValue) Then
-            '    Label104.Text = "Tipo de cultivo es obligatorio"
-            'Else
-            '    Label104.Text = ""
-            'End If
             Label103.Text = "Debe ingresar toda la informacion primero"
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
+            BConfirm.Visible = True
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
     End Sub
 
-    Protected Sub Verificar()
-
-    End Sub
-
     Protected Sub GuardarActa()
-        Dim conex As New MySqlConnection(conn)
-        Dim fecha As Date
+        LabelGuardar.Visible = False
+        LabelGuardar.Text = ""
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
 
-        If Date.TryParse(txtFechaSiembra.Text, fecha) Then
-            fecha.ToString("dd-MM-yyyy")
+            Dim query As String = "UPDATE sag_registro_senasa SET
+                fecha_acta = @fecha_acta,
+                porcentaje_humedad = @porcentaje_humedad,
+                no_sacos = @no_sacos,
+                peso_humedo_QQ = @peso_humedo_QQ
+            WHERE id = " & TxtID.Text & ""
+
+            Dim fechaConvertida As Date
+
+            Using cmd As New MySqlCommand(query, connection)
+
+
+                If DateTime.TryParse(txtFechaSiembra.Text, fechaConvertida) Then
+                    cmd.Parameters.AddWithValue("@fecha_acta", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                End If
+                cmd.Parameters.AddWithValue("@porcentaje_humedad", Convert.ToDecimal(txtHumedad.Text))
+                cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
+                cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
+
+                cmd.ExecuteNonQuery()
+                connection.Close()
+
+                Label103.Text = "¡Se ha registrado correctamente el acta de recibo de productos para multiplicadores de semilla de DICTA!"
+                BBorrarsi.Visible = False
+                BBorrarno.Visible = False
+                BConfirm.Visible = True
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                btnGuardarActa.Visible = False
+                BtnImprimir.Visible = True
+                BtnNuevo.Visible = True
+
+            End Using
+        End Using
+    End Sub
+    Protected Sub Verificar()
+        '1
+        If String.IsNullOrEmpty(txtFechaSiembra.Text) Then
+            lblFecha.Text = "*"
+            validarflag = 0
+        Else
+            lblFecha.Text = ""
+            validarflag += 1
+        End If
+        '2
+        If String.IsNullOrEmpty(txtHumedad.Text) Then
+            lblHumedad.Text = "*"
+            validarflag = 0
+        Else
+            lblHumedad.Text = ""
+            validarflag += 1
+        End If
+        '3
+        If String.IsNullOrEmpty(txtSacos.Text) Then
+            lblSacos.Text = "*"
+            validarflag = 0
+        Else
+            lblSacos.Text = ""
+            validarflag += 1
+        End If
+        '4
+        If String.IsNullOrEmpty(txtPesoH.Text) Then
+            lblPesoH.Text = "*"
+            validarflag = 0
+        Else
+            lblPesoH.Text = ""
+            validarflag += 1
         End If
 
-        conex.Open()
-
-        Dim cmd2 As New MySqlCommand()
-
-        If btnGuardarActa.Text = "Guardar" Then
-
-
-
-        End If
-
-        If btnGuardarActa.Text = "Editar" Then
-
-
-
+        If validarflag = 4 Then
+            validarflag = 1
+        Else
+            validarflag = 0
         End If
     End Sub
 
     Private Sub exportar()
 
+        Dim cadena As String = "*"
         Dim query As String = ""
-        Dim cadena As String = "id, nombre, DNI, telefono, tipo, marca, color, no_placa, estado, CodVehi"
         Dim c1 As String = ""
-        Dim c4 As String = ""
         Dim c3 As String = ""
+        Dim c4 As String = ""
+        Dim c2 As String = ""
 
         If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
-            c3 = " "
+            c1 = " "
         Else
-            c3 = "AND nombre = '" & TxtProductorGrid.SelectedItem.Text & "' "
+            c1 = "AND  nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = "Todos") Then
+            c2 = " "
+        Else
+            c2 = "AND  departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
         If (DDL_SelCult.SelectedItem.Text = "Todos") Then
-            c4 = " "
+            c3 = " "
         Else
-            c4 = "AND tipo = '" & DDL_SelCult.SelectedItem.Text & "' "
+            c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
         End If
 
-        query = "SELECT " & cadena & " FROM `sag_registro_vehiculo_motorista` WHERE 1 = 1 AND estado = '1' " & c3 & c4 & c1
+        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
+            If (DropDownList5.SelectedItem.Text = "Todos") Then
+                c4 = " "
+            Else
+                c4 = "AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
+            End If
+        Else
+            If (DropDownList6.SelectedItem.Text = "Todos") Then
+                c4 = " "
+            Else
+                c4 = "AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
+            End If
+        End If
+
+        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND no_lote IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -347,7 +447,7 @@ Public Class AgregraActadeRecibo
                         sda.Fill(ds)
 
                         'Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_registro_vehiculo_motorista"
+                        ds.Tables(0).TableName = "sag_registro_senasa"
 
                         Using wb As New XLWorkbook()
                             For Each dt As DataTable In ds.Tables
@@ -363,7 +463,7 @@ Public Class AgregraActadeRecibo
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Registro de motorista  " & Today & " " & TxtProductorGrid.SelectedItem.Text & ".xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=Acta de Recibo de Multiplicadores " & Today & " " & TxtProductorGrid.SelectedItem.Text & ".xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
@@ -379,5 +479,16 @@ Public Class AgregraActadeRecibo
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         exportar()
+    End Sub
+
+    Protected Sub CrearIdentificador(d1 As String, m2 As String, a3 As String, c4 As String)
+        Dim dep As String = d1
+        Dim mun As String = m2
+        Dim ald As String = a3
+        Dim cas As String = c4
+
+        Dim resultado As String = String.Format("{0}-{1}-{2}-{3}", dep, mun, ald, cas)
+
+        Textrespaldo.Text = resultado
     End Sub
 End Class

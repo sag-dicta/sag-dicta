@@ -435,6 +435,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._Textrespaldo">
+<summary>
+Control Textrespaldo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.AgregraActadeRecibo._lblProductor">
 <summary>
 Control lblProductor.
@@ -645,6 +654,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AgregraActadeRecibo._BConfirm">
 <summary>
 Control BConfirm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._BBorrarsi">
+<summary>
+Control BBorrarsi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._BBorrarno">
+<summary>
+Control BBorrarno.
 </summary>
 <remarks>
 Campo generado automáticamente.

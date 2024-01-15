@@ -173,18 +173,19 @@
                                 <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <label for="txt">Fecha de recepción:</label>
                                 <asp:Label ID="lblFecha" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtFechaSiembra" TextMode="date" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtFechaSiembra" TextMode="date" runat="server"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="txt">Procedencia:</label>
                                 <asp:Label ID="lblProcedencia" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtProcedencia" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="Textrespaldo" runat="server" AutoPostBack="false" Visible="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -283,6 +284,8 @@
                 </div>
                 <div class="modal-footer" style="text-align: center">
                     <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
                 </div>
             </div>
         </div>

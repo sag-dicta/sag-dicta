@@ -311,6 +311,15 @@ Partial Public Class AgregraActadeRecibo
     Protected WithEvents txtProcedencia As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control Textrespaldo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Textrespaldo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control lblProductor.
     '''</summary>
     '''<remarks>
@@ -525,4 +534,22 @@ Partial Public Class AgregraActadeRecibo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents BConfirm As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control BBorrarsi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents BBorrarsi As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control BBorrarno.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents BBorrarno As Global.System.Web.UI.WebControls.Button
 End Class
