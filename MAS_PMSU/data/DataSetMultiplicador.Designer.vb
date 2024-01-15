@@ -1204,6 +1204,8 @@ Partial Public Class DataSetMultiplicador
         
         Private columnestado As Global.System.Data.DataColumn
         
+        Private columncategoria_origen As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1544,6 +1546,14 @@ Partial Public Class DataSetMultiplicador
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property categoria_origenColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncategoria_origen
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1617,9 +1627,10 @@ Partial Public Class DataSetMultiplicador
                     ByVal destino As String,  _
                     ByVal certificado_origen_semilla() As Byte,  _
                     ByVal factura_comercio() As Byte,  _
-                    ByVal estado As String) As sag_registro_senasa1Row
+                    ByVal estado As String,  _
+                    ByVal categoria_origen As String) As sag_registro_senasa1Row
             Dim rowsag_registro_senasa1Row As sag_registro_senasa1Row = CType(Me.NewRow,sag_registro_senasa1Row)
-            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, nombre_persona_finca, departamento, municipio, aldea, caserio, nombre_lote, croquis, tipo_cultivo, variedad, productor, no_lote, fecha_analisis, ano_produ, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_maiz, variedad_frijol, superficie_hectarea, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, destino, certificado_origen_semilla, factura_comercio, estado}
+            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, nombre_persona_finca, departamento, municipio, aldea, caserio, nombre_lote, croquis, tipo_cultivo, variedad, productor, no_lote, fecha_analisis, ano_produ, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_maiz, variedad_frijol, superficie_hectarea, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, destino, certificado_origen_semilla, factura_comercio, estado, categoria_origen}
             rowsag_registro_senasa1Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowsag_registro_senasa1Row)
             Return rowsag_registro_senasa1Row
@@ -1686,6 +1697,7 @@ Partial Public Class DataSetMultiplicador
             Me.columncertificado_origen_semilla = MyBase.Columns("certificado_origen_semilla")
             Me.columnfactura_comercio = MyBase.Columns("factura_comercio")
             Me.columnestado = MyBase.Columns("estado")
+            Me.columncategoria_origen = MyBase.Columns("categoria_origen")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1767,6 +1779,8 @@ Partial Public Class DataSetMultiplicador
             MyBase.Columns.Add(Me.columnfactura_comercio)
             Me.columnestado = New Global.System.Data.DataColumn("estado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnestado)
+            Me.columncategoria_origen = New Global.System.Data.DataColumn("categoria_origen", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncategoria_origen)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId}, true))
             Me.columnId.AutoIncrement = true
             Me.columnId.AutoIncrementSeed = -1
@@ -1801,6 +1815,7 @@ Partial Public Class DataSetMultiplicador
             Me.columnvariedad_frijol.MaxLength = 100
             Me.columndestino.MaxLength = 50
             Me.columnestado.MaxLength = 2
+            Me.columncategoria_origen.MaxLength = 100
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3586,6 +3601,22 @@ Partial Public Class DataSetMultiplicador
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property categoria_origen() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablesag_registro_senasa1.categoria_origenColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'categoria_origen' de la tabla 'sag_registro_senasa1' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesag_registro_senasa1.categoria_origenColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isnombre_productorNull() As Boolean
             Return Me.IsNull(Me.tablesag_registro_senasa1.nombre_productorColumn)
         End Function
@@ -4026,6 +4057,18 @@ Partial Public Class DataSetMultiplicador
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetestadoNull()
             Me(Me.tablesag_registro_senasa1.estadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Iscategoria_origenNull() As Boolean
+            Return Me.IsNull(Me.tablesag_registro_senasa1.categoria_origenColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setcategoria_origenNull()
+            Me(Me.tablesag_registro_senasa1.categoria_origenColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5582,6 +5625,7 @@ Namespace DataSetMultiplicadorTableAdapters
             tableMapping.ColumnMappings.Add("certificado_origen_semilla", "certificado_origen_semilla")
             tableMapping.ColumnMappings.Add("factura_comercio", "factura_comercio")
             tableMapping.ColumnMappings.Add("estado", "estado")
+            tableMapping.ColumnMappings.Add("categoria_origen", "categoria_origen")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -5601,14 +5645,15 @@ Namespace DataSetMultiplicadorTableAdapters
                 "entidad_productor`, `extendida`, `residencia_productor`, `telefono_productor`, `"& _ 
                 "no_registro_productor`, `nombre_multiplicador`, `cedula_multiplicador`, `telefon"& _ 
                 "o_multiplicador`, `nombre_finca`, `nombre_persona_finca`, `departamento`, `munic"& _ 
-                "ipio`, `aldea`, `caserio`, `nombre_lote`, `croquis`, `tipo_cultivo`, `variedad`,"& _ 
-                " `productor`, `no_lote`, `fecha_analisis`, `ano_produ`, `categoria_semilla`, `ti"& _ 
-                "po_semilla`, `cultivo_semilla`, `variedad_maiz`, `variedad_frijol`, `superficie_"& _ 
-                "hectarea`, `fecha_aprox_siembra`, `fecha_aprox_cosecha`, `produccion_est_hectare"& _ 
-                "as`, `destino`, `certificado_origen_semilla`, `factura_comercio`, `estado`) VALU"& _ 
-                "ES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @"& _ 
-                "p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p2"& _ 
-                "8, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37)"
+                "ipio`, `aldea`, `caserio`, `nombre_lote`, `croquis`, `categoria_origen`, `tipo_c"& _ 
+                "ultivo`, `variedad`, `productor`, `no_lote`, `fecha_analisis`, `ano_produ`, `cat"& _ 
+                "egoria_semilla`, `tipo_semilla`, `cultivo_semilla`, `variedad_maiz`, `variedad_f"& _ 
+                "rijol`, `superficie_hectarea`, `fecha_aprox_siembra`, `fecha_aprox_cosecha`, `pr"& _ 
+                "oduccion_est_hectareas`, `destino`, `certificado_origen_semilla`, `factura_comer"& _ 
+                "cio`, `estado`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11,"& _ 
+                " @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @"& _ 
+                "p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32, @p33, @p34, @p35, @p36, @p37, @p3"& _ 
+                "8)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -5741,129 +5786,136 @@ Namespace DataSetMultiplicadorTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "tipo_cultivo"
+            param.SourceColumn = "categoria_origen"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p20"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "variedad"
+            param.SourceColumn = "tipo_cultivo"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p21"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "productor"
+            param.SourceColumn = "variedad"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p22"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "no_lote"
+            param.SourceColumn = "productor"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p23"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "no_lote"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p24"
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
             param.SourceColumn = "fecha_analisis"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p24"
+            param.ParameterName = "@p25"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "ano_produ"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p25"
+            param.ParameterName = "@p26"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "categoria_semilla"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p26"
+            param.ParameterName = "@p27"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "tipo_semilla"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p27"
+            param.ParameterName = "@p28"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "cultivo_semilla"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p28"
+            param.ParameterName = "@p29"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "variedad_maiz"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p29"
+            param.ParameterName = "@p30"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "variedad_frijol"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p30"
+            param.ParameterName = "@p31"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "superficie_hectarea"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p31"
+            param.ParameterName = "@p32"
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
             param.SourceColumn = "fecha_aprox_siembra"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p32"
+            param.ParameterName = "@p33"
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
             param.SourceColumn = "fecha_aprox_cosecha"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p33"
+            param.ParameterName = "@p34"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "produccion_est_hectareas"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p34"
+            param.ParameterName = "@p35"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "destino"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p35"
+            param.ParameterName = "@p36"
             param.DbType = Global.System.Data.DbType.[Object]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
             param.IsNullable = true
             param.SourceColumn = "certificado_origen_semilla"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p36"
+            param.ParameterName = "@p37"
             param.DbType = Global.System.Data.DbType.[Object]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
             param.IsNullable = true
             param.SourceColumn = "factura_comercio"
             Me._adapter.InsertCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p37"
+            param.ParameterName = "@p38"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
@@ -5877,13 +5929,13 @@ Namespace DataSetMultiplicadorTableAdapters
                 "cador` = @p8, `cedula_multiplicador` = @p9, `telefono_multiplicador` = @p10, `no"& _ 
                 "mbre_finca` = @p11, `nombre_persona_finca` = @p12, `departamento` = @p13, `munic"& _ 
                 "ipio` = @p14, `aldea` = @p15, `caserio` = @p16, `nombre_lote` = @p17, `croquis` "& _ 
-                "= @p18, `tipo_cultivo` = @p19, `variedad` = @p20, `productor` = @p21, `no_lote` "& _ 
-                "= @p22, `fecha_analisis` = @p23, `ano_produ` = @p24, `categoria_semilla` = @p25,"& _ 
-                " `tipo_semilla` = @p26, `cultivo_semilla` = @p27, `variedad_maiz` = @p28, `varie"& _ 
-                "dad_frijol` = @p29, `superficie_hectarea` = @p30, `fecha_aprox_siembra` = @p31, "& _ 
-                "`fecha_aprox_cosecha` = @p32, `produccion_est_hectareas` = @p33, `destino` = @p3"& _ 
-                "4, `certificado_origen_semilla` = @p35, `factura_comercio` = @p36, `estado` = @p"& _ 
-                "37 WHERE ((`Id` = @p38))"
+                "= @p18, `categoria_origen` = @p19, `tipo_cultivo` = @p20, `variedad` = @p21, `pr"& _ 
+                "oductor` = @p22, `no_lote` = @p23, `fecha_analisis` = @p24, `ano_produ` = @p25, "& _ 
+                "`categoria_semilla` = @p26, `tipo_semilla` = @p27, `cultivo_semilla` = @p28, `va"& _ 
+                "riedad_maiz` = @p29, `variedad_frijol` = @p30, `superficie_hectarea` = @p31, `fe"& _ 
+                "cha_aprox_siembra` = @p32, `fecha_aprox_cosecha` = @p33, `produccion_est_hectare"& _ 
+                "as` = @p34, `destino` = @p35, `certificado_origen_semilla` = @p36, `factura_come"& _ 
+                "rcio` = @p37, `estado` = @p38 WHERE ((`Id` = @p39))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -6016,136 +6068,143 @@ Namespace DataSetMultiplicadorTableAdapters
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "tipo_cultivo"
+            param.SourceColumn = "categoria_origen"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p20"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "variedad"
+            param.SourceColumn = "tipo_cultivo"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p21"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "productor"
+            param.SourceColumn = "variedad"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p22"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
-            param.SourceColumn = "no_lote"
+            param.SourceColumn = "productor"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p23"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "no_lote"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p24"
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
             param.SourceColumn = "fecha_analisis"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p24"
+            param.ParameterName = "@p25"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "ano_produ"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p25"
+            param.ParameterName = "@p26"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "categoria_semilla"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p26"
+            param.ParameterName = "@p27"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "tipo_semilla"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p27"
+            param.ParameterName = "@p28"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "cultivo_semilla"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p28"
+            param.ParameterName = "@p29"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "variedad_maiz"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p29"
+            param.ParameterName = "@p30"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "variedad_frijol"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p30"
+            param.ParameterName = "@p31"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "superficie_hectarea"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p31"
+            param.ParameterName = "@p32"
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
             param.SourceColumn = "fecha_aprox_siembra"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p32"
+            param.ParameterName = "@p33"
             param.DbType = Global.System.Data.DbType.[Date]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
             param.IsNullable = true
             param.SourceColumn = "fecha_aprox_cosecha"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p33"
+            param.ParameterName = "@p34"
             param.DbType = Global.System.Data.DbType.[Decimal]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
             param.IsNullable = true
             param.SourceColumn = "produccion_est_hectareas"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p34"
+            param.ParameterName = "@p35"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "destino"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p35"
+            param.ParameterName = "@p36"
             param.DbType = Global.System.Data.DbType.[Object]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
             param.IsNullable = true
             param.SourceColumn = "certificado_origen_semilla"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p36"
+            param.ParameterName = "@p37"
             param.DbType = Global.System.Data.DbType.[Object]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Blob
             param.IsNullable = true
             param.SourceColumn = "factura_comercio"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p37"
+            param.ParameterName = "@p38"
             param.DbType = Global.System.Data.DbType.[String]
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
             param.IsNullable = true
             param.SourceColumn = "estado"
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
-            param.ParameterName = "@p38"
+            param.ParameterName = "@p39"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
@@ -6271,21 +6330,22 @@ Namespace DataSetMultiplicadorTableAdapters
                     ByVal p20 As String,  _
                     ByVal p21 As String,  _
                     ByVal p22 As String,  _
-                    ByVal p23 As Global.System.Nullable(Of Date),  _
-                    ByVal p24 As String,  _
+                    ByVal p23 As String,  _
+                    ByVal p24 As Global.System.Nullable(Of Date),  _
                     ByVal p25 As String,  _
                     ByVal p26 As String,  _
                     ByVal p27 As String,  _
                     ByVal p28 As String,  _
                     ByVal p29 As String,  _
-                    ByVal p30 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p31 As Global.System.Nullable(Of Date),  _
+                    ByVal p30 As String,  _
+                    ByVal p31 As Global.System.Nullable(Of Decimal),  _
                     ByVal p32 As Global.System.Nullable(Of Date),  _
-                    ByVal p33 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p34 As String,  _
-                    ByVal p35 As Object,  _
+                    ByVal p33 As Global.System.Nullable(Of Date),  _
+                    ByVal p34 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p35 As String,  _
                     ByVal p36 As Object,  _
-                    ByVal p37 As String) As Integer
+                    ByVal p37 As Object,  _
+                    ByVal p38 As String) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -6396,15 +6456,15 @@ Namespace DataSetMultiplicadorTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(21).Value = CType(p22,String)
             End If
-            If (p23.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(22).Value = CType(p23.Value,Date)
-            Else
+            If (p23 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (p24 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(23).Value = CType(p24,String)
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(p23,String)
+            End If
+            If (p24.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(p24.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             If (p25 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
@@ -6431,13 +6491,13 @@ Namespace DataSetMultiplicadorTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(28).Value = CType(p29,String)
             End If
-            If (p30.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(29).Value = CType(p30.Value,Decimal)
-            Else
+            If (p30 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(29).Value = CType(p30,String)
             End If
             If (p31.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(30).Value = CType(p31.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(30).Value = CType(p31.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
             End If
@@ -6447,19 +6507,19 @@ Namespace DataSetMultiplicadorTableAdapters
                 Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
             If (p33.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(32).Value = CType(p33.Value,Decimal)
+                Me.Adapter.InsertCommand.Parameters(32).Value = CType(p33.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
             End If
-            If (p34 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(33).Value = Global.System.DBNull.Value
+            If (p34.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(33).Value = CType(p34.Value,Decimal)
             Else
-                Me.Adapter.InsertCommand.Parameters(33).Value = CType(p34,String)
+                Me.Adapter.InsertCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
             If (p35 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(34).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(34).Value = CType(p35,Object)
+                Me.Adapter.InsertCommand.Parameters(34).Value = CType(p35,String)
             End If
             If (p36 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(35).Value = Global.System.DBNull.Value
@@ -6469,7 +6529,12 @@ Namespace DataSetMultiplicadorTableAdapters
             If (p37 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(36).Value = CType(p37,String)
+                Me.Adapter.InsertCommand.Parameters(36).Value = CType(p37,Object)
+            End If
+            If (p38 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(37).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(37).Value = CType(p38,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -6513,22 +6578,23 @@ Namespace DataSetMultiplicadorTableAdapters
                     ByVal p20 As String,  _
                     ByVal p21 As String,  _
                     ByVal p22 As String,  _
-                    ByVal p23 As Global.System.Nullable(Of Date),  _
-                    ByVal p24 As String,  _
+                    ByVal p23 As String,  _
+                    ByVal p24 As Global.System.Nullable(Of Date),  _
                     ByVal p25 As String,  _
                     ByVal p26 As String,  _
                     ByVal p27 As String,  _
                     ByVal p28 As String,  _
                     ByVal p29 As String,  _
-                    ByVal p30 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p31 As Global.System.Nullable(Of Date),  _
+                    ByVal p30 As String,  _
+                    ByVal p31 As Global.System.Nullable(Of Decimal),  _
                     ByVal p32 As Global.System.Nullable(Of Date),  _
-                    ByVal p33 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p34 As String,  _
-                    ByVal p35 As Object,  _
+                    ByVal p33 As Global.System.Nullable(Of Date),  _
+                    ByVal p34 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p35 As String,  _
                     ByVal p36 As Object,  _
-                    ByVal p37 As String,  _
-                    ByVal p38 As Integer) As Integer
+                    ByVal p37 As Object,  _
+                    ByVal p38 As String,  _
+                    ByVal p39 As Integer) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -6639,15 +6705,15 @@ Namespace DataSetMultiplicadorTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(p22,String)
             End If
-            If (p23.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(p23.Value,Date)
-            Else
+            If (p23 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (p24 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p24,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(p23,String)
+            End If
+            If (p24.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p24.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             If (p25 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
@@ -6674,13 +6740,13 @@ Namespace DataSetMultiplicadorTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(28).Value = CType(p29,String)
             End If
-            If (p30.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(p30.Value,Decimal)
-            Else
+            If (p30 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(p30,String)
             End If
             If (p31.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(p31.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(p31.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
             End If
@@ -6690,19 +6756,19 @@ Namespace DataSetMultiplicadorTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
             If (p33.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(p33.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(p33.Value,Date)
             Else
                 Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
             End If
-            If (p34 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
+            If (p34.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(p34.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(p34,String)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             End If
             If (p35 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(p35,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(p35,String)
             End If
             If (p36 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
@@ -6712,9 +6778,14 @@ Namespace DataSetMultiplicadorTableAdapters
             If (p37 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(p37,String)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(p37,Object)
             End If
-            Me.Adapter.UpdateCommand.Parameters(37).Value = CType(p38,Integer)
+            If (p38 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(p38,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(38).Value = CType(p39,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

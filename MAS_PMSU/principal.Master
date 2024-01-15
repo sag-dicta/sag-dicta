@@ -51,6 +51,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i> Registrar Multilplicador</a>
                             <a class="collapse-item" href="InscripcionLotes.aspx"><i class="fa fa-clipboard"></i> Inscripcion de Lotes</a>
+                            <a class="collapse-item" href="AgregraActadeRecibo.aspx"><i class="fa fa-clipboard"></i> Acta de Recibo de Producto</a>
                         </div>
                     </div>
                 </li>
