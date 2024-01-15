@@ -20,6 +20,8 @@ Public Class AgregraActadeRecibo
 
             Else
                 txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
+                llenarcomboProductor()
+                llenarcomboDepto()
                 llenagrid()
             End If
         End If
@@ -27,26 +29,73 @@ Public Class AgregraActadeRecibo
     Protected Sub vaciar(sender As Object, e As EventArgs)
         Response.Redirect("ActaRecepcionSemilla.aspx")
     End Sub
+    Private Sub llenarcomboDepto()
+        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
 
+        TxtDepto.DataSource = DtCombo
+        TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
+        TxtDepto.DataTextField = DtCombo.Columns(2).ToString
+        TxtDepto.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtDepto.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboProductor()
+        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' "
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        TxtProductorGrid.DataSource = DtCombo
+        TxtProductorGrid.DataValueField = DtCombo.Columns(0).ToString()
+        TxtProductorGrid.DataTextField = DtCombo.Columns(0).ToString
+        TxtProductorGrid.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtProductorGrid.Items.Insert(0, newitem)
+    End Sub
     Sub llenagrid()
-        Dim cadena As String = "id, nombre, DNI, telefono, tipo, marca, color, no_placa, estado, CodVehi"
+        Dim cadena As String = "*"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
+        Dim c2 As String = ""
 
         If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
-            c3 = " "
+            c1 = " "
         Else
-            c3 = "AND nombre = '" & TxtProductorGrid.SelectedItem.Text & "' "
+            c1 = "AND  nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = "Todos") Then
+            c2 = " "
+        Else
+            c2 = "AND  departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
         If (DDL_SelCult.SelectedItem.Text = "Todos") Then
-            c4 = " "
+            c3 = " "
         Else
-            c4 = "AND tipo = '" & DDL_SelCult.SelectedItem.Text & "' "
+            c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_vehiculo_motorista` WHERE 1 = 1 AND estado = '1' " & c3 & c4
+        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
+            If (DropDownList5.SelectedItem.Text = "Todos") Then
+                c4 = " "
+            Else
+                c4 = "AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
+            End If
+        Else
+            If (DropDownList6.SelectedItem.Text = "Todos") Then
+                c4 = " "
+            Else
+                c4 = "AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
+            End If
+        End If
+
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & c2
 
         GridDatos.DataBind()
     End Sub
@@ -54,6 +103,35 @@ Public Class AgregraActadeRecibo
         llenagrid()
     End Sub
     Protected Sub DDL_SelCult_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_SelCult.SelectedIndexChanged
+        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
+            VariedadFrijol.Visible = True
+            VariedadMaiz.Visible = False
+            DropDownList6.SelectedIndex = 0
+        End If
+
+        If DDL_SelCult.SelectedItem.Text = "Maiz" Then
+            VariedadFrijol.Visible = False
+            VariedadMaiz.Visible = True
+            DropDownList5.SelectedIndex = 0
+        End If
+
+        If DDL_SelCult.SelectedItem.Text = "Todos" Then
+            VariedadFrijol.Visible = False
+            VariedadMaiz.Visible = False
+            DropDownList5.SelectedIndex = 0
+            DropDownList6.SelectedIndex = 0
+        End If
+        llenagrid()
+    End Sub
+    Protected Sub DropDownList5_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList5.SelectedIndexChanged
+        llenagrid()
+    End Sub
+
+    Protected Sub TxtDepto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDepto.SelectedIndexChanged
+        llenagrid()
+    End Sub
+
+    Protected Sub DropDownList6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList6.SelectedIndexChanged
         llenagrid()
     End Sub
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
@@ -302,5 +380,4 @@ Public Class AgregraActadeRecibo
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         exportar()
     End Sub
-
 End Class
