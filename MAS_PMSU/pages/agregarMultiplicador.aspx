@@ -293,7 +293,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3" id="fileUP">
+                        <div class="col-lg-3" id="fileUP" runat="server">
                             <div class="form-group">
                                 <label>Croquis del Lote:</label>
                                 <asp:Label ID="Label5" class="label label-warning" runat="server" Text=""></asp:Label>

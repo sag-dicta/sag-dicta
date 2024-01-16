@@ -958,7 +958,7 @@ Public Class agregarMultiplicador
             Button2.Visible = False
             DivCrearNuevo.Visible = True
             DivGrid.Visible = False
-            fileUpload.Visible = False
+            fileUP.Visible = False
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
