@@ -491,4 +491,26 @@ Public Class AgregraActadeRecibo
 
         Textrespaldo.Text = resultado
     End Sub
+
+    Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            ' Obtén los datos de la fila actual
+            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "no_sacos").ToString()
+
+            ' Encuentra los botones en la fila por índice
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(7).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+
+            ' Modifica el texto y el color de los botones según la lógica que desees
+            If Not String.IsNullOrEmpty(estimadoProduccion) Then
+                btnEditar.Text = "Agregar"
+                btnEditar.CssClass = "btn btn-primary"
+                btnEditar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
+            Else
+                btnEditar.Text = "Editar"
+                btnEditar.CssClass = "btn btn-success"
+                btnEditar.Style("background-color") = "#28a745" ' Establece el color de fondo directamente
+            End If
+
+        End If
+    End Sub
 End Class

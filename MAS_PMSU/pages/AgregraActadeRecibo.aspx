@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="AgregraActadeRecibo.aspx.vb" Inherits="MAS_PMSU.AgregraActadeRecibo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .label.label-warning {
+            background-color: yellow;
+            display: inline-block; /* Para que el fondo abarque toda la etiqueta */
+            padding: 0px; /* Ajusta según sea necesario */
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -20,7 +27,7 @@
                 <div class="panel-body">
 
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Seleccione Productor:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
@@ -28,14 +35,14 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label>Seleccione Departamento:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
-                                    </asp:DropDownList>
-                                </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Seleccione Departamento:</label>
+                                <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
+                                </asp:DropDownList>
                             </div>
-                        <div class="col-lg-2">
+                        </div>
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Seleccione Cultivo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_SelCult" runat="server" AutoPostBack="True">
@@ -46,37 +53,37 @@
                             </div>
                         </div>
                         <div class="col-lg-3" id="VariedadFrijol" runat="server" visible="false">
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label>Variedad Frijol</label>
-                                            <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList5" runat="server" AutoPostBack="true">
-                                                <asp:ListItem Text="Todos"></asp:ListItem>
-                                                <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
-                                                <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
-                                                <asp:ListItem id="Azabachev1" Text="Azabache"></asp:ListItem>
-                                                <asp:ListItem id="Paraisitomejoradov1" Text="Paraisito mejorado PM-2"></asp:ListItem>
-                                                <asp:ListItem id="Deorhov1" Text="Deorho"></asp:ListItem>
-                                                <asp:ListItem id="IntaCardenasv1" Text="Inta Cárdenas"></asp:ListItem>
-                                                <asp:ListItem id="Lencaprecozv1" Text="Lenca precoz"></asp:ListItem>
-                                                <asp:ListItem id="Rojochortív1" Text="Rojo chortí"></asp:ListItem>
-                                                <asp:ListItem id="Tolupanrojov1" Text="Tolupan rojo"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Variedad Frijol</label>
+                                    <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control" ID="DropDownList5" runat="server" AutoPostBack="true">
+                                        <asp:ListItem Text="Todos"></asp:ListItem>
+                                        <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
+                                        <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
+                                        <asp:ListItem id="Azabachev1" Text="Azabache"></asp:ListItem>
+                                        <asp:ListItem id="Paraisitomejoradov1" Text="Paraisito mejorado PM-2"></asp:ListItem>
+                                        <asp:ListItem id="Deorhov1" Text="Deorho"></asp:ListItem>
+                                        <asp:ListItem id="IntaCardenasv1" Text="Inta Cárdenas"></asp:ListItem>
+                                        <asp:ListItem id="Lencaprecozv1" Text="Lenca precoz"></asp:ListItem>
+                                        <asp:ListItem id="Rojochortív1" Text="Rojo chortí"></asp:ListItem>
+                                        <asp:ListItem id="Tolupanrojov1" Text="Tolupan rojo"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
+                            </div>
+                        </div>
 
-                                <div class="col-lg-3" id="VariedadMaiz" runat="server" visible="false">
-                                    <div class="form-group">
-                                        <label>Variedades Maiz</label><asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" AutoPostBack="true">
-                                            <asp:ListItem Text="Todos"></asp:ListItem>
-                                            <asp:ListItem id="DictaMayav1" Text="Dicta Maya"></asp:ListItem>
-                                            <asp:ListItem id="DictaVictoriav1" Text="Dicta Victoria"></asp:ListItem>
-                                            <asp:ListItem id="OtroMaizv1" Text="Otro"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
+                        <div class="col-lg-3" id="VariedadMaiz" runat="server" visible="false">
+                            <div class="form-group">
+                                <label>Variedades Maiz</label><asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" AutoPostBack="true">
+                                    <asp:ListItem Text="Todos"></asp:ListItem>
+                                    <asp:ListItem id="DictaMayav1" Text="Dicta Maya"></asp:ListItem>
+                                    <asp:ListItem id="DictaVictoriav1" Text="Dicta Victoria"></asp:ListItem>
+                                    <asp:ListItem id="OtroMaizv1" Text="Otro"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -253,11 +260,15 @@
     </div>
 
     <div>
-        <label></label>
-        <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
-        <br />
-        <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-        <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar" Visible="false" OnClick="btnGuardarActa_Click" />
+        <div class="col-lg-2">
+            <div class="form-group">
+                <label></label>
+                <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
+                <br />
+                <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
+                <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar" Visible="false" OnClick="btnGuardarActa_Click" />
+            </div>
+        </div>
     </div>
 
     <div>
