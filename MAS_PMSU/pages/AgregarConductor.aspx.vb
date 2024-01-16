@@ -488,7 +488,7 @@ Public Class AgregarConductor
             TxtMarca.Text = dt.Rows(0)("marca").ToString()
             TxtPlaca.Text = dt.Rows(0)("no_placa").ToString()
             TxtColor.Text = dt.Rows(0)("color").ToString()
-
+            VerificarTextBox()
         End If
 
         If (e.CommandName = "Eliminar") Then

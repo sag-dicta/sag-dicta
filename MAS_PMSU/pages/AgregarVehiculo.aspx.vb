@@ -463,6 +463,7 @@ Public Class AgregarVehiculo
             TxtColor.Text = dt.Rows(0)("color").ToString()
 
             CrearIdentificador()
+            VerificarTextBox()
         End If
 
         If (e.CommandName = "Eliminar") Then

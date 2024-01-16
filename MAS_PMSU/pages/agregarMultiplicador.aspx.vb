@@ -123,8 +123,7 @@ Public Class agregarMultiplicador
                         aldea = @aldea,
                         caserio = @caserio,
                         nombre_persona_finca = @nombre_persona_finca,
-                        nombre_lote = @nombre_lote,
-                        croquis = @croquis
+                        nombre_lote = @nombre_lote
                     WHERE id = " & txtID.Text & ""
 
                     Dim fechaConvertida As DateTime
@@ -154,12 +153,6 @@ Public Class agregarMultiplicador
                         cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
                         cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
-                        If fileUpload.HasFile Then
-                            ' Obtener el contenido del archivo
-                            Dim fileBytes As Byte() = fileUpload.FileBytes
-                            cmd.Parameters.AddWithValue("@croquis", fileBytes)
-                        End If
-
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
@@ -369,148 +362,299 @@ Public Class agregarMultiplicador
     End Sub
 
     Protected Sub VerificarTextBox()
+        If TextBanderita.Text = "Guardar" Then
+            '1
+            If String.IsNullOrEmpty(txt_nombre_prod_new.Text) Then
+                lb_nombre_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_nombre_new.Text = ""
+                validarflag += 1
+            End If
+            '2
+            If String.IsNullOrEmpty(Txt_Representante_Legal.Text) Then
+                LB_RepresentanteLegal.Text = "*"
+                validarflag = 0
+            Else
+                LB_RepresentanteLegal.Text = ""
+                validarflag += 1
+            End If
+            '3
+            If String.IsNullOrEmpty(TxtIdentidad.Text) Then
+                Lb_CedulaIdentidad.Text = "*"
+                validarflag = 0
+            Else
+                Lb_CedulaIdentidad.Text = ""
+                validarflag += 1
+            End If
+            '4
+            If String.IsNullOrEmpty(TextBox1.Text) Then
+                Label1.Text = "*"
+                validarflag = 0
+            Else
+                Label1.Text = ""
+                validarflag += 1
+            End If
+            '5
+            If String.IsNullOrEmpty(TxtResidencia.Text) Then
+                LbResidencia.Text = "*"
+                validarflag = 0
+            Else
+                LbResidencia.Text = ""
+                validarflag += 1
+            End If
+            '6
+            If String.IsNullOrEmpty(TxtTelefono.Text) Then
+                LblTelefono.Text = "*"
+                validarflag = 0
+            Else
+                LblTelefono.Text = ""
+                validarflag += 1
+            End If
+            '7
+            If String.IsNullOrEmpty(txtNoRegistro.Text) Then
+                LbNoRegistro.Text = "*"
+                validarflag = 0
+            Else
+                LbNoRegistro.Text = ""
+                validarflag += 1
+            End If
+            '8
+            If String.IsNullOrEmpty(txtNombreRe.Text) Then
+                lbNombreRe.Text = "*"
+                validarflag = 0
+            Else
+                lbNombreRe.Text = ""
+                validarflag += 1
+            End If
+            '8
+            If String.IsNullOrEmpty(txtIdentidadRe.Text) Then
+                lbIdentidadRe.Text = "*"
+                validarflag = 0
+            Else
+                lbIdentidadRe.Text = ""
+                validarflag += 1
+            End If
+            '10
+            If String.IsNullOrEmpty(TxtTelefonoRe.Text) Then
+                LbTelefonoRe.Text = "*"
+                validarflag = 0
+            Else
+                LbTelefonoRe.Text = ""
+                validarflag += 1
+            End If
+            '11
+            If String.IsNullOrEmpty(TxtNombreFinca.Text) Then
+                LblNombreFinca.Text = "*"
+                validarflag = 0
+            Else
+                LblNombreFinca.Text = ""
+                validarflag += 1
+            End If
+            '12
+            If (gb_departamento_new.SelectedItem.Text = " ") Then
+                lb_dept_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_dept_new.Text = ""
+                validarflag += 1
+            End If
+            '13
+            If (gb_municipio_new.SelectedItem.Text = " ") Then
+                lb_mun_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_mun_new.Text = ""
+                validarflag += 1
+            End If
+            '14
+            If (gb_aldea_new.SelectedItem.Text = " ") Then
+                lb_aldea_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_aldea_new.Text = ""
+                validarflag += 1
+            End If
+            '15
+            If (gb_caserio_new.SelectedItem.Text = " ") Then
+                lb_caserio_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_caserio_new.Text = ""
+                validarflag += 1
+            End If
+            '16
+            If String.IsNullOrEmpty(TxtPersonaFinca.Text) Then
+                LblPersonaFinca.Text = "*"
+                validarflag = 0
+            Else
+                LblPersonaFinca.Text = ""
+                validarflag += 1
+            End If
+            '17
+            If String.IsNullOrEmpty(TxtLote.Text) Then
+                LbLote.Text = "*"
+                validarflag = 0
+            Else
+                LbLote.Text = ""
+                validarflag += 1
+            End If
+            '18
+            If fileUpload.HasFile AndAlso EsExtensionValida(fileUpload.FileName) Then
+                validarflag += 1
+            Else
+                validarflag = 0
+                Label25.Visible = True
+            End If
 
-        If String.IsNullOrEmpty(txt_nombre_prod_new.Text) Then
-            lb_nombre_new.Text = "*"
-            validarflag = 0
+            If validarflag = 18 Then
+                validarflag = 1
+            Else
+                validarflag = 0
+            End If
         Else
-            lb_nombre_new.Text = ""
-            validarflag = 1
-        End If
+            '1
+            If String.IsNullOrEmpty(txt_nombre_prod_new.Text) Then
+                lb_nombre_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_nombre_new.Text = ""
+                validarflag += 1
+            End If
+            '2
+            If String.IsNullOrEmpty(Txt_Representante_Legal.Text) Then
+                LB_RepresentanteLegal.Text = "*"
+                validarflag = 0
+            Else
+                LB_RepresentanteLegal.Text = ""
+                validarflag += 1
+            End If
+            '3
+            If String.IsNullOrEmpty(TxtIdentidad.Text) Then
+                Lb_CedulaIdentidad.Text = "*"
+                validarflag = 0
+            Else
+                Lb_CedulaIdentidad.Text = ""
+                validarflag += 1
+            End If
+            '4
+            If String.IsNullOrEmpty(TextBox1.Text) Then
+                Label1.Text = "*"
+                validarflag = 0
+            Else
+                Label1.Text = ""
+                validarflag += 1
+            End If
+            '5
+            If String.IsNullOrEmpty(TxtResidencia.Text) Then
+                LbResidencia.Text = "*"
+                validarflag = 0
+            Else
+                LbResidencia.Text = ""
+                validarflag += 1
+            End If
+            '6
+            If String.IsNullOrEmpty(TxtTelefono.Text) Then
+                LblTelefono.Text = "*"
+                validarflag = 0
+            Else
+                LblTelefono.Text = ""
+                validarflag += 1
+            End If
+            '7
+            If String.IsNullOrEmpty(txtNoRegistro.Text) Then
+                LbNoRegistro.Text = "*"
+                validarflag = 0
+            Else
+                LbNoRegistro.Text = ""
+                validarflag += 1
+            End If
+            '8
+            If String.IsNullOrEmpty(txtNombreRe.Text) Then
+                lbNombreRe.Text = "*"
+                validarflag = 0
+            Else
+                lbNombreRe.Text = ""
+                validarflag += 1
+            End If
+            '8
+            If String.IsNullOrEmpty(txtIdentidadRe.Text) Then
+                lbIdentidadRe.Text = "*"
+                validarflag = 0
+            Else
+                lbIdentidadRe.Text = ""
+                validarflag += 1
+            End If
+            '10
+            If String.IsNullOrEmpty(TxtTelefonoRe.Text) Then
+                LbTelefonoRe.Text = "*"
+                validarflag = 0
+            Else
+                LbTelefonoRe.Text = ""
+                validarflag += 1
+            End If
+            '11
+            If String.IsNullOrEmpty(TxtNombreFinca.Text) Then
+                LblNombreFinca.Text = "*"
+                validarflag = 0
+            Else
+                LblNombreFinca.Text = ""
+                validarflag += 1
+            End If
+            '12
+            If (gb_departamento_new.SelectedItem.Text = " ") Then
+                lb_dept_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_dept_new.Text = ""
+                validarflag += 1
+            End If
+            '13
+            If (gb_municipio_new.SelectedItem.Text = " ") Then
+                lb_mun_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_mun_new.Text = ""
+                validarflag += 1
+            End If
+            '14
+            If (gb_aldea_new.SelectedItem.Text = " ") Then
+                lb_aldea_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_aldea_new.Text = ""
+                validarflag += 1
+            End If
+            '15
+            If (gb_caserio_new.SelectedItem.Text = " ") Then
+                lb_caserio_new.Text = "*"
+                validarflag = 0
+            Else
+                lb_caserio_new.Text = ""
+                validarflag += 1
+            End If
+            '16
+            If String.IsNullOrEmpty(TxtPersonaFinca.Text) Then
+                LblPersonaFinca.Text = "*"
+                validarflag = 0
+            Else
+                LblPersonaFinca.Text = ""
+                validarflag += 1
+            End If
+            '17
+            If String.IsNullOrEmpty(TxtLote.Text) Then
+                LbLote.Text = "*"
+                validarflag = 0
+            Else
+                LbLote.Text = ""
+                validarflag += 1
+            End If
 
-        If String.IsNullOrEmpty(Txt_Representante_Legal.Text) Then
-            LB_RepresentanteLegal.Text = "*"
-            validarflag = 0
-        Else
-            LB_RepresentanteLegal.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtIdentidad.Text) Then
-            Lb_CedulaIdentidad.Text = "*"
-            validarflag = 0
-        Else
-            Lb_CedulaIdentidad.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TextBox1.Text) Then
-            Label1.Text = "*"
-            validarflag = 0
-        Else
-            Label1.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtResidencia.Text) Then
-            LbResidencia.Text = "*"
-            validarflag = 0
-        Else
-            LbResidencia.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtTelefono.Text) Then
-            LblTelefono.Text = "*"
-            validarflag = 0
-        Else
-            LblTelefono.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(txtNoRegistro.Text) Then
-            LbNoRegistro.Text = "*"
-            validarflag = 0
-        Else
-            LbNoRegistro.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(txtNombreRe.Text) Then
-            lbNombreRe.Text = "*"
-            validarflag = 0
-        Else
-            lbNombreRe.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(txtIdentidadRe.Text) Then
-            lbIdentidadRe.Text = "*"
-            validarflag = 0
-        Else
-            lbIdentidadRe.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtTelefonoRe.Text) Then
-            LbTelefonoRe.Text = "*"
-            validarflag = 0
-        Else
-            LbTelefonoRe.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtNombreFinca.Text) Then
-            LblNombreFinca.Text = "*"
-            validarflag = 0
-        Else
-            LblNombreFinca.Text = ""
-            validarflag = 1
-        End If
-
-        If (gb_departamento_new.SelectedItem.Text = " ") Then
-            lb_dept_new.Text = "*"
-            validarflag = 0
-        Else
-            lb_dept_new.Text = ""
-            validarflag = 1
-        End If
-
-        If (gb_municipio_new.SelectedItem.Text = " ") Then
-            lb_mun_new.Text = "*"
-            validarflag = 0
-        Else
-            lb_mun_new.Text = ""
-            validarflag = 1
-        End If
-
-        If (gb_aldea_new.SelectedItem.Text = " ") Then
-            lb_aldea_new.Text = "*"
-            validarflag = 0
-        Else
-            lb_aldea_new.Text = ""
-            validarflag = 1
-        End If
-
-        If (gb_caserio_new.SelectedItem.Text = " ") Then
-            lb_caserio_new.Text = "*"
-            validarflag = 0
-        Else
-            lb_caserio_new.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtPersonaFinca.Text) Then
-            LblPersonaFinca.Text = "*"
-            validarflag = 0
-        Else
-            LblPersonaFinca.Text = ""
-            validarflag = 1
-        End If
-
-        If String.IsNullOrEmpty(TxtLote.Text) Then
-            LbLote.Text = "*"
-            validarflag = 0
-        Else
-            LbLote.Text = ""
-            validarflag = 1
-        End If
-
-        If fileUpload.HasFile AndAlso EsExtensionValida(fileUpload.FileName) Then
-            validarflag = 1
-        Else
-            validarflag = 0
-            Label25.Visible = True
+            If validarflag = 17 Then
+                validarflag = 1
+            Else
+                validarflag = 0
+            End If
         End If
     End Sub
 
@@ -703,6 +847,7 @@ Public Class agregarMultiplicador
 
         DivCrearNuevo.Visible = True
         DivGrid.Visible = False
+        TextBanderita.Text = "Guardar"
 
         If (TxtMultiplicador.SelectedIndex <> 0) Then
             txtNombreRe.Text = TxtMultiplicador.SelectedValue
@@ -808,11 +953,12 @@ Public Class agregarMultiplicador
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
         If (e.CommandName = "Editar") Then
             btnGuardarLote.Text = "Editar"
+            TextBanderita.Text = "Editar"
             Button1.Visible = False
             Button2.Visible = False
             DivCrearNuevo.Visible = True
             DivGrid.Visible = False
-
+            fileUpload.Visible = False
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
@@ -842,6 +988,7 @@ Public Class agregarMultiplicador
             SeleccionarItemEnDropDownList(gb_caserio_new, dt.Rows(0)("caserio").ToString())
             TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
             TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
+            VerificarTextBox()
         End If
 
         If (e.CommandName = "Eliminar") Then
