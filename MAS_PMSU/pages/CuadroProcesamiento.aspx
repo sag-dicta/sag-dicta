@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="AgregraActadeRecibo.aspx.vb" Inherits="MAS_PMSU.AgregraActadeRecibo" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/principal.Master" CodeBehind="CuadroProcesamiento.aspx.vb" Inherits="MAS_PMSU.CuadroProcesamiento" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
@@ -14,7 +14,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Acta de Recepcion de Semilla</h1>
+            <h1 class="page-header">Cuadro de Procesamiento (Secado, limpieza y clasificación)</h1>
         </div>
     </div>
     <div id="DivGrid" runat="server" visible="true">
@@ -173,7 +173,7 @@
         <div class="row">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    Datos del Acta de Recepción de Semilla
+                    Datos del Cuadro de Procesamiento
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -183,77 +183,57 @@
                                 <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txt">Fecha de recepción:</label>
-                                <asp:Label ID="lblFecha" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtFechaSiembra" TextMode="date" runat="server"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="txt">Procedencia:</label>
-                                <asp:Label ID="lblProcedencia" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtProcedencia" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
-                                <asp:TextBox CssClass="form-control" ID="Textrespaldo" runat="server" AutoPostBack="false" Visible="false"></asp:TextBox>
+                                <label for="txtHumIng">Humedad de Ingreso (%):</label>
+                                <asp:Label ID="lblHumIng" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtHumIng" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txt">Productor:</label>
-                                <asp:Label ID="lblProductor" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtProductor" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                                <label for="txtPeso12Hum">Peso de Materia Prima al 12% de Humedad(QQ):</label>
+                                <asp:Label ID="lblPeso12Hum" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtPeso12Hum" runat="server" AutoPostBack="false"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="txtSemOro">Semilla Oro(QQ):</label>
+                                <asp:Label ID="lblSemOro" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtSemOro" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txt">Cultivo:</label>
-                                <asp:Label ID="lblCultivo" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCultivo" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                                <label for="txtConsumo">Consumo(QQ):</label>
+                                <asp:Label ID="lblConsumo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtConsumo" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txt">Variedad:</label>
-                                <asp:Label ID="lblVariedad" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtVariedad" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                                <label for="txtBasura">Basura(QQ):</label>
+                                <asp:Label ID="lblBasura" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtBasura" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txt">Categoria:</label>
-                                <asp:Label ID="lblCategoria" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCategoria" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                                <label for="txtTotal">Total(QQ):</label>
+                                <asp:Label ID="lblTotal" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtTotal" CssClass="form-control" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="txt">No. Lote:</label>
-                                <asp:Label ID="lblLote" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtLote" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>% Humedad:</label>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator42" runat="server" ControlToValidate="txtHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                <asp:Label ID="lblHumedad" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtHumedad" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>No. de Sacos:</label>
-                                <asp:Label ID="lblSacos" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtSacos" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Peso Humedo (QQ):</label>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator43" runat="server" ControlToValidate="txtPesoH" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                <asp:Label ID="lblPesoH" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtPesoH" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                <label for="txtObserv">Observaciones</label>
+                                <asp:Label ID="lblObserv" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtObserv" CssClass="form-control" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
                     </div>

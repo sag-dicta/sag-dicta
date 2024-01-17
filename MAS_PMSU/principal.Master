@@ -49,9 +49,10 @@
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i> Registrar Multilplicador</a>
+                            <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i> Registrar Multiplicador</a>
                             <a class="collapse-item" href="InscripcionLotes.aspx"><i class="fa fa-clipboard"></i> Inscripción de Lotes</a>
                             <a class="collapse-item" href="AgregraActadeRecibo.aspx"><i class="fa fa-clipboard"></i> Actas de Recepción</a>
+                            <a class="collapse-item" href="CuadroProcesamiento.aspx"><i class="fa fa-clipboard"></i> Cuadro de Procesamiento</a>
                         </div>
                     </div>
                 </li>

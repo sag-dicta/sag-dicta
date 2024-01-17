@@ -8,7 +8,7 @@ Imports CrystalDecisions.[Shared].Json
 Imports DocumentFormat.OpenXml.Office.Word
 Imports MySql.Data.MySqlClient
 
-Public Class AgregraActadeRecibo
+Public Class CuadroProcesamiento
     Inherits System.Web.UI.Page
     Dim conn As String = ConfigurationManager.ConnectionStrings("connSAG").ConnectionString
     Dim sentencia As String
@@ -19,7 +19,6 @@ Public Class AgregraActadeRecibo
             If IsPostBack Then
 
             Else
-                txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
                 llenarcomboProductor()
                 llenarcomboDepto()
                 llenagrid()
@@ -27,7 +26,7 @@ Public Class AgregraActadeRecibo
         End If
     End Sub
     Protected Sub vaciar(sender As Object, e As EventArgs)
-        Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
+        Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
     End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
@@ -177,17 +176,17 @@ Public Class AgregraActadeRecibo
             adap.Fill(dt)
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
-            CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
-            txtProcedencia.Text = Textrespaldo.Text
-            txtProductor.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
-            txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
-            txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
-            txtCategoria.Text = If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString())
-            txtLote.Text = If(dt.Rows(0)("nombre_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_lote").ToString())
-            txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
-            txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
-            txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
+            'txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
+            'CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
+            'txtProcedencia.Text = Textrespaldo.Text
+            'txtProductor.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
+            'txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
+            'txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
+            'txtCategoria.Text = If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString())
+            'txtLote.Text = If(dt.Rows(0)("nombre_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_lote").ToString())
+            'txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
+            'txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
+            'txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -343,12 +342,12 @@ Public Class AgregraActadeRecibo
             Using cmd As New MySqlCommand(query, connection)
 
 
-                If DateTime.TryParse(txtFechaSiembra.Text, fechaConvertida) Then
-                    cmd.Parameters.AddWithValue("@fecha_acta", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                End If
-                cmd.Parameters.AddWithValue("@porcentaje_humedad", Convert.ToDecimal(txtHumedad.Text))
-                cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
-                cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
+                'If DateTime.TryParse(txtFechaSiembra.Text, fechaConvertida) Then
+                '    cmd.Parameters.AddWithValue("@fecha_acta", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                'End If
+                'cmd.Parameters.AddWithValue("@porcentaje_humedad", Convert.ToDecimal(txtHumedad.Text))
+                'cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
+                'cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
 
                 cmd.ExecuteNonQuery()
                 connection.Close()
@@ -368,37 +367,37 @@ Public Class AgregraActadeRecibo
     End Sub
     Protected Sub Verificar()
         '1
-        If String.IsNullOrEmpty(txtFechaSiembra.Text) Then
-            lblFecha.Text = "*"
-            validarflag = 0
-        Else
-            lblFecha.Text = ""
-            validarflag += 1
-        End If
-        '2
-        If String.IsNullOrEmpty(txtHumedad.Text) Then
-            lblHumedad.Text = "*"
-            validarflag = 0
-        Else
-            lblHumedad.Text = ""
-            validarflag += 1
-        End If
-        '3
-        If String.IsNullOrEmpty(txtSacos.Text) Then
-            lblSacos.Text = "*"
-            validarflag = 0
-        Else
-            lblSacos.Text = ""
-            validarflag += 1
-        End If
-        '4
-        If String.IsNullOrEmpty(txtPesoH.Text) Then
-            lblPesoH.Text = "*"
-            validarflag = 0
-        Else
-            lblPesoH.Text = ""
-            validarflag += 1
-        End If
+        'If String.IsNullOrEmpty(txtFechaSiembra.Text) Then
+        '    lblFecha.Text = "*"
+        '    validarflag = 0
+        'Else
+        '    lblFecha.Text = ""
+        '    validarflag += 1
+        'End If
+        ''2
+        'If String.IsNullOrEmpty(txtHumedad.Text) Then
+        '    lblHumedad.Text = "*"
+        '    validarflag = 0
+        'Else
+        '    lblHumedad.Text = ""
+        '    validarflag += 1
+        'End If
+        ''3
+        'If String.IsNullOrEmpty(txtSacos.Text) Then
+        '    lblSacos.Text = "*"
+        '    validarflag = 0
+        'Else
+        '    lblSacos.Text = ""
+        '    validarflag += 1
+        'End If
+        ''4
+        'If String.IsNullOrEmpty(txtPesoH.Text) Then
+        '    lblPesoH.Text = "*"
+        '    validarflag = 0
+        'Else
+        '    lblPesoH.Text = ""
+        '    validarflag += 1
+        'End If
 
         If validarflag = 4 Then
             validarflag = 1
@@ -501,7 +500,7 @@ Public Class AgregraActadeRecibo
 
         Dim resultado As String = String.Format("{0}-{1}-{2}-{3}", dep, mun, ald, cas)
 
-        Textrespaldo.Text = resultado
+        'Textrespaldo.Text = resultado
     End Sub
 
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
@@ -538,7 +537,7 @@ Public Class AgregraActadeRecibo
         Dim ds As New DataSetMultiplicador
         Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
         Dim adap As New MySqlDataAdapter(Str, conn)
-        adap.SelectCommand.Parameters.AddWithValue("@valor", txtProductor.Text)
+        adap.SelectCommand.Parameters.AddWithValue("@valor", TxtID.Text)
         Dim dt As New DataTable
 
         'nombre de la vista del data set
