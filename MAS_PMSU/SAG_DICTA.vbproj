@@ -2161,6 +2161,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetMultiplicador.xsd</DependentUpon>
     </Compile>
+    <Compile Include="pages\ActaRecepcionReport.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ActaRecepcionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="pages\AgregraActadeRecibo.aspx.designer.vb">
       <DependentUpon>AgregraActadeRecibo.aspx</DependentUpon>
     </Compile>
@@ -2306,6 +2312,10 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\ActaRecepcionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ActaRecepcionReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\AgregarMultiplicadorReport2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

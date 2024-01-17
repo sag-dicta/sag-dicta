@@ -204,6 +204,41 @@ Public Class AgregraActadeRecibo
             BConfirm.Visible = False
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
+
+        If (e.CommandName = "Imprimir") Then
+
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            Dim rptdocument As New ReportDocument
+            'nombre de dataset
+            Dim ds As New DataSetMultiplicador
+            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_productor = @valor"
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
+            Dim dt As New DataTable
+
+            'nombre de la vista del data set
+
+            adap.Fill(ds, "sag_registro_senasa1")
+
+            Dim nombre As String
+
+            nombre = "Acta de Recepción de Semilla " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
+
+            rptdocument.Load(Server.MapPath("~/pages/ActaRecepcionReport.rpt"))
+
+            rptdocument.SetDataSource(ds)
+            Response.Buffer = False
+
+
+            Response.ClearContent()
+            Response.ClearHeaders()
+
+            rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+            Response.End()
+            'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+
+        End If
     End Sub
 
     Protected Sub elminar(sender As Object, e As EventArgs) Handles BBorrarsi.Click
@@ -272,29 +307,6 @@ Public Class AgregraActadeRecibo
                 pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
             End If
         End If
-    End Sub
-
-
-    Protected Sub descargaPDF(sender As Object, e As EventArgs)
-        Dim rptdocument As New ReportDocument
-        'nombre de dataset
-        Dim ds As New DataSetMultiplicador
-        Dim Str As String = "SELECT * FROM solicitud_inscripcion_delotes WHERE nombre_lote = @valor"
-        Dim adap As New MySqlDataAdapter(Str, conn)
-        adap.SelectCommand.Parameters.AddWithValue("@valor", txtProductor.Text)
-        Dim dt As New DataTable
-        adap.Fill(ds, "solicitud_inscripcion_delotes")
-        Dim nombre As String
-
-        nombre = "Solicitud Inscripcion de Lote o Campo _" + Today
-        rptdocument.Load(Server.MapPath("~/pages/Solicitud Inscripcion de Lote.rpt"))
-        rptdocument.SetDataSource(ds)
-        Response.Buffer = False
-        Response.ClearContent()
-        Response.ClearHeaders()
-        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
-
-        Response.End()
     End Sub
 
     Protected Sub btnGuardarActa_Click(sender As Object, e As EventArgs)
@@ -499,18 +511,55 @@ Public Class AgregraActadeRecibo
 
             ' Encuentra los botones en la fila por índice
             Dim btnEditar As Button = DirectCast(e.Row.Cells(7).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(9).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
-                btnEditar.Text = "Agregar"
+                btnEditar.Text = "Editar"
                 btnEditar.CssClass = "btn btn-primary"
                 btnEditar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
             Else
-                btnEditar.Text = "Editar"
+                btnEditar.Text = "Agregar"
                 btnEditar.CssClass = "btn btn-success"
                 btnEditar.Style("background-color") = "#28a745" ' Establece el color de fondo directamente
             End If
 
+            If btnEditar.Text = "Editar" Then
+                btnImprimir.Visible = True
+            Else
+                btnImprimir.Visible = False
+            End If
         End If
+    End Sub
+
+    Protected Sub descargaPDF(sender As Object, e As EventArgs)
+        Dim rptdocument As New ReportDocument
+        'nombre de dataset
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        adap.SelectCommand.Parameters.AddWithValue("@valor", txtProductor.Text)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "sag_registro_senasa")
+
+        Dim nombre As String
+
+        nombre = " Datos del Multiplicador " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/AgregarMultiplicadorReport2.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
     End Sub
 End Class
