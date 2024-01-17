@@ -238,14 +238,14 @@
                                 <label>% Humedad:</label>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator42" runat="server" ControlToValidate="txtHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                 <asp:Label ID="lblHumedad" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtHumedad" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                <asp:TextBox ID="txtHumedad" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>No. de Sacos:</label>
                                 <asp:Label ID="lblSacos" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtSacos" CssClass="form-control" runat="server" TextMode="number"></asp:TextBox>
+                                <asp:TextBox ID="txtSacos" CssClass="form-control" runat="server" TextMode="number" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -253,7 +253,7 @@
                                 <label>Peso Humedo (QQ):</label>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator43" runat="server" ControlToValidate="txtPesoH" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                 <asp:Label ID="lblPesoH" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtPesoH" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                <asp:TextBox ID="txtPesoH" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -291,7 +291,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="ModalTitle2">REDPASH</h4>
+                    <h4 class="modal-title" id="ModalTitle2">SAG DICTA</h4>
                 </div>
                 <div class="modal-body">
                     <asp:Label ID="Label103" runat="server" Text="El Acta de Recepcion de semilla ha sido almacenada con exito"></asp:Label>

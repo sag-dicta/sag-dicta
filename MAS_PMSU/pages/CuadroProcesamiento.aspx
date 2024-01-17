@@ -133,10 +133,18 @@
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
                                         <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="nombre_lote" HeaderText="N° DE LOTE" />
-                                        <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD" />
-                                        <asp:BoundField DataField="no_sacos" HeaderText="N° DE SACOS" />
-                                        <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO HUMEDO (QQ)" />
+                                        <asp:BoundField DataField="fecha_acta" HeaderText="FECHA DE INGRESO" />
+                                        <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO PRIMA EN LA PLANTA" />
+                                        <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
+                                        <asp:BoundField DataField="peso_materia_prima_QQ_porce_humedad" HeaderText="PESO PRIMA AL 12% DE HUMEDAD (QQ)" />
+                                        <asp:BoundField DataField="semilla_QQ_oro" HeaderText="SEMILLA ORO (QQ)" />
+                                        <asp:BoundField DataField="semilla_QQ_consumo" HeaderText="SEMILLA CONSUMO (QQ)" />
+                                        <asp:BoundField DataField="semilla_QQ_basura" HeaderText="SEMILLA BASURA (QQ)" />
+                                        <asp:BoundField DataField="semilla_QQ_total" HeaderText="SEMILLA TOTAL (QQ)" />
 
+                                        <asp:ButtonField ButtonType="Button" Text="observacion" ControlStyle-CssClass="btn btn-warning" HeaderText="Observaciones" CommandName="observacion">
+                                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
+                                        </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
@@ -185,16 +193,9 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txtHumIng">Humedad de Ingreso (%):</label>
-                                <asp:Label ID="lblHumIng" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtHumIng" runat="server" AutoPostBack="false"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
                                 <label for="txtPeso12Hum">Peso de Materia Prima al 12% de Humedad(QQ):</label>
                                 <asp:Label ID="lblPeso12Hum" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtPeso12Hum" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtPeso12Hum" runat="server" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -203,21 +204,21 @@
                             <div class="form-group">
                                 <label for="txtSemOro">Semilla Oro(QQ):</label>
                                 <asp:Label ID="lblSemOro" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtSemOro" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtSemOro" runat="server" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="txtConsumo">Consumo(QQ):</label>
                                 <asp:Label ID="lblConsumo" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtConsumo" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtConsumo" runat="server" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="txtBasura">Basura(QQ):</label>
                                 <asp:Label ID="lblBasura" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtBasura" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtBasura" runat="server" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -271,7 +272,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="ModalTitle2">REDPASH</h4>
+                    <h4 class="modal-title" id="ModalTitle2">SAG - DICTA</h4>
                 </div>
                 <div class="modal-body">
                     <asp:Label ID="Label103" runat="server" Text="El Acta de Recepcion de semilla ha sido almacenada con exito"></asp:Label>

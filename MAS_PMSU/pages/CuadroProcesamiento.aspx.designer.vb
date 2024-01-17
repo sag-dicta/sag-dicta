@@ -275,24 +275,6 @@ Partial Public Class CuadroProcesamiento
     Protected WithEvents TxtID As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control lblHumIng.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblHumIng As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control txtHumIng.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtHumIng As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Control lblPeso12Hum.
     '''</summary>
     '''<remarks>

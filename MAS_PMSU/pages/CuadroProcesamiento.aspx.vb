@@ -55,7 +55,7 @@ Public Class CuadroProcesamiento
         TxtProductorGrid.Items.Insert(0, newitem)
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "*"
+        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, nombre_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -94,7 +94,7 @@ Public Class CuadroProcesamiento
         End If
 
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND no_lote IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
 
         GridDatos.DataBind()
     End Sub
@@ -169,24 +169,21 @@ Public Class CuadroProcesamiento
             BtnNuevo.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "fecha_acta, nombre_productor, departamento, municipio, aldea, caserio, nombre_lote, tipo_cultivo, variedad, categoria_semilla, porcentaje_humedad, no_sacos, peso_humedo_QQ"
+            Dim cadena As String = "peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
             Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            'txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
+            txtPeso12Hum.Text = If(dt.Rows(0)("peso_materia_prima_QQ_porce_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_materia_prima_QQ_porce_humedad").ToString())
             'CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
-            'txtProcedencia.Text = Textrespaldo.Text
-            'txtProductor.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
-            'txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
-            'txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
-            'txtCategoria.Text = If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString())
-            'txtLote.Text = If(dt.Rows(0)("nombre_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_lote").ToString())
-            'txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
-            'txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
-            'txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
+            txtSemOro.Text = If(dt.Rows(0)("semilla_QQ_oro") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_oro").ToString())
+            txtConsumo.Text = If(dt.Rows(0)("semilla_QQ_consumo") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_consumo").ToString())
+            txtBasura.Text = If(dt.Rows(0)("semilla_QQ_basura") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_basura").ToString())
+            txtTotal.Text = If(dt.Rows(0)("semilla_QQ_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_total").ToString())
+            txtObserv.Text = If(dt.Rows(0)("observaciones") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones").ToString())
+            Verificar()
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -195,7 +192,7 @@ Public Class CuadroProcesamiento
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
 
-            Label103.Text = "¿Desea eliminar la informacion almacenada de esta acta de recibo de productos para multiplicadores de semilla de DICTA?
+            Label103.Text = "¿Desea eliminar la informacion almacenada que contiene el cuadro de procesamiento (secado, limpieza y clasificación)?
                               
                             *NOTA: Solo se elimira la informacion que habia ingresado el usuario, de la tabla no se eliminara."
             BBorrarsi.Visible = True
@@ -238,6 +235,21 @@ Public Class CuadroProcesamiento
             'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
         End If
+
+        If (e.CommandName = "observacion") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            Dim cadena As String = "observaciones"
+            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            Label103.Text = If(dt.Rows(0)("observaciones") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones").ToString())
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
+            BConfirm.Visible = True
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        End If
     End Sub
 
     Protected Sub elminar(sender As Object, e As EventArgs) Handles BBorrarsi.Click
@@ -246,21 +258,25 @@ Public Class CuadroProcesamiento
             connection.Open()
 
             Dim query As String = "UPDATE sag_registro_senasa 
-                    SET fecha_acta = @fecha_acta,
-                        porcentaje_humedad = @porcentaje_humedad,
-                        no_sacos = @no_sacos,
-                        peso_humedo_QQ = @peso_humedo_QQ
+                    SET peso_materia_prima_QQ_porce_humedad = @peso_materia_prima_QQ_porce_humedad,
+                        semilla_QQ_oro = @semilla_QQ_oro,
+                        semilla_QQ_consumo = @semilla_QQ_consumo,
+                        semilla_QQ_basura = @semilla_QQ_basura,
+                        semilla_QQ_total = @semilla_QQ_total,
+                        observaciones = @observaciones
                 WHERE id = " & TxtID.Text & ""
 
             Using cmd As New MySqlCommand(query, connection)
 
-                cmd.Parameters.AddWithValue("@fecha_acta", DBNull.Value)
-                cmd.Parameters.AddWithValue("@porcentaje_humedad", DBNull.Value)
-                cmd.Parameters.AddWithValue("@no_sacos", DBNull.Value)
-                cmd.Parameters.AddWithValue("@peso_humedo_QQ", DBNull.Value)
-                cmd.ExecuteNonQuery()
+                cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", DBNull.Value)
+                cmd.Parameters.AddWithValue("@semilla_QQ_oro", DBNull.Value)
+                cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
+                cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
+                cmd.Parameters.AddWithValue("@semilla_QQ_total", DBNull.Value)
+                cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
+                    cmd.ExecuteNonQuery()
                 connection.Close()
-                Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
+                Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
             End Using
 
         End Using
@@ -331,28 +347,40 @@ Public Class CuadroProcesamiento
             connection.Open()
 
             Dim query As String = "UPDATE sag_registro_senasa SET
-                fecha_acta = @fecha_acta,
-                porcentaje_humedad = @porcentaje_humedad,
-                no_sacos = @no_sacos,
-                peso_humedo_QQ = @peso_humedo_QQ
+                peso_materia_prima_QQ_porce_humedad = @peso_materia_prima_QQ_porce_humedad,
+                semilla_QQ_oro = @semilla_QQ_oro,
+                semilla_QQ_consumo = @semilla_QQ_consumo,
+                semilla_QQ_basura = @semilla_QQ_basura,
+                semilla_QQ_total = @semilla_QQ_total,
+                observaciones = @observaciones
             WHERE id = " & TxtID.Text & ""
-
-            Dim fechaConvertida As Date
 
             Using cmd As New MySqlCommand(query, connection)
 
 
-                'If DateTime.TryParse(txtFechaSiembra.Text, fechaConvertida) Then
-                '    cmd.Parameters.AddWithValue("@fecha_acta", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                'End If
-                'cmd.Parameters.AddWithValue("@porcentaje_humedad", Convert.ToDecimal(txtHumedad.Text))
-                'cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
-                'cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
+                cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", Convert.ToDecimal(txtPeso12Hum.Text)) ' Aquí se formatea correctamente como yyyy-MM-dd
+                cmd.Parameters.AddWithValue("@semilla_QQ_oro", Convert.ToDecimal(txtSemOro.Text))
+                If txtConsumo.Text = "" Then
+                    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
+                Else
+                    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", Convert.ToInt64(txtConsumo.Text))
+                End If
+                If txtBasura.Text = "" Then
+                    cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
+                Else
+                    cmd.Parameters.AddWithValue("@semilla_QQ_basura", Convert.ToDecimal(txtBasura.Text))
+                End If
+                cmd.Parameters.AddWithValue("@semilla_QQ_total", Convert.ToDecimal(txtTotal.Text))
+                If txtObserv.Text = "" Then
+                    cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
+                Else
+                    cmd.Parameters.AddWithValue("@observaciones", txtObserv.Text)
+                End If
 
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
-                Label103.Text = "¡Se ha registrado correctamente el acta de recibo de productos para multiplicadores de semilla de DICTA!"
+                Label103.Text = "¡Se ha registrado correctamente el cuadro de procesamiento (secado, limpieza y clasificación)!"
                 BBorrarsi.Visible = False
                 BBorrarno.Visible = False
                 BConfirm.Visible = True
@@ -367,39 +395,39 @@ Public Class CuadroProcesamiento
     End Sub
     Protected Sub Verificar()
         '1
-        'If String.IsNullOrEmpty(txtFechaSiembra.Text) Then
-        '    lblFecha.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblFecha.Text = ""
-        '    validarflag += 1
-        'End If
-        ''2
-        'If String.IsNullOrEmpty(txtHumedad.Text) Then
-        '    lblHumedad.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblHumedad.Text = ""
-        '    validarflag += 1
-        'End If
+        If String.IsNullOrEmpty(txtPeso12Hum.Text) Then
+            lblPeso12Hum.Text = "*"
+            validarflag = 0
+        Else
+            lblPeso12Hum.Text = ""
+            validarflag += 1
+        End If
+        '2
+        If String.IsNullOrEmpty(txtSemOro.Text) Then
+            lblSemOro.Text = "*"
+            validarflag = 0
+        Else
+            lblSemOro.Text = ""
+            validarflag += 1
+        End If
         ''3
-        'If String.IsNullOrEmpty(txtSacos.Text) Then
-        '    lblSacos.Text = "*"
+        'If String.IsNullOrEmpty(txtConsumo.Text) Then
+        '    lblConsumo.Text = "*"
         '    validarflag = 0
         'Else
-        '    lblSacos.Text = ""
+        '    lblConsumo.Text = ""
         '    validarflag += 1
         'End If
         ''4
-        'If String.IsNullOrEmpty(txtPesoH.Text) Then
-        '    lblPesoH.Text = "*"
+        'If String.IsNullOrEmpty(txtBasura.Text) Then
+        '    lblBasura.Text = "*"
         '    validarflag = 0
         'Else
-        '    lblPesoH.Text = ""
+        '    lblBasura.Text = ""
         '    validarflag += 1
         'End If
 
-        If validarflag = 4 Then
+        If validarflag = 2 Then
             validarflag = 1
         Else
             validarflag = 0
@@ -408,7 +436,7 @@ Public Class CuadroProcesamiento
 
     Private Sub exportar()
 
-        Dim cadena As String = "*"
+        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, nombre_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
@@ -447,7 +475,7 @@ Public Class CuadroProcesamiento
             End If
         End If
 
-        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND no_lote IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -474,7 +502,7 @@ Public Class CuadroProcesamiento
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Acta de Recibo de Multiplicadores " & Today & " " & TxtProductorGrid.SelectedItem.Text & ".xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=Cuadro de procesamiento (secado, limpieza y clasificacion) " & Today & " " & TxtProductorGrid.SelectedItem.Text & ".xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
@@ -506,11 +534,11 @@ Public Class CuadroProcesamiento
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los datos de la fila actual
-            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "no_sacos").ToString()
+            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "semilla_QQ_total").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(10).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(12).Controls(0), Button)
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(16).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(18).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
@@ -560,5 +588,42 @@ Public Class CuadroProcesamiento
         rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
 
         Response.End()
+    End Sub
+
+    Protected Sub txtOro_TextChanged(sender As Object, e As EventArgs) Handles txtSemOro.TextChanged
+        total()
+    End Sub
+    Protected Sub txtConsumo_TextChanged(sender As Object, e As EventArgs) Handles txtConsumo.TextChanged
+        total()
+    End Sub
+    Protected Sub txtBasura_TextChanged(sender As Object, e As EventArgs) Handles txtBasura.TextChanged
+        total()
+    End Sub
+
+    Protected Sub total()
+        Dim valorOro As Decimal = 0
+        Dim valorConsu As Decimal = 0
+        Dim valorBasura As Decimal = 0
+
+        If Decimal.TryParse(txtSemOro.Text, valorOro) Then
+            valorOro = Convert.ToDecimal(txtSemOro.Text)
+        End If
+
+        If Decimal.TryParse(txtConsumo.Text, valorConsu) Then
+            valorConsu = Convert.ToDecimal(txtConsumo.Text)
+        End If
+
+        If Decimal.TryParse(txtBasura.Text, valorBasura) Then
+            valorBasura = Convert.ToDecimal(txtBasura.Text)
+        End If
+
+        ' Realizar la suma sin considerar los TextBox vacíos
+        Dim sumaTotal As Decimal = valorOro + valorConsu + valorBasura
+
+        If sumaTotal <> 0 Then
+            txtTotal.Text = sumaTotal.ToString()
+        Else
+            txtTotal.Text = ""
+        End If
     End Sub
 End Class
