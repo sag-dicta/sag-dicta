@@ -433,7 +433,6 @@ Public Class CuadroProcesamiento
             validarflag = 0
         End If
     End Sub
-
     Private Sub exportar()
 
         Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, nombre_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
@@ -475,7 +474,7 @@ Public Class CuadroProcesamiento
             End If
         End If
 
-        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & c2
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -485,24 +484,22 @@ Public Class CuadroProcesamiento
                     Using ds As New DataSet()
                         sda.Fill(ds)
 
-                        'Set Name of DataTables.
+                        ' Set Name of DataTables.
                         ds.Tables(0).TableName = "sag_registro_senasa"
 
                         Using wb As New XLWorkbook()
-                            For Each dt As DataTable In ds.Tables
-                                ' Add DataTable as Worksheet.
-                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+                            ' Add DataTable as Worksheet.
+                            wb.Worksheets.Add(ds.Tables(0), "sag_registro_senasa")
 
-                                ' Set auto width for all columns based on content.
-                                ws.Columns().AdjustToContents()
-                            Next
+                            ' Set auto width for all columns based on content.
+                            wb.Worksheet(1).Columns().AdjustToContents()
 
                             ' Export the Excel file.
                             Response.Clear()
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Cuadro de procesamiento (secado, limpieza y clasificacion) " & Today & " " & TxtProductorGrid.SelectedItem.Text & ".xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=Cuadro_de_procesamiento.xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
@@ -515,6 +512,7 @@ Public Class CuadroProcesamiento
             End Using
         End Using
     End Sub
+
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         exportar()
