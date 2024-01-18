@@ -672,7 +672,7 @@ Public Class agregarMultiplicador
 
         'nombre de la vista del data set
 
-        adap.Fill(ds, "sag_registro_senasa")
+        adap.Fill(ds, "sag_registro_senasa1")
 
         Dim nombre As String
 
@@ -1019,7 +1019,7 @@ Public Class agregarMultiplicador
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "sag_registro_senasa")
+            adap.Fill(ds, "sag_registro_senasa1")
 
             Dim nombre As String
 
