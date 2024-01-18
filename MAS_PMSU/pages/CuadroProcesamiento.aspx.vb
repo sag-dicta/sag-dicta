@@ -474,7 +474,7 @@ Public Class CuadroProcesamiento
             End If
         End If
 
-        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & c2
+        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)

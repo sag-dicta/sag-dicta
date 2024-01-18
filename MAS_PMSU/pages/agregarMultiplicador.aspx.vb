@@ -20,7 +20,7 @@ Public Class agregarMultiplicador
                 llenarcomboDepto()
                 llenarcomboDeptoGrid()
                 VerificarTextBox()
-                llenatxtproductor()
+                'llenatxtproductor()
                 llenagrid()
                 btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
@@ -198,6 +198,9 @@ Public Class agregarMultiplicador
         TxtPersonaFinca.Text = " "
         TxtLote.Text = " "
         'FileUpload
+        btnGuardarLote.Visible = True
+        Button1.Visible = False
+        Button2.Visible = False
         VerificarTextBox()
     End Sub
     Private Sub llenarcomboDepto()
@@ -326,24 +329,24 @@ Public Class agregarMultiplicador
     End Sub
 
 
-    Protected Sub llenarProdutor()
-        Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", txt_nombre_prod_new.Text)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        If DtCombo.Rows.Count > 0 Then
-            txt_nombre_prod_new.Text = DtCombo.Rows(0)("PROD_NOMBRE").ToString
-            TxtIdentidad.Text = DtCombo.Rows(0)("PROD_IDENTIDAD").ToString
-            TxtTelefono.Text = DtCombo.Rows(0)("PROD_TELEFONO").ToString
-
-            btnGuardarLote.Visible = True
-        Else
-            Response.Write("<script>window.alert('¡No existe productor en la base de datos!') </script>")
-        End If
-        VerificarTextBox()
-    End Sub
+    'Protected Sub llenarProdutor()
+    '    Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
+    '    Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+    '    adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", txt_nombre_prod_new.Text)
+    '    Dim DtCombo As New DataTable
+    '    adaptcombo.Fill(DtCombo)
+    '
+    '    If DtCombo.Rows.Count > 0 Then
+    '        txt_nombre_prod_new.Text = DtCombo.Rows(0)("PROD_NOMBRE").ToString
+    '        TxtIdentidad.Text = DtCombo.Rows(0)("PROD_IDENTIDAD").ToString
+    '        TxtTelefono.Text = DtCombo.Rows(0)("PROD_TELEFONO").ToString
+    '
+    '        btnGuardarLote.Visible = True
+    '    Else
+    '        Response.Write("<script>window.alert('¡No existe productor en la base de datos!') </script>")
+    '    End If
+    '    VerificarTextBox()
+    'End Sub
 
     Protected Sub gb_departamento_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_departamento_new.SelectedIndexChanged
         llenarmunicipio()
@@ -850,7 +853,7 @@ Public Class agregarMultiplicador
         TextBanderita.Text = "Guardar"
 
         If (TxtMultiplicador.SelectedIndex <> 0) Then
-            txtNombreRe.Text = TxtMultiplicador.SelectedValue
+            txtNombreRe.Text = TxtMultiplicador.SelectedItem.Text
         End If
 
         If TxtDepto.SelectedIndex <> 0 Then
@@ -864,7 +867,7 @@ Public Class agregarMultiplicador
                 llenarAldea()
             End If
         End If
-
+        VerificarTextBox()
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
     End Sub

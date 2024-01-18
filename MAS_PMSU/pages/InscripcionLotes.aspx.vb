@@ -20,7 +20,7 @@ Public Class InscripcionLotes
                 llenarcomboDepto()
                 llenarcomboDeptoGrid()
                 VerificarTextBox()
-                llenatxtproductor()
+                'llenatxtproductor()
                 llenagrid()
                 btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
@@ -797,10 +797,13 @@ Public Class InscripcionLotes
                 VariedadFrijol.Visible = True
                 VariedadMaiz.Visible = False
                 SeleccionarItemEnDropDownList(DropDownList5, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
-            Else
+            ElseIf dt.Rows(0)("tipo_cultivo").ToString() = "Frijol" Then
                 VariedadFrijol.Visible = False
                 VariedadMaiz.Visible = True
                 SeleccionarItemEnDropDownList(DropDownList6, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
+            Else
+                VariedadFrijol.Visible = False
+                VariedadMaiz.Visible = False
             End If
 
             txtprodsem.Text = If(dt.Rows(0)("productor") Is DBNull.Value, String.Empty, dt.Rows(0)("productor").ToString())
@@ -819,10 +822,13 @@ Public Class InscripcionLotes
                 variedadfrijol2.Visible = True
                 variedadmaiz2.Visible = False
                 SeleccionarItemEnDropDownList(DropDownList1, If(dt.Rows(0)("variedad_frijol") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad_frijol").ToString()))
-            Else
+            ElseIf dt.Rows(0)("cultivo_semilla").ToString() = "Maiz" Then
                 variedadfrijol2.Visible = False
                 variedadmaiz2.Visible = True
                 SeleccionarItemEnDropDownList(DropDownList2, If(dt.Rows(0)("variedad_maiz") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad_maiz").ToString()))
+            Else
+                variedadfrijol2.Visible = False
+                variedadmaiz2.Visible = False
             End If
 
             TxtHectareas.Text = If(dt.Rows(0)("superficie_hectarea") Is DBNull.Value, String.Empty, dt.Rows(0)("superficie_hectarea").ToString())
