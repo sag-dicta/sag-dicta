@@ -266,6 +266,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\FichaPeso.aspx" />
     <Content Include="pages\CuadroProcesamiento.aspx" />
     <Content Include="pages\AgregraActadeRecibo.aspx" />
     <Content Include="pages\AgregarConductor.aspx" />
@@ -2167,6 +2168,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ActaRecepcionReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\FichaPeso.aspx.designer.vb">
+      <DependentUpon>FichaPeso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\FichaPeso.aspx.vb">
+      <DependentUpon>FichaPeso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\CuadroProcesamiento.aspx.designer.vb">
       <DependentUpon>CuadroProcesamiento.aspx</DependentUpon>
