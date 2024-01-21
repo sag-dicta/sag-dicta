@@ -109,7 +109,7 @@ Public Class InscripcionLotes
                         cmd.ExecuteNonQuery()
                         connection.Close()
 
-                        Label3.Text = "¡Se ha registrado correctamente la el lote o inscripcion de SENASA!"
+                        Label3.Text = "¡Se ha editado correctamente el lote o inscripcion de SENASA!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
@@ -267,7 +267,7 @@ Public Class InscripcionLotes
                         cmd.ExecuteNonQuery()
                         connection.Close()
 
-                        Label3.Text = "¡Se ha registrado correctamente la el lote o inscripcion de SENASA!"
+                        Label3.Text = "¡Se ha registrado correctamente el lote o inscripcion de SENASA!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
