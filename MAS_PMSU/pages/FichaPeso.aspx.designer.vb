@@ -275,6 +275,15 @@ Partial Public Class FichaPeso
     Protected WithEvents TxtID As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control TextRespaldo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TextRespaldo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control lb_nombre_new.
     '''</summary>
     '''<remarks>

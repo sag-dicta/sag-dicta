@@ -54,7 +54,7 @@ Public Class InscSENASA_DescArch
 
     Private Sub llenarcomboProductor()
         If TxtDepto.SelectedItem.Text <> " " Then
-            Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_senasa WHERE departamento = @nombre AND estado = 1 ORDER BY nombre_multiplicador ASC"
+            Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_lote WHERE departamento = @nombre AND estado = 1 ORDER BY nombre_multiplicador ASC"
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
             Dim DtCombo As New DataTable
@@ -96,7 +96,7 @@ Public Class InscSENASA_DescArch
             c1 = "AND nombre_multiplicador = '" & TxtProductor.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM sag_registro_senasa WHERE Estado = '1' " & c1 & c4 & " ORDER BY Departamento, nombre_multiplicador"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM sag_registro_lote WHERE Estado = '1' " & c1 & c4 & " ORDER BY Departamento, nombre_multiplicador"
         GridDatos.DataBind()
     End Sub
 
@@ -125,7 +125,7 @@ Public Class InscSENASA_DescArch
         If (e.CommandName = "FichaLote") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT factura_comercio FROM `sag_registro_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT factura_comercio FROM `sag_registro_lote` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -175,7 +175,7 @@ Public Class InscSENASA_DescArch
         If (e.CommandName = "PagoTGR") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT certificado_origen_semilla FROM `sag_registro_senasa` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT certificado_origen_semilla FROM `sag_registro_lote` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)

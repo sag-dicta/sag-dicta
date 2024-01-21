@@ -129,22 +129,18 @@
                                         </asp:BoundField>
                                         <asp:BoundField DataField="nombre_productor" HeaderText="NOMBRE DEL PRODUCTOR" />
                                         <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
-                                        <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
-                                        <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
+                                        <asp:BoundField DataField="representante_legal" HeaderText="RESPONSABLE LEGAL" />
+                                        <asp:BoundField DataField="telefono_productor" HeaderText="TELEFONO" />
                                         <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
-                                        <asp:BoundField DataField="nombre_lote" HeaderText="N° DE LOTE" />
-                                        <asp:BoundField DataField="fecha_acta" HeaderText="FECHA DE INGRESO" />
-                                        <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO PRIMA EN LA PLANTA" />
+                                        <asp:BoundField DataField="tipo_cultivo" HeaderText="CULTIVO" />
+                                        <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
+                                        <asp:BoundField DataField="no_lote" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
-                                        <asp:BoundField DataField="peso_materia_prima_QQ_porce_humedad" HeaderText="PESO PRIMA AL 12% DE HUMEDAD (QQ)" />
-                                        <asp:BoundField DataField="semilla_QQ_oro" HeaderText="SEMILLA ORO (QQ)" />
-                                        <asp:BoundField DataField="semilla_QQ_consumo" HeaderText="SEMILLA CONSUMO (QQ)" />
-                                        <asp:BoundField DataField="semilla_QQ_basura" HeaderText="SEMILLA BASURA (QQ)" />
-                                        <asp:BoundField DataField="semilla_QQ_total" HeaderText="SEMILLA TOTAL (QQ)" />
+                                        <asp:BoundField DataField="no_sacos" HeaderText="CANTIDAD DE SACOS" />
+                                        <asp:BoundField DataField="semilla_QQ_oro" HeaderText="PESO BRUTO (QQ)" />
+                                        <asp:BoundField DataField="tara" HeaderText="TARA (QQ)" />
+                                        <asp:BoundField DataField="peso_neto" HeaderText="PESO NETO (QQ)" />
 
-                                        <asp:ButtonField ButtonType="Button" Text="observacion" ControlStyle-CssClass="btn btn-warning" HeaderText="Observaciones" CommandName="observacion">
-                                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
-                                        </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
@@ -189,6 +185,7 @@
                             <div class="form-group">
                                 <label for="txt">ID:</label>
                                 <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TextRespaldo" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -241,7 +238,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label>Humedad:</label><asp:Label ID="lblHumedad" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <label>Humedad (%):</label><asp:Label ID="lblHumedad" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtHumedad" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
                             </div>
                         </div>

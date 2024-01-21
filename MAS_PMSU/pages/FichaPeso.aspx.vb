@@ -26,7 +26,7 @@ Public Class FichaPeso
         End If
     End Sub
     Protected Sub vaciar(sender As Object, e As EventArgs)
-        Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+        Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
     End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
@@ -55,7 +55,7 @@ Public Class FichaPeso
         TxtProductorGrid.Items.Insert(0, newitem)
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, nombre_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
+        Dim cadena As String = "id, nombre_productor, departamento, representante_legal, telefono_productor, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, peso_humedo_QQ, semilla_QQ_oro, tara, peso_neto"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -94,7 +94,7 @@ Public Class FichaPeso
         End If
 
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
 
         GridDatos.DataBind()
     End Sub
@@ -169,21 +169,26 @@ Public Class FichaPeso
             BtnNuevo.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
+            Dim cadena As String = "nombre_productor, departamento, municipio, aldea, caserio, representante_legal, telefono_productor, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, semilla_QQ_oro"
             Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
-            'TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            'txtPeso12Hum.Text = If(dt.Rows(0)("peso_materia_prima_QQ_porce_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_materia_prima_QQ_porce_humedad").ToString())
-            ''CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
-            'txtSemOro.Text = If(dt.Rows(0)("semilla_QQ_oro") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_oro").ToString())
-            'txtConsumo.Text = If(dt.Rows(0)("semilla_QQ_consumo") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_consumo").ToString())
-            'txtBasura.Text = If(dt.Rows(0)("semilla_QQ_basura") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_basura").ToString())
-            'txtTotal.Text = If(dt.Rows(0)("semilla_QQ_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_total").ToString())
-            'txtObserv.Text = If(dt.Rows(0)("observaciones") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones").ToString())
-            'Verificar()
+            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            txt_nombre_prod_new.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
+            CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
+            txtLugProc.Text = TextRespaldo.Text
+            Txt_Representante_Legal.Text = If(dt.Rows(0)("representante_legal") Is DBNull.Value, String.Empty, dt.Rows(0)("representante_legal").ToString())
+            TxtTelefono.Text = If(dt.Rows(0)("telefono_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("telefono_productor").ToString())
+            txtCategoria.Text = If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString())
+            txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
+            txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
+            TxtLote.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
+            txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
+            txtCantSaco.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
+            txtPesoBrut.Text = If(dt.Rows(0)("semilla_QQ_oro") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_oro").ToString())
+            Verificar()
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -258,25 +263,15 @@ Public Class FichaPeso
             connection.Open()
 
             Dim query As String = "UPDATE sag_registro_senasa 
-                    SET peso_materia_prima_QQ_porce_humedad = @peso_materia_prima_QQ_porce_humedad,
-                        semilla_QQ_oro = @semilla_QQ_oro,
-                        semilla_QQ_consumo = @semilla_QQ_consumo,
-                        semilla_QQ_basura = @semilla_QQ_basura,
-                        semilla_QQ_total = @semilla_QQ_total,
-                        observaciones = @observaciones
+                    SET tara = @tara,
                 WHERE id = " & TxtID.Text & ""
 
             Using cmd As New MySqlCommand(query, connection)
 
-                cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", DBNull.Value)
-                cmd.Parameters.AddWithValue("@semilla_QQ_oro", DBNull.Value)
-                cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
-                cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
-                cmd.Parameters.AddWithValue("@semilla_QQ_total", DBNull.Value)
-                cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
+                cmd.Parameters.AddWithValue("@tara", DBNull.Value)
                 cmd.ExecuteNonQuery()
                 connection.Close()
-                Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+                Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
             End Using
 
         End Using
@@ -347,40 +342,20 @@ Public Class FichaPeso
             connection.Open()
 
             Dim query As String = "UPDATE sag_registro_senasa SET
-                peso_materia_prima_QQ_porce_humedad = @peso_materia_prima_QQ_porce_humedad,
-                semilla_QQ_oro = @semilla_QQ_oro,
-                semilla_QQ_consumo = @semilla_QQ_consumo,
-                semilla_QQ_basura = @semilla_QQ_basura,
-                semilla_QQ_total = @semilla_QQ_total,
-                observaciones = @observaciones
+                tara = @tara,
+                peso_neto = @peso_neto
             WHERE id = " & TxtID.Text & ""
 
             Using cmd As New MySqlCommand(query, connection)
 
 
-                'cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", Convert.ToDecimal(txtPeso12Hum.Text)) ' Aquí se formatea correctamente como yyyy-MM-dd
-                'cmd.Parameters.AddWithValue("@semilla_QQ_oro", Convert.ToDecimal(txtSemOro.Text))
-                'If txtConsumo.Text = "" Then
-                '    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
-                'Else
-                '    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", Convert.ToInt64(txtConsumo.Text))
-                'End If
-                'If txtBasura.Text = "" Then
-                '    cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
-                'Else
-                '    cmd.Parameters.AddWithValue("@semilla_QQ_basura", Convert.ToDecimal(txtBasura.Text))
-                'End If
-                'cmd.Parameters.AddWithValue("@semilla_QQ_total", Convert.ToDecimal(txtTotal.Text))
-                'If txtObserv.Text = "" Then
-                '    cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
-                'Else
-                '    cmd.Parameters.AddWithValue("@observaciones", txtObserv.Text)
-                'End If
+                cmd.Parameters.AddWithValue("@tara", Convert.ToDecimal(txtTara.Text))
+                cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtTara.Text))
 
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
-                Label103.Text = "¡Se ha registrado correctamente el cuadro de procesamiento (secado, limpieza y clasificación)!"
+                Label103.Text = "¡Se ha registrado correctamente la ficha de peso al recibo lotes de semilla (pesaje y embolsado)!"
                 BBorrarsi.Visible = False
                 BBorrarno.Visible = False
                 BConfirm.Visible = True
@@ -395,13 +370,13 @@ Public Class FichaPeso
     End Sub
     Protected Sub Verificar()
         '1
-        'If String.IsNullOrEmpty(txtPeso12Hum.Text) Then
-        '    lblPeso12Hum.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblPeso12Hum.Text = ""
-        '    validarflag += 1
-        'End If
+        If String.IsNullOrEmpty(txtTara.Text) Then
+            lblTara.Text = "*"
+            validarflag = 0
+        Else
+            lblTara.Text = ""
+            validarflag += 1
+        End If
         ''2
         'If String.IsNullOrEmpty(txtSemOro.Text) Then
         '    lblSemOro.Text = "*"
@@ -427,7 +402,7 @@ Public Class FichaPeso
         '    validarflag += 1
         'End If
 
-        If validarflag = 2 Then
+        If validarflag = 1 Then
             validarflag = 1
         Else
             validarflag = 0
@@ -526,17 +501,17 @@ Public Class FichaPeso
 
         Dim resultado As String = String.Format("{0}-{1}-{2}-{3}", dep, mun, ald, cas)
 
-        'Textrespaldo.Text = resultado
+        TextRespaldo.Text = resultado
     End Sub
 
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los datos de la fila actual
-            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "semilla_QQ_total").ToString()
+            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "tara").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(16).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(18).Controls(0), Button)
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(14).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(16).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
@@ -588,40 +563,36 @@ Public Class FichaPeso
         Response.End()
     End Sub
 
-    'Protected Sub txtOro_TextChanged(sender As Object, e As EventArgs) Handles txtSemOro.TextChanged
-    '    total()
-    'End Sub
-    'Protected Sub txtConsumo_TextChanged(sender As Object, e As EventArgs) Handles txtConsumo.TextChanged
-    '    total()
-    'End Sub
-    'Protected Sub txtBasura_TextChanged(sender As Object, e As EventArgs) Handles txtBasura.TextChanged
-    '    total()
-    'End Sub
+    Protected Sub txtPesoBrut_TextChanged(sender As Object, e As EventArgs) Handles txtPesoBrut.TextChanged
+        total()
+    End Sub
+    Protected Sub txtTara_TextChanged(sender As Object, e As EventArgs) Handles txtTara.TextChanged
+        total()
+    End Sub
+    Protected Sub txtPesoNeto_TextChanged(sender As Object, e As EventArgs) Handles txtPesoNeto.TextChanged
+        total()
+    End Sub
 
     Protected Sub total()
         Dim valorOro As Decimal = 0
-        Dim valorConsu As Decimal = 0
-        Dim valorBasura As Decimal = 0
+        Dim valortara As Decimal = 0
 
-        'If Decimal.TryParse(txtSemOro.Text, valorOro) Then
-        '    valorOro = Convert.ToDecimal(txtSemOro.Text)
-        'End If
+        If Decimal.TryParse(txtPesoBrut.Text, valorOro) Then
+            valorOro = Convert.ToDecimal(txtPesoBrut.Text)
+        End If
 
-        'If Decimal.TryParse(txtConsumo.Text, valorConsu) Then
-        '    valorConsu = Convert.ToDecimal(txtConsumo.Text)
-        'End If
+        If Decimal.TryParse(txtTara.Text, valortara) Then
+            valortara = Convert.ToDecimal(txtTara.Text)
+        End If
 
-        'If Decimal.TryParse(txtBasura.Text, valorBasura) Then
-        '    valorBasura = Convert.ToDecimal(txtBasura.Text)
-        'End If
+        Dim sumaTotal As Decimal
 
-        '' Realizar la suma sin considerar los TextBox vacíos
-        'Dim sumaTotal As Decimal = valorOro + valorConsu + valorBasura
+        sumaTotal = valorOro - valortara
 
-        'If sumaTotal <> 0 Then
-        '    txtTotal.Text = sumaTotal.ToString()
-        'Else
-        '    txtTotal.Text = ""
-        'End If
+        If sumaTotal <> 0 Then
+            txtPesoNeto.Text = sumaTotal.ToString()
+        Else
+            txtPesoNeto.Text = "0.00"
+        End If
     End Sub
 End Class

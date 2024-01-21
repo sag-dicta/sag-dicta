@@ -41,7 +41,7 @@ Public Class agregarMultiplicador
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "INSERT INTO sag_registro_senasa (nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
+                    Dim query As String = "INSERT INTO sag_registro_multiplicador (nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
                 cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, estado) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
                 @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
                 @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @estado)"
@@ -106,7 +106,7 @@ Public Class agregarMultiplicador
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "UPDATE sag_registro_senasa 
+                    Dim query As String = "UPDATE sag_registro_multiplicador 
                     SET nombre_productor = @nombre_productor,
                         representante_legal = @representante_legal,
                         identidad_productor = @identidad_productor,
@@ -665,14 +665,14 @@ Public Class agregarMultiplicador
         Dim rptdocument As New ReportDocument
         'nombre de dataset
         Dim ds As New DataSetMultiplicador
-        Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
+        Dim Str As String = "SELECT * FROM sag_registro_multiplicador WHERE nombre_multiplicador = @valor"
         Dim adap As New MySqlDataAdapter(Str, conn)
         adap.SelectCommand.Parameters.AddWithValue("@valor", txtNombreRe.Text)
         Dim dt As New DataTable
 
         'nombre de la vista del data set
 
-        adap.Fill(ds, "sag_registro_senasa1")
+        adap.Fill(ds, "sag_registro_multiplicador")
 
         Dim nombre As String
 
@@ -756,7 +756,7 @@ Public Class agregarMultiplicador
         End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
 
         GridDatos.DataBind()
     End Sub
@@ -819,7 +819,7 @@ Public Class agregarMultiplicador
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_senasa WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -834,7 +834,7 @@ Public Class agregarMultiplicador
     Private Sub llenarcomboProductor2()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_senasa WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' "
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -906,7 +906,7 @@ Public Class agregarMultiplicador
             c3 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        query = "SELECT " & cadena & " FROM sag_registro_senasa WHERE 1 = 1 " & c1 & c2 & c3
+        query = "SELECT " & cadena & " FROM sag_registro_multiplicador WHERE 1 = 1 " & c1 & c2 & c3
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -917,7 +917,7 @@ Public Class agregarMultiplicador
                         sda.Fill(ds)
 
                         'Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_registro_senasa"
+                        ds.Tables(0).TableName = "sag_registro_multiplicador"
 
                         Using wb As New XLWorkbook()
                             For Each dt As DataTable In ds.Tables
@@ -964,7 +964,7 @@ Public Class agregarMultiplicador
             fileUP.Visible = False
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT * FROM sag_registro_multiplicador WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -1012,14 +1012,14 @@ Public Class agregarMultiplicador
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
+            Dim Str As String = "SELECT * FROM sag_registro_multiplicador WHERE nombre_multiplicador = @valor"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
             Dim dt As New DataTable
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "sag_registro_senasa1")
+            adap.Fill(ds, "sag_registro_multiplicador")
 
             Dim nombre As String
 
@@ -1088,7 +1088,7 @@ Public Class agregarMultiplicador
         Using connection As New MySqlConnection(connectionString)
             connection.Open()
 
-            Dim query As String = "UPDATE sag_registro_senasa 
+            Dim query As String = "UPDATE sag_registro_multiplicador 
                     SET estado = @estado
                 WHERE id = " & txtID.Text & ""
 

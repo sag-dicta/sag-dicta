@@ -41,7 +41,7 @@ Public Class InscripcionLotes
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "UPDATE sag_registro_senasa SET
+                    Dim query As String = "UPDATE sag_registro_lote SET
                         categoria_origen = @categoria_origen,
                         tipo_cultivo = @tipo_cultivo,
                         variedad = @variedad,
@@ -105,6 +105,164 @@ Public Class InscripcionLotes
                         End If
                         cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
                         cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
+
+                        cmd.ExecuteNonQuery()
+                        connection.Close()
+
+                        Label3.Text = "¡Se ha registrado correctamente la el lote o inscripcion de SENASA!"
+                        BBorrarsi.Visible = False
+                        BBorrarno.Visible = False
+                        ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                        btnGuardarLote.Visible = False
+
+                    End Using
+                End Using
+            Else
+                LabelGuardar.Visible = False
+                LabelGuardar.Text = ""
+                Dim connectionString As String = conn
+                Using connection As New MySqlConnection(connectionString)
+                    connection.Open()
+
+                    Dim query As String = "INSERT INTO sag_registro_lote (
+                    nombre_productor,
+                    representante_legal,
+                    identidad_productor,
+                    extendida,
+                    residencia_productor,
+                    telefono_productor,
+                    no_registro_productor,
+                    nombre_multiplicador,
+                    cedula_multiplicador,
+                    telefono_multiplicador,
+                    nombre_finca,
+                    departamento,
+                    municipio,
+                    aldea,
+                    caserio,
+                    nombre_persona_finca,
+                    nombre_lote,
+                    estado,
+                    categoria_origen,
+                    tipo_cultivo,
+                    variedad,
+                    productor,
+                    no_lote,
+                    fecha_analisis,
+                    ano_produ,
+                    categoria_semilla,
+                    tipo_semilla,
+                    cultivo_semilla,
+                    variedad_frijol,
+                    variedad_maiz,
+                    superficie_hectarea,
+                    fecha_aprox_siembra,
+                    fecha_aprox_cosecha,
+                    produccion_est_hectareas,
+                    destino
+                ) VALUES (
+                    @nombre_productor, 
+                    @representante_legal, 
+                    @identidad_productor, 
+                    @extendida, 
+                    @residencia_productor, 
+                    @telefono_productor, 
+                    @no_registro_productor, 
+                    @nombre_multiplicador, 
+                    @cedula_multiplicador, 
+                    @telefono_multiplicador, 
+                    @nombre_finca, 
+                    @departamento, 
+                    @municipio, 
+                    @aldea, 
+                    @caserio, 
+                    @nombre_persona_finca, 
+                    @nombre_lote, 
+                    @estado,
+                    @categoria_origen,
+                    @tipo_cultivo,
+                    @variedad,
+                    @productor,
+                    @no_lote,
+                    @fecha_analisis,
+                    @ano_produ,
+                    @categoria_semilla,
+                    @tipo_semilla,
+                    @cultivo_semilla,
+                    @variedad_frijol,
+                    @variedad_maiz,
+                    @superficie_hectarea,
+                    @fecha_aprox_siembra,
+                    @fecha_aprox_cosecha,
+                    @produccion_est_hectareas,
+                    @destino
+                );
+                "
+                    Dim fechaConvertida As DateTime
+                    Dim fechaConvertida2 As DateTime
+                    Dim fechaConvertida3 As DateTime
+                    Dim fechaConvertida4 As DateTime
+
+                    Using cmd As New MySqlCommand(query, connection)
+                        cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
+                        cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
+                        cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
+                        If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
+                            cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd"))
+                        End If
+                        cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
+                        cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
+                        cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
+                        cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
+                        cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
+                        cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
+                        cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
+                        cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
+                        cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
+                        cmd.Parameters.AddWithValue("@categoria_origen", categoria_origen_ddl.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
+                        Dim selectedValue As String = CmbTipoSemilla.SelectedValue
+                        If selectedValue = "Frijol" Then
+                            cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
+                        ElseIf selectedValue = "Maiz" Then
+                            cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
+                        End If
+                        cmd.Parameters.AddWithValue("@productor", txtprodsem.Text)
+                        cmd.Parameters.AddWithValue("@no_lote", TextBox3.Text)
+                        If DateTime.TryParse(TextBox4.Text, fechaConvertida2) Then
+                            cmd.Parameters.AddWithValue("@fecha_analisis", fechaConvertida2.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                        End If
+                        cmd.Parameters.AddWithValue("@ano_produ", TextBox6.Text)
+
+                        cmd.Parameters.AddWithValue("@categoria_semilla", DdlCategoria.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@tipo_semilla", DdlTipo.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@cultivo_semilla", DropDownList3.SelectedItem.Text)
+                        Dim selectedValue2 As String = DropDownList3.SelectedItem.Text
+                        If selectedValue = "Frijol" Then
+                            cmd.Parameters.AddWithValue("@variedad_frijol", DropDownList1.SelectedItem.Text)
+                        Else
+                            cmd.Parameters.AddWithValue("@variedad_frijol", DBNull.Value)
+                        End If
+                        If selectedValue = "Maiz" Then
+                            cmd.Parameters.AddWithValue("@variedad_maiz", DropDownList2.SelectedItem.Text)
+                        Else
+                            cmd.Parameters.AddWithValue("@variedad_maiz", DBNull.Value)
+                        End If
+                        cmd.Parameters.AddWithValue("@superficie_hectarea", Convert.ToDouble(TxtHectareas.Text))
+                        If DateTime.TryParse(TxtFechaSiembra.Text, fechaConvertida3) Then
+                            cmd.Parameters.AddWithValue("@fecha_aprox_siembra", fechaConvertida3.ToString("yyyy-MM-dd"))
+                        End If
+                        If DateTime.TryParse(TxtCosecha.Text, fechaConvertida4) Then
+                            cmd.Parameters.AddWithValue("@fecha_aprox_cosecha", fechaConvertida4.ToString("yyyy-MM-dd"))
+                        End If
+                        cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
+                        cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@estado", "1")
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
@@ -302,7 +460,7 @@ Public Class InscripcionLotes
     End Sub
 
     Protected Sub gb_municipio_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_municipio_new.SelectedIndexChanged
-        gb_caserio_new.Enabled = False
+        'gb_caserio_new.Enabled = False
         llenarAldea()
         VerificarTextBox()
     End Sub
@@ -473,14 +631,14 @@ Public Class InscripcionLotes
         Dim rptdocument As New ReportDocument
         'nombre de dataset
         Dim ds As New DataSetMultiplicador
-        Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
+        Dim Str As String = "SELECT * FROM sag_registro_lote WHERE nombre_multiplicador = @valor"
         Dim adap As New MySqlDataAdapter(Str, conn)
         adap.SelectCommand.Parameters.AddWithValue("@valor", txtNombreRe.Text)
         Dim dt As New DataTable
 
         'nombre de la vista del data set
 
-        adap.Fill(ds, "sag_registro_senasa")
+        adap.Fill(ds, "sag_registro_lote")
 
         Dim nombre As String
 
@@ -551,7 +709,7 @@ Public Class InscripcionLotes
             c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_lote` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
 
         GridDatos.DataBind()
     End Sub
@@ -588,7 +746,7 @@ Public Class InscripcionLotes
     End Function
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         llenarmunicipioGrid()
-        llenarcomboProductor2()
+        'llenarcomboProductor2()
         llenagrid()
     End Sub
 
@@ -614,14 +772,14 @@ Public Class InscripcionLotes
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_senasa WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        StrCombo = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_lote WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
         TxtMultiplicador.DataSource = DtCombo
         TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
+        TxtMultiplicador.DataTextField = DtCombo.Columns(0).ToString()
         TxtMultiplicador.DataBind()
         Dim newitem As New ListItem("Todos", "Todos")
         TxtMultiplicador.Items.Insert(0, newitem)
@@ -629,7 +787,7 @@ Public Class InscripcionLotes
     Private Sub llenarcomboProductor2()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_senasa WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        StrCombo = "SELECT DISTINCT * FROM sag_registro_lote WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' "
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -641,33 +799,61 @@ Public Class InscripcionLotes
         Dim newitem As New ListItem("Todos", "Todos")
         TxtMultiplicador.Items.Insert(0, newitem)
     End Sub
-    'Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
-    '
-    '    DivCrearNuevo.Visible = True
-    '    DivGrid.Visible = False
-    '
-    '    If (TxtMultiplicador.SelectedIndex <> 0) Then
-    '        txtNombreRe.Text = TxtMultiplicador.SelectedValue
-    '    End If
-    '
-    '    If TxtDepto.SelectedIndex <> 0 Then
-    '        gb_departamento_new.SelectedIndex = TxtDepto.SelectedIndex
-    '        llenarmunicipio()
-    '
-    '        If TxtMunicipio.SelectedIndex = 0 Then
-    '            gb_municipio_new.SelectedIndex = 0
-    '        Else
-    '            gb_municipio_new.SelectedIndex = TxtMunicipio.SelectedIndex
-    '            llenarAldea()
-    '        End If
-    '    End If
-    '
-    '    'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
-    '
-    'End Sub
+    Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
+
+        DivCrearNuevo.Visible = True
+        DivGrid.Visible = False
+        btnGuardarLote.Text = "Guardar"
+
+        Dim c1 As String = ""
+        Dim c3 As String = ""
+        Dim c4 As String = ""
+
+        Dim Str As String = "SELECT * FROM sag_registro_multiplicador WHERE 1=1"
+
+        If (TxtMultiplicador.SelectedItem.Text <> "Todos") Then
+            Str &= " AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "'"
+        End If
+
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+        adap.Fill(dt)
+
+        txt_nombre_prod_new.Text = dt.Rows(0)("nombre_productor").ToString()
+        Txt_Representante_Legal.Text = dt.Rows(0)("representante_legal").ToString()
+        TxtIdentidad.Text = dt.Rows(0)("identidad_productor").ToString()
+        TextBox1.Text = DirectCast(dt.Rows(0)("extendida"), DateTime).ToString("yyyy-MM-dd")
+        TxtResidencia.Text = dt.Rows(0)("residencia_productor").ToString()
+        TxtTelefono.Text = dt.Rows(0)("telefono_productor").ToString()
+        txtNoRegistro.Text = dt.Rows(0)("no_registro_productor").ToString()
+        txtNombreRe.Text = dt.Rows(0)("nombre_multiplicador").ToString()
+        txtIdentidadRe.Text = dt.Rows(0)("cedula_multiplicador").ToString()
+        TxtTelefonoRe.Text = dt.Rows(0)("telefono_multiplicador").ToString()
+        TxtNombreFinca.Text = dt.Rows(0)("nombre_finca").ToString()
+        SeleccionarItemEnDropDownList(gb_departamento_new, dt.Rows(0)("departamento").ToString())
+        llenarmunicipio()
+        SeleccionarItemEnDropDownList(gb_municipio_new, dt.Rows(0)("municipio").ToString())
+        llenarAldea()
+        SeleccionarItemEnDropDownList(gb_aldea_new, dt.Rows(0)("aldea").ToString())
+        llenarCaserio()
+        SeleccionarItemEnDropDownList(gb_caserio_new, dt.Rows(0)("caserio").ToString())
+        TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
+        TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
+        gb_aldea_new.Enabled = False
+        gb_caserio_new.Enabled = False
+        gb_municipio_new.Enabled = False
+        VerificarTextBox()
+        'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+
+    End Sub
 
     Protected Sub TxtMultiplicador_SelectedIndexChanged(sender As Object, e As EventArgs)
         llenagrid()
+        If TxtMultiplicador.SelectedItem.Text <> "Todos" Then
+            BAgregar.Visible = True
+        Else
+            BAgregar.Visible = False
+        End If
     End Sub
 
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
@@ -700,7 +886,7 @@ Public Class InscripcionLotes
             c3 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        query = "SELECT " & cadena & " FROM sag_registro_senasa WHERE 1 = 1 " & c1 & c2 & c3
+        query = "SELECT " & cadena & " FROM sag_registro_lote WHERE 1 = 1 " & c1 & c2 & c3
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -711,7 +897,7 @@ Public Class InscripcionLotes
                         sda.Fill(ds)
 
                         'Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_registro_senasa"
+                        ds.Tables(0).TableName = "sag_registro_lote"
 
                         Using wb As New XLWorkbook()
                             For Each dt As DataTable In ds.Tables
@@ -758,8 +944,8 @@ Public Class InscripcionLotes
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,croquis,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino, categoria_origen"
-            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim cadena As String = "nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino, categoria_origen"
+            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_lote WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -797,7 +983,7 @@ Public Class InscripcionLotes
                 VariedadFrijol.Visible = True
                 VariedadMaiz.Visible = False
                 SeleccionarItemEnDropDownList(DropDownList5, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
-            ElseIf dt.Rows(0)("tipo_cultivo").ToString() = "Frijol" Then
+            ElseIf dt.Rows(0)("tipo_cultivo").ToString() = "Maiz" Then
                 VariedadFrijol.Visible = False
                 VariedadMaiz.Visible = True
                 SeleccionarItemEnDropDownList(DropDownList6, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
@@ -863,14 +1049,14 @@ Public Class InscripcionLotes
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
+            Dim Str As String = "SELECT * FROM sag_registro_lote WHERE nombre_multiplicador = @valor"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
             Dim dt As New DataTable
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "sag_registro_senasa1")
+            adap.Fill(ds, "sag_registro_lote")
 
             Dim nombre As String
 
@@ -939,7 +1125,7 @@ Public Class InscripcionLotes
         Using connection As New MySqlConnection(connectionString)
             connection.Open()
 
-            Dim query As String = "UPDATE sag_registro_senasa 
+            Dim query As String = "UPDATE sag_registro_lote 
                     SET estado = @estado
                 WHERE id = " & txtID.Text & ""
 
@@ -1042,7 +1228,7 @@ Public Class InscripcionLotes
                 Dim bytesPagoTGR As Byte() = FileUploadToBytes(FileUploadPagoTGR)
 
                 ' Actualizar bytes en la base de datos
-                Dim query As String = "UPDATE sag_registro_senasa SET certificado_origen_semilla = @certificado_origen_semilla, factura_comercio = @factura_comercio WHERE ID=" & txtID.Text & " "
+                Dim query As String = "UPDATE sag_registro_lote SET certificado_origen_semilla = @certificado_origen_semilla, factura_comercio = @factura_comercio WHERE ID=" & txtID.Text & " "
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@certificado_origen_semilla", bytesFichaSemilla)
                     cmd.Parameters.AddWithValue("@factura_comercio", bytesPagoTGR)
@@ -1075,6 +1261,7 @@ Public Class InscripcionLotes
         End If
         Return esValida
     End Function
+
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los datos de la fila actual
