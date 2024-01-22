@@ -50,175 +50,31 @@ Partial Public Class AgregraActadeRecibo
     Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control DDL_SelCult.
+    '''Control txtciclo.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DDL_SelCult As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtciclo As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control VariedadFrijol.
+    '''Control DDL_SelCLote.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents VariedadFrijol As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents DDL_SelCLote As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control Label4.
+    '''Control BAgregar.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control DropDownList5.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DropDownList5 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control Amadeus77v1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Amadeus77v1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Carrizalitov1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Carrizalitov1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Azabachev1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Azabachev1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Paraisitomejoradov1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Paraisitomejoradov1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Deorhov1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Deorhov1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control IntaCardenasv1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents IntaCardenasv1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Lencaprecozv1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Lencaprecozv1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Rojochortív1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Rojochortív1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control Tolupanrojov1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Tolupanrojov1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control VariedadMaiz.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents VariedadMaiz As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
-    '''Control Label6.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control DropDownList6.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DropDownList6 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control DictaMayav1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DictaMayav1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control DictaVictoriav1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents DictaVictoriav1 As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control OtroMaizv1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents OtroMaizv1 As Global.System.Web.UI.WebControls.ListItem
+    Protected WithEvents BAgregar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control lblTotalClientes.
@@ -318,6 +174,42 @@ Partial Public Class AgregraActadeRecibo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Textrespaldo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Textdepart.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Textdepart As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Textmuni.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Textmuni As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Textalde.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Textalde As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Textcase.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Textcase As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control lblProductor.
@@ -480,6 +372,24 @@ Partial Public Class AgregraActadeRecibo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtPesoH As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Labelciclo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Labelciclo As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDL_Ciclo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_Ciclo As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control LabelGuardar.

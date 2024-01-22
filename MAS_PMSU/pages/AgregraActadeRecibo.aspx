@@ -27,7 +27,7 @@
                 <div class="panel-body">
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Productor:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
@@ -35,56 +35,36 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Departamento:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                             <div class="form-group">
-                                <label>Seleccione Cultivo:</label>
-                                <asp:DropDownList CssClass="form-control" ID="DDL_SelCult" runat="server" AutoPostBack="True">
+                                <label>Seleccione Ciclo:</label>
+                                <asp:DropDownList CssClass="form-control" ID="txtciclo" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
-                                    <asp:ListItem Text="Frijol"></asp:ListItem>
-                                    <asp:ListItem Text="Maiz"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-3" id="VariedadFrijol" runat="server" visible="false">
+                        <div class="col-lg-3">
                             <div class="form-group">
-                                <div class="form-group">
-                                    <label>Variedad Frijol</label>
-                                    <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:DropDownList CssClass="form-control" ID="DropDownList5" runat="server" AutoPostBack="true">
-                                        <asp:ListItem Text="Todos"></asp:ListItem>
-                                        <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
-                                        <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
-                                        <asp:ListItem id="Azabachev1" Text="Azabache"></asp:ListItem>
-                                        <asp:ListItem id="Paraisitomejoradov1" Text="Paraisito mejorado PM-2"></asp:ListItem>
-                                        <asp:ListItem id="Deorhov1" Text="Deorho"></asp:ListItem>
-                                        <asp:ListItem id="IntaCardenasv1" Text="Inta Cárdenas"></asp:ListItem>
-                                        <asp:ListItem id="Lencaprecozv1" Text="Lenca precoz"></asp:ListItem>
-                                        <asp:ListItem id="Rojochortív1" Text="Rojo chortí"></asp:ListItem>
-                                        <asp:ListItem id="Tolupanrojov1" Text="Tolupan rojo"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3" id="VariedadMaiz" runat="server" visible="false">
-                            <div class="form-group">
-                                <label>Variedades Maiz</label><asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" AutoPostBack="true">
+                                <label>Seleccione Numero de lote:</label>
+                                <asp:DropDownList CssClass="form-control" ID="DDL_SelCLote" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
-                                    <asp:ListItem id="DictaMayav1" Text="Dicta Maya"></asp:ListItem>
-                                    <asp:ListItem id="DictaVictoriav1" Text="Dicta Victoria"></asp:ListItem>
-                                    <asp:ListItem id="OtroMaizv1" Text="Otro"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                            <div class="col-lg-12">
+                                <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
+                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Acta" CssClass="btn btn-success" Visible="false" />
+                            </div>
+                        </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive">
@@ -132,10 +112,11 @@
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
                                         <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
-                                        <asp:BoundField DataField="nombre_lote" HeaderText="N° DE LOTE" />
+                                        <asp:BoundField DataField="no_lote" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD" />
                                         <asp:BoundField DataField="no_sacos" HeaderText="N° DE SACOS" />
                                         <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO HUMEDO (QQ)" />
+                                        <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
 
                                         <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -196,6 +177,10 @@
                                 <asp:Label ID="lblProcedencia" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtProcedencia" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
                                 <asp:TextBox CssClass="form-control" ID="Textrespaldo" runat="server" AutoPostBack="false" Visible="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="Textdepart" runat="server" AutoPostBack="false" Visible="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="Textmuni" runat="server" AutoPostBack="false" Visible="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="Textalde" runat="server" AutoPostBack="false" Visible="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="Textcase" runat="server" AutoPostBack="false" Visible="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -254,6 +239,15 @@
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator43" runat="server" ControlToValidate="txtPesoH" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                 <asp:Label ID="lblPesoH" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox ID="txtPesoH" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Seleccione Ciclo:</label>
+                                <asp:Label ID="Labelciclo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="DDL_Ciclo" runat="server" AutoPostBack="True" OnTextChanged="Verificar">
+                                    <asp:ListItem Text=" " Value="0"></asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                         </div>
                     </div>

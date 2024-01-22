@@ -22,6 +22,7 @@ Public Class AgregraActadeRecibo
                 txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
                 llenarcomboProductor()
                 llenarcomboDepto()
+                llenarcomboCiclogrid()
                 llenagrid()
             End If
         End If
@@ -42,8 +43,35 @@ Public Class AgregraActadeRecibo
         Dim newitem As New ListItem("Todos", "Todos")
         TxtDepto.Items.Insert(0, newitem)
     End Sub
+    Private Sub llenarcomboCiclo()
+        Dim StrCombo As String = "SELECT * FROM sag_ciclo"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDL_Ciclo.DataSource = DtCombo
+        DDL_Ciclo.DataValueField = DtCombo.Columns(0).ToString()
+        DDL_Ciclo.DataTextField = DtCombo.Columns(1).ToString
+        DDL_Ciclo.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DDL_Ciclo.Items.Insert(0, newitem)
+    End Sub
+
+    Private Sub llenarcomboCiclogrid()
+        Dim StrCombo As String = "SELECT * FROM sag_ciclo"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        txtciclo.DataSource = DtCombo
+        txtciclo.DataValueField = DtCombo.Columns(0).ToString()
+        txtciclo.DataTextField = DtCombo.Columns(1).ToString
+        txtciclo.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        txtciclo.Items.Insert(0, newitem)
+    End Sub
     Private Sub llenarcomboProductor()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' "
+        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' "
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -55,12 +83,27 @@ Public Class AgregraActadeRecibo
         Dim newitem As New ListItem("Todos", "Todos")
         TxtProductorGrid.Items.Insert(0, newitem)
     End Sub
+    Private Sub llenarcomboLote()
+        If TxtProductorGrid.SelectedItem.Text <> "Todos" Then
+            Dim StrCombo As String = "SELECT DISTINCT no_lote FROM `sag_registro_lote` WHERE nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' AND estado = '1' "
+            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+            Dim DtCombo As New DataTable
+            adaptcombo.Fill(DtCombo)
+
+            DDL_SelCLote.DataSource = DtCombo
+            DDL_SelCLote.DataValueField = DtCombo.Columns(0).ToString()
+            DDL_SelCLote.DataTextField = DtCombo.Columns(0).ToString
+            DDL_SelCLote.DataBind()
+            Dim newitem As New ListItem("Todos", "Todos")
+            DDL_SelCLote.Items.Insert(0, newitem)
+        End If
+    End Sub
     Sub llenagrid()
         Dim cadena As String = "*"
         Dim c1 As String = ""
         Dim c3 As String = ""
-        Dim c4 As String = ""
         Dim c2 As String = ""
+        Dim c4 As String = ""
 
         If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
@@ -74,121 +117,108 @@ Public Class AgregraActadeRecibo
             c2 = "AND  departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        If (DDL_SelCult.SelectedItem.Text = "Todos") Then
+        If (DDL_SelCLote.SelectedItem.Text = "Todos") Then
             c3 = " "
         Else
-            c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
+            c3 = "AND no_lote = '" & DDL_SelCLote.SelectedItem.Text & "' "
         End If
 
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            If (DropDownList5.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
-            End If
+        If (txtciclo.SelectedItem.Text = "Todos") Then
+            c4 = " "
         Else
-            If (DropDownList6.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
-            End If
+            c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
         End If
 
-
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND no_lote IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND ciclo_acta IS NOT NULL AND estado = '1' " & c1 & c3 & c2 & c4
 
         GridDatos.DataBind()
     End Sub
     Protected Sub TxtProductorGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductorGrid.SelectedIndexChanged
         llenagrid()
-    End Sub
-    Protected Sub DDL_SelCult_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_SelCult.SelectedIndexChanged
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            VariedadFrijol.Visible = True
-            VariedadMaiz.Visible = False
-            DropDownList6.SelectedIndex = 0
-        End If
+        llenarcomboLote()
 
-        If DDL_SelCult.SelectedItem.Text = "Maiz" Then
-            VariedadFrijol.Visible = False
-            VariedadMaiz.Visible = True
-            DropDownList5.SelectedIndex = 0
+        If TxtProductorGrid.SelectedItem.Text = "Todos" Then
+            TxtDepto.SelectedIndex = 0
+            DDL_SelCLote.SelectedIndex = 0
+            TxtProductorGrid.SelectedIndex = 0
+            txtciclo.SelectedIndex = 0
+            BAgregar.Visible = False
         End If
-
-        If DDL_SelCult.SelectedItem.Text = "Todos" Then
-            VariedadFrijol.Visible = False
-            VariedadMaiz.Visible = False
-            DropDownList5.SelectedIndex = 0
-            DropDownList6.SelectedIndex = 0
-        End If
-        llenagrid()
     End Sub
-    Protected Sub DropDownList5_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList5.SelectedIndexChanged
-        llenagrid()
-    End Sub
-
     Protected Sub TxtDepto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         llenagrid()
     End Sub
 
-    Protected Sub DropDownList6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList6.SelectedIndexChanged
+    Protected Sub txtciclo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtciclo.SelectedIndexChanged
         llenagrid()
     End Sub
+
+    Protected Sub DDL_SelCLote_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DDL_SelCLote.SelectedIndexChanged
+        llenagrid()
+
+        If TxtProductorGrid.SelectedItem.Text <> "Todos" Then
+            BAgregar.Visible = True
+        Else
+            BAgregar.Visible = False
+        End If
+
+        If DDL_SelCLote.SelectedItem.Text = "Todos" Then
+            TxtDepto.SelectedIndex = 0
+            DDL_SelCLote.SelectedIndex = 0
+            TxtProductorGrid.SelectedIndex = 0
+            txtciclo.SelectedIndex = 0
+            BAgregar.Visible = False
+        End If
+    End Sub
+    Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
+        For Each item As ListItem In Prodname.Items
+            If item.Text = DtCombo Then
+                Prodname.SelectedValue = item.Value
+                Return True ' Se encontró una coincidencia, devolver verdadero
+            End If
+        Next
+        ' No se encontró ninguna coincidencia
+        Return 0
+    End Function
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
 
         lblTotalClientes.Text = e.AffectedRows.ToString()
 
     End Sub
-    Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
-        If DtCombo = "Frijol" Or DtCombo = "Maiz" Then
-            For Each item As ListItem In Prodname.Items
-                If item.Text = DtCombo Then
-                    Prodname.SelectedValue = item.Value
-                    Return True ' Se encontró una coincidencia, devolver verdadero
-                End If
-            Next
-        Else
-            For Each item As ListItem In Prodname.Items
-                If item.Text = DtCombo Then
-                    Prodname.SelectedValue = item.Value
-                    Return True ' Se encontró una coincidencia, devolver verdadero
-                End If
-            Next
-        End If
-        ' No se encontró ninguna coincidencia
-        Return 0
-    End Function
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
         'Dim fecha2 As Date
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "Editar") Then
-            DivGrid.Visible = "false"
-            DivActa.Visible = "true"
+            DivGrid.Visible = False
+            DivActa.Visible = True
+            btnGuardarActa.Text = "Actualizar"
             btnGuardarActa.Visible = True
             BtnNuevo.Visible = True
 
+
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "fecha_acta, nombre_productor, departamento, municipio, aldea, caserio, nombre_lote, tipo_cultivo, variedad, categoria_semilla, porcentaje_humedad, no_sacos, peso_humedo_QQ"
+            Dim cadena As String = "fecha_acta, nombre_productor, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta"
             Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            llenarcomboCiclo()
+            SeleccionarItemEnDropDownList(DDL_Ciclo, dt.Rows(0)("ciclo_acta").ToString())
             txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
             CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
             txtProcedencia.Text = Textrespaldo.Text
             txtProductor.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
             txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
             txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
-            txtCategoria.Text = If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString())
-            txtLote.Text = If(dt.Rows(0)("nombre_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_lote").ToString())
+            txtCategoria.Text = If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString())
+            txtLote.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
             txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
             txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
             txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
-            Verificar()
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -197,9 +227,7 @@ Public Class AgregraActadeRecibo
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
 
-            Label103.Text = "¿Desea eliminar la informacion almacenada de esta acta de recibo de productos para multiplicadores de semilla de DICTA?
-                              
-                            *NOTA: Solo se elimira la informacion que habia ingresado el usuario, de la tabla no se eliminara."
+            Label103.Text = "¿Desea eliminar la informacion almacenada de esta acta de recibo de productos para multiplicadores de semilla de DICTA?"
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False
@@ -248,18 +276,12 @@ Public Class AgregraActadeRecibo
             connection.Open()
 
             Dim query As String = "UPDATE sag_registro_senasa 
-                    SET fecha_acta = @fecha_acta,
-                        porcentaje_humedad = @porcentaje_humedad,
-                        no_sacos = @no_sacos,
-                        peso_humedo_QQ = @peso_humedo_QQ
+                    SET estado = @estado
                 WHERE id = " & TxtID.Text & ""
 
             Using cmd As New MySqlCommand(query, connection)
 
-                cmd.Parameters.AddWithValue("@fecha_acta", DBNull.Value)
-                cmd.Parameters.AddWithValue("@porcentaje_humedad", DBNull.Value)
-                cmd.Parameters.AddWithValue("@no_sacos", DBNull.Value)
-                cmd.Parameters.AddWithValue("@peso_humedo_QQ", DBNull.Value)
+                cmd.Parameters.AddWithValue("@estado", "0")
                 cmd.ExecuteNonQuery()
                 connection.Close()
                 Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
@@ -325,47 +347,155 @@ Public Class AgregraActadeRecibo
         End If
     End Sub
 
+    Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
+
+        DivActa.Visible = True
+        DivGrid.Visible = False
+        btnGuardarActa.Visible = True
+        BtnNuevo.Visible = True
+        btnGuardarActa.Text = "Guardar"
+
+        Dim Str As String = "SELECT * FROM sag_registro_lote WHERE 1=1"
+
+        If (DDL_SelCLote.SelectedItem.Text <> "Todos") Then
+            Str &= " AND no_lote = '" & DDL_SelCLote.SelectedItem.Text & "'"
+
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+            llenarcomboCiclo()
+            SeleccionarItemEnDropDownList(DDL_Ciclo, txtciclo.SelectedItem.Text)
+            CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
+            txtProcedencia.Text = Textrespaldo.Text
+            txtProductor.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
+            txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
+            txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
+            txtCategoria.Text = If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString())
+            txtLote.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
+            Verificar()
+        End If
+    End Sub
+
     Protected Sub GuardarActa()
-        LabelGuardar.Visible = False
-        LabelGuardar.Text = ""
-        Dim connectionString As String = conn
-        Using connection As New MySqlConnection(connectionString)
-            connection.Open()
+        Dim fechaConvertida As DateTime
+        If btnGuardarActa.Text = "Actualizar" Then
+            LabelGuardar.Visible = False
+            LabelGuardar.Text = ""
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
 
-            Dim query As String = "UPDATE sag_registro_senasa SET
-                fecha_acta = @fecha_acta,
-                porcentaje_humedad = @porcentaje_humedad,
-                no_sacos = @no_sacos,
-                peso_humedo_QQ = @peso_humedo_QQ
-            WHERE id = " & TxtID.Text & ""
-
-            Dim fechaConvertida As Date
-
-            Using cmd As New MySqlCommand(query, connection)
+                Dim query As String = "UPDATE sag_registro_senasa SET
+                    fecha_acta = @fecha_acta,
+                    porcentaje_humedad = @porcentaje_humedad,
+                    no_sacos = @no_sacos,
+                    peso_humedo_QQ = @peso_humedo_QQ,
+                    ciclo_acta = @ciclo_acta
+                WHERE id = " & TxtID.Text & ""
 
 
-                If DateTime.TryParse(txtFechaSiembra.Text, fechaConvertida) Then
-                    cmd.Parameters.AddWithValue("@fecha_acta", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                End If
-                cmd.Parameters.AddWithValue("@porcentaje_humedad", Convert.ToDecimal(txtHumedad.Text))
-                cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
-                cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
+                Using cmd As New MySqlCommand(query, connection)
 
-                cmd.ExecuteNonQuery()
-                connection.Close()
 
-                Label103.Text = "¡Se ha registrado correctamente el acta de recibo de productos para multiplicadores de semilla de DICTA!"
-                BBorrarsi.Visible = False
-                BBorrarno.Visible = False
-                BConfirm.Visible = True
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                    If DateTime.TryParse(txtFechaSiembra.Text, fechaConvertida) Then
+                        cmd.Parameters.AddWithValue("@fecha_acta", fechaConvertida.ToString("yyyy-MM-dd"))
+                    End If
+                    cmd.Parameters.AddWithValue("@porcentaje_humedad", Convert.ToDecimal(txtHumedad.Text))
+                    cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
+                    cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
+                    cmd.Parameters.AddWithValue("@ciclo_acta", DDL_Ciclo.SelectedItem.Text)
 
-                btnGuardarActa.Visible = False
-                BtnImprimir.Visible = True
-                BtnNuevo.Visible = True
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
 
+                    Label103.Text = "¡Se ha editado correctamente el acta de recibo de productos para multiplicadores de semilla de DICTA!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    BConfirm.Visible = True
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                    btnGuardarActa.Visible = False
+                    BtnImprimir.Visible = False
+                    BtnNuevo.Visible = True
+
+                End Using
             End Using
-        End Using
+        Else
+            LabelGuardar.Visible = False
+            LabelGuardar.Text = ""
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim query As String = "INSERT INTO sag_registro_senasa (
+                    nombre_productor,
+                    departamento,
+                    municipio,
+                    aldea,
+                    caserio,
+                    estado,
+                    categoria_origen,
+                    tipo_cultivo,
+                    variedad,
+                    no_lote,
+                    fecha_acta,
+                    porcentaje_humedad,
+                    no_sacos,
+                    peso_humedo_QQ,
+                    ciclo_acta
+                ) VALUES (
+                    @nombre_productor, 
+                    @departamento, 
+                    @municipio, 
+                    @aldea, 
+                    @caserio,
+                    @estado,
+                    @categoria_origen,
+                    @tipo_cultivo,
+                    @variedad,
+                    @no_lote,
+                    @fecha_acta,
+                    @porcentaje_humedad,
+                    @no_sacos,
+                    @peso_humedo_QQ,
+                    @ciclo_acta
+                );
+                "
+                Using cmd As New MySqlCommand(query, connection)
+                    cmd.Parameters.AddWithValue("@nombre_productor", txtProductor.Text)
+                    separarIdentificador(txtProcedencia.Text)
+                    cmd.Parameters.AddWithValue("@departamento", Textdepart.Text)
+                    cmd.Parameters.AddWithValue("@municipio", Textmuni.Text)
+                    cmd.Parameters.AddWithValue("@aldea", Textalde.Text)
+                    cmd.Parameters.AddWithValue("@caserio", Textcase.Text)
+                    cmd.Parameters.AddWithValue("@categoria_origen", txtCategoria.Text)
+                    cmd.Parameters.AddWithValue("@tipo_cultivo", txtCultivo.Text)
+                    cmd.Parameters.AddWithValue("@variedad", txtVariedad.Text)
+                    cmd.Parameters.AddWithValue("@no_lote", txtLote.Text)
+                    cmd.Parameters.AddWithValue("@estado", "1")
+                    If DateTime.TryParse(txtFechaSiembra.Text, fechaConvertida) Then
+                        cmd.Parameters.AddWithValue("@fecha_acta", fechaConvertida.ToString("yyyy-MM-dd"))
+                    End If
+                    cmd.Parameters.AddWithValue("@porcentaje_humedad", Convert.ToDecimal(txtHumedad.Text))
+                    cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
+                    cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
+                    cmd.Parameters.AddWithValue("@ciclo_acta", DDL_Ciclo.SelectedItem.Text)
+
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
+
+                    Label103.Text = "¡Se ha registrado correctamente el acta de recibo de productos para multiplicadores de semilla de DICTA!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                    btnGuardarActa.Visible = False
+                    BtnImprimir.Visible = False
+                    BtnNuevo.Visible = True
+
+                End Using
+            End Using
+        End If
     End Sub
     Protected Sub Verificar()
         '1
@@ -400,8 +530,16 @@ Public Class AgregraActadeRecibo
             lblPesoH.Text = ""
             validarflag += 1
         End If
+        '5
+        If String.IsNullOrEmpty(DDL_Ciclo.Text) Then
+            Labelciclo.Text = "*"
+            validarflag = 0
+        Else
+            Labelciclo.Text = ""
+            validarflag += 1
+        End If
 
-        If validarflag = 4 Then
+        If validarflag = 5 Then
             validarflag = 1
         Else
             validarflag = 0
@@ -429,24 +567,10 @@ Public Class AgregraActadeRecibo
             c2 = "AND  departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        If (DDL_SelCult.SelectedItem.Text = "Todos") Then
+        If (DDL_SelCLote.SelectedItem.Text = "Todos") Then
             c3 = " "
         Else
-            c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
-        End If
-
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            If (DropDownList5.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
-            End If
-        Else
-            If (DropDownList6.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
-            End If
+            c3 = "AND tipo_cultivo = '" & DDL_SelCLote.SelectedItem.Text & "' "
         End If
 
         query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND no_lote IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
@@ -504,15 +628,32 @@ Public Class AgregraActadeRecibo
 
         Textrespaldo.Text = resultado
     End Sub
+    Protected Sub separarIdentificador(procedencia As String)
+        Dim cadena As String = procedencia
 
+        Dim partes() As String = cadena.Split("-"c)
+
+        If partes.Length >= 4 Then
+            Dim depart As String = partes(0)
+            Dim muni As String = partes(1)
+            Dim alde As String = partes(2)
+            Dim caser As String = partes(3)
+
+            Textdepart.Text = depart
+            Textmuni.Text = muni
+            Textalde.Text = alde
+            Textcase.Text = caser
+        End If
+
+    End Sub
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los datos de la fila actual
             Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "no_sacos").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(10).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(12).Controls(0), Button)
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(11).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(13).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then

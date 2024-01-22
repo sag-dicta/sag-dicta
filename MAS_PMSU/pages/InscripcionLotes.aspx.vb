@@ -112,6 +112,7 @@ Public Class InscripcionLotes
                         Label3.Text = "¡Se ha editado correctamente el lote o inscripcion de SENASA!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
+                        BConfirm.Visible = True
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
                         btnGuardarLote.Visible = False
@@ -270,6 +271,7 @@ Public Class InscripcionLotes
                         Label3.Text = "¡Se ha registrado correctamente el lote o inscripcion de SENASA!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
+                        BConfirm.Visible = True
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
                         btnGuardarLote.Visible = False
@@ -748,6 +750,12 @@ Public Class InscripcionLotes
         llenarmunicipioGrid()
         'llenarcomboProductor2()
         llenagrid()
+        If TxtDepto.SelectedItem.Text = "Todos" Then
+            TxtDepto.SelectedIndex = 0
+            TxtMunicipio.SelectedIndex = 0
+            TxtMultiplicador.SelectedIndex = 0
+            BAgregar.Visible = False
+        End If
     End Sub
 
     Private Sub llenarmunicipioGrid()
@@ -772,7 +780,7 @@ Public Class InscripcionLotes
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_lote WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        StrCombo = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_Multiplicador WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -813,38 +821,35 @@ Public Class InscripcionLotes
 
         If (TxtMultiplicador.SelectedItem.Text <> "Todos") Then
             Str &= " AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "'"
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            txt_nombre_prod_new.Text = dt.Rows(0)("nombre_productor").ToString()
+            Txt_Representante_Legal.Text = dt.Rows(0)("representante_legal").ToString()
+            TxtIdentidad.Text = dt.Rows(0)("identidad_productor").ToString()
+            TextBox1.Text = DirectCast(dt.Rows(0)("extendida"), DateTime).ToString("yyyy-MM-dd")
+            TxtResidencia.Text = dt.Rows(0)("residencia_productor").ToString()
+            TxtTelefono.Text = dt.Rows(0)("telefono_productor").ToString()
+            txtNoRegistro.Text = dt.Rows(0)("no_registro_productor").ToString()
+            txtNombreRe.Text = dt.Rows(0)("nombre_multiplicador").ToString()
+            txtIdentidadRe.Text = dt.Rows(0)("cedula_multiplicador").ToString()
+            TxtTelefonoRe.Text = dt.Rows(0)("telefono_multiplicador").ToString()
+            TxtNombreFinca.Text = dt.Rows(0)("nombre_finca").ToString()
+            SeleccionarItemEnDropDownList(gb_departamento_new, dt.Rows(0)("departamento").ToString())
+            llenarmunicipio()
+            SeleccionarItemEnDropDownList(gb_municipio_new, dt.Rows(0)("municipio").ToString())
+            llenarAldea()
+            SeleccionarItemEnDropDownList(gb_aldea_new, dt.Rows(0)("aldea").ToString())
+            llenarCaserio()
+            SeleccionarItemEnDropDownList(gb_caserio_new, dt.Rows(0)("caserio").ToString())
+            TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
+            TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
+            gb_aldea_new.Enabled = False
+            gb_caserio_new.Enabled = False
+            gb_municipio_new.Enabled = False
+            VerificarTextBox()
         End If
-
-        Dim adap As New MySqlDataAdapter(Str, conn)
-        Dim dt As New DataTable
-        adap.Fill(dt)
-
-        txt_nombre_prod_new.Text = dt.Rows(0)("nombre_productor").ToString()
-        Txt_Representante_Legal.Text = dt.Rows(0)("representante_legal").ToString()
-        TxtIdentidad.Text = dt.Rows(0)("identidad_productor").ToString()
-        TextBox1.Text = DirectCast(dt.Rows(0)("extendida"), DateTime).ToString("yyyy-MM-dd")
-        TxtResidencia.Text = dt.Rows(0)("residencia_productor").ToString()
-        TxtTelefono.Text = dt.Rows(0)("telefono_productor").ToString()
-        txtNoRegistro.Text = dt.Rows(0)("no_registro_productor").ToString()
-        txtNombreRe.Text = dt.Rows(0)("nombre_multiplicador").ToString()
-        txtIdentidadRe.Text = dt.Rows(0)("cedula_multiplicador").ToString()
-        TxtTelefonoRe.Text = dt.Rows(0)("telefono_multiplicador").ToString()
-        TxtNombreFinca.Text = dt.Rows(0)("nombre_finca").ToString()
-        SeleccionarItemEnDropDownList(gb_departamento_new, dt.Rows(0)("departamento").ToString())
-        llenarmunicipio()
-        SeleccionarItemEnDropDownList(gb_municipio_new, dt.Rows(0)("municipio").ToString())
-        llenarAldea()
-        SeleccionarItemEnDropDownList(gb_aldea_new, dt.Rows(0)("aldea").ToString())
-        llenarCaserio()
-        SeleccionarItemEnDropDownList(gb_caserio_new, dt.Rows(0)("caserio").ToString())
-        TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
-        TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
-        gb_aldea_new.Enabled = False
-        gb_caserio_new.Enabled = False
-        gb_municipio_new.Enabled = False
-        VerificarTextBox()
-        'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
-
     End Sub
 
     Protected Sub TxtMultiplicador_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -852,6 +857,13 @@ Public Class InscripcionLotes
         If TxtMultiplicador.SelectedItem.Text <> "Todos" Then
             BAgregar.Visible = True
         Else
+            BAgregar.Visible = False
+        End If
+
+        If TxtMultiplicador.SelectedItem.Text = "Todos" Then
+            TxtDepto.SelectedIndex = 0
+            TxtMunicipio.SelectedIndex = 0
+            TxtMultiplicador.SelectedIndex = 0
             BAgregar.Visible = False
         End If
     End Sub
@@ -1036,11 +1048,11 @@ Public Class InscripcionLotes
             DivGrid.Visible = False
             DivCrearNuevo.Visible = False
 
-            'Label3.Text = "¿Desea eliminar la solicitud del Multiplicador o Estación?"
-            'BBorrarsi.Visible = True
-            'BBorrarno.Visible = True
-            'BConfirm.Visible = False
-            'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+            Label3.Text = "¿Desea eliminar la inscripción de lote o SENASA?"
+            BBorrarsi.Visible = True
+            BBorrarno.Visible = True
+            BConfirm.Visible = False
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
 
         If (e.CommandName = "Imprimir") Then
@@ -1135,7 +1147,7 @@ Public Class InscripcionLotes
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
-                Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+                Response.Redirect(String.Format("~/pages/InscripcionLotes.aspx"))
             End Using
 
         End Using
