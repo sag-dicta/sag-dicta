@@ -21,12 +21,26 @@ Public Class CuadroProcesamiento
             Else
                 llenarcomboProductor()
                 llenarcomboDepto()
+                llenarcomboCiclogrid()
                 llenagrid()
             End If
         End If
     End Sub
     Protected Sub vaciar(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+    End Sub
+    Private Sub llenarcomboCiclogrid()
+        Dim StrCombo As String = "SELECT * FROM sag_ciclo"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        txtciclo.DataSource = DtCombo
+        txtciclo.DataValueField = DtCombo.Columns(0).ToString()
+        txtciclo.DataTextField = DtCombo.Columns(1).ToString
+        txtciclo.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        txtciclo.Items.Insert(0, newitem)
     End Sub
     Private Sub llenarcomboDepto()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
@@ -55,7 +69,7 @@ Public Class CuadroProcesamiento
         TxtProductorGrid.Items.Insert(0, newitem)
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, nombre_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
+        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, no_lote, ciclo_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -79,18 +93,10 @@ Public Class CuadroProcesamiento
             c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
         End If
 
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            If (DropDownList5.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
-            End If
+        If (txtciclo.SelectedItem.Text = "Todos") Then
+            c4 = " "
         Else
-            If (DropDownList6.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
-            End If
+            c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
         End If
 
 
@@ -102,35 +108,13 @@ Public Class CuadroProcesamiento
         llenagrid()
     End Sub
     Protected Sub DDL_SelCult_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_SelCult.SelectedIndexChanged
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            VariedadFrijol.Visible = True
-            VariedadMaiz.Visible = False
-            DropDownList6.SelectedIndex = 0
-        End If
-
-        If DDL_SelCult.SelectedItem.Text = "Maiz" Then
-            VariedadFrijol.Visible = False
-            VariedadMaiz.Visible = True
-            DropDownList5.SelectedIndex = 0
-        End If
-
-        If DDL_SelCult.SelectedItem.Text = "Todos" Then
-            VariedadFrijol.Visible = False
-            VariedadMaiz.Visible = False
-            DropDownList5.SelectedIndex = 0
-            DropDownList6.SelectedIndex = 0
-        End If
         llenagrid()
     End Sub
-    Protected Sub DropDownList5_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList5.SelectedIndexChanged
+    Protected Sub txtciclo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtciclo.SelectedIndexChanged
         llenagrid()
     End Sub
 
     Protected Sub TxtDepto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        llenagrid()
-    End Sub
-
-    Protected Sub DropDownList6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList6.SelectedIndexChanged
         llenagrid()
     End Sub
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
@@ -363,7 +347,7 @@ Public Class CuadroProcesamiento
                 If txtConsumo.Text = "" Then
                     cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
                 Else
-                    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", Convert.ToInt64(txtConsumo.Text))
+                    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", Convert.ToDecimal(txtConsumo.Text))
                 End If
                 If txtBasura.Text = "" Then
                     cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
@@ -387,7 +371,7 @@ Public Class CuadroProcesamiento
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
                 btnGuardarActa.Visible = False
-                BtnImprimir.Visible = True
+                BtnImprimir.Visible = False
                 BtnNuevo.Visible = True
 
             End Using
@@ -435,7 +419,7 @@ Public Class CuadroProcesamiento
     End Sub
     Private Sub exportar()
 
-        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, nombre_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
+        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, no_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
@@ -460,19 +444,12 @@ Public Class CuadroProcesamiento
             c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
         End If
 
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            If (DropDownList5.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
-            End If
+        If (txtciclo.SelectedItem.Text = "Todos") Then
+            c4 = " "
         Else
-            If (DropDownList6.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
-            End If
+            c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
         End If
+
 
         query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
 
@@ -485,7 +462,7 @@ Public Class CuadroProcesamiento
                         sda.Fill(ds)
 
                         ' Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_registro_senasa"
+                        ds.Tables(0).TableName = "CUADRO DE PROCESAMIENTO"
 
                         Using wb As New XLWorkbook()
                             ' Add DataTable as Worksheet.

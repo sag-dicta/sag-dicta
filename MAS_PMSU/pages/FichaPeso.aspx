@@ -35,14 +35,14 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Departamento:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Seleccione Cultivo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_SelCult" runat="server" AutoPostBack="True">
@@ -52,35 +52,11 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-3" id="VariedadFrijol" runat="server" visible="false">
+                        <div class="col-lg-2">
                             <div class="form-group">
-                                <div class="form-group">
-                                    <label>Variedad Frijol</label>
-                                    <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:DropDownList CssClass="form-control" ID="DropDownList5" runat="server" AutoPostBack="true">
-                                        <asp:ListItem Text="Todos"></asp:ListItem>
-                                        <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
-                                        <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
-                                        <asp:ListItem id="Azabachev1" Text="Azabache"></asp:ListItem>
-                                        <asp:ListItem id="Paraisitomejoradov1" Text="Paraisito mejorado PM-2"></asp:ListItem>
-                                        <asp:ListItem id="Deorhov1" Text="Deorho"></asp:ListItem>
-                                        <asp:ListItem id="IntaCardenasv1" Text="Inta Cárdenas"></asp:ListItem>
-                                        <asp:ListItem id="Lencaprecozv1" Text="Lenca precoz"></asp:ListItem>
-                                        <asp:ListItem id="Rojochortív1" Text="Rojo chortí"></asp:ListItem>
-                                        <asp:ListItem id="Tolupanrojov1" Text="Tolupan rojo"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3" id="VariedadMaiz" runat="server" visible="false">
-                            <div class="form-group">
-                                <label>Variedades Maiz</label><asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" AutoPostBack="true">
+                                <label>Seleccione Ciclo:</label>
+                                <asp:DropDownList CssClass="form-control" ID="txtciclo" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
-                                    <asp:ListItem id="DictaMayav1" Text="Dicta Maya"></asp:ListItem>
-                                    <asp:ListItem id="DictaVictoriav1" Text="Dicta Victoria"></asp:ListItem>
-                                    <asp:ListItem id="OtroMaizv1" Text="Otro"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -130,7 +106,7 @@
                                         <asp:BoundField DataField="nombre_productor" HeaderText="NOMBRE DEL PRODUCTOR" />
                                         <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="representante_legal" HeaderText="RESPONSABLE LEGAL" />
-                                        <asp:BoundField DataField="telefono_productor" HeaderText="TELEFONO" />
+                                        <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
                                         <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
