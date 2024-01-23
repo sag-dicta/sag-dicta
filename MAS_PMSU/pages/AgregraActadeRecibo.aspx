@@ -29,23 +29,15 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Productor:</label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Text="Todos"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
                                 <label>Seleccione Departamento:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Ciclo:</label>
-                                <asp:DropDownList CssClass="form-control" ID="txtciclo" runat="server" AutoPostBack="True">
+                                <label>Seleccione Productor:</label>
+                                <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
@@ -58,10 +50,19 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Seleccione Ciclo:</label>
+                                <asp:DropDownList CssClass="form-control" ID="txtciclo" runat="server" AutoPostBack="True">
+                                    <asp:ListItem Text="Todos"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                             <div class="col-lg-12">
-                                <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
+                                <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear una nueva acta primero seleccione el multiplicador y el lote" />
+                                <br />
                                 <asp:Button ID="BAgregar" runat="server" Text="Agregar Acta" CssClass="btn btn-success" Visible="false" />
                             </div>
                         </div>
@@ -263,7 +264,7 @@
                 <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
                 <br />
                 <script type="text/javascript" src='../vendor/jquery/jquery-1.8.3.min.js'></script>
-                <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar" Visible="false" OnClick="btnGuardarActa_Click" />
+                <asp:Button CssClass="btn btn-primary" ID="btnGuardarActa" runat="server" Text="Guardar " Visible="false" OnClick="btnGuardarActa_Click" />
             </div>
         </div>
     </div>

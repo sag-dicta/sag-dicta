@@ -219,6 +219,7 @@ Public Class AgregraActadeRecibo
             txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
             txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
             txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
+
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -531,7 +532,7 @@ Public Class AgregraActadeRecibo
             validarflag += 1
         End If
         '5
-        If String.IsNullOrEmpty(DDL_Ciclo.Text) Then
+        If (DDL_Ciclo.SelectedItem.Text = " ") Then
             Labelciclo.Text = "*"
             validarflag = 0
         Else

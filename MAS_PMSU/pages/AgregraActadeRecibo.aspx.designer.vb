@@ -32,6 +32,15 @@ Partial Public Class AgregraActadeRecibo
     Protected WithEvents DivGrid As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control TxtDepto.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control TxtProductorGrid.
     '''</summary>
     '''<remarks>
@@ -41,13 +50,13 @@ Partial Public Class AgregraActadeRecibo
     Protected WithEvents TxtProductorGrid As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control TxtDepto.
+    '''Control DDL_SelCLote.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_SelCLote As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control txtciclo.
@@ -59,13 +68,13 @@ Partial Public Class AgregraActadeRecibo
     Protected WithEvents txtciclo As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control DDL_SelCLote.
+    '''Control Label2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DDL_SelCLote As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control BAgregar.
