@@ -169,7 +169,7 @@ Public Class FichaPeso
             BtnNuevo.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "nombre_productor, departamento, municipio, aldea, caserio, representante_legal, telefono_productor, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, semilla_QQ_oro"
+            Dim cadena As String = "nombre_productor, departamento, municipio, aldea, caserio, representante_legal, telefono_productor, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara"
             Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
@@ -188,6 +188,8 @@ Public Class FichaPeso
             txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
             txtCantSaco.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
             txtPesoBrut.Text = If(dt.Rows(0)("semilla_QQ_oro") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_oro").ToString())
+            txtPesoNeto.Text = If(dt.Rows(0)("peso_neto") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_neto").ToString())
+            txtTara.Text = If(dt.Rows(0)("tara") Is DBNull.Value, String.Empty, dt.Rows(0)("tara").ToString())
             Verificar()
         End If
 
@@ -350,7 +352,7 @@ Public Class FichaPeso
 
 
                 cmd.Parameters.AddWithValue("@tara", Convert.ToDecimal(txtTara.Text))
-                cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtTara.Text))
+                cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
 
                 cmd.ExecuteNonQuery()
                 connection.Close()
@@ -362,7 +364,7 @@ Public Class FichaPeso
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
                 btnGuardarActa.Visible = False
-                BtnImprimir.Visible = True
+                BtnImprimir.Visible = False
                 BtnNuevo.Visible = True
 
             End Using
