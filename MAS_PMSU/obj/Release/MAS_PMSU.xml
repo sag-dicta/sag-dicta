@@ -68,12 +68,32 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_multiplicadorDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_loteDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_senasaRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_senasa1Row">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_multiplicadorRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_loteRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -88,12 +108,32 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_multiplicadorRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_loteRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_registro_senasaTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_registro_senasa1TableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_registro_multiplicadorTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_registro_loteTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

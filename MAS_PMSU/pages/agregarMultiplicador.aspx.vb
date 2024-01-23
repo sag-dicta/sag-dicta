@@ -19,6 +19,7 @@ Public Class agregarMultiplicador
             Else
                 llenarcomboDepto()
                 llenarcomboDeptoGrid()
+                llenarcomboProductor3()
                 VerificarTextBox()
                 'llenatxtproductor()
                 llenagrid()
@@ -793,7 +794,11 @@ Public Class agregarMultiplicador
     End Function
     Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         llenarmunicipioGrid()
-        llenarcomboProductor2()
+        If TxtDepto.SelectedItem.Text = "Todos" Then
+            llenarcomboProductor3()
+        Else
+            llenarcomboProductor2()
+        End If
         llenagrid()
     End Sub
 
@@ -812,14 +817,18 @@ Public Class agregarMultiplicador
         TxtMunicipio.Items.Insert(0, newitem)
     End Sub
     Protected Sub TxtMunicipio_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtMunicipio.SelectedIndexChanged
-        llenarcomboProductor()
+        If TxtMunicipio.SelectedItem.Text = "Todos" Then
+            llenarcomboProductor2()
+        Else
+            llenarcomboProductor()
+        End If
         llenagrid()
     End Sub
 
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -834,7 +843,22 @@ Public Class agregarMultiplicador
     Private Sub llenarcomboProductor2()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        TxtMultiplicador.DataSource = DtCombo
+        TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
+        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
+        TxtMultiplicador.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtMultiplicador.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboProductor3()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT * FROM sag_registro_multiplicador ORDER BY nombre_productor ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -878,73 +902,6 @@ Public Class agregarMultiplicador
 
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
         Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
-    End Sub
-
-    Private Sub exportar()
-
-        Dim query As String = ""
-        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
-        Dim c1 As String = ""
-        Dim c2 As String = ""
-        Dim c3 As String = ""
-
-        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
-            c1 = " "
-        Else
-            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
-        End If
-
-        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-            c2 = " "
-        Else
-            c2 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        End If
-
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
-            c3 = " "
-        Else
-            c3 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        End If
-
-        query = "SELECT " & cadena & " FROM sag_registro_multiplicador WHERE 1 = 1 " & c1 & c2 & c3
-
-        Using con As New MySqlConnection(conn)
-            Using cmd As New MySqlCommand(query)
-                Using sda As New MySqlDataAdapter()
-                    cmd.Connection = con
-                    sda.SelectCommand = cmd
-                    Using ds As New DataSet()
-                        sda.Fill(ds)
-
-                        'Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_registro_multiplicador"
-
-                        Using wb As New XLWorkbook()
-                            For Each dt As DataTable In ds.Tables
-                                ' Add DataTable as Worksheet.
-                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
-
-                                ' Set auto width for all columns based on content.
-                                ws.Columns().AdjustToContents()
-                            Next
-
-                            ' Export the Excel file.
-                            Response.Clear()
-                            Response.Buffer = True
-                            Response.Charset = ""
-                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Registro de Multiplicador  " & Today & " " & TxtMultiplicador.SelectedItem.Text & " " & TxtDepto.SelectedItem.Text & ".xlsx")
-                            Using MyMemoryStream As New MemoryStream()
-                                wb.SaveAs(MyMemoryStream)
-                                MyMemoryStream.WriteTo(Response.OutputStream)
-                                Response.Flush()
-                                Response.End()
-                            End Using
-                        End Using
-                    End Using
-                End Using
-            End Using
-        End Using
     End Sub
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
@@ -1103,6 +1060,73 @@ Public Class agregarMultiplicador
 
         End Using
 
+    End Sub
+
+    Private Sub exportar()
+
+        Dim query As String = ""
+        Dim cadena As String = "*"
+        Dim c1 As String = ""
+        Dim c2 As String = ""
+        Dim c3 As String = ""
+
+        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        End If
+
+        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
+            c2 = " "
+        Else
+            c2 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        End If
+
+        If (TxtDepto.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM sag_registro_multiplicador WHERE 1 = 1 " & c1 & c2 & c3
+
+        Using con As New MySqlConnection(conn)
+            Using cmd As New MySqlCommand(query)
+                Using sda As New MySqlDataAdapter()
+                    cmd.Connection = con
+                    sda.SelectCommand = cmd
+                    Using ds As New DataSet()
+                        sda.Fill(ds)
+
+                        'Set Name of DataTables.
+                        ds.Tables(0).TableName = "sag_registro_multiplicador"
+
+                        Using wb As New XLWorkbook()
+                            For Each dt As DataTable In ds.Tables
+                                ' Add DataTable as Worksheet.
+                                Dim ws As IXLWorksheet = wb.Worksheets.Add(dt)
+
+                                ' Set auto width for all columns based on content.
+                                ws.Columns().AdjustToContents()
+                            Next
+
+                            ' Export the Excel file.
+                            Response.Clear()
+                            Response.Buffer = True
+                            Response.Charset = ""
+                            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            Response.AddHeader("content-disposition", "attachment;filename=Información del Lote " & Today & " " & TxtMultiplicador.SelectedItem.Text & " " & TxtDepto.SelectedItem.Text & ".xlsx")
+                            Using MyMemoryStream As New MemoryStream()
+                                wb.SaveAs(MyMemoryStream)
+                                MyMemoryStream.WriteTo(Response.OutputStream)
+                                Response.Flush()
+                                Response.End()
+                            End Using
+                        End Using
+                    End Using
+                End Using
+            End Using
+        End Using
     End Sub
 
 End Class

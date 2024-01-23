@@ -71,7 +71,20 @@ Public Class AgregraActadeRecibo
         txtciclo.Items.Insert(0, newitem)
     End Sub
     Private Sub llenarcomboProductor()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' "
+        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' ORDER BY nombre_productor ASC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        TxtProductorGrid.DataSource = DtCombo
+        TxtProductorGrid.DataValueField = DtCombo.Columns(0).ToString()
+        TxtProductorGrid.DataTextField = DtCombo.Columns(0).ToString
+        TxtProductorGrid.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtProductorGrid.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboProductor2()
+        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -94,6 +107,10 @@ Public Class AgregraActadeRecibo
             DDL_SelCLote.DataValueField = DtCombo.Columns(0).ToString()
             DDL_SelCLote.DataTextField = DtCombo.Columns(0).ToString
             DDL_SelCLote.DataBind()
+            Dim newitem As New ListItem("Todos", "Todos")
+            DDL_SelCLote.Items.Insert(0, newitem)
+        Else
+            DDL_SelCLote.Items.Clear()
             Dim newitem As New ListItem("Todos", "Todos")
             DDL_SelCLote.Items.Insert(0, newitem)
         End If
@@ -146,6 +163,15 @@ Public Class AgregraActadeRecibo
         End If
     End Sub
     Protected Sub TxtDepto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDepto.SelectedIndexChanged
+        If TxtDepto.SelectedItem.Text = "Todos" Then
+            llenarcomboProductor()
+            llenarcomboLote()
+            BAgregar.Visible = False
+        Else
+            llenarcomboProductor2()
+            llenarcomboLote()
+            BAgregar.Visible = False
+        End If
         llenagrid()
     End Sub
 
