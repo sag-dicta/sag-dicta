@@ -54,6 +54,7 @@
                             <a class="collapse-item" href="AgregraActadeRecibo.aspx"><i class="fa fa-clipboard"></i> Actas de Recepción</a>
                             <a class="collapse-item" href="CuadroProcesamiento.aspx"><i class="fa fa-clipboard"></i> Cuadro de Procesamiento</a>
                             <a class="collapse-item" href="FichaPeso.aspx"><i class="fa fa-clipboard"></i> Ficha de Peso</a>
+                            <a class="collapse-item" href="Inventario.aspx"><i class="fa fa-clipboard"></i> Inventario</a>
                         </div>
                     </div>
                 </li>
