@@ -421,7 +421,7 @@ Public Class FichaPeso
     End Sub
     Private Sub exportar()
 
-        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, no_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta"
+        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, no_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta, peso_lb"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
