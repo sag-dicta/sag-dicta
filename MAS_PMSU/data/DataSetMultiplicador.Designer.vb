@@ -1302,6 +1302,8 @@ Partial Public Class DataSetMultiplicador
         
         Private columnciclo_acta As Global.System.Data.DataColumn
         
+        Private columnpeso_lb As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1754,6 +1756,14 @@ Partial Public Class DataSetMultiplicador
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property peso_lbColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpeso_lb
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1841,9 +1851,10 @@ Partial Public Class DataSetMultiplicador
                     ByVal observaciones As String,  _
                     ByVal tara As Decimal,  _
                     ByVal peso_neto As Decimal,  _
-                    ByVal ciclo_acta As String) As sag_registro_senasa1Row
+                    ByVal ciclo_acta As String,  _
+                    ByVal peso_lb As Decimal) As sag_registro_senasa1Row
             Dim rowsag_registro_senasa1Row As sag_registro_senasa1Row = CType(Me.NewRow,sag_registro_senasa1Row)
-            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, nombre_persona_finca, departamento, municipio, aldea, caserio, nombre_lote, croquis, tipo_cultivo, variedad, productor, no_lote, fecha_analisis, ano_produ, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_maiz, variedad_frijol, superficie_hectarea, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, destino, certificado_origen_semilla, factura_comercio, estado, categoria_origen, fecha_acta, porcentaje_humedad, no_sacos, peso_humedo_QQ, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, tara, peso_neto, ciclo_acta}
+            Dim columnValuesArray() As Object = New Object() {Nothing, nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, cedula_multiplicador, telefono_multiplicador, nombre_finca, nombre_persona_finca, departamento, municipio, aldea, caserio, nombre_lote, croquis, tipo_cultivo, variedad, productor, no_lote, fecha_analisis, ano_produ, categoria_semilla, tipo_semilla, cultivo_semilla, variedad_maiz, variedad_frijol, superficie_hectarea, fecha_aprox_siembra, fecha_aprox_cosecha, produccion_est_hectareas, destino, certificado_origen_semilla, factura_comercio, estado, categoria_origen, fecha_acta, porcentaje_humedad, no_sacos, peso_humedo_QQ, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, tara, peso_neto, ciclo_acta, peso_lb}
             rowsag_registro_senasa1Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowsag_registro_senasa1Row)
             Return rowsag_registro_senasa1Row
@@ -1924,6 +1935,7 @@ Partial Public Class DataSetMultiplicador
             Me.columntara = MyBase.Columns("tara")
             Me.columnpeso_neto = MyBase.Columns("peso_neto")
             Me.columnciclo_acta = MyBase.Columns("ciclo_acta")
+            Me.columnpeso_lb = MyBase.Columns("peso_lb")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2033,6 +2045,8 @@ Partial Public Class DataSetMultiplicador
             MyBase.Columns.Add(Me.columnpeso_neto)
             Me.columnciclo_acta = New Global.System.Data.DataColumn("ciclo_acta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnciclo_acta)
+            Me.columnpeso_lb = New Global.System.Data.DataColumn("peso_lb", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpeso_lb)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId}, true))
             Me.columnId.AutoIncrement = true
             Me.columnId.AutoIncrementSeed = -1
@@ -5434,6 +5448,21 @@ Partial Public Class DataSetMultiplicador
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property peso_lb() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablesag_registro_senasa1.peso_lbColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'peso_lb' de la tabla 'sag_registro_senasa1' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesag_registro_senasa1.peso_lbColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Isnombre_productorNull() As Boolean
             Return Me.IsNull(Me.tablesag_registro_senasa1.nombre_productorColumn)
         End Function
@@ -6042,6 +6071,18 @@ Partial Public Class DataSetMultiplicador
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Setciclo_actaNull()
             Me(Me.tablesag_registro_senasa1.ciclo_actaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Ispeso_lbNull() As Boolean
+            Return Me.IsNull(Me.tablesag_registro_senasa1.peso_lbColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setpeso_lbNull()
+            Me(Me.tablesag_registro_senasa1.peso_lbColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -9291,6 +9332,7 @@ Namespace DataSetMultiplicadorTableAdapters
             tableMapping.ColumnMappings.Add("tara", "tara")
             tableMapping.ColumnMappings.Add("peso_neto", "peso_neto")
             tableMapping.ColumnMappings.Add("ciclo_acta", "ciclo_acta")
+            tableMapping.ColumnMappings.Add("peso_lb", "peso_lb")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -9311,9 +9353,10 @@ Namespace DataSetMultiplicadorTableAdapters
                 "`caserio`, `categoria_origen`, `tipo_cultivo`, `variedad`, `no_lote`, `fecha_act"& _ 
                 "a`, `porcentaje_humedad`, `estado`, `no_sacos`, `peso_humedo_QQ`, `peso_materia_"& _ 
                 "prima_QQ_porce_humedad`, `semilla_QQ_oro`, `semilla_QQ_consumo`, `semilla_QQ_bas"& _ 
-                "ura`, `semilla_QQ_total`, `observaciones`, `tara`, `peso_neto`, `ciclo_acta`) VA"& _ 
-                "LUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14,"& _ 
-                " @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26)"
+                "ura`, `semilla_QQ_total`, `observaciones`, `tara`, `peso_neto`, `ciclo_acta`, `p"& _ 
+                "eso_lb`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, "& _ 
+                "@p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p"& _ 
+                "26, @p27)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -9497,6 +9540,13 @@ Namespace DataSetMultiplicadorTableAdapters
             param.IsNullable = true
             param.SourceColumn = "ciclo_acta"
             Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p27"
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.IsNullable = true
+            param.SourceColumn = "peso_lb"
+            Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `sag_registro_senasa` SET `nombre_productor` = @p1, `representante_legal` "& _ 
@@ -9507,7 +9557,7 @@ Namespace DataSetMultiplicadorTableAdapters
                 "o_QQ` = @p17, `peso_materia_prima_QQ_porce_humedad` = @p18, `semilla_QQ_oro` = @"& _ 
                 "p19, `semilla_QQ_consumo` = @p20, `semilla_QQ_basura` = @p21, `semilla_QQ_total`"& _ 
                 " = @p22, `observaciones` = @p23, `tara` = @p24, `peso_neto` = @p25, `ciclo_acta`"& _ 
-                " = @p26 WHERE ((`Id` = @p27))"
+                " = @p26, `peso_lb` = @p27 WHERE ((`Id` = @p28))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -9693,6 +9743,13 @@ Namespace DataSetMultiplicadorTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p27"
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.IsNullable = true
+            param.SourceColumn = "peso_lb"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p28"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
@@ -9821,7 +9878,8 @@ Namespace DataSetMultiplicadorTableAdapters
                     ByVal p23 As String,  _
                     ByVal p24 As Global.System.Nullable(Of Decimal),  _
                     ByVal p25 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p26 As String) As Integer
+                    ByVal p26 As String,  _
+                    ByVal p27 As Global.System.Nullable(Of Decimal)) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -9952,6 +10010,11 @@ Namespace DataSetMultiplicadorTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(25).Value = CType(p26,String)
             End If
+            If (p27.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(p27.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -9998,7 +10061,8 @@ Namespace DataSetMultiplicadorTableAdapters
                     ByVal p24 As Global.System.Nullable(Of Decimal),  _
                     ByVal p25 As Global.System.Nullable(Of Decimal),  _
                     ByVal p26 As String,  _
-                    ByVal p27 As Integer) As Integer
+                    ByVal p27 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p28 As Integer) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -10129,7 +10193,12 @@ Namespace DataSetMultiplicadorTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(25).Value = CType(p26,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(26).Value = CType(p27,Integer)
+            If (p27.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(p27.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(27).Value = CType(p28,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

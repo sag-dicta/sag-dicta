@@ -265,6 +265,35 @@ Public Class FichaPeso
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
     End Sub
+    Protected Sub descargaPDF(sender As Object, e As EventArgs)
+        Dim rptdocument As New ReportDocument
+        'nombre de dataset
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_productor = @valor"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        adap.SelectCommand.Parameters.AddWithValue("@valor", TxtID.Text)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "sag_registro_senasa1")
+
+        Dim nombre As String
+
+        nombre = "Ficha De Peso Al Recibo Lotes De Semilla " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/FichaReport.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
+    End Sub
 
     Protected Sub elminar(sender As Object, e As EventArgs) Handles BBorrarsi.Click
         Dim connectionString As String = conn
@@ -533,37 +562,6 @@ Public Class FichaPeso
                 btnImprimir.Visible = False
             End If
         End If
-    End Sub
-
-    Protected Sub descargaPDF(sender As Object, e As EventArgs)
-        Dim rptdocument As New ReportDocument
-        'nombre de dataset
-        Dim ds As New DataSetMultiplicador
-        Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_multiplicador = @valor"
-        Dim adap As New MySqlDataAdapter(Str, conn)
-        adap.SelectCommand.Parameters.AddWithValue("@valor", TxtID.Text)
-        Dim dt As New DataTable
-
-        'nombre de la vista del data set
-
-        adap.Fill(ds, "sag_registro_senasa")
-
-        Dim nombre As String
-
-        nombre = " Datos del Multiplicador " + Today
-
-        rptdocument.Load(Server.MapPath("~/pages/AgregarMultiplicadorReport2.rpt"))
-
-        rptdocument.SetDataSource(ds)
-        Response.Buffer = False
-
-
-        Response.ClearContent()
-        Response.ClearHeaders()
-
-        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
-
-        Response.End()
     End Sub
 
     Protected Sub txtPesoBrut_TextChanged(sender As Object, e As EventArgs) Handles txtPesoBrut.TextChanged
