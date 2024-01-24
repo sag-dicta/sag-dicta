@@ -794,7 +794,7 @@ Public Class InscripcionLotes
     Private Sub llenarcomboProductor2()
         Dim StrCombo As String
 
-        StrCombo = "SELECT DISTINCT * FROM sag_registro_Multiplicador WHERE WHERE estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
+        StrCombo = "SELECT DISTINCT * FROM sag_registro_Multiplicador WHERE estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
