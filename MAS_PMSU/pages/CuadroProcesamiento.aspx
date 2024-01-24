@@ -27,7 +27,14 @@
                 <div class="panel-body">
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Seleccione Departamento:</label>
+                                <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Productor:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
@@ -37,13 +44,6 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Departamento:</label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
                                 <label>Seleccione Cultivo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_SelCult" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
@@ -52,7 +52,7 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Ciclo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="txtciclo" runat="server" AutoPostBack="True">
@@ -127,7 +127,7 @@
                                         <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="IMPRIMIR ACTA" CommandName="Imprimir">
+                                        <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="IMPRIMIR ACTA" CommandName="Imprimir" Visible="false">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                         </asp:ButtonField>
                                     </Columns>

@@ -27,7 +27,14 @@
                 <div class="panel-body">
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Seleccione Departamento:</label>
+                                <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Productor:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
@@ -37,13 +44,6 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Departamento:</label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
                                 <label>Seleccione Cultivo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_SelCult" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
@@ -52,7 +52,7 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Ciclo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="txtciclo" runat="server" AutoPostBack="True">
@@ -244,6 +244,26 @@
                             <div class="form-group">
                                 <label>Peso Neto (QQ):</label><asp:Label ID="lblPesoNeto" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtPesoNeto" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Cantidad Sacos:</label><asp:Label ID="lblCantSacoC" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtCantSacoC" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Peso en libras:</label><asp:Label ID="lblPesoLibr" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtPesoLibr" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>Cantidad en Quintales:</label><asp:Label ID="lblCantQQ" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtCantQQ" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
                             </div>
                         </div>
                     </div>

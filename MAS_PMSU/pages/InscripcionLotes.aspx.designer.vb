@@ -59,6 +59,15 @@ Partial Public Class InscripcionLotes
     Protected WithEvents TxtMultiplicador As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control Label14.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label14 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control BAgregar.
     '''</summary>
     '''<remarks>

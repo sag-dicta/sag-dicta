@@ -32,15 +32,6 @@ Partial Public Class CuadroProcesamiento
     Protected WithEvents DivGrid As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control TxtProductorGrid.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtProductorGrid As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Control TxtDepto.
     '''</summary>
     '''<remarks>
@@ -48,6 +39,15 @@ Partial Public Class CuadroProcesamiento
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control TxtProductorGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtProductorGrid As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control DDL_SelCult.

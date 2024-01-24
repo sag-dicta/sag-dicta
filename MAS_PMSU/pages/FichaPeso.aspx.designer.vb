@@ -32,15 +32,6 @@ Partial Public Class FichaPeso
     Protected WithEvents DivGrid As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control TxtProductorGrid.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtProductorGrid As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Control TxtDepto.
     '''</summary>
     '''<remarks>
@@ -48,6 +39,15 @@ Partial Public Class FichaPeso
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control TxtProductorGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtProductorGrid As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control DDL_SelCult.
@@ -363,6 +363,60 @@ Partial Public Class FichaPeso
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtPesoNeto As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblCantSacoC.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCantSacoC As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtCantSacoC.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCantSacoC As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblPesoLibr.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblPesoLibr As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoLibr.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoLibr As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblCantQQ.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCantQQ As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtCantQQ.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCantQQ As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control LabelGuardar.

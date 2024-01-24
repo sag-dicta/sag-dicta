@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Productor:</label>
+                                <label>Seleccione Multiplicador:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
                                 </asp:DropDownList>

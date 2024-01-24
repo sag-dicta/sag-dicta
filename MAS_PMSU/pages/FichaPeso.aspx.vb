@@ -56,7 +56,7 @@ Public Class FichaPeso
         TxtDepto.Items.Insert(0, newitem)
     End Sub
     Private Sub llenarcomboProductor()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' "
+        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' ORDER BY nombre_productor ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -67,6 +67,29 @@ Public Class FichaPeso
         TxtProductorGrid.DataBind()
         Dim newitem As New ListItem("Todos", "Todos")
         TxtProductorGrid.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboProductor2()
+        Dim StrCombo As String
+        StrCombo = "SELECT DISTINCT nombre_productor FROM sag_registro_senasa WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        TxtProductorGrid.DataSource = DtCombo
+        TxtProductorGrid.DataValueField = DtCombo.Columns(0).ToString()
+        TxtProductorGrid.DataTextField = DtCombo.Columns(0).ToString
+        TxtProductorGrid.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtProductorGrid.Items.Insert(0, newitem)
+    End Sub
+
+    Protected Sub TxtDepto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDepto.SelectedIndexChanged
+        If TxtDepto.SelectedItem.Text = "Todos" Then
+            llenarcomboProductor()
+        Else
+            llenarcomboProductor2()
+        End If
+        llenagrid()
     End Sub
     Sub llenagrid()
         Dim cadena As String = "id, nombre_productor, departamento, representante_legal, ciclo_acta, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, peso_humedo_QQ, semilla_QQ_oro, tara, peso_neto"
@@ -113,10 +136,6 @@ Public Class FichaPeso
     End Sub
 
     Protected Sub txtciclo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtciclo.SelectedIndexChanged
-        llenagrid()
-    End Sub
-
-    Protected Sub TxtDepto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDepto.SelectedIndexChanged
         llenagrid()
     End Sub
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
@@ -211,9 +230,9 @@ Public Class FichaPeso
 
             Dim nombre As String
 
-            nombre = "Acta de Recepción de Semilla " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
+            nombre = "Ficha De Peso Al Recibo Lotes De Semilla " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
 
-            rptdocument.Load(Server.MapPath("~/pages/ActaRecepcionReport.rpt"))
+            rptdocument.Load(Server.MapPath("~/pages/FichaReport.rpt"))
 
             rptdocument.SetDataSource(ds)
             Response.Buffer = False

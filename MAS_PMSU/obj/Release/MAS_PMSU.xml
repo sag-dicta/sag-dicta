@@ -196,18 +196,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.FichaPeso._TxtProductorGrid">
+<member name="F:MAS_PMSU.FichaPeso._TxtDepto">
 <summary>
-Control TxtProductorGrid.
+Control TxtDepto.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.FichaPeso._TxtDepto">
+<member name="F:MAS_PMSU.FichaPeso._TxtProductorGrid">
 <summary>
-Control TxtDepto.
+Control TxtProductorGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -529,6 +529,60 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.FichaPeso._lblCantSacoC">
+<summary>
+Control lblCantSacoC.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._txtCantSacoC">
+<summary>
+Control txtCantSacoC.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._lblPesoLibr">
+<summary>
+Control lblPesoLibr.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._txtPesoLibr">
+<summary>
+Control txtPesoLibr.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._lblCantQQ">
+<summary>
+Control lblCantQQ.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._txtCantQQ">
+<summary>
+Control txtCantQQ.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.FichaPeso._LabelGuardar">
 <summary>
 Control LabelGuardar.
@@ -619,18 +673,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.CuadroProcesamiento._TxtProductorGrid">
+<member name="F:MAS_PMSU.CuadroProcesamiento._TxtDepto">
 <summary>
-Control TxtProductorGrid.
+Control TxtDepto.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.CuadroProcesamiento._TxtDepto">
+<member name="F:MAS_PMSU.CuadroProcesamiento._TxtProductorGrid">
 <summary>
-Control TxtDepto.
+Control TxtProductorGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2728,6 +2782,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.InscripcionLotes._TxtMultiplicador">
 <summary>
 Control TxtMultiplicador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.InscripcionLotes._Label14">
+<summary>
+Control Label14.
 </summary>
 <remarks>
 Campo generado automáticamente.
