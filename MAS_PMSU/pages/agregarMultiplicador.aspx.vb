@@ -21,7 +21,6 @@ Public Class agregarMultiplicador
                 llenarcomboDeptoGrid()
                 llenarcomboProductor3()
                 VerificarTextBox()
-                'llenatxtproductor()
                 llenagrid()
                 btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
@@ -328,26 +327,6 @@ Public Class agregarMultiplicador
     Protected Sub buscar_productor(sender As Object, e As EventArgs)
         VerificarTextBox()
     End Sub
-
-
-    'Protected Sub llenarProdutor()
-    '    Dim StrCombo As String = "SELECT * FROM registros_bancos_semilla WHERE PROD_NOMBRE = @valor"
-    '    Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-    '    adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", txt_nombre_prod_new.Text)
-    '    Dim DtCombo As New DataTable
-    '    adaptcombo.Fill(DtCombo)
-    '
-    '    If DtCombo.Rows.Count > 0 Then
-    '        txt_nombre_prod_new.Text = DtCombo.Rows(0)("PROD_NOMBRE").ToString
-    '        TxtIdentidad.Text = DtCombo.Rows(0)("PROD_IDENTIDAD").ToString
-    '        TxtTelefono.Text = DtCombo.Rows(0)("PROD_TELEFONO").ToString
-    '
-    '        btnGuardarLote.Visible = True
-    '    Else
-    '        Response.Write("<script>window.alert('¡No existe productor en la base de datos!') </script>")
-    '    End If
-    '    VerificarTextBox()
-    'End Sub
 
     Protected Sub gb_departamento_new_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles gb_departamento_new.SelectedIndexChanged
         llenarmunicipio()
@@ -692,15 +671,6 @@ Public Class agregarMultiplicador
 
         Response.End()
     End Sub
-    Sub llenatxtproductor()
-        Dim id2 As String = Request.QueryString("id")
-
-        If Not String.IsNullOrEmpty(id2) Then
-            txt_nombre_prod_new.Text = id2
-        Else
-            txt_nombre_prod_new.Text = " "
-        End If
-    End Sub
 
     Private Function EsExtensionValida(fileName As String) As Boolean
         Dim extension As String = Path.GetExtension(fileName)
@@ -828,7 +798,7 @@ Public Class agregarMultiplicador
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE municipio = '" & TxtMunicipio.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
+        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -843,7 +813,7 @@ Public Class agregarMultiplicador
     Private Sub llenarcomboProductor2()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
+        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -858,7 +828,7 @@ Public Class agregarMultiplicador
     Private Sub llenarcomboProductor3()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_multiplicador ORDER BY nombre_productor ASC"
+        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' ORDER BY nombre_multiplicador ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable

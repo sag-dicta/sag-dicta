@@ -21,7 +21,6 @@ Public Class AgregarConductor
                 llenarDDLTipoGrid()
                 llenarNombre()
                 VerificarTextBox()
-                llenatxtproductor()
                 llenagrid()
                 btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
@@ -268,15 +267,6 @@ Public Class AgregarConductor
 
         Response.End()
     End Sub
-    Sub llenatxtproductor()
-        Dim id2 As String = Request.QueryString("id")
-
-        'If Not String.IsNullOrEmpty(id2) Then
-        '    txt_nombre_prod_new.Text = id2
-        'Else
-        '    txt_nombre_prod_new.Text = " "
-        'End If
-    End Sub
 
     Private Function EsExtensionValida(fileName As String) As Boolean
         Dim extension As String = Path.GetExtension(fileName)
@@ -338,7 +328,7 @@ Public Class AgregarConductor
         GridDatos.DataBind()
     End Sub
     Private Sub llenarNombre()
-        Dim StrCombo As String = "SELECT nombre FROM sag_registro_vehiculo_motorista ORDER BY marca ASC"
+        Dim StrCombo As String = "SELECT nombre FROM sag_registro_vehiculo_motorista WHERE estado = '1' ORDER BY marca ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -705,12 +695,4 @@ Public Class AgregarConductor
         cmd2.ExecuteNonQuery()
         conex.Close()
     End Sub
-
-    'Protected Sub BtnNewMoto_Click(sender As Object, e As EventArgs)
-    '    DDLNombCond.Visible = False
-    '    TxtNombCond.Visible = True
-    '    TxtDNICond.Enabled = True
-    '    TxtTelfCond.Enabled = True
-    '
-    'End Sub
 End Class

@@ -19,9 +19,7 @@ Public Class AgregarVehiculo
             Else
                 llenarDDLIdenVehi()
                 llenarDDLMarcaGrid()
-                'llenarcomboDeptoGrid()
                 VerificarTextBox()
-                llenatxtproductor()
                 llenagrid()
                 btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
@@ -205,15 +203,6 @@ Public Class AgregarVehiculo
 
         Response.End()
     End Sub
-    Sub llenatxtproductor()
-        Dim id2 As String = Request.QueryString("id")
-
-        'If Not String.IsNullOrEmpty(id2) Then
-        '    txt_nombre_prod_new.Text = id2
-        'Else
-        '    txt_nombre_prod_new.Text = " "
-        'End If
-    End Sub
 
     Private Function EsExtensionValida(fileName As String) As Boolean
         Dim extension As String = Path.GetExtension(fileName)
@@ -274,76 +263,12 @@ Public Class AgregarVehiculo
 
         GridDatos.DataBind()
     End Sub
-    'Private Sub llenarcomboDeptoGrid()
-    '    Dim StrCombo As String = "SELECT * FROM sag_vehiculo"
-    '    Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-    '    Dim DtCombo As New DataTable
-    '    adaptcombo.Fill(DtCombo)
-    '
-    '    DDLTipoGrid.DataSource = DtCombo
-    '    DDLTipoGrid.DataValueField = DtCombo.Columns(0).ToString()
-    '    DDLTipoGrid.DataTextField = DtCombo.Columns(2).ToString
-    '    DDLTipoGrid.DataBind()
-    '    Dim newitem As New ListItem("Todos", "Todos")
-    '    DDLTipoGrid.Items.Insert(0, newitem)
-    '
-    'End Sub
-    'Private Function DevolverValorDepart2(cadena As String)
-    '
-    '    If DDLTipoGrid.SelectedItem.Text <> "Todos" Then
-    '        Dim codigoDepartamento As String = ""
-    '        Dim StrCombo As String = "SELECT * FROM sag_vehiculo WHERE tipo = @nombre"
-    '        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-    '        adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", cadena)
-    '        Dim DtCombo As New DataTable
-    '        adaptcombo.Fill(DtCombo)
-    '        'txtCodDep.Text = DtCombo.Rows(0)("CODIGO_DEPARTAMENTO").ToString
-    '        codigoDepartamento = DtCombo.Rows(0)("tipo").ToString()
-    '        Return codigoDepartamento
-    '    End If
-    '
-    '    Return 0
-    '    VerificarTextBox()
-    'End Function
+
     Protected Sub DDLTipoGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLTipoGrid.SelectedIndexChanged
         llenarDDLMarcaGrid()
         llenarDDLIdenVehi()
         llenagrid()
     End Sub
-
-    'Private Sub llenarmunicipioGrid()
-    '    Dim departamento As String = DDLTipoGrid.SelectedItem.Text
-    '    Dim newitem As New ListItem("Todos", "Todos")
-    '    If DDLTipoGrid.SelectedItem.Text <> "Todos" Then
-    '        Dim StrCombo As String = "SELECT DISTINCT marca FROM sag_vehiculo WHERE tipo = '" & departamento & "'"
-    '        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-    '        Dim DtCombo As New DataTable
-    '        adaptcombo.Fill(DtCombo)
-
-    '        Dim todosNulos As Boolean = True
-
-    '        For Each row As DataRow In DtCombo.Rows
-    '            For Each column As DataColumn In DtCombo.Columns
-    '                If Not IsDBNull(row(column)) Then
-    '                    todosNulos = False
-    '                    Exit For
-    '                End If
-    '            Next
-
-    '            If Not todosNulos Then
-    '                DDLMarcaGrid.DataSource = DtCombo
-    '                DDLMarcaGrid.DataValueField = DtCombo.Columns(0).ToString()
-    '                DDLMarcaGrid.DataTextField = DtCombo.Columns(0).ToString()
-    '                DDLMarcaGrid.DataBind()
-    '                DDLMarcaGrid.Items.Insert(0, newitem)
-    '            Else
-    '                DDLMarcaGrid.Items.Insert(0, newitem)
-    '            End If
-    '        Next
-    '    Else
-    '        DDLMarcaGrid.Items.Insert(0, newitem)
-    '    End If
-    'End Sub
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
 
