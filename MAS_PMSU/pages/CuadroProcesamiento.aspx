@@ -171,7 +171,7 @@
                             <div class="form-group">
                                 <label for="txtPeso12Hum">Peso de Materia Prima al 12% de Humedad(QQ):</label>
                                 <asp:Label ID="lblPeso12Hum" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtPeso12Hum" runat="server" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtPeso12Hum" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -180,21 +180,21 @@
                             <div class="form-group">
                                 <label for="txtSemOro">Semilla Oro(QQ):</label>
                                 <asp:Label ID="lblSemOro" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtSemOro" runat="server" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtSemOro" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="txtConsumo">Consumo(QQ):</label>
                                 <asp:Label ID="lblConsumo" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtConsumo" runat="server" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtConsumo" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label for="txtBasura">Basura(QQ):</label>
                                 <asp:Label ID="lblBasura" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtBasura" runat="server" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtBasura" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">

@@ -174,7 +174,7 @@ Public Class FichaPeso
             BtnNuevo.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "nombre_productor, departamento, municipio, aldea, caserio, representante_legal, telefono_productor, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara"
+            Dim cadena As String = "nombre_productor, departamento, municipio, aldea, caserio, representante_legal, telefono_productor, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara, peso_lb"
             Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
@@ -195,6 +195,8 @@ Public Class FichaPeso
             txtPesoBrut.Text = If(dt.Rows(0)("semilla_QQ_oro") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_oro").ToString())
             txtPesoNeto.Text = If(dt.Rows(0)("peso_neto") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_neto").ToString())
             txtTara.Text = If(dt.Rows(0)("tara") Is DBNull.Value, String.Empty, dt.Rows(0)("tara").ToString())
+            txtPesoLibr.Text = If(dt.Rows(0)("peso_lb") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_lb").ToString())
+            total()
             Verificar()
         End If
 
@@ -350,7 +352,8 @@ Public Class FichaPeso
 
             Dim query As String = "UPDATE sag_registro_senasa SET
                 tara = @tara,
-                peso_neto = @peso_neto
+                peso_neto = @peso_neto,
+                peso_lb = @peso_lb
             WHERE id = " & TxtID.Text & ""
 
             Using cmd As New MySqlCommand(query, connection)
@@ -358,6 +361,7 @@ Public Class FichaPeso
 
                 cmd.Parameters.AddWithValue("@tara", Convert.ToDecimal(txtTara.Text))
                 cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
+                cmd.Parameters.AddWithValue("@peso_lb", Convert.ToDecimal(txtPesoLibr.Text))
 
                 cmd.ExecuteNonQuery()
                 connection.Close()
@@ -575,6 +579,7 @@ Public Class FichaPeso
     Protected Sub total()
         Dim valorOro As Decimal = 0
         Dim valortara As Decimal = 0
+        Dim pesolb As Decimal = 0
 
         If Decimal.TryParse(txtPesoBrut.Text, valorOro) Then
             valorOro = Convert.ToDecimal(txtPesoBrut.Text)
@@ -586,12 +591,22 @@ Public Class FichaPeso
 
         Dim sumaTotal As Decimal
 
-        sumaTotal = valorOro - valortara
-
+        If txtTara.Text = "" Then
+            sumaTotal = 0
+        Else
+            sumaTotal = valorOro - valortara
+        End If
         If sumaTotal <> 0 Then
             txtPesoNeto.Text = sumaTotal.ToString()
+            pesolb = Convert.ToDecimal(txtPesoNeto.Text) * 100
+            txtPesoLibr.Text = pesolb.ToString
+            txtCantSacoC.Text = txtCantSaco.Text
+            txtCantQQ.Text = txtPesoNeto.Text
         Else
             txtPesoNeto.Text = "0.00"
+            txtPesoLibr.Text = "0.00"
+            txtCantSacoC.Text = "0.00"
+            txtCantQQ.Text = "0.00"
         End If
     End Sub
 End Class

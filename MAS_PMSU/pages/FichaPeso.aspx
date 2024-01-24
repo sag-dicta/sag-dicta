@@ -235,7 +235,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Tara (QQ):</label><asp:Label ID="lblTara" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtTara" runat="server" Enabled="true" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtTara" runat="server" Enabled="true" onkeypress="return numericOnly(this);" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
                             </div>
                         </div>
                     </div>
