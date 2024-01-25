@@ -65,7 +65,7 @@
                         <div class="col-lg-12">
                             <div class="table-responsive">
                                 <h4>
-                                    <span style="float: right;"><small># Multiplicadores:</small>
+                                    <span style="float: right;"><small># Cuadros Procesamientos:</small>
                                         <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                 </h4>
                                 <p>&nbsp;</p>

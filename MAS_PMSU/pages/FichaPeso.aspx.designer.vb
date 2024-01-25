@@ -131,6 +131,15 @@ Partial Public Class FichaPeso
     Protected WithEvents TextRespaldo As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control txtunion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtunion As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control lb_nombre_new.
     '''</summary>
     '''<remarks>

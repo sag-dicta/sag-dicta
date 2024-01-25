@@ -27,7 +27,7 @@ Public Class Inventario
         End If
     End Sub
     Protected Sub vaciar(sender As Object, e As EventArgs)
-        Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
+        Response.Redirect(String.Format("~/pages/Inventario.aspx"))
     End Sub
     Private Sub llenarcomboCiclogrid()
         Dim StrCombo As String = "SELECT * FROM sag_ciclo"
@@ -126,6 +126,25 @@ Public Class Inventario
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
 
         GridDatos.DataBind()
+        CalcularSumatoriaPesoNeto()
+    End Sub
+    Protected Sub CalcularSumatoriaPesoNeto()
+        Dim sumatoria As Decimal = 0
+
+        ' Iterar a través de las filas del GridView
+        For Each row As GridViewRow In GridDatos.Rows
+            ' Encontrar el control que contiene el valor de la columna "peso_neto"
+            Dim pesoNeto As String = row.Cells(GridDatos.Columns.IndexOf(GridDatos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "peso_neto"))).Text
+
+            ' Verificar si el control se encontró y el valor no está vacío
+            If Not String.IsNullOrEmpty(pesoNeto) Then
+                ' Convertir el valor a Decimal y sumarlo a la sumatoria
+                sumatoria += Convert.ToDecimal(pesoNeto)
+            End If
+        Next
+
+        ' Mostrar la sumatoria en algún lugar, como una etiqueta o un TextBox
+        Label2.Text = sumatoria.ToString()
     End Sub
     Protected Sub TxtProductorGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductorGrid.SelectedIndexChanged
         llenagrid()
@@ -170,7 +189,8 @@ Public Class Inventario
         If (e.CommandName = "Editar") Then
             DivGrid.Visible = "false"
             DivActa.Visible = "true"
-            btnGuardarActa.Visible = True
+            Div1.Visible = "false"
+            btnGuardarActa.Visible = False
             BtnNuevo.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
@@ -547,7 +567,7 @@ Public Class Inventario
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
-                btnEditar.Text = "Editar"
+                btnEditar.Text = "VER"
                 btnEditar.CssClass = "btn btn-primary"
                 btnEditar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
             Else

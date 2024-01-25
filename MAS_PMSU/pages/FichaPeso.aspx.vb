@@ -405,6 +405,8 @@ Public Class FichaPeso
                 BtnImprimir.Visible = False
                 BtnNuevo.Visible = True
 
+                identificador(txtCategoria.Text, txtVariedad.Text)
+                buscarYguardar(txtunion.Text)
             End Using
         End Using
     End Sub
@@ -606,5 +608,57 @@ Public Class FichaPeso
             txtCantSacoC.Text = "0.00"
             txtCantQQ.Text = "0.00"
         End If
+    End Sub
+    Protected Sub buscarYguardar(palabra As String)
+        Dim Str As String = "SELECT variedad_categoria, id FROM `sag_registro_inventario` WHERE variedad_categoria = '" & palabra & "'"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+        adap.Fill(dt)
+
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            For Each row As DataRow In dt.Rows
+                If Not IsDBNull(row("variedad_categoria")) AndAlso row("variedad_categoria").ToString() = palabra Then
+
+                    Dim query As String = "UPDATE sag_registro_inventario SET
+                        peso_neto = @peso_neto
+                    WHERE id = " & row("id").ToString & ""
+
+                    Using cmd As New MySqlCommand(query, connection)
+
+                        cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
+
+                        cmd.ExecuteNonQuery()
+                        connection.Close()
+                    End Using
+                Else
+                    Dim query As String = "INSERT INTO sag_registro_inventario (variedad_categoria, categoria_origen, tipo_cultivo, variedad, estado, peso_neto) VALUES (@variedad_categoria, @categoria_origen, @tipo_cultivo, @variedad, @estado, @peso_neto)"
+
+                    Using cmd As New MySqlCommand(query, connection)
+
+                        cmd.Parameters.AddWithValue("@variedad_categoria", palabra)
+                        cmd.Parameters.AddWithValue("@categoria_origen", txtCategoria.Text)
+                        cmd.Parameters.AddWithValue("@tipo_cultivo", txtCultivo.Text)
+                        cmd.Parameters.AddWithValue("@variedad", txtVariedad.Text)
+                        cmd.Parameters.AddWithValue("@estado", "1")
+                        cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
+
+                        cmd.ExecuteNonQuery()
+                        connection.Close()
+                    End Using
+                End If
+            Next
+        End Using
+    End Sub
+    Protected Sub identificador(c1 As String, v2 As String)
+        Dim cat As String = c1
+        Dim vari As String = v2
+
+
+        Dim resultado As String = String.Format("{0}-{1}", cat, vari)
+
+        txtunion.Text = resultado
     End Sub
 End Class

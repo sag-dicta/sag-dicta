@@ -98,7 +98,7 @@
                         <div class="col-lg-12">
                             <div class="table-responsive">
                                 <h4 runat="server" visible="false" style="display: none">
-                                    <span style="float: right;"><small># Multiplicadores:</small>
+                                    <span style="float: right;"><small># Registros de inventario:</small>
                                         <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                 </h4>
                                 <p>&nbsp;</p>
@@ -149,13 +149,13 @@
                                         <asp:BoundField DataField="tara" HeaderText="TARA (QQ)" />
                                         <asp:BoundField DataField="peso_neto" HeaderText="PESO NETO (QQ)" />
 
-                                        <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
+                                        <asp:ButtonField ButtonType="Button" Text="VER" ControlStyle-CssClass="btn btn-warning" HeaderText="DETALLE" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar">
+                                        <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar" Visible="false">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="IMPRIMIR ACTA" CommandName="Imprimir">
+                                        <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="IMPRIMIR ACTA" CommandName="Imprimir" Visible="false">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                         </asp:ButtonField>
                                     </Columns>
@@ -282,7 +282,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Tara (QQ):</label><asp:Label ID="lblTara" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtTara" runat="server" Enabled="true" onkeypress="return numericOnly(this);" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtTara" runat="server" Enabled="false" onkeypress="return numericOnly(this);" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
                             </div>
                         </div>
                     </div>

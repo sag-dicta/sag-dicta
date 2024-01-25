@@ -65,7 +65,7 @@
                         <div class="col-lg-12">
                             <div class="table-responsive">
                                 <h4>
-                                    <span style="float: right;"><small># Multiplicadores:</small>
+                                    <span style="float: right;"><small># Fichas:</small>
                                         <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                 </h4>
                                 <p>&nbsp;</p>
@@ -162,6 +162,7 @@
                                 <label for="txt">ID:</label>
                                 <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
                                 <asp:TextBox CssClass="form-control" ID="TextRespaldo" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtunion" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
