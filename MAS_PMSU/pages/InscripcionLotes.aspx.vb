@@ -127,23 +127,7 @@ Public Class InscripcionLotes
                     connection.Open()
 
                     Dim query As String = "INSERT INTO sag_registro_lote (
-                    nombre_productor,
-                    representante_legal,
-                    identidad_productor,
-                    extendida,
-                    residencia_productor,
-                    telefono_productor,
-                    no_registro_productor,
-                    nombre_multiplicador,
-                    cedula_multiplicador,
-                    telefono_multiplicador,
-                    nombre_finca,
-                    departamento,
-                    municipio,
-                    aldea,
-                    caserio,
-                    nombre_persona_finca,
-                    nombre_lote,
+                    id2,
                     estado,
                     categoria_origen,
                     tipo_cultivo,
@@ -163,23 +147,7 @@ Public Class InscripcionLotes
                     produccion_est_hectareas,
                     destino
                 ) VALUES (
-                    @nombre_productor, 
-                    @representante_legal, 
-                    @identidad_productor, 
-                    @extendida, 
-                    @residencia_productor, 
-                    @telefono_productor, 
-                    @no_registro_productor, 
-                    @nombre_multiplicador, 
-                    @cedula_multiplicador, 
-                    @telefono_multiplicador, 
-                    @nombre_finca, 
-                    @departamento, 
-                    @municipio, 
-                    @aldea, 
-                    @caserio, 
-                    @nombre_persona_finca, 
-                    @nombre_lote, 
+                    @id2,
                     @estado,
                     @categoria_origen,
                     @tipo_cultivo,
@@ -200,31 +168,12 @@ Public Class InscripcionLotes
                     @destino
                 );
                 "
-                    Dim fechaConvertida As DateTime
                     Dim fechaConvertida2 As DateTime
                     Dim fechaConvertida3 As DateTime
                     Dim fechaConvertida4 As DateTime
 
                     Using cmd As New MySqlCommand(query, connection)
-                        cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
-                        cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
-                        cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
-                        If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                            cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd"))
-                        End If
-                        cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
-                        cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
-                        cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
-                        cmd.Parameters.AddWithValue("@nombre_multiplicador", txtNombreRe.Text)
-                        cmd.Parameters.AddWithValue("@cedula_multiplicador", txtIdentidadRe.Text)
-                        cmd.Parameters.AddWithValue("@telefono_multiplicador", TxtTelefonoRe.Text)
-                        cmd.Parameters.AddWithValue("@nombre_finca", TxtNombreFinca.Text)
-                        cmd.Parameters.AddWithValue("@departamento", gb_departamento_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@municipio", gb_municipio_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@aldea", gb_aldea_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@caserio", gb_caserio_new.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@nombre_persona_finca", TxtPersonaFinca.Text)
-                        cmd.Parameters.AddWithValue("@nombre_lote", TxtLote.Text)
+                        cmd.Parameters.AddWithValue("@id2", TextIdMulti2.Text)
                         cmd.Parameters.AddWithValue("@categoria_origen", categoria_origen_ddl.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
                         Dim selectedValue As String = CmbTipoSemilla.SelectedValue
@@ -679,7 +628,7 @@ Public Class InscripcionLotes
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio, no_lote, certificado_origen_semilla, factura_comercio"
+        Dim cadena As String = "id_lote, nombre_productor, nombre_finca, nombre_multiplicador, cedula_multiplicador, departamento, municipio, no_lote, certificado_origen_semilla, factura_comercio"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -702,7 +651,7 @@ Public Class InscripcionLotes
             c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_lote` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_multi_lote` WHERE 1 = 1 " & c1 & c3 & c4
 
         GridDatos.DataBind()
     End Sub
@@ -779,7 +728,7 @@ Public Class InscripcionLotes
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_Multiplicador WHERE estado = '1' AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
+        StrCombo = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_Multiplicador WHERE estado = '1' AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -838,7 +787,7 @@ Public Class InscripcionLotes
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
-
+            TextIdMulti2.Text = dt.Rows(0)("id").ToString()
             txt_nombre_prod_new.Text = dt.Rows(0)("nombre_productor").ToString()
             Txt_Representante_Legal.Text = dt.Rows(0)("representante_legal").ToString()
             TxtIdentidad.Text = dt.Rows(0)("identidad_productor").ToString()
@@ -903,8 +852,8 @@ Public Class InscripcionLotes
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino, categoria_origen"
-            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_lote WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim cadena As String = "id_lote, nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino, categoria_origen"
+            Dim Str As String = "SELECT " & cadena & " FROM `vista_multi_lote` WHERE  ID_lote='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -1288,7 +1237,7 @@ Public Class InscripcionLotes
             c3 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        query = "SELECT " & cadena & " FROM sag_registro_lote WHERE 1 = 1 " & c1 & c2 & c3
+        query = "SELECT " & cadena & " FROM `vista_multi_lote` WHERE 1 = 1 " & c1 & c2 & c3
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)

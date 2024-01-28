@@ -56,7 +56,7 @@ Public Class FichaPeso
         TxtDepto.Items.Insert(0, newitem)
     End Sub
     Private Sub llenarcomboProductor()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' ORDER BY nombre_productor ASC"
+        Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM `vista_acta_lote_multi` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado_sena = '1' ORDER BY nombre_multiplicador ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -70,7 +70,7 @@ Public Class FichaPeso
     End Sub
     Private Sub llenarcomboProductor2()
         Dim StrCombo As String
-        StrCombo = "SELECT DISTINCT nombre_productor FROM sag_registro_senasa WHERE estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
+        StrCombo = "SELECT DISTINCT nombre_multiplicador FROM vista_acta_lote_multi WHERE estado_sena = '1' AND semilla_QQ_oro IS NOT NULL AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -92,7 +92,7 @@ Public Class FichaPeso
         llenagrid()
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, departamento, representante_legal, ciclo_acta, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, peso_humedo_QQ, semilla_QQ_oro, tara, peso_neto"
+        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, representante_legal, ciclo_acta, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, peso_humedo_QQ, semilla_QQ_oro, tara, peso_neto"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -101,7 +101,7 @@ Public Class FichaPeso
         If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND  nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' "
+            c1 = "AND  nombre_multiplicador = '" & TxtProductorGrid.SelectedItem.Text & "' "
         End If
 
         If (TxtDepto.SelectedItem.Text = "Todos") Then
@@ -123,7 +123,7 @@ Public Class FichaPeso
         End If
 
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2
 
         GridDatos.DataBind()
     End Sub
@@ -174,18 +174,18 @@ Public Class FichaPeso
             BtnNuevo.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "nombre_productor, departamento, municipio, aldea, caserio, representante_legal, telefono_productor, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara, peso_lb"
-            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim cadena As String = "nombre_multiplicador, departamento, municipio, aldea, caserio, representante_legal, telefono_multiplicador, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara, peso_lb"
+            Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txt_nombre_prod_new.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
+            txt_nombre_prod_new.Text = If(dt.Rows(0)("nombre_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_multiplicador").ToString())
             CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
             txtLugProc.Text = TextRespaldo.Text
             Txt_Representante_Legal.Text = If(dt.Rows(0)("representante_legal") Is DBNull.Value, String.Empty, dt.Rows(0)("representante_legal").ToString())
-            TxtTelefono.Text = If(dt.Rows(0)("telefono_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("telefono_productor").ToString())
+            TxtTelefono.Text = If(dt.Rows(0)("telefono_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("telefono_multiplicador").ToString())
             txtCategoria.Text = If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString())
             txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
             txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
@@ -253,7 +253,7 @@ Public Class FichaPeso
         If (e.CommandName = "observacion") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
             Dim cadena As String = "observaciones"
-            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -302,11 +302,16 @@ Public Class FichaPeso
 
             Dim query As String = "UPDATE sag_registro_senasa 
                     SET tara = @tara,
+                        peso_lb = @peso_lb,
+                        peso_neto = @peso_neto
                 WHERE id = " & TxtID.Text & ""
 
             Using cmd As New MySqlCommand(query, connection)
 
                 cmd.Parameters.AddWithValue("@tara", DBNull.Value)
+                cmd.Parameters.AddWithValue("@peso_lb", DBNull.Value)
+                cmd.Parameters.AddWithValue("@peso_neto", DBNull.Value)
+
                 cmd.ExecuteNonQuery()
                 connection.Close()
                 Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
@@ -404,9 +409,6 @@ Public Class FichaPeso
                 btnGuardarActa.Visible = False
                 BtnImprimir.Visible = False
                 BtnNuevo.Visible = True
-
-                identificador(txtCategoria.Text, txtVariedad.Text)
-                buscarYguardar(txtunion.Text)
             End Using
         End Using
     End Sub
@@ -452,7 +454,7 @@ Public Class FichaPeso
     End Sub
     Private Sub exportar()
 
-        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, no_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta, peso_lb"
+        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, categoria_origen, no_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta, peso_lb"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
@@ -462,7 +464,7 @@ Public Class FichaPeso
         If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND  nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' "
+            c1 = "AND  nombre_multiplicador = '" & TxtProductorGrid.SelectedItem.Text & "' "
         End If
 
         If (TxtDepto.SelectedItem.Text = "Todos") Then
@@ -483,7 +485,7 @@ Public Class FichaPeso
             c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
         End If
 
-        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        query = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -609,56 +611,58 @@ Public Class FichaPeso
             txtCantQQ.Text = "0.00"
         End If
     End Sub
-    Protected Sub buscarYguardar(palabra As String)
-        Dim Str As String = "SELECT variedad_categoria, id FROM `sag_registro_inventario` WHERE variedad_categoria = '" & palabra & "'"
-        Dim adap As New MySqlDataAdapter(Str, conn)
-        Dim dt As New DataTable
-        adap.Fill(dt)
-
-        Dim connectionString As String = conn
-        Using connection As New MySqlConnection(connectionString)
-            connection.Open()
-
-            For Each row As DataRow In dt.Rows
-                If Not IsDBNull(row("variedad_categoria")) AndAlso row("variedad_categoria").ToString() = palabra Then
-
-                    Dim query As String = "UPDATE sag_registro_inventario SET
-                        peso_neto = @peso_neto
-                    WHERE id = " & row("id").ToString & ""
-
-                    Using cmd As New MySqlCommand(query, connection)
-
-                        cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
-
-                        cmd.ExecuteNonQuery()
-                        connection.Close()
-                    End Using
-                Else
-                    Dim query As String = "INSERT INTO sag_registro_inventario (variedad_categoria, categoria_origen, tipo_cultivo, variedad, estado, peso_neto) VALUES (@variedad_categoria, @categoria_origen, @tipo_cultivo, @variedad, @estado, @peso_neto)"
-
-                    Using cmd As New MySqlCommand(query, connection)
-
-                        cmd.Parameters.AddWithValue("@variedad_categoria", palabra)
-                        cmd.Parameters.AddWithValue("@categoria_origen", txtCategoria.Text)
-                        cmd.Parameters.AddWithValue("@tipo_cultivo", txtCultivo.Text)
-                        cmd.Parameters.AddWithValue("@variedad", txtVariedad.Text)
-                        cmd.Parameters.AddWithValue("@estado", "1")
-                        cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
-
-                        cmd.ExecuteNonQuery()
-                        connection.Close()
-                    End Using
-                End If
-            Next
-        End Using
-    End Sub
-    Protected Sub identificador(c1 As String, v2 As String)
-        Dim cat As String = c1
-        Dim vari As String = v2
-
-
-        Dim resultado As String = String.Format("{0}-{1}", cat, vari)
-
-        txtunion.Text = resultado
-    End Sub
+    'Protected Sub buscarYguardar(palabra As String)
+    '    Dim Str As String = "SELECT variedad_categoria FROM `sag_registro_inventario` WHERE variedad_categoria = '" & palabra & "'"
+    '    Dim adap As New MySqlDataAdapter(Str, conn)
+    '    Dim dt As New DataTable
+    '    adap.Fill(dt)
+    '
+    '    Dim connectionString As String = conn
+    '    Using connection As New MySqlConnection(connectionString)
+    '        connection.Open()
+    '
+    '        For Each row As DataRow In dt.Rows
+    '            For Each column As DataColumn In dt.Columns
+    '                If row(column).ToString() = palabra Then
+    '
+    '                    Dim query As String = "UPDATE sag_registro_inventario SET
+    '                        peso_neto = @peso_neto
+    '                    WHERE variedad_categoria = " & palabra & ""
+    '
+    '                    Using cmd As New MySqlCommand(query, connection)
+    '
+    '                        cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
+    '
+    '                        cmd.ExecuteNonQuery()
+    '                        connection.Close()
+    '                    End Using
+    '                Else
+    '                    Dim query As String = "INSERT INTO sag_registro_inventario (variedad_categoria, categoria_origen, tipo_cultivo, variedad, estado, peso_neto) VALUES (@variedad_categoria, @categoria_origen, @tipo_cultivo, @variedad, @estado, @peso_neto)"
+    '
+    '                    Using cmd As New MySqlCommand(query, connection)
+    '
+    '                        cmd.Parameters.AddWithValue("@variedad_categoria", palabra)
+    '                        cmd.Parameters.AddWithValue("@categoria_origen", txtCategoria.Text)
+    '                        cmd.Parameters.AddWithValue("@tipo_cultivo", txtCultivo.Text)
+    '                        cmd.Parameters.AddWithValue("@variedad", txtVariedad.Text)
+    '                        cmd.Parameters.AddWithValue("@estado", "1")
+    '                        cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
+    '
+    '                        cmd.ExecuteNonQuery()
+    '                        connection.Close()
+    '                    End Using
+    '                End If
+    '            Next
+    '        Next
+    '    End Using
+    'End Sub
+    'Protected Sub identificador(c1 As String, v2 As String)
+    '    Dim cat As String = c1
+    '    Dim vari As String = v2
+    '
+    '
+    '    Dim resultado As String = String.Format("{0}-{1}", cat, vari)
+    '
+    '    txtunion.Text = resultado
+    'End Sub
 End Class

@@ -71,7 +71,7 @@ Public Class AgregraActadeRecibo
         txtciclo.Items.Insert(0, newitem)
     End Sub
     Private Sub llenarcomboProductor()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' ORDER BY nombre_productor ASC"
+        Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' ORDER BY nombre_multiplicador ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -84,7 +84,7 @@ Public Class AgregraActadeRecibo
         TxtProductorGrid.Items.Insert(0, newitem)
     End Sub
     Private Sub llenarcomboProductor2()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
+        Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -98,7 +98,7 @@ Public Class AgregraActadeRecibo
     End Sub
     Private Sub llenarcomboLote()
         If TxtProductorGrid.SelectedItem.Text <> "Todos" Then
-            Dim StrCombo As String = "SELECT DISTINCT no_lote FROM `sag_registro_lote` WHERE nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' AND estado = '1' "
+            Dim StrCombo As String = "SELECT DISTINCT no_lote FROM `sag_registro_lote` WHERE productor = '" & TxtProductorGrid.SelectedItem.Text & "' AND estado = '1' "
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
@@ -125,7 +125,7 @@ Public Class AgregraActadeRecibo
         If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND  nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' "
+            c1 = "AND  NOMBRE_MULTIPLICADOR = '" & TxtProductorGrid.SelectedItem.Text & "' "
         End If
 
         If (TxtDepto.SelectedItem.Text = "Todos") Then
@@ -146,7 +146,7 @@ Public Class AgregraActadeRecibo
             c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND ciclo_acta IS NOT NULL AND estado = '1' " & c1 & c3 & c2 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND ciclo_acta IS NOT NULL " & c1 & c3 & c2 & c4
 
         GridDatos.DataBind()
     End Sub
@@ -225,8 +225,8 @@ Public Class AgregraActadeRecibo
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "fecha_acta, nombre_productor, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta"
-            Dim Str As String = "SELECT " & cadena & " FROM sag_registro_senasa WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta"
+            Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_ACTA='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -237,7 +237,7 @@ Public Class AgregraActadeRecibo
             txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
             CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
             txtProcedencia.Text = Textrespaldo.Text
-            txtProductor.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
+            txtProductor.Text = If(dt.Rows(0)("nombre_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_multiplicador").ToString())
             txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
             txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
             txtCategoria.Text = If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString())
@@ -391,6 +391,7 @@ Public Class AgregraActadeRecibo
             Dim dt As New DataTable
             adap.Fill(dt)
             llenarcomboCiclo()
+            TextIdlote2.Text = If(dt.Rows(0)("id") Is DBNull.Value, String.Empty, dt.Rows(0)("id").ToString())
             SeleccionarItemEnDropDownList(DDL_Ciclo, txtciclo.SelectedItem.Text)
             CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
             txtProcedencia.Text = Textrespaldo.Text
@@ -399,6 +400,8 @@ Public Class AgregraActadeRecibo
             txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
             txtCategoria.Text = If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString())
             txtLote.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
+            txtlega.Text = If(dt.Rows(0)("representante_legal") Is DBNull.Value, String.Empty, dt.Rows(0)("representante_legal").ToString())
+            txtnum.Text = If(dt.Rows(0)("telefono_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("telefono_productor").ToString())
             Verificar()
         End If
     End Sub
@@ -455,32 +458,16 @@ Public Class AgregraActadeRecibo
                 connection.Open()
 
                 Dim query As String = "INSERT INTO sag_registro_senasa (
-                    nombre_productor,
-                    departamento,
-                    municipio,
-                    aldea,
-                    caserio,
+                    id2,
                     estado,
-                    categoria_origen,
-                    tipo_cultivo,
-                    variedad,
-                    no_lote,
                     fecha_acta,
                     porcentaje_humedad,
                     no_sacos,
                     peso_humedo_QQ,
                     ciclo_acta
                 ) VALUES (
-                    @nombre_productor, 
-                    @departamento, 
-                    @municipio, 
-                    @aldea, 
-                    @caserio,
+                    @id2, 
                     @estado,
-                    @categoria_origen,
-                    @tipo_cultivo,
-                    @variedad,
-                    @no_lote,
                     @fecha_acta,
                     @porcentaje_humedad,
                     @no_sacos,
@@ -489,16 +476,7 @@ Public Class AgregraActadeRecibo
                 );
                 "
                 Using cmd As New MySqlCommand(query, connection)
-                    cmd.Parameters.AddWithValue("@nombre_productor", txtProductor.Text)
-                    separarIdentificador(txtProcedencia.Text)
-                    cmd.Parameters.AddWithValue("@departamento", Textdepart.Text)
-                    cmd.Parameters.AddWithValue("@municipio", Textmuni.Text)
-                    cmd.Parameters.AddWithValue("@aldea", Textalde.Text)
-                    cmd.Parameters.AddWithValue("@caserio", Textcase.Text)
-                    cmd.Parameters.AddWithValue("@categoria_origen", txtCategoria.Text)
-                    cmd.Parameters.AddWithValue("@tipo_cultivo", txtCultivo.Text)
-                    cmd.Parameters.AddWithValue("@variedad", txtVariedad.Text)
-                    cmd.Parameters.AddWithValue("@no_lote", txtLote.Text)
+                    cmd.Parameters.AddWithValue("@id2", TextIdlote2.Text)
                     cmd.Parameters.AddWithValue("@estado", "1")
                     If DateTime.TryParse(txtFechaSiembra.Text, fechaConvertida) Then
                         cmd.Parameters.AddWithValue("@fecha_acta", fechaConvertida.ToString("yyyy-MM-dd"))
@@ -585,7 +563,7 @@ Public Class AgregraActadeRecibo
         If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND  nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' "
+            c1 = "AND  NOMBRE_MULTIPLICADOR = '" & TxtProductorGrid.SelectedItem.Text & "' "
         End If
 
         If (TxtDepto.SelectedItem.Text = "Todos") Then
@@ -597,10 +575,16 @@ Public Class AgregraActadeRecibo
         If (DDL_SelCLote.SelectedItem.Text = "Todos") Then
             c3 = " "
         Else
-            c3 = "AND tipo_cultivo = '" & DDL_SelCLote.SelectedItem.Text & "' "
+            c3 = "AND no_lote = '" & DDL_SelCLote.SelectedItem.Text & "' "
         End If
 
-        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND no_lote IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        If (txtciclo.SelectedItem.Text = "Todos") Then
+            c4 = " "
+        Else
+            c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND ciclo_acta IS NOT NULL " & c1 & c3 & c4 & c2
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)

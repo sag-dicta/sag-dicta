@@ -92,7 +92,7 @@
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
 
-                                            <asp:BoundField DataField="ID">
+                                            <asp:BoundField DataField="ID_lote">
                                                 <HeaderStyle CssClass="hide" />
                                                 <ItemStyle CssClass="hide" />
                                             </asp:BoundField>
@@ -100,7 +100,7 @@
                                             <asp:BoundField DataField="cedula_multiplicador" HeaderText="Cedula" />
                                             <asp:BoundField DataField="nombre_finca" HeaderText="Nombre de la Finca" />
                                             <asp:BoundField DataField="nombre_productor" HeaderText="Productor" />
-                                            <asp:BoundField DataField="no_registro_productor" HeaderText="No. Registro" />
+                                            <asp:BoundField DataField="no_lote" HeaderText="No. Lote" />
                                             <asp:BoundField DataField="Departamento" HeaderText="Departamento" />
                                             <asp:BoundField DataField="municipio" HeaderText="Municipio" />
 
@@ -299,6 +299,7 @@
 
                         <div class="col-lg-3">
                             <asp:TextBox ID="txtID" runat="server" Visible="false"></asp:TextBox>
+                            <asp:TextBox ID="TextIdMulti2" runat="server" Visible="false"></asp:TextBox>
                         </div>
                     </div>
 

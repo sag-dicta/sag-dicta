@@ -104,11 +104,11 @@
                                     <AlternatingRowStyle BackColor="White" />
                                     <Columns>
 
-                                        <asp:BoundField DataField="ID">
+                                        <asp:BoundField DataField="ID_acta">
                                             <HeaderStyle CssClass="hide" />
                                             <ItemStyle CssClass="hide" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="nombre_productor" HeaderText="NOMBRE DEL PRODUCTOR" />
+                                        <asp:BoundField DataField="nombre_multiplicador" HeaderText="NOMBRE DEL MULTIPLICADOR" />
                                         <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
@@ -163,6 +163,9 @@
                             <div class="form-group">
                                 <label for="txt">ID:</label>
                                 <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtlega" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtnum" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox ID="TextIdlote2" runat="server" Visible="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-2">

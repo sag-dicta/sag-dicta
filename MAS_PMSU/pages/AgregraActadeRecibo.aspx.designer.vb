@@ -140,6 +140,33 @@ Partial Public Class AgregraActadeRecibo
     Protected WithEvents TxtID As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control txtlega.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtlega As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control txtnum.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtnum As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control TextIdlote2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TextIdlote2 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control lblFecha.
     '''</summary>
     '''<remarks>

@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Productor:</label>
+                                <label>Seleccione Multiplicador:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
                                 </asp:DropDownList>
@@ -99,11 +99,11 @@
                                     <AlternatingRowStyle BackColor="White" />
                                     <Columns>
 
-                                        <asp:BoundField DataField="ID">
+                                        <asp:BoundField DataField="ID_acta">
                                             <HeaderStyle CssClass="hide" />
                                             <ItemStyle CssClass="hide" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="nombre_productor" HeaderText="NOMBRE DEL PRODUCTOR" />
+                                        <asp:BoundField DataField="nombre_multiplicador" HeaderText="NOMBRE DEL PRODUCTOR" />
                                         <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="representante_legal" HeaderText="RESPONSABLE LEGAL" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
