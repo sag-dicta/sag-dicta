@@ -46,21 +46,12 @@ Public Class agregarMultiplicador
                 @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
                 @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @estado)"
 
-                    Dim fechaConvertida As DateTime
-
-
-                    If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                        fechaConvertida.ToString("dd-MM-yyyy")
-                    End If
-
                     Using cmd As New MySqlCommand(query, connection)
 
                         cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
                         cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
                         cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
-                        If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                            cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                        End If
+                        cmd.Parameters.AddWithValue("@extendida", TextBox1.Text)
                         cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
                         cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
                         cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
@@ -126,20 +117,12 @@ Public Class agregarMultiplicador
                         nombre_lote = @nombre_lote
                     WHERE id = " & txtID.Text & ""
 
-                    Dim fechaConvertida As DateTime
-
-                    If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                        fechaConvertida.ToString("dd-MM-yyyy")
-                    End If
-
                     Using cmd As New MySqlCommand(query, connection)
 
                         cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
                         cmd.Parameters.AddWithValue("@representante_legal", Txt_Representante_Legal.Text)
                         cmd.Parameters.AddWithValue("@identidad_productor", TxtIdentidad.Text)
-                        If DateTime.TryParse(TextBox1.Text, fechaConvertida) Then
-                            cmd.Parameters.AddWithValue("@extendida", fechaConvertida.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
-                        End If
+                        cmd.Parameters.AddWithValue("@extendida", TextBox1.Text)
                         cmd.Parameters.AddWithValue("@residencia_productor", TxtResidencia.Text)
                         cmd.Parameters.AddWithValue("@telefono_productor", TxtTelefono.Text)
                         cmd.Parameters.AddWithValue("@no_registro_productor", txtNoRegistro.Text)
@@ -901,7 +884,7 @@ Public Class agregarMultiplicador
             txt_nombre_prod_new.Text = dt.Rows(0)("nombre_productor").ToString()
             Txt_Representante_Legal.Text = dt.Rows(0)("representante_legal").ToString()
             TxtIdentidad.Text = dt.Rows(0)("identidad_productor").ToString()
-            TextBox1.Text = DirectCast(dt.Rows(0)("extendida"), DateTime).ToString("yyyy-MM-dd")
+            TextBox1.Text = dt.Rows(0)("extendida").ToString()
             TxtResidencia.Text = dt.Rows(0)("residencia_productor").ToString()
             TxtTelefono.Text = dt.Rows(0)("telefono_productor").ToString()
             txtNoRegistro.Text = dt.Rows(0)("no_registro_productor").ToString()

@@ -169,7 +169,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Extendida En :</label><asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TextBox1" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -283,7 +283,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Encargado de la finca</label><asp:Label ID="LblPersonaFinca" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtPersonaFinca" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="TxtPersonaFinca" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -396,22 +396,28 @@
         }
     </script>
 
-    <script type="text/javascript">
-        function lettersOnly(event) {
-            var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
+   <script type="text/javascript">
+       function lettersOnly(event) {
+           var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
 
-            // Un-comment to discover a key that I have forgotten to take into account...
-            // alert(keyCodeEntered);
+           // Un-comment to discover a key that I have forgotten to take into account...
+           // alert(keyCodeEntered);
 
-            // Check if the key code corresponds to a letter (a-z or A-Z), a space, or an accent
-            if ((keyCodeEntered >= 65 && keyCodeEntered <= 90) || // A-Z
-                (keyCodeEntered >= 97 && keyCodeEntered <= 122) || // a-z
-                keyCodeEntered === 32 || // space
-                (keyCodeEntered >= 192 && keyCodeEntered <= 255)) { // accented characters
-                return true;
-            }
+           // Check if the key code corresponds to a letter (a-z or A-Z), a space, an accent, a comma, a period, or parentheses
+           if ((keyCodeEntered >= 65 && keyCodeEntered <= 90) || // A-Z
+               (keyCodeEntered >= 97 && keyCodeEntered <= 122) || // a-z
+               keyCodeEntered === 32 || // space
+               (keyCodeEntered >= 192 && keyCodeEntered <= 255) || // accented characters
+               keyCodeEntered === 44 || // comma
+               keyCodeEntered === 46 || // period
+               keyCodeEntered === 40 || // left parenthesis
+               keyCodeEntered === 41) { // right parenthesis
+               return true;
+           }
 
-            return false;
-        }
-    </script>
+           return false;
+       }
+   </script>
+
+
 </asp:Content>
