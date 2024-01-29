@@ -957,18 +957,18 @@ Public Class InscripcionLotes
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM sag_registro_lote WHERE nombre_multiplicador = @valor"
+            Dim Str As String = "SELECT * FROM vista_multi_lote WHERE nombre_multiplicador = @valor"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
             Dim dt As New DataTable
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "sag_registro_lote")
+            adap.Fill(ds, "vista_multi_lote")
 
             Dim nombre As String
 
-            nombre = " Datos del Multiplicador " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
+            nombre = " Datos del Lote " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
 
             rptdocument.Load(Server.MapPath("~/pages/AgregarMultiplicadorReport2.rpt"))
 

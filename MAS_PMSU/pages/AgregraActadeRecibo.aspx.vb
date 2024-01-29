@@ -267,14 +267,14 @@ Public Class AgregraActadeRecibo
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM sag_registro_senasa WHERE nombre_productor = @valor"
+            Dim Str As String = "SELECT * FROM vista_acta_lote_multi WHERE nombre_multiplicador = @valor"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
             Dim dt As New DataTable
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "sag_registro_senasa1")
+            adap.Fill(ds, "vista_acta_lote_multi")
 
             Dim nombre As String
 

@@ -78,6 +78,16 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_multi_loteDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_acta_lote_multiDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_senasaRow">
 <summary>
 Represents strongly named DataRow class.
@@ -94,6 +104,16 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_loteRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_multi_loteRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_acta_lote_multiRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -118,6 +138,16 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_multi_loteRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_acta_lote_multiRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_registro_senasaTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -134,6 +164,16 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_registro_loteTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.vista_multi_loteTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.vista_acta_lote_multiTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
