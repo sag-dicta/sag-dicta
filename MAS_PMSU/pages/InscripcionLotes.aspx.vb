@@ -957,9 +957,10 @@ Public Class InscripcionLotes
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM vista_multi_lote WHERE nombre_multiplicador = @valor"
+            Dim Str As String = "SELECT * FROM vista_multi_lote WHERE nombre_multiplicador = @valor AND id_lote = @valor2"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
+            adap.SelectCommand.Parameters.AddWithValue("@valor2", Convert.ToInt32(HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString))
             Dim dt As New DataTable
 
             'nombre de la vista del data set
