@@ -32,22 +32,40 @@ Partial Public Class Inventario
     Protected WithEvents DivGrid As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control TxtDepto.
+    '''Control TxtCateogiraGrid.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents TxtCateogiraGrid As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control TxtProductorGrid.
+    '''Control basica1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtProductorGrid As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents basica1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control registrada1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents registrada1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control certificada1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents certificada1 As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
     '''Control DDL_SelCult.
@@ -192,24 +210,6 @@ Partial Public Class Inventario
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents DictaVictoriav As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control OtroMaizv.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents OtroMaizv As Global.System.Web.UI.WebControls.ListItem
-
-    '''<summary>
-    '''Control txtciclo.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtciclo As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control lblTotalClientes.

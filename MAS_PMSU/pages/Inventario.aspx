@@ -29,16 +29,12 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Departamento:</label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Seleccione Productor:</label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
+                                <label>Seleccione Categoria:</label>
+                                <asp:DropDownList CssClass="form-control" ID="TxtCateogiraGrid" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
+                                    <asp:ListItem id="basica1" Text="Basica"></asp:ListItem>
+                                    <asp:ListItem id="registrada1" Text="Registrada"></asp:ListItem>
+                                    <asp:ListItem id="certificada1" Text="Certificada"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -58,7 +54,7 @@
                                 <div class="form-group">
                                     <label>Seleccione Variedad:</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDLVarFrij" runat="server" AutoPostBack="true">
-                                        <asp:ListItem Text=""></asp:ListItem>
+                                        <asp:ListItem Text="Todos"></asp:ListItem>
                                         <asp:ListItem id="Amadeus77v" Text="Amadeus-77"></asp:ListItem>
                                         <asp:ListItem id="Carrizalitov" Text="Carrizalito"></asp:ListItem>
                                         <asp:ListItem id="Azabachev" Text="Azabache"></asp:ListItem>
@@ -77,19 +73,9 @@
                             <div class="form-group">
                                 <label>Seleccione Variedad:</label>
                                 <asp:DropDownList CssClass="form-control" ID="DDLVarMaiz" runat="server" AutoPostBack="true">
-                                    <asp:ListItem Text=""></asp:ListItem>
+                                    <asp:ListItem Text="Todos"></asp:ListItem>
                                     <asp:ListItem id="DictaMayav" Text="Dicta Maya"></asp:ListItem>
                                     <asp:ListItem id="DictaVictoriav" Text="Dicta Victoria"></asp:ListItem>
-                                    <asp:ListItem id="OtroMaizv" Text="Otro"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Seleccione Ciclo:</label>
-                                <asp:DropDownList CssClass="form-control" ID="txtciclo" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Text="Todos"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -109,7 +95,7 @@
                                     <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                     <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                                     <EmptyDataTemplate>
-                                        ¡No hay motoristas con esas caracteristicas!
+                                        ¡No existe esta semilla con estas caracteristicas!
                                     </EmptyDataTemplate>
                                     <%--Paginador...--%>
                                     <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />

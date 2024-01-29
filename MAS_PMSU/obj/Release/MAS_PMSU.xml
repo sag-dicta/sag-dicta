@@ -623,18 +623,36 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Inventario._TxtDepto">
+<member name="F:MAS_PMSU.Inventario._TxtCateogiraGrid">
 <summary>
-Control TxtDepto.
+Control TxtCateogiraGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Inventario._TxtProductorGrid">
+<member name="F:MAS_PMSU.Inventario._basica1">
 <summary>
-Control TxtProductorGrid.
+Control basica1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Inventario._registrada1">
+<summary>
+Control registrada1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Inventario._certificada1">
+<summary>
+Control certificada1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -779,24 +797,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Inventario._DictaVictoriav">
 <summary>
 Control DictaVictoriav.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.Inventario._OtroMaizv">
-<summary>
-Control OtroMaizv.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.Inventario._txtciclo">
-<summary>
-Control txtciclo.
 </summary>
 <remarks>
 Campo generado automáticamente.

@@ -19,9 +19,6 @@ Public Class Inventario
             If IsPostBack Then
 
             Else
-                llenarcomboProductor()
-                llenarcomboCiclogrid()
-                llenarcomboDepto()
                 llenagrid()
             End If
         End If
@@ -29,85 +26,17 @@ Public Class Inventario
     Protected Sub vaciar(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/Inventario.aspx"))
     End Sub
-    Private Sub llenarcomboCiclogrid()
-        Dim StrCombo As String = "SELECT * FROM sag_ciclo"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
 
-        txtciclo.DataSource = DtCombo
-        txtciclo.DataValueField = DtCombo.Columns(0).ToString()
-        txtciclo.DataTextField = DtCombo.Columns(1).ToString
-        txtciclo.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        txtciclo.Items.Insert(0, newitem)
-    End Sub
-    Private Sub llenarcomboDepto()
-        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        TxtDepto.DataSource = DtCombo
-        TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
-        TxtDepto.DataTextField = DtCombo.Columns(2).ToString
-        TxtDepto.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtDepto.Items.Insert(0, newitem)
-    End Sub
-    Private Sub llenarcomboProductor()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_productor FROM `sag_registro_senasa` WHERE 1 = 1 AND estado = '1' ORDER BY nombre_productor ASC"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        TxtProductorGrid.DataSource = DtCombo
-        TxtProductorGrid.DataValueField = DtCombo.Columns(0).ToString()
-        TxtProductorGrid.DataTextField = DtCombo.Columns(0).ToString
-        TxtProductorGrid.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtProductorGrid.Items.Insert(0, newitem)
-    End Sub
-    Private Sub llenarcomboProductor2()
-        Dim StrCombo As String
-        StrCombo = "SELECT DISTINCT nombre_productor FROM sag_registro_senasa WHERE estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        TxtProductorGrid.DataSource = DtCombo
-        TxtProductorGrid.DataValueField = DtCombo.Columns(0).ToString()
-        TxtProductorGrid.DataTextField = DtCombo.Columns(0).ToString
-        TxtProductorGrid.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtProductorGrid.Items.Insert(0, newitem)
-    End Sub
-
-    Protected Sub TxtDepto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        If TxtDepto.SelectedItem.Text = "Todos" Then
-            llenarcomboProductor()
-        Else
-            llenarcomboProductor2()
-        End If
-        llenagrid()
-    End Sub
     Sub llenagrid()
         Dim cadena As String = "categoria_origen, tipo_cultivo, variedad, peso_neto_resta"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
-        Dim c2 As String = ""
 
-        If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
+        If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND  nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' "
-        End If
-
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
-            c2 = " "
-        Else
-            c2 = "AND  departamento = '" & TxtDepto.SelectedItem.Text & "' "
+            c1 = "AND  categoria_origen = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
         End If
 
         If (DDL_SelCult.SelectedItem.Text = "Todos") Then
@@ -116,45 +45,75 @@ Public Class Inventario
             c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
         End If
 
-        If (txtciclo.SelectedItem.Text = "Todos") Then
-            c4 = " "
+        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
+            If (DDLVarFrij.SelectedItem.Text = "Todos") Then
+                c4 = " "
+            Else
+                c4 = "AND variedad = '" & DDLVarFrij.SelectedItem.Text & "' "
+            End If
         Else
-            c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
+            If (DDLVarMaiz.SelectedItem.Text = "Todos") Then
+                c4 = " "
+            Else
+                c4 = "AND variedad = '" & DDLVarMaiz.SelectedItem.Text & "' "
+            End If
         End If
-
-
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_inventario` WHERE 1 = 1 " & c1 & c3 & c4 & c2
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_inventario` WHERE 1 = 1 " & c1 & c3 & c4
 
         GridDatos.DataBind()
         CalcularSumatoriaPesoNeto()
     End Sub
     Protected Sub CalcularSumatoriaPesoNeto()
-        'Dim sumatoria As Decimal = 0
-        '
-        '' Iterar a través de las filas del GridView
-        'For Each row As GridViewRow In GridDatos.Rows
-        '    ' Encontrar el control que contiene el valor de la columna "peso_neto"
-        '    Dim pesoNeto As String = row.Cells(GridDatos.Columns.IndexOf(GridDatos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "peso_neto"))).Text
-        '
-        '    ' Verificar si el control se encontró y el valor no está vacío
-        '    If Not String.IsNullOrEmpty(pesoNeto) Then
-        '        ' Convertir el valor a Decimal y sumarlo a la sumatoria
-        '        sumatoria += Convert.ToDecimal(pesoNeto)
-        '    End If
-        'Next
-        '
-        '' Mostrar la sumatoria en algún lugar, como una etiqueta o un TextBox
-        'Label2.Text = sumatoria.ToString()
+        Dim sumatoria As Decimal = 0
+
+        ' Iterar a través de las filas del GridView
+        For Each row As GridViewRow In GridDatos.Rows
+            ' Encontrar el control que contiene el valor de la columna "peso_neto"
+            Dim pesoNeto As String = row.Cells(GridDatos.Columns.IndexOf(GridDatos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "peso_neto_resta"))).Text
+
+            ' Verificar si el control se encontró y el valor no está vacío
+            If Not String.IsNullOrEmpty(pesoNeto) Then
+                ' Convertir el valor a Decimal y sumarlo a la sumatoria
+                sumatoria += Convert.ToDecimal(pesoNeto)
+            End If
+        Next
+
+        ' Mostrar la sumatoria en algún lugar, como una etiqueta o un TextBox
+        Label2.Text = sumatoria.ToString()
     End Sub
-    Protected Sub TxtProductorGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductorGrid.SelectedIndexChanged
+    Protected Sub TxtCateogiraGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtCateogiraGrid.SelectedIndexChanged
         llenagrid()
     End Sub
 
     Protected Sub DDL_SelCult_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_SelCult.SelectedIndexChanged
+        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
+            llenagrid()
+            divVarMaiz.Visible = False
+            DDLVarMaiz.SelectedIndex = 0
+            divVarFrij.Visible = True
+        End If
+
+        If DDL_SelCult.SelectedItem.Text = "Maiz" Then
+            divVarMaiz.Visible = True
+            DDLVarFrij.SelectedIndex = 0
+            divVarFrij.Visible = False
+            llenagrid()
+        End If
+
+        If DDL_SelCult.SelectedItem.Text = "Todos" Then
+            divVarMaiz.Visible = False
+            DDLVarFrij.SelectedIndex = 0
+            divVarFrij.Visible = False
+            DDLVarMaiz.SelectedIndex = 0
+            llenagrid()
+        End If
+    End Sub
+
+    Protected Sub DDLVarFrij_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLVarFrij.SelectedIndexChanged
         llenagrid()
     End Sub
 
-    Protected Sub txtciclo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles txtciclo.SelectedIndexChanged
+    Protected Sub DDLVarMaiz_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLVarMaiz.SelectedIndexChanged
         llenagrid()
     End Sub
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
@@ -470,23 +429,17 @@ Public Class Inventario
     End Sub
     Private Sub exportar()
 
-        Dim cadena As String = "id, nombre_productor, departamento, tipo_cultivo, variedad, categoria_origen, no_lote, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta, peso_lb"
+        Dim cadena As String = "*"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
         Dim c2 As String = ""
 
-        If (TxtProductorGrid.SelectedItem.Text = "Todos") Then
+        If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND  nombre_productor = '" & TxtProductorGrid.SelectedItem.Text & "' "
-        End If
-
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
-            c2 = " "
-        Else
-            c2 = "AND  departamento = '" & TxtDepto.SelectedItem.Text & "' "
+            c1 = "AND  categoria_origen = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
         End If
 
         If (DDL_SelCult.SelectedItem.Text = "Todos") Then
@@ -495,13 +448,21 @@ Public Class Inventario
             c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
         End If
 
-        If (txtciclo.SelectedItem.Text = "Todos") Then
-            c4 = " "
+        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
+            If (DDLVarFrij.SelectedItem.Text = "Todos") Then
+                c4 = " "
+            Else
+                c4 = "AND variedad = '" & DDLVarFrij.SelectedItem.Text & "' "
+            End If
         Else
-            c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
+            If (DDLVarMaiz.SelectedItem.Text = "Todos") Then
+                c4 = " "
+            Else
+                c4 = "AND variedad = '" & DDLVarMaiz.SelectedItem.Text & "' "
+            End If
         End If
 
-        query = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        query = "SELECT " & cadena & " FROM `vista_inventario` WHERE 1 = 1 " & c1 & c3 & c4
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -512,11 +473,11 @@ Public Class Inventario
                         sda.Fill(ds)
 
                         ' Set Name of DataTables.
-                        ds.Tables(0).TableName = "Ficha De Peso Al Recibo Lotes De Semilla"
+                        ds.Tables(0).TableName = "Inventario"
 
                         Using wb As New XLWorkbook()
                             ' Add DataTable as Worksheet.
-                            wb.Worksheets.Add(ds.Tables(0), "sag_registro_senasa")
+                            wb.Worksheets.Add(ds.Tables(0), "vista_inventario")
 
                             ' Set auto width for all columns based on content.
                             wb.Worksheet(1).Columns().AdjustToContents()
@@ -526,7 +487,7 @@ Public Class Inventario
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Ficha De Peso Al Recibo Lotes De Semilla.xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=INVENTARIO.xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
