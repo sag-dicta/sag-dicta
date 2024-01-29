@@ -266,6 +266,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\ControlHRTo.aspx" />
     <Content Include="pages\Inventario.aspx" />
     <Content Include="pages\FichaPeso.aspx" />
     <Content Include="pages\CuadroProcesamiento.aspx" />
@@ -279,6 +280,7 @@
     <Content Include="pages\InscripcionLotes.aspx" />
     <Content Include="pages\InscSENASA_DescArch.aspx" />
     <Content Include="pages\Login.aspx" />
+    <Content Include="pages\MonitoreoPlagas.aspx" />
     <Content Include="pages\Registro_multiplicadores.aspx" />
     <Content Include="panels-wells.html" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
@@ -2170,6 +2172,13 @@
       <DependentUpon>ActaRecepcionReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="pages\ControlHRTo.aspx.designer.vb">
+      <DependentUpon>ControlHRTo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ControlHRTo.aspx.vb">
+      <DependentUpon>ControlHRTo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="pages\Inventario.aspx.designer.vb">
       <DependentUpon>Inventario.aspx</DependentUpon>
     </Compile>
@@ -2320,6 +2329,13 @@
     <Compile Include="pages\Login.aspx.vb">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\MonitoreoPlagas.aspx.designer.vb">
+      <DependentUpon>MonitoreoPlagas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\MonitoreoPlagas.aspx.vb">
+      <DependentUpon>MonitoreoPlagas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\Registro_multiplicadores.aspx.designer.vb">
       <DependentUpon>Registro_multiplicadores.aspx</DependentUpon>

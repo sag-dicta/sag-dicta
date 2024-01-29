@@ -131,25 +131,12 @@
                                     <AlternatingRowStyle BackColor="White" />
                                     <Columns>
 
-                                        <asp:BoundField DataField="ID">
-                                            <HeaderStyle CssClass="hide" />
-                                            <ItemStyle CssClass="hide" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="nombre_productor" HeaderText="NOMBRE DEL PRODUCTOR" />
-                                        <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
-                                        <asp:BoundField DataField="representante_legal" HeaderText="RESPONSABLE LEGAL" />
-                                        <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
                                         <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
-                                        <asp:BoundField DataField="no_lote" HeaderText="N° DE LOTE" />
-                                        <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
-                                        <asp:BoundField DataField="no_sacos" HeaderText="CANTIDAD DE SACOS" />
-                                        <asp:BoundField DataField="semilla_QQ_oro" HeaderText="PESO BRUTO (QQ)" />
-                                        <asp:BoundField DataField="tara" HeaderText="TARA (QQ)" />
-                                        <asp:BoundField DataField="peso_neto" HeaderText="PESO NETO (QQ)" />
+                                        <asp:BoundField DataField="peso_neto_resta" HeaderText="PESO NETO (QQ)" />
 
-                                        <asp:ButtonField ButtonType="Button" Text="VER" ControlStyle-CssClass="btn btn-warning" HeaderText="DETALLE" CommandName="Editar">
+                                        <asp:ButtonField ButtonType="Button" Text="VER" ControlStyle-CssClass="btn btn-warning" HeaderText="DETALLE" CommandName="Editar"  Visible="false">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar" Visible="false">

@@ -92,7 +92,7 @@ Public Class Inventario
         llenagrid()
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, departamento, representante_legal, ciclo_acta, categoria_origen, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, peso_humedo_QQ, semilla_QQ_oro, tara, peso_neto"
+        Dim cadena As String = "categoria_origen, tipo_cultivo, variedad, peso_neto_resta"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -123,28 +123,28 @@ Public Class Inventario
         End If
 
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_senasa` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado = '1' " & c1 & c3 & c4 & c2
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_inventario` WHERE 1 = 1 " & c1 & c3 & c4 & c2
 
         GridDatos.DataBind()
         CalcularSumatoriaPesoNeto()
     End Sub
     Protected Sub CalcularSumatoriaPesoNeto()
-        Dim sumatoria As Decimal = 0
-
-        ' Iterar a través de las filas del GridView
-        For Each row As GridViewRow In GridDatos.Rows
-            ' Encontrar el control que contiene el valor de la columna "peso_neto"
-            Dim pesoNeto As String = row.Cells(GridDatos.Columns.IndexOf(GridDatos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "peso_neto"))).Text
-
-            ' Verificar si el control se encontró y el valor no está vacío
-            If Not String.IsNullOrEmpty(pesoNeto) Then
-                ' Convertir el valor a Decimal y sumarlo a la sumatoria
-                sumatoria += Convert.ToDecimal(pesoNeto)
-            End If
-        Next
-
-        ' Mostrar la sumatoria en algún lugar, como una etiqueta o un TextBox
-        Label2.Text = sumatoria.ToString()
+        'Dim sumatoria As Decimal = 0
+        '
+        '' Iterar a través de las filas del GridView
+        'For Each row As GridViewRow In GridDatos.Rows
+        '    ' Encontrar el control que contiene el valor de la columna "peso_neto"
+        '    Dim pesoNeto As String = row.Cells(GridDatos.Columns.IndexOf(GridDatos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "peso_neto"))).Text
+        '
+        '    ' Verificar si el control se encontró y el valor no está vacío
+        '    If Not String.IsNullOrEmpty(pesoNeto) Then
+        '        ' Convertir el valor a Decimal y sumarlo a la sumatoria
+        '        sumatoria += Convert.ToDecimal(pesoNeto)
+        '    End If
+        'Next
+        '
+        '' Mostrar la sumatoria en algún lugar, como una etiqueta o un TextBox
+        'Label2.Text = sumatoria.ToString()
     End Sub
     Protected Sub TxtProductorGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductorGrid.SelectedIndexChanged
         llenagrid()
@@ -557,31 +557,31 @@ Public Class Inventario
     End Sub
 
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
-        If e.Row.RowType = DataControlRowType.DataRow Then
-            ' Obtén los datos de la fila actual
-            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "tara").ToString()
-
-            ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(14).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(16).Controls(0), Button)
-
-            ' Modifica el texto y el color de los botones según la lógica que desees
-            If Not String.IsNullOrEmpty(estimadoProduccion) Then
-                btnEditar.Text = "VER"
-                btnEditar.CssClass = "btn btn-primary"
-                btnEditar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
-            Else
-                btnEditar.Text = "Agregar"
-                btnEditar.CssClass = "btn btn-success"
-                btnEditar.Style("background-color") = "#28a745" ' Establece el color de fondo directamente
-            End If
-
-            If btnEditar.Text = "Editar" Then
-                btnImprimir.Visible = True
-            Else
-                btnImprimir.Visible = False
-            End If
-        End If
+        ' If e.Row.RowType = DataControlRowType.DataRow Then
+        '     ' Obtén los datos de la fila actual
+        '     Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "tara").ToString()
+        '
+        '     ' Encuentra los botones en la fila por índice
+        '     Dim btnEditar As Button = DirectCast(e.Row.Cells(14).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+        '     Dim btnImprimir As Button = DirectCast(e.Row.Cells(16).Controls(0), Button)
+        '
+        '     ' Modifica el texto y el color de los botones según la lógica que desees
+        '     If Not String.IsNullOrEmpty(estimadoProduccion) Then
+        '         btnEditar.Text = "VER"
+        '         btnEditar.CssClass = "btn btn-primary"
+        '         btnEditar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
+        '     Else
+        '         btnEditar.Text = "Agregar"
+        '         btnEditar.CssClass = "btn btn-success"
+        '         btnEditar.Style("background-color") = "#28a745" ' Establece el color de fondo directamente
+        '     End If
+        '
+        '     If btnEditar.Text = "Editar" Then
+        '         btnImprimir.Visible = True
+        '     Else
+        '         btnImprimir.Visible = False
+        '     End If
+        ' End If
     End Sub
 
     Protected Sub txtPesoBrut_TextChanged(sender As Object, e As EventArgs) Handles txtPesoBrut.TextChanged
