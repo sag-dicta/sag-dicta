@@ -21,7 +21,6 @@ Public Class AgregraActadeRecibo
             Else
                 txtFechaSiembra.Text = DateTime.Now.ToString("yyyy-MM-dd")
                 llenarcomboProductor()
-                llenarcomboDepto()
                 llenarcomboCiclogrid()
                 llenagrid()
             End If
@@ -29,19 +28,6 @@ Public Class AgregraActadeRecibo
     End Sub
     Protected Sub vaciar(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
-    End Sub
-    Private Sub llenarcomboDepto()
-        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        TxtDepto.DataSource = DtCombo
-        TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
-        TxtDepto.DataTextField = DtCombo.Columns(2).ToString
-        TxtDepto.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtDepto.Items.Insert(0, newitem)
     End Sub
     Private Sub llenarcomboCiclo()
         Dim StrCombo As String = "SELECT * FROM sag_ciclo"
@@ -71,7 +57,7 @@ Public Class AgregraActadeRecibo
         txtciclo.Items.Insert(0, newitem)
     End Sub
     Private Sub llenarcomboProductor()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' ORDER BY nombre_multiplicador ASC"
+        Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM `vista_multi_lote` WHERE 1 = 1 AND estado_lote = '1' ORDER BY nombre_multiplicador ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -83,22 +69,28 @@ Public Class AgregraActadeRecibo
         Dim newitem As New ListItem("Todos", "Todos")
         TxtProductorGrid.Items.Insert(0, newitem)
     End Sub
-    Private Sub llenarcomboProductor2()
-        Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
+    Private Sub llenarcomboVariedad()
+        If DDL_SelCLote.SelectedItem.Text <> "Todos" Then
+            Dim StrCombo As String = "SELECT DISTINCT variedad FROM `vista_multi_lote` WHERE 1 = 1 AND estado_lote = '1' AND nombre_multiplicador = '" & TxtProductorGrid.SelectedItem.Text & "' AND no_lote = '" & DDL_SelCLote.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
+            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+            Dim DtCombo As New DataTable
+            adaptcombo.Fill(DtCombo)
 
-        TxtProductorGrid.DataSource = DtCombo
-        TxtProductorGrid.DataValueField = DtCombo.Columns(0).ToString()
-        TxtProductorGrid.DataTextField = DtCombo.Columns(0).ToString
-        TxtProductorGrid.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtProductorGrid.Items.Insert(0, newitem)
+            ddlvariedad.DataSource = DtCombo
+            ddlvariedad.DataValueField = DtCombo.Columns(0).ToString()
+            ddlvariedad.DataTextField = DtCombo.Columns(0).ToString
+            ddlvariedad.DataBind()
+            Dim newitem As New ListItem("Todos", "Todos")
+            ddlvariedad.Items.Insert(0, newitem)
+        Else
+            ddlvariedad.Items.Clear()
+            Dim newitem As New ListItem("Todos", "Todos")
+            ddlvariedad.Items.Insert(0, newitem)
+        End If
     End Sub
     Private Sub llenarcomboLote()
         If TxtProductorGrid.SelectedItem.Text <> "Todos" Then
-            Dim StrCombo As String = "SELECT DISTINCT no_lote FROM `sag_registro_lote` WHERE productor = '" & TxtProductorGrid.SelectedItem.Text & "' AND estado = '1' "
+            Dim StrCombo As String = "SELECT DISTINCT no_lote FROM `vista_multi_lote` WHERE nombre_multiplicador = '" & TxtProductorGrid.SelectedItem.Text & "' AND estado_lote = '1' "
             Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
             Dim DtCombo As New DataTable
             adaptcombo.Fill(DtCombo)
@@ -128,10 +120,10 @@ Public Class AgregraActadeRecibo
             c1 = "AND  NOMBRE_MULTIPLICADOR = '" & TxtProductorGrid.SelectedItem.Text & "' "
         End If
 
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
+        If (ddlvariedad.SelectedItem.Text = "Todos") Then
             c2 = " "
         Else
-            c2 = "AND  departamento = '" & TxtDepto.SelectedItem.Text & "' "
+            c2 = "AND  variedad = '" & ddlvariedad.SelectedItem.Text & "' "
         End If
 
         If (DDL_SelCLote.SelectedItem.Text = "Todos") Then
@@ -155,24 +147,12 @@ Public Class AgregraActadeRecibo
         llenarcomboLote()
 
         If TxtProductorGrid.SelectedItem.Text = "Todos" Then
-            TxtDepto.SelectedIndex = 0
             DDL_SelCLote.SelectedIndex = 0
+            ddlvariedad.SelectedIndex = 0
             TxtProductorGrid.SelectedIndex = 0
             txtciclo.SelectedIndex = 0
             BAgregar.Visible = False
         End If
-    End Sub
-    Protected Sub TxtDepto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        If TxtDepto.SelectedItem.Text = "Todos" Then
-            llenarcomboProductor()
-            llenarcomboLote()
-            BAgregar.Visible = False
-        Else
-            llenarcomboProductor2()
-            llenarcomboLote()
-            BAgregar.Visible = False
-        End If
-        llenagrid()
     End Sub
 
     Protected Sub txtciclo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtciclo.SelectedIndexChanged
@@ -181,17 +161,30 @@ Public Class AgregraActadeRecibo
 
     Protected Sub DDL_SelCLote_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DDL_SelCLote.SelectedIndexChanged
         llenagrid()
+        llenarcomboVariedad()
 
-        If TxtProductorGrid.SelectedItem.Text <> "Todos" Then
+        If DDL_SelCLote.SelectedItem.Text = "Todos" Then
+            DDL_SelCLote.SelectedIndex = 0
+            TxtProductorGrid.SelectedIndex = 0
+            ddlvariedad.SelectedIndex = 0
+            txtciclo.SelectedIndex = 0
+            BAgregar.Visible = False
+        End If
+    End Sub
+
+    Protected Sub ddlvariedad_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlvariedad.SelectedIndexChanged
+        llenagrid()
+        Label2.Visible = False
+        If DDL_SelCLote.SelectedItem.Text <> "Todos" Then
             BAgregar.Visible = True
         Else
             BAgregar.Visible = False
         End If
 
-        If DDL_SelCLote.SelectedItem.Text = "Todos" Then
-            TxtDepto.SelectedIndex = 0
+        If ddlvariedad.SelectedItem.Text = "Todos" Then
             DDL_SelCLote.SelectedIndex = 0
             TxtProductorGrid.SelectedIndex = 0
+            ddlvariedad.SelectedIndex = 0
             txtciclo.SelectedIndex = 0
             BAgregar.Visible = False
         End If
@@ -384,26 +377,26 @@ Public Class AgregraActadeRecibo
         BtnNuevo.Visible = True
         btnGuardarActa.Text = "Guardar"
 
-        Dim Str As String = "SELECT * FROM sag_registro_lote WHERE 1=1"
+        Dim Str As String = "SELECT * FROM vista_multi_lote WHERE 1=1"
 
-        If (DDL_SelCLote.SelectedItem.Text <> "Todos") Then
-            Str &= " AND no_lote = '" & DDL_SelCLote.SelectedItem.Text & "'"
+        If (DDL_SelCLote.SelectedItem.Text <> "Todos" And ddlvariedad.SelectedItem.Text <> "Todos") Then
+            Str &= " AND no_lote = '" & DDL_SelCLote.SelectedItem.Text & "' AND variedad = '" & ddlvariedad.SelectedItem.Text & "'"
 
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
             llenarcomboCiclo()
-            TextIdlote2.Text = If(dt.Rows(0)("id") Is DBNull.Value, String.Empty, dt.Rows(0)("id").ToString())
+            TextIdlote2.Text = If(dt.Rows(0)("id_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("id_lote").ToString())
             SeleccionarItemEnDropDownList(DDL_Ciclo, txtciclo.SelectedItem.Text)
             CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
             txtProcedencia.Text = Textrespaldo.Text
-            txtProductor.Text = If(dt.Rows(0)("nombre_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_productor").ToString())
+            txtProductor.Text = If(dt.Rows(0)("nombre_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_multiplicador").ToString())
             txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
             txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
-            txtCategoria.Text = If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString())
+            txtCategoria.Text = If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString())
             txtLote.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
             txtlega.Text = If(dt.Rows(0)("representante_legal") Is DBNull.Value, String.Empty, dt.Rows(0)("representante_legal").ToString())
-            txtnum.Text = If(dt.Rows(0)("telefono_productor") Is DBNull.Value, String.Empty, dt.Rows(0)("telefono_productor").ToString())
+            txtnum.Text = If(dt.Rows(0)("telefono_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("telefono_multiplicador").ToString())
             Verificar()
         End If
     End Sub
@@ -568,10 +561,10 @@ Public Class AgregraActadeRecibo
             c1 = "AND  NOMBRE_MULTIPLICADOR = '" & TxtProductorGrid.SelectedItem.Text & "' "
         End If
 
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
+        If (ddlvariedad.SelectedItem.Text = "Todos") Then
             c2 = " "
         Else
-            c2 = "AND  departamento = '" & TxtDepto.SelectedItem.Text & "' "
+            c2 = "AND  variedad = '" & ddlvariedad.SelectedItem.Text & "' "
         End If
 
         If (DDL_SelCLote.SelectedItem.Text = "Todos") Then

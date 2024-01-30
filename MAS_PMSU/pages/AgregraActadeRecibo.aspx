@@ -29,13 +29,6 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Departamento:</label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
                                 <label>Seleccione Multiplicador:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtProductorGrid" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
@@ -52,6 +45,14 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
+                                <label>Seleccione Variedad:</label>
+                                <asp:DropDownList CssClass="form-control" ID="ddlvariedad" runat="server" AutoPostBack="True">
+                                    <asp:ListItem Text="Todos"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
                                 <label>Seleccione Ciclo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="txtciclo" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
@@ -61,7 +62,7 @@
                     </div>
                     <div class="row">
                             <div class="col-lg-12">
-                                <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear una nueva acta primero seleccione el multiplicador y el lote" />
+                                <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear una nueva acta primero seleccione el multiplicador, el lote y variedad" />
                                 <br />
                                 <asp:Button ID="BAgregar" runat="server" Text="Agregar Acta" CssClass="btn btn-success" Visible="false" />
                             </div>

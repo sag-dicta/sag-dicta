@@ -2045,15 +2045,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AgregraActadeRecibo._TxtDepto">
-<summary>
-Control TxtDepto.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.AgregraActadeRecibo._TxtProductorGrid">
 <summary>
 Control TxtProductorGrid.
@@ -2066,6 +2057,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AgregraActadeRecibo._DDL_SelCLote">
 <summary>
 Control DDL_SelCLote.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._ddlvariedad">
+<summary>
+Control ddlvariedad.
 </summary>
 <remarks>
 Campo generado automáticamente.
