@@ -22,6 +22,7 @@ Public Class MonitoreoPlagas
                 VerificarTextBox()
                 llenagrid()
                 btnGuardarLote.Visible = False
+                DivCrearNuevo.Visible = False
                 btnRegresar.Visible = False
             End If
         End If
@@ -29,11 +30,11 @@ Public Class MonitoreoPlagas
 
     Protected Sub guardarSoli_lote(sender As Object, e As EventArgs)
         VerificarTextBox()
-        If validarflag = 0 Then
+        If validarflag = 1 Then
+            GuardarMonitoreo()
+        Else
             LabelGuardar.Visible = True
             LabelGuardar.Text = "Ingrese toda la información para poder guardarla"
-        Else
-
         End If
 
     End Sub
@@ -51,13 +52,47 @@ Public Class MonitoreoPlagas
         VerificarTextBox()
     End Sub
     Protected Sub VerificarTextBox()
+        ' 1
+        If String.IsNullOrEmpty(TxtFechaMonitoreo.Text) Then
+            lblfechamoni.Text = "*"
+            validarflag = 0
+        Else
+            lblfechamoni.Text = ""
+            validarflag += 1
+        End If
 
-        If validarflag = 17 Then
+        ' 2
+        If String.IsNullOrEmpty(txtRespo.Text) Then
+            lblrespo.Text = "*"
+            validarflag = 0
+        Else
+            lblrespo.Text = ""
+            validarflag += 1
+        End If
+
+        ' 3
+        ' Verificar al menos un CheckBox seleccionado
+        If Not (Camara1MaizCheckbox.Checked Or Camara1FrijolCheckbox.Checked Or Camara1ArrozCheckbox.Checked Or Camara1SorgoCheckbox.Checked Or
+                Camara2MaizCheckbox.Checked Or Camara2FrijolCheckbox.Checked Or Camara2ArrozCheckbox.Checked Or Camara2SorgoCheckbox.Checked Or
+                Camara3MaizCheckbox.Checked Or Camara3FrijolCheckbox.Checked Or Camara3ArrozCheckbox.Checked Or Camara3SorgoCheckbox.Checked Or
+                Camara4MaizCheckbox.Checked Or Camara4FrijolCheckbox.Checked Or Camara4ArrozCheckbox.Checked Or Camara4SorgoCheckbox.Checked Or
+                Camara5MaizCheckbox.Checked Or Camara5FrijolCheckbox.Checked Or Camara5ArrozCheckbox.Checked Or Camara5SorgoCheckbox.Checked Or
+                Camara6MaizCheckbox.Checked Or Camara6FrijolCheckbox.Checked Or Camara6ArrozCheckbox.Checked Or Camara6SorgoCheckbox.Checked) Then
+            lblmensaje.Text = "Seleccione al menos una semilla."
+            validarflag = 0
+        Else
+            lblmensaje.Text = ""
+            validarflag += 1
+        End If
+
+        ' Validar si todos los campos están completos
+        If validarflag >= 3 Then
             validarflag = 1
         Else
             validarflag = 0
         End If
     End Sub
+
 
     Protected Sub descargaPDF(sender As Object, e As EventArgs)
         Dim rptdocument As New ReportDocument
@@ -121,34 +156,52 @@ Public Class MonitoreoPlagas
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
+        Dim cadena As String = "id, DATE_FORMAT(fecha_monitoreo, '%d-%m-%Y') AS fecha_monitoreo, responsable"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
 
-        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
-            c1 = " "
-        Else
-            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
-        End If
-
-        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-            c3 = " "
-        Else
-            c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        End If
-
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
-            c4 = " "
-        Else
-            c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        End If
+        'If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
+        '    c1 = " "
+        'Else
+        '    c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        'End If
+        '
+        'If (TxtMunicipio.SelectedItem.Text = "Todos") Then
+        '    c3 = " "
+        'Else
+        '    c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        'End If
+        '
+        'If (TxtDepto.SelectedItem.Text = "Todos") Then
+        '    c4 = " "
+        'Else
+        '    c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        'End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_monitoreo_plagas_semilla` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
 
         GridDatos.DataBind()
     End Sub
+
+    Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
+
+        'DivActa.Visible = True
+        DivGrid.Visible = False
+        DivCrearNuevo.Visible = True
+        btnGuardarLote.Visible = True
+        btnRegresar.Visible = True
+        btnGuardarLote.Text = "Guardar"
+        'BtnNuevo.Visible = True
+        'btnGuardarActa.Text = "Guardar"
+
+
+
+        VerificarTextBox()
+    End Sub
+
+
     Private Sub llenarcomboDeptoGrid()
         Dim StrCombo As String = "SELECT * FROM tb_departamentos"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -226,18 +279,13 @@ Public Class MonitoreoPlagas
         Dim newitem As New ListItem("Todos", "Todos")
         TxtMultiplicador.Items.Insert(0, newitem)
     End Sub
-    Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
-        VerificarTextBox()
-        'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
-
-    End Sub
 
     Protected Sub TxtMultiplicador_SelectedIndexChanged(sender As Object, e As EventArgs)
         llenagrid()
     End Sub
 
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
-        Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+        Response.Redirect(String.Format("~/pages/MonitoreoPlagas.aspx"))
     End Sub
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
@@ -457,5 +505,248 @@ Public Class MonitoreoPlagas
         UpdatePanel1.Update()
     End Sub
 
+    Protected Sub Camara1MaizCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara1MaizCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara1frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara1FrijolCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara1arrozCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara1ArrozCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara1sorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara1SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara2maizCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara2MaizCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara2frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara2FrijolCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara2arrozCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara2ArrozCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara2sorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara2SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara3frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara3FrijolCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara3MaizCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara3MaizCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara3arrozCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara3ArrozCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara3SorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara3SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara4frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara4FrijolCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara4MaizCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara4MaizCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara4arrozCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara4ArrozCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara4SorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara4SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara5frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara5FrijolCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara5MaizCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara5MaizCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara5arrozCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara5ArrozCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara5SorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara5SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara6frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara6FrijolCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara6MaizCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara6MaizCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara6arrozCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara6ArrozCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara6SorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara6SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
 
+    Protected Sub txtRespo_TextChanged(sender As Object, e As EventArgs) Handles txtRespo.TextChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub TxtFechaMonitoreo_TextChanged(sender As Object, e As EventArgs) Handles TxtFechaMonitoreo.TextChanged
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub GuardarMonitoreo()
+        Dim fechaConvertida As DateTime
+        If btnGuardarLote.Text = "Actualizar" Then
+            LabelGuardar.Visible = False
+            LabelGuardar.Text = ""
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim sql As String = "UPDATE sag_monitoreo_plagas_semilla SET " &
+                        "fecha_monitoreo = @fecha_monitoreo, " &
+                        "responsable = @responsable, " &
+                        "camara1_maiz = @camara1_maiz, " &
+                        "camara1_frijol = @camara1_frijol, " &
+                        "camara1_arroz = @camara1_arroz, " &
+                        "camara1_sorgo = @camara1_sorgo, " &
+                        "camara2_maiz = @camara2_maiz, " &
+                        "camara2_frijol = @camara2_frijol, " &
+                        "camara2_arroz = @camara2_arroz, " &
+                        "camara2_sorgo = @camara2_sorgo, " &
+                        "camara3_maiz = @camara3_maiz, " &
+                        "camara3_frijol = @camara3_frijol, " &
+                        "camara3_arroz = @camara3_arroz, " &
+                        "camara3_sorgo = @camara3_sorgo, " &
+                        "camara4_maiz = @camara4_maiz, " &
+                        "camara4_frijol = @camara4_frijol, " &
+                        "camara4_arroz = @camara4_arroz, " &
+                        "camara4_sorgo = @camara4_sorgo, " &
+                        "camara5_maiz = @camara5_maiz, " &
+                        "camara5_frijol = @camara5_frijol, " &
+                        "camara5_arroz = @camara5_arroz, " &
+                        "camara5_sorgo = @camara5_sorgo, " &
+                        "camara6_maiz = @camara6_maiz, " &
+                        "camara6_frijol = @camara6_frijol, " &
+                        "camara6_arroz = @camara6_arroz, " &
+                        "camara6_sorgo = @camara6_sorgo, " &
+                        "total_incidencias = @total_incidencias, " &
+                        "WHERE ID = @ID"
+
+
+                Using cmd As New MySqlCommand(sql, connection)
+
+
+                    If DateTime.TryParse(TxtFechaMonitoreo.Text, fechaConvertida) Then
+                        cmd.Parameters.AddWithValue("@fecha_monitoreo", fechaConvertida.ToString("yyyy-MM-dd"))
+                    End If
+                    cmd.Parameters.AddWithValue("@responsable", txtRespo.Text)
+
+                    cmd.Parameters.AddWithValue("@camara1_maiz", Camara1MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara1_frijol", Camara1FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara1_arroz", Camara1ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara1_sorgo", Camara1SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara2_maiz", Camara2MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara2_frijol", Camara2FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara2_arroz", Camara2ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara2_sorgo", Camara2SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara3_maiz", Camara3MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara3_frijol", Camara3FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara3_arroz", Camara3ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara3_sorgo", Camara3SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara4_maiz", Camara4MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara4_frijol", Camara4FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara4_arroz", Camara4ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara4_sorgo", Camara4SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara5_maiz", Camara5MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara5_frijol", Camara5FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara5_arroz", Camara5ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara5_sorgo", Camara5SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara6_maiz", Camara6MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara6_frijol", Camara6FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara6_arroz", Camara6ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara6_sorgo", Camara6SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@total_incidencias", Convert.ToInt64(txtTotalInc.Text))
+
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
+
+                    Label3.Text = "¡Se ha editado correctamente el registro de monitoreo de plaga!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    BConfirm.Visible = True
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                    btnGuardarLote.Visible = False
+                    btnRegresar.Visible = True
+
+                End Using
+            End Using
+        Else
+            LabelGuardar.Visible = False
+            LabelGuardar.Text = ""
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim sql As String = "INSERT INTO sag_monitoreo_plagas_semilla (fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo,
+                        camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara3_maiz, camara3_frijol, camara3_arroz,
+                        camara3_sorgo, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara5_maiz, camara5_frijol,
+                        camara5_arroz, camara5_sorgo, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, total_incidencias, estado)
+                        VALUES (@fecha_monitoreo, @responsable, @camara1_maiz, @camara1_frijol, @camara1_arroz, @camara1_sorgo,
+                        @camara2_maiz, @camara2_frijol, @camara2_arroz, @camara2_sorgo, @camara3_maiz, @camara3_frijol, @camara3_arroz,
+                        @camara3_sorgo, @camara4_maiz, @camara4_frijol, @camara4_arroz, @camara4_sorgo, @camara5_maiz, @camara5_frijol,
+                        @camara5_arroz, @camara5_sorgo, @camara6_maiz, @camara6_frijol, @camara6_arroz, @camara6_sorgo, @total_incidencias, @estado)"
+                Using cmd As New MySqlCommand(sql, connection)
+
+                    If DateTime.TryParse(TxtFechaMonitoreo.Text, fechaConvertida) Then
+                        cmd.Parameters.AddWithValue("@fecha_monitoreo", fechaConvertida.ToString("yyyy-MM-dd"))
+                    End If
+                    cmd.Parameters.AddWithValue("@responsable", txtRespo.Text)
+
+                    cmd.Parameters.AddWithValue("@camara1_maiz", Camara1MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara1_frijol", Camara1FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara1_arroz", Camara1ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara1_sorgo", Camara1SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara2_maiz", Camara2MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara2_frijol", Camara2FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara2_arroz", Camara2ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara2_sorgo", Camara2SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara3_maiz", Camara3MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara3_frijol", Camara3FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara3_arroz", Camara3ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara3_sorgo", Camara3SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara4_maiz", Camara4MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara4_frijol", Camara4FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara4_arroz", Camara4ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara4_sorgo", Camara4SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara5_maiz", Camara5MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara5_frijol", Camara5FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara5_arroz", Camara5ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara5_sorgo", Camara5SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@camara6_maiz", Camara6MaizCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara6_frijol", Camara6FrijolCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara6_arroz", Camara6ArrozCheckbox.Checked)
+                    cmd.Parameters.AddWithValue("@camara6_sorgo", Camara6SorgoCheckbox.Checked)
+
+                    cmd.Parameters.AddWithValue("@total_incidencias", Convert.ToInt64(txtTotalInc.Text))
+                    cmd.Parameters.AddWithValue("@estado", "1")
+
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
+
+                    Label3.Text = "¡Se ha registrado correctamente el registro de monitoreo de plaga!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                    btnGuardarLote.Visible = False
+                    btnRegresar.Visible = True
+
+                End Using
+            End Using
+        End If
+    End Sub
 End Class

@@ -113,6 +113,15 @@ Partial Public Class MonitoreoPlagas
     Protected WithEvents DivCrearNuevo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control lblfechamoni.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblfechamoni As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control TxtFechaMonitoreo.
     '''</summary>
     '''<remarks>
@@ -120,6 +129,15 @@ Partial Public Class MonitoreoPlagas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtFechaMonitoreo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblrespo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblrespo As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control txtRespo.
@@ -138,6 +156,15 @@ Partial Public Class MonitoreoPlagas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents UpdatePanel1 As Global.System.Web.UI.UpdatePanel
+
+    '''<summary>
+    '''Control lblmensaje.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblmensaje As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control Camara1MaizCheckbox.
@@ -363,6 +390,15 @@ Partial Public Class MonitoreoPlagas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtTotalInc As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Textid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Textid As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control LabelGuardar.

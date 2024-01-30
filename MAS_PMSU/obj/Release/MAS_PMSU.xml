@@ -5942,9 +5942,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._lblfechamoni">
+<summary>
+Control lblfechamoni.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.MonitoreoPlagas._TxtFechaMonitoreo">
 <summary>
 Control TxtFechaMonitoreo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._lblrespo">
+<summary>
+Control lblrespo.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -5963,6 +5981,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.MonitoreoPlagas._UpdatePanel1">
 <summary>
 Control UpdatePanel1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._lblmensaje">
+<summary>
+Control lblmensaje.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -6188,6 +6215,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.MonitoreoPlagas._txtTotalInc">
 <summary>
 Control txtTotalInc.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Textid">
+<summary>
+Control Textid.
 </summary>
 <remarks>
 Campo generado automáticamente.

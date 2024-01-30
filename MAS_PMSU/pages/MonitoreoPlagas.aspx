@@ -50,14 +50,14 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
-                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Multiplicador" CssClass="btn btn-success" Visible="true" />
+                                <asp:Button ID="BAgregar" runat="server" Text="Agregar nuevo Monitoreo" CssClass="btn btn-success" Visible="true" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="table-responsive">
                                     <h4>
-                                        <span style="float: right;"><small># Multiplicadores:</small>
+                                        <span style="float: right;"><small># Monitoreos:</small>
                                             <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                     </h4>
                                     <p>&nbsp;</p>
@@ -95,13 +95,8 @@
                                                 <HeaderStyle CssClass="hide" />
                                                 <ItemStyle CssClass="hide" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
-                                            <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
-                                            <asp:BoundField DataField="nombre_finca" HeaderText="NOMBRE DE LA FINCA" />
-                                            <asp:BoundField DataField="nombre_productor" HeaderText="PRODUCTOR" />
-                                            <asp:BoundField DataField="no_registro_productor" HeaderText="No. REGISTRO" />
-                                            <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
-                                            <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
+                                            <asp:BoundField DataField="fecha_monitoreo" HeaderText="Fecha Monitoreo" />
+                                            <asp:BoundField DataField="responsable" HeaderText="Responsable" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -109,7 +104,7 @@
                                             <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="HOJA DE DATOS" CommandName="Imprimir">
+                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="HOJA DE DATOS" CommandName="Imprimir" Visible="false">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>
@@ -150,19 +145,22 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Fecha del Monitoreo:</label>
-                                <asp:TextBox ID="TxtFechaMonitoreo" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
+                                <asp:Label ID="lblfechamoni" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="TxtFechaMonitoreo" runat="server" CssClass="form-control" AutoPostBack="true" TextMode="Date"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Responsable:</label>
-                                <asp:TextBox ID="txtRespo" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:Label ID="lblrespo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtRespo" runat="server" CssClass="form-control" AutoPostBack="true" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
                     </div>
 
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
+                            <asp:Label ID="lblmensaje" class="label label-warning" runat="server" Text=""></asp:Label>
                             <div class="row">
                                 <div class="col-lg-1">
                                     <div class="form-group">
@@ -345,29 +343,29 @@
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <asp:TextBox ID="txtTotalInc" runat="server" CssClass="form-control" Enabled="false">0</asp:TextBox>
+                                        <asp:TextBox ID="Textid" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-2">
-                                    <div class="form-group">
-                                        <div>
-                                            <label></label>
-                                            <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
-                                            <br />
-                                            <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote" Visible="false" />
-                                            <br />
-                                            <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </ContentTemplate>
                     </asp:UpdatePanel>
 
-
-
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <div>
+                                    <label></label>
+                                    <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <br />
+                                    <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="" OnClick="guardarSoli_lote" Visible="false" />
+                                    <br />
+                                    <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -456,11 +454,15 @@
             // Un-comment to discover a key that I have forgotten to take into account...
             // alert(keyCodeEntered);
 
-            // Check if the key code corresponds to a letter (a-z or A-Z), a space, or an accent
+            // Check if the key code corresponds to a letter (a-z or A-Z), a space, an accent, a comma, a period, or parentheses
             if ((keyCodeEntered >= 65 && keyCodeEntered <= 90) || // A-Z
                 (keyCodeEntered >= 97 && keyCodeEntered <= 122) || // a-z
                 keyCodeEntered === 32 || // space
-                (keyCodeEntered >= 192 && keyCodeEntered <= 255)) { // accented characters
+                (keyCodeEntered >= 192 && keyCodeEntered <= 255) || // accented characters
+                keyCodeEntered === 44 || // comma
+                keyCodeEntered === 46 || // period
+                keyCodeEntered === 40 || // left parenthesis
+                keyCodeEntered === 41) { // right parenthesis
                 return true;
             }
 
