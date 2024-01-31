@@ -291,12 +291,75 @@ Public Class MonitoreoPlagas
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         exportar()
     End Sub
+    Sub ConvertirVarbinaryABooleano(data As String, checkbox As CheckBox)
 
+        If data = "1" Then
+            checkbox.Checked = True
+        Else
+            checkbox.Checked = False
+        End If
+    End Sub
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
         If (e.CommandName = "Editar") Then
 
+            DivGrid.Visible = False
+            DivCrearNuevo.Visible = True
+            btnGuardarLote.Text = "Actualizar"
+            btnGuardarLote.Visible = True
+            btnRegresar.Visible = True
+
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            Dim cadena As String = "fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo, camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara3_maiz, camara3_frijol, camara3_arroz, camara3_sorgo, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara5_maiz, camara5_frijol, camara5_arroz, camara5_sorgo, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, total_incidencias"
+            Dim Str As String = "SELECT " & cadena & " FROM sag_monitoreo_plagas_semilla WHERE  ID ='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            Textid.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+            TxtFechaMonitoreo.Text = If(dt.Rows(0)("fecha_monitoreo") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_monitoreo"), DateTime).ToString("yyyy-MM-dd"))
+            txtRespo.Text = If(dt.Rows(0)("responsable") Is DBNull.Value, String.Empty, dt.Rows(0)("responsable").ToString())
+
+            '1
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_maiz").ToString, Camara1MaizCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_frijol").ToString, Camara1FrijolCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_arroz").ToString, Camara1ArrozCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_sorgo").ToString, Camara1SorgoCheckbox)
+
+            '2
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_maiz").ToString, Camara2MaizCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_frijol").ToString, Camara2FrijolCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_arroz").ToString, Camara2ArrozCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_sorgo").ToString, Camara2SorgoCheckbox)
+
+            '3
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_maiz").ToString, Camara3MaizCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_frijol").ToString, Camara3FrijolCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_arroz").ToString, Camara3ArrozCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_sorgo").ToString, Camara3SorgoCheckbox)
+
+            '4
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_maiz").ToString, Camara4MaizCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_frijol").ToString, Camara4FrijolCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_arroz").ToString, Camara4ArrozCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_sorgo").ToString, Camara4SorgoCheckbox)
+
+            '5
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_maiz").ToString, Camara5MaizCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_frijol").ToString, Camara5FrijolCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_arroz").ToString, Camara5ArrozCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_sorgo").ToString, Camara5SorgoCheckbox)
+
+            '6
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_maiz").ToString, Camara6MaizCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_frijol").ToString, Camara6FrijolCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_arroz").ToString, Camara6ArrozCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_sorgo").ToString, Camara6SorgoCheckbox)
+
+            txtTotalInc.Text = dt.Rows(0)("total_incidencias").ToString
+            VerificarTextBox()
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -594,35 +657,35 @@ Public Class MonitoreoPlagas
             Using connection As New MySqlConnection(connectionString)
                 connection.Open()
 
-                Dim sql As String = "UPDATE sag_monitoreo_plagas_semilla SET " &
-                        "fecha_monitoreo = @fecha_monitoreo, " &
-                        "responsable = @responsable, " &
-                        "camara1_maiz = @camara1_maiz, " &
-                        "camara1_frijol = @camara1_frijol, " &
-                        "camara1_arroz = @camara1_arroz, " &
-                        "camara1_sorgo = @camara1_sorgo, " &
-                        "camara2_maiz = @camara2_maiz, " &
-                        "camara2_frijol = @camara2_frijol, " &
-                        "camara2_arroz = @camara2_arroz, " &
-                        "camara2_sorgo = @camara2_sorgo, " &
-                        "camara3_maiz = @camara3_maiz, " &
-                        "camara3_frijol = @camara3_frijol, " &
-                        "camara3_arroz = @camara3_arroz, " &
-                        "camara3_sorgo = @camara3_sorgo, " &
-                        "camara4_maiz = @camara4_maiz, " &
-                        "camara4_frijol = @camara4_frijol, " &
-                        "camara4_arroz = @camara4_arroz, " &
-                        "camara4_sorgo = @camara4_sorgo, " &
-                        "camara5_maiz = @camara5_maiz, " &
-                        "camara5_frijol = @camara5_frijol, " &
-                        "camara5_arroz = @camara5_arroz, " &
-                        "camara5_sorgo = @camara5_sorgo, " &
-                        "camara6_maiz = @camara6_maiz, " &
-                        "camara6_frijol = @camara6_frijol, " &
-                        "camara6_arroz = @camara6_arroz, " &
-                        "camara6_sorgo = @camara6_sorgo, " &
-                        "total_incidencias = @total_incidencias, " &
-                        "WHERE ID = @ID"
+                Dim sql As String = "UPDATE sag_monitoreo_plagas_semilla SET
+                        fecha_monitoreo = @fecha_monitoreo,
+                        responsable = @responsable,
+                        camara1_maiz = @camara1_maiz,
+                        camara1_frijol = @camara1_frijol, 
+                        camara1_arroz = @camara1_arroz,
+                        camara1_sorgo = @camara1_sorgo,
+                        camara2_maiz = @camara2_maiz,
+                        camara2_frijol = @camara2_frijol, 
+                        camara2_arroz = @camara2_arroz, 
+                        camara2_sorgo = @camara2_sorgo, 
+                        camara3_maiz = @camara3_maiz,
+                        camara3_frijol = @camara3_frijol, 
+                        camara3_arroz = @camara3_arroz, 
+                        camara3_sorgo = @camara3_sorgo, 
+                        camara4_maiz = @camara4_maiz,
+                        camara4_frijol = @camara4_frijol, 
+                        camara4_arroz = @camara4_arroz, 
+                        camara4_sorgo = @camara4_sorgo, 
+                        camara5_maiz = @camara5_maiz,
+                        camara5_frijol = @camara5_frijol, 
+                        camara5_arroz = @camara5_arroz,
+                        camara5_sorgo = @camara5_sorgo,
+                        camara6_maiz = @camara6_maiz,
+                        camara6_frijol = @camara6_frijol, 
+                        camara6_arroz = @camara6_arroz, 
+                        camara6_sorgo = @camara6_sorgo, 
+                        total_incidencias = @total_incidencias
+                        WHERE ID = " & Textid.Text & ""
 
 
                 Using cmd As New MySqlCommand(sql, connection)
@@ -633,35 +696,132 @@ Public Class MonitoreoPlagas
                     End If
                     cmd.Parameters.AddWithValue("@responsable", txtRespo.Text)
 
-                    cmd.Parameters.AddWithValue("@camara1_maiz", Camara1MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara1_frijol", Camara1FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara1_arroz", Camara1ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara1_sorgo", Camara1SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara2_maiz", Camara2MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara2_frijol", Camara2FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara2_arroz", Camara2ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara2_sorgo", Camara2SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara3_maiz", Camara3MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara3_frijol", Camara3FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara3_arroz", Camara3ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara3_sorgo", Camara3SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara4_maiz", Camara4MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara4_frijol", Camara4FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara4_arroz", Camara4ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara4_sorgo", Camara4SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara5_maiz", Camara5MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara5_frijol", Camara5FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara5_arroz", Camara5ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara5_sorgo", Camara5SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara6_maiz", Camara6MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara6_frijol", Camara6FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara6_arroz", Camara6ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara6_sorgo", Camara6SorgoCheckbox.Checked)
+                    '1
+                    If Camara1MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_maiz", "0")
+                    End If
+                    If Camara1FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_frijol", "0")
+                    End If
+                    If Camara1ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_arroz", "0")
+                    End If
+                    If Camara1SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_sorgo", "0")
+                    End If
+                    '2
+                    If Camara2MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_maiz", "0")
+                    End If
+                    If Camara2FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_frijol", "0")
+                    End If
+                    If Camara2ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_arroz", "0")
+                    End If
+                    If Camara2SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_sorgo", "0")
+                    End If
+                    '3
+                    If Camara3MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_maiz", "0")
+                    End If
+                    If Camara3FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_frijol", "0")
+                    End If
+                    If Camara3ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_arroz", "0")
+                    End If
+                    If Camara3SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_sorgo", "0")
+                    End If
+                    '4
+                    If Camara4MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_maiz", "0")
+                    End If
+                    If Camara4FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_frijol", "0")
+                    End If
+                    If Camara4ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_arroz", "0")
+                    End If
+                    If Camara4SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_sorgo", "0")
+                    End If
+                    '5
+                    If Camara5MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_maiz", "0")
+                    End If
+                    If Camara5FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_frijol", "0")
+                    End If
+                    If Camara5ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_arroz", "0")
+                    End If
+                    If Camara5SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_sorgo", "0")
+                    End If
+                    '6
+                    If Camara6MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_maiz", "0")
+                    End If
+                    If Camara6FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_frijol", "0")
+                    End If
+                    If Camara6ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_arroz", "0")
+                    End If
+                    If Camara6SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_sorgo", "0")
+                    End If
 
                     cmd.Parameters.AddWithValue("@total_incidencias", Convert.ToInt64(txtTotalInc.Text))
 
@@ -700,36 +860,132 @@ Public Class MonitoreoPlagas
                         cmd.Parameters.AddWithValue("@fecha_monitoreo", fechaConvertida.ToString("yyyy-MM-dd"))
                     End If
                     cmd.Parameters.AddWithValue("@responsable", txtRespo.Text)
-
-                    cmd.Parameters.AddWithValue("@camara1_maiz", Camara1MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara1_frijol", Camara1FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara1_arroz", Camara1ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara1_sorgo", Camara1SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara2_maiz", Camara2MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara2_frijol", Camara2FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara2_arroz", Camara2ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara2_sorgo", Camara2SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara3_maiz", Camara3MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara3_frijol", Camara3FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara3_arroz", Camara3ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara3_sorgo", Camara3SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara4_maiz", Camara4MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara4_frijol", Camara4FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara4_arroz", Camara4ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara4_sorgo", Camara4SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara5_maiz", Camara5MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara5_frijol", Camara5FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara5_arroz", Camara5ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara5_sorgo", Camara5SorgoCheckbox.Checked)
-
-                    cmd.Parameters.AddWithValue("@camara6_maiz", Camara6MaizCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara6_frijol", Camara6FrijolCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara6_arroz", Camara6ArrozCheckbox.Checked)
-                    cmd.Parameters.AddWithValue("@camara6_sorgo", Camara6SorgoCheckbox.Checked)
+                    '1
+                    If Camara1MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_maiz", "0")
+                    End If
+                    If Camara1FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_frijol", "0")
+                    End If
+                    If Camara1ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_arroz", "0")
+                    End If
+                    If Camara1SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_sorgo", "0")
+                    End If
+                    '2
+                    If Camara2MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_maiz", "0")
+                    End If
+                    If Camara2FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_frijol", "0")
+                    End If
+                    If Camara2ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_arroz", "0")
+                    End If
+                    If Camara2SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_sorgo", "0")
+                    End If
+                    '3
+                    If Camara3MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_maiz", "0")
+                    End If
+                    If Camara3FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_frijol", "0")
+                    End If
+                    If Camara3ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_arroz", "0")
+                    End If
+                    If Camara3SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_sorgo", "0")
+                    End If
+                    '4
+                    If Camara4MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_maiz", "0")
+                    End If
+                    If Camara4FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_frijol", "0")
+                    End If
+                    If Camara4ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_arroz", "0")
+                    End If
+                    If Camara4SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_sorgo", "0")
+                    End If
+                    '5
+                    If Camara5MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_maiz", "0")
+                    End If
+                    If Camara5FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_frijol", "0")
+                    End If
+                    If Camara5ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_arroz", "0")
+                    End If
+                    If Camara5SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_sorgo", "0")
+                    End If
+                    '6
+                    If Camara6MaizCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_maiz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_maiz", "0")
+                    End If
+                    If Camara6FrijolCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_frijol", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_frijol", "0")
+                    End If
+                    If Camara6ArrozCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_arroz", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_arroz", "0")
+                    End If
+                    If Camara6SorgoCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_sorgo", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_sorgo", "0")
+                    End If
 
                     cmd.Parameters.AddWithValue("@total_incidencias", Convert.ToInt64(txtTotalInc.Text))
                     cmd.Parameters.AddWithValue("@estado", "1")
