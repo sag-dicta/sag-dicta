@@ -113,6 +113,15 @@ Partial Public Class ControlHRTo
     Protected WithEvents DivCrearNuevo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control lblfechamoni.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblfechamoni As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control TxtFechaMonitoreo.
     '''</summary>
     '''<remarks>
@@ -120,6 +129,24 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtFechaMonitoreo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Textid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Textid As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblmensaje.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblmensaje As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control txtCam1Hora.
@@ -149,6 +176,15 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam1Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control btnHora1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnHora1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control txtCam2Hora.
     '''</summary>
     '''<remarks>
@@ -174,6 +210,15 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCam2Humd As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnhora2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora2 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control txtCam3Hora.
@@ -203,6 +248,15 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam3Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control btnhora3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora3 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control txtCam4Hora.
     '''</summary>
     '''<remarks>
@@ -228,6 +282,15 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCam4Humd As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnhora4.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora4 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control txtCam5Hora.
@@ -257,6 +320,15 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam5Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control btnhora5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora5 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control txtCam6Hora.
     '''</summary>
     '''<remarks>
@@ -284,6 +356,24 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam6Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control btnhora6.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora6 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Labeldatoexttemp.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Labeldatoexttemp As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control txtDatoExtTemp.
     '''</summary>
     '''<remarks>
@@ -291,6 +381,15 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtDatoExtTemp As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control Labeldatoexthume.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Labeldatoexthume As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control txtDatoExtHume.

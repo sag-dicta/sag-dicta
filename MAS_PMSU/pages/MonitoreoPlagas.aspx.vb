@@ -217,21 +217,21 @@ Public Class MonitoreoPlagas
 
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
-            For Each cell As TableCell In e.Row.Cells
+            ' Empezar desde la segunda celda (índice 1)
+            For i As Integer = 3 To e.Row.Cells.Count - 1
+                Dim cell As TableCell = e.Row.Cells(i)
+
                 If cell.Text = "1" Then
                     cell.Text = "X"
                 ElseIf cell.Text = "0" Then
                     cell.Text = ""
                 End If
-            Next
 
-            For Each cell As TableCell In e.Row.Cells
-                If cell.Text = "X" OrElse cell.Text = " " Then
+                If cell.Text = "X" OrElse cell.Text = "" Then
                     cell.HorizontalAlign = HorizontalAlign.Center
                     cell.VerticalAlign = VerticalAlign.Middle
                 End If
             Next
-
         End If
     End Sub
 
@@ -350,6 +350,16 @@ Public Class MonitoreoPlagas
         End If
 
         If (e.CommandName = "Eliminar") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            Textid.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+
+            Label3.Text = "¿Desea eliminar el registro de monitoreo de plaga en camara de semillas?"
+            BBorrarsi.Visible = True
+            BBorrarno.Visible = True
+            BConfirm.Visible = False
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
 
         If (e.CommandName = "Imprimir") Then
@@ -430,7 +440,23 @@ Public Class MonitoreoPlagas
     End Function
 
     Protected Sub elminar(sender As Object, e As EventArgs) Handles BBorrarsi.Click
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
 
+            Dim query As String = "UPDATE sag_monitoreo_plagas_semilla 
+                    SET estado = @estado
+                WHERE id = " & Textid.Text & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+
+                cmd.Parameters.AddWithValue("@estado", "0")
+                cmd.ExecuteNonQuery()
+                connection.Close()
+                Response.Redirect(String.Format("~/pages/MonitoreoPlagas.aspx"))
+            End Using
+
+        End Using
     End Sub
 
     Private Sub exportar()
