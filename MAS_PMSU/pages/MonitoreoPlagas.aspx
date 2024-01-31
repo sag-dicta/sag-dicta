@@ -25,25 +25,22 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label>Seleccione Departamento:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>Seleccione Municipio:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtMunicipio" runat="server" AutoPostBack="True">
-                                        <asp:ListItem Text="Todos"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>Seleccione Multiplicador:</label>
+                                    <label>Seleccione Responsable:</label>
                                     <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True" OnSelectedIndexChanged="TxtMultiplicador_SelectedIndexChanged">
                                         <asp:ListItem Text="Todos"></asp:ListItem>
                                     </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Seleccione Fecha desde:</label>
+                                    <asp:TextBox CssClass="form-control" ID="txtFechaDesde" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaDesde_TextChanged"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Seleccione Fecha hasta:</label>
+                                    <asp:TextBox CssClass="form-control" ID="txtFechaHasta" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaHasta_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +61,7 @@
                                     <p>&nbsp;</p>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
                                     <asp:GridView ID="GridDatos" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
-                                        GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small">
+                                        GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small" OnRowCreated="grvMergeHeader_RowCreated">
                                         <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                         <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                         <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -97,6 +94,38 @@
                                             </asp:BoundField>
                                             <asp:BoundField DataField="fecha_monitoreo" HeaderText="Fecha Monitoreo" />
                                             <asp:BoundField DataField="responsable" HeaderText="Responsable" />
+
+                                            <asp:BoundField DataField="camara1_maiz" HeaderText="Maíz" />
+                                            <asp:BoundField DataField="camara1_frijol" HeaderText="Frijol" />
+                                            <asp:BoundField DataField="camara1_arroz" HeaderText="Arroz" />
+                                            <asp:BoundField DataField="camara1_sorgo" HeaderText="Sorgo" />
+
+                                            <asp:BoundField DataField="camara2_maiz" HeaderText="Maíz" />
+                                            <asp:BoundField DataField="camara2_frijol" HeaderText="Frijol" />
+                                            <asp:BoundField DataField="camara2_arroz" HeaderText="Arroz" />
+                                            <asp:BoundField DataField="camara2_sorgo" HeaderText="Sorgo" />
+
+                                            <asp:BoundField DataField="camara3_maiz" HeaderText="Maíz" />
+                                            <asp:BoundField DataField="camara3_frijol" HeaderText="Frijol" />
+                                            <asp:BoundField DataField="camara3_arroz" HeaderText="Arroz" />
+                                            <asp:BoundField DataField="camara3_sorgo" HeaderText="Sorgo" />
+
+                                            <asp:BoundField DataField="camara4_maiz" HeaderText="Maíz" />
+                                            <asp:BoundField DataField="camara4_frijol" HeaderText="Frijol" />
+                                            <asp:BoundField DataField="camara4_arroz" HeaderText="Arroz" />
+                                            <asp:BoundField DataField="camara4_sorgo" HeaderText="Sorgo" />
+
+                                            <asp:BoundField DataField="camara5_maiz" HeaderText="Maíz" />
+                                            <asp:BoundField DataField="camara5_frijol" HeaderText="Frijol" />
+                                            <asp:BoundField DataField="camara5_arroz" HeaderText="Arroz" />
+                                            <asp:BoundField DataField="camara5_sorgo" HeaderText="Sorgo" />
+
+                                            <asp:BoundField DataField="camara6_maiz" HeaderText="Maíz" />
+                                            <asp:BoundField DataField="camara6_frijol" HeaderText="Frijol" />
+                                            <asp:BoundField DataField="camara6_arroz" HeaderText="Arroz" />
+                                            <asp:BoundField DataField="camara6_sorgo" HeaderText="Sorgo" />
+                                            
+                                            <asp:BoundField DataField="total_incidencias" HeaderText="Total Incidencias" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>

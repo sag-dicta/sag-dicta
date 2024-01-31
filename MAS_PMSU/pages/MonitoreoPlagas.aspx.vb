@@ -17,8 +17,10 @@ Public Class MonitoreoPlagas
             If IsPostBack Then
 
             Else
-                llenarcomboDeptoGrid()
-                llenarcomboProductor3()
+                txtFechaDesde.Text = New DateTime(2024, 1, 1).ToString("yyyy-MM-dd")
+                txtFechaHasta.Text = DateTime.Today.ToString("yyyy-MM-dd")
+
+                llenarcomboProductor()
                 VerificarTextBox()
                 llenagrid()
                 btnGuardarLote.Visible = False
@@ -156,34 +158,83 @@ Public Class MonitoreoPlagas
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, DATE_FORMAT(fecha_monitoreo, '%d-%m-%Y') AS fecha_monitoreo, responsable"
+        Dim cadena As String = "id, DATE_FORMAT(fecha_monitoreo, '%d-%m-%Y') AS fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo, camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara3_maiz, camara3_frijol, camara3_arroz, camara3_sorgo, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara5_maiz, camara5_frijol, camara5_arroz, camara5_sorgo, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, total_incidencias"
         Dim c1 As String = ""
-        Dim c3 As String = ""
-        Dim c4 As String = ""
 
-        'If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
-        '    c1 = " "
-        'Else
-        '    c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
-        'End If
-        '
-        'If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-        '    c3 = " "
-        'Else
-        '    c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        'End If
-        '
-        'If (TxtDepto.SelectedItem.Text = "Todos") Then
-        '    c4 = " "
-        'Else
-        '    c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        'End If
+        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND responsable = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_monitoreo_plagas_semilla` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_monitoreo_plagas_semilla` WHERE 1 = 1 AND estado = '1' " & c1 & " AND fecha_monitoreo >= '" & txtFechaDesde.Text & "' AND fecha_monitoreo <= '" & txtFechaHasta.Text & "' ORDER BY fecha_monitoreo DESC"
 
         GridDatos.DataBind()
     End Sub
+    Protected Sub grvMergeHeader_RowCreated(ByVal sender As Object, ByVal e As GridViewRowEventArgs)
+        If e.Row.RowType = DataControlRowType.Header Then
+            Dim HeaderGrid As GridView = DirectCast(sender, GridView)
+            Dim HeaderGridRow As New GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Insert)
+            Dim HeaderCell As New TableCell()
+            HeaderCell.Text = ""
+            HeaderCell.ColumnSpan = 3
+            HeaderGridRow.Cells.Add(HeaderCell)
+
+            HeaderCell = New TableCell()
+            HeaderCell.Text = "Camara 1"
+            HeaderCell.ColumnSpan = 4
+            HeaderGridRow.Cells.Add(HeaderCell)
+
+            HeaderCell = New TableCell()
+            HeaderCell.Text = "Camara 2"
+            HeaderCell.ColumnSpan = 4
+            HeaderGridRow.Cells.Add(HeaderCell)
+
+            HeaderCell = New TableCell()
+            HeaderCell.Text = "Camara 3"
+            HeaderCell.ColumnSpan = 4
+            HeaderGridRow.Cells.Add(HeaderCell)
+
+            HeaderCell = New TableCell()
+            HeaderCell.Text = "Camara 4"
+            HeaderCell.ColumnSpan = 4
+            HeaderGridRow.Cells.Add(HeaderCell)
+
+            HeaderCell = New TableCell()
+            HeaderCell.Text = "Camara 5"
+            HeaderCell.ColumnSpan = 4
+            HeaderGridRow.Cells.Add(HeaderCell)
+
+            HeaderCell = New TableCell()
+            HeaderCell.Text = "Camara 6"
+            HeaderCell.ColumnSpan = 4
+            HeaderGridRow.Cells.Add(HeaderCell)
+
+            GridDatos.Controls(0).Controls.AddAt(0, HeaderGridRow)
+        End If
+    End Sub
+
+    Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            For Each cell As TableCell In e.Row.Cells
+                If cell.Text = "1" Then
+                    cell.Text = "X"
+                ElseIf cell.Text = "0" Then
+                    cell.Text = ""
+                End If
+            Next
+
+            For Each cell As TableCell In e.Row.Cells
+                If cell.Text = "X" OrElse cell.Text = " " Then
+                    cell.HorizontalAlign = HorizontalAlign.Center
+                    cell.VerticalAlign = VerticalAlign.Middle
+                End If
+            Next
+
+        End If
+    End Sub
+
 
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
 
@@ -200,81 +251,17 @@ Public Class MonitoreoPlagas
 
         VerificarTextBox()
     End Sub
-
-
-    Private Sub llenarcomboDeptoGrid()
-        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-
-        TxtDepto.DataSource = DtCombo
-        TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
-        TxtDepto.DataTextField = DtCombo.Columns(2).ToString
-        TxtDepto.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtDepto.Items.Insert(0, newitem)
-
-    End Sub
-    Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        If TxtDepto.SelectedItem.Text = "Todos" Then
-            llenarcomboProductor3()
-        Else
-            llenarcomboProductor2()
-        End If
-        llenagrid()
-    End Sub
-
-    Protected Sub TxtMunicipio_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtMunicipio.SelectedIndexChanged
-        If TxtMunicipio.SelectedItem.Text = "Todos" Then
-            llenarcomboProductor2()
-        Else
-            llenarcomboProductor()
-        End If
-        llenagrid()
-    End Sub
-
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
+        StrCombo = "SELECT DISTINCT responsable FROM sag_monitoreo_plagas_semilla WHERE estado = '1' ORDER BY responsable ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
         TxtMultiplicador.DataSource = DtCombo
         TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
-        TxtMultiplicador.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtMultiplicador.Items.Insert(0, newitem)
-    End Sub
-    Private Sub llenarcomboProductor2()
-        Dim StrCombo As String
-
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
-
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-        TxtMultiplicador.DataSource = DtCombo
-        TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
-        TxtMultiplicador.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtMultiplicador.Items.Insert(0, newitem)
-    End Sub
-    Private Sub llenarcomboProductor3()
-        Dim StrCombo As String
-
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' ORDER BY nombre_multiplicador ASC"
-
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-        TxtMultiplicador.DataSource = DtCombo
-        TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
+        TxtMultiplicador.DataTextField = DtCombo.Columns(0).ToString()
         TxtMultiplicador.DataBind()
         Dim newitem As New ListItem("Todos", "Todos")
         TxtMultiplicador.Items.Insert(0, newitem)
@@ -451,28 +438,14 @@ Public Class MonitoreoPlagas
         Dim query As String = ""
         Dim cadena As String = "*"
         Dim c1 As String = ""
-        Dim c2 As String = ""
-        Dim c3 As String = ""
 
         If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+            c1 = "AND TxtMultiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
         End If
 
-        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-            c2 = " "
-        Else
-            c2 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        End If
-
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
-            c3 = " "
-        Else
-            c3 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        End If
-
-        query = "SELECT " & cadena & " FROM sag_registro_multiplicador WHERE 1 = 1 " & c1 & c2 & c3
+        query = "SELECT " & cadena & " FROM `sag_monitoreo_plagas_semilla` WHERE 1 = 1 AND estado = '1' " & c1 & " AND fecha_monitoreo >= '" & txtFechaDesde.Text & "' AND fecha_monitoreo <= '" & txtFechaHasta.Text & "' ORDER BY fecha_monitoreo DESC"
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -483,7 +456,7 @@ Public Class MonitoreoPlagas
                         sda.Fill(ds)
 
                         'Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_registro_multiplicador"
+                        ds.Tables(0).TableName = "sag_monitoreo_plagas_semilla"
 
                         Using wb As New XLWorkbook()
                             For Each dt As DataTable In ds.Tables
@@ -499,7 +472,7 @@ Public Class MonitoreoPlagas
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Información del Lote " & Today & " " & TxtMultiplicador.SelectedItem.Text & " " & TxtDepto.SelectedItem.Text & ".xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=Monitoreo de Plagas en las Camaras " & Today & ".xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
@@ -646,6 +619,14 @@ Public Class MonitoreoPlagas
     End Sub
     Protected Sub TxtFechaMonitoreo_TextChanged(sender As Object, e As EventArgs) Handles TxtFechaMonitoreo.TextChanged
         VerificarTextBox()
+    End Sub
+
+    Protected Sub txtFechaDesde_TextChanged(sender As Object, e As EventArgs)
+        llenagrid()
+    End Sub
+
+    Protected Sub txtFechaHasta_TextChanged(sender As Object, e As EventArgs)
+        llenagrid()
     End Sub
 
     Protected Sub GuardarMonitoreo()

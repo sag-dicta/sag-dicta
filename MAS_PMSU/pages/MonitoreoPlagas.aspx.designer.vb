@@ -32,24 +32,6 @@ Partial Public Class MonitoreoPlagas
     Protected WithEvents DivGrid As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control TxtDepto.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control TxtMunicipio.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtMunicipio As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Control TxtMultiplicador.
     '''</summary>
     '''<remarks>
@@ -57,6 +39,24 @@ Partial Public Class MonitoreoPlagas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtMultiplicador As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control txtFechaDesde.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFechaDesde As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control txtFechaHasta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFechaHasta As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control BAgregar.

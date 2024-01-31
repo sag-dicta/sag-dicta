@@ -5861,27 +5861,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.MonitoreoPlagas._TxtDepto">
-<summary>
-Control TxtDepto.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.MonitoreoPlagas._TxtMunicipio">
-<summary>
-Control TxtMunicipio.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.MonitoreoPlagas._TxtMultiplicador">
 <summary>
 Control TxtMultiplicador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._txtFechaDesde">
+<summary>
+Control txtFechaDesde.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._txtFechaHasta">
+<summary>
+Control txtFechaHasta.
 </summary>
 <remarks>
 Campo generado automáticamente.
