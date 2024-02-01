@@ -570,7 +570,7 @@ Public Class ControlHRTo
                     "camara4_hora = @camara4_hora, camara4_temperatura = @camara4_temperatura, camara4_humedad = @camara4_humedad, " &
                     "camara5_hora = @camara5_hora, camara5_temperatura = @camara5_temperatura, camara5_humedad = @camara5_humedad, " &
                     "camara6_hora = @camara6_hora, camara6_temperatura = @camara6_temperatura, camara6_humedad = @camara6_humedad, " &
-                    "externo_temperatura = @externo_temperatura, externo_humedad = @externo_humedad " &
+                    "externo_temperatura = @externo_temperatura, externo_humedad = @externo_humedad, fecha_monitoreo = @fecha_monitoreo " &
                     "WHERE id = " & Textid.Text & ""
 
                 Using cmd As New MySqlCommand(sql, connection)
