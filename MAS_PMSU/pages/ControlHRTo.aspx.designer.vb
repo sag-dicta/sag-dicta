@@ -32,31 +32,22 @@ Partial Public Class ControlHRTo
     Protected WithEvents DivGrid As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control TxtDepto.
+    '''Control txtFechaDesde.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtFechaDesde As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control TxtMunicipio.
+    '''Control txtFechaHasta.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtMunicipio As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Control TxtMultiplicador.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents TxtMultiplicador As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtFechaHasta As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control BAgregar.
@@ -158,6 +149,15 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam1Hora As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control btnHora1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnHora1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control txtCam1Temp.
     '''</summary>
     '''<remarks>
@@ -176,15 +176,6 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam1Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control btnHora1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnHora1 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control txtCam2Hora.
     '''</summary>
     '''<remarks>
@@ -192,6 +183,15 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCam2Hora As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnhora2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora2 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control txtCam2Temp.
@@ -212,15 +212,6 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam2Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control btnhora2.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnhora2 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control txtCam3Hora.
     '''</summary>
     '''<remarks>
@@ -228,6 +219,15 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCam3Hora As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnhora3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora3 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control txtCam3Temp.
@@ -248,15 +248,6 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam3Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control btnhora3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnhora3 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control txtCam4Hora.
     '''</summary>
     '''<remarks>
@@ -264,6 +255,15 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCam4Hora As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnhora4.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora4 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control txtCam4Temp.
@@ -284,15 +284,6 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam4Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control btnhora4.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnhora4 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control txtCam5Hora.
     '''</summary>
     '''<remarks>
@@ -300,6 +291,15 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCam5Hora As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnhora5.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora5 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control txtCam5Temp.
@@ -320,15 +320,6 @@ Partial Public Class ControlHRTo
     Protected WithEvents txtCam5Humd As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control btnhora5.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnhora5 As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control txtCam6Hora.
     '''</summary>
     '''<remarks>
@@ -336,6 +327,15 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCam6Hora As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnhora6.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnhora6 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control txtCam6Temp.
@@ -354,15 +354,6 @@ Partial Public Class ControlHRTo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCam6Humd As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control btnhora6.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnhora6 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control Labeldatoexttemp.

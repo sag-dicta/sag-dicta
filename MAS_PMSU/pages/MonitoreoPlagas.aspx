@@ -22,6 +22,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-body">
+
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
@@ -44,6 +45,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
@@ -124,7 +126,7 @@
                                             <asp:BoundField DataField="camara6_frijol" HeaderText="Frijol" />
                                             <asp:BoundField DataField="camara6_arroz" HeaderText="Arroz" />
                                             <asp:BoundField DataField="camara6_sorgo" HeaderText="Sorgo" />
-                                            
+
                                             <asp:BoundField DataField="total_incidencias" HeaderText="Total Incidencias" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
@@ -387,9 +389,13 @@
                                 <div>
                                     <label></label>
                                     <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <br />
                                     <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="" OnClick="guardarSoli_lote" Visible="false" />
-                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <div>
                                     <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
                                 </div>
                             </div>

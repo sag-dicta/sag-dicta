@@ -8,6 +8,7 @@
             padding: 0px; /* Ajusta según sea necesario */
         }
     </style>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -22,31 +23,22 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-body">
+                        
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label>Seleccione Departamento:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
-                                    </asp:DropDownList>
+                                    <label>Seleccione Fecha desde:</label>
+                                    <asp:TextBox CssClass="form-control" ID="txtFechaDesde" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaDesde_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label>Seleccione Municipio:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtMunicipio" runat="server" AutoPostBack="True">
-                                        <asp:ListItem Text="Todos"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label>Seleccione Multiplicador:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True" OnSelectedIndexChanged="TxtMultiplicador_SelectedIndexChanged">
-                                        <asp:ListItem Text="Todos"></asp:ListItem>
-                                    </asp:DropDownList>
+                                    <label>Seleccione Fecha hasta:</label>
+                                    <asp:TextBox CssClass="form-control" ID="txtFechaHasta" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaHasta_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
@@ -64,7 +56,7 @@
                                     <p>&nbsp;</p>
                                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
                                     <asp:GridView ID="GridDatos" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
-                                        GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small">
+                                        GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small" OnRowCreated="grvMergeHeader_RowCreated">
                                         <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                         <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                         <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
@@ -114,8 +106,8 @@
                                             <asp:BoundField DataField="camara6_hora" HeaderText="HORA 6" />
                                             <asp:BoundField DataField="camara6_temperatura" HeaderText="TEMPERATURA 6" />
                                             <asp:BoundField DataField="camara6_humedad" HeaderText="HUMEDAD 6" />
-                                            <asp:BoundField DataField="externo_temperatura" HeaderText="EXTERNA TEMPERATURA" />
-                                            <asp:BoundField DataField="externo_humedad" HeaderText="EXTERNA HUMEDAD" />
+                                            <asp:BoundField DataField="externo_temperatura" HeaderText="TEMPERATURA EXTERNA" />
+                                            <asp:BoundField DataField="externo_humedad" HeaderText="HUMEDAD EXTERNA" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -184,6 +176,12 @@
                                 <asp:TextBox ID="txtCam1Hora" runat="server" CssClass="form-control" TextMode="Time" AutoPostBack="True" onBlur="formatTime"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="col-lg-1">
+                            <div class="form-group">
+                                <label style="color: #FFFFFF">Borrar</label>
+                                <asp:Button CssClass="btn btn-primary" ID="btnHora1" runat="server" AutoPostBack="True" Text="↺" Visible="false"></asp:Button>
+                            </div>
+                        </div>
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Temperatura:</label>
@@ -194,11 +192,6 @@
                             <div class="form-group">
                                 <label>Humedad:</label>
                                 <asp:TextBox ID="txtCam1Humd" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="btnHora1" runat="server" AutoPostBack="True" Text="Formatear Hora" Visible="false"></asp:Button>
                             </div>
                         </div>
                     </div>
@@ -217,6 +210,12 @@
                                 <asp:TextBox ID="txtCam2Hora" runat="server" CssClass="form-control" TextMode="Time" AutoPostBack="True"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="col-lg-1">
+                            <div class="form-group">
+                                <label style="color: #FFFFFF">Borrar</label>
+                                <asp:Button CssClass="btn btn-primary" ID="btnhora2" runat="server" AutoPostBack="True" Text="↺" Visible="false"></asp:Button>
+                            </div>
+                        </div>
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Temperatura:</label>
@@ -227,11 +226,6 @@
                             <div class="form-group">
                                 <label>Humedad:</label>
                                 <asp:TextBox ID="txtCam2Humd" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="btnhora2" runat="server" AutoPostBack="True" Text="Formatear Hora" Visible="false"></asp:Button>
                             </div>
                         </div>
                     </div>
@@ -250,6 +244,12 @@
                                 <asp:TextBox ID="txtCam3Hora" runat="server" CssClass="form-control" TextMode="Time" AutoPostBack="True"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="col-lg-1">
+                            <div class="form-group">
+                                <label style="color: #FFFFFF">Borrar</label>
+                                <asp:Button CssClass="btn btn-primary" ID="btnhora3" runat="server" AutoPostBack="True" Text="↺" Visible="false"></asp:Button>
+                            </div>
+                        </div>
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Temperatura:</label>
@@ -260,11 +260,6 @@
                             <div class="form-group">
                                 <label>Humedad:</label>
                                 <asp:TextBox ID="txtCam3Humd" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="btnhora3" runat="server" AutoPostBack="True" Text="Formatear Hora" Visible="false"></asp:Button>
                             </div>
                         </div>
                     </div>
@@ -283,6 +278,12 @@
                                 <asp:TextBox ID="txtCam4Hora" runat="server" CssClass="form-control" TextMode="Time" AutoPostBack="True"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="col-lg-1">
+                            <div class="form-group">
+                                <label style="color: #FFFFFF">Borrar</label>
+                                <asp:Button CssClass="btn btn-primary" ID="btnhora4" runat="server" AutoPostBack="True" Text="↺" Visible="false"></asp:Button>
+                            </div>
+                        </div>
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Temperatura:</label>
@@ -293,11 +294,6 @@
                             <div class="form-group">
                                 <label>Humedad:</label>
                                 <asp:TextBox ID="txtCam4Humd" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="btnhora4" runat="server" AutoPostBack="True" Text="Formatear Hora" Visible="false"></asp:Button>
                             </div>
                         </div>
                     </div>
@@ -316,6 +312,12 @@
                                 <asp:TextBox ID="txtCam5Hora" runat="server" CssClass="form-control" TextMode="Time" AutoPostBack="True"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="col-lg-1">
+                            <div class="form-group">
+                                <label style="color: #FFFFFF">Borrar</label>
+                                <asp:Button CssClass="btn btn-primary" ID="btnhora5" runat="server" AutoPostBack="True" Text="↺" Visible="false"></asp:Button>
+                            </div>
+                        </div>
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Temperatura:</label>
@@ -326,11 +328,6 @@
                             <div class="form-group">
                                 <label>Humedad:</label>
                                 <asp:TextBox ID="txtCam5Humd" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="btnhora5" runat="server" AutoPostBack="True" Text="Formatear Hora" Visible="false"></asp:Button>
                             </div>
                         </div>
                     </div>
@@ -349,6 +346,12 @@
                                 <asp:TextBox ID="txtCam6Hora" runat="server" CssClass="form-control" TextMode="Time" AutoPostBack="True"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="col-lg-1">
+                            <div class="form-group">
+                                <label style="color: #FFFFFF">Borrar</label>
+                                <asp:Button CssClass="btn btn-primary" ID="btnhora6" runat="server" AutoPostBack="True" Text="↺" Visible="false"></asp:Button>
+                            </div>
+                        </div>
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Temperatura:</label>
@@ -359,11 +362,6 @@
                             <div class="form-group">
                                 <label>Humedad:</label>
                                 <asp:TextBox ID="txtCam6Humd" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <asp:Button CssClass="btn btn-primary" ID="btnhora6" runat="server" AutoPostBack="True" Text="Formatear Hora" Visible="false"></asp:Button>
                             </div>
                         </div>
                     </div>
@@ -400,9 +398,13 @@
                                 <div>
                                     <label></label>
                                     <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <br />
-                                    <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote" Visible="false" />
-                                    <br />
+                                    <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="" OnClick="guardarSoli_lote" Visible="false" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <div>
                                     <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
                                 </div>
                             </div>
