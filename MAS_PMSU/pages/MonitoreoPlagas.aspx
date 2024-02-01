@@ -382,13 +382,21 @@
 
                         </ContentTemplate>
                     </asp:UpdatePanel>
-
+                    
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <div>
+                                    <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <div>
                                     <label></label>
-                                    <asp:Label ID="LabelGuardar" class="label label-warning" runat="server" Text=""></asp:Label>
                                     <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="" OnClick="guardarSoli_lote" Visible="false" />
                                 </div>
                             </div>

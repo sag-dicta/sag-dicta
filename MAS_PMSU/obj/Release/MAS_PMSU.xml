@@ -344,24 +344,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._txtCam1Hora">
-<summary>
-Control txtCam1Hora.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.ControlHRTo._btnHora1">
-<summary>
-Control btnHora1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.ControlHRTo._txtCam1Temp">
 <summary>
 Control txtCam1Temp.
@@ -380,18 +362,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._txtCam2Hora">
+<member name="F:MAS_PMSU.ControlHRTo._txtCam1Hora">
 <summary>
-Control txtCam2Hora.
+Control txtCam1Hora.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._btnhora2">
+<member name="F:MAS_PMSU.ControlHRTo._btnHora1">
 <summary>
-Control btnhora2.
+Control btnHora1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -416,18 +398,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._txtCam3Hora">
+<member name="F:MAS_PMSU.ControlHRTo._txtCam2Hora">
 <summary>
-Control txtCam3Hora.
+Control txtCam2Hora.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._btnhora3">
+<member name="F:MAS_PMSU.ControlHRTo._btnhora2">
 <summary>
-Control btnhora3.
+Control btnhora2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -452,18 +434,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._txtCam4Hora">
+<member name="F:MAS_PMSU.ControlHRTo._txtCam3Hora">
 <summary>
-Control txtCam4Hora.
+Control txtCam3Hora.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._btnhora4">
+<member name="F:MAS_PMSU.ControlHRTo._btnhora3">
 <summary>
-Control btnhora4.
+Control btnhora3.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -488,18 +470,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._txtCam5Hora">
+<member name="F:MAS_PMSU.ControlHRTo._txtCam4Hora">
 <summary>
-Control txtCam5Hora.
+Control txtCam4Hora.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._btnhora5">
+<member name="F:MAS_PMSU.ControlHRTo._btnhora4">
 <summary>
-Control btnhora5.
+Control btnhora4.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -524,18 +506,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._txtCam6Hora">
+<member name="F:MAS_PMSU.ControlHRTo._txtCam5Hora">
 <summary>
-Control txtCam6Hora.
+Control txtCam5Hora.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.ControlHRTo._btnhora6">
+<member name="F:MAS_PMSU.ControlHRTo._btnhora5">
 <summary>
-Control btnhora6.
+Control btnhora5.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -554,6 +536,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.ControlHRTo._txtCam6Humd">
 <summary>
 Control txtCam6Humd.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ControlHRTo._txtCam6Hora">
+<summary>
+Control txtCam6Hora.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.ControlHRTo._btnhora6">
+<summary>
+Control btnhora6.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -7232,6 +7232,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.principal._Body1">
 <summary>
 Control Body1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.principal._Li30">
+<summary>
+Control Li30.
 </summary>
 <remarks>
 Campo generado automáticamente.
