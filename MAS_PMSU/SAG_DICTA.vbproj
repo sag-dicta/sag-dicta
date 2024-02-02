@@ -266,6 +266,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\Embarque.aspx" />
     <Content Include="pages\ControlHRTo.aspx" />
     <Content Include="pages\Inventario.aspx" />
     <Content Include="pages\FichaPeso.aspx" />
@@ -2171,6 +2172,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ActaRecepcionReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\Embarque.aspx.designer.vb">
+      <DependentUpon>Embarque.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Embarque.aspx.vb">
+      <DependentUpon>Embarque.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\ControlHRTo.aspx.designer.vb">
       <DependentUpon>ControlHRTo.aspx</DependentUpon>
