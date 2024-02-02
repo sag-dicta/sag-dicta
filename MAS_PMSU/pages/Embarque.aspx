@@ -50,7 +50,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
-                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Multiplicador" CssClass="btn btn-success" Visible="true" />
+                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Embarque" CssClass="btn btn-success" Visible="true" />
                             </div>
                         </div>
                         <div class="row">
@@ -137,7 +137,7 @@
         </div>
     </div>
 
-    <div id="DivCrearNuevo" runat="server" visible="true">
+    <div id="DivCrearNuevo" runat="server" visible="false">
         <div class="row">
 
             <div class="panel panel-primary">
@@ -236,7 +236,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Categoria:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtCateogiraGrid" runat="server" AutoPostBack="True">
@@ -266,6 +266,13 @@
                             <div class="form-group">
                                 <label>Precio Unitario (Lps):</label><asp:Label ID="lblPrecio" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtPrecio" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-11">
+                            <div class="form-group">
+                                <label>Observaciones:</label><asp:Label ID="lblObser" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtObser" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
 
@@ -321,6 +328,7 @@
                                 <asp:BoundField DataField="nombre_productor" HeaderText="ENTREGADO" />
                                 <asp:BoundField DataField="no_registro_productor" HeaderText="PRECIO" />
                                 <asp:BoundField DataField="no_registro_productor" HeaderText="TOTAL" />
+                                <asp:BoundField DataField="nombre_finca" HeaderText="OBSERVACIONES" />
 
                                 <asp:ButtonField ButtonType="Button" Text="-" ControlStyle-CssClass="btn btn-danger" HeaderText="QUITAR" CommandName="Quitar">
                                     <ControlStyle CssClass="btn btn-danger"></ControlStyle>
@@ -371,14 +379,12 @@
         </div>
 
         <div>
-            <asp:Label ID="Label18" class="label label-warning" runat="server" Text=""></asp:Label>
-            <br />
+            <asp:Label ID="Label18" class="label label-warning" runat="server" Text="" Visible="false" ></asp:Label>
             <asp:Button CssClass="btn btn-primary" ID="Button1" runat="server" Text="Imprimir Hoja de Datos del Multiplicador" OnClick="descargaPDF" Visible="false" />
         </div>
 
         <div>
-            <asp:Label ID="Label23" class="label label-warning" runat="server" Text=""></asp:Label>
-            <br />
+            <asp:Label ID="Label23" class="label label-warning" runat="server" Text="" Visible="false" ></asp:Label>
             <asp:Button CssClass="btn btn-success" ID="Button2" runat="server" Text="Nuevo Multiplicador" OnClick="vaciar" Visible="false" />
         </div>
 
