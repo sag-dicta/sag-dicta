@@ -236,9 +236,9 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-3">
+                        <div class="col-lg-2">
                             <div class="form-group">
-                                <label>Seleccione Categoria:</label>
+                                <label>Categoria:</label>
                                 <asp:DropDownList CssClass="form-control" ID="TxtCateogiraGrid" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
                                     <asp:ListItem id="basica1" Text="Basica"></asp:ListItem>
@@ -268,7 +268,12 @@
                                 <asp:TextBox CssClass="form-control" ID="txtPrecio" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
-                        
+                        <div class="col-lg-2" visible="false">
+                            <div class="form-group">
+                                <label>Total:</label><asp:Label ID="LabelTotal" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="TxtTotal" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
                         <div class="col-lg-11">
                             <div class="form-group">
                                 <label>Observaciones:</label><asp:Label ID="lblObser" class="label label-warning" runat="server" Text=""></asp:Label>

@@ -365,6 +365,24 @@ Partial Public Class Embarque
     Protected WithEvents txtPrecio As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control LabelTotal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents LabelTotal As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control TxtTotal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TxtTotal As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control lblObser.
     '''</summary>
     '''<remarks>

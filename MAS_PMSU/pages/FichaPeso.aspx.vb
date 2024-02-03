@@ -70,7 +70,7 @@ Public Class FichaPeso
     End Sub
     Private Sub llenarcomboProductor2()
         Dim StrCombo As String
-        StrCombo = "SELECT DISTINCT nombre_multiplicador FROM vista_acta_lote_multi WHERE estado_sena = '1' AND semilla_QQ_oro IS NOT NULL AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_productor ASC"
+        StrCombo = "SELECT DISTINCT nombre_multiplicador FROM vista_acta_lote_multi WHERE estado_sena = '1' AND semilla_QQ_oro IS NOT NULL AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)

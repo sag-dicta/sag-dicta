@@ -102,8 +102,6 @@
                     </a>
                 </li>
 
-
-
                    <li class="nav-item">
                     <a class="nav-link" href="Inventario.aspx">
                         <i class="fas fa-light fa-file"></i>
@@ -111,13 +109,12 @@
                     </a>
                 </li>
 
-
-
-
-
-
-
-
+                 <li class="nav-item">
+                    <a class="nav-link" href="Embarque.aspx">
+                        <i class="fas fa-light fa-file"></i>
+                        <span>Embarque</span>
+                    </a>
+                </li>
 
                 <li class="nav-item" id="Li1" runat="server">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3"
