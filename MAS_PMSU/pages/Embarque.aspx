@@ -91,9 +91,9 @@
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
 
-                                            <asp:BoundField DataField="ID">
-                                                <HeaderStyle CssClass="hide" />
-                                                <ItemStyle CssClass="hide" />
+                                            <asp:BoundField DataField="ID" ItemStyle-CssClass="hide">
+                                                <HeaderStyle CssClass="hiding" />
+                                                <ItemStyle CssClass="hiding" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
                                             <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
@@ -227,14 +227,37 @@
 
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <label>Descripcion del Producto:</label><asp:Label ID="lblVariedad" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:DropDownList CssClass="form-control" ID="DDLVariedad" runat="server" AutoPostBack="true">
-                                    <asp:ListItem Text="Todos"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
+                        <div class="col-lg-3" id="VariedadFrijol" runat="server" visible="false">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label>Descripción del Producto</label>
+                                            <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList5" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                                <asp:ListItem Text="Todos"></asp:ListItem>
+                                                <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
+                                                <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
+                                                <asp:ListItem id="Azabachev1" Text="Azabache"></asp:ListItem>
+                                                <asp:ListItem id="Paraisitomejoradov1" Text="Paraisito mejorado PM-2"></asp:ListItem>
+                                                <asp:ListItem id="Deorhov1" Text="Deorho"></asp:ListItem>
+                                                <asp:ListItem id="IntaCardenasv1" Text="Inta Cárdenas"></asp:ListItem>
+                                                <asp:ListItem id="Lencaprecozv1" Text="Lenca precoz"></asp:ListItem>
+                                                <asp:ListItem id="Rojochortív1" Text="Rojo chortí"></asp:ListItem>
+                                                <asp:ListItem id="Tolupanrojov1" Text="Tolupan rojo"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3" id="VariedadMaiz" runat="server" visible="false">
+                                    <div class="form-group">
+                                        <label>Descripción del Producto</label><asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:ListItem Text="Todos"></asp:ListItem>
+                                            <asp:ListItem id="DictaMayav1" Text="Dicta Maya"></asp:ListItem>
+                                            <asp:ListItem id="DictaVictoriav1" Text="Dicta Victoria"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
 
                         <div class="col-lg-2">
                             <div class="form-group">
@@ -268,12 +291,6 @@
                                 <asp:TextBox CssClass="form-control" ID="txtPrecio" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-2" visible="false">
-                            <div class="form-group">
-                                <label>Total:</label><asp:Label ID="LabelTotal" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtTotal" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
-                            </div>
-                        </div>
                         <div class="col-lg-11">
                             <div class="form-group">
                                 <label>Observaciones:</label><asp:Label ID="lblObser" class="label label-warning" runat="server" Text=""></asp:Label>
@@ -289,7 +306,9 @@
                         </div>
 
                         <asp:TextBox ID="txtID" runat="server" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="txtidminigrid" runat="server" Visible="false"></asp:TextBox>
                         <asp:TextBox ID="TextBanderita" runat="server" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="txtRespaldito" runat="server" Visible="false"></asp:TextBox>
                     </div>
 
                     <div class="row">
@@ -301,7 +320,7 @@
                             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                             <EmptyDataTemplate>
-                                ¡No hay multiplicadores inscritos!
+                                ¡No hay Productos inscritos!
                             </EmptyDataTemplate>
                             <%--Paginador...--%>
                             <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
@@ -327,15 +346,15 @@
                                     <HeaderStyle CssClass="hide" />
                                     <ItemStyle CssClass="hide" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="nombre_multiplicador" HeaderText="DESCRIPCION" />
-                                <asp:BoundField DataField="cedula_multiplicador" HeaderText="CATEGORIA" />
-                                <asp:BoundField DataField="nombre_finca" HeaderText="UNIDAD" />
-                                <asp:BoundField DataField="nombre_productor" HeaderText="ENTREGADO" />
-                                <asp:BoundField DataField="no_registro_productor" HeaderText="PRECIO" />
-                                <asp:BoundField DataField="no_registro_productor" HeaderText="TOTAL" />
-                                <asp:BoundField DataField="nombre_finca" HeaderText="OBSERVACIONES" />
+                                <asp:BoundField DataField="variedad" HeaderText="DESCRIPCION" />
+                                <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORIA" />
+                                <asp:BoundField DataField="unidad" HeaderText="UNIDAD" />
+                                <asp:BoundField DataField="peso_neto" HeaderText="ENTREGADO" />
+                                <asp:BoundField DataField="precio_uni" HeaderText="PRECIO" />
+                                <asp:BoundField DataField="total" HeaderText="TOTAL" />
+                                <asp:BoundField DataField="observaciones" HeaderText="OBSERVACIONES" />
 
-                                <asp:ButtonField ButtonType="Button" Text="-" ControlStyle-CssClass="btn btn-danger" HeaderText="QUITAR" CommandName="Quitar">
+                                <asp:ButtonField ButtonType="Button" Text="-" ControlStyle-CssClass="btn btn-danger" HeaderText="QUITAR" CommandName="Eliminar">
                                     <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                 </asp:ButtonField>
                             </Columns>
@@ -398,6 +417,7 @@
             <br />
             <asp:Button CssClass="btn btn-primary" ID="btnGuardarLote" runat="server" Text="Guardar" OnClick="guardarSoli_lote" Visible="false" />
             <asp:Button CssClass="btn btn-primary" ID="btnRegresar" runat="server" Text="Regresar" OnClick="guardarSoli_lote" Visible="false" />
+            <asp:Button CssClass="btn btn-primary" ID="btnRegresarConEmbarque" runat="server" Text="Regresar" Visible="false" />
         </div>
 
     </div>

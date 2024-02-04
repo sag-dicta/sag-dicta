@@ -22,7 +22,6 @@ Public Class Embarque
                 VerificarTextBox()
                 llenagrid()
                 btnGuardarLote.Visible = True
-                btnRegresar.Visible = True
             End If
         End If
     End Sub
@@ -40,16 +39,55 @@ Public Class Embarque
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "INSERT INTO sag_registro_multiplicador (nombre_productor, representante_legal, identidad_productor, extendida, residencia_productor, telefono_productor, no_registro_productor, nombre_multiplicador, 
-                cedula_multiplicador, telefono_multiplicador, nombre_finca, departamento, municipio, aldea, caserio, nombre_persona_finca, nombre_lote, croquis, estado) VALUES (@nombre_productor, @representante_legal, @identidad_productor, 
-                @extendida, @residencia_productor, @telefono_productor, @no_registro_productor, @nombre_multiplicador, @cedula_multiplicador, @telefono_multiplicador, @nombre_finca, @departamento,
-                @municipio, @aldea, @caserio, @nombre_persona_finca, @nombre_lote, @croquis, @estado)"
+                    Dim query As String = "INSERT INTO sag_embarque_info (
+                    estado,
+                    no_conocimiento,
+                    para_general,
+                    fecha_elaboracion,
+                    cultivo_general,
+                    remitente,
+                    destinatario,
+                    lugar_remitente,
+                    lugar_destinatario,
+                    descripcion,
+                    unidad,
+                    entregado,
+                    observaciones,
+                    conductor,
+                    vehiculo
+                    ) VALUES (@estado,
+                    @no_conocimiento,
+                    @para_general,
+                    @fecha_elaboracion,
+                    @cultivo_general,
+                    @remitente,
+                    @destinatario,
+                    @lugar_remitente,
+                    @lugar_destinatario,
+                    @descripcion,
+                    @unidad,
+                    @entregado,
+                    @observaciones,
+                    @conductor,
+                    @vehiculo)"
 
                     Using cmd As New MySqlCommand(query, connection)
 
-                        'cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
-
-                        cmd.Parameters.AddWithValue("@estado", "1")
+                        cmd.Parameters.AddWithValue("@no_conocimiento", "ValorNoConocimiento")
+                        cmd.Parameters.AddWithValue("@para_general", "ValorParaGeneral")
+                        cmd.Parameters.AddWithValue("@fecha_elaboracion", "ValorFechaElaboracion")
+                        cmd.Parameters.AddWithValue("@cultivo_general", "ValorCultivoGeneral")
+                        cmd.Parameters.AddWithValue("@remitente", "ValorRemitente")
+                        cmd.Parameters.AddWithValue("@destinatario", "ValorDestinatario")
+                        cmd.Parameters.AddWithValue("@lugar_remitente", "ValorLugarRemitente")
+                        cmd.Parameters.AddWithValue("@lugar_destinatario", "ValorLugarDestinatario")
+                        cmd.Parameters.AddWithValue("@descripcion", "ValorDescripcion")
+                        cmd.Parameters.AddWithValue("@unidad", "ValorUnidad")
+                        cmd.Parameters.AddWithValue("@entregado", "ValorEntregado")
+                        cmd.Parameters.AddWithValue("@observaciones", "ValorObservaciones")
+                        cmd.Parameters.AddWithValue("@conductor", "ValorConductor")
+                        cmd.Parameters.AddWithValue("@vehiculo", "ValorVehiculo")
+                        cmd.Parameters.AddWithValue("@estado", "0")
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
@@ -64,7 +102,8 @@ Public Class Embarque
                         Button1.Visible = True
                         Button2.Visible = True
                         btnGuardarLote.Visible = False
-
+                        btnRegresar.Visible = True
+                        btnRegresarConEmbarque.Visible = False
                     End Using
                 End Using
             Else
@@ -319,11 +358,105 @@ Public Class Embarque
 
         DivCrearNuevo.Visible = True
         DivGrid.Visible = False
+        btnRegresar.Visible = True
+        btnRegresarConEmbarque.Visible = False
         TextBanderita.Text = "Guardar"
-
+        Llenar_conocimiento()
         VerificarTextBox()
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
+    End Sub
+    Protected Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "INSERT INTO sag_embarque (
+                    variedad_categoria,
+                    categoria_origen,
+                    tipo_cultivo,
+                    variedad,
+                    estado,
+                    peso_neto,
+                    no_conocimiento,
+                    precio_uni,
+                    total,
+                    observaciones,
+                    unidad
+                    ) VALUES (@variedad_categoria,
+                    @categoria_origen,
+                    @tipo_cultivo,
+                    @variedad,
+                    @estado,
+                    @peso_neto,
+                    @no_conocimiento,
+                    @precio_uni,
+                    @total,
+                    @observaciones,
+                    @unidad
+                    )"
+
+            Using cmd As New MySqlCommand(query, connection)
+                CrearIdentificador()
+                cmd.Parameters.AddWithValue("@variedad_categoria", txtRespaldito.Text)
+                cmd.Parameters.AddWithValue("@observaciones", txtObser.Text)
+                cmd.Parameters.AddWithValue("@unidad", txtUnid.Text)
+                cmd.Parameters.AddWithValue("@categoria_origen", TxtCateogiraGrid.SelectedItem.Text)
+                cmd.Parameters.AddWithValue("@tipo_cultivo", DDLCultivo.SelectedItem.Text)
+                If DDLCultivo.SelectedItem.Text = "Frijol" Then
+                    cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
+                Else
+                    cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
+                End If
+                cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtEntreg.Text))
+                cmd.Parameters.AddWithValue("@precio_uni", Convert.ToDecimal(txtPrecio.Text))
+                cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(Convert.ToDecimal(txtEntreg.Text) * Convert.ToDecimal(txtPrecio.Text)))
+                cmd.Parameters.AddWithValue("@no_conocimiento", txtConoNo.Text)
+                cmd.Parameters.AddWithValue("@estado", "0")
+
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+        End Using
+        llenaMinigrid()
+        btnRegresar.Visible = False
+        btnRegresarConEmbarque.Visible = True
+    End Sub
+    Protected Sub CrearIdentificador()
+        Dim variedad As String
+
+        If DDLCultivo.SelectedItem.Text = "Frijol" Then
+            variedad = DropDownList5.SelectedItem.Text
+        Else
+            variedad = DropDownList6.SelectedItem.Text
+        End If
+
+        Dim categoria As String = TxtCateogiraGrid.SelectedItem.Text
+
+        Dim resultado As String = String.Format("{0}-{1}", variedad, categoria)
+
+        txtRespaldito.Text = resultado
+    End Sub
+    Private Sub Llenar_conocimiento()
+        Dim strCombo As String = "SELECT COUNT(*) AS no_conocimiento FROM sag_embarque_info"
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
+
+        If DtCombo.Rows.Count > 0 AndAlso DtCombo.Columns.Count > 0 Then
+            Dim total As Integer = DtCombo.Rows(0)("no_conocimiento")
+            total += 1
+
+            Dim year As String = DateTime.Now.Year.ToString()
+
+            Dim resultadoFormateado As String = total.ToString("D3") & " - " & year
+
+            txtConoNo.Text = resultadoFormateado
+        Else
+            Dim total1 As Integer = 1
+            txtConoNo.Text = total1.ToString("D3") & " - " & DateTime.Now.Year.ToString()
+        End If
     End Sub
 
     Protected Sub TxtMultiplicador_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -331,7 +464,7 @@ Public Class Embarque
     End Sub
 
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
-        Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+        Response.Redirect(String.Format("~/pages/Embarque.aspx"))
     End Sub
 
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
@@ -420,7 +553,7 @@ Public Class Embarque
                 ' Se crean los valores del DropDownList tomando el número total de páginas...
                 Dim i As Integer
                 For i = 0 To GridDatos.PageCount - 1
-                    ' Se crea un objeto ListItem para representar la �gina...
+                    ' Se crea un objeto ListItem para representar la  gina...
                     Dim pageNumber As Integer = i + 1
                     Dim item As ListItem = New ListItem(pageNumber.ToString())
                     If i = GridDatos.PageIndex Then
@@ -431,9 +564,9 @@ Public Class Embarque
                 Next i
             End If
             If Not pageLabel Is Nothing Then
-                ' Calcula el nº de �gina actual...
+                ' Calcula el nº de  gina actual...
                 Dim currentPage As Integer = GridDatos.PageIndex + 1
-                ' Actualiza el Label control con la �gina actual.
+                ' Actualiza el Label control con la  gina actual.
                 pageLabel.Text = "Página " & currentPage.ToString() & " de " & GridDatos.PageCount.ToString()
             End If
         End If
@@ -465,7 +598,7 @@ Public Class Embarque
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
-                Response.Redirect(String.Format("~/pages/agregarMultiplicador.aspx"))
+                Response.Redirect(String.Format("~/pages/Embarque.aspx"))
             End Using
 
         End Using
@@ -539,4 +672,100 @@ Public Class Embarque
         End Using
     End Sub
 
+    Sub llenaMinigrid()
+        Dim cadena As String = "*"
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque` WHERE no_conocimiento = '" & txtConoNo.Text & "' AND estado = '0' "
+
+        GridProductos.DataBind()
+    End Sub
+    Protected Sub DDLCultivo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLCultivo.SelectedIndexChanged
+        ' Obtiene el valor seleccionado en la DropDownList
+        Dim selectedValue As String = DDLCultivo.SelectedItem.Text
+
+        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
+        If selectedValue = "Frijol" Then
+            DropDownList6.SelectedIndex = 0
+            VariedadFrijol.Visible = True
+            VariedadMaiz.Visible = False
+        ElseIf selectedValue = "Maiz" Then
+            VariedadMaiz.Visible = True
+            VariedadFrijol.Visible = False
+            DropDownList5.SelectedIndex = 0
+        Else
+            VariedadMaiz.Visible = False
+            VariedadFrijol.Visible = False
+            DropDownList5.SelectedIndex = 0
+            DropDownList6.SelectedIndex = 0
+        End If
+
+        VerificarTextBox()
+    End Sub
+    Protected Sub eliminarMiniGrid()
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM sag_embarque WHERE estado = 0"
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.ExecuteNonQuery()
+                connection.Close()
+                'Response.Redirect(String.Format("~/pages/Embarque.aspx"))
+            End Using
+        End Using
+    End Sub
+    Protected Sub eliminarMiniGrid(sender As Object, e As EventArgs) Handles btnRegresarConEmbarque.Click
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM sag_embarque WHERE estado = 0"
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.ExecuteNonQuery()
+                connection.Close()
+                Response.Redirect(String.Format("~/pages/Embarque.aspx"))
+            End Using
+            'query = "ALTER TABLE sag_embarque AUTO_INCREMENT = " & txtidminigrid.Text
+            'Using cmd As New MySqlCommand(query, connection)
+            '    cmd.ExecuteNonQuery()
+            'End Using
+
+        End Using
+    End Sub
+
+    Protected Sub eliminarMiniGridEspecifico(id As String)
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM sag_embarque 
+                WHERE id = " & id & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+            llenaMinigrid()
+            txtVehic.Text = id
+            'query = "ALTER TABLE sag_embarque AUTO_INCREMENT = " & txtidminigrid.Text
+            'Using cmd As New MySqlCommand(query, connection)
+            '    cmd.ExecuteNonQuery()
+            'End Using
+
+        End Using
+    End Sub
+
+    Protected Sub GridProductos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridProductos.RowCommand
+
+        If (e.CommandName = "Eliminar") Then
+            Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            txtidminigrid.Text = ""
+            txtidminigrid.Text = HttpUtility.HtmlDecode(GridProductos.Rows(index).Cells(0).Text).ToString
+            eliminarMiniGridEspecifico(txtidminigrid.Text)
+        End If
+    End Sub
 End Class
