@@ -302,6 +302,7 @@
                             <div class="form-group">
                                 <label style="color: #FFFFFF">Agregar</label>
                                 <asp:Button CssClass="btn btn-primary" ID="btnAgregar" runat="server" AutoPostBack="True" Text="+" Font-Bold="True"></asp:Button>
+                                <asp:Button CssClass="btn btn-warning" ID="btnEditar" runat="server" AutoPostBack="True" Text="↺" Font-Bold="True" Visible="false"></asp:Button>
                             </div>
                         </div>
 
@@ -354,6 +355,9 @@
                                 <asp:BoundField DataField="total" HeaderText="TOTAL" />
                                 <asp:BoundField DataField="observaciones" HeaderText="OBSERVACIONES" />
 
+                                 <asp:ButtonField ButtonType="Button" Text="↺" ControlStyle-CssClass="btn btn-warning" HeaderText="Editar" CommandName="Editar">
+                                    <ControlStyle CssClass="btn btn-warning"></ControlStyle>
+                                </asp:ButtonField>
                                 <asp:ButtonField ButtonType="Button" Text="-" ControlStyle-CssClass="btn btn-danger" HeaderText="QUITAR" CommandName="Eliminar">
                                     <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                 </asp:ButtonField>
@@ -384,7 +388,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Seleccione Conductor:</label>
-                                <label></label><asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="DDLConductor" runat="server" AutoPostBack="True">
                                 </asp:DropDownList>
                             </div>

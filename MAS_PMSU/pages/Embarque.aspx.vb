@@ -516,6 +516,43 @@ Public Class Embarque
         btnRegresar.Visible = False
         btnRegresarConEmbarque.Visible = True
     End Sub
+    Protected Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+            Dim query As String = "UPDATE sag_embarque SET
+                        categoria_origen = @categoria_origen,
+                        variedad = @variedad,
+                        peso_neto = @peso_neto,
+                        precio_uni = @precio_uni,
+                        total = @total,
+                        observaciones = @observaciones
+                    WHERE id = " & txtidminigrid.Text & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.Parameters.AddWithValue("@observaciones", txtObser.Text)
+                cmd.Parameters.AddWithValue("@categoria_origen", TxtCateogiraGrid.SelectedItem.Text)
+                If DDLCultivo.SelectedItem.Text = "Frijol" Then
+                    cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
+                End If
+                If DDLCultivo.SelectedItem.Text = "Maiz" Then
+                    cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
+                End If
+                cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtEntreg.Text))
+                cmd.Parameters.AddWithValue("@precio_uni", Convert.ToDecimal(txtPrecio.Text))
+                cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(Convert.ToDecimal(txtEntreg.Text) * Convert.ToDecimal(txtPrecio.Text)))
+
+
+                cmd.ExecuteNonQuery()
+                connection.Close()
+                btnAgregar.Visible = True
+                btnEditar.Visible = False
+            End Using
+        End Using
+        llenaMinigrid()
+        btnRegresar.Visible = False
+        btnRegresarConEmbarque.Visible = True
+    End Sub
     Protected Sub CrearIdentificador()
         Dim variedad As String
 
@@ -665,6 +702,27 @@ Public Class Embarque
         End If
     End Sub
 
+    Protected Function SeleccionarItemEnDropDownListFrijolOMaiz(ByVal Prodname As DropDownList, ByVal DtCombo As String, ByVal DtCombo2 As String)
+        If DtCombo2 = "Frijol" Then
+            For Each item As ListItem In Prodname.Items
+                If item.Text = DtCombo Then
+                    Prodname.SelectedValue = item.Value
+                    Return True ' Se encontró una coincidencia, devolver verdadero
+                End If
+            Next
+            ' No se encontró ninguna coincidencia
+            Return 0
+        Else
+            For Each item As ListItem In Prodname.Items
+                If item.Text = DtCombo Then
+                    Prodname.SelectedValue = item.Value
+                    Return True ' Se encontró una coincidencia, devolver verdadero
+                End If
+            Next
+            Return 0
+        End If
+        Return 0
+    End Function
     Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
         For Each item As ListItem In Prodname.Items
             If item.Text = DtCombo Then
@@ -871,13 +929,31 @@ Public Class Embarque
         End Using
     End Sub
     Protected Sub GridProductos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridProductos.RowCommand
-
+        Dim index As Integer = Convert.ToInt32(e.CommandArgument)
         If (e.CommandName = "Eliminar") Then
-            Dim index As Integer = Convert.ToInt32(e.CommandArgument)
-            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            Dim gvrow As GridViewRow = GridProductos.Rows(index)
             txtidminigrid.Text = ""
             txtidminigrid.Text = HttpUtility.HtmlDecode(GridProductos.Rows(index).Cells(0).Text).ToString
             eliminarMiniGridEspecifico(txtidminigrid.Text)
+        End If
+
+        If (e.CommandName = "Editar") Then
+            btnAgregar.Visible = False
+            btnEditar.Visible = True
+            Dim gvrow As GridViewRow = GridProductos.Rows(index)
+            txtidminigrid.Text = ""
+            txtidminigrid.Text = HttpUtility.HtmlDecode(GridProductos.Rows(index).Cells(0).Text).ToString
+            Dim Str As String = "SELECT * FROM sag_embarque WHERE  ID= " & txtidminigrid.Text & ""
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            SeleccionarItemEnDropDownListFrijolOMaiz(DDLCultivo, dt.Rows(0)("variedad").ToString(), dt.Rows(0)("tipo_cultivo").ToString())
+            SeleccionarItemEnDropDownList(TxtCateogiraGrid, dt.Rows(0)("categoria_origen").ToString())
+            txtUnid.Text = dt.Rows(0)("unidad").ToString()
+            txtEntreg.Text = dt.Rows(0)("peso_neto").ToString()
+            txtPrecio.Text = dt.Rows(0)("precio_uni").ToString()
+            txtObser.Text = dt.Rows(0)("observaciones").ToString()
         End If
     End Sub
 
@@ -922,12 +998,10 @@ Public Class Embarque
         Dim newitem As New ListItem(" ", " ")
         TxtCateogiraGrid.Items.Insert(0, newitem)
     End Sub
-
     Protected Sub TxtCateogiraGrid_SelectedIndexChanged(sender As Object, e As EventArgs)
         txtEntreg.Text = ""
         VerificarTextBox()
     End Sub
-
     Protected Sub txtEntreg_TextChanged(sender As Object, e As EventArgs) Handles txtEntreg.TextChanged
         ' Obtener el valor ingresado en txtEntreg
         Dim entregado As Integer = 0
@@ -994,6 +1068,7 @@ Public Class Embarque
     End Sub
     Protected Sub DDLConductor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DDLConductor.SelectedIndexChanged
         llenarcomboinfoAuto()
+        VerificarTextBox()
     End Sub
     Private Sub llenarcomboConductor()
         Dim StrCombo As String
@@ -1010,7 +1085,6 @@ Public Class Embarque
         Dim newitem As New ListItem("Todos", "Todos")
         DDLConductor.Items.Insert(0, newitem)
     End Sub
-
     Private Sub llenarcomboinfoAuto()
         If DDLConductor.SelectedItem.Text <> "Todos" Then
             Dim StrCombo As String
