@@ -320,7 +320,7 @@
                             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                             <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                             <EmptyDataTemplate>
-                                ¡No hay Productos inscritos!
+                                ¡No hay productos inscritos!
                             </EmptyDataTemplate>
                             <%--Paginador...--%>
                             <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
@@ -384,8 +384,8 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>Seleccione Conductor:</label>
-                                <asp:DropDownList CssClass="form-control" ID="DDLConductor" runat="server" AutoPostBack="True" OnSelectedIndexChanged="TxtMultiplicador_SelectedIndexChanged">
-                                    <asp:ListItem Text=" "></asp:ListItem>
+                                <label></label><asp:Label ID="Label1" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:DropDownList CssClass="form-control" ID="DDLConductor" runat="server" AutoPostBack="True">
                                 </asp:DropDownList>
                             </div>
                         </div>

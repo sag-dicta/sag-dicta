@@ -21,13 +21,15 @@ Public Class Embarque
                 llenarcomboProductor3()
                 VerificarTextBox()
                 llenagrid()
+                eliminarMiniGrid2()
                 btnGuardarLote.Visible = True
-            End If
+        End If
         End If
     End Sub
 
     Protected Sub guardarSoli_lote(sender As Object, e As EventArgs)
         VerificarTextBox()
+        Dim fechaConvertida As Date
         If validarflag = 0 Then
             LabelGuardar.Visible = True
             LabelGuardar.Text = "Ingrese toda la información para poder guardarla"
@@ -49,12 +51,11 @@ Public Class Embarque
                     destinatario,
                     lugar_remitente,
                     lugar_destinatario,
-                    descripcion,
-                    unidad,
-                    entregado,
-                    observaciones,
                     conductor,
-                    vehiculo
+                    vehiculo,
+                    observacion2,
+                    duplicado,
+                    triplicado
                     ) VALUES (@estado,
                     @no_conocimiento,
                     @para_general,
@@ -64,35 +65,39 @@ Public Class Embarque
                     @destinatario,
                     @lugar_remitente,
                     @lugar_destinatario,
-                    @descripcion,
-                    @unidad,
-                    @entregado,
-                    @observaciones,
                     @conductor,
-                    @vehiculo)"
+                    @vehiculo,
+                    @observacion2,
+                    @duplicado,
+                    @triplicado)"
 
                     Using cmd As New MySqlCommand(query, connection)
 
-                        cmd.Parameters.AddWithValue("@no_conocimiento", "ValorNoConocimiento")
-                        cmd.Parameters.AddWithValue("@para_general", "ValorParaGeneral")
-                        cmd.Parameters.AddWithValue("@fecha_elaboracion", "ValorFechaElaboracion")
-                        cmd.Parameters.AddWithValue("@cultivo_general", "ValorCultivoGeneral")
-                        cmd.Parameters.AddWithValue("@remitente", "ValorRemitente")
-                        cmd.Parameters.AddWithValue("@destinatario", "ValorDestinatario")
-                        cmd.Parameters.AddWithValue("@lugar_remitente", "ValorLugarRemitente")
-                        cmd.Parameters.AddWithValue("@lugar_destinatario", "ValorLugarDestinatario")
-                        cmd.Parameters.AddWithValue("@descripcion", "ValorDescripcion")
-                        cmd.Parameters.AddWithValue("@unidad", "ValorUnidad")
-                        cmd.Parameters.AddWithValue("@entregado", "ValorEntregado")
-                        cmd.Parameters.AddWithValue("@observaciones", "ValorObservaciones")
-                        cmd.Parameters.AddWithValue("@conductor", "ValorConductor")
-                        cmd.Parameters.AddWithValue("@vehiculo", "ValorVehiculo")
-                        cmd.Parameters.AddWithValue("@estado", "0")
+                        cmd.Parameters.AddWithValue("@no_conocimiento", txtConoNo.Text)
+                        cmd.Parameters.AddWithValue("@para_general", txtPara.Text)
+                        If Date.TryParse(txtFecha.Text, fechaConvertida) Then
+                            cmd.Parameters.AddWithValue("@fecha_elaboracion", fechaConvertida.ToString("yyyy-MM-dd"))
+                        End If
+                        cmd.Parameters.AddWithValue("@cultivo_general", DDLCultivo.SelectedItem.Text)
+
+                        cmd.Parameters.AddWithValue("@remitente", txtRemi.Text)
+                        cmd.Parameters.AddWithValue("@destinatario", txtDestin.Text)
+                        cmd.Parameters.AddWithValue("@lugar_remitente", txtLugarR.Text)
+                        cmd.Parameters.AddWithValue("@lugar_destinatario", txtLugarD.Text)
+
+                        cmd.Parameters.AddWithValue("@conductor", DDLConductor.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@vehiculo", txtVehic.Text)
+
+                        cmd.Parameters.AddWithValue("@observacion2", DBNull.Value)
+                        cmd.Parameters.AddWithValue("@duplicado", DBNull.Value)
+                        cmd.Parameters.AddWithValue("@triplicado", DBNull.Value)
+                        cmd.Parameters.AddWithValue("@estado", "1")
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
 
                         'Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!') </script>")
+                        cambiarEstadoProducto(txtConoNo.Text)
 
                         Label3.Text = "¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!"
                         BBorrarsi.Visible = False
@@ -113,29 +118,42 @@ Public Class Embarque
                 Using connection As New MySqlConnection(connectionString)
                     connection.Open()
 
-                    Dim query As String = "UPDATE sag_registro_multiplicador 
-                    SET nombre_productor = @nombre_productor,
-                        representante_legal = @representante_legal,
-                        identidad_productor = @identidad_productor,
-                        extendida = @extendida,
-                        residencia_productor = @residencia_productor,
-                        telefono_productor = @telefono_productor,
-                        no_registro_productor = @no_registro_productor,
-                        nombre_multiplicador = @nombre_multiplicador,
-                        cedula_multiplicador = @cedula_multiplicador,
-                        telefono_multiplicador = @telefono_multiplicador,
-                        nombre_finca = @nombre_finca,
-                        departamento = @departamento,
-                        municipio = @municipio,
-                        aldea = @aldea,
-                        caserio = @caserio,
-                        nombre_persona_finca = @nombre_persona_finca,
-                        nombre_lote = @nombre_lote
-                    WHERE id = " & txtID.Text & ""
+                    Dim query As String = "UPDATE sag_embarque_info SET
+                        para_general = @para_general,
+                        fecha_elaboracion = @fecha_elaboracion,
+                        cultivo_general = @cultivo_general,
+                        remitente = @remitente,
+                        destinatario = @destinatario,
+                        lugar_remitente = @lugar_remitente,
+                        lugar_destinatario = @lugar_destinatario,
+                        conductor = @conductor,
+                        vehiculo = @vehiculo,
+                        observacion2 = @observacion2,
+                        duplicado = @duplicado,
+                        triplicado = @triplicado
+                    WHERE no_conocimiento = " & txtID.Text & ""
+
 
                     Using cmd As New MySqlCommand(query, connection)
 
-                        'cmd.Parameters.AddWithValue("@nombre_productor", txt_nombre_prod_new.Text)
+                        cmd.Parameters.AddWithValue("@para_general", txtPara.Text)
+                        If Date.TryParse(txtFecha.Text, fechaConvertida) Then
+                            cmd.Parameters.AddWithValue("@fecha_elaboracion", fechaConvertida.ToString("yyyy-MM-dd"))
+                        End If
+                        cmd.Parameters.AddWithValue("@cultivo_general", DDLCultivo.SelectedItem.Text)
+
+                        cmd.Parameters.AddWithValue("@remitente", txtRemi.Text)
+                        cmd.Parameters.AddWithValue("@destinatario", txtDestin.Text)
+                        cmd.Parameters.AddWithValue("@lugar_remitente", txtLugarR.Text)
+                        cmd.Parameters.AddWithValue("@lugar_destinatario", txtLugarD.Text)
+
+                        cmd.Parameters.AddWithValue("@conductor", DDLConductor.SelectedItem.Text)
+                        cmd.Parameters.AddWithValue("@vehiculo", txtVehic.Text)
+
+                        cmd.Parameters.AddWithValue("@observacion2", DBNull.Value)
+                        cmd.Parameters.AddWithValue("@duplicado", DBNull.Value)
+                        cmd.Parameters.AddWithValue("@triplicado", DBNull.Value)
+                        cmd.Parameters.AddWithValue("@estado", "1")
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
@@ -172,8 +190,81 @@ Public Class Embarque
     Protected Sub VerificarTextBox()
         'Aqui van las verificaciones
         If TextBanderita.Text = "Guardar" Then
+            '1
+            If String.IsNullOrEmpty(txtPara.Text) Then
+                lblPara.Text = "*"
+                validarflag = 0
+            Else
+                lblPara.Text = ""
+                validarflag += 1
+            End If
+            '2
+            If String.IsNullOrEmpty(txtFecha.Text) Then
+                lblFecha.Text = "*"
+                validarflag = 0
+            Else
+                lblFecha.Text = ""
+                validarflag += 1
+            End If
+            '3
+            If DDLCultivo.SelectedItem.Text = "Todos" Then
+                lblCultivo.Text = "*"
+                validarflag = 0
+            Else
+                lblCultivo.Text = ""
+                validarflag += 1
+            End If
+            '4
+            If String.IsNullOrEmpty(txtRemi.Text) Then
+                lblremi.Text = "*"
+                validarflag = 0
+            Else
+                lblremi.Text = ""
+                validarflag += 1
+            End If
+            '5
+            If String.IsNullOrEmpty(txtDestin.Text) Then
+                lblDestin.Text = "*"
+                validarflag = 0
+            Else
+                lblDestin.Text = ""
+                validarflag += 1
+            End If
+            '6
+            If String.IsNullOrEmpty(txtLugarR.Text) Then
+                lblLugarR.Text = "*"
+                validarflag = 0
+            Else
+                lblLugarR.Text = ""
+                validarflag += 1
+            End If
+            '7
+            If String.IsNullOrEmpty(txtLugarD.Text) Then
+                lblLugarD.Text = "*"
+                validarflag = 0
+            Else
+                lblLugarD.Text = ""
+                validarflag += 1
+            End If
+            '8
+            If DDLConductor.SelectedItem.Text <> "Todos" Then
+                Label1.Text = ""
+                validarflag += 1
 
-            If validarflag = 18 Then
+            Else
+                Label1.Text = "*"
+                validarflag = 0
+            End If
+            '9
+            'If String.IsNullOrEmpty(txtVehic.Text) Then
+            '    lblVehic.Text = "*"
+            '    validarflag = 0
+            'Else
+            '    lblVehic.Text = ""
+            '    validarflag += 1
+            'End If
+
+            If validarflag = 8 Then
                 validarflag = 1
             Else
                 validarflag = 0
@@ -362,6 +453,7 @@ Public Class Embarque
         btnRegresarConEmbarque.Visible = False
         TextBanderita.Text = "Guardar"
         Llenar_conocimiento()
+        llenarcomboConductor()
         VerificarTextBox()
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
@@ -406,7 +498,8 @@ Public Class Embarque
                 cmd.Parameters.AddWithValue("@tipo_cultivo", DDLCultivo.SelectedItem.Text)
                 If DDLCultivo.SelectedItem.Text = "Frijol" Then
                     cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
-                Else
+                End If
+                If DDLCultivo.SelectedItem.Text = "Maiz" Then
                     cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
                 End If
                 cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtEntreg.Text))
@@ -733,7 +826,7 @@ Public Class Embarque
         Dim newitem As New ListItem(" ", " ")
         DropDownList6.Items.Insert(0, newitem)
     End Sub
-    Protected Sub eliminarMiniGrid()
+    Protected Sub eliminarMiniGrid2()
         Dim connectionString As String = conn
         Using connection As New MySqlConnection(connectionString)
             connection.Open()
@@ -743,7 +836,6 @@ Public Class Embarque
             Using cmd As New MySqlCommand(query, connection)
                 cmd.ExecuteNonQuery()
                 connection.Close()
-                'Response.Redirect(String.Format("~/pages/Embarque.aspx"))
             End Using
         End Using
     End Sub
@@ -759,11 +851,6 @@ Public Class Embarque
                 connection.Close()
                 Response.Redirect(String.Format("~/pages/Embarque.aspx"))
             End Using
-            'query = "ALTER TABLE sag_embarque AUTO_INCREMENT = " & txtidminigrid.Text
-            'Using cmd As New MySqlCommand(query, connection)
-            '    cmd.ExecuteNonQuery()
-            'End Using
-
         End Using
     End Sub
 
@@ -781,12 +868,6 @@ Public Class Embarque
                 connection.Close()
             End Using
             llenaMinigrid()
-            txtVehic.Text = id
-            'query = "ALTER TABLE sag_embarque AUTO_INCREMENT = " & txtidminigrid.Text
-            'Using cmd As New MySqlCommand(query, connection)
-            '    cmd.ExecuteNonQuery()
-            'End Using
-
         End Using
     End Sub
     Protected Sub GridProductos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridProductos.RowCommand
@@ -852,7 +933,7 @@ Public Class Embarque
         Dim entregado As Integer = 0
         If Integer.TryParse(txtEntreg.Text, entregado) Then
             ' Construir la consulta SQL dinámica
-            Dim c1 As String = "SELECT peso_total FROM vista_suma_tabla_a WHERE 1=1 "
+            Dim c1 As String = "SELECT peso_neto_resta FROM vista_inventario WHERE 1=1 "
             Dim c2 As String
             Dim c3 As String
 
@@ -883,8 +964,8 @@ Public Class Embarque
             Dim DtCombo As New DataTable()
             adaptcombo.Fill(DtCombo)
 
-            If DtCombo.Rows.Count > 0 AndAlso Not IsDBNull(DtCombo.Rows(0)("peso_total")) Then
-                pesoTotal = Convert.ToInt32(DtCombo.Rows(0)("peso_total"))
+            If DtCombo.Rows.Count > 0 AndAlso Not IsDBNull(DtCombo.Rows(0)("peso_neto_resta")) Then
+                pesoTotal = Convert.ToInt32(DtCombo.Rows(0)("peso_neto_resta"))
 
                 If entregado <= pesoTotal Then
                     ' El valor ingresado es menor o igual al peso total
@@ -892,7 +973,7 @@ Public Class Embarque
                 Else
                     ' El valor ingresado es mayor al peso total
                     lblEntreg.Text = "*"
-                    Label3.Text = "El valor de entrega ingresado (" & txtEntreg.Text & ") supera al valor en inventario"
+                    Label3.Text = "El valor de entrega ingresado (" & txtEntreg.Text & ") supera al valor en inventario que es: (" & DtCombo.Rows(0)("peso_neto_resta").ToString & ")"
                     txtEntreg.Text = ""
                     BConfirm.Visible = False
                     BBorrarsi.Visible = False
@@ -911,6 +992,58 @@ Public Class Embarque
         VerificarTextBox()
 
     End Sub
+    Protected Sub DDLConductor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DDLConductor.SelectedIndexChanged
+        llenarcomboinfoAuto()
+    End Sub
+    Private Sub llenarcomboConductor()
+        Dim StrCombo As String
 
+        StrCombo = "SELECT DISTINCT nombre FROM sag_registro_vehiculo_motorista ORDER BY nombre ASC"
 
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        DDLConductor.DataSource = DtCombo
+        DDLConductor.DataValueField = DtCombo.Columns(0).ToString()
+        DDLConductor.DataTextField = DtCombo.Columns(0).ToString()
+        DDLConductor.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLConductor.Items.Insert(0, newitem)
+    End Sub
+
+    Private Sub llenarcomboinfoAuto()
+        If DDLConductor.SelectedItem.Text <> "Todos" Then
+            Dim StrCombo As String
+
+            StrCombo = "SELECT codvehi FROM sag_registro_vehiculo_motorista WHERE nombre = '" & DDLConductor.SelectedItem.Text & "' ORDER BY nombre ASC"
+
+            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+            Dim DtCombo As New DataTable
+            adaptcombo.Fill(DtCombo)
+
+            If DtCombo.Rows.Count > 0 Then
+                ' Asigna el valor de codvehi al TextBox
+                txtVehic.Text = DtCombo.Rows(0)("codvehi").ToString()
+            Else
+                ' Maneja el caso en que no se encuentre ningún registro
+                txtVehic.Text = "No se encontró codvehi para el conductor seleccionado."
+            End If
+        End If
+    End Sub
+    Protected Sub cambiarEstadoProducto(conocimiento As String)
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "UPDATE sag_embarque SET
+                estado = @estado
+                WHERE no_conocimiento = '" & conocimiento & "'"
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.Parameters.AddWithValue("@estado", "1")
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+        End Using
+    End Sub
 End Class
