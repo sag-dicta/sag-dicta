@@ -688,10 +688,12 @@ Public Class Embarque
             DropDownList6.SelectedIndex = 0
             VariedadFrijol.Visible = True
             VariedadMaiz.Visible = False
+            llenarcomboFrijol()
         ElseIf selectedValue = "Maiz" Then
             VariedadMaiz.Visible = True
             VariedadFrijol.Visible = False
             DropDownList5.SelectedIndex = 0
+            llenarcomboMaiz()
         Else
             VariedadMaiz.Visible = False
             VariedadFrijol.Visible = False
@@ -700,6 +702,36 @@ Public Class Embarque
         End If
 
         VerificarTextBox()
+    End Sub
+    Private Sub llenarcomboFrijol()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = 'Frijol' ORDER BY variedad ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        DropDownList5.DataSource = DtCombo
+        DropDownList5.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList5.DataTextField = DtCombo.Columns(0).ToString()
+        DropDownList5.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DropDownList5.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboMaiz()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = 'Maiz' ORDER BY variedad ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        DropDownList6.DataSource = DtCombo
+        DropDownList6.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList6.DataTextField = DtCombo.Columns(0).ToString()
+        DropDownList6.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DropDownList6.Items.Insert(0, newitem)
     End Sub
     Protected Sub eliminarMiniGrid()
         Dim connectionString As String = conn
@@ -757,7 +789,6 @@ Public Class Embarque
 
         End Using
     End Sub
-
     Protected Sub GridProductos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridProductos.RowCommand
 
         If (e.CommandName = "Eliminar") Then
@@ -768,4 +799,118 @@ Public Class Embarque
             eliminarMiniGridEspecifico(txtidminigrid.Text)
         End If
     End Sub
+
+    Protected Sub DropDownList5_SelectedIndexChanged(sender As Object, e As EventArgs)
+        txtEntreg.Text = ""
+        llenarcomboCategoriaFrijol()
+        VerificarTextBox()
+    End Sub
+    Private Sub llenarcomboCategoriaFrijol()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT DISTINCT categoria_origen FROM vista_suma_tabla_a WHERE variedad = '" & DropDownList5.SelectedItem.Text & "' ORDER BY categoria_origen ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        TxtCateogiraGrid.DataSource = DtCombo
+        TxtCateogiraGrid.DataValueField = DtCombo.Columns(0).ToString()
+        TxtCateogiraGrid.DataTextField = DtCombo.Columns(0).ToString()
+        TxtCateogiraGrid.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        TxtCateogiraGrid.Items.Insert(0, newitem)
+    End Sub
+
+    Protected Sub DropDownList6_SelectedIndexChanged(sender As Object, e As EventArgs)
+        txtEntreg.Text = ""
+        llenarcomboCategoriaMaiz()
+        VerificarTextBox()
+    End Sub
+    Private Sub llenarcomboCategoriaMaiz()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT DISTINCT categoria_origen FROM vista_suma_tabla_a WHERE variedad = '" & DropDownList6.SelectedItem.Text & "' ORDER BY categoria_origen ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        TxtCateogiraGrid.DataSource = DtCombo
+        TxtCateogiraGrid.DataValueField = DtCombo.Columns(0).ToString()
+        TxtCateogiraGrid.DataTextField = DtCombo.Columns(0).ToString()
+        TxtCateogiraGrid.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        TxtCateogiraGrid.Items.Insert(0, newitem)
+    End Sub
+
+    Protected Sub TxtCateogiraGrid_SelectedIndexChanged(sender As Object, e As EventArgs)
+        txtEntreg.Text = ""
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub txtEntreg_TextChanged(sender As Object, e As EventArgs) Handles txtEntreg.TextChanged
+        ' Obtener el valor ingresado en txtEntreg
+        Dim entregado As Integer = 0
+        If Integer.TryParse(txtEntreg.Text, entregado) Then
+            ' Construir la consulta SQL dinámica
+            Dim c1 As String = "SELECT peso_total FROM vista_suma_tabla_a WHERE 1=1 "
+            Dim c2 As String
+            Dim c3 As String
+
+            ' Obtener las selecciones de los DropDownList
+            If DropDownList5.SelectedItem.Text = "Todos" And DropDownList6.SelectedItem.Text <> "Todos" Then
+                c2 = " AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
+            Else
+                c2 = " "
+            End If
+
+            If DropDownList6.SelectedItem.Text = "Todos" And DropDownList5.SelectedItem.Text <> "Todos" Then
+                c2 = " AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
+            Else
+                c2 = " "
+            End If
+
+            If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
+                c3 = " "
+            Else
+                c3 = " AND categoria_origen = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
+            End If
+
+            ' Agregar condiciones a la consulta SQL
+            Dim query As String = c1 & c2 & c3
+
+            Dim strCombo As String = query
+            Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+            Dim DtCombo As New DataTable()
+            adaptcombo.Fill(DtCombo)
+
+            If DtCombo.Rows.Count > 0 AndAlso Not IsDBNull(DtCombo.Rows(0)("peso_total")) Then
+                pesoTotal = Convert.ToInt32(DtCombo.Rows(0)("peso_total"))
+
+                If entregado <= pesoTotal Then
+                    ' El valor ingresado es menor o igual al peso total
+                    lblEntreg.Text = ""
+                Else
+                    ' El valor ingresado es mayor al peso total
+                    lblEntreg.Text = "*"
+                    Label3.Text = "El valor de entrega ingresado (" & txtEntreg.Text & ") supera al valor en inventario"
+                    txtEntreg.Text = ""
+                    BConfirm.Visible = False
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                End If
+
+            End If
+
+        Else
+            ' Mostrar mensaje de error si el valor ingresado no es un número válido
+            lblEntreg.Text = "*"
+        End If
+
+        VerificarTextBox()
+
+    End Sub
+
+
 End Class
