@@ -348,7 +348,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Mensaje Predeterminado - Label3"></asp:Label>
                 </div>
                 <div class="modal-footer" style="text-align: center">
-                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click"/>
                     <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
                     <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
                     <%--<asp:Button ID="Button2" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />--%>
@@ -419,5 +419,16 @@
        }
    </script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#DeleteModal').on('hidden.bs.modal', function () {
+                // Verifica si el botón BConfirm es visible
+                if ($('#BConfirm').is(':visible')) {
+                    // Si el botón es visible, redirige a la página deseada
+                    window.location.href = 'otra_pagina.aspx';
+                }
+            });
+        });
+    </script>
 
 </asp:Content>

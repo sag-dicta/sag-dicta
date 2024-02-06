@@ -374,7 +374,7 @@ Public Class FichaPeso
             Label103.Text = "Debe ingresar toda la informacion primero"
             BBorrarsi.Visible = False
             BBorrarno.Visible = False
-            BConfirm.Visible = True
+            BConfirm.Visible = False
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
     End Sub
@@ -613,6 +613,11 @@ Public Class FichaPeso
             txtCantQQ.Text = "0.00"
         End If
     End Sub
+
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
+    End Sub
+
     'Protected Sub buscarYguardar(palabra As String)
     '    Dim Str As String = "SELECT variedad_categoria FROM `sag_registro_inventario` WHERE variedad_categoria = '" & palabra & "'"
     '    Dim adap As New MySqlDataAdapter(Str, conn)

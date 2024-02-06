@@ -679,6 +679,10 @@ Public Class AgregarConductor
         conex.Close()
     End Sub
 
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/AgregarConductor.aspx"))
+    End Sub
+
     Protected Sub editar_vehiculo_Ocupado(valor1 As String)
         Dim conex As New MySqlConnection(conn)
 

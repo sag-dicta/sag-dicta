@@ -911,6 +911,11 @@ Public Class ControlHRTo
     Protected Sub btn5Hora_TextChanged(sender As Object, e As EventArgs) Handles btnhora5.Click
         formatear(txtCam5Hora, btnhora5)
     End Sub
+
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/ControlHRTo.aspx"))
+    End Sub
+
     Protected Sub btn6Hora_TextChanged(sender As Object, e As EventArgs) Handles btnhora6.Click
         formatear(txtCam6Hora, btnhora6)
     End Sub

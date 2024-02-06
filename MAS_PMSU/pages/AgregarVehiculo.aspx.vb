@@ -547,6 +547,11 @@ Public Class AgregarVehiculo
         Dim newitem As New ListItem("Todos", "Todos")
         DDLMarcaGrid.Items.Insert(0, newitem)
     End Sub
+
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/AgregarVehiculo.aspx"))
+    End Sub
+
     Protected Sub DDLMarcaGrid_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLMarcaGrid.SelectedIndexChanged
         llenarDDLIdenVehi()
         llenagrid()

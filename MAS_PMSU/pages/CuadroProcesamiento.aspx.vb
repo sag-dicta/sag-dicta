@@ -199,7 +199,7 @@ Public Class CuadroProcesamiento
 
             Label103.Text = "¿Desea eliminar la informacion almacenada que contiene el cuadro de procesamiento (secado, limpieza y clasificación)?
                               
-                            *NOTA: Solo se elimira la informacion que habia ingresado el usuario, de la tabla no se eliminara."
+                            *NOTA: Solo se elimira la informacion que habia ingresado el usuario."
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False
@@ -339,7 +339,7 @@ Public Class CuadroProcesamiento
             Label103.Text = "Debe ingresar toda la informacion primero"
             BBorrarsi.Visible = False
             BBorrarno.Visible = False
-            BConfirm.Visible = True
+            BConfirm.Visible = False
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
     End Sub
@@ -621,5 +621,9 @@ Public Class CuadroProcesamiento
         Else
             txtTotal.Text = ""
         End If
+    End Sub
+
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
     End Sub
 End Class

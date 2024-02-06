@@ -588,4 +588,8 @@ Public Class Inventario
             txtCantQQ.Text = "0.00"
         End If
     End Sub
+
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/Inventario.aspx"))
+    End Sub
 End Class

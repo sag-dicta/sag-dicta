@@ -563,42 +563,42 @@
 
     <div id="div_nuevo_prod" runat="server" visible="false">
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
 
-                                    <div class="form-group">
-                                        <h4>Subir archivos</h4>
-                                        <div class="mb-3">
-                                            <label for="FileUploadPagoTGR" class="form-label">Factura Comercial:</label>
-                                            <asp:Label ID="Label18" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
-                                            <asp:FileUpload ID="FileUploadPagoTGR" runat="server" class="form-control" accept=".png,.jpg,.jpeg"/>
-                                        </div>
-                                        <br />
-                                        <div class="mb-3">
-                                            <label for="TxtSemillaQQ">Certficado De Origen De La Semilla</label>
-                                            <asp:Label ID="Label21" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
-                                            <asp:FileUpload ID="FileUploadEtiquetaSemilla" runat="server" class="form-control" accept=".png,.jpg,.jpeg"/>
-                                        </div>
-                                        <br />
-
-                                        <asp:Label ID="Label23" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Antes debes ingresar toda la información</asp:Label>
-                                        <asp:Label ID="Label25" runat="server" Text="" BackColor="Green" ForeColor="White" Visible="false">Archivos ingresados con exito</asp:Label>
-                                        <br />
-                                        <asp:Button ID="BtnUpload" runat="server" Text="Guardar" OnClick="BtnUpload_Click" AutoPostBack="false" class="btn btn-primary" />
-                                        <asp:Button ID="Button1" runat="server" Text="Regresar" AutoPostBack="True" class="btn btn-primary" />
-                                        <hr />
+                                <div class="form-group">
+                                    <h4>Subir archivos</h4>
+                                    <div class="mb-3">
+                                        <label for="FileUploadPagoTGR" class="form-label">Factura Comercial:</label>
+                                        <asp:Label ID="Label18" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                        <asp:FileUpload ID="FileUploadPagoTGR" runat="server" class="form-control" accept=".png,.jpg,.jpeg" />
                                     </div>
+                                    <br />
+                                    <div class="mb-3">
+                                        <label for="TxtSemillaQQ">Certficado De Origen De La Semilla</label>
+                                        <asp:Label ID="Label21" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                        <asp:FileUpload ID="FileUploadEtiquetaSemilla" runat="server" class="form-control" accept=".png,.jpg,.jpeg" />
+                                    </div>
+                                    <br />
+
+                                    <asp:Label ID="Label23" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Antes debes ingresar toda la información</asp:Label>
+                                    <asp:Label ID="Label25" runat="server" Text="" BackColor="Green" ForeColor="White" Visible="false">Archivos ingresados con exito</asp:Label>
+                                    <br />
+                                    <asp:Button ID="BtnUpload" runat="server" Text="Guardar" OnClick="BtnUpload_Click" AutoPostBack="false" class="btn btn-primary" />
+                                    <asp:Button ID="Button1" runat="server" Text="Regresar" AutoPostBack="True" class="btn btn-primary" />
+                                    <hr />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
+        </div>
+
         <div class="modal fade" id="DeleteModal4" tabindex="-1" role="dialog" aria-labelledby="ModalTitle5" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -629,7 +629,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Mensaje Predeterminado - Label3"></asp:Label>
                 </div>
                 <div class="modal-footer" style="text-align: center">
-                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click"/>
                     <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
                     <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
                     <%--<asp:Button ID="Button2" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />--%>
@@ -677,26 +677,27 @@
         }
     </script>
 
-       <script type="text/javascript">
-           function lettersOnly(event) {
-               var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
+    <script type="text/javascript">
+        function lettersOnly(event) {
+            var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
 
-               // Un-comment to discover a key that I have forgotten to take into account...
-               // alert(keyCodeEntered);
+            // Un-comment to discover a key that I have forgotten to take into account...
+            // alert(keyCodeEntered);
 
-               // Check if the key code corresponds to a letter (a-z or A-Z), a space, an accent, a comma, a period, or parentheses
-               if ((keyCodeEntered >= 65 && keyCodeEntered <= 90) || // A-Z
-                   (keyCodeEntered >= 97 && keyCodeEntered <= 122) || // a-z
-                   keyCodeEntered === 32 || // space
-                   (keyCodeEntered >= 192 && keyCodeEntered <= 255) || // accented characters
-                   keyCodeEntered === 44 || // comma
-                   keyCodeEntered === 46 || // period
-                   keyCodeEntered === 40 || // left parenthesis
-                   keyCodeEntered === 41) { // right parenthesis
-                   return true;
-               }
+            // Check if the key code corresponds to a letter (a-z or A-Z), a space, an accent, a comma, a period, or parentheses
+            if ((keyCodeEntered >= 65 && keyCodeEntered <= 90) || // A-Z
+                (keyCodeEntered >= 97 && keyCodeEntered <= 122) || // a-z
+                keyCodeEntered === 32 || // space
+                (keyCodeEntered >= 192 && keyCodeEntered <= 255) || // accented characters
+                keyCodeEntered === 44 || // comma
+                keyCodeEntered === 46 || // period
+                keyCodeEntered === 40 || // left parenthesis
+                keyCodeEntered === 41) { // right parenthesis
+                return true;
+            }
 
-               return false;
-           }
-       </script>
+            return false;
+        }
+    </script>
+    
 </asp:Content>

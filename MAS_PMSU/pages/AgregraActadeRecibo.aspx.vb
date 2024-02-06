@@ -364,7 +364,7 @@ Public Class AgregraActadeRecibo
             Label103.Text = "Debe ingresar toda la informacion primero"
             BBorrarsi.Visible = False
             BBorrarno.Visible = False
-            BConfirm.Visible = True
+            BConfirm.Visible = False
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
     End Sub
@@ -709,5 +709,9 @@ Public Class AgregraActadeRecibo
         rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
 
         Response.End()
+    End Sub
+
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
     End Sub
 End Class

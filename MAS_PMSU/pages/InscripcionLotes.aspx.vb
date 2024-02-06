@@ -1212,6 +1212,10 @@ Public Class InscripcionLotes
         End If
     End Sub
 
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/InscripcionLotes.aspx"))
+    End Sub
+
     Private Sub exportar()
 
         Dim query As String = ""

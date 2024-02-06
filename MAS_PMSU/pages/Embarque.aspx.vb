@@ -1104,6 +1104,11 @@ Public Class Embarque
             End If
         End If
     End Sub
+
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/Embarque.aspx"))
+    End Sub
+
     Protected Sub cambiarEstadoProducto(conocimiento As String)
         Dim connectionString As String = conn
         Using connection As New MySqlConnection(connectionString)

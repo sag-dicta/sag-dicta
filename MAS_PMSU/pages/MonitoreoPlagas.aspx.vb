@@ -655,6 +655,10 @@ Public Class MonitoreoPlagas
         llenagrid()
     End Sub
 
+    Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
+        Response.Redirect(String.Format("~/pages/MonitoreoPlagas.aspx"))
+    End Sub
+
     Protected Sub GuardarMonitoreo()
         Dim fechaConvertida As DateTime
         If btnGuardarLote.Text = "Actualizar" Then
