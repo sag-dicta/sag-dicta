@@ -18,12 +18,12 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <%--<div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Seleccione Departamento:</label>
                                     <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True"></asp:DropDownList>
                                 </div>
-                            </div>
+                            </div>--%>
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label>Seleccione Productor:</label>
@@ -82,11 +82,9 @@
                                                 <HeaderStyle CssClass="hide" />
                                                 <ItemStyle CssClass="hide" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
-                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
+                                            <asp:BoundField DataField="productor" HeaderText="MULTIPLICADOR" />
                                             <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
-                                            <asp:BoundField DataField="nombre_lote" HeaderText="NUMERO DE LOTE" />
-
+                                            <asp:BoundField DataField="no_lote" HeaderText="NUMERO DE LOTE" />
 
 
                                             <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>

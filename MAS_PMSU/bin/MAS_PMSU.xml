@@ -6077,15 +6077,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.InscSENASA_DescArch._TxtDepto">
-<summary>
-Control TxtDepto.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.InscSENASA_DescArch._TxtProductor">
 <summary>
 Control TxtProductor.

@@ -13,62 +13,50 @@ Public Class InscSENASA_DescArch
             If IsPostBack Then
 
             Else
-                llenarcomboDepto()
-                Dim newitem As New ListItem(" ", " ")
-                TxtProductor.Items.Insert(0, newitem)
+                ''llenarcomboDepto()
+                llenarcomboProductor()
+                'Dim newitem As New ListItem(" ", " ")
+                'TxtProductor.Items.Insert(0, newitem)
                 llenagrid()
                 div_nuevo_prod.Visible = False
-                TxtProductor.Enabled = False
+                'TxtProductor.Enabled = False
             End If
         End If
 
 
     End Sub
 
-    'Private Sub llenarcomboCiclo()
-    '    Dim StrCombo As String = "SELECT * FROM redpash_ciclo"
+    'Private Sub llenarcomboDepto()
+    '    Dim StrCombo As String = "SELECT * FROM tb_departamentos"
     '    Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
     '    Dim DtCombo As New DataTable
     '    adaptcombo.Fill(DtCombo)
-    '
-    '    TxtCiclo.DataSource = DtCombo
-    '    TxtCiclo.DataValueField = DtCombo.Columns(0).ToString()
-    '    TxtCiclo.DataTextField = DtCombo.Columns(1).ToString
-    '    TxtCiclo.DataBind()
-    '    Dim newitem As New ListItem(" ", " ")
-    '    TxtCiclo.Items.Insert(0, newitem)
-    'End Sub
-    Private Sub llenarcomboDepto()
-        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
 
-        TxtDepto.DataSource = DtCombo
-        TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
-        TxtDepto.DataTextField = DtCombo.Columns(2).ToString
-        TxtDepto.DataBind()
-        Dim newitem As New ListItem(" ", " ")
-        TxtDepto.Items.Insert(0, newitem)
-    End Sub
+    '    TxtDepto.DataSource = DtCombo
+    '    TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
+    '    TxtDepto.DataTextField = DtCombo.Columns(2).ToString
+    '    TxtDepto.DataBind()
+    '    Dim newitem As New ListItem(" ", " ")
+    '    TxtDepto.Items.Insert(0, newitem)
+    'End Sub
 
     Private Sub llenarcomboProductor()
-        If TxtDepto.SelectedItem.Text <> " " Then
-            Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM sag_registro_lote WHERE departamento = @nombre AND estado = 1 ORDER BY nombre_multiplicador ASC"
-            Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-            adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
-            Dim DtCombo As New DataTable
-            adaptcombo.Fill(DtCombo)
-            TxtProductor.DataSource = DtCombo
-            TxtProductor.DataValueField = "nombre_multiplicador"
-            TxtProductor.DataTextField = "nombre_multiplicador"
-            TxtProductor.DataBind()
-            Dim newitem As New ListItem(" ", " ")
-            TxtProductor.Items.Insert(0, newitem)
-        End If
-        If TxtDepto.SelectedItem.Text = " " Then
-            TxtProductor.SelectedValue = " "
-        End If
+        'If TxtDepto.SelectedItem.Text <> " " Then
+        Dim StrCombo As String = "SELECT DISTINCT productor FROM sag_registro_lote WHERE estado = 1 ORDER BY productor ASC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        'adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        TxtProductor.DataSource = DtCombo
+        TxtProductor.DataValueField = "productor"
+        TxtProductor.DataTextField = "productor"
+        TxtProductor.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtProductor.Items.Insert(0, newitem)
+        'End If
+        'If TxtDepto.SelectedItem.Text = " " Then
+        '    TxtProductor.SelectedValue = " "
+        'End If
     End Sub
 
 
@@ -84,33 +72,33 @@ Public Class InscSENASA_DescArch
         Dim c7 As String = ""
         Dim c8 As String = ""
 
-        If (TxtDepto.SelectedItem.Text = " ") Then
-            c4 = " "
-        Else
-            c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        End If
+        'If (TxtDepto.SelectedItem.Text = " ") Then
+        '    c4 = " "
+        'Else
+        '    c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        'End If
 
-        If (TxtProductor.SelectedItem.Text = " ") Then
+        If (TxtProductor.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND nombre_multiplicador = '" & TxtProductor.SelectedItem.Text & "' "
+            c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM sag_registro_lote WHERE Estado = '1' " & c1 & c4 & " ORDER BY Departamento, nombre_multiplicador"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM sag_registro_lote WHERE Estado = '1' " & c1 & c4 & " ORDER BY productor"
         GridDatos.DataBind()
     End Sub
 
-    Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        If TxtDepto.SelectedItem.Text <> " " Then
-            llenarcomboProductor()
-            llenagrid()
-            TxtProductor.Enabled = True
-        Else
-            TxtProductor.Enabled = False
-            llenarcomboProductor()
-            llenagrid()
-        End If
-    End Sub
+    'Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
+    '    If TxtDepto.SelectedItem.Text <> " " Then
+    '        llenarcomboProductor()
+    '        llenagrid()
+    '        TxtProductor.Enabled = True
+    '    Else
+    '        TxtProductor.Enabled = False
+    '        llenarcomboProductor()
+    '        llenagrid()
+    '    End If
+    'End Sub
 
     Protected Sub TxtProductor_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtProductor.SelectedIndexChanged
         llenagrid()
@@ -262,8 +250,8 @@ Public Class InscSENASA_DescArch
             Dim imagenPagoTGR As String = DataBinder.Eval(e.Row.DataItem, "certificado_origen_semilla").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim indexFicha As Integer = 5 ' Índice del ButtonField para Ficha de Lote
-            Dim indexPagoTGR As Integer = 6 ' Índice del ButtonField para Pago de TGR
+            Dim indexFicha As Integer = 4 ' Índice del ButtonField para Ficha de Lote
+            Dim indexPagoTGR As Integer = 5 ' Índice del ButtonField para Pago de TGR
 
             ' Encuentra los botones en la fila
             Dim btnFicha As Button = CType(e.Row.Cells(indexFicha).Controls(0), Button)
@@ -298,12 +286,12 @@ Public Class InscSENASA_DescArch
 
         Dim query As String = ""
 
-        query = "SELECT * FROM `bcs_inscripcion_senasa` where Estado = '1' ORDER BY Departamento,Productor"
-        If (TxtDepto.SelectedValue = " Todos") Then
-            query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Estado = '1' ORDER BY Departamento,Productor "
-        Else
-            query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor "
-        End If
+        query = "SELECT * FROM `bcs_inscripcion_senasa` where Estado = '1' ORDER BY Productor"
+        'If (TxtDepto.SelectedValue = " Todos") Then
+        '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Estado = '1' ORDER BY Departamento,Productor "
+        'Else
+        '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor "
+        'End If
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -355,7 +343,7 @@ Public Class InscSENASA_DescArch
 
     Protected Sub obtener_numero_lote(cadena As String)
 
-        Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE nombre_productor = '" & cadena & "'"
+        Dim StrCombo As String = "SELECT nombre_lote FROM solicitud_inscripcion_delotes WHERE productor = '" & cadena & "'"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -377,8 +365,8 @@ Public Class InscSENASA_DescArch
 
         TxtNom.Text = TxtProductor.SelectedItem.Text
         TxtVariedad.SelectedIndex = 0
-            TxtCategoria.SelectedIndex = 0
-            obtener_numero_lote(TxtProductor.SelectedItem.Text)
+        TxtCategoria.SelectedIndex = 0
+        obtener_numero_lote(TxtProductor.SelectedItem.Text)
 
         'fecha2 = Now
         'TxtDia.SelectedValue = fecha2.Day
@@ -399,14 +387,14 @@ Public Class InscSENASA_DescArch
         Dim cmd2 As New MySqlCommand()
 
         If (TxtID.Text = "") Then
-            Sql = "INSERT INTO bcs_inscripcion_senasa (Productor, CICLO, Departamento, VARIEDAD, CATEGORIA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SIEMBRA, REQUERIEMIENTO_REGISTRADA_QQ, CANTIDAD_LOTES_SEMBRAR, NOMBRE_LOTE_FINCA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, ESTIMADO_PRODUCIR_QQ, ESTIMADO_PRODUCIR_QQHA, Estado, Tipo_cultivo, Habilitado)
-            VALUES(@Productor, @CICLO, @Departamento, @VARIEDAD, @CATEGORIA, @AREA_SEMBRADA_MZ, @AREA_SEMBRADA_HA, @FECHA_SIEMBRA, @REQUERIEMIENTO_REGISTRADA_QQ, @CANTIDAD_LOTES_SEMBRAR, @NOMBRE_LOTE_FINCA, @ESTIMADO_PRO_QQ_MZ, @ESTIMADO_PRO_QQ_HA, @ESTIMADO_PRODUCIR_QQ, @ESTIMADO_PRODUCIR_QQHA, @Estado, @Tipo_cultivo, @Habilitado)"
+            Sql = "INSERT INTO bcs_inscripcion_senasa (Productor, CICLO, VARIEDAD, CATEGORIA, AREA_SEMBRADA_MZ, AREA_SEMBRADA_HA, FECHA_SIEMBRA, REQUERIEMIENTO_REGISTRADA_QQ, CANTIDAD_LOTES_SEMBRAR, NOMBRE_LOTE_FINCA, ESTIMADO_PRO_QQ_MZ, ESTIMADO_PRO_QQ_HA, ESTIMADO_PRODUCIR_QQ, ESTIMADO_PRODUCIR_QQHA, Estado, Tipo_cultivo, Habilitado)
+            VALUES(@Productor, @CICLO, @VARIEDAD, @CATEGORIA, @AREA_SEMBRADA_MZ, @AREA_SEMBRADA_HA, @FECHA_SIEMBRA, @REQUERIEMIENTO_REGISTRADA_QQ, @CANTIDAD_LOTES_SEMBRAR, @NOMBRE_LOTE_FINCA, @ESTIMADO_PRO_QQ_MZ, @ESTIMADO_PRO_QQ_HA, @ESTIMADO_PRODUCIR_QQ, @ESTIMADO_PRODUCIR_QQHA, @Estado, @Tipo_cultivo, @Habilitado)"
 
             cmd2.Connection = conex
             cmd2.CommandText = Sql
 
             cmd2.Parameters.AddWithValue("@Productor", TxtProductor.SelectedItem.Text)
-            cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedItem.Text)
+            'cmd2.Parameters.AddWithValue("@Departamento", TxtDepto.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@Tipo_cultivo", DDL_Tipo.SelectedItem.Text)
             cmd2.Parameters.AddWithValue("@VARIEDAD", TxtVariedad.SelectedItem.Text)    'REVISADO
             cmd2.Parameters.AddWithValue("@CATEGORIA", TxtCategoria.SelectedItem.Text)
