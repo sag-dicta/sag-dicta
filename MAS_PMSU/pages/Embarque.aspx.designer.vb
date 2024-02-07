@@ -32,22 +32,22 @@ Partial Public Class Embarque
     Protected WithEvents DivGrid As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control TxtDepto.
+    '''Control txtFechaDesde.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtDepto As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtFechaDesde As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control TxtMunicipio.
+    '''Control txtFechaHasta.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TxtMunicipio As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtFechaHasta As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control TxtMultiplicador.
@@ -57,6 +57,15 @@ Partial Public Class Embarque
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtMultiplicador As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control DDLConoc.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDLConoc As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control BAgregar.

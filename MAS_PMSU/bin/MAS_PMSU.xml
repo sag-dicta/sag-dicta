@@ -236,18 +236,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Embarque._TxtDepto">
+<member name="F:MAS_PMSU.Embarque._txtFechaDesde">
 <summary>
-Control TxtDepto.
+Control txtFechaDesde.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Embarque._TxtMunicipio">
+<member name="F:MAS_PMSU.Embarque._txtFechaHasta">
 <summary>
-Control TxtMunicipio.
+Control txtFechaHasta.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -257,6 +257,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Embarque._TxtMultiplicador">
 <summary>
 Control TxtMultiplicador.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Embarque._DDLConoc">
+<summary>
+Control DDLConoc.
 </summary>
 <remarks>
 Campo generado automáticamente.

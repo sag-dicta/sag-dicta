@@ -17,8 +17,11 @@ Public Class Embarque
             If IsPostBack Then
 
             Else
-                llenarcomboDeptoGrid()
-                llenarcomboProductor3()
+                txtFechaDesde.Text = New DateTime(2024, 1, 1).ToString("yyyy-MM-dd")
+                txtFechaHasta.Text = DateTime.Today.ToString("yyyy-MM-dd")
+
+                llenarcomboProductor()
+                llenarcomboConocimiento()
                 VerificarTextBox()
                 llenagrid()
                 eliminarMiniGrid2()
@@ -348,101 +351,47 @@ Public Class Embarque
         Dim c3 As String = ""
         Dim c4 As String = ""
 
-        'If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
-        '    c1 = " "
-        'Else
-        '    c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
-        'End If
-        '
-        'If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-        '    c3 = " "
-        'Else
-        '    c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        'End If
-        '
-        'If (TxtDepto.SelectedItem.Text = "Todos") Then
-        '    c4 = " "
-        'Else
-        '    c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        'End If
+        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
+            c1 = " "
+        Else
+            c1 = "AND para_general = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        End If
+
+        If (DDLConoc.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = "AND no_conocimiento = '" & DDLConoc.SelectedItem.Text & "' "
+        End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque_info` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque_info` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & " AND fecha_elaboracion >= '" & txtFechaDesde.Text & "' AND fecha_elaboracion <= '" & txtFechaHasta.Text & "'"
 
         GridDatos.DataBind()
     End Sub
-    Private Sub llenarcomboDeptoGrid()
-        Dim StrCombo As String = "SELECT * FROM tb_departamentos"
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
 
-        TxtDepto.DataSource = DtCombo
-        TxtDepto.DataValueField = DtCombo.Columns(0).ToString()
-        TxtDepto.DataTextField = DtCombo.Columns(2).ToString
-        TxtDepto.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtDepto.Items.Insert(0, newitem)
-
-    End Sub
-    Protected Sub TxtDepto_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtDepto.SelectedIndexChanged
-        If TxtDepto.SelectedItem.Text = "Todos" Then
-            llenarcomboProductor3()
-        Else
-            llenarcomboProductor2()
-        End If
+    Protected Sub txtFechaDesde_TextChanged(sender As Object, e As EventArgs)
+        llenarcomboProductor()
+        llenarcomboConocimiento()
         llenagrid()
     End Sub
-    Protected Sub TxtMunicipio_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TxtMunicipio.SelectedIndexChanged
-        If TxtMunicipio.SelectedItem.Text = "Todos" Then
-            llenarcomboProductor2()
-        Else
-            llenarcomboProductor()
-        End If
+
+    Protected Sub txtFechaHasta_TextChanged(sender As Object, e As EventArgs)
+        llenarcomboProductor()
+        llenarcomboConocimiento()
         llenagrid()
     End Sub
 
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
+        StrCombo = "SELECT para_general FROM sag_embarque_info WHERE estado = '1' ORDER BY para_general ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
         TxtMultiplicador.DataSource = DtCombo
         TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
-        TxtMultiplicador.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtMultiplicador.Items.Insert(0, newitem)
-    End Sub
-    Private Sub llenarcomboProductor2()
-        Dim StrCombo As String
-
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' AND departamento = '" & TxtDepto.SelectedItem.Text & "' ORDER BY nombre_multiplicador ASC"
-
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-        TxtMultiplicador.DataSource = DtCombo
-        TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
-        TxtMultiplicador.DataBind()
-        Dim newitem As New ListItem("Todos", "Todos")
-        TxtMultiplicador.Items.Insert(0, newitem)
-    End Sub
-    Private Sub llenarcomboProductor3()
-        Dim StrCombo As String
-
-        StrCombo = "SELECT * FROM sag_registro_multiplicador WHERE estado = '1' ORDER BY nombre_multiplicador ASC"
-
-        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
-        Dim DtCombo As New DataTable
-        adaptcombo.Fill(DtCombo)
-        TxtMultiplicador.DataSource = DtCombo
-        TxtMultiplicador.DataValueField = DtCombo.Columns(0).ToString()
-        TxtMultiplicador.DataTextField = DtCombo.Columns(8).ToString()
+        TxtMultiplicador.DataTextField = DtCombo.Columns(0).ToString()
         TxtMultiplicador.DataBind()
         Dim newitem As New ListItem("Todos", "Todos")
         TxtMultiplicador.Items.Insert(0, newitem)
@@ -603,6 +552,12 @@ Public Class Embarque
     End Sub
 
     Protected Sub TxtMultiplicador_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If TxtMultiplicador.SelectedItem.Text = "Todos" Then
+            llenarcomboConocimiento()
+        Else
+            llenarcomboConocimiento2()
+        End If
+
         llenagrid()
     End Sub
 
@@ -810,7 +765,6 @@ Public Class Embarque
 
     End Sub
     Private Sub exportar()
-
         Dim query As String = ""
         Dim cadena As String = "*"
         Dim c1 As String = ""
@@ -820,22 +774,16 @@ Public Class Embarque
         If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+            c1 = "AND PARA_GENERAL = '" & TxtMultiplicador.SelectedItem.Text & "' "
         End If
 
-        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-            c2 = " "
-        Else
-            c2 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        End If
-
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
+        If (DDLConoc.SelectedItem.Text = "Todos") Then
             c3 = " "
         Else
-            c3 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+            c3 = "AND NO_CONOCIMIENTO_EMBARQUE_INFO = '" & DDLConoc.SelectedItem.Text & "' "
         End If
 
-        query = "SELECT " & cadena & " FROM sag_registro_multiplicador WHERE 1 = 1 " & c1 & c2 & c3
+        query = "SELECT " & cadena & " FROM `vista_embarque_general` WHERE 1 = 1 " & c1 & c3 & " AND FECHA_ELABORACION >= '" & txtFechaDesde.Text & "' AND FECHA_ELABORACION <= '" & txtFechaHasta.Text & "'"
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -846,7 +794,7 @@ Public Class Embarque
                         sda.Fill(ds)
 
                         'Set Name of DataTables.
-                        ds.Tables(0).TableName = "sag_registro_multiplicador"
+                        ds.Tables(0).TableName = "vista_embarque_general"
 
                         Using wb As New XLWorkbook()
                             For Each dt As DataTable In ds.Tables
@@ -862,7 +810,7 @@ Public Class Embarque
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Información del Lote " & Today & " " & TxtMultiplicador.SelectedItem.Text & " " & TxtDepto.SelectedItem.Text & ".xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=Información del Embarque " & Today & " " & TxtMultiplicador.SelectedItem.Text & ".xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
@@ -1159,6 +1107,41 @@ Public Class Embarque
     Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/Embarque.aspx"))
     End Sub
+
+    Protected Sub DDLConoc_SelectedIndexChanged(sender As Object, e As EventArgs)
+        llenagrid()
+    End Sub
+    Private Sub llenarcomboConocimiento()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT no_conocimiento FROM sag_embarque_info WHERE estado = '1' ORDER BY no_conocimiento ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        DDLConoc.DataSource = DtCombo
+        DDLConoc.DataValueField = DtCombo.Columns(0).ToString()
+        DDLConoc.DataTextField = DtCombo.Columns(0).ToString()
+        DDLConoc.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLConoc.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboConocimiento2()
+        Dim StrCombo As String
+
+        StrCombo = "SELECT no_conocimiento FROM sag_embarque_info WHERE estado = '1' AND para_general= '" & TxtMultiplicador.SelectedItem.Text & "' ORDER BY no_conocimiento ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        DDLConoc.DataSource = DtCombo
+        DDLConoc.DataValueField = DtCombo.Columns(0).ToString()
+        DDLConoc.DataTextField = DtCombo.Columns(0).ToString()
+        DDLConoc.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLConoc.Items.Insert(0, newitem)
+    End Sub
+
     Protected Sub cambiarEstadoProducto(conocimiento As String)
         Dim connectionString As String = conn
         Using connection As New MySqlConnection(connectionString)

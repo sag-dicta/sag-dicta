@@ -23,25 +23,31 @@
                 <div class="panel panel-primary">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label>Seleccione Departamento:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtDepto" runat="server" AutoPostBack="True">
-                                    </asp:DropDownList>
+                                    <label>Seleccione Fecha desde:</label>
+                                    <asp:TextBox CssClass="form-control" ID="txtFechaDesde" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaDesde_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label>Seleccione Municipio:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtMunicipio" runat="server" AutoPostBack="True">
+                                    <label>Seleccione Fecha hasta:</label>
+                                    <asp:TextBox CssClass="form-control" ID="txtFechaHasta" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaHasta_TextChanged"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Seleccione Destinatario:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True" OnSelectedIndexChanged="TxtMultiplicador_SelectedIndexChanged">
                                         <asp:ListItem Text="Todos"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+
+                            <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label>Seleccione Multiplicador:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True" OnSelectedIndexChanged="TxtMultiplicador_SelectedIndexChanged">
+                                    <label>Seleccione No. Conocimiento:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDLConoc" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLConoc_SelectedIndexChanged">
                                         <asp:ListItem Text="Todos"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
