@@ -635,6 +635,24 @@ Partial Public Class Embarque
     Protected WithEvents txtVehic As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control lblObser2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblObser2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtObser2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtObser2 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control Label18.
     '''</summary>
     '''<remarks>

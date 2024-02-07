@@ -356,7 +356,7 @@
                                 <asp:BoundField DataField="total" HeaderText="TOTAL" />
                                 <asp:BoundField DataField="observaciones" HeaderText="OBSERVACIONES" />
 
-                                 <asp:ButtonField ButtonType="Button" Text="↺" ControlStyle-CssClass="btn btn-warning" HeaderText="Editar" CommandName="Editar">
+                                <asp:ButtonField ButtonType="Button" Text="↺" ControlStyle-CssClass="btn btn-warning" HeaderText="Editar" CommandName="Editar">
                                     <ControlStyle CssClass="btn btn-warning"></ControlStyle>
                                 </asp:ButtonField>
                                 <asp:ButtonField ButtonType="Button" Text="-" ControlStyle-CssClass="btn btn-danger" HeaderText="QUITAR" CommandName="Eliminar">
@@ -406,6 +406,24 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Observaciones generales
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Observaciones:</label><asp:Label ID="lblObser2" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtObser2" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div>
             <asp:Label ID="Label18" class="label label-warning" runat="server" Text="" Visible="false"></asp:Label>
@@ -439,7 +457,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Mensaje Predeterminado - Label3"></asp:Label>
                 </div>
                 <div class="modal-footer" style="text-align: center">
-                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click"/>
+                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click" />
                     <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
                     <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
                     <%--<asp:Button ID="Button2" Text="Salir" Width="80px" runat="server" Class="btn btn-primary" />--%>
