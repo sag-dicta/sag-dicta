@@ -13,7 +13,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Registro de Multiplicador o Estación</h1>
+            <h1 class="page-header">Registro de Embarque</h1>
         </div>
     </div>
 
@@ -57,7 +57,7 @@
                             <div class="col-lg-12">
                                 <div class="table-responsive">
                                     <h4>
-                                        <span style="float: right;"><small># Multiplicadores:</small>
+                                        <span style="float: right;"><small># EMBARQUES:</small>
                                             <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                     </h4>
                                     <p>&nbsp;</p>
@@ -95,13 +95,13 @@
                                                 <HeaderStyle CssClass="hiding" />
                                                 <ItemStyle CssClass="hiding" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
-                                            <asp:BoundField DataField="cedula_multiplicador" HeaderText="CEDULA" />
-                                            <asp:BoundField DataField="nombre_finca" HeaderText="NOMBRE DE LA FINCA" />
-                                            <asp:BoundField DataField="nombre_productor" HeaderText="PRODUCTOR" />
-                                            <asp:BoundField DataField="no_registro_productor" HeaderText="No. REGISTRO" />
-                                            <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
-                                            <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
+                                            <asp:BoundField DataField="no_conocimiento" HeaderText="N° DE CONOCIMIENTO" />
+                                            <asp:BoundField DataField="destinatario" HeaderText="DESTINATARIO" />
+                                            <asp:BoundField DataField="fecha_elaboracion" HeaderText="FECHA DE ELABORACION" />
+                                            <asp:BoundField DataField="cultivo_general" HeaderText="CULTIVO GENERAL" />
+                                            <asp:BoundField DataField="lugar_destinatario" HeaderText="LUGAR DESTINATARIO" />
+                                            <asp:BoundField DataField="remitente" HeaderText="REMITENTE" />
+                                            <asp:BoundField DataField="conductor" HeaderText="TRANSPORTISTA" />
 
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -156,7 +156,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Para:</label><asp:Label ID="lblPara" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtPara" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtPara" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-2">
@@ -192,25 +192,25 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Remitente:</label><asp:Label ID="lblremi" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtRemi" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtRemi" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Lugar (remitente):</label><asp:Label ID="lblLugarR" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtLugarR" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtLugarR" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Destinatario:</label><asp:Label ID="lblDestin" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtDestin" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtDestin" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Lugar (Destinatario):</label><asp:Label ID="lblLugarD" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtLugarD" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtLugarD" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
 
@@ -274,21 +274,21 @@
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Unidad:</label><asp:Label ID="lblUnid" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtUnid" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtUnid" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Entregado:</label><asp:Label ID="lblEntreg" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtEntreg" runat="server" AutoPostBack="true" OnTextChanged="txtEntreg_TextChanged"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtEntreg" runat="server" AutoPostBack="true" OnTextChanged="txtEntreg_TextChanged" onkeypress="return numericOnly(this);"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Precio Unitario (Lps):</label><asp:Label ID="lblPrecio" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtPrecio" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtPrecio" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-11">

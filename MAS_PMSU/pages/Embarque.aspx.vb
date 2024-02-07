@@ -99,7 +99,7 @@ Public Class Embarque
                         'Response.Write("<script>window.alert('¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!') </script>")
                         cambiarEstadoProducto(txtConoNo.Text)
 
-                        Label3.Text = "¡Se ha registrado correctamente la solicitud del Multiplicador o Estación!"
+                        Label3.Text = "¡Se ha registrado correctamente el conocimiento de embarque!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
@@ -131,7 +131,7 @@ Public Class Embarque
                         observacion2 = @observacion2,
                         duplicado = @duplicado,
                         triplicado = @triplicado
-                    WHERE no_conocimiento = " & txtID.Text & ""
+                    WHERE id = " & txtID.Text & ""
 
 
                     Using cmd As New MySqlCommand(query, connection)
@@ -159,7 +159,9 @@ Public Class Embarque
                         connection.Close()
 
                         'Response.Write("<script>window.alert('¡Se ha editado correctamente la solicitud del Multiplicador o Estación!') </script>")
-                        Label3.Text = "¡Se ha editado correctamente la solicitud del Multiplicador o Estación!"
+                        cambiarEstadoProducto(txtConoNo.Text)
+
+                        Label3.Text = "¡Se ha editado correctamente el conocimiento de embarque!"
                         BBorrarsi.Visible = False
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
@@ -341,31 +343,31 @@ Public Class Embarque
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, nombre_productor, nombre_finca, no_registro_productor, nombre_multiplicador, cedula_multiplicador, departamento, municipio"
+        Dim cadena As String = "Id, estado, no_conocimiento, para_general, DATE_FORMAT(fecha_elaboracion, '%d-%m-%Y') AS fecha_elaboracion, cultivo_general, remitente, destinatario, lugar_remitente, lugar_destinatario, conductor, vehiculo, observacion2"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
 
-        If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
-            c1 = " "
-        Else
-            c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
-        End If
-
-        If (TxtMunicipio.SelectedItem.Text = "Todos") Then
-            c3 = " "
-        Else
-            c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
-        End If
-
-        If (TxtDepto.SelectedItem.Text = "Todos") Then
-            c4 = " "
-        Else
-            c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
-        End If
+        'If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
+        '    c1 = " "
+        'Else
+        '    c1 = "AND nombre_multiplicador = '" & TxtMultiplicador.SelectedItem.Text & "' "
+        'End If
+        '
+        'If (TxtMunicipio.SelectedItem.Text = "Todos") Then
+        '    c3 = " "
+        'Else
+        '    c3 = "AND municipio = '" & TxtMunicipio.SelectedItem.Text & "' "
+        'End If
+        '
+        'If (TxtDepto.SelectedItem.Text = "Todos") Then
+        '    c4 = " "
+        'Else
+        '    c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
+        'End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque_info` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
 
         GridDatos.DataBind()
     End Sub
@@ -515,6 +517,7 @@ Public Class Embarque
         llenaMinigrid()
         btnRegresar.Visible = False
         btnRegresarConEmbarque.Visible = True
+        vaciarCamposProductos()
     End Sub
     Protected Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
         Dim connectionString As String = conn
@@ -552,6 +555,16 @@ Public Class Embarque
         llenaMinigrid()
         btnRegresar.Visible = False
         btnRegresarConEmbarque.Visible = True
+        vaciarCamposProductos()
+    End Sub
+    Protected Sub vaciarCamposProductos()
+        DropDownList5.SelectedIndex = 0
+        DropDownList6.SelectedIndex = 0
+        TxtCateogiraGrid.SelectedIndex = 0
+        txtUnid.Text = ""
+        txtEntreg.Text = ""
+        txtPrecio.Text = ""
+        txtObser.Text = ""
     End Sub
     Protected Sub CrearIdentificador()
         Dim variedad As String
@@ -600,28 +613,48 @@ Public Class Embarque
     Protected Sub LinkButton1_Click(sender As Object, e As EventArgs) Handles LinkButton1.Click
         exportar()
     End Sub
-
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
         If (e.CommandName = "Editar") Then
-            btnGuardarLote.Text = "Editar"
-            TextBanderita.Text = "Editar"
-            Button1.Visible = False
-            Button2.Visible = False
+            llenarcomboConductor()
+            btnGuardarLote.Text = "Actualizar"
+
             DivCrearNuevo.Visible = True
             DivGrid.Visible = False
-            Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT * FROM sag_registro_multiplicador WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            btnRegresar.Visible = True
+            btnRegresarConEmbarque.Visible = False
+
+            TextBanderita.Text = "Guardar"
+
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            txtID.Text = ""
+            txtID.Text = HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(0).Text).ToString
+            Dim Str As String = "SELECT * FROM vista_embarque_general WHERE  ID_EMBARQUE_INFO = " & txtID.Text & ""
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
-            nuevo = False
-            txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-
-
+            txtConoNo.Text = dt.Rows(0)("NO_CONOCIMIENTO_EMBARQUE_INFO").ToString()
+            txtPara.Text = dt.Rows(0)("PARA_GENERAL").ToString()
+            txtFecha.Text = If(dt.Rows(0)("FECHA_ELABORACION") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("FECHA_ELABORACION"), DateTime).ToString("yyyy-MM-dd"))
+            SeleccionarItemEnDropDownList(DDLCultivo, dt.Rows(0)("CULTIVO_GENERAL").ToString())
+            DDLCultivo.Enabled = False
+            If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Frijol" Then
+                VariedadFrijol.Visible = True
+            End If
+            If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Maiz" Then
+                VariedadMaiz.Visible = True
+            End If
+            txtRemi.Text = dt.Rows(0)("REMITENTE").ToString()
+            txtDestin.Text = dt.Rows(0)("DESTINATARIO").ToString()
+            txtLugarR.Text = dt.Rows(0)("LUGAR_REMITENTE").ToString()
+            txtLugarD.Text = dt.Rows(0)("LUGAR_DESTINATARIO").ToString()
+            SeleccionarItemEnDropDownList(DDLConductor, dt.Rows(0)("CONDUCTOR").ToString())
+            txtVehic.Text = dt.Rows(0)("VEHICULO").ToString()
+            llenaMinigrid()
+            VerificarTextBox()
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -671,7 +704,6 @@ Public Class Embarque
 
         End If
     End Sub
-
     Protected Sub GridDatos_DataBound(sender As Object, e As EventArgs) Handles GridDatos.DataBound
         If (GridDatos.Rows.Count > 0) Then
             ' Recupera la el PagerRow...
@@ -701,21 +733,24 @@ Public Class Embarque
             End If
         End If
     End Sub
-
-    Protected Function SeleccionarItemEnDropDownListFrijolOMaiz(ByVal Prodname As DropDownList, ByVal DtCombo As String, ByVal DtCombo2 As String)
+    Protected Function SeleccionarItemEnDropDownListFrijolOMaiz(ByVal DtCombo As String, ByVal DtCombo2 As String)
         If DtCombo2 = "Frijol" Then
-            For Each item As ListItem In Prodname.Items
+            For Each item As ListItem In DropDownList5.Items
                 If item.Text = DtCombo Then
-                    Prodname.SelectedValue = item.Value
+                    DropDownList5.SelectedValue = item.Value
+                    DropDownList5.Visible = True
+                    DropDownList6.Visible = False
                     Return True ' Se encontró una coincidencia, devolver verdadero
                 End If
             Next
             ' No se encontró ninguna coincidencia
             Return 0
         Else
-            For Each item As ListItem In Prodname.Items
+            For Each item As ListItem In DropDownList6.Items
                 If item.Text = DtCombo Then
-                    Prodname.SelectedValue = item.Value
+                    DropDownList6.SelectedValue = item.Value
+                    DropDownList6.Visible = True
+                    DropDownList5.Visible = False
                     Return True ' Se encontró una coincidencia, devolver verdadero
                 End If
             Next
@@ -733,7 +768,6 @@ Public Class Embarque
         ' No se encontró ninguna coincidencia
         Return 0
     End Function
-
     Protected Sub elminar(sender As Object, e As EventArgs) Handles BBorrarsi.Click
         Dim connectionString As String = conn
         Using connection As New MySqlConnection(connectionString)
@@ -755,7 +789,6 @@ Public Class Embarque
         End Using
 
     End Sub
-
     Private Sub exportar()
 
         Dim query As String = ""
@@ -826,7 +859,7 @@ Public Class Embarque
     Sub llenaMinigrid()
         Dim cadena As String = "*"
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque` WHERE no_conocimiento = '" & txtConoNo.Text & "' AND estado = '0' "
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque` WHERE no_conocimiento = '" & txtConoNo.Text & "'"
 
         GridProductos.DataBind()
     End Sub
@@ -948,7 +981,7 @@ Public Class Embarque
             Dim dt As New DataTable
             adap.Fill(dt)
 
-            SeleccionarItemEnDropDownListFrijolOMaiz(DDLCultivo, dt.Rows(0)("variedad").ToString(), dt.Rows(0)("tipo_cultivo").ToString())
+            SeleccionarItemEnDropDownListFrijolOMaiz(dt.Rows(0)("variedad").ToString(), dt.Rows(0)("tipo_cultivo").ToString())
             SeleccionarItemEnDropDownList(TxtCateogiraGrid, dt.Rows(0)("categoria_origen").ToString())
             txtUnid.Text = dt.Rows(0)("unidad").ToString()
             txtEntreg.Text = dt.Rows(0)("peso_neto").ToString()
@@ -977,7 +1010,6 @@ Public Class Embarque
         Dim newitem As New ListItem(" ", " ")
         TxtCateogiraGrid.Items.Insert(0, newitem)
     End Sub
-
     Protected Sub DropDownList6_SelectedIndexChanged(sender As Object, e As EventArgs)
         txtEntreg.Text = ""
         llenarcomboCategoriaMaiz()
@@ -1104,11 +1136,9 @@ Public Class Embarque
             End If
         End If
     End Sub
-
     Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/Embarque.aspx"))
     End Sub
-
     Protected Sub cambiarEstadoProducto(conocimiento As String)
         Dim connectionString As String = conn
         Using connection As New MySqlConnection(connectionString)
