@@ -662,7 +662,7 @@ Public Class Embarque
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            Label3.Text = "¿Desea eliminar la solicitud del Multiplicador o Estación?"
+            Label3.Text = "¿Desea eliminar el conocimiento de embarque?"
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False
@@ -773,7 +773,7 @@ Public Class Embarque
         Using connection As New MySqlConnection(connectionString)
             connection.Open()
 
-            Dim query As String = "UPDATE sag_registro_multiplicador 
+            Dim query As String = "UPDATE sag_embarque_info 
                     SET estado = @estado
                 WHERE id = " & txtID.Text & ""
 
