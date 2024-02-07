@@ -214,11 +214,10 @@ Public Class MonitoreoPlagas
             GridDatos.Controls(0).Controls.AddAt(0, HeaderGridRow)
         End If
     End Sub
-
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
-            ' Empezar desde la segunda celda (índice 1)
-            For i As Integer = 3 To e.Row.Cells.Count - 1
+            ' Empezar desde la segunda celda hasta la penúltima (índice Count - 2)
+            For i As Integer = 3 To e.Row.Cells.Count - 5
                 Dim cell As TableCell = e.Row.Cells(i)
 
                 If cell.Text = "1" Then
@@ -234,8 +233,6 @@ Public Class MonitoreoPlagas
             Next
         End If
     End Sub
-
-
     Protected Sub BAgregar_Click(sender As Object, e As EventArgs) Handles BAgregar.Click
 
         'DivActa.Visible = True

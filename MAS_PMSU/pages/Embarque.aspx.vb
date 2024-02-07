@@ -661,6 +661,7 @@ Public Class Embarque
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
 
             Label3.Text = "¿Desea eliminar el conocimiento de embarque?"
             BBorrarsi.Visible = True
@@ -783,7 +784,26 @@ Public Class Embarque
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
+                elminarProductos()
                 Response.Redirect(String.Format("~/pages/Embarque.aspx"))
+            End Using
+
+        End Using
+    End Sub
+    Protected Sub elminarProductos()
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "UPDATE sag_embarque 
+                    SET estado = @estado
+                WHERE no_conocimiento = '" & TextminigridCambiarestado.Text & "'"
+
+            Using cmd As New MySqlCommand(query, connection)
+
+                cmd.Parameters.AddWithValue("@estado", "3")
+                cmd.ExecuteNonQuery()
+                connection.Close()
             End Using
 
         End Using
@@ -1105,7 +1125,7 @@ Public Class Embarque
     Private Sub llenarcomboConductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT DISTINCT nombre FROM sag_registro_vehiculo_motorista ORDER BY nombre ASC"
+        StrCombo = "SELECT DISTINCT nombre FROM sag_registro_vehiculo_motorista WHERE estado='1' ORDER BY nombre ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable

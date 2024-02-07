@@ -572,6 +572,15 @@ Partial Public Class Embarque
     Protected WithEvents txtRespaldito As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control TextminigridCambiarestado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TextminigridCambiarestado As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control SqlDataSource2.
     '''</summary>
     '''<remarks>

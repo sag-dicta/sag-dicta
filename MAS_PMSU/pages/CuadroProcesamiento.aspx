@@ -299,4 +299,12 @@
             return false;
         }
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#DeleteModal').on('hidden.bs.modal', function () {
+                // Cuando la modal se cierra, redirige a la página deseada
+                window.location.href = 'CuadroProcesamiento.aspx';
+            });
+        });
+    </script>
 </asp:Content>

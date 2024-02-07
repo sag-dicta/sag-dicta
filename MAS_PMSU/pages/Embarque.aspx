@@ -310,6 +310,7 @@
                         <asp:TextBox ID="txtidminigrid" runat="server" Visible="false"></asp:TextBox>
                         <asp:TextBox ID="TextBanderita" runat="server" Visible="false"></asp:TextBox>
                         <asp:TextBox ID="txtRespaldito" runat="server" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="TextminigridCambiarestado" runat="server" Visible="false"></asp:TextBox>
                     </div>
 
                     <div class="row">
@@ -509,5 +510,12 @@
         }
     </script>
 
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#DeleteModal').on('hidden.bs.modal', function () {
+                // Cuando la modal se cierra, redirige a la página deseada
+                window.location.href = 'Embarque.aspx';
+            });
+        });
+    </script>
 </asp:Content>
