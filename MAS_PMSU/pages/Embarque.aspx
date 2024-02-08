@@ -320,7 +320,7 @@
                     </div>
 
                     <div class="row">
-
+                        <asp:Label ID="lblmas" class="label label-warning" runat="server" Text=""></asp:Label>
                         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
                         <asp:GridView ID="GridProductos" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
                             GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small">
@@ -472,6 +472,19 @@
         </div>
     </div>
 
+    <div class="modal fade" id="DeleteModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ModalTitle2">SAG - DICTA</h4>
+                    <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="Label2" runat="server" Text="Mensaje Predeterminado - Label2"></asp:Label>
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
         function numericOnly(elementRef) {
             var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;

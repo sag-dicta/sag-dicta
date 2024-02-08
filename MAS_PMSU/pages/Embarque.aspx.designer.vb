@@ -590,6 +590,15 @@ Partial Public Class Embarque
     Protected WithEvents TextminigridCambiarestado As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control lblmas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblmas As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control SqlDataSource2.
     '''</summary>
     '''<remarks>
@@ -768,4 +777,13 @@ Partial Public Class Embarque
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents BBorrarno As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Label2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 End Class

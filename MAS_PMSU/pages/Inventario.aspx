@@ -117,9 +117,9 @@
                                     <AlternatingRowStyle BackColor="White" />
                                     <Columns>
 
-                                        <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
-                                        <asp:BoundField DataField="tipo_cultivo" HeaderText="CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
+                                        <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
+                                        <asp:BoundField DataField="tipo_cultivo" HeaderText="CULTIVO" />                                       
                                         <asp:BoundField DataField="peso_neto_resta" HeaderText="PESO NETO (QQ)" />
 
                                         <asp:ButtonField ButtonType="Button" Text="VER" ControlStyle-CssClass="btn btn-warning" HeaderText="DETALLE" CommandName="Editar"  Visible="false">

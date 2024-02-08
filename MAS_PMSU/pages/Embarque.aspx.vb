@@ -31,6 +31,7 @@ Public Class Embarque
     End Sub
 
     Protected Sub guardarSoli_lote(sender As Object, e As EventArgs)
+        verificar_Produc()
         VerificarTextBox()
         Dim fechaConvertida As Date
         If validarflag = 0 Then
@@ -91,7 +92,7 @@ Public Class Embarque
                         cmd.Parameters.AddWithValue("@conductor", DDLConductor.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@vehiculo", txtVehic.Text)
 
-                        cmd.Parameters.AddWithValue("@observacion2", DBNull.Value)
+                        cmd.Parameters.AddWithValue("@observacion2", txtObser2.Text)
                         cmd.Parameters.AddWithValue("@duplicado", DBNull.Value)
                         cmd.Parameters.AddWithValue("@triplicado", DBNull.Value)
                         cmd.Parameters.AddWithValue("@estado", "1")
@@ -107,8 +108,6 @@ Public Class Embarque
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
-                        Button1.Visible = True
-                        Button2.Visible = True
                         btnGuardarLote.Visible = False
                         btnRegresar.Visible = True
                         btnRegresarConEmbarque.Visible = False
@@ -153,7 +152,7 @@ Public Class Embarque
                         cmd.Parameters.AddWithValue("@conductor", DDLConductor.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@vehiculo", txtVehic.Text)
 
-                        cmd.Parameters.AddWithValue("@observacion2", DBNull.Value)
+                        cmd.Parameters.AddWithValue("@observacion2", txtObser2.Text)
                         cmd.Parameters.AddWithValue("@duplicado", DBNull.Value)
                         cmd.Parameters.AddWithValue("@triplicado", DBNull.Value)
                         cmd.Parameters.AddWithValue("@estado", "1")
@@ -261,15 +260,23 @@ Public Class Embarque
                 validarflag = 0
             End If
             '9
-            'If String.IsNullOrEmpty(txtVehic.Text) Then
-            '    lblVehic.Text = "*"
-            '    validarflag = 0
-            'Else
-            '    lblVehic.Text = ""
-            '    validarflag += 1
-            'End If
+            If String.IsNullOrEmpty(txtObser2.Text) Then
+                lblObser2.Text = "*"
+                validarflag = 0
+            Else
+                lblObser2.Text = ""
+                validarflag += 1
+            End If
+            '10
+            If verificar_Produc() = 0 Then
+                lblmas.Text = "Debe ingresar al menos un producto de semilla."
+                validarflag = 0
+            Else
+                lblmas.Text = ""
+                validarflag += 1
+            End If
 
-            If validarflag = 8 Then
+            If validarflag = 10 Then
                 validarflag = 1
             Else
                 validarflag = 0
@@ -405,6 +412,7 @@ Public Class Embarque
         TextBanderita.Text = "Guardar"
         Llenar_conocimiento()
         llenarcomboConductor()
+        verificar_Produc()
         VerificarTextBox()
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
@@ -467,6 +475,8 @@ Public Class Embarque
         btnRegresar.Visible = False
         btnRegresarConEmbarque.Visible = True
         vaciarCamposProductos()
+        verificar_Produc()
+        VerificarTextBox()
     End Sub
     Protected Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
         Dim connectionString As String = conn
@@ -609,6 +619,7 @@ Public Class Embarque
             SeleccionarItemEnDropDownList(DDLConductor, dt.Rows(0)("CONDUCTOR").ToString())
             txtVehic.Text = dt.Rows(0)("VEHICULO").ToString()
             llenaMinigrid()
+            verificar_Produc()
             VerificarTextBox()
         End If
 
@@ -830,6 +841,7 @@ Public Class Embarque
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque` WHERE no_conocimiento = '" & txtConoNo.Text & "'"
 
         GridProductos.DataBind()
+        VerificarTextBox()
     End Sub
     Protected Sub DDLCultivo_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLCultivo.SelectedIndexChanged
         ' Obtiene el valor seleccionado en la DropDownList
@@ -928,6 +940,8 @@ Public Class Embarque
             End Using
             llenaMinigrid()
         End Using
+        verificar_Produc()
+        VerificarTextBox()
     End Sub
     Protected Sub GridProductos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridProductos.RowCommand
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
@@ -1047,12 +1061,12 @@ Public Class Embarque
                 Else
                     ' El valor ingresado es mayor al peso total
                     lblEntreg.Text = "*"
-                    Label3.Text = "El valor de entrega ingresado (" & txtEntreg.Text & ") supera al valor en inventario que es: (" & DtCombo.Rows(0)("peso_neto_resta").ToString & ")"
+                    Label2.Text = "El valor de entrega ingresado (" & txtEntreg.Text & ") supera al valor en inventario que es: (" & DtCombo.Rows(0)("peso_neto_resta").ToString & ")"
                     txtEntreg.Text = ""
                     BConfirm.Visible = False
                     BBorrarsi.Visible = False
                     BBorrarno.Visible = False
-                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
 
                 End If
 
@@ -1158,4 +1172,12 @@ Public Class Embarque
             End Using
         End Using
     End Sub
+    Private Function verificar_Produc()
+        Dim strCombo As String = "SELECT * FROM sag_embarque WHERE no_conocimiento = '" & txtConoNo.Text & "'"
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
+
+        Return DtCombo.Rows.Count
+    End Function
 End Class
