@@ -423,7 +423,7 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>Observaciones:</label><asp:Label ID="lblObser2" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtObser2" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtObser2" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox">Para traslado de Semillas e Insumos entre oficinas, Dependencias. Etc. Remisión completa y en buenas condiciones</asp:TextBox>
                             </div>
                         </div>
                     </div>

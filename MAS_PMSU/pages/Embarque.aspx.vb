@@ -26,7 +26,7 @@ Public Class Embarque
                 llenagrid()
                 eliminarMiniGrid2()
                 btnGuardarLote.Visible = True
-        End If
+            End If
         End If
     End Sub
 
@@ -631,20 +631,20 @@ Public Class Embarque
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM vista_multi_lote WHERE nombre_multiplicador = @valor"
+            Dim Str As String = "SELECT * FROM vista_embarque_informe WHERE NO_CONOCIMIENTO_EMBARQUE_INFO = @valor"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
             Dim dt As New DataTable
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "vista_multi_lote")
+            adap.Fill(ds, "vista_embarque_informe")
 
             Dim nombre As String
 
-            nombre = " Datos del Multiplicador " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
+            nombre = "Conocimiento de Embarque No " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
 
-            rptdocument.Load(Server.MapPath("~/pages/AgregarMultiplicadorReport.rpt"))
+            rptdocument.Load(Server.MapPath("~/pages/EmbarqueReport.rpt"))
 
             rptdocument.SetDataSource(ds)
             Response.Buffer = False

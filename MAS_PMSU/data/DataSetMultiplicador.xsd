@@ -2,9 +2,10 @@
 <xs:schema id="DataSetMultiplicador" targetNamespace="http://tempuri.org/DataSetMultiplicador.xsd" xmlns:mstns="http://tempuri.org/DataSetMultiplicador.xsd" xmlns="http://tempuri.org/DataSetMultiplicador.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString.ConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
@@ -656,6 +657,53 @@ FROM     sag_registro_lote</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vista_embarque_informeTableAdapter" GeneratorDataComponentClassName="vista_embarque_informeTableAdapter" Name="vista_embarque_informe" UserDataComponentName="vista_embarque_informeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sag_dictaConnectionString1 (Web.config)" DbObjectName="sag_dicta.vista_embarque_informe" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT vista_embarque_informe.*
+FROM     vista_embarque_informe</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID_EMBARQUE_INFO" DataSetColumn="ID_EMBARQUE_INFO" />
+              <Mapping SourceColumn="ESTADO_EMBARQUE_INFO" DataSetColumn="ESTADO_EMBARQUE_INFO" />
+              <Mapping SourceColumn="NO_CONOCIMIENTO_EMBARQUE_INFO" DataSetColumn="NO_CONOCIMIENTO_EMBARQUE_INFO" />
+              <Mapping SourceColumn="PARA_GENERAL" DataSetColumn="PARA_GENERAL" />
+              <Mapping SourceColumn="FECHA_ELABORACION" DataSetColumn="FECHA_ELABORACION" />
+              <Mapping SourceColumn="CULTIVO_GENERAL" DataSetColumn="CULTIVO_GENERAL" />
+              <Mapping SourceColumn="REMITENTE" DataSetColumn="REMITENTE" />
+              <Mapping SourceColumn="DESTINATARIO" DataSetColumn="DESTINATARIO" />
+              <Mapping SourceColumn="LUGAR_REMITENTE" DataSetColumn="LUGAR_REMITENTE" />
+              <Mapping SourceColumn="LUGAR_DESTINATARIO" DataSetColumn="LUGAR_DESTINATARIO" />
+              <Mapping SourceColumn="CONDUCTOR" DataSetColumn="CONDUCTOR" />
+              <Mapping SourceColumn="VEHICULO" DataSetColumn="VEHICULO" />
+              <Mapping SourceColumn="MARCA" DataSetColumn="MARCA" />
+              <Mapping SourceColumn="TIPO" DataSetColumn="TIPO" />
+              <Mapping SourceColumn="COLOR" DataSetColumn="COLOR" />
+              <Mapping SourceColumn="PLACA" DataSetColumn="PLACA" />
+              <Mapping SourceColumn="OBSERVACION2" DataSetColumn="OBSERVACION2" />
+              <Mapping SourceColumn="ID_EMBARQUE" DataSetColumn="ID_EMBARQUE" />
+              <Mapping SourceColumn="ESTADO_EMBARQUE" DataSetColumn="ESTADO_EMBARQUE" />
+              <Mapping SourceColumn="NO_CONOCIMIENTO_EMBARQUE" DataSetColumn="NO_CONOCIMIENTO_EMBARQUE" />
+              <Mapping SourceColumn="VARIEDAD_CATEGORIA" DataSetColumn="VARIEDAD_CATEGORIA" />
+              <Mapping SourceColumn="CATEGORIA_ORIGEN" DataSetColumn="CATEGORIA_ORIGEN" />
+              <Mapping SourceColumn="TIPO_CULTIVO" DataSetColumn="TIPO_CULTIVO" />
+              <Mapping SourceColumn="VARIEDAD" DataSetColumn="VARIEDAD" />
+              <Mapping SourceColumn="PESO_NETO" DataSetColumn="PESO_NETO" />
+              <Mapping SourceColumn="PRECIO_UNI" DataSetColumn="PRECIO_UNI" />
+              <Mapping SourceColumn="TOTAL" DataSetColumn="TOTAL" />
+              <Mapping SourceColumn="OBSERVACIONES" DataSetColumn="OBSERVACIONES" />
+              <Mapping SourceColumn="UNIDAD" DataSetColumn="UNIDAD" />
+              <Mapping SourceColumn="DNI" DataSetColumn="DNI" />
+              <Mapping SourceColumn="TELEFONO" DataSetColumn="TELEFONO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -664,7 +712,7 @@ FROM     sag_registro_lote</CommandText>
   <xs:element name="DataSetMultiplicador" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetMultiplicador" msprop:Generator_UserDSName="DataSetMultiplicador">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="sag_registro_senasa" msprop:Generator_TableClassName="sag_registro_senasaDataTable" msprop:Generator_TableVarName="tablesag_registro_senasa" msprop:Generator_RowChangedName="sag_registro_senasaRowChanged" msprop:Generator_TablePropName="sag_registro_senasa" msprop:Generator_RowDeletingName="sag_registro_senasaRowDeleting" msprop:Generator_RowChangingName="sag_registro_senasaRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_senasaRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_senasaRowDeleted" msprop:Generator_RowClassName="sag_registro_senasaRow" msprop:Generator_UserTableName="sag_registro_senasa" msprop:Generator_RowEvArgName="sag_registro_senasaRowChangeEvent">
+        <xs:element name="sag_registro_senasa" msprop:Generator_TableClassName="sag_registro_senasaDataTable" msprop:Generator_TableVarName="tablesag_registro_senasa" msprop:Generator_TablePropName="sag_registro_senasa" msprop:Generator_RowDeletingName="sag_registro_senasaRowDeleting" msprop:Generator_RowChangingName="sag_registro_senasaRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_senasaRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_senasaRowDeleted" msprop:Generator_UserTableName="sag_registro_senasa" msprop:Generator_RowChangedName="sag_registro_senasaRowChanged" msprop:Generator_RowEvArgName="sag_registro_senasaRowChangeEvent" msprop:Generator_RowClassName="sag_registro_senasaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -876,7 +924,7 @@ FROM     sag_registro_lote</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sag_registro_senasa1" msprop:Generator_TableClassName="sag_registro_senasa1DataTable" msprop:Generator_TableVarName="tablesag_registro_senasa1" msprop:Generator_TablePropName="sag_registro_senasa1" msprop:Generator_RowDeletingName="sag_registro_senasa1RowDeleting" msprop:Generator_RowChangingName="sag_registro_senasa1RowChanging" msprop:Generator_RowEvHandlerName="sag_registro_senasa1RowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_senasa1RowDeleted" msprop:Generator_UserTableName="sag_registro_senasa1" msprop:Generator_RowChangedName="sag_registro_senasa1RowChanged" msprop:Generator_RowEvArgName="sag_registro_senasa1RowChangeEvent" msprop:Generator_RowClassName="sag_registro_senasa1Row">
+        <xs:element name="sag_registro_senasa1" msprop:Generator_TableClassName="sag_registro_senasa1DataTable" msprop:Generator_TableVarName="tablesag_registro_senasa1" msprop:Generator_RowChangedName="sag_registro_senasa1RowChanged" msprop:Generator_TablePropName="sag_registro_senasa1" msprop:Generator_RowDeletingName="sag_registro_senasa1RowDeleting" msprop:Generator_RowChangingName="sag_registro_senasa1RowChanging" msprop:Generator_RowEvHandlerName="sag_registro_senasa1RowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_senasa1RowDeleted" msprop:Generator_RowClassName="sag_registro_senasa1Row" msprop:Generator_UserTableName="sag_registro_senasa1" msprop:Generator_RowEvArgName="sag_registro_senasa1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -1121,7 +1169,7 @@ FROM     sag_registro_lote</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sag_registro_multiplicador" msprop:Generator_TableClassName="sag_registro_multiplicadorDataTable" msprop:Generator_TableVarName="tablesag_registro_multiplicador" msprop:Generator_RowChangedName="sag_registro_multiplicadorRowChanged" msprop:Generator_TablePropName="sag_registro_multiplicador" msprop:Generator_RowDeletingName="sag_registro_multiplicadorRowDeleting" msprop:Generator_RowChangingName="sag_registro_multiplicadorRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_multiplicadorRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_multiplicadorRowDeleted" msprop:Generator_RowClassName="sag_registro_multiplicadorRow" msprop:Generator_UserTableName="sag_registro_multiplicador" msprop:Generator_RowEvArgName="sag_registro_multiplicadorRowChangeEvent">
+        <xs:element name="sag_registro_multiplicador" msprop:Generator_TableClassName="sag_registro_multiplicadorDataTable" msprop:Generator_TableVarName="tablesag_registro_multiplicador" msprop:Generator_TablePropName="sag_registro_multiplicador" msprop:Generator_RowDeletingName="sag_registro_multiplicadorRowDeleting" msprop:Generator_RowChangingName="sag_registro_multiplicadorRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_multiplicadorRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_multiplicadorRowDeleted" msprop:Generator_UserTableName="sag_registro_multiplicador" msprop:Generator_RowChangedName="sag_registro_multiplicadorRowChanged" msprop:Generator_RowEvArgName="sag_registro_multiplicadorRowChangeEvent" msprop:Generator_RowClassName="sag_registro_multiplicadorRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -1249,7 +1297,7 @@ FROM     sag_registro_lote</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sag_registro_lote" msprop:Generator_TableClassName="sag_registro_loteDataTable" msprop:Generator_TableVarName="tablesag_registro_lote" msprop:Generator_RowChangedName="sag_registro_loteRowChanged" msprop:Generator_TablePropName="sag_registro_lote" msprop:Generator_RowDeletingName="sag_registro_loteRowDeleting" msprop:Generator_RowChangingName="sag_registro_loteRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_loteRowDeleted" msprop:Generator_RowClassName="sag_registro_loteRow" msprop:Generator_UserTableName="sag_registro_lote" msprop:Generator_RowEvArgName="sag_registro_loteRowChangeEvent">
+        <xs:element name="sag_registro_lote" msprop:Generator_TableClassName="sag_registro_loteDataTable" msprop:Generator_TableVarName="tablesag_registro_lote" msprop:Generator_TablePropName="sag_registro_lote" msprop:Generator_RowDeletingName="sag_registro_loteRowDeleting" msprop:Generator_RowChangingName="sag_registro_loteRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_loteRowDeleted" msprop:Generator_UserTableName="sag_registro_lote" msprop:Generator_RowChangedName="sag_registro_loteRowChanged" msprop:Generator_RowEvArgName="sag_registro_loteRowChangeEvent" msprop:Generator_RowClassName="sag_registro_loteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -1467,7 +1515,7 @@ FROM     sag_registro_lote</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vista_multi_lote" msprop:Generator_TableClassName="vista_multi_loteDataTable" msprop:Generator_TableVarName="tablevista_multi_lote" msprop:Generator_TablePropName="vista_multi_lote" msprop:Generator_RowDeletingName="vista_multi_loteRowDeleting" msprop:Generator_RowChangingName="vista_multi_loteRowChanging" msprop:Generator_RowEvHandlerName="vista_multi_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_multi_loteRowDeleted" msprop:Generator_UserTableName="vista_multi_lote" msprop:Generator_RowChangedName="vista_multi_loteRowChanged" msprop:Generator_RowEvArgName="vista_multi_loteRowChangeEvent" msprop:Generator_RowClassName="vista_multi_loteRow">
+        <xs:element name="vista_multi_lote" msprop:Generator_TableClassName="vista_multi_loteDataTable" msprop:Generator_TableVarName="tablevista_multi_lote" msprop:Generator_RowChangedName="vista_multi_loteRowChanged" msprop:Generator_TablePropName="vista_multi_lote" msprop:Generator_RowDeletingName="vista_multi_loteRowDeleting" msprop:Generator_RowChangingName="vista_multi_loteRowChanging" msprop:Generator_RowEvHandlerName="vista_multi_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_multi_loteRowDeleted" msprop:Generator_RowClassName="vista_multi_loteRow" msprop:Generator_UserTableName="vista_multi_lote" msprop:Generator_RowEvArgName="vista_multi_loteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_MULTI" msprop:Generator_ColumnVarNameInTable="columnID_MULTI" msprop:Generator_ColumnPropNameInRow="ID_MULTI" msprop:Generator_ColumnPropNameInTable="ID_MULTIColumn" msprop:Generator_UserColumnName="ID_MULTI" type="xs:int" />
@@ -1700,7 +1748,7 @@ FROM     sag_registro_lote</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vista_acta_lote_multi" msprop:Generator_TableClassName="vista_acta_lote_multiDataTable" msprop:Generator_TableVarName="tablevista_acta_lote_multi" msprop:Generator_TablePropName="vista_acta_lote_multi" msprop:Generator_RowDeletingName="vista_acta_lote_multiRowDeleting" msprop:Generator_RowChangingName="vista_acta_lote_multiRowChanging" msprop:Generator_RowEvHandlerName="vista_acta_lote_multiRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_acta_lote_multiRowDeleted" msprop:Generator_UserTableName="vista_acta_lote_multi" msprop:Generator_RowChangedName="vista_acta_lote_multiRowChanged" msprop:Generator_RowEvArgName="vista_acta_lote_multiRowChangeEvent" msprop:Generator_RowClassName="vista_acta_lote_multiRow">
+        <xs:element name="vista_acta_lote_multi" msprop:Generator_TableClassName="vista_acta_lote_multiDataTable" msprop:Generator_TableVarName="tablevista_acta_lote_multi" msprop:Generator_RowChangedName="vista_acta_lote_multiRowChanged" msprop:Generator_TablePropName="vista_acta_lote_multi" msprop:Generator_RowDeletingName="vista_acta_lote_multiRowDeleting" msprop:Generator_RowChangingName="vista_acta_lote_multiRowChanging" msprop:Generator_RowEvHandlerName="vista_acta_lote_multiRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_acta_lote_multiRowDeleted" msprop:Generator_RowClassName="vista_acta_lote_multiRow" msprop:Generator_UserTableName="vista_acta_lote_multi" msprop:Generator_RowEvArgName="vista_acta_lote_multiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_MULTI" msprop:Generator_ColumnVarNameInTable="columnID_MULTI" msprop:Generator_ColumnPropNameInRow="ID_MULTI" msprop:Generator_ColumnPropNameInTable="ID_MULTIColumn" msprop:Generator_UserColumnName="ID_MULTI" type="xs:int" />
@@ -1840,6 +1888,193 @@ FROM     sag_registro_lote</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="vista_embarque_informe" msprop:Generator_TableClassName="vista_embarque_informeDataTable" msprop:Generator_TableVarName="tablevista_embarque_informe" msprop:Generator_TablePropName="vista_embarque_informe" msprop:Generator_RowDeletingName="vista_embarque_informeRowDeleting" msprop:Generator_RowChangingName="vista_embarque_informeRowChanging" msprop:Generator_RowEvHandlerName="vista_embarque_informeRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_embarque_informeRowDeleted" msprop:Generator_UserTableName="vista_embarque_informe" msprop:Generator_RowChangedName="vista_embarque_informeRowChanged" msprop:Generator_RowEvArgName="vista_embarque_informeRowChangeEvent" msprop:Generator_RowClassName="vista_embarque_informeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_EMBARQUE_INFO" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_EMBARQUE_INFO" msprop:Generator_ColumnPropNameInRow="ID_EMBARQUE_INFO" msprop:Generator_ColumnPropNameInTable="ID_EMBARQUE_INFOColumn" msprop:Generator_UserColumnName="ID_EMBARQUE_INFO" type="xs:int" />
+              <xs:element name="ESTADO_EMBARQUE_INFO" msprop:Generator_ColumnVarNameInTable="columnESTADO_EMBARQUE_INFO" msprop:Generator_ColumnPropNameInRow="ESTADO_EMBARQUE_INFO" msprop:Generator_ColumnPropNameInTable="ESTADO_EMBARQUE_INFOColumn" msprop:Generator_UserColumnName="ESTADO_EMBARQUE_INFO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NO_CONOCIMIENTO_EMBARQUE_INFO" msprop:Generator_ColumnVarNameInTable="columnNO_CONOCIMIENTO_EMBARQUE_INFO" msprop:Generator_ColumnPropNameInRow="NO_CONOCIMIENTO_EMBARQUE_INFO" msprop:Generator_ColumnPropNameInTable="NO_CONOCIMIENTO_EMBARQUE_INFOColumn" msprop:Generator_UserColumnName="NO_CONOCIMIENTO_EMBARQUE_INFO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PARA_GENERAL" msprop:Generator_ColumnVarNameInTable="columnPARA_GENERAL" msprop:Generator_ColumnPropNameInRow="PARA_GENERAL" msprop:Generator_ColumnPropNameInTable="PARA_GENERALColumn" msprop:Generator_UserColumnName="PARA_GENERAL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FECHA_ELABORACION" msprop:Generator_ColumnVarNameInTable="columnFECHA_ELABORACION" msprop:Generator_ColumnPropNameInRow="FECHA_ELABORACION" msprop:Generator_ColumnPropNameInTable="FECHA_ELABORACIONColumn" msprop:Generator_UserColumnName="FECHA_ELABORACION" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CULTIVO_GENERAL" msprop:Generator_ColumnVarNameInTable="columnCULTIVO_GENERAL" msprop:Generator_ColumnPropNameInRow="CULTIVO_GENERAL" msprop:Generator_ColumnPropNameInTable="CULTIVO_GENERALColumn" msprop:Generator_UserColumnName="CULTIVO_GENERAL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REMITENTE" msprop:Generator_ColumnVarNameInTable="columnREMITENTE" msprop:Generator_ColumnPropNameInRow="REMITENTE" msprop:Generator_ColumnPropNameInTable="REMITENTEColumn" msprop:Generator_UserColumnName="REMITENTE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DESTINATARIO" msprop:Generator_ColumnVarNameInTable="columnDESTINATARIO" msprop:Generator_ColumnPropNameInRow="DESTINATARIO" msprop:Generator_ColumnPropNameInTable="DESTINATARIOColumn" msprop:Generator_UserColumnName="DESTINATARIO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LUGAR_REMITENTE" msprop:Generator_ColumnVarNameInTable="columnLUGAR_REMITENTE" msprop:Generator_ColumnPropNameInRow="LUGAR_REMITENTE" msprop:Generator_ColumnPropNameInTable="LUGAR_REMITENTEColumn" msprop:Generator_UserColumnName="LUGAR_REMITENTE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LUGAR_DESTINATARIO" msprop:Generator_ColumnVarNameInTable="columnLUGAR_DESTINATARIO" msprop:Generator_ColumnPropNameInRow="LUGAR_DESTINATARIO" msprop:Generator_ColumnPropNameInTable="LUGAR_DESTINATARIOColumn" msprop:Generator_UserColumnName="LUGAR_DESTINATARIO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONDUCTOR" msprop:Generator_ColumnVarNameInTable="columnCONDUCTOR" msprop:Generator_ColumnPropNameInRow="CONDUCTOR" msprop:Generator_ColumnPropNameInTable="CONDUCTORColumn" msprop:Generator_UserColumnName="CONDUCTOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VEHICULO" msprop:Generator_ColumnVarNameInTable="columnVEHICULO" msprop:Generator_ColumnPropNameInRow="VEHICULO" msprop:Generator_ColumnPropNameInTable="VEHICULOColumn" msprop:Generator_UserColumnName="VEHICULO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MARCA" msprop:Generator_ColumnVarNameInTable="columnMARCA" msprop:Generator_ColumnPropNameInRow="MARCA" msprop:Generator_ColumnPropNameInTable="MARCAColumn" msprop:Generator_UserColumnName="MARCA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TIPO" msprop:Generator_ColumnVarNameInTable="columnTIPO" msprop:Generator_ColumnPropNameInRow="TIPO" msprop:Generator_ColumnPropNameInTable="TIPOColumn" msprop:Generator_UserColumnName="TIPO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLOR" msprop:Generator_ColumnVarNameInTable="columnCOLOR" msprop:Generator_ColumnPropNameInRow="COLOR" msprop:Generator_ColumnPropNameInTable="COLORColumn" msprop:Generator_UserColumnName="COLOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PLACA" msprop:Generator_ColumnVarNameInTable="columnPLACA" msprop:Generator_ColumnPropNameInRow="PLACA" msprop:Generator_ColumnPropNameInTable="PLACAColumn" msprop:Generator_UserColumnName="PLACA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OBSERVACION2" msprop:Generator_ColumnVarNameInTable="columnOBSERVACION2" msprop:Generator_ColumnPropNameInRow="OBSERVACION2" msprop:Generator_ColumnPropNameInTable="OBSERVACION2Column" msprop:Generator_UserColumnName="OBSERVACION2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_EMBARQUE" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_EMBARQUE" msprop:Generator_ColumnPropNameInRow="ID_EMBARQUE" msprop:Generator_ColumnPropNameInTable="ID_EMBARQUEColumn" msprop:Generator_UserColumnName="ID_EMBARQUE" type="xs:int" />
+              <xs:element name="ESTADO_EMBARQUE" msprop:Generator_ColumnVarNameInTable="columnESTADO_EMBARQUE" msprop:Generator_ColumnPropNameInRow="ESTADO_EMBARQUE" msprop:Generator_ColumnPropNameInTable="ESTADO_EMBARQUEColumn" msprop:Generator_UserColumnName="ESTADO_EMBARQUE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NO_CONOCIMIENTO_EMBARQUE" msprop:Generator_ColumnVarNameInTable="columnNO_CONOCIMIENTO_EMBARQUE" msprop:Generator_ColumnPropNameInRow="NO_CONOCIMIENTO_EMBARQUE" msprop:Generator_ColumnPropNameInTable="NO_CONOCIMIENTO_EMBARQUEColumn" msprop:Generator_UserColumnName="NO_CONOCIMIENTO_EMBARQUE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VARIEDAD_CATEGORIA" msprop:Generator_ColumnVarNameInTable="columnVARIEDAD_CATEGORIA" msprop:Generator_ColumnPropNameInRow="VARIEDAD_CATEGORIA" msprop:Generator_ColumnPropNameInTable="VARIEDAD_CATEGORIAColumn" msprop:Generator_UserColumnName="VARIEDAD_CATEGORIA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CATEGORIA_ORIGEN" msprop:Generator_ColumnVarNameInTable="columnCATEGORIA_ORIGEN" msprop:Generator_ColumnPropNameInRow="CATEGORIA_ORIGEN" msprop:Generator_ColumnPropNameInTable="CATEGORIA_ORIGENColumn" msprop:Generator_UserColumnName="CATEGORIA_ORIGEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TIPO_CULTIVO" msprop:Generator_ColumnVarNameInTable="columnTIPO_CULTIVO" msprop:Generator_ColumnPropNameInRow="TIPO_CULTIVO" msprop:Generator_ColumnPropNameInTable="TIPO_CULTIVOColumn" msprop:Generator_UserColumnName="TIPO_CULTIVO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VARIEDAD" msprop:Generator_ColumnVarNameInTable="columnVARIEDAD" msprop:Generator_ColumnPropNameInRow="VARIEDAD" msprop:Generator_ColumnPropNameInTable="VARIEDADColumn" msprop:Generator_UserColumnName="VARIEDAD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PESO_NETO" msprop:Generator_ColumnVarNameInTable="columnPESO_NETO" msprop:Generator_ColumnPropNameInRow="PESO_NETO" msprop:Generator_ColumnPropNameInTable="PESO_NETOColumn" msprop:Generator_UserColumnName="PESO_NETO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PRECIO_UNI" msprop:Generator_ColumnVarNameInTable="columnPRECIO_UNI" msprop:Generator_ColumnPropNameInRow="PRECIO_UNI" msprop:Generator_ColumnPropNameInTable="PRECIO_UNIColumn" msprop:Generator_UserColumnName="PRECIO_UNI" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL" msprop:Generator_ColumnVarNameInTable="columnTOTAL" msprop:Generator_ColumnPropNameInRow="TOTAL" msprop:Generator_ColumnPropNameInTable="TOTALColumn" msprop:Generator_UserColumnName="TOTAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OBSERVACIONES" msprop:Generator_ColumnVarNameInTable="columnOBSERVACIONES" msprop:Generator_ColumnPropNameInRow="OBSERVACIONES" msprop:Generator_ColumnPropNameInTable="OBSERVACIONESColumn" msprop:Generator_UserColumnName="OBSERVACIONES" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UNIDAD" msprop:Generator_ColumnVarNameInTable="columnUNIDAD" msprop:Generator_ColumnPropNameInRow="UNIDAD" msprop:Generator_ColumnPropNameInTable="UNIDADColumn" msprop:Generator_UserColumnName="UNIDAD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DNI" msprop:Generator_ColumnVarNameInTable="columnDNI" msprop:Generator_ColumnPropNameInRow="DNI" msprop:Generator_ColumnPropNameInTable="DNIColumn" msprop:Generator_UserColumnName="DNI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TELEFONO" msprop:Generator_ColumnVarNameInTable="columnTELEFONO" msprop:Generator_ColumnPropNameInRow="TELEFONO" msprop:Generator_ColumnPropNameInTable="TELEFONOColumn" msprop:Generator_UserColumnName="TELEFONO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1857,6 +2092,11 @@ FROM     sag_registro_lote</CommandText>
     <xs:unique name="sag_registro_lote_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:sag_registro_lote" />
       <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="vista_embarque_informe_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vista_embarque_informe" />
+      <xs:field xpath="mstns:ID_EMBARQUE_INFO" />
+      <xs:field xpath="mstns:ID_EMBARQUE" />
     </xs:unique>
   </xs:element>
 </xs:schema>
