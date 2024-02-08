@@ -5259,6 +5259,10 @@ Partial Public Class DataSetMultiplicador
         
         Private columnCONDUCTOR As Global.System.Data.DataColumn
         
+        Private columnDNI As Global.System.Data.DataColumn
+        
+        Private columnTELEFONO As Global.System.Data.DataColumn
+        
         Private columnVEHICULO As Global.System.Data.DataColumn
         
         Private columnMARCA As Global.System.Data.DataColumn
@@ -5294,10 +5298,6 @@ Partial Public Class DataSetMultiplicador
         Private columnOBSERVACIONES As Global.System.Data.DataColumn
         
         Private columnUNIDAD As Global.System.Data.DataColumn
-        
-        Private columnDNI As Global.System.Data.DataColumn
-        
-        Private columnTELEFONO As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -5419,6 +5419,22 @@ Partial Public Class DataSetMultiplicador
         Public ReadOnly Property CONDUCTORColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnCONDUCTOR
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DNIColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDNI
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TELEFONOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTELEFONO
             End Get
         End Property
         
@@ -5567,22 +5583,6 @@ Partial Public Class DataSetMultiplicador
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property DNIColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnDNI
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property TELEFONOColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnTELEFONO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -5630,6 +5630,8 @@ Partial Public Class DataSetMultiplicador
                     ByVal LUGAR_REMITENTE As String,  _
                     ByVal LUGAR_DESTINATARIO As String,  _
                     ByVal CONDUCTOR As String,  _
+                    ByVal DNI As String,  _
+                    ByVal TELEFONO As String,  _
                     ByVal VEHICULO As String,  _
                     ByVal MARCA As String,  _
                     ByVal TIPO As String,  _
@@ -5646,11 +5648,9 @@ Partial Public Class DataSetMultiplicador
                     ByVal PRECIO_UNI As Decimal,  _
                     ByVal TOTAL As Decimal,  _
                     ByVal OBSERVACIONES As String,  _
-                    ByVal UNIDAD As String,  _
-                    ByVal DNI As String,  _
-                    ByVal TELEFONO As String) As vista_embarque_informeRow
+                    ByVal UNIDAD As String) As vista_embarque_informeRow
             Dim rowvista_embarque_informeRow As vista_embarque_informeRow = CType(Me.NewRow,vista_embarque_informeRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ESTADO_EMBARQUE_INFO, NO_CONOCIMIENTO_EMBARQUE_INFO, PARA_GENERAL, FECHA_ELABORACION, CULTIVO_GENERAL, REMITENTE, DESTINATARIO, LUGAR_REMITENTE, LUGAR_DESTINATARIO, CONDUCTOR, VEHICULO, MARCA, TIPO, COLOR, PLACA, OBSERVACION2, Nothing, ESTADO_EMBARQUE, NO_CONOCIMIENTO_EMBARQUE, VARIEDAD_CATEGORIA, CATEGORIA_ORIGEN, TIPO_CULTIVO, VARIEDAD, PESO_NETO, PRECIO_UNI, TOTAL, OBSERVACIONES, UNIDAD, DNI, TELEFONO}
+            Dim columnValuesArray() As Object = New Object() {Nothing, ESTADO_EMBARQUE_INFO, NO_CONOCIMIENTO_EMBARQUE_INFO, PARA_GENERAL, FECHA_ELABORACION, CULTIVO_GENERAL, REMITENTE, DESTINATARIO, LUGAR_REMITENTE, LUGAR_DESTINATARIO, CONDUCTOR, DNI, TELEFONO, VEHICULO, MARCA, TIPO, COLOR, PLACA, OBSERVACION2, Nothing, ESTADO_EMBARQUE, NO_CONOCIMIENTO_EMBARQUE, VARIEDAD_CATEGORIA, CATEGORIA_ORIGEN, TIPO_CULTIVO, VARIEDAD, PESO_NETO, PRECIO_UNI, TOTAL, OBSERVACIONES, UNIDAD}
             rowvista_embarque_informeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvista_embarque_informeRow)
             Return rowvista_embarque_informeRow
@@ -5690,6 +5690,8 @@ Partial Public Class DataSetMultiplicador
             Me.columnLUGAR_REMITENTE = MyBase.Columns("LUGAR_REMITENTE")
             Me.columnLUGAR_DESTINATARIO = MyBase.Columns("LUGAR_DESTINATARIO")
             Me.columnCONDUCTOR = MyBase.Columns("CONDUCTOR")
+            Me.columnDNI = MyBase.Columns("DNI")
+            Me.columnTELEFONO = MyBase.Columns("TELEFONO")
             Me.columnVEHICULO = MyBase.Columns("VEHICULO")
             Me.columnMARCA = MyBase.Columns("MARCA")
             Me.columnTIPO = MyBase.Columns("TIPO")
@@ -5708,8 +5710,6 @@ Partial Public Class DataSetMultiplicador
             Me.columnTOTAL = MyBase.Columns("TOTAL")
             Me.columnOBSERVACIONES = MyBase.Columns("OBSERVACIONES")
             Me.columnUNIDAD = MyBase.Columns("UNIDAD")
-            Me.columnDNI = MyBase.Columns("DNI")
-            Me.columnTELEFONO = MyBase.Columns("TELEFONO")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5737,6 +5737,10 @@ Partial Public Class DataSetMultiplicador
             MyBase.Columns.Add(Me.columnLUGAR_DESTINATARIO)
             Me.columnCONDUCTOR = New Global.System.Data.DataColumn("CONDUCTOR", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCONDUCTOR)
+            Me.columnDNI = New Global.System.Data.DataColumn("DNI", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDNI)
+            Me.columnTELEFONO = New Global.System.Data.DataColumn("TELEFONO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTELEFONO)
             Me.columnVEHICULO = New Global.System.Data.DataColumn("VEHICULO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnVEHICULO)
             Me.columnMARCA = New Global.System.Data.DataColumn("MARCA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -5773,10 +5777,6 @@ Partial Public Class DataSetMultiplicador
             MyBase.Columns.Add(Me.columnOBSERVACIONES)
             Me.columnUNIDAD = New Global.System.Data.DataColumn("UNIDAD", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUNIDAD)
-            Me.columnDNI = New Global.System.Data.DataColumn("DNI", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDNI)
-            Me.columnTELEFONO = New Global.System.Data.DataColumn("TELEFONO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnTELEFONO)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_EMBARQUE_INFO, Me.columnID_EMBARQUE}, true))
             Me.columnID_EMBARQUE_INFO.AutoIncrement = true
             Me.columnID_EMBARQUE_INFO.AutoIncrementSeed = -1
@@ -5791,6 +5791,8 @@ Partial Public Class DataSetMultiplicador
             Me.columnLUGAR_REMITENTE.MaxLength = 100
             Me.columnLUGAR_DESTINATARIO.MaxLength = 100
             Me.columnCONDUCTOR.MaxLength = 100
+            Me.columnDNI.MaxLength = 50
+            Me.columnTELEFONO.MaxLength = 50
             Me.columnVEHICULO.MaxLength = 200
             Me.columnMARCA.MaxLength = 200
             Me.columnTIPO.MaxLength = 200
@@ -5809,8 +5811,6 @@ Partial Public Class DataSetMultiplicador
             Me.columnVARIEDAD.MaxLength = 100
             Me.columnOBSERVACIONES.MaxLength = 500
             Me.columnUNIDAD.MaxLength = 20
-            Me.columnDNI.MaxLength = 50
-            Me.columnTELEFONO.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12216,6 +12216,37 @@ Partial Public Class DataSetMultiplicador
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DNI() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_embarque_informe.DNIColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'DNI' de la tabla 'vista_embarque_informe' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_embarque_informe.DNIColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TELEFONO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_embarque_informe.TELEFONOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TELEFONO' de la tabla 'vista_embarque_informe' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_embarque_informe.TELEFONOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property VEHICULO() As String
             Get
                 Try 
@@ -12493,37 +12524,6 @@ Partial Public Class DataSetMultiplicador
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property DNI() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablevista_embarque_informe.DNIColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'DNI' de la tabla 'vista_embarque_informe' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevista_embarque_informe.DNIColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property TELEFONO() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablevista_embarque_informe.TELEFONOColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TELEFONO' de la tabla 'vista_embarque_informe' es DBNull."& _ 
-                            "", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevista_embarque_informe.TELEFONOColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsESTADO_EMBARQUE_INFONull() As Boolean
             Return Me.IsNull(Me.tablevista_embarque_informe.ESTADO_EMBARQUE_INFOColumn)
         End Function
@@ -12640,6 +12640,30 @@ Partial Public Class DataSetMultiplicador
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetCONDUCTORNull()
             Me(Me.tablevista_embarque_informe.CONDUCTORColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDNINull() As Boolean
+            Return Me.IsNull(Me.tablevista_embarque_informe.DNIColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDNINull()
+            Me(Me.tablevista_embarque_informe.DNIColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTELEFONONull() As Boolean
+            Return Me.IsNull(Me.tablevista_embarque_informe.TELEFONOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTELEFONONull()
+            Me(Me.tablevista_embarque_informe.TELEFONOColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12844,30 +12868,6 @@ Partial Public Class DataSetMultiplicador
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetUNIDADNull()
             Me(Me.tablevista_embarque_informe.UNIDADColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsDNINull() As Boolean
-            Return Me.IsNull(Me.tablevista_embarque_informe.DNIColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetDNINull()
-            Me(Me.tablevista_embarque_informe.DNIColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsTELEFONONull() As Boolean
-            Return Me.IsNull(Me.tablevista_embarque_informe.TELEFONOColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetTELEFONONull()
-            Me(Me.tablevista_embarque_informe.TELEFONOColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -18203,6 +18203,8 @@ Namespace DataSetMultiplicadorTableAdapters
             tableMapping.ColumnMappings.Add("LUGAR_REMITENTE", "LUGAR_REMITENTE")
             tableMapping.ColumnMappings.Add("LUGAR_DESTINATARIO", "LUGAR_DESTINATARIO")
             tableMapping.ColumnMappings.Add("CONDUCTOR", "CONDUCTOR")
+            tableMapping.ColumnMappings.Add("DNI", "DNI")
+            tableMapping.ColumnMappings.Add("TELEFONO", "TELEFONO")
             tableMapping.ColumnMappings.Add("VEHICULO", "VEHICULO")
             tableMapping.ColumnMappings.Add("MARCA", "MARCA")
             tableMapping.ColumnMappings.Add("TIPO", "TIPO")
@@ -18221,16 +18223,229 @@ Namespace DataSetMultiplicadorTableAdapters
             tableMapping.ColumnMappings.Add("TOTAL", "TOTAL")
             tableMapping.ColumnMappings.Add("OBSERVACIONES", "OBSERVACIONES")
             tableMapping.ColumnMappings.Add("UNIDAD", "UNIDAD")
-            tableMapping.ColumnMappings.Add("DNI", "DNI")
-            tableMapping.ColumnMappings.Add("TELEFONO", "TELEFONO")
             Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.InsertCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `vista_embarque_informe` (`ESTADO_EMBARQUE_INFO`, `NO_CONOCIMIENTO_EM"& _ 
+                "BARQUE_INFO`, `PARA_GENERAL`, `FECHA_ELABORACION`, `CULTIVO_GENERAL`, `REMITENTE"& _ 
+                "`, `DESTINATARIO`, `LUGAR_REMITENTE`, `LUGAR_DESTINATARIO`, `CONDUCTOR`, `DNI`, "& _ 
+                "`TELEFONO`, `VEHICULO`, `MARCA`, `TIPO`, `COLOR`, `PLACA`, `OBSERVACION2`, `ESTA"& _ 
+                "DO_EMBARQUE`, `NO_CONOCIMIENTO_EMBARQUE`, `VARIEDAD_CATEGORIA`, `CATEGORIA_ORIGE"& _ 
+                "N`, `TIPO_CULTIVO`, `VARIEDAD`, `PESO_NETO`, `PRECIO_UNI`, `TOTAL`, `OBSERVACION"& _ 
+                "ES`, `UNIDAD`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, "& _ 
+                "@p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p"& _ 
+                "25, @p26, @p27, @p28, @p29)"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Dim param As Global.MySql.Data.MySqlClient.MySqlParameter = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p1"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "ESTADO_EMBARQUE_INFO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p2"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "NO_CONOCIMIENTO_EMBARQUE_INFO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p3"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "PARA_GENERAL"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p4"
+            param.DbType = Global.System.Data.DbType.[Date]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.[Date]
+            param.IsNullable = true
+            param.SourceColumn = "FECHA_ELABORACION"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p5"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "CULTIVO_GENERAL"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p6"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "REMITENTE"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p7"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "DESTINATARIO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p8"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "LUGAR_REMITENTE"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p9"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "LUGAR_DESTINATARIO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p10"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "CONDUCTOR"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p11"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "DNI"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p12"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "TELEFONO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p13"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "VEHICULO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p14"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "MARCA"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p15"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "TIPO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p16"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "COLOR"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p17"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "PLACA"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p18"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "OBSERVACION2"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p19"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "ESTADO_EMBARQUE"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p20"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "NO_CONOCIMIENTO_EMBARQUE"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p21"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "VARIEDAD_CATEGORIA"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p22"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "CATEGORIA_ORIGEN"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p23"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "TIPO_CULTIVO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p24"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "VARIEDAD"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p25"
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.IsNullable = true
+            param.SourceColumn = "PESO_NETO"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p26"
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.IsNullable = true
+            param.SourceColumn = "PRECIO_UNI"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p27"
+            param.DbType = Global.System.Data.DbType.[Decimal]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.NewDecimal
+            param.IsNullable = true
+            param.SourceColumn = "TOTAL"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p28"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "OBSERVACIONES"
+            Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p29"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "UNIDAD"
+            Me._adapter.InsertCommand.Parameters.Add(param)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
-            Me._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings("sag_dictaConnectionString1").ConnectionString
+            Me._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings("sag_dictaConnectionString").ConnectionString
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -18266,6 +18481,228 @@ Namespace DataSetMultiplicadorTableAdapters
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As DataSetMultiplicador.vista_embarque_informeDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As DataSetMultiplicador) As Integer
+            Return Me.Adapter.Update(dataSet, "vista_embarque_informe")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert( _
+                    ByVal p1 As String,  _
+                    ByVal p2 As String,  _
+                    ByVal p3 As String,  _
+                    ByVal p4 As Global.System.Nullable(Of Date),  _
+                    ByVal p5 As String,  _
+                    ByVal p6 As String,  _
+                    ByVal p7 As String,  _
+                    ByVal p8 As String,  _
+                    ByVal p9 As String,  _
+                    ByVal p10 As String,  _
+                    ByVal p11 As String,  _
+                    ByVal p12 As String,  _
+                    ByVal p13 As String,  _
+                    ByVal p14 As String,  _
+                    ByVal p15 As String,  _
+                    ByVal p16 As String,  _
+                    ByVal p17 As String,  _
+                    ByVal p18 As String,  _
+                    ByVal p19 As String,  _
+                    ByVal p20 As String,  _
+                    ByVal p21 As String,  _
+                    ByVal p22 As String,  _
+                    ByVal p23 As String,  _
+                    ByVal p24 As String,  _
+                    ByVal p25 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p26 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p27 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p28 As String,  _
+                    ByVal p29 As String) As Integer
+            If (p1 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(p1,String)
+            End If
+            If (p2 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(p2,String)
+            End If
+            If (p3 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(p3,String)
+            End If
+            If (p4.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(p4.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            If (p5 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(p5,String)
+            End If
+            If (p6 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(p6,String)
+            End If
+            If (p7 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(p7,String)
+            End If
+            If (p8 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(p8,String)
+            End If
+            If (p9 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(p9,String)
+            End If
+            If (p10 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(p10,String)
+            End If
+            If (p11 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(p11,String)
+            End If
+            If (p12 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(p12,String)
+            End If
+            If (p13 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(p13,String)
+            End If
+            If (p14 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(p14,String)
+            End If
+            If (p15 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(p15,String)
+            End If
+            If (p16 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(p16,String)
+            End If
+            If (p17 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(p17,String)
+            End If
+            If (p18 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(p18,String)
+            End If
+            If (p19 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(p19,String)
+            End If
+            If (p20 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(p20,String)
+            End If
+            If (p21 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(p21,String)
+            End If
+            If (p22 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(p22,String)
+            End If
+            If (p23 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(p23,String)
+            End If
+            If (p24 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(p24,String)
+            End If
+            If (p25.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(24).Value = CType(p25.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
+            End If
+            If (p26.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(25).Value = CType(p26.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
+            End If
+            If (p27.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(p27.Value,Decimal)
+            Else
+                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
+            End If
+            If (p28 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(27).Value = CType(p28,String)
+            End If
+            If (p29 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(28).Value = CType(p29,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
     End Class
     
     '''<summary>
@@ -18288,6 +18725,8 @@ Namespace DataSetMultiplicadorTableAdapters
         Private _sag_registro_multiplicadorTableAdapter As sag_registro_multiplicadorTableAdapter
         
         Private _sag_registro_loteTableAdapter As sag_registro_loteTableAdapter
+        
+        Private _vista_embarque_informeTableAdapter As vista_embarque_informeTableAdapter
         
         Private _backupDataSetBeforeUpdate As Boolean
         
@@ -18361,6 +18800,20 @@ Namespace DataSetMultiplicadorTableAdapters
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property vista_embarque_informeTableAdapter() As vista_embarque_informeTableAdapter
+            Get
+                Return Me._vista_embarque_informeTableAdapter
+            End Get
+            Set
+                Me._vista_embarque_informeTableAdapter = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property BackupDataSetBeforeUpdate() As Boolean
             Get
@@ -18395,6 +18848,10 @@ Namespace DataSetMultiplicadorTableAdapters
                             AndAlso (Not (Me._sag_registro_loteTableAdapter.Connection) Is Nothing)) Then
                     Return Me._sag_registro_loteTableAdapter.Connection
                 End If
+                If ((Not (Me._vista_embarque_informeTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._vista_embarque_informeTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._vista_embarque_informeTableAdapter.Connection
+                End If
                 Return Nothing
             End Get
             Set
@@ -18418,6 +18875,9 @@ Namespace DataSetMultiplicadorTableAdapters
                     count = (count + 1)
                 End If
                 If (Not (Me._sag_registro_loteTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
+                If (Not (Me._vista_embarque_informeTableAdapter) Is Nothing) Then
                     count = (count + 1)
                 End If
                 Return count
@@ -18467,6 +18927,15 @@ Namespace DataSetMultiplicadorTableAdapters
                     allChangedRows.AddRange(updatedRows)
                 End If
             End If
+            If (Not (Me._vista_embarque_informeTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.vista_embarque_informe.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._vista_embarque_informeTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -18509,6 +18978,14 @@ Namespace DataSetMultiplicadorTableAdapters
                     allAddedRows.AddRange(addedRows)
                 End If
             End If
+            If (Not (Me._vista_embarque_informeTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.vista_embarque_informe.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._vista_embarque_informeTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -18519,6 +18996,14 @@ Namespace DataSetMultiplicadorTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Function UpdateDeletedRows(ByVal dataSet As DataSetMultiplicador, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._vista_embarque_informeTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.vista_embarque_informe.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._vista_embarque_informeTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             If (Not (Me._sag_registro_loteTableAdapter) Is Nothing) Then
                 Dim deletedRows() As Global.System.Data.DataRow = dataSet.sag_registro_lote.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
                 If ((Not (deletedRows) Is Nothing)  _
@@ -18612,6 +19097,11 @@ Namespace DataSetMultiplicadorTableAdapters
                 Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
                         "sma cadena de conexión.")
             End If
+            If ((Not (Me._vista_embarque_informeTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._vista_embarque_informeTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("Todos los TableAdapters administrados por un TableAdapterManager deben usar la mi"& _ 
+                        "sma cadena de conexión.")
+            End If
             Dim workConnection As Global.System.Data.IDbConnection = Me.Connection
             If (workConnection Is Nothing) Then
                 Throw New Global.System.ApplicationException("TableAdapterManager no contiene información de conexión. Establezca cada propieda"& _ 
@@ -18678,6 +19168,15 @@ Namespace DataSetMultiplicadorTableAdapters
                     If Me._sag_registro_loteTableAdapter.Adapter.AcceptChangesDuringUpdate Then
                         Me._sag_registro_loteTableAdapter.Adapter.AcceptChangesDuringUpdate = false
                         adaptersWithAcceptChangesDuringUpdate.Add(Me._sag_registro_loteTableAdapter.Adapter)
+                    End If
+                End If
+                If (Not (Me._vista_embarque_informeTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._vista_embarque_informeTableAdapter, Me._vista_embarque_informeTableAdapter.Connection)
+                    Me._vista_embarque_informeTableAdapter.Connection = CType(workConnection,Global.MySql.Data.MySqlClient.MySqlConnection)
+                    Me._vista_embarque_informeTableAdapter.Transaction = CType(workTransaction,Global.MySql.Data.MySqlClient.MySqlTransaction)
+                    If Me._vista_embarque_informeTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._vista_embarque_informeTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._vista_embarque_informeTableAdapter.Adapter)
                     End If
                 End If
                 '
@@ -18755,6 +19254,10 @@ Namespace DataSetMultiplicadorTableAdapters
                 If (Not (Me._sag_registro_loteTableAdapter) Is Nothing) Then
                     Me._sag_registro_loteTableAdapter.Connection = CType(revertConnections(Me._sag_registro_loteTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
                     Me._sag_registro_loteTableAdapter.Transaction = Nothing
+                End If
+                If (Not (Me._vista_embarque_informeTableAdapter) Is Nothing) Then
+                    Me._vista_embarque_informeTableAdapter.Connection = CType(revertConnections(Me._vista_embarque_informeTableAdapter),Global.MySql.Data.MySqlClient.MySqlConnection)
+                    Me._vista_embarque_informeTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

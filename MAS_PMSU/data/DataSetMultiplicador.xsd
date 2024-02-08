@@ -2,11 +2,10 @@
 <xs:schema id="DataSetMultiplicador" targetNamespace="http://tempuri.org/DataSetMultiplicador.xsd" xmlns:mstns="http://tempuri.org/DataSetMultiplicador.xsd" xmlns="http://tempuri.org/DataSetMultiplicador.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString.ConnectionString" Provider="MySql.Data.MySqlClient" />
-          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
-          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString1" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sag_registro_senasaTableAdapter" GeneratorDataComponentClassName="sag_registro_senasaTableAdapter" Name="sag_registro_senasa" UserDataComponentName="sag_registro_senasaTableAdapter">
@@ -659,7 +658,43 @@ FROM     sag_registro_lote</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vista_embarque_informeTableAdapter" GeneratorDataComponentClassName="vista_embarque_informeTableAdapter" Name="vista_embarque_informe" UserDataComponentName="vista_embarque_informeTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="sag_dictaConnectionString1 (Web.config)" DbObjectName="sag_dicta.vista_embarque_informe" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="sag_dictaConnectionString (Web.config)" DbObjectName="sag_dicta.vista_embarque_informe" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO `vista_embarque_informe` (`ESTADO_EMBARQUE_INFO`, `NO_CONOCIMIENTO_EMBARQUE_INFO`, `PARA_GENERAL`, `FECHA_ELABORACION`, `CULTIVO_GENERAL`, `REMITENTE`, `DESTINATARIO`, `LUGAR_REMITENTE`, `LUGAR_DESTINATARIO`, `CONDUCTOR`, `DNI`, `TELEFONO`, `VEHICULO`, `MARCA`, `TIPO`, `COLOR`, `PLACA`, `OBSERVACION2`, `ESTADO_EMBARQUE`, `NO_CONOCIMIENTO_EMBARQUE`, `VARIEDAD_CATEGORIA`, `CATEGORIA_ORIGEN`, `TIPO_CULTIVO`, `VARIEDAD`, `PESO_NETO`, `PRECIO_UNI`, `TOTAL`, `OBSERVACIONES`, `UNIDAD`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ESTADO_EMBARQUE_INFO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NO_CONOCIMIENTO_EMBARQUE_INFO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PARA_GENERAL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Date" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Date" Scale="0" Size="0" SourceColumn="FECHA_ELABORACION" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CULTIVO_GENERAL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="REMITENTE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DESTINATARIO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LUGAR_REMITENTE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="LUGAR_DESTINATARIO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CONDUCTOR" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DNI" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="TELEFONO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="VEHICULO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MARCA" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="TIPO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="COLOR" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="PLACA" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OBSERVACION2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ESTADO_EMBARQUE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="NO_CONOCIMIENTO_EMBARQUE" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="VARIEDAD_CATEGORIA" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CATEGORIA_ORIGEN" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="TIPO_CULTIVO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="VARIEDAD" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="NewDecimal" Scale="0" Size="0" SourceColumn="PESO_NETO" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="NewDecimal" Scale="0" Size="0" SourceColumn="PRECIO_UNI" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="NewDecimal" Scale="0" Size="0" SourceColumn="TOTAL" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="OBSERVACIONES" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p29" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="UNIDAD" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT vista_embarque_informe.*
@@ -681,6 +716,8 @@ FROM     vista_embarque_informe</CommandText>
               <Mapping SourceColumn="LUGAR_REMITENTE" DataSetColumn="LUGAR_REMITENTE" />
               <Mapping SourceColumn="LUGAR_DESTINATARIO" DataSetColumn="LUGAR_DESTINATARIO" />
               <Mapping SourceColumn="CONDUCTOR" DataSetColumn="CONDUCTOR" />
+              <Mapping SourceColumn="DNI" DataSetColumn="DNI" />
+              <Mapping SourceColumn="TELEFONO" DataSetColumn="TELEFONO" />
               <Mapping SourceColumn="VEHICULO" DataSetColumn="VEHICULO" />
               <Mapping SourceColumn="MARCA" DataSetColumn="MARCA" />
               <Mapping SourceColumn="TIPO" DataSetColumn="TIPO" />
@@ -699,8 +736,6 @@ FROM     vista_embarque_informe</CommandText>
               <Mapping SourceColumn="TOTAL" DataSetColumn="TOTAL" />
               <Mapping SourceColumn="OBSERVACIONES" DataSetColumn="OBSERVACIONES" />
               <Mapping SourceColumn="UNIDAD" DataSetColumn="UNIDAD" />
-              <Mapping SourceColumn="DNI" DataSetColumn="DNI" />
-              <Mapping SourceColumn="TELEFONO" DataSetColumn="TELEFONO" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -1956,6 +1991,20 @@ FROM     vista_embarque_informe</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="DNI" msprop:Generator_ColumnVarNameInTable="columnDNI" msprop:Generator_ColumnPropNameInRow="DNI" msprop:Generator_ColumnPropNameInTable="DNIColumn" msprop:Generator_UserColumnName="DNI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TELEFONO" msprop:Generator_ColumnVarNameInTable="columnTELEFONO" msprop:Generator_ColumnPropNameInRow="TELEFONO" msprop:Generator_ColumnPropNameInTable="TELEFONOColumn" msprop:Generator_UserColumnName="TELEFONO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="VEHICULO" msprop:Generator_ColumnVarNameInTable="columnVEHICULO" msprop:Generator_ColumnPropNameInRow="VEHICULO" msprop:Generator_ColumnPropNameInTable="VEHICULOColumn" msprop:Generator_UserColumnName="VEHICULO" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -2055,20 +2104,6 @@ FROM     vista_embarque_informe</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="DNI" msprop:Generator_ColumnVarNameInTable="columnDNI" msprop:Generator_ColumnPropNameInRow="DNI" msprop:Generator_ColumnPropNameInTable="DNIColumn" msprop:Generator_UserColumnName="DNI" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="TELEFONO" msprop:Generator_ColumnVarNameInTable="columnTELEFONO" msprop:Generator_ColumnPropNameInRow="TELEFONO" msprop:Generator_ColumnPropNameInTable="TELEFONOColumn" msprop:Generator_UserColumnName="TELEFONO" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
