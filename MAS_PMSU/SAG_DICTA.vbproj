@@ -268,6 +268,10 @@
     <Content Include="notifications.html" />
     <Content Include="pages\Embarque.aspx" />
     <Content Include="pages\ControlHRTo.aspx" />
+    <Content Include="pages\IndicadorVisitas.aspx" />
+    <Content Include="pages\IndicadorInventario.aspx" />
+    <Content Include="pages\IndicadorLotes.aspx" />
+    <Content Include="pages\IndicadorMultiplicadores.aspx" />
     <Content Include="pages\Inventario.aspx" />
     <Content Include="pages\FichaPeso.aspx" />
     <Content Include="pages\CuadroProcesamiento.aspx" />
@@ -2192,6 +2196,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmbarqueReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\IndicadorVisitas.aspx.designer.vb">
+      <DependentUpon>IndicadorVisitas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\IndicadorVisitas.aspx.vb">
+      <DependentUpon>IndicadorVisitas.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\IndicadorInventario.aspx.designer.vb">
+      <DependentUpon>IndicadorInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\IndicadorInventario.aspx.vb">
+      <DependentUpon>IndicadorInventario.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\IndicadorLotes.aspx.designer.vb">
+      <DependentUpon>IndicadorLotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\IndicadorLotes.aspx.vb">
+      <DependentUpon>IndicadorLotes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\IndicadorMultiplicadores.aspx.designer.vb">
+      <DependentUpon>IndicadorMultiplicadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\IndicadorMultiplicadores.aspx.vb">
+      <DependentUpon>IndicadorMultiplicadores.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\Inventario.aspx.designer.vb">
       <DependentUpon>Inventario.aspx</DependentUpon>

@@ -52,8 +52,10 @@
                     </a>
                     <div id="collapse31" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="#"><i class="fa fa-clipboard"></i> Grafico 1</a>
-                            <a class="collapse-item" href="#"><i class="fa fa-clipboard"></i> Grafico 2</a>
+                            <a class="collapse-item" href="IndicadorMultiplicadores.aspx"><i class="fa fa-clipboard"></i> Multiplicadores</a>
+                            <a class="collapse-item" href="IndicadorLotes.aspx"><i class="fa fa-clipboard"></i> Lotes</a>
+                            <a class="collapse-item" href="IndicadorInventario.aspx"><i class="fa fa-clipboard"></i> Inventario</a>
+                            <a class="collapse-item" href="IndicadorVisitas.aspx"><i class="fa fa-clipboard"></i> Visitas AT</a>
                         </div>
                     </div>
                 </li>
@@ -169,7 +171,7 @@
                         <ul class="navbar-nav ml-auto">
 
                             <!-- Alertas -->
-                            <li class="nav-item dropdown no-arrow mx-1">
+                            <%--<li class="nav-item dropdown no-arrow mx-1">
                                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-bell fa-fw"></i>
@@ -189,12 +191,12 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <%--<div class="small text-gray-500" id="divfechaler" runat="server">December 12, 2019</div>--%>
+                                            <div class="small text-gray-500" id="divfechaler" runat="server">December 12, 2019</div>
                                             <span class="font-weight-bold" id="divmsjaler" runat="server">A new monthly report is ready to download!</span>
                                         </div>
                                     </a>
                                 </div>
-                            </li>
+                            </li>--%>
 
                             <div class="topbar-divider d-none d-sm-block"></div>
 
