@@ -940,15 +940,27 @@ Public Class InscripcionLotes
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            div_nuevo_prod.Visible = True
-            DivGrid.Visible = False
-            DivCrearNuevo.Visible = False
-
             Label3.Text = "¿Desea eliminar la inscripción de lote o SENASA?"
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        End If
+
+        If (e.CommandName = "Subir") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+            div_nuevo_prod.Visible = True
+            DivGrid.Visible = False
+            DivCrearNuevo.Visible = False
+
+            'Label3.Text = "¿Desea eliminar la inscripción de lote o SENASA?"
+            'BBorrarsi.Visible = True
+            'BBorrarno.Visible = True
+            'BConfirm.Visible = False
+            'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
 
         If (e.CommandName = "Imprimir") Then

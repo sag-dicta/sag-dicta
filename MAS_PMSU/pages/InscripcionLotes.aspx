@@ -107,10 +107,13 @@
                                             <asp:ButtonField ButtonType="Button" Text="Agregar" ControlStyle-CssClass="btn btn-primary" HeaderText="Información del Lote" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-primary"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-primary" HeaderText="Archivos de Inscripción" CommandName="Eliminar">
+                                            <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-primary" HeaderText="Archivos de Inscripción" CommandName="Subir">
                                                 <ControlStyle CssClass="btn btn-primary"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-danger" HeaderText="Imprimir Información" CommandName="Imprimir">
+                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-warning" HeaderText="Imprimir Información" CommandName="Imprimir">
+                                                <ControlStyle CssClass="btn btn-warning"></ControlStyle>
+                                            </asp:ButtonField>
+                                            <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-danger" HeaderText="Archivos de Inscripción" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>
