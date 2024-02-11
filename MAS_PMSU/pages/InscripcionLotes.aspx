@@ -113,7 +113,7 @@
                                             <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-warning" HeaderText="Imprimir Información" CommandName="Imprimir">
                                                 <ControlStyle CssClass="btn btn-warning"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-danger" HeaderText="Archivos de Inscripción" CommandName="Eliminar">
+                                            <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="Eliminar" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>
