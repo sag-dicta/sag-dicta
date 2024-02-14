@@ -280,7 +280,7 @@
                         <div class="col-lg-2">
                             <div class="form-group">
                                 <label>Unidad:</label><asp:Label ID="lblUnid" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtUnid" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtUnid" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);" Text="QQ" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
 
@@ -300,14 +300,14 @@
                         <div class="col-lg-11">
                             <div class="form-group">
                                 <label>Observaciones:</label><asp:Label ID="lblObser" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtObser" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtObser" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Text="Ninguna"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="col-lg-1">
                             <div class="form-group">
                                 <label style="color: #FFFFFF">Agregar</label>
-                                <asp:Button CssClass="btn btn-primary" ID="btnAgregar" runat="server" AutoPostBack="True" Text="+" Font-Bold="True"></asp:Button>
+                                <asp:Button CssClass="btn btn-primary" ID="btnAgregar" runat="server" AutoPostBack="True" Text="+" Font-Bold="True" Visible="false"></asp:Button>
                                 <asp:Button CssClass="btn btn-warning" ID="btnEditar" runat="server" AutoPostBack="True" Text="↺" Font-Bold="True" Visible="false"></asp:Button>
                             </div>
                         </div>

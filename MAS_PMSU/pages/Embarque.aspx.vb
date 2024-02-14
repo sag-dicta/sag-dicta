@@ -192,6 +192,7 @@ Public Class Embarque
     End Sub
 
     Protected Sub VerificarTextBox()
+        verificardatosproductos()
         'Aqui van las verificaciones
         If TextBanderita.Text = "Guardar" Then
             '1
@@ -520,7 +521,7 @@ Public Class Embarque
         DropDownList5.SelectedIndex = 0
         DropDownList6.SelectedIndex = 0
         TxtCateogiraGrid.SelectedIndex = 0
-        txtUnid.Text = ""
+        txtUnid.Text = "QQ"
         txtEntreg.Text = ""
         txtPrecio.Text = ""
         txtObser.Text = ""
@@ -950,6 +951,14 @@ Public Class Embarque
             txtidminigrid.Text = ""
             txtidminigrid.Text = HttpUtility.HtmlDecode(GridProductos.Rows(index).Cells(0).Text).ToString
             eliminarMiniGridEspecifico(txtidminigrid.Text)
+
+            DropDownList5.SelectedIndex = 0
+            DropDownList6.SelectedIndex = 0
+            TxtCateogiraGrid.SelectedIndex = 0
+            txtEntreg.Text = ""
+            txtPrecio.Text = ""
+            txtObser.Text = ""
+
         End If
 
         If (e.CommandName = "Editar") Then
@@ -975,6 +984,7 @@ Public Class Embarque
     Protected Sub DropDownList5_SelectedIndexChanged(sender As Object, e As EventArgs)
         txtEntreg.Text = ""
         llenarcomboCategoriaFrijol()
+        verificardatosproductos()
         VerificarTextBox()
     End Sub
     Private Sub llenarcomboCategoriaFrijol()
@@ -995,6 +1005,7 @@ Public Class Embarque
     Protected Sub DropDownList6_SelectedIndexChanged(sender As Object, e As EventArgs)
         txtEntreg.Text = ""
         llenarcomboCategoriaMaiz()
+        verificardatosproductos()
         VerificarTextBox()
     End Sub
     Private Sub llenarcomboCategoriaMaiz()
@@ -1013,7 +1024,48 @@ Public Class Embarque
         TxtCateogiraGrid.Items.Insert(0, newitem)
     End Sub
     Protected Sub TxtCateogiraGrid_SelectedIndexChanged(sender As Object, e As EventArgs)
-        txtEntreg.Text = ""
+
+        ' Obtener el valor ingresado en txtEntreg
+        Dim entregado As Integer = 0
+        ' Construir la consulta SQL dinámica
+        Dim c1 As String = "SELECT peso_neto_resta FROM vista_inventario2 WHERE 1=1 "
+        Dim c2 As String
+        Dim c3 As String
+
+        ' Obtener las selecciones de los DropDownList
+        If DropDownList5.SelectedItem.Text = "Todos" And DropDownList6.SelectedItem.Text <> "Todos" Then
+            c2 = " AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
+        Else
+            c2 = " "
+        End If
+
+        If DropDownList6.SelectedItem.Text = "Todos" And DropDownList5.SelectedItem.Text <> "Todos" Then
+            c2 = " AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
+        Else
+            c2 = " "
+        End If
+
+        If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = " AND categoria_origen = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
+        End If
+
+        ' Agregar condiciones a la consulta SQL
+        Dim query As String = c1 & c2 & c3
+
+        Dim strCombo As String = query
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
+
+        If DtCombo.Rows.Count > 0 AndAlso Not IsDBNull(DtCombo.Rows(0)("peso_neto_resta")) Then
+            pesoTotal = Convert.ToInt32(DtCombo.Rows(0)("peso_neto_resta"))
+            txtEntreg.Text = pesoTotal
+        End If
+
+        'txtEntreg.Text = ""
+        verificardatosproductos()
         VerificarTextBox()
     End Sub
     Protected Sub txtEntreg_TextChanged(sender As Object, e As EventArgs) Handles txtEntreg.TextChanged
@@ -1077,6 +1129,7 @@ Public Class Embarque
             lblEntreg.Text = "*"
         End If
 
+        verificardatosproductos()
         VerificarTextBox()
 
     End Sub
@@ -1180,4 +1233,68 @@ Public Class Embarque
 
         Return DtCombo.Rows.Count
     End Function
+
+    Sub verificardatosproductos()
+        Dim validar As Integer = 0
+
+        If String.IsNullOrEmpty(txtEntreg.Text) Then
+            lblLugarD.Text = "*"
+            validar = 0
+        Else
+            lblLugarD.Text = ""
+            validar += 1
+        End If
+
+        If String.IsNullOrEmpty(txtPrecio.Text) Then
+            lblLugarD.Text = "*"
+            validar = 0
+        Else
+            lblLugarD.Text = ""
+            validar += 1
+        End If
+
+        If String.IsNullOrEmpty(txtObser.Text) Then
+            lblLugarD.Text = "*"
+            validar = 0
+        Else
+            lblLugarD.Text = ""
+            validar += 1
+        End If
+
+
+        If DDLCultivo.SelectedItem.Text = "Frijol" Then
+            If DropDownList5.SelectedItem.Text <> " " Then
+                Label1.Text = ""
+                validar += 1
+
+            Else
+                Label1.Text = "*"
+                validar = 0
+            End If
+        Else
+            If DropDownList6.SelectedItem.Text <> " " Then
+                Label1.Text = ""
+                validar += 1
+
+            Else
+                Label1.Text = "*"
+                validar = 0
+            End If
+        End If
+
+        If TxtCateogiraGrid.SelectedItem.Text <> " " Then
+            Label1.Text = ""
+            validar += 1
+
+        Else
+            Label1.Text = "*"
+            validar = 0
+        End If
+
+        If validar = 5 Then
+            btnAgregar.Visible = True
+        Else
+            btnAgregar.Visible = False
+        End If
+    End Sub
 End Class
