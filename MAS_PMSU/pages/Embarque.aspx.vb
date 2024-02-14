@@ -479,44 +479,6 @@ Public Class Embarque
         verificar_Produc()
         VerificarTextBox()
     End Sub
-    Protected Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
-        Dim connectionString As String = conn
-        Using connection As New MySqlConnection(connectionString)
-            connection.Open()
-            Dim query As String = "UPDATE sag_embarque SET
-                        categoria_origen = @categoria_origen,
-                        variedad = @variedad,
-                        peso_neto = @peso_neto,
-                        precio_uni = @precio_uni,
-                        total = @total,
-                        observaciones = @observaciones
-                    WHERE id = " & txtidminigrid.Text & ""
-
-            Using cmd As New MySqlCommand(query, connection)
-                cmd.Parameters.AddWithValue("@observaciones", txtObser.Text)
-                cmd.Parameters.AddWithValue("@categoria_origen", TxtCateogiraGrid.SelectedItem.Text)
-                If DDLCultivo.SelectedItem.Text = "Frijol" Then
-                    cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
-                End If
-                If DDLCultivo.SelectedItem.Text = "Maiz" Then
-                    cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
-                End If
-                cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtEntreg.Text))
-                cmd.Parameters.AddWithValue("@precio_uni", Convert.ToDecimal(txtPrecio.Text))
-                cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(Convert.ToDecimal(txtEntreg.Text) * Convert.ToDecimal(txtPrecio.Text)))
-
-
-                cmd.ExecuteNonQuery()
-                connection.Close()
-                btnAgregar.Visible = True
-                btnEditar.Visible = False
-            End Using
-        End Using
-        llenaMinigrid()
-        btnRegresar.Visible = False
-        btnRegresarConEmbarque.Visible = True
-        vaciarCamposProductos()
-    End Sub
     Protected Sub vaciarCamposProductos()
         DropDownList5.SelectedIndex = 0
         DropDownList6.SelectedIndex = 0
@@ -898,6 +860,19 @@ Public Class Embarque
         Dim newitem As New ListItem(" ", " ")
         DropDownList6.Items.Insert(0, newitem)
     End Sub
+    Protected Sub eliminarMiniGrid3(id As String)
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM sag_embarque WHERE id = " & id & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+        End Using
+    End Sub
     Protected Sub eliminarMiniGrid2()
         Dim connectionString As String = conn
         Using connection As New MySqlConnection(connectionString)
@@ -963,7 +938,6 @@ Public Class Embarque
 
         If (e.CommandName = "Editar") Then
             btnAgregar.Visible = False
-            btnEditar.Visible = True
             Dim gvrow As GridViewRow = GridProductos.Rows(index)
             txtidminigrid.Text = ""
             txtidminigrid.Text = HttpUtility.HtmlDecode(GridProductos.Rows(index).Cells(0).Text).ToString
@@ -978,6 +952,9 @@ Public Class Embarque
             txtEntreg.Text = dt.Rows(0)("peso_neto").ToString()
             txtPrecio.Text = dt.Rows(0)("precio_uni").ToString()
             txtObser.Text = dt.Rows(0)("observaciones").ToString()
+            verificardatosproductos()
+            eliminarMiniGrid3(txtidminigrid.Text)
+            llenaMinigrid()
         End If
     End Sub
 

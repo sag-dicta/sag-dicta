@@ -536,15 +536,6 @@ Partial Public Class Embarque
     Protected WithEvents btnAgregar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control btnEditar.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnEditar As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control txtID.
     '''</summary>
     '''<remarks>

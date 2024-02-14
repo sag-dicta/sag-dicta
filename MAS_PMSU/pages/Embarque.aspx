@@ -308,7 +308,6 @@
                             <div class="form-group">
                                 <label style="color: #FFFFFF">Agregar</label>
                                 <asp:Button CssClass="btn btn-primary" ID="btnAgregar" runat="server" AutoPostBack="True" Text="+" Font-Bold="True" Visible="false"></asp:Button>
-                                <asp:Button CssClass="btn btn-warning" ID="btnEditar" runat="server" AutoPostBack="True" Text="↺" Font-Bold="True" Visible="false"></asp:Button>
                             </div>
                         </div>
 
