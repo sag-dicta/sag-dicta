@@ -544,6 +544,23 @@ Public Class Embarque
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+
+        If (e.CommandName = "Detalles") Then
+
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+            txtConoNo.Text = ""
+            txtConoNo.Text = HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(1).Text).ToString
+            ModalTitle3.InnerText = "Información del Embarque " & HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(1).Text).ToString
+            Dim cadena As String = "*"
+
+            Me.SqlDataSource3.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque` WHERE no_conocimiento = '" & txtConoNo.Text & "'"
+
+            GridDetalles.DataBind()
+
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal3').modal('show'); });", True)
+
+        End If
+
         If (e.CommandName = "Editar") Then
             llenarcomboConductor()
             btnGuardarLote.Text = "Actualizar"
@@ -1050,7 +1067,7 @@ Public Class Embarque
         Dim entregado As Integer = 0
         If Integer.TryParse(txtEntreg.Text, entregado) Then
             ' Construir la consulta SQL dinámica
-            Dim c1 As String = "SELECT peso_neto_resta FROM vista_inventario WHERE 1=1 "
+            Dim c1 As String = "SELECT peso_neto_resta FROM vista_inventario2 WHERE 1=1 "
             Dim c2 As String
             Dim c3 As String
 

@@ -7,6 +7,10 @@
             display: inline-block; /* Para que el fondo abarque toda la etiqueta */
             padding: 0px; /* Ajusta según sea necesario */
         }
+
+        .modal-dialog-scrollable {
+            width: 800px; /* Tamaño fijo deseado */
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -109,6 +113,9 @@
                                             <asp:BoundField DataField="remitente" HeaderText="REMITENTE" />
                                             <asp:BoundField DataField="conductor" HeaderText="TRANSPORTISTA" />
 
+                                            <asp:ButtonField ButtonType="Button" Text="Detalle" ControlStyle-CssClass="btn btn-primary" HeaderText="DETALLES" CommandName="Detalles">
+                                                <ControlStyle CssClass="btn btn-primary"></ControlStyle>
+                                            </asp:ButtonField>
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
@@ -455,7 +462,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="ModalTitle2">SAG - DICTA</h4>
+                    <h4 class="modal-title" id="ModalTitle1">SAG - DICTA</h4>
                     <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
                 </div>
                 <div class="modal-body">
@@ -484,6 +491,71 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="DeleteModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ModalTitle3" runat="server">Información del Embarque </h4>
+                    <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="Label5" runat="server" Text="Mensaje Predeterminado - Label2" Visible="false"></asp:Label>
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
+                    <asp:GridView ID="GridDetalles" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
+                        GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource3" Font-Size="Small">
+                        <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                        <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                        <EmptyDataTemplate>
+                            ¡No hay productos inscritos!
+                        </EmptyDataTemplate>
+                        <%--Paginador...--%>
+                        <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                        <PagerTemplate>
+                            <div class="row" style="margin-top: 8px;">
+                                <div class="col-lg-1" style="text-align: right;">
+                                    <h5>
+                                        <asp:Label ID="MessageLabel" Text="Ir a la pág." runat="server" /></h5>
+                                </div>
+                                <div class="col-lg-1" style="text-align: left;">
+                                    <asp:DropDownList ID="PageDropDownList" Width="80px" AutoPostBack="true" OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged" runat="server" CssClass="form-control" /></h3>
+                                </div>
+                                <div class="col-lg-10" style="text-align: right;">
+                                    <h3>
+                                        <asp:Label ID="CurrentPageLabel" runat="server" CssClass="label label-warning" /></h3>
+                                </div>
+                            </div>
+                        </PagerTemplate>
+                        <AlternatingRowStyle BackColor="White" />
+                        <Columns>
+
+                            <asp:BoundField DataField="ID">
+                                <HeaderStyle CssClass="hide" />
+                                <ItemStyle CssClass="hide" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="variedad" HeaderText="DESCRIPCION" />
+                            <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORIA" />
+                            <asp:BoundField DataField="unidad" HeaderText="UNIDAD" />
+                            <asp:BoundField DataField="peso_neto" HeaderText="ENTREGADO" />
+                            <asp:BoundField DataField="precio_uni" HeaderText="PRECIO" />
+                            <asp:BoundField DataField="total" HeaderText="TOTAL" />
+                            <asp:BoundField DataField="observaciones" HeaderText="OBSERVACIONES" />
+                        </Columns>
+                        <EditRowStyle BackColor="#7C6F57" />
+                        <RowStyle BackColor="#E3EAEB" />
+                        <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                        <SortedAscendingHeaderStyle BackColor="#246B61" />
+                        <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                        <SortedDescendingHeaderStyle BackColor="#15524A" />
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script type="text/javascript">
         function numericOnly(elementRef) {
             var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
