@@ -8,8 +8,14 @@
             padding: 0px; /* Ajusta según sea necesario */
         }
 
-        .modal-dialog-scrollable {
-            width: 800px; /* Tamaño fijo deseado */
+        .modal-dialog {
+            max-width: 90%; /* Establecer un ancho máximo para la modal */
+            width: auto;
+        }
+
+        .modal-content {
+            width: 100%; /* Ajustar el contenido al ancho máximo de la modal */
+            height: auto; /* Permitir que la altura se ajuste automáticamente */
         }
     </style>
 </asp:Content>
@@ -493,7 +499,7 @@
     </div>
 
     <div class="modal fade" id="DeleteModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="ModalTitle3" runat="server">Información del Embarque </h4>
@@ -502,7 +508,7 @@
                 <div class="modal-body">
                     <asp:Label ID="Label5" runat="server" Text="Mensaje Predeterminado - Label2" Visible="false"></asp:Label>
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
-                    <asp:GridView ID="GridDetalles" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
+                    <asp:GridView ID="GridDetalles" runat="server" CellPadding="4" ForeColor="#333333"
                         GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource3" Font-Size="Small">
                         <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                         <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
