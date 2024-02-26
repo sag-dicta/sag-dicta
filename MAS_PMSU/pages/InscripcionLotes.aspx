@@ -598,7 +598,7 @@
                                     </div>
                                     <br />
                                     <div class="mb-3">
-                                        <label for="FileUploadSemiRegi">Semilla Registrada:</label>
+                                        <label for="FileUploadSemiRegi">Registro De Lote:</label>
                                         <asp:Label ID="lblSemiRegi" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
                                         <asp:FileUpload ID="FileUploadSemiRegi" runat="server" class="form-control" accept=".png,.jpg,.jpeg" />
                                     </div>

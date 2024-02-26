@@ -95,7 +95,7 @@
                                             <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="CERTIFICADO DE ORIGEN DE SEMILLA" CommandName="PagoTGR">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="SEMILLA REGISTRADA" CommandName="SemiRegi">
+                                            <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="REGISTRO DE LOTE" CommandName="SemiRegi">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>

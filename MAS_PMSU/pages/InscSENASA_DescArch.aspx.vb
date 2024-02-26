@@ -342,13 +342,13 @@ Public Class InscSENASA_DescArch
         Dim query As String = ""
 
         query = "SELECT * FROM `bcs_inscripcion_senasa` where Estado = '1' ORDER BY Productor"
-            'If (TxtDepto.SelectedValue = " Todos") Then
-            '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Estado = '1' ORDER BY Departamento,Productor "
-            'Else
-            '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor "
-            'End If
+        'If (TxtDepto.SelectedValue = " Todos") Then
+        '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Estado = '1' ORDER BY Departamento,Productor "
+        'Else
+        '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor "
+        'End If
 
-            Using con As New MySqlConnection(conn)
+        Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
                 Using sda As New MySqlDataAdapter()
                     cmd.Connection = con
