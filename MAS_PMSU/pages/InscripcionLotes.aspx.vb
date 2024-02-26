@@ -58,12 +58,14 @@ Public Class InscripcionLotes
                         fecha_aprox_siembra = @fecha_aprox_siembra,
                         fecha_aprox_cosecha = @fecha_aprox_cosecha,
                         produccion_est_hectareas = @produccion_est_hectareas,
-                        destino = @destino
+                        destino = @destino,
+                        caducidad_lote = @caducidad_lote
                     WHERE id = " & txtID.Text & ""
 
                     Dim fechaConvertida2 As DateTime
                     Dim fechaConvertida3 As DateTime
                     Dim fechaConvertida4 As DateTime
+                    Dim fechaCadu As DateTime
 
                     Using cmd As New MySqlCommand(query, connection)
 
@@ -102,6 +104,9 @@ Public Class InscripcionLotes
                         End If
                         If DateTime.TryParse(TxtCosecha.Text, fechaConvertida4) Then
                             cmd.Parameters.AddWithValue("@fecha_aprox_cosecha", fechaConvertida4.ToString("yyyy-MM-dd")) ' Aquí se formatea correctamente como yyyy-MM-dd
+                        End If
+                        If DateTime.TryParse(txtFechaCad.Text, fechaCadu) Then
+                            cmd.Parameters.AddWithValue("@caducidad_lote", fechaCadu.ToString("yyyy-MM-dd"))
                         End If
                         cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
                         cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
@@ -145,7 +150,8 @@ Public Class InscripcionLotes
                     fecha_aprox_siembra,
                     fecha_aprox_cosecha,
                     produccion_est_hectareas,
-                    destino
+                    destino,
+                    caducidad_lote
                 ) VALUES (
                     @id2,
                     @estado,
@@ -165,12 +171,14 @@ Public Class InscripcionLotes
                     @fecha_aprox_siembra,
                     @fecha_aprox_cosecha,
                     @produccion_est_hectareas,
-                    @destino
+                    @destino,
+                    @caducidad_lote
                 );
                 "
                     Dim fechaConvertida2 As DateTime
                     Dim fechaConvertida3 As DateTime
                     Dim fechaConvertida4 As DateTime
+                    Dim fechaCadu As DateTime
 
                     Using cmd As New MySqlCommand(query, connection)
                         cmd.Parameters.AddWithValue("@id2", TextIdMulti2.Text)
@@ -209,6 +217,9 @@ Public Class InscripcionLotes
                         End If
                         If DateTime.TryParse(TxtCosecha.Text, fechaConvertida4) Then
                             cmd.Parameters.AddWithValue("@fecha_aprox_cosecha", fechaConvertida4.ToString("yyyy-MM-dd"))
+                        End If
+                        If DateTime.TryParse(txtFechaCad.Text, fechaCadu) Then
+                            cmd.Parameters.AddWithValue("@caducidad_lote", fechaCadu.ToString("yyyy-MM-dd"))
                         End If
                         cmd.Parameters.AddWithValue("@produccion_est_hectareas", Convert.ToDouble(TxtProHectareas.Text))
                         cmd.Parameters.AddWithValue("@destino", DropDownList4.SelectedItem.Text)
@@ -852,7 +863,7 @@ Public Class InscripcionLotes
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "id_lote, nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino, categoria_origen"
+            Dim cadena As String = "id_lote, nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino, categoria_origen, caducidad_lote"
             Dim Str As String = "SELECT " & cadena & " FROM `vista_multi_lote` WHERE  ID_lote='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
@@ -904,6 +915,7 @@ Public Class InscripcionLotes
             SeleccionarItemEnDropDownList(categoria_origen_ddl, If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString()))
             TextBox3.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
             TextBox4.Text = If(dt.Rows(0)("fecha_analisis") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_analisis"), DateTime).ToString("yyyy-MM-dd"))
+            txtFechaCad.Text = If(dt.Rows(0)("caducidad_lote") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("caducidad_lote"), DateTime).ToString("yyyy-MM-dd"))
             TextBox6.Text = If(dt.Rows(0)("ano_produ") Is DBNull.Value, String.Empty, dt.Rows(0)("ano_produ").ToString())
 
 
