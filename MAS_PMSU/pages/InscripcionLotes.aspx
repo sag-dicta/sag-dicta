@@ -321,11 +321,9 @@
 
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                     <div class="form-group">
-
                                         <label>Productor</label><asp:Label ID="Label22" class="label label-warning" runat="server" Text=""></asp:Label>
-
                                         <asp:TextBox CssClass="form-control" ID="txtprodsem" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
                                     </div>
                                 </div>
@@ -397,7 +395,13 @@
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <label>Fecha de Analisis</label><asp:Label ID="Label9" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:TextBox CssClass="form-control" ID="TextBox4" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="TextBox4" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="TextBox4_TextChanged"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Fecha de Caducidad:</label><asp:Label ID="lblFechaCad" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox CssClass="form-control" ID="txtFechaCad" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-lg-3">

@@ -815,6 +815,24 @@ Partial Public Class InscripcionLotes
     Protected WithEvents TextBox4 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control lblFechaCad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblFechaCad As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtFechaCad.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFechaCad As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control Label10.
     '''</summary>
     '''<remarks>

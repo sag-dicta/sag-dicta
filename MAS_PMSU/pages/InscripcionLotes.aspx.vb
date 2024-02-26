@@ -1228,6 +1228,19 @@ Public Class InscripcionLotes
         Response.Redirect(String.Format("~/pages/InscripcionLotes.aspx"))
     End Sub
 
+    Protected Sub TextBox4_TextChanged(sender As Object, e As EventArgs)
+        ' Verificar si TextBox4 tiene una fecha válida
+        Dim fechaAnalisis As Date
+        If Date.TryParse(TextBox4.Text, fechaAnalisis) Then
+            ' Calcular la fecha 6 meses después
+            Dim fechaCaducidad As Date = fechaAnalisis.AddMonths(6)
+            ' Asignar la fecha calculada a txtFechaCad
+            txtFechaCad.Text = fechaCaducidad.ToString("yyyy-MM-dd")
+        Else
+            ' Manejar el caso donde TextBox4 no contiene una fecha válida
+        End If
+    End Sub
+
     Private Sub exportar()
 
         Dim query As String = ""
