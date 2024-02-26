@@ -950,6 +950,56 @@ Public Class agregarMultiplicador
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
         End If
+
+        If (e.CommandName = "Descargar") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            Dim Str As String = "SELECT croquis FROM `sag_registro_multiplicador` WHERE  ID=" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & ""
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            Dim todosNulos As Boolean = True
+
+            For Each row As DataRow In dt.Rows
+                For Each column As DataColumn In dt.Columns
+                    If Not IsDBNull(row(column)) Then
+                        todosNulos = False
+                        Exit For
+                    End If
+                Next
+
+                If Not todosNulos Then
+                    Using connection As New MySqlConnection(conn)
+                        connection.Open()
+                        Using command As New MySqlCommand(Str, connection)
+                            Using reader As MySqlDataReader = command.ExecuteReader()
+                                If reader.Read() Then
+                                    Dim imageData As Byte() = DirectCast(reader("croquis"), Byte())
+                                    Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
+                                    Dim identidad As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                                    ' Configura la respuesta HTTP para descargar la imagen
+                                    HttpContext.Current.Response.Clear()
+                                    HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=Croquis_" & nombre & "_" & identidad & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                                    HttpContext.Current.Response.BinaryWrite(imageData)
+                                    HttpContext.Current.Response.Flush()
+                                    HttpContext.Current.Response.End()
+                                End If
+                            End Using
+                        End Using
+                    End Using
+
+                    txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                Else
+                    BBorrarsi.Visible = False
+                    BConfirm.Visible = True
+                    BBorrarno.Visible = False
+                    Label1.Text = "¡No hay archivo para descarga!"
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                End If
+            Next
+        End If
     End Sub
 
     Protected Sub GridDatos_DataBound(sender As Object, e As EventArgs) Handles GridDatos.DataBound

@@ -103,6 +103,9 @@
                                             <asp:BoundField DataField="Departamento" HeaderText="DEPARTAMENTO" />
                                             <asp:BoundField DataField="municipio" HeaderText="MUNICIPIO" />
 
+                                            <asp:ButtonField ButtonType="Button" Text="Croquis" ControlStyle-CssClass="btn btn-warning" HeaderText="DESCARGAR" CommandName="Descargar">
+                                                <ControlStyle CssClass="btn btn-dark"></ControlStyle>
+                                            </asp:ButtonField>
                                             <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
