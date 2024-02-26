@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="visita_campo" targetNamespace="http://tempuri.org/visita_campo.xsd" xmlns:mstns="http://tempuri.org/visita_campo.xsd" xmlns="http://tempuri.org/visita_campo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="odk_bd_exportadoraConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="odk_bd_exportadoraConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.odk_bd_exportadoraConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sag_registro_campo_sag_dictaTableAdapter" GeneratorDataComponentClassName="sag_registro_campo_sag_dictaTableAdapter" Name="sag_registro_campo_sag_dicta" UserDataComponentName="sag_registro_campo_sag_dictaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="odk_bd_exportadoraConnectionString1 (Web.config)" DbObjectName="odk_bd_exportadora.sag_registro_campo_sag_dicta" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `_URI`, `FECHA_ENVIO`, `2. Fecha de inscripcion`, `1. Escanee su codigo de mulplicador`, `nombre_multiplicador`, `Nombre del resposable`, `3. Estacion experimental`, `telefono_multiplicador`, `4. Organizacion`, `nombre_finca`, `departamento`, `municipio`, `aldea`, `caserio`, `Latitud`, `Longitud`, `Altura`, `Precision`, `5. Seleccionar cultivo`, `6. Seleccionar variedad`, `6.1 Detallar otra variedad`, `7. Hibrido`, `8. Categoria`, `9. No Lote`, `10. Germinacion de laboratorio(%)`, `11 Fecha De Análisis`, `13 Distancia/Surcos (mts)`, `14 Distancia Entre Plantas (mts)`, `15 Densidad Poblacional De Plantas/MZ`, `16.1 Al terreno`, `16.2 Durante la siembra`, `16.3 Etapa vegetativa`, `16.4 Desespigue`, `16.5 Edad del cultivo (Meses)`, `17.1 De siembra`, `17.2 De cosecha`, `17.3 1° Fertilizacion`, `17.4 2° Fertilizacion`, `17.5 En otra fecha realizo otra practica agricola`, `17.6 Detalle que realizo en esta fecha`, `17.7  Fecha que realizo esta práctica`, `18. Total aplicaciones de insecticidas`, `19. Total apliaciones de fungicida`, `20. Total aplicaciones de herbicida`, `21. Observaciones Realizadas`, `22. Indicaciones Brindadas`, `23. Responsables De Visita`, `24. Responsable Del Cultivo`, `25. Técnico De Programa Semilla` FROM `odk_bd_exportadora`.`sag_registro_campo_sag_dicta`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="_URI" DataSetColumn="_URI" />
+              <Mapping SourceColumn="FECHA_ENVIO" DataSetColumn="FECHA_ENVIO" />
+              <Mapping SourceColumn="2. Fecha de inscripcion" DataSetColumn="2_ Fecha de inscripcion" />
+              <Mapping SourceColumn="1. Escanee su codigo de mulplicador" DataSetColumn="1_ Escanee su codigo de mulplicador" />
+              <Mapping SourceColumn="nombre_multiplicador" DataSetColumn="nombre_multiplicador" />
+              <Mapping SourceColumn="Nombre del resposable" DataSetColumn="Nombre del resposable" />
+              <Mapping SourceColumn="3. Estacion experimental" DataSetColumn="3_ Estacion experimental" />
+              <Mapping SourceColumn="telefono_multiplicador" DataSetColumn="telefono_multiplicador" />
+              <Mapping SourceColumn="4. Organizacion" DataSetColumn="4_ Organizacion" />
+              <Mapping SourceColumn="nombre_finca" DataSetColumn="nombre_finca" />
+              <Mapping SourceColumn="departamento" DataSetColumn="departamento" />
+              <Mapping SourceColumn="municipio" DataSetColumn="municipio" />
+              <Mapping SourceColumn="aldea" DataSetColumn="aldea" />
+              <Mapping SourceColumn="caserio" DataSetColumn="caserio" />
+              <Mapping SourceColumn="Latitud" DataSetColumn="Latitud" />
+              <Mapping SourceColumn="Longitud" DataSetColumn="Longitud" />
+              <Mapping SourceColumn="Altura" DataSetColumn="Altura" />
+              <Mapping SourceColumn="Precision" DataSetColumn="Precision" />
+              <Mapping SourceColumn="5. Seleccionar cultivo" DataSetColumn="5_ Seleccionar cultivo" />
+              <Mapping SourceColumn="6. Seleccionar variedad" DataSetColumn="6_ Seleccionar variedad" />
+              <Mapping SourceColumn="6.1 Detallar otra variedad" DataSetColumn="6_1 Detallar otra variedad" />
+              <Mapping SourceColumn="7. Hibrido" DataSetColumn="7_ Hibrido" />
+              <Mapping SourceColumn="8. Categoria" DataSetColumn="8_ Categoria" />
+              <Mapping SourceColumn="9. No Lote" DataSetColumn="9_ No Lote" />
+              <Mapping SourceColumn="10. Germinacion de laboratorio(%)" DataSetColumn="10_ Germinacion de laboratorio(%)" />
+              <Mapping SourceColumn="11 Fecha De AnÃ¡lisis" DataSetColumn="11 Fecha De AnÃ¡lisis" />
+              <Mapping SourceColumn="13 Distancia/Surcos (mts)" DataSetColumn="13 Distancia/Surcos (mts)" />
+              <Mapping SourceColumn="14 Distancia Entre Plantas (mts)" DataSetColumn="14 Distancia Entre Plantas (mts)" />
+              <Mapping SourceColumn="15 Densidad Poblacional De Plantas/MZ" DataSetColumn="15 Densidad Poblacional De Plantas/MZ" />
+              <Mapping SourceColumn="16.1 Al terreno" DataSetColumn="16_1 Al terreno" />
+              <Mapping SourceColumn="16.2 Durante la siembra" DataSetColumn="16_2 Durante la siembra" />
+              <Mapping SourceColumn="16.3 Etapa vegetativa" DataSetColumn="16_3 Etapa vegetativa" />
+              <Mapping SourceColumn="16.4 Desespigue" DataSetColumn="16_4 Desespigue" />
+              <Mapping SourceColumn="16.5 Edad del cultivo (Meses)" DataSetColumn="16_5 Edad del cultivo (Meses)" />
+              <Mapping SourceColumn="17.1 De siembra" DataSetColumn="17_1 De siembra" />
+              <Mapping SourceColumn="17.2 De cosecha" DataSetColumn="17_2 De cosecha" />
+              <Mapping SourceColumn="17.3 1Â° Fertilizacion" DataSetColumn="17_3 1Â° Fertilizacion" />
+              <Mapping SourceColumn="17.4 2Â° Fertilizacion" DataSetColumn="17_4 2Â° Fertilizacion" />
+              <Mapping SourceColumn="17.5 En otra fecha realizo otra practica agricola" DataSetColumn="17_5 En otra fecha realizo otra practica agricola" />
+              <Mapping SourceColumn="17.6 Detalle que realizo en esta fecha" DataSetColumn="17_6 Detalle que realizo en esta fecha" />
+              <Mapping SourceColumn="17.7  Fecha que realizo esta prÃ¡ctica" DataSetColumn="17_7  Fecha que realizo esta prÃ¡ctica" />
+              <Mapping SourceColumn="18. Total aplicaciones de insecticidas" DataSetColumn="18_ Total aplicaciones de insecticidas" />
+              <Mapping SourceColumn="19. Total apliaciones de fungicida" DataSetColumn="19_ Total apliaciones de fungicida" />
+              <Mapping SourceColumn="20. Total aplicaciones de herbicida" DataSetColumn="20_ Total aplicaciones de herbicida" />
+              <Mapping SourceColumn="21. Observaciones Realizadas" DataSetColumn="21_ Observaciones Realizadas" />
+              <Mapping SourceColumn="22. Indicaciones Brindadas" DataSetColumn="22_ Indicaciones Brindadas" />
+              <Mapping SourceColumn="23. Responsables De Visita" DataSetColumn="23_ Responsables De Visita" />
+              <Mapping SourceColumn="24. Responsable Del Cultivo" DataSetColumn="24_ Responsable Del Cultivo" />
+              <Mapping SourceColumn="25. TÃ©cnico De Programa Semilla" DataSetColumn="25_ TÃ©cnico De Programa Semilla" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sag_registro_campo_sag_dicta_fungTableAdapter" GeneratorDataComponentClassName="sag_registro_campo_sag_dicta_fungTableAdapter" Name="sag_registro_campo_sag_dicta_fung" UserDataComponentName="sag_registro_campo_sag_dicta_fungTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="odk_bd_exportadoraConnectionString1 (Web.config)" DbObjectName="odk_bd_exportadora.sag_registro_campo_sag_dicta_fung" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `_URI2`, `FECHA_ENVIO`, `2. Fecha de inscripcion`, `1. Escanee su codigo de mulplicador`, `nombre_multiplicador`, `Nombre del resposable`, `3. Estacion experimental`, `telefono_multiplicador`, `4. Organizacion`, `nombre_finca`, `departamento`, `municipio`, `aldea`, `caserio`, `Latitud`, `Longitud`, `Altura`, `Precision`, `5. Seleccionar cultivo`, `6. Seleccionar variedad`, `19.1 Nombre producto aplicado`, `19.2 Dosis`, `19.3 Cantidad en Litros aplicado`, `19.4 Fecha de aplicacion de insecticida` FROM `odk_bd_exportadora`.`sag_registro_campo_sag_dicta_fung`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="_URI2" DataSetColumn="_URI2" />
+              <Mapping SourceColumn="FECHA_ENVIO" DataSetColumn="FECHA_ENVIO" />
+              <Mapping SourceColumn="2. Fecha de inscripcion" DataSetColumn="2_ Fecha de inscripcion" />
+              <Mapping SourceColumn="1. Escanee su codigo de mulplicador" DataSetColumn="1_ Escanee su codigo de mulplicador" />
+              <Mapping SourceColumn="nombre_multiplicador" DataSetColumn="nombre_multiplicador" />
+              <Mapping SourceColumn="Nombre del resposable" DataSetColumn="Nombre del resposable" />
+              <Mapping SourceColumn="3. Estacion experimental" DataSetColumn="3_ Estacion experimental" />
+              <Mapping SourceColumn="telefono_multiplicador" DataSetColumn="telefono_multiplicador" />
+              <Mapping SourceColumn="4. Organizacion" DataSetColumn="4_ Organizacion" />
+              <Mapping SourceColumn="nombre_finca" DataSetColumn="nombre_finca" />
+              <Mapping SourceColumn="departamento" DataSetColumn="departamento" />
+              <Mapping SourceColumn="municipio" DataSetColumn="municipio" />
+              <Mapping SourceColumn="aldea" DataSetColumn="aldea" />
+              <Mapping SourceColumn="caserio" DataSetColumn="caserio" />
+              <Mapping SourceColumn="Latitud" DataSetColumn="Latitud" />
+              <Mapping SourceColumn="Longitud" DataSetColumn="Longitud" />
+              <Mapping SourceColumn="Altura" DataSetColumn="Altura" />
+              <Mapping SourceColumn="Precision" DataSetColumn="Precision" />
+              <Mapping SourceColumn="5. Seleccionar cultivo" DataSetColumn="5_ Seleccionar cultivo" />
+              <Mapping SourceColumn="6. Seleccionar variedad" DataSetColumn="6_ Seleccionar variedad" />
+              <Mapping SourceColumn="19.1 Nombre producto aplicado" DataSetColumn="19_1 Nombre producto aplicado" />
+              <Mapping SourceColumn="19.2 Dosis" DataSetColumn="19_2 Dosis" />
+              <Mapping SourceColumn="19.3 Cantidad en Litros aplicado" DataSetColumn="19_3 Cantidad en Litros aplicado" />
+              <Mapping SourceColumn="19.4 Fecha de aplicacion de insecticida" DataSetColumn="19_4 Fecha de aplicacion de insecticida" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sag_registro_campo_sag_dicta_herbTableAdapter" GeneratorDataComponentClassName="sag_registro_campo_sag_dicta_herbTableAdapter" Name="sag_registro_campo_sag_dicta_herb" UserDataComponentName="sag_registro_campo_sag_dicta_herbTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="odk_bd_exportadoraConnectionString1 (Web.config)" DbObjectName="odk_bd_exportadora.sag_registro_campo_sag_dicta_herb" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `id`, `_URI2`, `FECHA_ENVIO`, `2. Fecha de inscripcion`, `1. Escanee su codigo de mulplicador`, `nombre_multiplicador`, `Nombre del resposable`, `3. Estacion experimental`, `telefono_multiplicador`, `4. Organizacion`, `nombre_finca`, `departamento`, `municipio`, `aldea`, `caserio`, `Latitud`, `Longitud`, `Altura`, `Precision`, `5. Seleccionar cultivo`, `6. Seleccionar variedad`, `20.1 Nombre producto aplicado`, `20.2 Dosis`, `20.3 Cantidad en litros aplicado`, `20.4 Fecha de aplicacion de herbicida` FROM `odk_bd_exportadora`.`sag_registro_campo_sag_dicta_herb`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="_URI2" DataSetColumn="_URI2" />
+              <Mapping SourceColumn="FECHA_ENVIO" DataSetColumn="FECHA_ENVIO" />
+              <Mapping SourceColumn="2. Fecha de inscripcion" DataSetColumn="2_ Fecha de inscripcion" />
+              <Mapping SourceColumn="1. Escanee su codigo de mulplicador" DataSetColumn="1_ Escanee su codigo de mulplicador" />
+              <Mapping SourceColumn="nombre_multiplicador" DataSetColumn="nombre_multiplicador" />
+              <Mapping SourceColumn="Nombre del resposable" DataSetColumn="Nombre del resposable" />
+              <Mapping SourceColumn="3. Estacion experimental" DataSetColumn="3_ Estacion experimental" />
+              <Mapping SourceColumn="telefono_multiplicador" DataSetColumn="telefono_multiplicador" />
+              <Mapping SourceColumn="4. Organizacion" DataSetColumn="4_ Organizacion" />
+              <Mapping SourceColumn="nombre_finca" DataSetColumn="nombre_finca" />
+              <Mapping SourceColumn="departamento" DataSetColumn="departamento" />
+              <Mapping SourceColumn="municipio" DataSetColumn="municipio" />
+              <Mapping SourceColumn="aldea" DataSetColumn="aldea" />
+              <Mapping SourceColumn="caserio" DataSetColumn="caserio" />
+              <Mapping SourceColumn="Latitud" DataSetColumn="Latitud" />
+              <Mapping SourceColumn="Longitud" DataSetColumn="Longitud" />
+              <Mapping SourceColumn="Altura" DataSetColumn="Altura" />
+              <Mapping SourceColumn="Precision" DataSetColumn="Precision" />
+              <Mapping SourceColumn="5. Seleccionar cultivo" DataSetColumn="5_ Seleccionar cultivo" />
+              <Mapping SourceColumn="6. Seleccionar variedad" DataSetColumn="6_ Seleccionar variedad" />
+              <Mapping SourceColumn="20.1 Nombre producto aplicado" DataSetColumn="20_1 Nombre producto aplicado" />
+              <Mapping SourceColumn="20.2 Dosis" DataSetColumn="20_2 Dosis" />
+              <Mapping SourceColumn="20.3 Cantidad en litros aplicado" DataSetColumn="20_3 Cantidad en litros aplicado" />
+              <Mapping SourceColumn="20.4 Fecha de aplicacion de herbicida" DataSetColumn="20_4 Fecha de aplicacion de herbicida" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sag_registro_campo_sag_dicta_insecTableAdapter" GeneratorDataComponentClassName="sag_registro_campo_sag_dicta_insecTableAdapter" Name="sag_registro_campo_sag_dicta_insec" UserDataComponentName="sag_registro_campo_sag_dicta_insecTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="odk_bd_exportadoraConnectionString1 (Web.config)" DbObjectName="odk_bd_exportadora.sag_registro_campo_sag_dicta_insec" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `_URI2`, `FECHA_ENVIO`, `2. Fecha de inscripcion`, `1. Escanee su codigo de mulplicador`, `nombre_multiplicador`, `Nombre del resposable`, `3. Estacion experimental`, `telefono_multiplicador`, `4. Organizacion`, `nombre_finca`, `departamento`, `municipio`, `aldea`, `caserio`, `Latitud`, `Longitud`, `Altura`, `Precision`, `5. Seleccionar cultivo`, `6. Seleccionar variedad`, `18.1 Nombre producto aplicado`, `18.2 Dosis`, `18.3 Cantidad en Litros aplicado`, `18.4 Fecha de aplicacion de insecticida` FROM `odk_bd_exportadora`.`sag_registro_campo_sag_dicta_insec`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="_URI2" DataSetColumn="_URI2" />
+              <Mapping SourceColumn="FECHA_ENVIO" DataSetColumn="FECHA_ENVIO" />
+              <Mapping SourceColumn="2. Fecha de inscripcion" DataSetColumn="2_ Fecha de inscripcion" />
+              <Mapping SourceColumn="1. Escanee su codigo de mulplicador" DataSetColumn="1_ Escanee su codigo de mulplicador" />
+              <Mapping SourceColumn="nombre_multiplicador" DataSetColumn="nombre_multiplicador" />
+              <Mapping SourceColumn="Nombre del resposable" DataSetColumn="Nombre del resposable" />
+              <Mapping SourceColumn="3. Estacion experimental" DataSetColumn="3_ Estacion experimental" />
+              <Mapping SourceColumn="telefono_multiplicador" DataSetColumn="telefono_multiplicador" />
+              <Mapping SourceColumn="4. Organizacion" DataSetColumn="4_ Organizacion" />
+              <Mapping SourceColumn="nombre_finca" DataSetColumn="nombre_finca" />
+              <Mapping SourceColumn="departamento" DataSetColumn="departamento" />
+              <Mapping SourceColumn="municipio" DataSetColumn="municipio" />
+              <Mapping SourceColumn="aldea" DataSetColumn="aldea" />
+              <Mapping SourceColumn="caserio" DataSetColumn="caserio" />
+              <Mapping SourceColumn="Latitud" DataSetColumn="Latitud" />
+              <Mapping SourceColumn="Longitud" DataSetColumn="Longitud" />
+              <Mapping SourceColumn="Altura" DataSetColumn="Altura" />
+              <Mapping SourceColumn="Precision" DataSetColumn="Precision" />
+              <Mapping SourceColumn="5. Seleccionar cultivo" DataSetColumn="5_ Seleccionar cultivo" />
+              <Mapping SourceColumn="6. Seleccionar variedad" DataSetColumn="6_ Seleccionar variedad" />
+              <Mapping SourceColumn="18.1 Nombre producto aplicado" DataSetColumn="18_1 Nombre producto aplicado" />
+              <Mapping SourceColumn="18.2 Dosis" DataSetColumn="18_2 Dosis" />
+              <Mapping SourceColumn="18.3 Cantidad en Litros aplicado" DataSetColumn="18_3 Cantidad en Litros aplicado" />
+              <Mapping SourceColumn="18.4 Fecha de aplicacion de insecticida" DataSetColumn="18_4 Fecha de aplicacion de insecticida" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="visita_campo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="visita_campo" msprop:Generator_UserDSName="visita_campo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="sag_registro_campo_sag_dicta" msprop:Generator_TableClassName="sag_registro_campo_sag_dictaDataTable" msprop:Generator_TableVarName="tablesag_registro_campo_sag_dicta" msprop:Generator_TablePropName="sag_registro_campo_sag_dicta" msprop:Generator_RowDeletingName="sag_registro_campo_sag_dictaRowDeleting" msprop:Generator_RowChangingName="sag_registro_campo_sag_dictaRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_campo_sag_dictaRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_campo_sag_dictaRowDeleted" msprop:Generator_UserTableName="sag_registro_campo_sag_dicta" msprop:Generator_RowChangedName="sag_registro_campo_sag_dictaRowChanged" msprop:Generator_RowEvArgName="sag_registro_campo_sag_dictaRowChangeEvent" msprop:Generator_RowClassName="sag_registro_campo_sag_dictaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="_URI" msprop:Generator_ColumnVarNameInTable="column_URI" msprop:Generator_ColumnPropNameInRow="_URI" msprop:Generator_ColumnPropNameInTable="_URIColumn" msprop:Generator_UserColumnName="_URI">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FECHA_ENVIO" msprop:Generator_ColumnVarNameInTable="columnFECHA_ENVIO" msprop:Generator_ColumnPropNameInRow="FECHA_ENVIO" msprop:Generator_ColumnPropNameInTable="FECHA_ENVIOColumn" msprop:Generator_UserColumnName="FECHA_ENVIO" type="xs:dateTime" />
+              <xs:element name="_x0032___x0020_Fecha_x0020_de_x0020_inscripcion" msprop:Generator_ColumnVarNameInTable="column2__Fecha_de_inscripcion" msprop:Generator_ColumnPropNameInRow="_2__Fecha_de_inscripcion" msprop:Generator_ColumnPropNameInTable="_2__Fecha_de_inscripcionColumn" msprop:Generator_UserColumnName="2_ Fecha de inscripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031___x0020_Escanee_x0020_su_x0020_codigo_x0020_de_x0020_mulplicador" msprop:Generator_ColumnVarNameInTable="column1__Escanee_su_codigo_de_mulplicador" msprop:Generator_ColumnPropNameInRow="_1__Escanee_su_codigo_de_mulplicador" msprop:Generator_ColumnPropNameInTable="_1__Escanee_su_codigo_de_mulplicadorColumn" msprop:Generator_UserColumnName="1_ Escanee su codigo de mulplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_multiplicador" msprop:Generator_ColumnVarNameInTable="columnnombre_multiplicador" msprop:Generator_ColumnPropNameInRow="nombre_multiplicador" msprop:Generator_ColumnPropNameInTable="nombre_multiplicadorColumn" msprop:Generator_UserColumnName="nombre_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_x0020_del_x0020_resposable" msprop:Generator_ColumnVarNameInTable="columnNombre_del_resposable" msprop:Generator_ColumnPropNameInRow="Nombre_del_resposable" msprop:Generator_ColumnPropNameInTable="Nombre_del_resposableColumn" msprop:Generator_UserColumnName="Nombre del resposable" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0033___x0020_Estacion_x0020_experimental" msprop:Generator_ColumnVarNameInTable="column3__Estacion_experimental" msprop:Generator_ColumnPropNameInRow="_3__Estacion_experimental" msprop:Generator_ColumnPropNameInTable="_3__Estacion_experimentalColumn" msprop:Generator_UserColumnName="3_ Estacion experimental" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefono_multiplicador" msprop:Generator_ColumnVarNameInTable="columntelefono_multiplicador" msprop:Generator_ColumnPropNameInRow="telefono_multiplicador" msprop:Generator_ColumnPropNameInTable="telefono_multiplicadorColumn" msprop:Generator_UserColumnName="telefono_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0034___x0020_Organizacion" msprop:Generator_ColumnVarNameInTable="column4__Organizacion" msprop:Generator_ColumnPropNameInRow="_4__Organizacion" msprop:Generator_ColumnPropNameInTable="_4__OrganizacionColumn" msprop:Generator_UserColumnName="4_ Organizacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_finca" msprop:Generator_ColumnVarNameInTable="columnnombre_finca" msprop:Generator_ColumnPropNameInRow="nombre_finca" msprop:Generator_ColumnPropNameInTable="nombre_fincaColumn" msprop:Generator_UserColumnName="nombre_finca" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="departamento" msprop:Generator_ColumnVarNameInTable="columndepartamento" msprop:Generator_ColumnPropNameInRow="departamento" msprop:Generator_ColumnPropNameInTable="departamentoColumn" msprop:Generator_UserColumnName="departamento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="municipio" msprop:Generator_ColumnVarNameInTable="columnmunicipio" msprop:Generator_ColumnPropNameInRow="municipio" msprop:Generator_ColumnPropNameInTable="municipioColumn" msprop:Generator_UserColumnName="municipio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aldea" msprop:Generator_ColumnVarNameInTable="columnaldea" msprop:Generator_ColumnPropNameInRow="aldea" msprop:Generator_ColumnPropNameInTable="aldeaColumn" msprop:Generator_UserColumnName="aldea" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="caserio" msprop:Generator_ColumnVarNameInTable="columncaserio" msprop:Generator_ColumnPropNameInRow="caserio" msprop:Generator_ColumnPropNameInTable="caserioColumn" msprop:Generator_UserColumnName="caserio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Latitud" msprop:Generator_ColumnVarNameInTable="columnLatitud" msprop:Generator_ColumnPropNameInRow="Latitud" msprop:Generator_ColumnPropNameInTable="LatitudColumn" msprop:Generator_UserColumnName="Latitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Longitud" msprop:Generator_ColumnVarNameInTable="columnLongitud" msprop:Generator_ColumnPropNameInRow="Longitud" msprop:Generator_ColumnPropNameInTable="LongitudColumn" msprop:Generator_UserColumnName="Longitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Altura" msprop:Generator_ColumnVarNameInTable="columnAltura" msprop:Generator_ColumnPropNameInRow="Altura" msprop:Generator_ColumnPropNameInTable="AlturaColumn" msprop:Generator_UserColumnName="Altura" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Precision" msprop:Generator_ColumnVarNameInTable="columnPrecision" msprop:Generator_ColumnPropNameInRow="Precision" msprop:Generator_ColumnPropNameInTable="PrecisionColumn" msprop:Generator_UserColumnName="Precision" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0035___x0020_Seleccionar_x0020_cultivo" msprop:Generator_ColumnVarNameInTable="column5__Seleccionar_cultivo" msprop:Generator_ColumnPropNameInRow="_5__Seleccionar_cultivo" msprop:Generator_ColumnPropNameInTable="_5__Seleccionar_cultivoColumn" msprop:Generator_UserColumnName="5_ Seleccionar cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0036___x0020_Seleccionar_x0020_variedad" msprop:Generator_ColumnVarNameInTable="column6__Seleccionar_variedad" msprop:Generator_ColumnPropNameInRow="_6__Seleccionar_variedad" msprop:Generator_ColumnPropNameInTable="_6__Seleccionar_variedadColumn" msprop:Generator_UserColumnName="6_ Seleccionar variedad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0036__1_x0020_Detallar_x0020_otra_x0020_variedad" msprop:Generator_ColumnVarNameInTable="column6_1_Detallar_otra_variedad" msprop:Generator_ColumnPropNameInRow="_6_1_Detallar_otra_variedad" msprop:Generator_ColumnPropNameInTable="_6_1_Detallar_otra_variedadColumn" msprop:Generator_UserColumnName="6_1 Detallar otra variedad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0037___x0020_Hibrido" msprop:Generator_ColumnVarNameInTable="column7__Hibrido" msprop:Generator_ColumnPropNameInRow="_7__Hibrido" msprop:Generator_ColumnPropNameInTable="_7__HibridoColumn" msprop:Generator_UserColumnName="7_ Hibrido" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0038___x0020_Categoria" msprop:Generator_ColumnVarNameInTable="column8__Categoria" msprop:Generator_ColumnPropNameInRow="_8__Categoria" msprop:Generator_ColumnPropNameInTable="_8__CategoriaColumn" msprop:Generator_UserColumnName="8_ Categoria" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0039___x0020_No_x0020_Lote" msprop:Generator_ColumnVarNameInTable="column9__No_Lote" msprop:Generator_ColumnPropNameInRow="_9__No_Lote" msprop:Generator_ColumnPropNameInTable="_9__No_LoteColumn" msprop:Generator_UserColumnName="9_ No Lote" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_0__x0020_Germinacion_x0020_de_x0020_laboratorio_x0028__x0025__x0029_" msprop:Generator_ColumnVarNameInTable="_column10__Germinacion_de_laboratorio___" msprop:Generator_ColumnPropNameInRow="_10__Germinacion_de_laboratorio___" msprop:Generator_ColumnPropNameInTable="_10__Germinacion_de_laboratorio___Column" msprop:Generator_UserColumnName="10_ Germinacion de laboratorio(%)" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_1_x0020_Fecha_x0020_De_x0020_AnÃ_x00A1_lisis" msprop:Generator_ColumnVarNameInTable="_column11_Fecha_De_AnÃ_lisis" msprop:Generator_ColumnPropNameInRow="_11_Fecha_De_AnÃ_lisis" msprop:Generator_ColumnPropNameInTable="_11_Fecha_De_AnÃ_lisisColumn" msprop:Generator_UserColumnName="11 Fecha De AnÃ¡lisis" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_3_x0020_Distancia_x002F_Surcos_x0020__x0028_mts_x0029_" msprop:Generator_ColumnVarNameInTable="_column13_Distancia_Surcos__mts_" msprop:Generator_ColumnPropNameInRow="_13_Distancia_Surcos__mts_" msprop:Generator_ColumnPropNameInTable="_13_Distancia_Surcos__mts_Column" msprop:Generator_UserColumnName="13 Distancia/Surcos (mts)" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_4_x0020_Distancia_x0020_Entre_x0020_Plantas_x0020__x0028_mts_x0029_" msprop:Generator_ColumnVarNameInTable="_column14_Distancia_Entre_Plantas__mts_" msprop:Generator_ColumnPropNameInRow="_14_Distancia_Entre_Plantas__mts_" msprop:Generator_ColumnPropNameInTable="_14_Distancia_Entre_Plantas__mts_Column" msprop:Generator_UserColumnName="14 Distancia Entre Plantas (mts)" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_5_x0020_Densidad_x0020_Poblacional_x0020_De_x0020_Plantas_x002F_MZ" msprop:Generator_ColumnVarNameInTable="_column15_Densidad_Poblacional_De_Plantas_MZ" msprop:Generator_ColumnPropNameInRow="_15_Densidad_Poblacional_De_Plantas_MZ" msprop:Generator_ColumnPropNameInTable="_15_Densidad_Poblacional_De_Plantas_MZColumn" msprop:Generator_UserColumnName="15 Densidad Poblacional De Plantas/MZ" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_6_1_x0020_Al_x0020_terreno" msprop:Generator_ColumnVarNameInTable="column16_1_Al_terreno" msprop:Generator_ColumnPropNameInRow="_16_1_Al_terreno" msprop:Generator_ColumnPropNameInTable="_16_1_Al_terrenoColumn" msprop:Generator_UserColumnName="16_1 Al terreno" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_6_2_x0020_Durante_x0020_la_x0020_siembra" msprop:Generator_ColumnVarNameInTable="column16_2_Durante_la_siembra" msprop:Generator_ColumnPropNameInRow="_16_2_Durante_la_siembra" msprop:Generator_ColumnPropNameInTable="_16_2_Durante_la_siembraColumn" msprop:Generator_UserColumnName="16_2 Durante la siembra" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_6_3_x0020_Etapa_x0020_vegetativa" msprop:Generator_ColumnVarNameInTable="column16_3_Etapa_vegetativa" msprop:Generator_ColumnPropNameInRow="_16_3_Etapa_vegetativa" msprop:Generator_ColumnPropNameInTable="_16_3_Etapa_vegetativaColumn" msprop:Generator_UserColumnName="16_3 Etapa vegetativa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_6_4_x0020_Desespigue" msprop:Generator_ColumnVarNameInTable="column16_4_Desespigue" msprop:Generator_ColumnPropNameInRow="_16_4_Desespigue" msprop:Generator_ColumnPropNameInTable="_16_4_DesespigueColumn" msprop:Generator_UserColumnName="16_4 Desespigue" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_6_5_x0020_Edad_x0020_del_x0020_cultivo_x0020__x0028_Meses_x0029_" msprop:Generator_ColumnVarNameInTable="_column16_5_Edad_del_cultivo__Meses_" msprop:Generator_ColumnPropNameInRow="_16_5_Edad_del_cultivo__Meses_" msprop:Generator_ColumnPropNameInTable="_16_5_Edad_del_cultivo__Meses_Column" msprop:Generator_UserColumnName="16_5 Edad del cultivo (Meses)" type="xs:int" minOccurs="0" />
+              <xs:element name="_x0031_7_1_x0020_De_x0020_siembra" msprop:Generator_ColumnVarNameInTable="column17_1_De_siembra" msprop:Generator_ColumnPropNameInRow="_17_1_De_siembra" msprop:Generator_ColumnPropNameInTable="_17_1_De_siembraColumn" msprop:Generator_UserColumnName="17_1 De siembra" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_7_2_x0020_De_x0020_cosecha" msprop:Generator_ColumnVarNameInTable="column17_2_De_cosecha" msprop:Generator_ColumnPropNameInRow="_17_2_De_cosecha" msprop:Generator_ColumnPropNameInTable="_17_2_De_cosechaColumn" msprop:Generator_UserColumnName="17_2 De cosecha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_7_3_x0020_1Â_x00B0__x0020_Fertilizacion" msprop:Generator_ColumnVarNameInTable="_column17_3_1Â__Fertilizacion" msprop:Generator_ColumnPropNameInRow="_17_3_1Â__Fertilizacion" msprop:Generator_ColumnPropNameInTable="_17_3_1Â__FertilizacionColumn" msprop:Generator_UserColumnName="17_3 1Â° Fertilizacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_7_4_x0020_2Â_x00B0__x0020_Fertilizacion" msprop:Generator_ColumnVarNameInTable="_column17_4_2Â__Fertilizacion" msprop:Generator_ColumnPropNameInRow="_17_4_2Â__Fertilizacion" msprop:Generator_ColumnPropNameInTable="_17_4_2Â__FertilizacionColumn" msprop:Generator_UserColumnName="17_4 2Â° Fertilizacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_7_5_x0020_En_x0020_otra_x0020_fecha_x0020_realizo_x0020_otra_x0020_practica_x0020_agricola" msprop:Generator_ColumnVarNameInTable="column17_5_En_otra_fecha_realizo_otra_practica_agricola" msprop:Generator_ColumnPropNameInRow="_17_5_En_otra_fecha_realizo_otra_practica_agricola" msprop:Generator_ColumnPropNameInTable="_17_5_En_otra_fecha_realizo_otra_practica_agricolaColumn" msprop:Generator_UserColumnName="17_5 En otra fecha realizo otra practica agricola" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_7_6_x0020_Detalle_x0020_que_x0020_realizo_x0020_en_x0020_esta_x0020_fecha" msprop:Generator_ColumnVarNameInTable="column17_6_Detalle_que_realizo_en_esta_fecha" msprop:Generator_ColumnPropNameInRow="_17_6_Detalle_que_realizo_en_esta_fecha" msprop:Generator_ColumnPropNameInTable="_17_6_Detalle_que_realizo_en_esta_fechaColumn" msprop:Generator_UserColumnName="17_6 Detalle que realizo en esta fecha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_7_7_x0020__x0020_Fecha_x0020_que_x0020_realizo_x0020_esta_x0020_prÃ_x00A1_ctica" msprop:Generator_ColumnVarNameInTable="_column17_7__Fecha_que_realizo_esta_prÃ_ctica" msprop:Generator_ColumnPropNameInRow="_17_7__Fecha_que_realizo_esta_prÃ_ctica" msprop:Generator_ColumnPropNameInTable="_17_7__Fecha_que_realizo_esta_prÃ_cticaColumn" msprop:Generator_UserColumnName="17_7  Fecha que realizo esta prÃ¡ctica" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_8__x0020_Total_x0020_aplicaciones_x0020_de_x0020_insecticidas" msprop:Generator_ColumnVarNameInTable="column18__Total_aplicaciones_de_insecticidas" msprop:Generator_ColumnPropNameInRow="_18__Total_aplicaciones_de_insecticidas" msprop:Generator_ColumnPropNameInTable="_18__Total_aplicaciones_de_insecticidasColumn" msprop:Generator_UserColumnName="18_ Total aplicaciones de insecticidas" type="xs:int" minOccurs="0" />
+              <xs:element name="_x0031_9__x0020_Total_x0020_apliaciones_x0020_de_x0020_fungicida" msprop:Generator_ColumnVarNameInTable="column19__Total_apliaciones_de_fungicida" msprop:Generator_ColumnPropNameInRow="_19__Total_apliaciones_de_fungicida" msprop:Generator_ColumnPropNameInTable="_19__Total_apliaciones_de_fungicidaColumn" msprop:Generator_UserColumnName="19_ Total apliaciones de fungicida" type="xs:int" minOccurs="0" />
+              <xs:element name="_x0032_0__x0020_Total_x0020_aplicaciones_x0020_de_x0020_herbicida" msprop:Generator_ColumnVarNameInTable="column20__Total_aplicaciones_de_herbicida" msprop:Generator_ColumnPropNameInRow="_20__Total_aplicaciones_de_herbicida" msprop:Generator_ColumnPropNameInTable="_20__Total_aplicaciones_de_herbicidaColumn" msprop:Generator_UserColumnName="20_ Total aplicaciones de herbicida" type="xs:int" minOccurs="0" />
+              <xs:element name="_x0032_1__x0020_Observaciones_x0020_Realizadas" msprop:Generator_ColumnVarNameInTable="column21__Observaciones_Realizadas" msprop:Generator_ColumnPropNameInRow="_21__Observaciones_Realizadas" msprop:Generator_ColumnPropNameInTable="_21__Observaciones_RealizadasColumn" msprop:Generator_UserColumnName="21_ Observaciones Realizadas" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_2__x0020_Indicaciones_x0020_Brindadas" msprop:Generator_ColumnVarNameInTable="column22__Indicaciones_Brindadas" msprop:Generator_ColumnPropNameInRow="_22__Indicaciones_Brindadas" msprop:Generator_ColumnPropNameInTable="_22__Indicaciones_BrindadasColumn" msprop:Generator_UserColumnName="22_ Indicaciones Brindadas" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_3__x0020_Responsables_x0020_De_x0020_Visita" msprop:Generator_ColumnVarNameInTable="column23__Responsables_De_Visita" msprop:Generator_ColumnPropNameInRow="_23__Responsables_De_Visita" msprop:Generator_ColumnPropNameInTable="_23__Responsables_De_VisitaColumn" msprop:Generator_UserColumnName="23_ Responsables De Visita" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_4__x0020_Responsable_x0020_Del_x0020_Cultivo" msprop:Generator_ColumnVarNameInTable="column24__Responsable_Del_Cultivo" msprop:Generator_ColumnPropNameInRow="_24__Responsable_Del_Cultivo" msprop:Generator_ColumnPropNameInTable="_24__Responsable_Del_CultivoColumn" msprop:Generator_UserColumnName="24_ Responsable Del Cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_5__x0020_TÃ_x00A9_cnico_x0020_De_x0020_Programa_x0020_Semilla" msprop:Generator_ColumnVarNameInTable="_column25__TÃ_cnico_De_Programa_Semilla" msprop:Generator_ColumnPropNameInRow="_25__TÃ_cnico_De_Programa_Semilla" msprop:Generator_ColumnPropNameInTable="_25__TÃ_cnico_De_Programa_SemillaColumn" msprop:Generator_UserColumnName="25_ TÃ©cnico De Programa Semilla" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sag_registro_campo_sag_dicta_fung" msprop:Generator_TableClassName="sag_registro_campo_sag_dicta_fungDataTable" msprop:Generator_TableVarName="tablesag_registro_campo_sag_dicta_fung" msprop:Generator_TablePropName="sag_registro_campo_sag_dicta_fung" msprop:Generator_RowDeletingName="sag_registro_campo_sag_dicta_fungRowDeleting" msprop:Generator_RowChangingName="sag_registro_campo_sag_dicta_fungRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_campo_sag_dicta_fungRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_campo_sag_dicta_fungRowDeleted" msprop:Generator_UserTableName="sag_registro_campo_sag_dicta_fung" msprop:Generator_RowChangedName="sag_registro_campo_sag_dicta_fungRowChanged" msprop:Generator_RowEvArgName="sag_registro_campo_sag_dicta_fungRowChangeEvent" msprop:Generator_RowClassName="sag_registro_campo_sag_dicta_fungRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="_URI2" msprop:Generator_ColumnVarNameInTable="column_URI2" msprop:Generator_ColumnPropNameInRow="_URI2" msprop:Generator_ColumnPropNameInTable="_URI2Column" msprop:Generator_UserColumnName="_URI2">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FECHA_ENVIO" msprop:Generator_ColumnVarNameInTable="columnFECHA_ENVIO" msprop:Generator_ColumnPropNameInRow="FECHA_ENVIO" msprop:Generator_ColumnPropNameInTable="FECHA_ENVIOColumn" msprop:Generator_UserColumnName="FECHA_ENVIO" type="xs:dateTime" />
+              <xs:element name="_x0032___x0020_Fecha_x0020_de_x0020_inscripcion" msprop:Generator_ColumnVarNameInTable="column2__Fecha_de_inscripcion" msprop:Generator_ColumnPropNameInRow="_2__Fecha_de_inscripcion" msprop:Generator_ColumnPropNameInTable="_2__Fecha_de_inscripcionColumn" msprop:Generator_UserColumnName="2_ Fecha de inscripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031___x0020_Escanee_x0020_su_x0020_codigo_x0020_de_x0020_mulplicador" msprop:Generator_ColumnVarNameInTable="column1__Escanee_su_codigo_de_mulplicador" msprop:Generator_ColumnPropNameInRow="_1__Escanee_su_codigo_de_mulplicador" msprop:Generator_ColumnPropNameInTable="_1__Escanee_su_codigo_de_mulplicadorColumn" msprop:Generator_UserColumnName="1_ Escanee su codigo de mulplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_multiplicador" msprop:Generator_ColumnVarNameInTable="columnnombre_multiplicador" msprop:Generator_ColumnPropNameInRow="nombre_multiplicador" msprop:Generator_ColumnPropNameInTable="nombre_multiplicadorColumn" msprop:Generator_UserColumnName="nombre_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_x0020_del_x0020_resposable" msprop:Generator_ColumnVarNameInTable="columnNombre_del_resposable" msprop:Generator_ColumnPropNameInRow="Nombre_del_resposable" msprop:Generator_ColumnPropNameInTable="Nombre_del_resposableColumn" msprop:Generator_UserColumnName="Nombre del resposable" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0033___x0020_Estacion_x0020_experimental" msprop:Generator_ColumnVarNameInTable="column3__Estacion_experimental" msprop:Generator_ColumnPropNameInRow="_3__Estacion_experimental" msprop:Generator_ColumnPropNameInTable="_3__Estacion_experimentalColumn" msprop:Generator_UserColumnName="3_ Estacion experimental" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefono_multiplicador" msprop:Generator_ColumnVarNameInTable="columntelefono_multiplicador" msprop:Generator_ColumnPropNameInRow="telefono_multiplicador" msprop:Generator_ColumnPropNameInTable="telefono_multiplicadorColumn" msprop:Generator_UserColumnName="telefono_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0034___x0020_Organizacion" msprop:Generator_ColumnVarNameInTable="column4__Organizacion" msprop:Generator_ColumnPropNameInRow="_4__Organizacion" msprop:Generator_ColumnPropNameInTable="_4__OrganizacionColumn" msprop:Generator_UserColumnName="4_ Organizacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_finca" msprop:Generator_ColumnVarNameInTable="columnnombre_finca" msprop:Generator_ColumnPropNameInRow="nombre_finca" msprop:Generator_ColumnPropNameInTable="nombre_fincaColumn" msprop:Generator_UserColumnName="nombre_finca" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="departamento" msprop:Generator_ColumnVarNameInTable="columndepartamento" msprop:Generator_ColumnPropNameInRow="departamento" msprop:Generator_ColumnPropNameInTable="departamentoColumn" msprop:Generator_UserColumnName="departamento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="municipio" msprop:Generator_ColumnVarNameInTable="columnmunicipio" msprop:Generator_ColumnPropNameInRow="municipio" msprop:Generator_ColumnPropNameInTable="municipioColumn" msprop:Generator_UserColumnName="municipio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aldea" msprop:Generator_ColumnVarNameInTable="columnaldea" msprop:Generator_ColumnPropNameInRow="aldea" msprop:Generator_ColumnPropNameInTable="aldeaColumn" msprop:Generator_UserColumnName="aldea" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="caserio" msprop:Generator_ColumnVarNameInTable="columncaserio" msprop:Generator_ColumnPropNameInRow="caserio" msprop:Generator_ColumnPropNameInTable="caserioColumn" msprop:Generator_UserColumnName="caserio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Latitud" msprop:Generator_ColumnVarNameInTable="columnLatitud" msprop:Generator_ColumnPropNameInRow="Latitud" msprop:Generator_ColumnPropNameInTable="LatitudColumn" msprop:Generator_UserColumnName="Latitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Longitud" msprop:Generator_ColumnVarNameInTable="columnLongitud" msprop:Generator_ColumnPropNameInRow="Longitud" msprop:Generator_ColumnPropNameInTable="LongitudColumn" msprop:Generator_UserColumnName="Longitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Altura" msprop:Generator_ColumnVarNameInTable="columnAltura" msprop:Generator_ColumnPropNameInRow="Altura" msprop:Generator_ColumnPropNameInTable="AlturaColumn" msprop:Generator_UserColumnName="Altura" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Precision" msprop:Generator_ColumnVarNameInTable="columnPrecision" msprop:Generator_ColumnPropNameInRow="Precision" msprop:Generator_ColumnPropNameInTable="PrecisionColumn" msprop:Generator_UserColumnName="Precision" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0035___x0020_Seleccionar_x0020_cultivo" msprop:Generator_ColumnVarNameInTable="column5__Seleccionar_cultivo" msprop:Generator_ColumnPropNameInRow="_5__Seleccionar_cultivo" msprop:Generator_ColumnPropNameInTable="_5__Seleccionar_cultivoColumn" msprop:Generator_UserColumnName="5_ Seleccionar cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0036___x0020_Seleccionar_x0020_variedad" msprop:Generator_ColumnVarNameInTable="column6__Seleccionar_variedad" msprop:Generator_ColumnPropNameInRow="_6__Seleccionar_variedad" msprop:Generator_ColumnPropNameInTable="_6__Seleccionar_variedadColumn" msprop:Generator_UserColumnName="6_ Seleccionar variedad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_9_1_x0020_Nombre_x0020_producto_x0020_aplicado" msprop:Generator_ColumnVarNameInTable="column19_1_Nombre_producto_aplicado" msprop:Generator_ColumnPropNameInRow="_19_1_Nombre_producto_aplicado" msprop:Generator_ColumnPropNameInTable="_19_1_Nombre_producto_aplicadoColumn" msprop:Generator_UserColumnName="19_1 Nombre producto aplicado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_9_2_x0020_Dosis" msprop:Generator_ColumnVarNameInTable="column19_2_Dosis" msprop:Generator_ColumnPropNameInRow="_19_2_Dosis" msprop:Generator_ColumnPropNameInTable="_19_2_DosisColumn" msprop:Generator_UserColumnName="19_2 Dosis" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_9_3_x0020_Cantidad_x0020_en_x0020_Litros_x0020_aplicado" msprop:Generator_ColumnVarNameInTable="column19_3_Cantidad_en_Litros_aplicado" msprop:Generator_ColumnPropNameInRow="_19_3_Cantidad_en_Litros_aplicado" msprop:Generator_ColumnPropNameInTable="_19_3_Cantidad_en_Litros_aplicadoColumn" msprop:Generator_UserColumnName="19_3 Cantidad en Litros aplicado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_9_4_x0020_Fecha_x0020_de_x0020_aplicacion_x0020_de_x0020_insecticida" msprop:Generator_ColumnVarNameInTable="column19_4_Fecha_de_aplicacion_de_insecticida" msprop:Generator_ColumnPropNameInRow="_19_4_Fecha_de_aplicacion_de_insecticida" msprop:Generator_ColumnPropNameInTable="_19_4_Fecha_de_aplicacion_de_insecticidaColumn" msprop:Generator_UserColumnName="19_4 Fecha de aplicacion de insecticida" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sag_registro_campo_sag_dicta_herb" msprop:Generator_TableClassName="sag_registro_campo_sag_dicta_herbDataTable" msprop:Generator_TableVarName="tablesag_registro_campo_sag_dicta_herb" msprop:Generator_TablePropName="sag_registro_campo_sag_dicta_herb" msprop:Generator_RowDeletingName="sag_registro_campo_sag_dicta_herbRowDeleting" msprop:Generator_RowChangingName="sag_registro_campo_sag_dicta_herbRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_campo_sag_dicta_herbRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_campo_sag_dicta_herbRowDeleted" msprop:Generator_UserTableName="sag_registro_campo_sag_dicta_herb" msprop:Generator_RowChangedName="sag_registro_campo_sag_dicta_herbRowChanged" msprop:Generator_RowEvArgName="sag_registro_campo_sag_dicta_herbRowChangeEvent" msprop:Generator_RowClassName="sag_registro_campo_sag_dicta_herbRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="_URI2" msprop:Generator_ColumnVarNameInTable="column_URI2" msprop:Generator_ColumnPropNameInRow="_URI2" msprop:Generator_ColumnPropNameInTable="_URI2Column" msprop:Generator_UserColumnName="_URI2">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FECHA_ENVIO" msprop:Generator_ColumnVarNameInTable="columnFECHA_ENVIO" msprop:Generator_ColumnPropNameInRow="FECHA_ENVIO" msprop:Generator_ColumnPropNameInTable="FECHA_ENVIOColumn" msprop:Generator_UserColumnName="FECHA_ENVIO" type="xs:dateTime" />
+              <xs:element name="_x0032___x0020_Fecha_x0020_de_x0020_inscripcion" msprop:Generator_ColumnVarNameInTable="column2__Fecha_de_inscripcion" msprop:Generator_ColumnPropNameInRow="_2__Fecha_de_inscripcion" msprop:Generator_ColumnPropNameInTable="_2__Fecha_de_inscripcionColumn" msprop:Generator_UserColumnName="2_ Fecha de inscripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031___x0020_Escanee_x0020_su_x0020_codigo_x0020_de_x0020_mulplicador" msprop:Generator_ColumnVarNameInTable="column1__Escanee_su_codigo_de_mulplicador" msprop:Generator_ColumnPropNameInRow="_1__Escanee_su_codigo_de_mulplicador" msprop:Generator_ColumnPropNameInTable="_1__Escanee_su_codigo_de_mulplicadorColumn" msprop:Generator_UserColumnName="1_ Escanee su codigo de mulplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_multiplicador" msprop:Generator_ColumnVarNameInTable="columnnombre_multiplicador" msprop:Generator_ColumnPropNameInRow="nombre_multiplicador" msprop:Generator_ColumnPropNameInTable="nombre_multiplicadorColumn" msprop:Generator_UserColumnName="nombre_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_x0020_del_x0020_resposable" msprop:Generator_ColumnVarNameInTable="columnNombre_del_resposable" msprop:Generator_ColumnPropNameInRow="Nombre_del_resposable" msprop:Generator_ColumnPropNameInTable="Nombre_del_resposableColumn" msprop:Generator_UserColumnName="Nombre del resposable" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0033___x0020_Estacion_x0020_experimental" msprop:Generator_ColumnVarNameInTable="column3__Estacion_experimental" msprop:Generator_ColumnPropNameInRow="_3__Estacion_experimental" msprop:Generator_ColumnPropNameInTable="_3__Estacion_experimentalColumn" msprop:Generator_UserColumnName="3_ Estacion experimental" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefono_multiplicador" msprop:Generator_ColumnVarNameInTable="columntelefono_multiplicador" msprop:Generator_ColumnPropNameInRow="telefono_multiplicador" msprop:Generator_ColumnPropNameInTable="telefono_multiplicadorColumn" msprop:Generator_UserColumnName="telefono_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0034___x0020_Organizacion" msprop:Generator_ColumnVarNameInTable="column4__Organizacion" msprop:Generator_ColumnPropNameInRow="_4__Organizacion" msprop:Generator_ColumnPropNameInTable="_4__OrganizacionColumn" msprop:Generator_UserColumnName="4_ Organizacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_finca" msprop:Generator_ColumnVarNameInTable="columnnombre_finca" msprop:Generator_ColumnPropNameInRow="nombre_finca" msprop:Generator_ColumnPropNameInTable="nombre_fincaColumn" msprop:Generator_UserColumnName="nombre_finca" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="departamento" msprop:Generator_ColumnVarNameInTable="columndepartamento" msprop:Generator_ColumnPropNameInRow="departamento" msprop:Generator_ColumnPropNameInTable="departamentoColumn" msprop:Generator_UserColumnName="departamento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="municipio" msprop:Generator_ColumnVarNameInTable="columnmunicipio" msprop:Generator_ColumnPropNameInRow="municipio" msprop:Generator_ColumnPropNameInTable="municipioColumn" msprop:Generator_UserColumnName="municipio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aldea" msprop:Generator_ColumnVarNameInTable="columnaldea" msprop:Generator_ColumnPropNameInRow="aldea" msprop:Generator_ColumnPropNameInTable="aldeaColumn" msprop:Generator_UserColumnName="aldea" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="caserio" msprop:Generator_ColumnVarNameInTable="columncaserio" msprop:Generator_ColumnPropNameInRow="caserio" msprop:Generator_ColumnPropNameInTable="caserioColumn" msprop:Generator_UserColumnName="caserio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Latitud" msprop:Generator_ColumnVarNameInTable="columnLatitud" msprop:Generator_ColumnPropNameInRow="Latitud" msprop:Generator_ColumnPropNameInTable="LatitudColumn" msprop:Generator_UserColumnName="Latitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Longitud" msprop:Generator_ColumnVarNameInTable="columnLongitud" msprop:Generator_ColumnPropNameInRow="Longitud" msprop:Generator_ColumnPropNameInTable="LongitudColumn" msprop:Generator_UserColumnName="Longitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Altura" msprop:Generator_ColumnVarNameInTable="columnAltura" msprop:Generator_ColumnPropNameInRow="Altura" msprop:Generator_ColumnPropNameInTable="AlturaColumn" msprop:Generator_UserColumnName="Altura" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Precision" msprop:Generator_ColumnVarNameInTable="columnPrecision" msprop:Generator_ColumnPropNameInRow="Precision" msprop:Generator_ColumnPropNameInTable="PrecisionColumn" msprop:Generator_UserColumnName="Precision" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0035___x0020_Seleccionar_x0020_cultivo" msprop:Generator_ColumnVarNameInTable="column5__Seleccionar_cultivo" msprop:Generator_ColumnPropNameInRow="_5__Seleccionar_cultivo" msprop:Generator_ColumnPropNameInTable="_5__Seleccionar_cultivoColumn" msprop:Generator_UserColumnName="5_ Seleccionar cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0036___x0020_Seleccionar_x0020_variedad" msprop:Generator_ColumnVarNameInTable="column6__Seleccionar_variedad" msprop:Generator_ColumnPropNameInRow="_6__Seleccionar_variedad" msprop:Generator_ColumnPropNameInTable="_6__Seleccionar_variedadColumn" msprop:Generator_UserColumnName="6_ Seleccionar variedad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_0_1_x0020_Nombre_x0020_producto_x0020_aplicado" msprop:Generator_ColumnVarNameInTable="column20_1_Nombre_producto_aplicado" msprop:Generator_ColumnPropNameInRow="_20_1_Nombre_producto_aplicado" msprop:Generator_ColumnPropNameInTable="_20_1_Nombre_producto_aplicadoColumn" msprop:Generator_UserColumnName="20_1 Nombre producto aplicado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0032_0_2_x0020_Dosis" msprop:Generator_ColumnVarNameInTable="column20_2_Dosis" msprop:Generator_ColumnPropNameInRow="_20_2_Dosis" msprop:Generator_ColumnPropNameInTable="_20_2_DosisColumn" msprop:Generator_UserColumnName="20_2 Dosis" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0032_0_3_x0020_Cantidad_x0020_en_x0020_litros_x0020_aplicado" msprop:Generator_ColumnVarNameInTable="column20_3_Cantidad_en_litros_aplicado" msprop:Generator_ColumnPropNameInRow="_20_3_Cantidad_en_litros_aplicado" msprop:Generator_ColumnPropNameInTable="_20_3_Cantidad_en_litros_aplicadoColumn" msprop:Generator_UserColumnName="20_3 Cantidad en litros aplicado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0032_0_4_x0020_Fecha_x0020_de_x0020_aplicacion_x0020_de_x0020_herbicida" msprop:Generator_ColumnVarNameInTable="column20_4_Fecha_de_aplicacion_de_herbicida" msprop:Generator_ColumnPropNameInRow="_20_4_Fecha_de_aplicacion_de_herbicida" msprop:Generator_ColumnPropNameInTable="_20_4_Fecha_de_aplicacion_de_herbicidaColumn" msprop:Generator_UserColumnName="20_4 Fecha de aplicacion de herbicida" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sag_registro_campo_sag_dicta_insec" msprop:Generator_TableClassName="sag_registro_campo_sag_dicta_insecDataTable" msprop:Generator_TableVarName="tablesag_registro_campo_sag_dicta_insec" msprop:Generator_TablePropName="sag_registro_campo_sag_dicta_insec" msprop:Generator_RowDeletingName="sag_registro_campo_sag_dicta_insecRowDeleting" msprop:Generator_RowChangingName="sag_registro_campo_sag_dicta_insecRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_campo_sag_dicta_insecRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_campo_sag_dicta_insecRowDeleted" msprop:Generator_UserTableName="sag_registro_campo_sag_dicta_insec" msprop:Generator_RowChangedName="sag_registro_campo_sag_dicta_insecRowChanged" msprop:Generator_RowEvArgName="sag_registro_campo_sag_dicta_insecRowChangeEvent" msprop:Generator_RowClassName="sag_registro_campo_sag_dicta_insecRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="_URI2" msprop:Generator_ColumnVarNameInTable="column_URI2" msprop:Generator_ColumnPropNameInRow="_URI2" msprop:Generator_ColumnPropNameInTable="_URI2Column" msprop:Generator_UserColumnName="_URI2">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FECHA_ENVIO" msprop:Generator_ColumnVarNameInTable="columnFECHA_ENVIO" msprop:Generator_ColumnPropNameInRow="FECHA_ENVIO" msprop:Generator_ColumnPropNameInTable="FECHA_ENVIOColumn" msprop:Generator_UserColumnName="FECHA_ENVIO" type="xs:dateTime" />
+              <xs:element name="_x0032___x0020_Fecha_x0020_de_x0020_inscripcion" msprop:Generator_ColumnVarNameInTable="column2__Fecha_de_inscripcion" msprop:Generator_ColumnPropNameInRow="_2__Fecha_de_inscripcion" msprop:Generator_ColumnPropNameInTable="_2__Fecha_de_inscripcionColumn" msprop:Generator_UserColumnName="2_ Fecha de inscripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031___x0020_Escanee_x0020_su_x0020_codigo_x0020_de_x0020_mulplicador" msprop:Generator_ColumnVarNameInTable="column1__Escanee_su_codigo_de_mulplicador" msprop:Generator_ColumnPropNameInRow="_1__Escanee_su_codigo_de_mulplicador" msprop:Generator_ColumnPropNameInTable="_1__Escanee_su_codigo_de_mulplicadorColumn" msprop:Generator_UserColumnName="1_ Escanee su codigo de mulplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_multiplicador" msprop:Generator_ColumnVarNameInTable="columnnombre_multiplicador" msprop:Generator_ColumnPropNameInRow="nombre_multiplicador" msprop:Generator_ColumnPropNameInTable="nombre_multiplicadorColumn" msprop:Generator_UserColumnName="nombre_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre_x0020_del_x0020_resposable" msprop:Generator_ColumnVarNameInTable="columnNombre_del_resposable" msprop:Generator_ColumnPropNameInRow="Nombre_del_resposable" msprop:Generator_ColumnPropNameInTable="Nombre_del_resposableColumn" msprop:Generator_UserColumnName="Nombre del resposable" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0033___x0020_Estacion_x0020_experimental" msprop:Generator_ColumnVarNameInTable="column3__Estacion_experimental" msprop:Generator_ColumnPropNameInRow="_3__Estacion_experimental" msprop:Generator_ColumnPropNameInTable="_3__Estacion_experimentalColumn" msprop:Generator_UserColumnName="3_ Estacion experimental" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefono_multiplicador" msprop:Generator_ColumnVarNameInTable="columntelefono_multiplicador" msprop:Generator_ColumnPropNameInRow="telefono_multiplicador" msprop:Generator_ColumnPropNameInTable="telefono_multiplicadorColumn" msprop:Generator_UserColumnName="telefono_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0034___x0020_Organizacion" msprop:Generator_ColumnVarNameInTable="column4__Organizacion" msprop:Generator_ColumnPropNameInRow="_4__Organizacion" msprop:Generator_ColumnPropNameInTable="_4__OrganizacionColumn" msprop:Generator_UserColumnName="4_ Organizacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_finca" msprop:Generator_ColumnVarNameInTable="columnnombre_finca" msprop:Generator_ColumnPropNameInRow="nombre_finca" msprop:Generator_ColumnPropNameInTable="nombre_fincaColumn" msprop:Generator_UserColumnName="nombre_finca" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="departamento" msprop:Generator_ColumnVarNameInTable="columndepartamento" msprop:Generator_ColumnPropNameInRow="departamento" msprop:Generator_ColumnPropNameInTable="departamentoColumn" msprop:Generator_UserColumnName="departamento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="municipio" msprop:Generator_ColumnVarNameInTable="columnmunicipio" msprop:Generator_ColumnPropNameInRow="municipio" msprop:Generator_ColumnPropNameInTable="municipioColumn" msprop:Generator_UserColumnName="municipio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aldea" msprop:Generator_ColumnVarNameInTable="columnaldea" msprop:Generator_ColumnPropNameInRow="aldea" msprop:Generator_ColumnPropNameInTable="aldeaColumn" msprop:Generator_UserColumnName="aldea" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="caserio" msprop:Generator_ColumnVarNameInTable="columncaserio" msprop:Generator_ColumnPropNameInRow="caserio" msprop:Generator_ColumnPropNameInTable="caserioColumn" msprop:Generator_UserColumnName="caserio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Latitud" msprop:Generator_ColumnVarNameInTable="columnLatitud" msprop:Generator_ColumnPropNameInRow="Latitud" msprop:Generator_ColumnPropNameInTable="LatitudColumn" msprop:Generator_UserColumnName="Latitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Longitud" msprop:Generator_ColumnVarNameInTable="columnLongitud" msprop:Generator_ColumnPropNameInRow="Longitud" msprop:Generator_ColumnPropNameInTable="LongitudColumn" msprop:Generator_UserColumnName="Longitud" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Altura" msprop:Generator_ColumnVarNameInTable="columnAltura" msprop:Generator_ColumnPropNameInRow="Altura" msprop:Generator_ColumnPropNameInTable="AlturaColumn" msprop:Generator_UserColumnName="Altura" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Precision" msprop:Generator_ColumnVarNameInTable="columnPrecision" msprop:Generator_ColumnPropNameInRow="Precision" msprop:Generator_ColumnPropNameInTable="PrecisionColumn" msprop:Generator_UserColumnName="Precision" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0035___x0020_Seleccionar_x0020_cultivo" msprop:Generator_ColumnVarNameInTable="column5__Seleccionar_cultivo" msprop:Generator_ColumnPropNameInRow="_5__Seleccionar_cultivo" msprop:Generator_ColumnPropNameInTable="_5__Seleccionar_cultivoColumn" msprop:Generator_UserColumnName="5_ Seleccionar cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0036___x0020_Seleccionar_x0020_variedad" msprop:Generator_ColumnVarNameInTable="column6__Seleccionar_variedad" msprop:Generator_ColumnPropNameInRow="_6__Seleccionar_variedad" msprop:Generator_ColumnPropNameInTable="_6__Seleccionar_variedadColumn" msprop:Generator_UserColumnName="6_ Seleccionar variedad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_8_1_x0020_Nombre_x0020_producto_x0020_aplicado" msprop:Generator_ColumnVarNameInTable="column18_1_Nombre_producto_aplicado" msprop:Generator_ColumnPropNameInRow="_18_1_Nombre_producto_aplicado" msprop:Generator_ColumnPropNameInTable="_18_1_Nombre_producto_aplicadoColumn" msprop:Generator_UserColumnName="18_1 Nombre producto aplicado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0031_8_2_x0020_Dosis" msprop:Generator_ColumnVarNameInTable="column18_2_Dosis" msprop:Generator_ColumnPropNameInRow="_18_2_Dosis" msprop:Generator_ColumnPropNameInTable="_18_2_DosisColumn" msprop:Generator_UserColumnName="18_2 Dosis" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_8_3_x0020_Cantidad_x0020_en_x0020_Litros_x0020_aplicado" msprop:Generator_ColumnVarNameInTable="column18_3_Cantidad_en_Litros_aplicado" msprop:Generator_ColumnPropNameInRow="_18_3_Cantidad_en_Litros_aplicado" msprop:Generator_ColumnPropNameInTable="_18_3_Cantidad_en_Litros_aplicadoColumn" msprop:Generator_UserColumnName="18_3 Cantidad en Litros aplicado" type="xs:decimal" minOccurs="0" />
+              <xs:element name="_x0031_8_4_x0020_Fecha_x0020_de_x0020_aplicacion_x0020_de_x0020_insecticida" msprop:Generator_ColumnVarNameInTable="column18_4_Fecha_de_aplicacion_de_insecticida" msprop:Generator_ColumnPropNameInRow="_18_4_Fecha_de_aplicacion_de_insecticida" msprop:Generator_ColumnPropNameInTable="_18_4_Fecha_de_aplicacion_de_insecticidaColumn" msprop:Generator_UserColumnName="18_4 Fecha de aplicacion de insecticida" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:sag_registro_campo_sag_dicta" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="sag_registro_campo_sag_dicta_fung_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:sag_registro_campo_sag_dicta_fung" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+    <xs:unique name="sag_registro_campo_sag_dicta_herb_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:sag_registro_campo_sag_dicta_herb" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="sag_registro_campo_sag_dicta_insec_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:sag_registro_campo_sag_dicta_insec" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

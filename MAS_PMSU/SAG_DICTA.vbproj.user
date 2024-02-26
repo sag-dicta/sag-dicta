@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <UseIISExpress>true</UseIISExpress>
-    <NameOfLastUsedPublishProfile>C:\Users\Informatica\source\repos\IHMA-Tecnoser\IHMA_PORTAL\MAS_PMSU\My Project\PublishProfiles\FolderProfile8.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\TNS\OneDrive\Documentos\PORTALES Y PLATAFORMAS\SAG-DICTA\version 18\sag-dicta\sag-dicta\MAS_PMSU\My Project\PublishProfiles\FolderProfile9.pubxml</NameOfLastUsedPublishProfile>
     <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
     <Use64BitIISExpress />
     <IISExpressSSLPort />

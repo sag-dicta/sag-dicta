@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="cuadro_proc" targetNamespace="http://tempuri.org/cuadro_proc.xsd" xmlns:mstns="http://tempuri.org/cuadro_proc.xsd" xmlns="http://tempuri.org/cuadro_proc.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vista_acta_lote_multiTableAdapter" GeneratorDataComponentClassName="vista_acta_lote_multiTableAdapter" Name="vista_acta_lote_multi" UserDataComponentName="vista_acta_lote_multiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sag_dictaConnectionString1 (Web.config)" DbObjectName="sag_dicta.vista_acta_lote_multi" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `ID_MULTI`, `NOMBRE_MULTIPLICADOR`, `REPRESENTANTE_LEGAL`, `TELEFONO_MULTIPLICADOR`, `DEPARTAMENTO`, `MUNICIPIO`, `ALDEA`, `CASERIO`, `ESTADO_MULTI`, `ID_LOTE`, `CATEGORIA_ORIGEN`, `TIPO_CULTIVO`, `VARIEDAD`, `PRODUCTOR`, `NO_LOTE`, `ESTADO_LOTE`, `ID_ACTA`, `FECHA_ACTA`, `PORCENTAJE_HUMEDAD`, `ESTADO_SENA`, `NO_SACOS`, `PESO_HUMEDO_QQ`, `PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD`, `SEMILLA_QQ_ORO`, `SEMILLA_QQ_CONSUMO`, `SEMILLA_QQ_BASURA`, `SEMILLA_QQ_TOTAL`, `OBSERVACIONES`, `TARA`, `CICLO_ACTA`, `PESO_NETO`, `PESO_LB` FROM `sag_dicta`.`vista_acta_lote_multi`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID_MULTI" DataSetColumn="ID_MULTI" />
+              <Mapping SourceColumn="NOMBRE_MULTIPLICADOR" DataSetColumn="NOMBRE_MULTIPLICADOR" />
+              <Mapping SourceColumn="REPRESENTANTE_LEGAL" DataSetColumn="REPRESENTANTE_LEGAL" />
+              <Mapping SourceColumn="TELEFONO_MULTIPLICADOR" DataSetColumn="TELEFONO_MULTIPLICADOR" />
+              <Mapping SourceColumn="DEPARTAMENTO" DataSetColumn="DEPARTAMENTO" />
+              <Mapping SourceColumn="MUNICIPIO" DataSetColumn="MUNICIPIO" />
+              <Mapping SourceColumn="ALDEA" DataSetColumn="ALDEA" />
+              <Mapping SourceColumn="CASERIO" DataSetColumn="CASERIO" />
+              <Mapping SourceColumn="ESTADO_MULTI" DataSetColumn="ESTADO_MULTI" />
+              <Mapping SourceColumn="ID_LOTE" DataSetColumn="ID_LOTE" />
+              <Mapping SourceColumn="CATEGORIA_ORIGEN" DataSetColumn="CATEGORIA_ORIGEN" />
+              <Mapping SourceColumn="TIPO_CULTIVO" DataSetColumn="TIPO_CULTIVO" />
+              <Mapping SourceColumn="VARIEDAD" DataSetColumn="VARIEDAD" />
+              <Mapping SourceColumn="PRODUCTOR" DataSetColumn="PRODUCTOR" />
+              <Mapping SourceColumn="NO_LOTE" DataSetColumn="NO_LOTE" />
+              <Mapping SourceColumn="ESTADO_LOTE" DataSetColumn="ESTADO_LOTE" />
+              <Mapping SourceColumn="ID_ACTA" DataSetColumn="ID_ACTA" />
+              <Mapping SourceColumn="FECHA_ACTA" DataSetColumn="FECHA_ACTA" />
+              <Mapping SourceColumn="PORCENTAJE_HUMEDAD" DataSetColumn="PORCENTAJE_HUMEDAD" />
+              <Mapping SourceColumn="ESTADO_SENA" DataSetColumn="ESTADO_SENA" />
+              <Mapping SourceColumn="NO_SACOS" DataSetColumn="NO_SACOS" />
+              <Mapping SourceColumn="PESO_HUMEDO_QQ" DataSetColumn="PESO_HUMEDO_QQ" />
+              <Mapping SourceColumn="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" DataSetColumn="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" />
+              <Mapping SourceColumn="SEMILLA_QQ_ORO" DataSetColumn="SEMILLA_QQ_ORO" />
+              <Mapping SourceColumn="SEMILLA_QQ_CONSUMO" DataSetColumn="SEMILLA_QQ_CONSUMO" />
+              <Mapping SourceColumn="SEMILLA_QQ_BASURA" DataSetColumn="SEMILLA_QQ_BASURA" />
+              <Mapping SourceColumn="SEMILLA_QQ_TOTAL" DataSetColumn="SEMILLA_QQ_TOTAL" />
+              <Mapping SourceColumn="OBSERVACIONES" DataSetColumn="OBSERVACIONES" />
+              <Mapping SourceColumn="TARA" DataSetColumn="TARA" />
+              <Mapping SourceColumn="CICLO_ACTA" DataSetColumn="CICLO_ACTA" />
+              <Mapping SourceColumn="PESO_NETO" DataSetColumn="PESO_NETO" />
+              <Mapping SourceColumn="PESO_LB" DataSetColumn="PESO_LB" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="cuadro_proc" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="cuadro_proc" msprop:Generator_UserDSName="cuadro_proc">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vista_acta_lote_multi" msprop:Generator_TableClassName="vista_acta_lote_multiDataTable" msprop:Generator_TableVarName="tablevista_acta_lote_multi" msprop:Generator_RowChangedName="vista_acta_lote_multiRowChanged" msprop:Generator_TablePropName="vista_acta_lote_multi" msprop:Generator_RowDeletingName="vista_acta_lote_multiRowDeleting" msprop:Generator_RowChangingName="vista_acta_lote_multiRowChanging" msprop:Generator_RowEvHandlerName="vista_acta_lote_multiRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_acta_lote_multiRowDeleted" msprop:Generator_RowClassName="vista_acta_lote_multiRow" msprop:Generator_UserTableName="vista_acta_lote_multi" msprop:Generator_RowEvArgName="vista_acta_lote_multiRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_MULTI" msprop:Generator_ColumnVarNameInTable="columnID_MULTI" msprop:Generator_ColumnPropNameInRow="ID_MULTI" msprop:Generator_ColumnPropNameInTable="ID_MULTIColumn" msprop:Generator_UserColumnName="ID_MULTI" type="xs:int" />
+              <xs:element name="NOMBRE_MULTIPLICADOR" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_MULTIPLICADOR" msprop:Generator_ColumnPropNameInRow="NOMBRE_MULTIPLICADOR" msprop:Generator_ColumnPropNameInTable="NOMBRE_MULTIPLICADORColumn" msprop:Generator_UserColumnName="NOMBRE_MULTIPLICADOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REPRESENTANTE_LEGAL" msprop:Generator_ColumnVarNameInTable="columnREPRESENTANTE_LEGAL" msprop:Generator_ColumnPropNameInRow="REPRESENTANTE_LEGAL" msprop:Generator_ColumnPropNameInTable="REPRESENTANTE_LEGALColumn" msprop:Generator_UserColumnName="REPRESENTANTE_LEGAL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TELEFONO_MULTIPLICADOR" msprop:Generator_ColumnVarNameInTable="columnTELEFONO_MULTIPLICADOR" msprop:Generator_ColumnPropNameInRow="TELEFONO_MULTIPLICADOR" msprop:Generator_ColumnPropNameInTable="TELEFONO_MULTIPLICADORColumn" msprop:Generator_UserColumnName="TELEFONO_MULTIPLICADOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPARTAMENTO" msprop:Generator_ColumnVarNameInTable="columnDEPARTAMENTO" msprop:Generator_ColumnPropNameInRow="DEPARTAMENTO" msprop:Generator_ColumnPropNameInTable="DEPARTAMENTOColumn" msprop:Generator_UserColumnName="DEPARTAMENTO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MUNICIPIO" msprop:Generator_ColumnVarNameInTable="columnMUNICIPIO" msprop:Generator_ColumnPropNameInRow="MUNICIPIO" msprop:Generator_ColumnPropNameInTable="MUNICIPIOColumn" msprop:Generator_UserColumnName="MUNICIPIO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ALDEA" msprop:Generator_ColumnVarNameInTable="columnALDEA" msprop:Generator_ColumnPropNameInRow="ALDEA" msprop:Generator_ColumnPropNameInTable="ALDEAColumn" msprop:Generator_UserColumnName="ALDEA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CASERIO" msprop:Generator_ColumnVarNameInTable="columnCASERIO" msprop:Generator_ColumnPropNameInRow="CASERIO" msprop:Generator_ColumnPropNameInTable="CASERIOColumn" msprop:Generator_UserColumnName="CASERIO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ESTADO_MULTI" msprop:Generator_ColumnVarNameInTable="columnESTADO_MULTI" msprop:Generator_ColumnPropNameInRow="ESTADO_MULTI" msprop:Generator_ColumnPropNameInTable="ESTADO_MULTIColumn" msprop:Generator_UserColumnName="ESTADO_MULTI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_LOTE" msprop:Generator_ColumnVarNameInTable="columnID_LOTE" msprop:Generator_ColumnPropNameInRow="ID_LOTE" msprop:Generator_ColumnPropNameInTable="ID_LOTEColumn" msprop:Generator_UserColumnName="ID_LOTE" type="xs:int" />
+              <xs:element name="CATEGORIA_ORIGEN" msprop:Generator_ColumnVarNameInTable="columnCATEGORIA_ORIGEN" msprop:Generator_ColumnPropNameInRow="CATEGORIA_ORIGEN" msprop:Generator_ColumnPropNameInTable="CATEGORIA_ORIGENColumn" msprop:Generator_UserColumnName="CATEGORIA_ORIGEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TIPO_CULTIVO" msprop:Generator_ColumnVarNameInTable="columnTIPO_CULTIVO" msprop:Generator_ColumnPropNameInRow="TIPO_CULTIVO" msprop:Generator_ColumnPropNameInTable="TIPO_CULTIVOColumn" msprop:Generator_UserColumnName="TIPO_CULTIVO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VARIEDAD" msprop:Generator_ColumnVarNameInTable="columnVARIEDAD" msprop:Generator_ColumnPropNameInRow="VARIEDAD" msprop:Generator_ColumnPropNameInTable="VARIEDADColumn" msprop:Generator_UserColumnName="VARIEDAD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRODUCTOR" msprop:Generator_ColumnVarNameInTable="columnPRODUCTOR" msprop:Generator_ColumnPropNameInRow="PRODUCTOR" msprop:Generator_ColumnPropNameInTable="PRODUCTORColumn" msprop:Generator_UserColumnName="PRODUCTOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NO_LOTE" msprop:Generator_ColumnVarNameInTable="columnNO_LOTE" msprop:Generator_ColumnPropNameInRow="NO_LOTE" msprop:Generator_ColumnPropNameInTable="NO_LOTEColumn" msprop:Generator_UserColumnName="NO_LOTE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ESTADO_LOTE" msprop:Generator_ColumnVarNameInTable="columnESTADO_LOTE" msprop:Generator_ColumnPropNameInRow="ESTADO_LOTE" msprop:Generator_ColumnPropNameInTable="ESTADO_LOTEColumn" msprop:Generator_UserColumnName="ESTADO_LOTE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_ACTA" msprop:Generator_ColumnVarNameInTable="columnID_ACTA" msprop:Generator_ColumnPropNameInRow="ID_ACTA" msprop:Generator_ColumnPropNameInTable="ID_ACTAColumn" msprop:Generator_UserColumnName="ID_ACTA" type="xs:int" />
+              <xs:element name="FECHA_ACTA" msprop:Generator_ColumnVarNameInTable="columnFECHA_ACTA" msprop:Generator_ColumnPropNameInRow="FECHA_ACTA" msprop:Generator_ColumnPropNameInTable="FECHA_ACTAColumn" msprop:Generator_UserColumnName="FECHA_ACTA" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PORCENTAJE_HUMEDAD" msprop:Generator_ColumnVarNameInTable="columnPORCENTAJE_HUMEDAD" msprop:Generator_ColumnPropNameInRow="PORCENTAJE_HUMEDAD" msprop:Generator_ColumnPropNameInTable="PORCENTAJE_HUMEDADColumn" msprop:Generator_UserColumnName="PORCENTAJE_HUMEDAD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ESTADO_SENA" msprop:Generator_ColumnVarNameInTable="columnESTADO_SENA" msprop:Generator_ColumnPropNameInRow="ESTADO_SENA" msprop:Generator_ColumnPropNameInTable="ESTADO_SENAColumn" msprop:Generator_UserColumnName="ESTADO_SENA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NO_SACOS" msprop:Generator_ColumnVarNameInTable="columnNO_SACOS" msprop:Generator_ColumnPropNameInRow="NO_SACOS" msprop:Generator_ColumnPropNameInTable="NO_SACOSColumn" msprop:Generator_UserColumnName="NO_SACOS" type="xs:int" minOccurs="0" />
+              <xs:element name="PESO_HUMEDO_QQ" msprop:Generator_ColumnVarNameInTable="columnPESO_HUMEDO_QQ" msprop:Generator_ColumnPropNameInRow="PESO_HUMEDO_QQ" msprop:Generator_ColumnPropNameInTable="PESO_HUMEDO_QQColumn" msprop:Generator_UserColumnName="PESO_HUMEDO_QQ" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" msprop:Generator_ColumnVarNameInTable="columnPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" msprop:Generator_ColumnPropNameInRow="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" msprop:Generator_ColumnPropNameInTable="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADColumn" msprop:Generator_UserColumnName="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEMILLA_QQ_ORO" msprop:Generator_ColumnVarNameInTable="columnSEMILLA_QQ_ORO" msprop:Generator_ColumnPropNameInRow="SEMILLA_QQ_ORO" msprop:Generator_ColumnPropNameInTable="SEMILLA_QQ_OROColumn" msprop:Generator_UserColumnName="SEMILLA_QQ_ORO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEMILLA_QQ_CONSUMO" msprop:Generator_ColumnVarNameInTable="columnSEMILLA_QQ_CONSUMO" msprop:Generator_ColumnPropNameInRow="SEMILLA_QQ_CONSUMO" msprop:Generator_ColumnPropNameInTable="SEMILLA_QQ_CONSUMOColumn" msprop:Generator_UserColumnName="SEMILLA_QQ_CONSUMO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEMILLA_QQ_BASURA" msprop:Generator_ColumnVarNameInTable="columnSEMILLA_QQ_BASURA" msprop:Generator_ColumnPropNameInRow="SEMILLA_QQ_BASURA" msprop:Generator_ColumnPropNameInTable="SEMILLA_QQ_BASURAColumn" msprop:Generator_UserColumnName="SEMILLA_QQ_BASURA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEMILLA_QQ_TOTAL" msprop:Generator_ColumnVarNameInTable="columnSEMILLA_QQ_TOTAL" msprop:Generator_ColumnPropNameInRow="SEMILLA_QQ_TOTAL" msprop:Generator_ColumnPropNameInTable="SEMILLA_QQ_TOTALColumn" msprop:Generator_UserColumnName="SEMILLA_QQ_TOTAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OBSERVACIONES" msprop:Generator_ColumnVarNameInTable="columnOBSERVACIONES" msprop:Generator_ColumnPropNameInRow="OBSERVACIONES" msprop:Generator_ColumnPropNameInTable="OBSERVACIONESColumn" msprop:Generator_UserColumnName="OBSERVACIONES" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TARA" msprop:Generator_ColumnVarNameInTable="columnTARA" msprop:Generator_ColumnPropNameInRow="TARA" msprop:Generator_ColumnPropNameInTable="TARAColumn" msprop:Generator_UserColumnName="TARA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CICLO_ACTA" msprop:Generator_ColumnVarNameInTable="columnCICLO_ACTA" msprop:Generator_ColumnPropNameInRow="CICLO_ACTA" msprop:Generator_ColumnPropNameInTable="CICLO_ACTAColumn" msprop:Generator_UserColumnName="CICLO_ACTA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PESO_NETO" msprop:Generator_ColumnVarNameInTable="columnPESO_NETO" msprop:Generator_ColumnPropNameInRow="PESO_NETO" msprop:Generator_ColumnPropNameInTable="PESO_NETOColumn" msprop:Generator_UserColumnName="PESO_NETO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PESO_LB" msprop:Generator_ColumnVarNameInTable="columnPESO_LB" msprop:Generator_ColumnPropNameInRow="PESO_LB" msprop:Generator_ColumnPropNameInTable="PESO_LBColumn" msprop:Generator_UserColumnName="PESO_LB" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

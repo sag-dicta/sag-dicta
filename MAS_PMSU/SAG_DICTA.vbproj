@@ -128,7 +128,9 @@
     <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
       <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -231,6 +233,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\sb-admin-2.css" />
     <Content Include="css\sb-admin-2.min.css" />
+    <Content Include="data\flot-data.js" />
+    <Content Include="data\morris-data.js" />
     <Content Include="flot.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="forms.aspx" />
@@ -266,27 +270,40 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
-    <Content Include="pages\Embarque.aspx" />
+    <Content Include="pages\blank.html" />
+    <Content Include="pages\buttons.html" />
     <Content Include="pages\ControlHRTo.aspx" />
-    <Content Include="pages\IndicadorVisitas.aspx" />
-    <Content Include="pages\IndicadorInventario.aspx" />
-    <Content Include="pages\IndicadorLotes.aspx" />
-    <Content Include="pages\IndicadorMultiplicadores.aspx" />
-    <Content Include="pages\Inventario.aspx" />
-    <Content Include="pages\FichaPeso.aspx" />
     <Content Include="pages\CuadroProcesamiento.aspx" />
     <Content Include="pages\AgregraActadeRecibo.aspx" />
     <Content Include="pages\AgregarConductor.aspx" />
     <Content Include="pages\AgregarVehiculo.aspx" />
     <Content Include="pages\agregarMultiplicador.aspx" />
     <Content Include="pages\Cambiopassword.aspx" />
+    <Content Include="pages\Embarque.aspx" />
     <Content Include="pages\ErrorPage.aspx" />
+    <Content Include="pages\FichaPeso.aspx" />
+    <Content Include="pages\flot.html" />
+    <Content Include="pages\forms.html" />
+    <Content Include="pages\generar_qrs.aspx" />
+    <Content Include="pages\grid.html" />
+    <Content Include="pages\icons.html" />
+    <Content Include="pages\index.html" />
     <Content Include="pages\Inicio.aspx" />
     <Content Include="pages\InscripcionLotes.aspx" />
     <Content Include="pages\InscSENASA_DescArch.aspx" />
+    <Content Include="pages\Inventario.aspx" />
     <Content Include="pages\Login.aspx" />
+    <Content Include="pages\login.html" />
     <Content Include="pages\MonitoreoPlagas.aspx" />
+    <Content Include="pages\morris.html" />
+    <Content Include="pages\notifications.html" />
+    <Content Include="pages\panels-wells.html" />
     <Content Include="pages\Registro_multiplicadores.aspx" />
+    <Content Include="pages\TC_INVENTARIOS.aspx" />
+    <Content Include="pages\TC_lotes.aspx" />
+    <Content Include="pages\tc_multiplicadores.aspx" />
+    <Content Include="pages\tc_visitaAT.aspx" />
+    <Content Include="pages\visitaAT.aspx" />
     <Content Include="panels-wells.html" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -375,6 +392,17 @@
     <Content Include="data\DataSetMultiplicador.xsc">
       <DependentUpon>DataSetMultiplicador.xsd</DependentUpon>
     </Content>
+    <Content Include="data\cuadro_proc.xsc">
+      <DependentUpon>cuadro_proc.xsd</DependentUpon>
+    </Content>
+    <None Include="data\cuadro_proc.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>cuadro_proc.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="data\cuadro_proc.xss">
+      <DependentUpon>cuadro_proc.xsd</DependentUpon>
+    </Content>
     <None Include="data\DataSetMultiplicador.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -383,11 +411,44 @@
     <Content Include="data\DataSetMultiplicador.xss">
       <DependentUpon>DataSetMultiplicador.xsd</DependentUpon>
     </Content>
+    <Content Include="data\qrs_productores.xsc">
+      <DependentUpon>qrs_productores.xsd</DependentUpon>
+    </Content>
+    <None Include="data\qrs_productores.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>qrs_productores.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="data\qrs_productores.xss">
+      <DependentUpon>qrs_productores.xsd</DependentUpon>
+    </Content>
+    <Content Include="data\visita_campo.xsc">
+      <DependentUpon>visita_campo.xsd</DependentUpon>
+    </Content>
+    <None Include="data\visita_campo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>visita_campo.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="data\visita_campo.xss">
+      <DependentUpon>visita_campo.xsd</DependentUpon>
+    </Content>
     <None Include="My Project\PublishProfiles\Perfil.pubxml" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="pages\registro_campo.xsc">
+      <DependentUpon>registro_campo.xsd</DependentUpon>
+    </Content>
+    <None Include="pages\registro_campo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>registro_campo.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="pages\registro_campo.xss">
+      <DependentUpon>registro_campo.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
@@ -2166,10 +2227,34 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="data\cuadro_proc.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>cuadro_proc.xsd</DependentUpon>
+    </Compile>
     <Compile Include="data\DataSetMultiplicador.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetMultiplicador.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="data\qrs_productores.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>qrs_productores.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="data\qrs_productores.vb">
+      <DependentUpon>qrs_productores.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="data\visita_campo.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>visita_campo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="pages\cuadro_procesamiento.vb">
+      <DependentUpon>cuadro_procesamiento.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="pages\ActaRecepcionReport.vb">
       <AutoGen>True</AutoGen>
@@ -2177,66 +2262,11 @@
       <DependentUpon>ActaRecepcionReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="pages\Embarque.aspx.designer.vb">
-      <DependentUpon>Embarque.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\Embarque.aspx.vb">
-      <DependentUpon>Embarque.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="pages\ControlHRTo.aspx.designer.vb">
       <DependentUpon>ControlHRTo.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\ControlHRTo.aspx.vb">
       <DependentUpon>ControlHRTo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\EmbarqueReport.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EmbarqueReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="pages\IndicadorVisitas.aspx.designer.vb">
-      <DependentUpon>IndicadorVisitas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\IndicadorVisitas.aspx.vb">
-      <DependentUpon>IndicadorVisitas.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="pages\IndicadorInventario.aspx.designer.vb">
-      <DependentUpon>IndicadorInventario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\IndicadorInventario.aspx.vb">
-      <DependentUpon>IndicadorInventario.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="pages\IndicadorLotes.aspx.designer.vb">
-      <DependentUpon>IndicadorLotes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\IndicadorLotes.aspx.vb">
-      <DependentUpon>IndicadorLotes.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="pages\IndicadorMultiplicadores.aspx.designer.vb">
-      <DependentUpon>IndicadorMultiplicadores.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\IndicadorMultiplicadores.aspx.vb">
-      <DependentUpon>IndicadorMultiplicadores.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="pages\Inventario.aspx.designer.vb">
-      <DependentUpon>Inventario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\Inventario.aspx.vb">
-      <DependentUpon>Inventario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\FichaPeso.aspx.designer.vb">
-      <DependentUpon>FichaPeso.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\FichaPeso.aspx.vb">
-      <DependentUpon>FichaPeso.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\CuadroProcesamiento.aspx.designer.vb">
@@ -2285,6 +2315,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AgregarMultiplicadorReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\Embarque.aspx.designer.vb">
+      <DependentUpon>Embarque.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Embarque.aspx.vb">
+      <DependentUpon>Embarque.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\EmbarqueReport.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\EmbarqueReport1.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmbarqueReport.rpt</DependentUpon>
     </Compile>
     <Compile Include="pages\ErrorPage.aspx.designer.vb">
       <DependentUpon>ErrorPage.aspx</DependentUpon>
@@ -2342,11 +2387,25 @@
       <DependentUpon>Cambiopassword.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="pages\FichaReport.vb">
+    <Compile Include="pages\FichaPeso.aspx.designer.vb">
+      <DependentUpon>FichaPeso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\FichaPeso.aspx.vb">
+      <DependentUpon>FichaPeso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\FichaReport1.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FichaReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\generar_qrs.aspx.designer.vb">
+      <DependentUpon>generar_qrs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\generar_qrs.aspx.vb">
+      <DependentUpon>generar_qrs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\Inicio.aspx.designer.vb">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -2369,6 +2428,13 @@
       <DependentUpon>InscSENASA_DescArch.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="pages\Inventario.aspx.designer.vb">
+      <DependentUpon>Inventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Inventario.aspx.vb">
+      <DependentUpon>Inventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="pages\Login.aspx.designer.vb">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
@@ -2383,11 +2449,63 @@
       <DependentUpon>MonitoreoPlagas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="pages\qrs_prod.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>qrs_prod.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\registro_campo.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>registro_campo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="pages\Registro_multiplicadores.aspx.designer.vb">
       <DependentUpon>Registro_multiplicadores.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Registro_multiplicadores.aspx.vb">
       <DependentUpon>Registro_multiplicadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\registro_visita_campo.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>registro_visita_campo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\TC_INVENTARIOS.aspx.designer.vb">
+      <DependentUpon>TC_INVENTARIOS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\TC_INVENTARIOS.aspx.vb">
+      <DependentUpon>TC_INVENTARIOS.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\TC_lotes.aspx.designer.vb">
+      <DependentUpon>TC_lotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\TC_lotes.aspx.vb">
+      <DependentUpon>TC_lotes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\tc_multiplicadores.aspx.designer.vb">
+      <DependentUpon>tc_multiplicadores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\tc_multiplicadores.aspx.vb">
+      <DependentUpon>tc_multiplicadores.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\tc_visitaAT.aspx.designer.vb">
+      <DependentUpon>tc_visitaAT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\tc_visitaAT.aspx.vb">
+      <DependentUpon>tc_visitaAT.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\visitaAT.aspx.designer.vb">
+      <DependentUpon>visitaAT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\visitaAT.aspx.vb">
+      <DependentUpon>visitaAT.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="principal.Master.designer.vb">
@@ -2405,6 +2523,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="pages\cuadro_procesamiento.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>cuadro_procesamiento.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="pages\ActaRecepcionReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ActaRecepcionReport.vb</LastGenOutput>
@@ -2419,11 +2541,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pages\EmbarqueReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>EmbarqueReport.vb</LastGenOutput>
+      <LastGenOutput>EmbarqueReport1.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\FichaReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>FichaReport.vb</LastGenOutput>
+      <LastGenOutput>FichaReport1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\qrs_prod.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>qrs_prod.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\registro_visita_campo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>registro_visita_campo.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

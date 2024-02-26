@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="qrs_productores" targetNamespace="http://tempuri.org/qrs_productores.xsd" xmlns:mstns="http://tempuri.org/qrs_productores.xsd" xmlns="http://tempuri.org/qrs_productores.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="sag_dictaConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="sag_dictaConnectionString1 (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.sag_dictaConnectionString1.ConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vista_sag_registro_multiplicador_qrsTableAdapter" GeneratorDataComponentClassName="vista_sag_registro_multiplicador_qrsTableAdapter" Name="vista_sag_registro_multiplicador_qrs" UserDataComponentName="vista_sag_registro_multiplicador_qrsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sag_dictaConnectionString1 (Web.config)" DbObjectName="sag_dicta.vista_sag_registro_multiplicador_qrs" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `COD_MULTIPICADOR`, `Id`, `nombre_productor`, `representante_legal`, `identidad_productor`, `extendida`, `residencia_productor`, `telefono_productor`, `no_registro_productor`, `nombre_multiplicador`, `cedula_multiplicador`, `telefono_multiplicador`, `nombre_finca`, `nombre_persona_finca`, `departamento`, `municipio`, `aldea`, `caserio`, `nombre_lote`, `croquis`, `estado` FROM `sag_dicta`.`vista_sag_registro_multiplicador_qrs`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="COD_MULTIPICADOR" DataSetColumn="COD_MULTIPICADOR" />
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="nombre_productor" DataSetColumn="nombre_productor" />
+              <Mapping SourceColumn="representante_legal" DataSetColumn="representante_legal" />
+              <Mapping SourceColumn="identidad_productor" DataSetColumn="identidad_productor" />
+              <Mapping SourceColumn="extendida" DataSetColumn="extendida" />
+              <Mapping SourceColumn="residencia_productor" DataSetColumn="residencia_productor" />
+              <Mapping SourceColumn="telefono_productor" DataSetColumn="telefono_productor" />
+              <Mapping SourceColumn="no_registro_productor" DataSetColumn="no_registro_productor" />
+              <Mapping SourceColumn="nombre_multiplicador" DataSetColumn="nombre_multiplicador" />
+              <Mapping SourceColumn="cedula_multiplicador" DataSetColumn="cedula_multiplicador" />
+              <Mapping SourceColumn="telefono_multiplicador" DataSetColumn="telefono_multiplicador" />
+              <Mapping SourceColumn="nombre_finca" DataSetColumn="nombre_finca" />
+              <Mapping SourceColumn="nombre_persona_finca" DataSetColumn="nombre_persona_finca" />
+              <Mapping SourceColumn="departamento" DataSetColumn="departamento" />
+              <Mapping SourceColumn="municipio" DataSetColumn="municipio" />
+              <Mapping SourceColumn="aldea" DataSetColumn="aldea" />
+              <Mapping SourceColumn="caserio" DataSetColumn="caserio" />
+              <Mapping SourceColumn="nombre_lote" DataSetColumn="nombre_lote" />
+              <Mapping SourceColumn="croquis" DataSetColumn="croquis" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="qrs_productores" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="qrs_productores" msprop:Generator_UserDSName="qrs_productores">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vista_sag_registro_multiplicador_qrs" msprop:Generator_TableClassName="vista_sag_registro_multiplicador_qrsDataTable" msprop:Generator_TableVarName="tablevista_sag_registro_multiplicador_qrs" msprop:Generator_TablePropName="vista_sag_registro_multiplicador_qrs" msprop:Generator_RowDeletingName="vista_sag_registro_multiplicador_qrsRowDeleting" msprop:Generator_RowChangingName="vista_sag_registro_multiplicador_qrsRowChanging" msprop:Generator_RowEvHandlerName="vista_sag_registro_multiplicador_qrsRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_sag_registro_multiplicador_qrsRowDeleted" msprop:Generator_UserTableName="vista_sag_registro_multiplicador_qrs" msprop:Generator_RowChangedName="vista_sag_registro_multiplicador_qrsRowChanged" msprop:Generator_RowEvArgName="vista_sag_registro_multiplicador_qrsRowChangeEvent" msprop:Generator_RowClassName="vista_sag_registro_multiplicador_qrsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COD_MULTIPICADOR" msprop:Generator_ColumnVarNameInTable="columnCOD_MULTIPICADOR" msprop:Generator_ColumnPropNameInRow="COD_MULTIPICADOR" msprop:Generator_ColumnPropNameInTable="COD_MULTIPICADORColumn" msprop:Generator_UserColumnName="COD_MULTIPICADOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="16" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="nombre_productor" msprop:Generator_ColumnVarNameInTable="columnnombre_productor" msprop:Generator_ColumnPropNameInRow="nombre_productor" msprop:Generator_ColumnPropNameInTable="nombre_productorColumn" msprop:Generator_UserColumnName="nombre_productor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="representante_legal" msprop:Generator_ColumnVarNameInTable="columnrepresentante_legal" msprop:Generator_ColumnPropNameInRow="representante_legal" msprop:Generator_ColumnPropNameInTable="representante_legalColumn" msprop:Generator_UserColumnName="representante_legal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="identidad_productor" msprop:Generator_ColumnVarNameInTable="columnidentidad_productor" msprop:Generator_ColumnPropNameInRow="identidad_productor" msprop:Generator_ColumnPropNameInTable="identidad_productorColumn" msprop:Generator_UserColumnName="identidad_productor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="extendida" msprop:Generator_ColumnVarNameInTable="columnextendida" msprop:Generator_ColumnPropNameInRow="extendida" msprop:Generator_ColumnPropNameInTable="extendidaColumn" msprop:Generator_UserColumnName="extendida" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="residencia_productor" msprop:Generator_ColumnVarNameInTable="columnresidencia_productor" msprop:Generator_ColumnPropNameInRow="residencia_productor" msprop:Generator_ColumnPropNameInTable="residencia_productorColumn" msprop:Generator_UserColumnName="residencia_productor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefono_productor" msprop:Generator_ColumnVarNameInTable="columntelefono_productor" msprop:Generator_ColumnPropNameInRow="telefono_productor" msprop:Generator_ColumnPropNameInTable="telefono_productorColumn" msprop:Generator_UserColumnName="telefono_productor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="no_registro_productor" msprop:Generator_ColumnVarNameInTable="columnno_registro_productor" msprop:Generator_ColumnPropNameInRow="no_registro_productor" msprop:Generator_ColumnPropNameInTable="no_registro_productorColumn" msprop:Generator_UserColumnName="no_registro_productor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_multiplicador" msprop:Generator_ColumnVarNameInTable="columnnombre_multiplicador" msprop:Generator_ColumnPropNameInRow="nombre_multiplicador" msprop:Generator_ColumnPropNameInTable="nombre_multiplicadorColumn" msprop:Generator_UserColumnName="nombre_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cedula_multiplicador" msprop:Generator_ColumnVarNameInTable="columncedula_multiplicador" msprop:Generator_ColumnPropNameInRow="cedula_multiplicador" msprop:Generator_ColumnPropNameInTable="cedula_multiplicadorColumn" msprop:Generator_UserColumnName="cedula_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telefono_multiplicador" msprop:Generator_ColumnVarNameInTable="columntelefono_multiplicador" msprop:Generator_ColumnPropNameInRow="telefono_multiplicador" msprop:Generator_ColumnPropNameInTable="telefono_multiplicadorColumn" msprop:Generator_UserColumnName="telefono_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_finca" msprop:Generator_ColumnVarNameInTable="columnnombre_finca" msprop:Generator_ColumnPropNameInRow="nombre_finca" msprop:Generator_ColumnPropNameInTable="nombre_fincaColumn" msprop:Generator_UserColumnName="nombre_finca" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_persona_finca" msprop:Generator_ColumnVarNameInTable="columnnombre_persona_finca" msprop:Generator_ColumnPropNameInRow="nombre_persona_finca" msprop:Generator_ColumnPropNameInTable="nombre_persona_fincaColumn" msprop:Generator_UserColumnName="nombre_persona_finca" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="departamento" msprop:Generator_ColumnVarNameInTable="columndepartamento" msprop:Generator_ColumnPropNameInRow="departamento" msprop:Generator_ColumnPropNameInTable="departamentoColumn" msprop:Generator_UserColumnName="departamento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="municipio" msprop:Generator_ColumnVarNameInTable="columnmunicipio" msprop:Generator_ColumnPropNameInRow="municipio" msprop:Generator_ColumnPropNameInTable="municipioColumn" msprop:Generator_UserColumnName="municipio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aldea" msprop:Generator_ColumnVarNameInTable="columnaldea" msprop:Generator_ColumnPropNameInRow="aldea" msprop:Generator_ColumnPropNameInTable="aldeaColumn" msprop:Generator_UserColumnName="aldea" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="caserio" msprop:Generator_ColumnVarNameInTable="columncaserio" msprop:Generator_ColumnPropNameInRow="caserio" msprop:Generator_ColumnPropNameInTable="caserioColumn" msprop:Generator_UserColumnName="caserio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_lote" msprop:Generator_ColumnVarNameInTable="columnnombre_lote" msprop:Generator_ColumnPropNameInRow="nombre_lote" msprop:Generator_ColumnPropNameInTable="nombre_loteColumn" msprop:Generator_UserColumnName="nombre_lote" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="croquis" msprop:Generator_ColumnVarNameInTable="columncroquis" msprop:Generator_ColumnPropNameInRow="croquis" msprop:Generator_ColumnPropNameInTable="croquisColumn" msprop:Generator_UserColumnName="croquis" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="qr" msprop:Generator_ColumnVarNameInTable="columnqr" msprop:Generator_ColumnPropNameInRow="qr" msprop:Generator_ColumnPropNameInTable="qrColumn" msprop:Generator_UserColumnName="qr" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vista_sag_registro_multiplicador_qrs" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
