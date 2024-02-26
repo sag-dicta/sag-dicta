@@ -1382,6 +1382,24 @@ Partial Public Class InscripcionLotes
     Protected WithEvents FileUploadEtiquetaSemilla As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
+    '''Control lblSemiRegi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblSemiRegi As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control FileUploadSemiRegi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents FileUploadSemiRegi As Global.System.Web.UI.WebControls.FileUpload
+
+    '''<summary>
     '''Control Label23.
     '''</summary>
     '''<remarks>

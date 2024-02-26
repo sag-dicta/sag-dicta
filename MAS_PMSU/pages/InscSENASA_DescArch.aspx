@@ -95,6 +95,9 @@
                                             <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="CERTIFICADO DE ORIGEN DE SEMILLA" CommandName="PagoTGR">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
+                                            <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="SEMILLA REGISTRADA" CommandName="SemiRegi">
+                                                <ControlStyle CssClass="btn btn-info"></ControlStyle>
+                                            </asp:ButtonField>
                                         </Columns>
                                         <EditRowStyle BackColor="#7C6F57" />
                                         <RowStyle BackColor="#E3EAEB" />

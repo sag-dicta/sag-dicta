@@ -209,6 +209,57 @@ Public Class InscSENASA_DescArch
                 End If
             Next
         End If
+
+
+        If (e.CommandName = "SemiRegi") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            Dim Str As String = "SELECT semilla_registrada FROM `sag_registro_lote` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            Dim todosNulos As Boolean = True
+
+            For Each row As DataRow In dt.Rows
+                For Each column As DataColumn In dt.Columns
+                    If Not IsDBNull(row(column)) Then
+                        todosNulos = False
+                        Exit For
+                    End If
+                Next
+
+                If Not todosNulos Then
+                    Using connection As New MySqlConnection(conn)
+                        connection.Open()
+                        Using command As New MySqlCommand(Str, connection)
+                            Using reader As MySqlDataReader = command.ExecuteReader()
+                                If reader.Read() Then
+                                    Dim imageData As Byte() = DirectCast(reader("semilla_registrada"), Byte())
+                                    Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                                    ' Configura la respuesta HTTP para descargar la imagen
+                                    HttpContext.Current.Response.Clear()
+                                    HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=SEMILLA_REGISTRADA " & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
+                                    HttpContext.Current.Response.BinaryWrite(imageData)
+                                    HttpContext.Current.Response.Flush()
+                                    HttpContext.Current.Response.End()
+                                End If
+                            End Using
+                        End Using
+                    End Using
+
+                    TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                Else
+                    BBorrarsi.Visible = False
+                    BConfirm.Visible = True
+                    BBorrarno.Visible = False
+                    Label1.Text = "¡No hay archivo para descarga!"
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                End If
+            Next
+        End If
     End Sub
 
 
@@ -248,18 +299,22 @@ Public Class InscSENASA_DescArch
             ' Obtén los valores de los campos IMAGEN_FICHA, IMAGEN_PAGO_TGR, e IMAGEN_ETIQUETA_SEMILLA
             Dim imagenFicha As String = DataBinder.Eval(e.Row.DataItem, "factura_comercio").ToString()
             Dim imagenPagoTGR As String = DataBinder.Eval(e.Row.DataItem, "certificado_origen_semilla").ToString()
+            Dim imagenSemiRegi As String = DataBinder.Eval(e.Row.DataItem, "semilla_registrada").ToString()
 
             ' Encuentra los botones en la fila por índice
             Dim indexFicha As Integer = 4 ' Índice del ButtonField para Ficha de Lote
             Dim indexPagoTGR As Integer = 5 ' Índice del ButtonField para Pago de TGR
+            Dim indexSemiRegi As Integer = 6
 
             ' Encuentra los botones en la fila
             Dim btnFicha As Button = CType(e.Row.Cells(indexFicha).Controls(0), Button)
             Dim btnPagoTGR As Button = CType(e.Row.Cells(indexPagoTGR).Controls(0), Button)
+            Dim btnSemiRegi As Button = CType(e.Row.Cells(indexSemiRegi).Controls(0), Button)
 
             ' Oculta los botones según las condiciones que necesites
             btnFicha.Visible = Not String.IsNullOrEmpty(imagenFicha)
             btnPagoTGR.Visible = Not String.IsNullOrEmpty(imagenPagoTGR)
+            btnSemiRegi.Visible = Not String.IsNullOrEmpty(imagenSemiRegi)
         End If
     End Sub
 
@@ -287,13 +342,13 @@ Public Class InscSENASA_DescArch
         Dim query As String = ""
 
         query = "SELECT * FROM `bcs_inscripcion_senasa` where Estado = '1' ORDER BY Productor"
-        'If (TxtDepto.SelectedValue = " Todos") Then
-        '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Estado = '1' ORDER BY Departamento,Productor "
-        'Else
-        '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor "
-        'End If
+            'If (TxtDepto.SelectedValue = " Todos") Then
+            '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Estado = '1' ORDER BY Departamento,Productor "
+            'Else
+            '    query = "SELECT * FROM `bcs_inscripcion_senasa` WHERE Departamento='" & TxtDepto.SelectedValue & "' AND Estado = '1' ORDER BY Departamento,Productor "
+            'End If
 
-        Using con As New MySqlConnection(conn)
+            Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
                 Using sda As New MySqlDataAdapter()
                     cmd.Connection = con
