@@ -640,7 +640,7 @@ Public Class InscripcionLotes
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id_lote, nombre_productor, nombre_finca, nombre_multiplicador, cedula_multiplicador, departamento, municipio, no_lote, certificado_origen_semilla, factura_comercio"
+        Dim cadena As String = "id_lote, nombre_productor, nombre_finca, nombre_multiplicador, cedula_multiplicador, departamento, municipio, no_lote, certificado_origen_semilla, factura_comercio, ESTADO_LOTE"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -663,7 +663,7 @@ Public Class InscripcionLotes
             c4 = "AND departamento = '" & TxtDepto.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_multi_lote` WHERE 1 = 1 " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_multi_lote` WHERE 1 = 1 " & c1 & c3 & c4 & " ORDER BY id_lote DESC"
 
         GridDatos.DataBind()
     End Sub
@@ -1234,6 +1234,26 @@ Public Class InscripcionLotes
             Else
                 btnImprimir.Visible = False
             End If
+
+            '********************
+            Dim cellVigencia As TableCell = e.Row.Cells(12)
+            Dim vigencia As String = DataBinder.Eval(e.Row.DataItem, "ESTADO_LOTE").ToString()
+            Select Case vigencia
+                Case "4"
+                    cellVigencia.Text = "⏳ Vencido"
+                    cellVigencia.BackColor = Drawing.Color.Red
+                    cellVigencia.ForeColor = Drawing.Color.White
+                    cellVigencia.Font.Bold = True
+                    btnEditar.Visible = False
+                    btnEliminar.Visible = False
+                Case "1"
+                    cellVigencia.Text = "✅ Vigente"
+                    'cellVigencia.BackColor = Drawing.Color.Green
+                Case Else
+                    cellVigencia.Text = "Estado Desconocido"
+                    'cellVigencia.BackColor = Drawing.Color.Gray
+            End Select
+
         End If
     End Sub
 
@@ -1327,7 +1347,7 @@ Public Class InscripcionLotes
 
             Dim fechaEspecifica As Date = Date.Today
 
-            Dim query As String = "UPDATE sag_registro_lote SET estado = 4 WHERE caducidad_lote = @fechaEspecifica"
+            Dim query As String = "UPDATE sag_registro_lote SET estado = 4 WHERE caducidad_lote <= @fechaEspecifica"
 
             Using cmd As New MySqlCommand(query, connection)
                 cmd.Parameters.AddWithValue("@fechaEspecifica", fechaEspecifica)

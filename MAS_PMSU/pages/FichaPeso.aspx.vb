@@ -123,7 +123,7 @@ Public Class FichaPeso
         End If
 
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2 & "ORDER BY id_acta DESC"
 
         GridDatos.DataBind()
     End Sub

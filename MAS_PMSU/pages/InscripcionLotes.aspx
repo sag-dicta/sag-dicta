@@ -116,6 +116,8 @@
                                             <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="Eliminar" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
+
+                                            <asp:BoundField DataField="ESTADO_LOTE" HeaderText="Vigencia" />
                                         </Columns>
                                         <EditRowStyle BackColor="#7C6F57" />
                                         <RowStyle BackColor="#E3EAEB" />
