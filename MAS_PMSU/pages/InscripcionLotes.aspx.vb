@@ -24,6 +24,7 @@ Public Class InscripcionLotes
                 llenagrid()
                 btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
+                eliminar_caducidad_lote()
             End If
         End If
     End Sub
@@ -1317,6 +1318,23 @@ Public Class InscripcionLotes
                     End Using
                 End Using
             End Using
+        End Using
+    End Sub
+    Protected Sub eliminar_caducidad_lote()
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim fechaEspecifica As Date = Date.Today
+
+            Dim query As String = "UPDATE sag_registro_lote SET estado = 4 WHERE caducidad_lote = @fechaEspecifica"
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.Parameters.AddWithValue("@fechaEspecifica", fechaEspecifica)
+                cmd.ExecuteNonQuery()
+            End Using
+
+            connection.Close()
         End Using
     End Sub
 
