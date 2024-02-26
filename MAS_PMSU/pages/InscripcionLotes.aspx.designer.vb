@@ -563,6 +563,24 @@ Partial Public Class InscripcionLotes
     Protected WithEvents certificada1 As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
+    '''Control comercial1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comercial1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control Fito_Mejorador1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Fito_Mejorador1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
     '''Control Label2.
     '''</summary>
     '''<remarks>
@@ -876,6 +894,24 @@ Partial Public Class InscripcionLotes
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents certificada As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control comercial.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comercial As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control Fito_Mejorador.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Fito_Mejorador As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
     '''Control Label11.
