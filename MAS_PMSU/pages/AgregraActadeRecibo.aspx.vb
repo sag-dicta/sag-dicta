@@ -234,10 +234,12 @@ Public Class AgregraActadeRecibo
             txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
             txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
             'txtCategoria.Text = If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString())
+            SeleccionarItemEnDropDownList(categoria_origen_ddl, dt.Rows(0)("categoria_registrado").ToString())
             txtLote.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
             txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
             txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
             txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
+            txtLoteRegi.Text = If(dt.Rows(0)("lote_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("lote_registrado").ToString())
 
         End If
 
@@ -394,6 +396,7 @@ Public Class AgregraActadeRecibo
             txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
             txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
             'txtCategoria.Text = If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString())
+            SeleccionarItemEnDropDownList(categoria_origen_ddl, dt.Rows(0)("categoria_origen").ToString())
             txtLote.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
             txtlega.Text = If(dt.Rows(0)("representante_legal") Is DBNull.Value, String.Empty, dt.Rows(0)("representante_legal").ToString())
             txtnum.Text = If(dt.Rows(0)("telefono_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("telefono_multiplicador").ToString())
@@ -431,8 +434,8 @@ Public Class AgregraActadeRecibo
                     cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
                     cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
                     cmd.Parameters.AddWithValue("@ciclo_acta", DDL_Ciclo.SelectedItem.Text)
-                    cmd.Parameters.AddWithValue("@lote_registrado", "")
-                    cmd.Parameters.AddWithValue("@categoria_registrado", "")
+                    cmd.Parameters.AddWithValue("@lote_registrado", txtLoteRegi.Text)
+                    cmd.Parameters.AddWithValue("@categoria_registrado", categoria_origen_ddl.SelectedItem.Text)
 
                     cmd.ExecuteNonQuery()
                     connection.Close()
@@ -473,7 +476,7 @@ Public Class AgregraActadeRecibo
                     @porcentaje_humedad,
                     @no_sacos,
                     @peso_humedo_QQ,
-                    @ciclo_acta
+                    @ciclo_acta,
                     @lote_registrado,
                     @categoria_registrado
                 );
@@ -488,8 +491,8 @@ Public Class AgregraActadeRecibo
                     cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
                     cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
                     cmd.Parameters.AddWithValue("@ciclo_acta", DDL_Ciclo.SelectedItem.Text)
-                    cmd.Parameters.AddWithValue("@lote_registrado", "")
-                    cmd.Parameters.AddWithValue("@categoria_registrado", "")
+                    cmd.Parameters.AddWithValue("@lote_registrado", txtLoteRegi.Text)
+                    cmd.Parameters.AddWithValue("@categoria_registrado", categoria_origen_ddl.SelectedItem.Text)
 
                     cmd.ExecuteNonQuery()
                     connection.Close()
@@ -755,15 +758,12 @@ Public Class AgregraActadeRecibo
                 ' Obtener las iniciales del productor
                 Dim inicialesProductor As String = String.Join("", productorSeleccionado.Split().Select(Function(s) s(0)))
 
-                ' Obtener el ciclo sin el prefijo "Ciclo-" y sin el sufijo
-                Dim cicloSinPrefijo As String = cicloSeleccionado.Substring(6)
-                Dim partesCiclo() As String = cicloSeleccionado.Split("-"c)
-
-                ' Obtener el resultado deseado
-                Dim resultado As String = partesCiclo(3) & partesCiclo(2)
+                ' Obtener las últimas dos letras y el último caracter de TxtCiclo
+                Dim ultimasLetrasCiclo As String = cicloSeleccionado.Substring(cicloSeleccionado.Length - 2, 2) & cicloSeleccionado.Substring(cicloSeleccionado.IndexOf("-") + 1, 1)
 
                 ' Obtener numero de lote
-                Llenar_Lote(txtProductor.Text)
+
+                Llenar_Lote(txtProductor.Text, btnGuardarActa.Text)
                 Dim nlote As String
                 If Txtcount.Text <> "" Then
                     nlote = "-L" & Txtcount.Text & "-"
@@ -772,7 +772,7 @@ Public Class AgregraActadeRecibo
                 End If
 
                 ' Construir el texto para TxtLoteSemi
-                Dim textoLoteSemi As String = "" & inicialesProductor & "-" & primeras2LetrasCultivos & "-" & primeras3LetrasVariedad & "-" & primeras3LetrasCategoria & nlote & resultado
+                Dim textoLoteSemi As String = "" & inicialesProductor & "-" & primeras2LetrasCultivos & "-" & primeras3LetrasVariedad & "-" & primeras3LetrasCategoria & nlote & ultimasLetrasCiclo
 
                 ' Asignar el texto a TxtLoteSemi
                 txtLoteRegi.Text = textoLoteSemi.ToUpper()
@@ -780,20 +780,33 @@ Public Class AgregraActadeRecibo
             'End If
         End If
     End Sub
-    Private Sub Llenar_Lote(ByVal valor As String)
-        Dim strCombo As String = "SELECT COUNT(*) AS no_lote FROM vista_multi_lote WHERE productor = @valor"
-        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
-        adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", valor)
-        Dim DtCombo As New DataTable()
-        adaptcombo.Fill(DtCombo)
+    Private Sub Llenar_Lote(ByVal valor As String, ByVal valor2 As String)
+        If valor2 = "Guardar" Then
+            Dim strCombo As String = "SELECT COUNT(*) AS no_lote FROM vista_multi_lote WHERE productor = @valor"
+            Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+            adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", valor)
+            Dim DtCombo As New DataTable()
+            adaptcombo.Fill(DtCombo)
 
-        If DtCombo.Rows.Count > 0 AndAlso DtCombo.Columns.Count > 0 Then
-            Dim total As Integer = DtCombo.Rows(0)("no_lote")
-            total += 1
-            Txtcount.Text = total.ToString()
+            If DtCombo.Rows.Count > 0 AndAlso DtCombo.Columns.Count > 0 Then
+                Dim total As Integer = DtCombo.Rows(0)("no_lote")
+                total += 1
+                Txtcount.Text = total.ToString()
+            Else
+                Dim total1 As Integer = 1
+                Txtcount.Text = total1.ToString()
+            End If
         Else
-            Dim total1 As Integer = 1
-            Txtcount.Text = total1.ToString()
+            Dim indiceL As Integer = txtLoteRegi.Text.IndexOf("-L") + 2 ' Obtiene el índice del primer carácter después de "-L"
+            Dim indiceGuionDespuesL As Integer = txtLoteRegi.Text.IndexOf("-", indiceL) ' Obtiene el índice del siguiente "-"
+            Dim numeroDespuesL As String
+
+            If indiceGuionDespuesL <> -1 Then
+                ' Si se encontró el siguiente "-", obtén la parte de la cadena entre "-L" y el siguiente "-"
+                numeroDespuesL = txtLoteRegi.Text.Substring(indiceL, indiceGuionDespuesL - indiceL)
+                Txtcount.Text = numeroDespuesL
+            End If
+
         End If
     End Sub
 End Class
