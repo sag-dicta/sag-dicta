@@ -136,7 +136,7 @@ Public Class InscSENASA_DescArch
                                 If reader.Read() Then
                                     Dim imageData As Byte() = DirectCast(reader("factura_comercio"), Byte())
                                     Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(3).Text).ToString
                                     ' Configura la respuesta HTTP para descargar la imagen
                                     HttpContext.Current.Response.Clear()
                                     HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
@@ -186,7 +186,7 @@ Public Class InscSENASA_DescArch
                                 If reader.Read() Then
                                     Dim imageData As Byte() = DirectCast(reader("certificado_origen_semilla"), Byte())
                                     Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(3).Text).ToString
                                     ' Configura la respuesta HTTP para descargar la imagen
                                     HttpContext.Current.Response.Clear()
                                     HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
@@ -237,7 +237,7 @@ Public Class InscSENASA_DescArch
                                 If reader.Read() Then
                                     Dim imageData As Byte() = DirectCast(reader("semilla_registrada"), Byte())
                                     Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
-                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString
+                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(3).Text).ToString
                                     ' Configura la respuesta HTTP para descargar la imagen
                                     HttpContext.Current.Response.Clear()
                                     HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)

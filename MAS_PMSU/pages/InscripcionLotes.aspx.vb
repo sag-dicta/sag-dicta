@@ -1139,12 +1139,18 @@ Public Class InscripcionLotes
         Dim esValido As Boolean = True
         Label18.Visible = False
         Label21.Visible = False
+        lblSemiRegi.Visible = False
+
         If Not FileUploadPagoTGR.HasFile OrElse Not EsExtensionValida(FileUploadPagoTGR.FileName) Then
             Label18.Visible = True
             esValido = False
         End If
         If Not FileUploadEtiquetaSemilla.HasFile OrElse Not EsExtensionValida(FileUploadEtiquetaSemilla.FileName) Then
             Label21.Visible = True
+            esValido = False
+        End If
+        If Not FileUploadSemiRegi.HasFile OrElse Not EsExtensionValida(FileUploadSemiRegi.FileName) Then
+            lblSemiRegi.Visible = True
             esValido = False
         End If
 
@@ -1160,12 +1166,13 @@ Public Class InscripcionLotes
                 conn.Open()
                 Dim bytesFichaSemilla As Byte() = FileUploadToBytes(FileUploadEtiquetaSemilla)
                 Dim bytesPagoTGR As Byte() = FileUploadToBytes(FileUploadPagoTGR)
-
+                Dim bytesRegistroLote As Byte() = FileUploadToBytes(FileUploadSemiRegi)
                 ' Actualizar bytes en la base de datos
-                Dim query As String = "UPDATE sag_registro_lote SET certificado_origen_semilla = @certificado_origen_semilla, factura_comercio = @factura_comercio WHERE ID=" & txtID.Text & " "
+                Dim query As String = "UPDATE sag_registro_lote SET certificado_origen_semilla = @certificado_origen_semilla, factura_comercio = @factura_comercio, semilla_registrada = @semilla_registrada WHERE ID=" & txtID.Text & " "
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@certificado_origen_semilla", bytesFichaSemilla)
                     cmd.Parameters.AddWithValue("@factura_comercio", bytesPagoTGR)
+                    cmd.Parameters.AddWithValue("@semilla_registrada", bytesRegistroLote)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using

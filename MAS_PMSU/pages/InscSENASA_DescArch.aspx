@@ -56,7 +56,7 @@
                                         <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                         <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                                         <EmptyDataTemplate>
-                                            ¡No hay bancos inscritos!
+                                            ¡No hay registros!
                                         </EmptyDataTemplate>
                                         <%--Paginador...--%>
                                         <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
