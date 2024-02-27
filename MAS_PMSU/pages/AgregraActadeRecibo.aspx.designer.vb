@@ -158,6 +158,15 @@ Partial Public Class AgregraActadeRecibo
     Protected WithEvents txtnum As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control Txtcount.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Txtcount As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control TextIdlote2.
     '''</summary>
     '''<remarks>

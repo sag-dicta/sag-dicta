@@ -554,6 +554,7 @@ Public Class AgregraActadeRecibo
         Else
             validarflag = 0
         End If
+        generarlote()
     End Sub
 
     Private Sub exportar()
@@ -723,5 +724,76 @@ Public Class AgregraActadeRecibo
 
     Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
+    End Sub
+    Protected Sub generarlote()
+        ' Verificar si se ha seleccionado algo en TxtCiclo
+        If DDL_Ciclo.SelectedIndex > 0 Then
+            ' Verificar si se ha seleccionado algo en gb_departamento_new
+            'If gb_departamento_new.SelectedIndex > 0 Then
+            ' Verificar si se ha seleccionado algo en TxtProductor
+            If txtProductor.Text <> "" Then
+                ' Obtener el valor seleccionado en TxtCiclo
+                Dim cicloSeleccionado As String = DDL_Ciclo.SelectedItem.Text
+
+                ' Obtener el valor seleccionado en txtvariedad
+                Dim variedadSeleccionado As String = txtVariedad.Text
+                ' Obtener las primeras 3 letras del variedad
+                Dim primeras3LetrasVariedad As String = variedadSeleccionado.Substring(0, Math.Min(variedadSeleccionado.Length, 3))
+
+                ' Obtener el valor seleccionado en txtCultivo
+                Dim cultivoSeleccionado As String = txtCultivo.Text
+                ' Obtener las primeras 3 letras del cultivo
+                Dim primeras2LetrasCultivos As String = cultivoSeleccionado.Substring(0, Math.Min(cultivoSeleccionado.Length, 2))
+
+                ' Obtener el valor seleccionado en txtCategoria
+                Dim categoriaSeleccionado As String = categoria_origen_ddl.SelectedItem.Text
+                ' Obtener las primeras 3 letras del categoria
+                Dim primeras3LetrasCategoria As String = categoriaSeleccionado.Substring(0, Math.Min(categoriaSeleccionado.Length, 1))
+
+                ' Obtener el valor seleccionado en TxtProductor
+                Dim productorSeleccionado As String = txtProductor.Text
+                ' Obtener las iniciales del productor
+                Dim inicialesProductor As String = String.Join("", productorSeleccionado.Split().Select(Function(s) s(0)))
+
+                ' Obtener el ciclo sin el prefijo "Ciclo-" y sin el sufijo
+                Dim cicloSinPrefijo As String = cicloSeleccionado.Substring(6)
+                Dim partesCiclo() As String = cicloSeleccionado.Split("-"c)
+
+                ' Obtener el resultado deseado
+                Dim resultado As String = partesCiclo(3) & partesCiclo(2)
+
+                ' Obtener numero de lote
+                Llenar_Lote(txtProductor.Text)
+                Dim nlote As String
+                If Txtcount.Text <> "" Then
+                    nlote = "-L" & Txtcount.Text & "-"
+                Else
+                    nlote = ""
+                End If
+
+                ' Construir el texto para TxtLoteSemi
+                Dim textoLoteSemi As String = "" & inicialesProductor & "-" & primeras2LetrasCultivos & "-" & primeras3LetrasVariedad & "-" & primeras3LetrasCategoria & nlote & resultado
+
+                ' Asignar el texto a TxtLoteSemi
+                txtLoteRegi.Text = textoLoteSemi.ToUpper()
+            End If
+            'End If
+        End If
+    End Sub
+    Private Sub Llenar_Lote(ByVal valor As String)
+        Dim strCombo As String = "SELECT COUNT(*) AS no_lote FROM vista_multi_lote WHERE productor = @valor"
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        adaptcombo.SelectCommand.Parameters.AddWithValue("@valor", valor)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
+
+        If DtCombo.Rows.Count > 0 AndAlso DtCombo.Columns.Count > 0 Then
+            Dim total As Integer = DtCombo.Rows(0)("no_lote")
+            total += 1
+            Txtcount.Text = total.ToString()
+        Else
+            Dim total1 As Integer = 1
+            Txtcount.Text = total1.ToString()
+        End If
     End Sub
 End Class

@@ -1382,6 +1382,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._Txtcount">
+<summary>
+Control Txtcount.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.AgregraActadeRecibo._TextIdlote2">
 <summary>
 Control TextIdlote2.
@@ -1607,24 +1616,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AgregraActadeRecibo._lblLoteRegi">
-<summary>
-Control lblLoteRegi.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AgregraActadeRecibo._txtLoteRegi">
-<summary>
-Control txtLoteRegi.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.AgregraActadeRecibo._RegularExpressionValidator42">
 <summary>
 Control RegularExpressionValidator42.
@@ -1709,6 +1700,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AgregraActadeRecibo._DDL_Ciclo">
 <summary>
 Control DDL_Ciclo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._lblLoteRegi">
+<summary>
+Control lblLoteRegi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._txtLoteRegi">
+<summary>
+Control txtLoteRegi.
 </summary>
 <remarks>
 Campo generado automáticamente.
