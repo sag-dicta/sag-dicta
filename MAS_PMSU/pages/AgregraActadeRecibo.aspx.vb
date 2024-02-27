@@ -138,7 +138,7 @@ Public Class AgregraActadeRecibo
             c4 = "AND ciclo_acta = '" & txtciclo.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND ciclo_acta IS NOT NULL " & c1 & c3 & c2 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND ciclo_acta IS NOT NULL " & c1 & c3 & c2 & c4 & " ORDER BY id_acta DESC"
 
         GridDatos.DataBind()
     End Sub

@@ -710,7 +710,7 @@ Public Class agregarMultiplicador
         End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_registro_multiplicador` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & " ORDER BY id DESC"
 
         GridDatos.DataBind()
     End Sub

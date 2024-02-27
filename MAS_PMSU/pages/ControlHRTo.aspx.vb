@@ -258,7 +258,7 @@ Public Class ControlHRTo
                        "externo_temperatura,externo_humedad,estado"
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_control_temperatura_humedad` WHERE 1 = 1 AND estado = '1' AND fecha_monitoreo >= '" & txtFechaDesde.Text & "' AND fecha_monitoreo <= '" & txtFechaHasta.Text & "' ORDER BY fecha_monitoreo DESC"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_control_temperatura_humedad` WHERE 1 = 1 AND estado = '1' AND fecha_monitoreo >= '" & txtFechaDesde.Text & "' AND fecha_monitoreo <= '" & txtFechaHasta.Text & "' ORDER BY id DESC"
 
         GridDatos.DataBind()
     End Sub

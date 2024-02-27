@@ -84,7 +84,7 @@ Public Class InscSENASA_DescArch
             c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM sag_registro_lote WHERE Estado = '1' " & c1 & c4 & " ORDER BY productor"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM sag_registro_lote WHERE Estado = '1' " & c1 & c4 & " ORDER BY id DESC"
         GridDatos.DataBind()
     End Sub
 

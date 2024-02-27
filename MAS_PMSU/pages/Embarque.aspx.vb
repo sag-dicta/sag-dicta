@@ -372,7 +372,7 @@ Public Class Embarque
         End If
 
         BAgregar.Visible = True
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque_info` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & " AND fecha_elaboracion >= '" & txtFechaDesde.Text & "' AND fecha_elaboracion <= '" & txtFechaHasta.Text & "'"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque_info` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & " AND fecha_elaboracion >= '" & txtFechaDesde.Text & "' AND fecha_elaboracion <= '" & txtFechaHasta.Text & "'" & " ORDER BY id DESC"
 
         GridDatos.DataBind()
     End Sub
