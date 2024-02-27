@@ -265,7 +265,7 @@ Public Class AgregraActadeRecibo
             Dim Str As String = "SELECT * FROM vista_acta_lote_multi WHERE nombre_multiplicador = @valor AND ciclo_acta = @valor2 AND id_acta = @valor3"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
-            adap.SelectCommand.Parameters.AddWithValue("@valor2", HttpUtility.HtmlDecode(gvrow.Cells(10).Text).ToString)
+            adap.SelectCommand.Parameters.AddWithValue("@valor2", HttpUtility.HtmlDecode(gvrow.Cells(11).Text).ToString)
             adap.SelectCommand.Parameters.AddWithValue("@valor3", Convert.ToInt32(HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString))
             Dim dt As New DataTable
 
@@ -672,8 +672,8 @@ Public Class AgregraActadeRecibo
             Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "no_sacos").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(11).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(13).Controls(0), Button)
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(12).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(14).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then

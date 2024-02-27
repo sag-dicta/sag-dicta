@@ -115,6 +115,7 @@
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
                                         <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="no_lote" HeaderText="N° DE LOTE" />
+                                        <asp:BoundField DataField="lote_registrado" HeaderText="N° LOTE REGISTRADO" />
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD" />
                                         <asp:BoundField DataField="no_sacos" HeaderText="N° DE SACOS" />
                                         <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO HUMEDO (QQ)" />
