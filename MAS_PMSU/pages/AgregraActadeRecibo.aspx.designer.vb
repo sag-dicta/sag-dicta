@@ -311,13 +311,58 @@ Partial Public Class AgregraActadeRecibo
     Protected WithEvents lblCategoria As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtCategoria.
+    '''Control categoria_origen_ddl.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtCategoria As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents categoria_origen_ddl As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control basica1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents basica1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control registrada1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents registrada1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control certificada1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents certificada1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control comercial1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comercial1 As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control Fito_Mejorador1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Fito_Mejorador1 As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
     '''Control lblLote.
@@ -426,6 +471,24 @@ Partial Public Class AgregraActadeRecibo
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents DDL_Ciclo As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control lblLoteRegi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblLoteRegi As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtLoteRegi.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtLoteRegi As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control LabelGuardar.

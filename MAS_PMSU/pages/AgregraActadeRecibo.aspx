@@ -61,12 +61,12 @@
                         </div>
                     </div>
                     <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear una nueva acta primero seleccione el multiplicador, el lote y variedad" />
-                                <br />
-                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Acta" CssClass="btn btn-success" Visible="false" />
-                            </div>
+                        <div class="col-lg-12">
+                            <asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear una nueva acta primero seleccione el multiplicador, el lote y variedad" />
+                            <br />
+                            <asp:Button ID="BAgregar" runat="server" Text="Agregar Acta" CssClass="btn btn-success" Visible="false" />
                         </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive">
@@ -213,7 +213,14 @@
                             <div class="form-group">
                                 <label for="txt">Categoria:</label>
                                 <asp:Label ID="lblCategoria" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCategoria" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                                <asp:DropDownList CssClass="form-control" ID="categoria_origen_ddl" runat="server" AutoPostBack="true">
+                                    <asp:ListItem Text=""></asp:ListItem>
+                                    <asp:ListItem id="basica1" Text="Basica"></asp:ListItem>
+                                    <asp:ListItem id="registrada1" Text="Registrada"></asp:ListItem>
+                                    <asp:ListItem id="certificada1" Text="Certificada"></asp:ListItem>
+                                    <asp:ListItem id="comercial1" Text="Comercial"></asp:ListItem>
+                                    <asp:ListItem id="Fito_Mejorador1" Text="Fito Mejorador"></asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -253,6 +260,13 @@
                                 <asp:DropDownList CssClass="form-control" ID="DDL_Ciclo" runat="server" AutoPostBack="True" OnTextChanged="Verificar">
                                     <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                 </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="txt">No. Lote Semilla Registrada:</label>
+                                <asp:Label ID="lblLoteRegi" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtLoteRegi" runat="server" AutoPostBack="true" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -296,7 +310,7 @@
                     <asp:Label ID="Label103" runat="server" Text="El Acta de Recepcion de semilla ha sido almacenada con exito"></asp:Label>
                 </div>
                 <div class="modal-footer" style="text-align: center">
-                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click"/>
+                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click" />
                     <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
                     <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
                 </div>

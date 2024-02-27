@@ -1535,9 +1535,54 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AgregraActadeRecibo._txtCategoria">
+<member name="F:MAS_PMSU.AgregraActadeRecibo._categoria_origen_ddl">
 <summary>
-Control txtCategoria.
+Control categoria_origen_ddl.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._basica1">
+<summary>
+Control basica1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._registrada1">
+<summary>
+Control registrada1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._certificada1">
+<summary>
+Control certificada1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._comercial1">
+<summary>
+Control comercial1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._Fito_Mejorador1">
+<summary>
+Control Fito_Mejorador1.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1556,6 +1601,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AgregraActadeRecibo._txtLote">
 <summary>
 Control txtLote.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._lblLoteRegi">
+<summary>
+Control lblLoteRegi.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AgregraActadeRecibo._txtLoteRegi">
+<summary>
+Control txtLoteRegi.
 </summary>
 <remarks>
 Campo generado automáticamente.
