@@ -551,8 +551,15 @@ Public Class AgregraActadeRecibo
             Labelciclo.Text = ""
             validarflag += 1
         End If
-
-        If validarflag = 5 Then
+        '6
+        If (categoria_origen_ddl.SelectedItem.Text = " ") Then
+            lblCategoria.Text = "*"
+            validarflag = 0
+        Else
+            lblCategoria.Text = ""
+            validarflag += 1
+        End If
+        If validarflag = 6 Then
             validarflag = 1
         Else
             validarflag = 0
