@@ -218,7 +218,7 @@ Public Class AgregraActadeRecibo
 
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta"
+            Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado"
             Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_ACTA='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
@@ -415,7 +415,9 @@ Public Class AgregraActadeRecibo
                     porcentaje_humedad = @porcentaje_humedad,
                     no_sacos = @no_sacos,
                     peso_humedo_QQ = @peso_humedo_QQ,
-                    ciclo_acta = @ciclo_acta
+                    ciclo_acta = @ciclo_acta,
+                    lote_registrado = @lote_registrado,
+                    categoria_registrado = @categoria_registrado
                 WHERE id = " & TxtID.Text & ""
 
 
@@ -429,6 +431,8 @@ Public Class AgregraActadeRecibo
                     cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
                     cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
                     cmd.Parameters.AddWithValue("@ciclo_acta", DDL_Ciclo.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@lote_registrado", "")
+                    cmd.Parameters.AddWithValue("@categoria_registrado", "")
 
                     cmd.ExecuteNonQuery()
                     connection.Close()
@@ -459,7 +463,9 @@ Public Class AgregraActadeRecibo
                     porcentaje_humedad,
                     no_sacos,
                     peso_humedo_QQ,
-                    ciclo_acta
+                    ciclo_acta,
+                    lote_registrado,
+                    categoria_registrado
                 ) VALUES (
                     @id2, 
                     @estado,
@@ -468,6 +474,8 @@ Public Class AgregraActadeRecibo
                     @no_sacos,
                     @peso_humedo_QQ,
                     @ciclo_acta
+                    @lote_registrado,
+                    @categoria_registrado
                 );
                 "
                 Using cmd As New MySqlCommand(query, connection)
@@ -480,6 +488,8 @@ Public Class AgregraActadeRecibo
                     cmd.Parameters.AddWithValue("@no_sacos", Convert.ToInt64(txtSacos.Text))
                     cmd.Parameters.AddWithValue("@peso_humedo_QQ", Convert.ToDecimal(txtPesoH.Text))
                     cmd.Parameters.AddWithValue("@ciclo_acta", DDL_Ciclo.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@lote_registrado", "")
+                    cmd.Parameters.AddWithValue("@categoria_registrado", "")
 
                     cmd.ExecuteNonQuery()
                     connection.Close()
