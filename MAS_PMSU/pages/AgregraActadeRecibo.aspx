@@ -83,7 +83,7 @@
                                     <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                     <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                                     <EmptyDataTemplate>
-                                        ¡No hay motoristas con esas caracteristicas!
+                                        ¡No hay actas de recepción inscrita!
                                     </EmptyDataTemplate>
                                     <%--Paginador...--%>
                                     <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
@@ -294,7 +294,7 @@
                                     <div class="mb-3">
                                         <label for="FileUploadPDF" class="form-label">Acta de Recepción Firmada:</label>
                                         <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
-                                        <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".png,.jpg,.jpeg" />
+                                        <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf" />
                                     </div>
                                     <br />
 
