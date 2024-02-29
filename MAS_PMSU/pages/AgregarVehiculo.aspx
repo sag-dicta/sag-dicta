@@ -157,7 +157,7 @@
                                 <asp:DropDownList CssClass="form-control" ID="DDLTipo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="VerificarTextBox">
                                     <asp:ListItem Text="" Value="0"></asp:ListItem>
                                     <asp:ListItem Text="Camion" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="Trailer" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Pick-up" Value="2"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

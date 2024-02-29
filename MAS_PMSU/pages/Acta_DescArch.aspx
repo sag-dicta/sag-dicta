@@ -72,13 +72,13 @@
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
 
-                                            <asp:BoundField DataField="ID">
+                                            <asp:BoundField DataField="ID_acta">
                                                 <HeaderStyle CssClass="hide" />
                                                 <ItemStyle CssClass="hide" />
                                             </asp:BoundField>
-                                            <asp:BoundField DataField="productor" HeaderText="MULTIPLICADOR" />
+                                            <asp:BoundField DataField="nombre_multiplicador" HeaderText="MULTIPLICADOR" />
                                             <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
-                                            <asp:BoundField DataField="no_lote" HeaderText="NUMERO DE LOTE" />
+                                            <asp:BoundField DataField="lote_registrado" HeaderText="NUMERO DE LOTE REGISTRADO" />
 
                                             <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
 

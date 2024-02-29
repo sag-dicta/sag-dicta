@@ -113,7 +113,7 @@
                                         <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
-                                        <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
+                                        <asp:BoundField DataField="categoria_registrado" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="no_lote" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="lote_registrado" HeaderText="N° LOTE REGISTRADO" />
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD" />

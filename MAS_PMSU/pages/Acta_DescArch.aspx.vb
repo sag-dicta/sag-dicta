@@ -27,14 +27,14 @@ Public Class Acta_DescArch
 
     Private Sub llenarcomboProductor()
         'If TxtDepto.SelectedItem.Text <> " " Then
-        Dim StrCombo As String = "SELECT DISTINCT productor FROM sag_registro_lote WHERE estado = 1 ORDER BY productor ASC"
+        Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM vista_acta_lote_multi WHERE Estado_sena = 1 AND ciclo_acta IS NOT NULL ORDER BY nombre_multiplicador ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         'adaptcombo.SelectCommand.Parameters.AddWithValue("@nombre", TxtDepto.SelectedItem.Text)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
         TxtProductor.DataSource = DtCombo
-        TxtProductor.DataValueField = "productor"
-        TxtProductor.DataTextField = "productor"
+        TxtProductor.DataValueField = "nombre_multiplicador"
+        TxtProductor.DataTextField = "nombre_multiplicador"
         TxtProductor.DataBind()
         Dim newitem As New ListItem("Todos", "Todos")
         TxtProductor.Items.Insert(0, newitem)
@@ -60,10 +60,10 @@ Public Class Acta_DescArch
         If (TxtProductor.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND productor = '" & TxtProductor.SelectedItem.Text & "' "
+            c1 = "AND nombre_multiplicador = '" & TxtProductor.SelectedItem.Text & "' "
         End If
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM sag_registro_lote WHERE Estado = '1' " & c1 & c4 & " ORDER BY id DESC"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE Estado_sena = '1' AND ciclo_acta IS NOT NULL " & c1 & c4 & " ORDER BY id_acta DESC"
         GridDatos.DataBind()
     End Sub
 
@@ -80,7 +80,7 @@ Public Class Acta_DescArch
         If (e.CommandName = "FichaLote") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
-            Dim Str As String = "SELECT factura_comercio FROM `sag_registro_lote` WHERE  ID='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim Str As String = "SELECT acta_firmada FROM `vista_acta_lote_multi` WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
@@ -101,16 +101,17 @@ Public Class Acta_DescArch
                         Using command As New MySqlCommand(Str, connection)
                             Using reader As MySqlDataReader = command.ExecuteReader()
                                 If reader.Read() Then
-                                    Dim imageData As Byte() = DirectCast(reader("factura_comercio"), Byte())
+                                    Dim pdfData As Byte() = DirectCast(reader("acta_firmada"), Byte())
                                     Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
                                     Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(3).Text).ToString
                                     ' Configura la respuesta HTTP para descargar la imagen
                                     HttpContext.Current.Response.Clear()
-                                    HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido según el formato de la imagen (por ejemplo, "image/jpeg" para JPEG)
-                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=FACTURA_COMERCIO_" & nombre & "_" & lote & ".jpg") ' Cambia el nombre del archivo según el formato de la imagen
-                                    HttpContext.Current.Response.BinaryWrite(imageData)
+                                    HttpContext.Current.Response.ContentType = "application/pdf" ' Cambia el tipo de contenido a PDF
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=Acta de Recepción de Semilla_" & nombre & "_" & lote & "_Firmado.pdf") ' Cambia el nombre del archivo con la extensión PDF
+                                    HttpContext.Current.Response.BinaryWrite(pdfData) ' Reemplaza pdfData con tus datos binarios del PDF
                                     HttpContext.Current.Response.Flush()
                                     HttpContext.Current.Response.End()
+
                                 End If
                             End Using
                         End Using
@@ -163,8 +164,13 @@ Public Class Acta_DescArch
         ' Verifica si es una fila de datos y no el encabezado o el pie de página
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los valores de los campos IMAGEN_FICHA, IMAGEN_PAGO_TGR, e IMAGEN_ETIQUETA_SEMILLA
-            Dim imagenFicha As String = DataBinder.Eval(e.Row.DataItem, "factura_comercio").ToString()
+            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "lote_registrado").ToString()
+            Dim imagenFicha As String = DataBinder.Eval(e.Row.DataItem, "acta_firmada").ToString()
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(4).Controls(0), Button)
 
+            If Not String.IsNullOrEmpty(estimadoProduccion) Then
+                btnEditar.Visible = True
+            End If
             ' Encuentra los botones en la fila por índice
             Dim indexFicha As Integer = 4
 
@@ -335,6 +341,6 @@ Public Class Acta_DescArch
         Response.End()
     End Sub
     Protected Sub btnRegresar_Click(sender As Object, e As EventArgs) Handles btnRegresar.Click
-        Response.Redirect(String.Format("~/pages/InscripcionLotes.aspx"))
+        Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
     End Sub
 End Class
