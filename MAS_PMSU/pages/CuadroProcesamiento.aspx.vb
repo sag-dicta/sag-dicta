@@ -175,7 +175,7 @@ Public Class CuadroProcesamiento
             BtnNuevo.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
+            Dim cadena As String = "peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, RENDIMIETO_ORO_PESO"
             Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
@@ -190,6 +190,7 @@ Public Class CuadroProcesamiento
             txtBasura.Text = If(dt.Rows(0)("semilla_QQ_basura") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_basura").ToString())
             txtTotal.Text = If(dt.Rows(0)("semilla_QQ_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_total").ToString())
             txtObserv.Text = If(dt.Rows(0)("observaciones") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones").ToString())
+            txtrendimiento.Text = If(dt.Rows(0)("RENDIMIETO_ORO_PESO") Is DBNull.Value, String.Empty, dt.Rows(0)("RENDIMIETO_ORO_PESO").ToString())
             Verificar()
         End If
 
@@ -379,7 +380,7 @@ Public Class CuadroProcesamiento
 
 
                     cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", Convert.ToDecimal(txtPeso12Hum.Text)) ' Aquí se formatea correctamente como yyyy-MM-dd
-                    cmd.Parameters.AddWithValue("@rendimiento_oro_peso", Convert.ToDecimal(""))
+                    cmd.Parameters.AddWithValue("@rendimiento_oro_peso", Convert.ToDecimal(txtrendimiento.Text))
                     cmd.Parameters.AddWithValue("@semilla_QQ_oro", Convert.ToDecimal(txtSemOro.Text))
                     If txtConsumo.Text = "" Then
                         cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
