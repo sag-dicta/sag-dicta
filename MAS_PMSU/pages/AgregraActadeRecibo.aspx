@@ -294,7 +294,7 @@
                                     <div class="mb-3">
                                         <label for="FileUploadPDF" class="form-label">Acta de Recepción Firmada:</label>
                                         <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
-                                        <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf" />
+                                        <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf,.png,.jpg,.jpeg" />
                                     </div>
                                     <br />
 

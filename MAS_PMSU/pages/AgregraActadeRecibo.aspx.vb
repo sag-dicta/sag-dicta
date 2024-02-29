@@ -837,7 +837,10 @@ Public Class AgregraActadeRecibo
     Private Function EsExtensionValida(fileName As String) As Boolean
         Dim extension As String = Path.GetExtension(fileName)
         Dim esValida As Boolean = False
-        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) Then
+        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
             esValida = True
         End If
         Return esValida
