@@ -233,7 +233,7 @@
                             <div class="form-group">
                                 <label>Seleccione Ciclo:</label>
                                 <asp:Label ID="Labelciclo" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="Textciclo2" runat="server" AutoPostBack="true" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -265,7 +265,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txtPeso12Hum">Peso de Materia Prima al 12% de Humedad(QQ):</label>
+                                <label for="txtPeso12Hum">Peso de Materia Prima al % de Humedad(QQ):</label>
                                 <asp:Label ID="lblPeso12Hum" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtPeso12Hum" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>

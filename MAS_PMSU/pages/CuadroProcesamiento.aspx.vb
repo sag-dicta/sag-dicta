@@ -182,6 +182,7 @@ Public Class CuadroProcesamiento
             adap.Fill(dt)
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            llenarCampoLectura(TxtID.Text)
             txtPeso12Hum.Text = If(dt.Rows(0)("peso_materia_prima_QQ_porce_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_materia_prima_QQ_porce_humedad").ToString())
             'CrearIdentificador(dt.Rows(0)("departamento").ToString(), dt.Rows(0)("municipio").ToString(), dt.Rows(0)("aldea").ToString(), dt.Rows(0)("caserio").ToString())
             txtSemOro.Text = If(dt.Rows(0)("semilla_QQ_oro") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_oro").ToString())
@@ -280,7 +281,7 @@ Public Class CuadroProcesamiento
                 cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
                 cmd.Parameters.AddWithValue("@semilla_QQ_total", DBNull.Value)
                 cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
-                    cmd.ExecuteNonQuery()
+                cmd.ExecuteNonQuery()
                 connection.Close()
                 Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
             End Using
@@ -626,5 +627,23 @@ Public Class CuadroProcesamiento
 
     Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+    End Sub
+    Private Sub llenarCampoLectura(ByVal id As String)
+        Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado"
+        Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_ACTA=" & id & ""
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+        adap.Fill(dt)
+
+        Textciclo2.Text = If(dt.Rows(0)("ciclo_acta") Is DBNull.Value, String.Empty, dt.Rows(0)("ciclo_acta").ToString())
+        txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
+        txtProductor.Text = If(dt.Rows(0)("nombre_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_multiplicador").ToString())
+        txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
+        txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
+        txtCategoria.Text = If(dt.Rows(0)("categoria_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_registrado").ToString())
+        txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
+        txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
+        txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
+        txtLoteRegi.Text = If(dt.Rows(0)("lote_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("lote_registrado").ToString())
     End Sub
 End Class
