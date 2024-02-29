@@ -170,6 +170,7 @@ Public Class CuadroProcesamiento
         If (e.CommandName = "Editar") Then
             DivGrid.Visible = "false"
             DivActa.Visible = "true"
+            DivActaInfo.Visible = "true"
             btnGuardarActa.Visible = True
             BtnNuevo.Visible = True
 

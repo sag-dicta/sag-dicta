@@ -152,6 +152,102 @@
             </div>
         </div>
     </div>
+    
+    <div id="DivActaInfo" runat="server" visible="false">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Datos del Acta de Recepción de Semilla
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-4" runat="server" visible="false">
+                            <div class="form-group">
+                                <label for="txt">ID:</label>
+                                <asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtlega" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="txtnum" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox CssClass="form-control" ID="Txtcount" runat="server" AutoPostBack="false"></asp:TextBox>
+                                <asp:TextBox ID="TextIdlote2" runat="server" Visible="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="txt">Fecha de recepción:</label>
+                                <asp:Label ID="lblFecha" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtFechaSiembra" TextMode="date" runat="server" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="txt">Productor:</label>
+                                <asp:Label ID="lblProductor" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtProductor" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="txt">Cultivo:</label>
+                                <asp:Label ID="lblCultivo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtCultivo" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="txt">Variedad:</label>
+                                <asp:Label ID="lblVariedad" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtVariedad" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="txt">Categoria:</label>
+                                <asp:Label ID="lblCategoria" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtCategoria" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>% Humedad entrada:</label>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator42" runat="server" ControlToValidate="txtHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                <asp:Label ID="lblHumedad" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtHumedad" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>No. de Sacos:</label>
+                                <asp:Label ID="lblSacos" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtSacos" CssClass="form-control" runat="server" TextMode="number" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>Peso Humedo (QQ):</label>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator43" runat="server" ControlToValidate="txtPesoH" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                <asp:Label ID="lblPesoH" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtPesoH" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label>Seleccione Ciclo:</label>
+                                <asp:Label ID="Labelciclo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="txt">No. Lote Semilla Registrada:</label>
+                                <asp:Label ID="lblLoteRegi" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox CssClass="form-control" ID="txtLoteRegi" runat="server" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="DivActa" runat="server" visible="false">
         <div class="row">
