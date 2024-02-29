@@ -93,7 +93,7 @@ Public Class CuadroProcesamiento
         llenagrid()
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, categoria_origen, no_lote, ciclo_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
+        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, categoria_origen, categoria_registrado, ciclo_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""

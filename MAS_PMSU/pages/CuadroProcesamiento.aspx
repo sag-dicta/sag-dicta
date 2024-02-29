@@ -108,11 +108,11 @@
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
                                         <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
-                                        <asp:BoundField DataField="no_lote" HeaderText="N° DE LOTE" />
+                                        <asp:BoundField DataField="categoria_registrado" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
                                         <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO PRIMA EN LA PLANTA" />
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
-                                        <asp:BoundField DataField="peso_materia_prima_QQ_porce_humedad" HeaderText="PESO PRIMA AL 12% DE HUMEDAD (QQ)" />
+                                        <asp:BoundField DataField="peso_materia_prima_QQ_porce_humedad" HeaderText="PESO PRIMA SECA (QQ)" />
                                         <asp:BoundField DataField="semilla_QQ_oro" HeaderText="SEMILLA ORO (QQ)" />
                                         <asp:BoundField DataField="semilla_QQ_consumo" HeaderText="SEMILLA CONSUMO (QQ)" />
                                         <asp:BoundField DataField="semilla_QQ_basura" HeaderText="SEMILLA BASURA (QQ)" />
@@ -265,7 +265,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="txtPeso12Hum">Peso de Materia Prima al % de Humedad(QQ):</label>
+                                <label for="txtPeso12Hum">Peso de Materia Prima Seca (QQ):</label>
                                 <asp:Label ID="lblPeso12Hum" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtPeso12Hum" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true"></asp:TextBox>
                             </div>
@@ -298,6 +298,13 @@
                                 <label for="txtTotal">Total(QQ):</label>
                                 <asp:Label ID="lblTotal" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox ID="txtTotal" CssClass="form-control" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="txtTotal">Rendimiento :</label>
+                                <asp:Label ID="lblrendimiento" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:TextBox ID="txtrendimiento" CssClass="form-control" runat="server" AutoPostBack="false" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
                     </div>

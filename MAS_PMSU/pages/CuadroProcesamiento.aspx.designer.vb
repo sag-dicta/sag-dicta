@@ -464,6 +464,24 @@ Partial Public Class CuadroProcesamiento
     Protected WithEvents txtTotal As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control lblrendimiento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblrendimiento As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtrendimiento.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtrendimiento As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control lblObserv.
     '''</summary>
     '''<remarks>
