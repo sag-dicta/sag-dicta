@@ -347,58 +347,79 @@ Public Class CuadroProcesamiento
     End Sub
 
     Protected Sub GuardarActa()
-        LabelGuardar.Visible = False
-        LabelGuardar.Text = ""
-        Dim connectionString As String = conn
-        Using connection As New MySqlConnection(connectionString)
-            connection.Open()
+        Dim oro As Decimal = 0
+        Dim prima As Decimal = 0
 
-            Dim query As String = "UPDATE sag_registro_senasa SET
+        If Decimal.TryParse(txtPeso12Hum.Text, prima) Then
+            prima = Convert.ToDecimal(txtPeso12Hum.Text)
+        End If
+
+        If Decimal.TryParse(txtSemOro.Text, oro) Then
+            oro = Convert.ToDecimal(txtSemOro.Text)
+        End If
+
+        If oro <= prima Then
+            LabelGuardar.Visible = False
+            LabelGuardar.Text = ""
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim query As String = "UPDATE sag_registro_senasa SET
                 peso_materia_prima_QQ_porce_humedad = @peso_materia_prima_QQ_porce_humedad,
                 semilla_QQ_oro = @semilla_QQ_oro,
                 semilla_QQ_consumo = @semilla_QQ_consumo,
                 semilla_QQ_basura = @semilla_QQ_basura,
                 semilla_QQ_total = @semilla_QQ_total,
-                observaciones = @observaciones
+                observaciones = @observaciones,
+                rendimiento_oro_peso = @rendimiento_oro_peso
             WHERE id = " & TxtID.Text & ""
 
-            Using cmd As New MySqlCommand(query, connection)
+                Using cmd As New MySqlCommand(query, connection)
 
 
-                cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", Convert.ToDecimal(txtPeso12Hum.Text)) ' Aquí se formatea correctamente como yyyy-MM-dd
-                cmd.Parameters.AddWithValue("@semilla_QQ_oro", Convert.ToDecimal(txtSemOro.Text))
-                If txtConsumo.Text = "" Then
-                    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
-                Else
-                    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", Convert.ToDecimal(txtConsumo.Text))
-                End If
-                If txtBasura.Text = "" Then
-                    cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
-                Else
-                    cmd.Parameters.AddWithValue("@semilla_QQ_basura", Convert.ToDecimal(txtBasura.Text))
-                End If
-                cmd.Parameters.AddWithValue("@semilla_QQ_total", Convert.ToDecimal(txtTotal.Text))
-                If txtObserv.Text = "" Then
-                    cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
-                Else
-                    cmd.Parameters.AddWithValue("@observaciones", txtObserv.Text)
-                End If
+                    cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", Convert.ToDecimal(txtPeso12Hum.Text)) ' Aquí se formatea correctamente como yyyy-MM-dd
+                    cmd.Parameters.AddWithValue("@rendimiento_oro_peso", Convert.ToDecimal(""))
+                    cmd.Parameters.AddWithValue("@semilla_QQ_oro", Convert.ToDecimal(txtSemOro.Text))
+                    If txtConsumo.Text = "" Then
+                        cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
+                    Else
+                        cmd.Parameters.AddWithValue("@semilla_QQ_consumo", Convert.ToDecimal(txtConsumo.Text))
+                    End If
+                    If txtBasura.Text = "" Then
+                        cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
+                    Else
+                        cmd.Parameters.AddWithValue("@semilla_QQ_basura", Convert.ToDecimal(txtBasura.Text))
+                    End If
+                    cmd.Parameters.AddWithValue("@semilla_QQ_total", Convert.ToDecimal(txtTotal.Text))
+                    If txtObserv.Text = "" Then
+                        cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
+                    Else
+                        cmd.Parameters.AddWithValue("@observaciones", txtObserv.Text)
+                    End If
 
-                cmd.ExecuteNonQuery()
-                connection.Close()
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
 
-                Label103.Text = "¡Se ha registrado correctamente el cuadro de procesamiento (secado, limpieza y clasificación)!"
-                BBorrarsi.Visible = False
-                BBorrarno.Visible = False
-                BConfirm.Visible = True
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                    Label103.Text = "¡Se ha registrado correctamente el cuadro de procesamiento (secado, limpieza y clasificación)!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    BConfirm.Visible = True
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
-                btnGuardarActa.Visible = False
-                BtnImprimir.Visible = False
-                BtnNuevo.Visible = True
+                    btnGuardarActa.Visible = False
+                    BtnImprimir.Visible = False
+                    BtnNuevo.Visible = True
 
+                End Using
             End Using
-        End Using
+        Else
+            Label1.Text = "¡No se puede guardar. El peso oro debe ser menor o igual al peso prima.!"
+            Button3.Visible = False
+            Button2.Visible = False
+            Button1.Visible = True
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
+        End If
     End Sub
     Protected Sub Verificar()
         '1
@@ -587,7 +608,9 @@ Public Class CuadroProcesamiento
 
         Response.End()
     End Sub
-
+    Protected Sub txtPeso12Hum_TextChanged(sender As Object, e As EventArgs) Handles txtPeso12Hum.TextChanged
+        total()
+    End Sub
     Protected Sub txtOro_TextChanged(sender As Object, e As EventArgs) Handles txtSemOro.TextChanged
         total()
     End Sub
@@ -602,6 +625,10 @@ Public Class CuadroProcesamiento
         Dim valorOro As Decimal = 0
         Dim valorConsu As Decimal = 0
         Dim valorBasura As Decimal = 0
+        Dim valorRendi As Decimal = 0
+        Dim oro As Decimal = 0
+        Dim prima As Decimal = 0
+        lblrendimiento.Text = ""
 
         If Decimal.TryParse(txtSemOro.Text, valorOro) Then
             valorOro = Convert.ToDecimal(txtSemOro.Text)
@@ -613,6 +640,22 @@ Public Class CuadroProcesamiento
 
         If Decimal.TryParse(txtBasura.Text, valorBasura) Then
             valorBasura = Convert.ToDecimal(txtBasura.Text)
+        End If
+
+        If Decimal.TryParse(txtPeso12Hum.Text, prima) Then
+            prima = Convert.ToDecimal(txtPeso12Hum.Text)
+        End If
+
+        If Decimal.TryParse(txtSemOro.Text, oro) Then
+            oro = Convert.ToDecimal(txtSemOro.Text)
+        End If
+
+        If Not String.IsNullOrEmpty(txtPeso12Hum.Text) AndAlso Not String.IsNullOrEmpty(txtSemOro.Text) AndAlso oro <= prima Then
+            valorRendi = (oro / prima) * 100
+            txtrendimiento.Text = valorRendi.ToString("0.00")
+        Else
+            txtrendimiento.Text = "0.00"
+            lblrendimiento.Text = "El peso oro debe ser menor o igual al peso prima."
         End If
 
         ' Realizar la suma sin considerar los TextBox vacíos

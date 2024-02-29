@@ -364,6 +364,25 @@
             </div>
         </div>
     </div>
+
+     <div class="modal fade" id="DeleteModal2" tabindex="-1" role="dialog" aria-labelledby="ModalTitle2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="ModalTitle3">SAG - DICTA</h4>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="Label1" runat="server" Text="El Acta de Recepcion de semilla ha sido almacenada con exito"></asp:Label>
+                </div>
+                <div class="modal-footer" style="text-align: center">
+                    <asp:Button ID="Button1" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click"/>
+                    <asp:Button ID="Button2" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="Button3" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         function numericOnly(elementRef) {
             var keyCodeEntered = (event.which) ? event.which : (window.event.keyCode) ? window.event.keyCode : -1;
