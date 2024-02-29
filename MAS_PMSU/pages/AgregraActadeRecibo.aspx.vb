@@ -689,8 +689,8 @@ Public Class AgregraActadeRecibo
             Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "no_sacos").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(12).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(14).Controls(0), Button)
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(13).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(15).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then

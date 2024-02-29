@@ -120,7 +120,10 @@
                                         <asp:BoundField DataField="no_sacos" HeaderText="N° DE SACOS" />
                                         <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO HUMEDO (QQ)" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
-
+                                        
+                                        <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="Acta Firmada" CommandName="Subir">
+                                            <ControlStyle CssClass="btn btn-dark"></ControlStyle>
+                                        </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
@@ -275,6 +278,56 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="div_nuevo_prod" runat="server" visible="false">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="form-group">
+                                    <h4>Subir archivo</h4>
+                                    <div class="mb-3">
+                                        <label for="FileUploadPDF" class="form-label">Acta de Recepción Firmada:</label>
+                                        <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                        <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".png,.jpg,.jpeg" />
+                                    </div>
+                                    <br />
+
+                                    <asp:Label ID="Label23" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Antes debes ingresar toda la información</asp:Label>
+                                    <asp:Label ID="Label25" runat="server" Text="" BackColor="Green" ForeColor="White" Visible="false">Archivos ingresados con exito</asp:Label>
+                                    <br />
+                                    <asp:Button ID="BtnUpload" runat="server" Text="Guardar" OnClick="BtnUpload_Click" AutoPostBack="false" class="btn btn-primary" />
+                                    <asp:Button ID="Button1" runat="server" Text="Regresar" AutoPostBack="True" class="btn btn-primary" />
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="DeleteModal4" tabindex="-1" role="dialog" aria-labelledby="ModalTitle5" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="ModalTitle5">SAG - DICTA</h4>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="Label26" runat="server" Text="El productor no tiene ningun lote registrado. ¿Desea agregarlo?"></asp:Label>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <asp:Button ID="Button6" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div>
