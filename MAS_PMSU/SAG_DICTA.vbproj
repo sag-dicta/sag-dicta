@@ -290,6 +290,7 @@
     <Content Include="pages\index.html" />
     <Content Include="pages\Inicio.aspx" />
     <Content Include="pages\InscripcionLotes.aspx" />
+    <Content Include="pages\Acta_DescArch.aspx" />
     <Content Include="pages\InscSENASA_DescArch.aspx" />
     <Content Include="pages\Inventario.aspx" />
     <Content Include="pages\Login.aspx" />
@@ -2419,6 +2420,13 @@
     </Compile>
     <Compile Include="pages\InscripcionLotes.aspx.vb">
       <DependentUpon>InscripcionLotes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="pages\Acta_DescArch.aspx.designer.vb">
+      <DependentUpon>Acta_DescArch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Acta_DescArch.aspx.vb">
+      <DependentUpon>Acta_DescArch.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\InscSENASA_DescArch.aspx.designer.vb">

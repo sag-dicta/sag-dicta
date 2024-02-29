@@ -120,7 +120,7 @@
                                         <asp:BoundField DataField="no_sacos" HeaderText="N° DE SACOS" />
                                         <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO HUMEDO (QQ)" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
-                                        
+
                                         <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="Acta Firmada" CommandName="Subir">
                                             <ControlStyle CssClass="btn btn-dark"></ControlStyle>
                                         </asp:ButtonField>
@@ -146,9 +146,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-2">
                             <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
+                        </div>
+                        <div class="col-lg-4">
+                            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary" Text="Ver los Archivos Subidos"><span class="glyphicon glyphicon-save"></span>&nbsp;Ver los Archivos Subidos</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -294,7 +297,7 @@
                                     <div class="mb-3">
                                         <label for="FileUploadPDF" class="form-label">Acta de Recepción Firmada:</label>
                                         <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
-                                        <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf,.png,.jpg,.jpeg" />
+                                        <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf" />
                                     </div>
                                     <br />
 

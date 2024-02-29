@@ -837,10 +837,7 @@ Public Class AgregraActadeRecibo
     Private Function EsExtensionValida(fileName As String) As Boolean
         Dim extension As String = Path.GetExtension(fileName)
         Dim esValida As Boolean = False
-        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
+        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) Then
             esValida = True
         End If
         Return esValida
@@ -885,5 +882,9 @@ Public Class AgregraActadeRecibo
     End Sub
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
+    End Sub
+
+    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
+        Response.Redirect(String.Format("~/pages/Acta_DescArch.aspx"))
     End Sub
 End Class
