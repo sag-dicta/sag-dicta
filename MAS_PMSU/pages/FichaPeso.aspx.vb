@@ -22,6 +22,7 @@ Public Class FichaPeso
                 llenarcomboProductor()
                 llenarcomboCiclogrid()
                 llenarcomboDepto()
+                eliminarMiniGrid2()
                 llenagrid()
             End If
         End If
@@ -316,6 +317,8 @@ Public Class FichaPeso
 
                 cmd.ExecuteNonQuery()
                 connection.Close()
+
+                elminarProductos()
                 Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
             End Using
 
@@ -402,6 +405,8 @@ Public Class FichaPeso
                 cmd.ExecuteNonQuery()
                 connection.Close()
 
+                cambiarEstadoProducto(TxtID.Text)
+
                 Label103.Text = "¡Se ha registrado correctamente la ficha de peso al recibo lotes de semilla (pesaje y embolsado)!"
                 BBorrarsi.Visible = False
                 BBorrarno.Visible = False
@@ -415,6 +420,7 @@ Public Class FichaPeso
         End Using
     End Sub
     Protected Sub Verificar()
+        verificardatosproductos()
         '1
         If String.IsNullOrEmpty(txtTara.Text) Then
             lblTara.Text = "*"
@@ -423,32 +429,16 @@ Public Class FichaPeso
             lblTara.Text = ""
             validarflag += 1
         End If
-        ''2
-        'If String.IsNullOrEmpty(txtSemOro.Text) Then
-        '    lblSemOro.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblSemOro.Text = ""
-        '    validarflag += 1
-        'End If
-        ''3
-        'If String.IsNullOrEmpty(txtConsumo.Text) Then
-        '    lblConsumo.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblConsumo.Text = ""
-        '    validarflag += 1
-        'End If
-        ''4
-        'If String.IsNullOrEmpty(txtBasura.Text) Then
-        '    lblBasura.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblBasura.Text = ""
-        '    validarflag += 1
-        'End If
+        '2
+        If verificar_Produc() = 0 Then
+            lblmas.Text = "Debe ingresar al menos un producto de semilla."
+            validarflag = 0
+        Else
+            lblmas.Text = ""
+            validarflag += 1
+        End If
 
-        If validarflag = 1 Then
+        If validarflag = 2 Then
             validarflag = 1
         Else
             validarflag = 0
@@ -617,4 +607,267 @@ Public Class FichaPeso
     Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
     End Sub
+    Protected Sub cambiarEstadoProducto(conocimiento As String)
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "UPDATE sag_ficha_cantidad SET
+                estado = @estado
+                WHERE id_ficha = " & conocimiento & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.Parameters.AddWithValue("@estado", "1")
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+        End Using
+    End Sub
+    Private Function verificar_Produc()
+        Dim strCombo As String = "SELECT * FROM sag_ficha_cantidad WHERE id_ficha = " & TxtID.Text & ""
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
+
+        Return DtCombo.Rows.Count
+    End Function
+    Protected Sub elminarProductos()
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "UPDATE sag_ficha_cantidad 
+                    SET estado = @estado
+                WHERE id_ficha = " & TextminigridCambiarestado.Text & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+
+                cmd.Parameters.AddWithValue("@estado", "3")
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+
+        End Using
+
+    End Sub
+    Protected Sub eliminarMiniGrid3(id As String)
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM sag_ficha_cantidad WHERE id = " & id & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+        End Using
+    End Sub
+    Protected Sub eliminarMiniGrid2()
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM sag_ficha_cantidad WHERE estado = 0"
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+        End Using
+    End Sub
+    Protected Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+        Dim valor As Decimal
+        valor = CalcularSumatoriaPesoNeto()
+        valor += Convert.ToDecimal(txtCanQuinMiniGrid.Text)
+        If valor <= Convert.ToDecimal(txtPesoBrut.Text) Then
+            Label2.Text = valor.ToString
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim query As String = "INSERT INTO sag_ficha_cantidad (
+                    cantidad_qq_ficha,
+                    id_ficha,
+                    estado,
+                    peso_lb_ficha,
+                    cantidad_sacos_ficha
+                    ) VALUES (@cantidad_qq_ficha,
+                    @id_ficha,
+                    @estado,
+                    @peso_lb_ficha,
+                    @cantidad_sacos_ficha
+                    )"
+
+                Using cmd As New MySqlCommand(query, connection)
+                    cmd.Parameters.AddWithValue("@cantidad_qq_ficha", txtCanQuinMiniGrid.Text)
+                    cmd.Parameters.AddWithValue("@id_ficha", Convert.ToInt64(TxtID.Text))
+                    cmd.Parameters.AddWithValue("@peso_lb_ficha", txtPesoLibMiniGrid.Text)
+                    cmd.Parameters.AddWithValue("@cantidad_sacos_ficha", txtCanSacMiniGrid.Text)
+                    cmd.Parameters.AddWithValue("@estado", "0")
+
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
+                End Using
+            End Using
+            llenaMinigrid()
+            BtnNuevo.Visible = False
+            btnRegresarConficha.Visible = True
+            vaciarCamposProductos()
+            verificar_Produc()
+            Verificar()
+        Else
+            Label103.Text = "¡Las Cantidad en Quintales se excede de las de Peso Bruto!"
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
+            BConfirm.Visible = False
+            BConfirm2.Visible = True
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        End If
+
+
+    End Sub
+    Protected Sub eliminarMiniGrid(sender As Object, e As EventArgs) Handles btnRegresarConficha.Click
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM sag_ficha_cantidad WHERE estado = 0"
+
+            Using cmd As New MySqlCommand(query, connection)
+                cmd.ExecuteNonQuery()
+                connection.Close()
+                Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
+            End Using
+        End Using
+    End Sub
+    Protected Sub eliminarMiniGridEspecifico(id As String)
+        Dim connectionString As String = conn
+        Using connection As New MySqlConnection(connectionString)
+            connection.Open()
+
+            Dim query As String = "DELETE FROM sag_ficha_cantidad 
+                WHERE id = " & id & ""
+
+            Using cmd As New MySqlCommand(query, connection)
+
+                cmd.ExecuteNonQuery()
+                connection.Close()
+            End Using
+            llenaMinigrid()
+        End Using
+        verificar_Produc()
+        Verificar()
+    End Sub
+    Sub verificardatosproductos()
+        Dim validar As Integer = 0
+        '1
+        If String.IsNullOrEmpty(txtCanSacMiniGrid.Text) Then
+            lblCanSacMiniGrid.Text = "*"
+            validar = 0
+        Else
+            lblCanSacMiniGrid.Text = ""
+            validar += 1
+        End If
+        '2
+        If String.IsNullOrEmpty(txtPesoLibMiniGrid.Text) Then
+            lblPesoLibMiniGrid.Text = "*"
+            validar = 0
+        Else
+            lblPesoLibMiniGrid.Text = ""
+            validar += 1
+        End If
+        '3
+        If String.IsNullOrEmpty(txtCanQuinMiniGrid.Text) Then
+            lblCanQuinMiniGrid.Text = "*"
+            validar = 0
+        Else
+            lblCanQuinMiniGrid.Text = ""
+            validar += 1
+        End If
+
+        If validar = 3 Then
+            btnAgregar.Visible = True
+        Else
+            btnAgregar.Visible = False
+        End If
+    End Sub
+    Sub llenaMinigrid()
+        Dim cadena As String = "*"
+
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_ficha_cantidad` WHERE id_ficha = '" & TxtID.Text & "'"
+
+        GridProductos.DataBind()
+        Verificar()
+    End Sub
+    Protected Sub vaciarCamposProductos()
+        txtCanSacMiniGrid.Text = ""
+        txtPesoLibMiniGrid.Text = ""
+        txtCanQuinMiniGrid.Text = ""
+    End Sub
+
+    Protected Sub GridProductos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridProductos.RowCommand
+        Dim index As Integer = Convert.ToInt32(e.CommandArgument)
+        If (e.CommandName = "Eliminar") Then
+            Dim gvrow As GridViewRow = GridProductos.Rows(index)
+            txtidminigrid.Text = ""
+            txtidminigrid.Text = HttpUtility.HtmlDecode(GridProductos.Rows(index).Cells(0).Text).ToString
+            eliminarMiniGridEspecifico(txtidminigrid.Text)
+
+            txtCanSacMiniGrid.Text = ""
+            txtPesoLibMiniGrid.Text = ""
+            txtCanQuinMiniGrid.Text = ""
+
+        End If
+
+        If (e.CommandName = "Editar") Then
+            btnAgregar.Visible = False
+            Dim gvrow As GridViewRow = GridProductos.Rows(index)
+            txtidminigrid.Text = ""
+            txtidminigrid.Text = HttpUtility.HtmlDecode(GridProductos.Rows(index).Cells(0).Text).ToString
+            Dim Str As String = "SELECT * FROM sag_ficha_cantidad WHERE  ID= " & txtidminigrid.Text & ""
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            txtCanSacMiniGrid.Text = dt.Rows(0)("cantidad_sacos_ficha").ToString()
+            txtPesoLibMiniGrid.Text = dt.Rows(0)("peso_lb_ficha").ToString()
+            txtCanQuinMiniGrid.Text = dt.Rows(0)("cantidad_qq_ficha").ToString()
+
+            verificardatosproductos()
+            eliminarMiniGrid3(txtidminigrid.Text)
+            llenaMinigrid()
+        End If
+    End Sub
+
+    Protected Function CalcularSumatoriaPesoNeto() As Decimal
+        Dim sumatoria As Decimal = 0
+
+        ' Verificar si GridDatos tiene filas
+        If GridProductos.Rows.Count > 0 Then
+            ' Iterar a través de las filas del GridView
+            For Each row As GridViewRow In GridProductos.Rows
+                ' Encontrar el control que contiene el valor de la columna "cantidad_qq_ficha"
+                Dim pesoNeto As String = row.Cells(GridProductos.Columns.IndexOf(GridProductos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "cantidad_qq_ficha"))).Text
+
+                ' Verificar si el control se encontró y el valor no está vacío
+                If Not String.IsNullOrEmpty(pesoNeto) Then
+                    ' Convertir el valor a Decimal y sumarlo a la sumatoria
+                    sumatoria += Convert.ToDecimal(pesoNeto)
+                Else
+                    ' Si el valor está vacío, asignar 0 a la sumatoria
+                    sumatoria += 0
+                End If
+            Next
+        Else
+            ' Manejar el caso en que GridDatos no tiene filas
+            ' Puedes mostrar un mensaje, lanzar una excepción, o realizar alguna otra acción según tus necesidades.
+        End If
+
+        ' Mostrar la sumatoria en algún lugar, como una etiqueta o un TextBox
+
+        Return sumatoria
+    End Function
+
+
 End Class

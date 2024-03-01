@@ -4667,54 +4667,54 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.FichaPeso._lblUnid">
+<member name="F:MAS_PMSU.FichaPeso._lblCanSacMiniGrid">
 <summary>
-Control lblUnid.
+Control lblCanSacMiniGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.FichaPeso._txtUnid">
+<member name="F:MAS_PMSU.FichaPeso._txtCanSacMiniGrid">
 <summary>
-Control txtUnid.
+Control txtCanSacMiniGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.FichaPeso._lblEntreg">
+<member name="F:MAS_PMSU.FichaPeso._lblPesoLibMiniGrid">
 <summary>
-Control lblEntreg.
+Control lblPesoLibMiniGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.FichaPeso._txtEntreg">
+<member name="F:MAS_PMSU.FichaPeso._txtPesoLibMiniGrid">
 <summary>
-Control txtEntreg.
+Control txtPesoLibMiniGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.FichaPeso._lblPrecio">
+<member name="F:MAS_PMSU.FichaPeso._lblCanQuinMiniGrid">
 <summary>
-Control lblPrecio.
+Control lblCanQuinMiniGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.FichaPeso._txtPrecio">
+<member name="F:MAS_PMSU.FichaPeso._txtCanQuinMiniGrid">
 <summary>
-Control txtPrecio.
+Control txtCanQuinMiniGrid.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -4802,45 +4802,36 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.FichaPeso._Div1">
+<summary>
+Control Div1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._Label1">
+<summary>
+Control Label1.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._Label2">
+<summary>
+Control Label2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.FichaPeso._DivActa3">
 <summary>
 Control DivActa3.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.FichaPeso._lblTara">
-<summary>
-Control lblTara.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.FichaPeso._txtTara">
-<summary>
-Control txtTara.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.FichaPeso._lblPesoNeto">
-<summary>
-Control lblPesoNeto.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.FichaPeso._txtPesoNeto">
-<summary>
-Control txtPesoNeto.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -4901,6 +4892,42 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.FichaPeso._lblTara">
+<summary>
+Control lblTara.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._txtTara">
+<summary>
+Control txtTara.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._lblPesoNeto">
+<summary>
+Control lblPesoNeto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._txtPesoNeto">
+<summary>
+Control txtPesoNeto.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.FichaPeso._LabelGuardar">
 <summary>
 Control LabelGuardar.
@@ -4937,6 +4964,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.FichaPeso._btnRegresarConficha">
+<summary>
+Control btnRegresarConficha.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.FichaPeso._Label103">
 <summary>
 Control Label103.
@@ -4967,6 +5003,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.FichaPeso._BBorrarno">
 <summary>
 Control BBorrarno.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.FichaPeso._BConfirm2">
+<summary>
+Control BConfirm2.
 </summary>
 <remarks>
 Campo generado automáticamente.

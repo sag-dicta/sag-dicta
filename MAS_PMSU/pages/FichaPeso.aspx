@@ -320,13 +320,9 @@
                                         <HeaderStyle CssClass="hide" />
                                         <ItemStyle CssClass="hide" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="variedad" HeaderText="DESCRIPCION" />
-                                    <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORIA" />
-                                    <asp:BoundField DataField="unidad" HeaderText="UNIDAD" />
-                                    <asp:BoundField DataField="peso_neto" HeaderText="ENTREGADO" />
-                                    <asp:BoundField DataField="precio_uni" HeaderText="PRECIO" />
-                                    <asp:BoundField DataField="total" HeaderText="TOTAL" />
-                                    <asp:BoundField DataField="observaciones" HeaderText="OBSERVACIONES" />
+                                    <asp:BoundField DataField="cantidad_sacos_ficha" HeaderText="CANTIDAD DE SACOS" />
+                                    <asp:BoundField DataField="peso_lb_ficha" HeaderText="PESO EN LB" />
+                                    <asp:BoundField DataField="cantidad_qq_ficha" HeaderText="CANTIDAD EN QQ" />
 
                                     <asp:ButtonField ButtonType="Button" Text="↺" ControlStyle-CssClass="btn btn-warning" HeaderText="Editar" CommandName="Editar">
                                         <ControlStyle CssClass="btn btn-warning"></ControlStyle>
@@ -348,6 +344,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div id="Div1" runat="server" visible="true">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <asp:Label ID="Label1" runat="server" Text="Total (QQ):" Font-Size="Large" Font-Bold="True"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="0000" Font-Size="Larger" Font-Bold="True"></asp:Label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
 
         <div id="DivActa3" runat="server" visible="true">
@@ -422,6 +433,7 @@
         <div class="col-lg-2">
             <div class="form-group">
                 <asp:Button CssClass="btn btn-primary" ID="BtnNuevo" runat="server" Text="Regresar" OnClick="vaciar" Visible="false" />
+                <asp:Button CssClass="btn btn-primary" ID="btnRegresarConficha" runat="server" Text="Regresar" Visible="false" />
             </div>
         </div>
     </div>
@@ -439,6 +451,7 @@
                     <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click" />
                     <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
                     <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
+                    <asp:Button ID="BConfirm2" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary"/>
                 </div>
             </div>
         </div>
