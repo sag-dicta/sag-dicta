@@ -385,39 +385,49 @@ Public Class FichaPeso
     Protected Sub GuardarActa()
         LabelGuardar.Visible = False
         LabelGuardar.Text = ""
-        Dim connectionString As String = conn
-        Using connection As New MySqlConnection(connectionString)
-            connection.Open()
 
-            Dim query As String = "UPDATE sag_registro_senasa SET
+        If Convert.ToDecimal(txtPesoBrut.Text) = Convert.ToDecimal(txtCantQQ.Text) And Convert.ToDecimal(txtCantSaco.Text) = Convert.ToDecimal(txtCantSacoC.Text) Then
+
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim query As String = "UPDATE sag_registro_senasa SET
                 tara = @tara,
                 peso_neto = @peso_neto,
                 peso_lb = @peso_lb
-            WHERE id = " & TxtID.Text & ""
+                WHERE id = " & TxtID.Text & ""
 
-            Using cmd As New MySqlCommand(query, connection)
+                Using cmd As New MySqlCommand(query, connection)
+                    cmd.Parameters.AddWithValue("@tara", Convert.ToDecimal(txtTara.Text))
+                    cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
+                    cmd.Parameters.AddWithValue("@peso_lb", Convert.ToDecimal(txtPesoLibr.Text))
 
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
 
-                cmd.Parameters.AddWithValue("@tara", Convert.ToDecimal(txtTara.Text))
-                cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtPesoNeto.Text))
-                cmd.Parameters.AddWithValue("@peso_lb", Convert.ToDecimal(txtPesoLibr.Text))
+                    cambiarEstadoProducto(TxtID.Text)
 
-                cmd.ExecuteNonQuery()
-                connection.Close()
+                    Label103.Text = "¡Se ha registrado correctamente la ficha de peso al recibo lotes de semilla (pesaje y embolsado)!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    BConfirm.Visible = True
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
-                cambiarEstadoProducto(TxtID.Text)
-
-                Label103.Text = "¡Se ha registrado correctamente la ficha de peso al recibo lotes de semilla (pesaje y embolsado)!"
-                BBorrarsi.Visible = False
-                BBorrarno.Visible = False
-                BConfirm.Visible = True
-                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
-
-                btnGuardarActa.Visible = False
-                BtnImprimir.Visible = False
-                BtnNuevo.Visible = True
+                    btnGuardarActa.Visible = False
+                    BtnImprimir.Visible = False
+                    BtnNuevo.Visible = True
+                End Using
             End Using
-        End Using
+
+        Else
+            Label103.Text = "¡Las cantidades de Peso Bruto y Cantidades de Quintales deben coincidir! \n ¡Las cantidades de sacos y total de sacos deben coincidir!"
+            BBorrarsi.Visible = False
+            BBorrarno.Visible = False
+            BConfirm.Visible = False
+            BConfirm2.Visible = True
+            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+        End If
     End Sub
     Protected Sub Verificar()
         verificardatosproductos()
@@ -575,8 +585,8 @@ Public Class FichaPeso
         Dim valortara As Decimal = 0
         Dim pesolb As Decimal = 0
 
-        If Decimal.TryParse(txtPesoBrut.Text, valorOro) Then
-            valorOro = Convert.ToDecimal(txtPesoBrut.Text)
+        If Decimal.TryParse(txtCantQQ.Text, valorOro) Then
+            valorOro = Convert.ToDecimal(txtCantQQ.Text)
         End If
 
         If Decimal.TryParse(txtTara.Text, valortara) Then
@@ -592,15 +602,8 @@ Public Class FichaPeso
         End If
         If sumaTotal <> 0 Then
             txtPesoNeto.Text = sumaTotal.ToString()
-            pesolb = Convert.ToDecimal(txtPesoNeto.Text) * 100
-            txtPesoLibr.Text = pesolb.ToString
-            txtCantSacoC.Text = txtCantSaco.Text
-            txtCantQQ.Text = txtPesoNeto.Text
         Else
             txtPesoNeto.Text = "0.00"
-            txtPesoLibr.Text = "0.00"
-            txtCantSacoC.Text = "0.00"
-            txtCantQQ.Text = "0.00"
         End If
     End Sub
 
@@ -680,8 +683,20 @@ Public Class FichaPeso
         Dim valor As Decimal
         valor = CalcularSumatoriaPesoNeto()
         valor += Convert.ToDecimal(txtCanQuinMiniGrid.Text)
+
+        Dim valor1 As Decimal
+        valor1 = CalcularSumatoriaCantSaco()
+        valor1 += Convert.ToDecimal(txtCanSacMiniGrid.Text)
+
+        Dim valor2 As Decimal
+        valor2 = CalcularSumatoriaPesoLB()
+        valor2 += Convert.ToDecimal(txtPesoLibMiniGrid.Text)
+
         If valor <= Convert.ToDecimal(txtPesoBrut.Text) Then
-            Label2.Text = valor.ToString
+            txtCantQQ.Text = valor.ToString
+            txtCantSacoC.Text = valor1.ToString
+            txtPesoLibr.Text = valor2.ToString
+
             Dim connectionString As String = conn
             Using connection As New MySqlConnection(connectionString)
                 connection.Open()
@@ -848,12 +863,12 @@ Public Class FichaPeso
             ' Iterar a través de las filas del GridView
             For Each row As GridViewRow In GridProductos.Rows
                 ' Encontrar el control que contiene el valor de la columna "cantidad_qq_ficha"
-                Dim pesoNeto As String = row.Cells(GridProductos.Columns.IndexOf(GridProductos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "cantidad_qq_ficha"))).Text
+                Dim cantQQ As String = row.Cells(GridProductos.Columns.IndexOf(GridProductos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "cantidad_qq_ficha"))).Text
 
                 ' Verificar si el control se encontró y el valor no está vacío
-                If Not String.IsNullOrEmpty(pesoNeto) Then
+                If Not String.IsNullOrEmpty(cantQQ) Then
                     ' Convertir el valor a Decimal y sumarlo a la sumatoria
-                    sumatoria += Convert.ToDecimal(pesoNeto)
+                    sumatoria += Convert.ToDecimal(cantQQ)
                 Else
                     ' Si el valor está vacío, asignar 0 a la sumatoria
                     sumatoria += 0
@@ -864,7 +879,51 @@ Public Class FichaPeso
             ' Puedes mostrar un mensaje, lanzar una excepción, o realizar alguna otra acción según tus necesidades.
         End If
 
-        ' Mostrar la sumatoria en algún lugar, como una etiqueta o un TextBox
+        Return sumatoria
+    End Function
+    Protected Function CalcularSumatoriaCantSaco() As Decimal
+        Dim sumatoria As Decimal = 0
+
+        ' Verificar si GridDatos tiene filas
+        If GridProductos.Rows.Count > 0 Then
+            ' Iterar a través de las filas del GridView
+            For Each row As GridViewRow In GridProductos.Rows
+                ' Encontrar el control que contiene el valor de la columna "cantidad_qq_ficha"
+                Dim cansaco As String = row.Cells(GridProductos.Columns.IndexOf(GridProductos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "cantidad_sacos_ficha"))).Text
+
+                If Not String.IsNullOrEmpty(cansaco) Then
+                    ' Convertir el valor a Decimal y sumarlo a la sumatoria
+                    sumatoria += Convert.ToDecimal(cansaco)
+                Else
+                    ' Si el valor está vacío, asignar 0 a la sumatoria
+                    sumatoria += 0
+                End If
+
+            Next
+        End If
+
+        Return sumatoria
+    End Function
+    Protected Function CalcularSumatoriaPesoLB() As Decimal
+        Dim sumatoria As Decimal = 0
+
+        ' Verificar si GridDatos tiene filas
+        If GridProductos.Rows.Count > 0 Then
+            ' Iterar a través de las filas del GridView
+            For Each row As GridViewRow In GridProductos.Rows
+                ' Encontrar el control que contiene el valor de la columna "cantidad_qq_ficha"
+                Dim pesolb As String = row.Cells(GridProductos.Columns.IndexOf(GridProductos.Columns.OfType(Of BoundField)().FirstOrDefault(Function(f) f.DataField = "peso_lb_ficha"))).Text
+
+                ' Verificar si el control se encontró y el valor no está vacío
+                If Not String.IsNullOrEmpty(pesolb) Then
+                    ' Convertir el valor a Decimal y sumarlo a la sumatoria
+                    sumatoria += Convert.ToDecimal(pesolb)
+                Else
+                    ' Si el valor está vacío, asignar 0 a la sumatoria
+                    sumatoria += 0
+                End If
+            Next
+        End If
 
         Return sumatoria
     End Function

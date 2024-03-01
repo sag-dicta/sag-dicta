@@ -222,7 +222,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label>Cantidad de Sacos:</label><asp:Label ID="lblCantSaco" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <label>Total de Sacos:</label><asp:Label ID="lblCantSaco" class="label label-warning" runat="server" Text=""></asp:Label>
                                     <asp:TextBox CssClass="form-control" ID="txtCantSaco" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
                                 </div>
                             </div>
@@ -346,27 +346,9 @@
             </div>
         </div>
 
-        <div id="Div1" runat="server" visible="true">
-        <div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12 text-right">
-                            <asp:Label ID="Label1" runat="server" Text="Total (QQ):" Font-Size="Large" Font-Bold="True"></asp:Label>
-                            <asp:Label ID="Label2" runat="server" Text="0000" Font-Size="Larger" Font-Bold="True"></asp:Label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-
         <div id="DivActa3" runat="server" visible="true">
             <div class="row">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        Totales de la Ficha de Peso
-                    </div>
                     <div class="panel-body">
                         <div class="row">
                         </div>
@@ -451,7 +433,7 @@
                     <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click" />
                     <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
                     <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
-                    <asp:Button ID="BConfirm2" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary"/>
+                    <asp:Button ID="BConfirm2" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
                 </div>
             </div>
         </div>
