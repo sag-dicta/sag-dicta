@@ -107,8 +107,8 @@
                                         <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="TIPO DE CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
-                                        <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
-                                        <asp:BoundField DataField="categoria_registrado" HeaderText="N° DE LOTE" />
+                                        <asp:BoundField DataField="categoria_registrado" HeaderText="CATEGORÍA" />
+                                        <asp:BoundField DataField="lote_registrado" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
                                         <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO PRIMA EN LA PLANTA" />
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />

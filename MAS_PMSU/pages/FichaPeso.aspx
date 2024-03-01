@@ -107,10 +107,10 @@
                                         <asp:BoundField DataField="departamento" HeaderText="DEPARTAMENTO" />
                                         <asp:BoundField DataField="representante_legal" HeaderText="RESPONSABLE LEGAL" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
-                                        <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORÍA" />
+                                        <asp:BoundField DataField="categoria_registrado" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
-                                        <asp:BoundField DataField="no_lote" HeaderText="N° DE LOTE" />
+                                        <asp:BoundField DataField="lote_registrado" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
                                         <asp:BoundField DataField="no_sacos" HeaderText="CANTIDAD DE SACOS" />
                                         <asp:BoundField DataField="semilla_QQ_oro" HeaderText="PESO BRUTO (QQ)" />
