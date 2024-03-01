@@ -113,6 +113,15 @@ Partial Public Class FichaPeso
     Protected WithEvents DivActa As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control DivActa1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivActa1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''Control TxtID.
     '''</summary>
     '''<remarks>
@@ -338,40 +347,157 @@ Partial Public Class FichaPeso
     Protected WithEvents txtPesoBrut As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control lblTara.
+    '''Control DivActa2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lblTara As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents DivActa2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control txtTara.
+    '''Control lblCanSacMiniGrid.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtTara As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lblCanSacMiniGrid As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control lblPesoNeto.
+    '''Control txtCanSacMiniGrid.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lblPesoNeto As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents txtCanSacMiniGrid As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control txtPesoNeto.
+    '''Control lblPesoLibMiniGrid.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtPesoNeto As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lblPesoLibMiniGrid As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoLibMiniGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoLibMiniGrid As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblCanQuinMiniGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCanQuinMiniGrid As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtCanQuinMiniGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCanQuinMiniGrid As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control btnAgregar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnAgregar As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control TextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control txtidminigrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtidminigrid As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control TextBanderita.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TextBanderita As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control txtRespaldito.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtRespaldito As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control TextminigridCambiarestado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents TextminigridCambiarestado As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblmas.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblmas As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control SqlDataSource2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents SqlDataSource2 As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
+    '''Control GridProductos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents GridProductos As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control DivActa3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivActa3 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control lblCantSacoC.
@@ -426,6 +552,42 @@ Partial Public Class FichaPeso
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtCantQQ As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblTara.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblTara As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtTara.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtTara As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblPesoNeto.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblPesoNeto As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPesoNeto.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPesoNeto As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control LabelGuardar.

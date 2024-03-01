@@ -150,121 +150,249 @@
     </div>
 
     <div id="DivActa" runat="server" visible="false">
-        <div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Datos de la Ficha de Peso
+        <div id="DivActa1" runat="server" visible="true">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Datos de la Ficha de Peso
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-4" runat="server" visible="false">
+                                <div class="form-group">
+                                    <label for="txt">ID:</label>
+                                    <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="TextRespaldo" runat="server" AutoPostBack="false"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="txtunion" runat="server" AutoPostBack="false"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Nombre Del Productor</label><asp:Label ID="lb_nombre_new" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txt_nombre_prod_new" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Lugar de Procedencia:</label><asp:Label ID="lblLugProc" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtLugProc" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Representante Legal</label><asp:Label ID="LB_RepresentanteLegal" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="Txt_Representante_Legal" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Telefono</label><asp:Label ID="LblTelefono" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="TxtTelefono" runat="server" Enabled="false" AutoPostBack="true" MaxLength="8" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Categoria:</label><asp:Label ID="lblCategoria" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtCategoria" runat="server" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Cultivo:</label><asp:Label ID="lblCultivo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtCultivo" runat="server" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Variedad:</label><asp:Label ID="lblVariedad" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtVariedad" runat="server" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Número de Lote:</label><asp:Label ID="LbLote" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="TxtLote" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Humedad (%):</label><asp:Label ID="lblHumedad" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtHumedad" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Cantidad de Sacos:</label><asp:Label ID="lblCantSaco" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtCantSaco" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Peso Bruto (QQ):</label><asp:Label ID="lblPesoBrut" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtPesoBrut" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-4" runat="server" visible="false">
-                            <div class="form-group">
-                                <label for="txt">ID:</label>
-                                <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
-                                <asp:TextBox CssClass="form-control" ID="TextRespaldo" runat="server" AutoPostBack="false"></asp:TextBox>
-                                <asp:TextBox CssClass="form-control" ID="txtunion" runat="server" AutoPostBack="false"></asp:TextBox>
+            </div>
+        </div>
+
+        <div id="DivActa2" runat="server" visible="true">
+
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Desglose de Peso Bruto y Cantidad de Sacos
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Cantidad Sacos:</label><asp:Label ID="lblCanSacMiniGrid" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtCanSacMiniGrid" runat="server" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
                             </div>
+
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Peso en libras:</label><asp:Label ID="lblPesoLibMiniGrid" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtPesoLibMiniGrid" runat="server" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Cantidad en Quintales:</label><asp:Label ID="lblCanQuinMiniGrid" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtCanQuinMiniGrid" runat="server" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-1">
+                                <div class="form-group">
+                                    <label style="color: #FFFFFF">Agregar</label>
+                                    <asp:Button CssClass="btn btn-primary" ID="btnAgregar" runat="server" AutoPostBack="True" Text="+" Font-Bold="True" Visible="false"></asp:Button>
+                                </div>
+                            </div>
+
+                            <asp:TextBox ID="TextBox1" runat="server" Visible="false"></asp:TextBox>
+                            <asp:TextBox ID="txtidminigrid" runat="server" Visible="false"></asp:TextBox>
+                            <asp:TextBox ID="TextBanderita" runat="server" Visible="false"></asp:TextBox>
+                            <asp:TextBox ID="txtRespaldito" runat="server" Visible="false"></asp:TextBox>
+                            <asp:TextBox ID="TextminigridCambiarestado" runat="server" Visible="false"></asp:TextBox>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Nombre Del Productor</label><asp:Label ID="lb_nombre_new" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txt_nombre_prod_new" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return lettersOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Lugar de Procedencia:</label><asp:Label ID="lblLugProc" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtLugProc" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Representante Legal</label><asp:Label ID="LB_RepresentanteLegal" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="Txt_Representante_Legal" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return lettersOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Telefono</label><asp:Label ID="LblTelefono" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtTelefono" runat="server" Enabled="false" AutoPostBack="true" MaxLength="8" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Categoria:</label><asp:Label ID="lblCategoria" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCategoria" runat="server" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Cultivo:</label><asp:Label ID="lblCultivo" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCultivo" runat="server" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Variedad:</label><asp:Label ID="lblVariedad" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtVariedad" runat="server" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Número de Lote:</label><asp:Label ID="LbLote" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="TxtLote" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Humedad (%):</label><asp:Label ID="lblHumedad" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtHumedad" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Cantidad de Sacos:</label><asp:Label ID="lblCantSaco" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCantSaco" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Peso Bruto (QQ):</label><asp:Label ID="lblPesoBrut" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtPesoBrut" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
+
+                        <div class="row">
+                            <asp:Label ID="lblmas" class="label label-warning" runat="server" Text=""></asp:Label>
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:connSAG %>" ProviderName="<%$ ConnectionStrings:connSAG.ProviderName %>"></asp:SqlDataSource>
+                            <asp:GridView ID="GridProductos" runat="server" CellPadding="4" ForeColor="#333333" Width="100%"
+                                GridLines="None" AllowPaging="True" AutoGenerateColumns="False" CssClass="table table-bordered table-hover" DataSourceID="SqlDataSource1" Font-Size="Small">
+                                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                                <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
+                                <EmptyDataTemplate>
+                                    ¡No hay productos inscritos!
+                                </EmptyDataTemplate>
+                                <%--Paginador...--%>
+                                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
+                                <PagerTemplate>
+                                    <div class="row" style="margin-top: 8px;">
+                                        <div class="col-lg-1" style="text-align: right;">
+                                            <h5>
+                                                <asp:Label ID="MessageLabel" Text="Ir a la pág." runat="server" /></h5>
+                                        </div>
+                                        <div class="col-lg-1" style="text-align: left;">
+                                            <asp:DropDownList ID="PageDropDownList" Width="80px" AutoPostBack="true" OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged" runat="server" CssClass="form-control" /></h3>
+                                        </div>
+                                        <div class="col-lg-10" style="text-align: right;">
+                                            <h3>
+                                                <asp:Label ID="CurrentPageLabel" runat="server" CssClass="label label-warning" /></h3>
+                                        </div>
+                                    </div>
+                                </PagerTemplate>
+                                <AlternatingRowStyle BackColor="White" />
+                                <Columns>
+
+                                    <asp:BoundField DataField="ID">
+                                        <HeaderStyle CssClass="hide" />
+                                        <ItemStyle CssClass="hide" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="variedad" HeaderText="DESCRIPCION" />
+                                    <asp:BoundField DataField="categoria_origen" HeaderText="CATEGORIA" />
+                                    <asp:BoundField DataField="unidad" HeaderText="UNIDAD" />
+                                    <asp:BoundField DataField="peso_neto" HeaderText="ENTREGADO" />
+                                    <asp:BoundField DataField="precio_uni" HeaderText="PRECIO" />
+                                    <asp:BoundField DataField="total" HeaderText="TOTAL" />
+                                    <asp:BoundField DataField="observaciones" HeaderText="OBSERVACIONES" />
+
+                                    <asp:ButtonField ButtonType="Button" Text="↺" ControlStyle-CssClass="btn btn-warning" HeaderText="Editar" CommandName="Editar">
+                                        <ControlStyle CssClass="btn btn-warning"></ControlStyle>
+                                    </asp:ButtonField>
+                                    <asp:ButtonField ButtonType="Button" Text="-" ControlStyle-CssClass="btn btn-danger" HeaderText="QUITAR" CommandName="Eliminar">
+                                        <ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                                    </asp:ButtonField>
+                                </Columns>
+                                <EditRowStyle BackColor="#7C6F57" />
+                                <RowStyle BackColor="#E3EAEB" />
+                                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#F8FAFA" />
+                                <SortedAscendingHeaderStyle BackColor="#246B61" />
+                                <SortedDescendingCellStyle BackColor="#D4DFE1" />
+                                <SortedDescendingHeaderStyle BackColor="#15524A" />
+                            </asp:GridView>
+
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Tara (QQ):</label><asp:Label ID="lblTara" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtTara" runat="server" Enabled="true" onkeypress="return numericOnly(this);" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="DivActa3" runat="server" visible="true">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Totales de la Ficha de Peso
                     </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Peso Neto (QQ):</label><asp:Label ID="lblPesoNeto" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtPesoNeto" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                    <div class="panel-body">
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Cantidad Sacos:</label><asp:Label ID="lblCantSacoC" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtCantSacoC" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Peso en libras:</label><asp:Label ID="lblPesoLibr" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtPesoLibr" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Cantidad en Quintales:</label><asp:Label ID="lblCantQQ" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtCantQQ" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Cantidad Sacos:</label><asp:Label ID="lblCantSacoC" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCantSacoC" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Tara (QQ):</label><asp:Label ID="lblTara" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtTara" runat="server" Enabled="true" onkeypress="return numericOnly(this);" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Peso en libras:</label><asp:Label ID="lblPesoLibr" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtPesoLibr" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Cantidad en Quintales:</label><asp:Label ID="lblCantQQ" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtCantQQ" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label>Peso Neto (QQ):</label><asp:Label ID="lblPesoNeto" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtPesoNeto" runat="server" Enabled="false" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -308,7 +436,7 @@
                     <asp:Label ID="Label103" runat="server" Text="El Acta de Recepcion de semilla ha sido almacenada con exito"></asp:Label>
                 </div>
                 <div class="modal-footer" style="text-align: center">
-                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click"/>
+                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click" />
                     <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
                     <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
                 </div>
