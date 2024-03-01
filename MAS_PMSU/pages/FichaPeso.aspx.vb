@@ -174,7 +174,7 @@ Public Class FichaPeso
             BtnNuevo.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "nombre_multiplicador, departamento, municipio, aldea, caserio, representante_legal, telefono_multiplicador, categoria_registrado, tipo_cultivo, variedad, no_lote, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara, peso_lb"
+            Dim cadena As String = "nombre_multiplicador, departamento, municipio, aldea, caserio, representante_legal, telefono_multiplicador, categoria_registrado, tipo_cultivo, variedad, lote_registrado, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara, peso_lb"
             Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
