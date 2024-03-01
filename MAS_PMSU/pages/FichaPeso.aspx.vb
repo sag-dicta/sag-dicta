@@ -169,6 +169,7 @@ Public Class FichaPeso
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "Editar") Then
+
             DivGrid.Visible = "false"
             DivActa.Visible = "true"
             btnGuardarActa.Visible = True
@@ -197,7 +198,13 @@ Public Class FichaPeso
             txtPesoNeto.Text = If(dt.Rows(0)("peso_neto") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_neto").ToString())
             txtTara.Text = If(dt.Rows(0)("tara") Is DBNull.Value, String.Empty, dt.Rows(0)("tara").ToString())
             txtPesoLibr.Text = If(dt.Rows(0)("peso_lb") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_lb").ToString())
+
+            txtCantSacoC.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
+            txtCantQQ.Text = If(dt.Rows(0)("semilla_QQ_oro") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_oro").ToString())
+
             total()
+            llenaMinigrid()
+
             Verificar()
         End If
 
