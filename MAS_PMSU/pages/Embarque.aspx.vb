@@ -985,7 +985,7 @@ Public Class Embarque
     Private Sub llenarcomboCategoriaFrijol()
         Dim StrCombo As String
 
-        StrCombo = "SELECT DISTINCT categoria_origen FROM vista_suma_tabla_a WHERE variedad = '" & DropDownList5.SelectedItem.Text & "' ORDER BY categoria_origen ASC"
+        StrCombo = "SELECT DISTINCT categoria_registrado FROM vista_suma_tabla_a WHERE variedad = '" & DropDownList5.SelectedItem.Text & "' ORDER BY categoria_registrado ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -1006,7 +1006,7 @@ Public Class Embarque
     Private Sub llenarcomboCategoriaMaiz()
         Dim StrCombo As String
 
-        StrCombo = "SELECT DISTINCT categoria_origen FROM vista_suma_tabla_a WHERE variedad = '" & DropDownList6.SelectedItem.Text & "' ORDER BY categoria_origen ASC"
+        StrCombo = "SELECT DISTINCT categoria_registrado FROM vista_suma_tabla_a WHERE variedad = '" & DropDownList6.SelectedItem.Text & "' ORDER BY categoria_registrado ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -1043,7 +1043,7 @@ Public Class Embarque
         If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
             c3 = " "
         Else
-            c3 = " AND categoria_origen = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
+            c3 = " AND categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
         End If
 
         ' Agregar condiciones a la consulta SQL
@@ -1088,7 +1088,7 @@ Public Class Embarque
             If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
                 c3 = " "
             Else
-                c3 = " AND categoria_origen = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
+                c3 = " AND categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
             End If
 
             ' Agregar condiciones a la consulta SQL
