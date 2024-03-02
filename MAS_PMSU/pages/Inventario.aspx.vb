@@ -28,7 +28,7 @@ Public Class Inventario
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "categoria_origen, tipo_cultivo, variedad, peso_neto_resta"
+        Dim cadena As String = "categoria_registrado, tipo_cultivo, variedad, peso_neto_resta"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -36,7 +36,7 @@ Public Class Inventario
         If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND  categoria_origen = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
+            c1 = "AND  categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
         End If
 
         If (DDL_SelCult.SelectedItem.Text = "Todos") Then
@@ -439,7 +439,7 @@ Public Class Inventario
         If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
             c1 = " "
         Else
-            c1 = "AND  categoria_origen = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
+            c1 = "AND  categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
         End If
 
         If (DDL_SelCult.SelectedItem.Text = "Todos") Then

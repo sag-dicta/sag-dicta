@@ -253,7 +253,7 @@
                             <div class="col-lg-2">
                                 <div class="form-group">
                                     <label>Cantidad Sacos:</label><asp:Label ID="lblCanSacMiniGrid" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox CssClass="form-control" ID="txtCanSacMiniGrid" runat="server" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="txtCanSacMiniGrid" runat="server" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
                                 </div>
                             </div>
 

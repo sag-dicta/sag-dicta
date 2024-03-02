@@ -286,6 +286,7 @@
                                     <asp:ListItem id="basica1" Text="Basica"></asp:ListItem>
                                     <asp:ListItem id="registrada1" Text="Registrada"></asp:ListItem>
                                     <asp:ListItem id="certificada1" Text="Certificada"></asp:ListItem>
+                                    <asp:ListItem id="comercial" Text="Comercial"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

@@ -168,7 +168,8 @@ Public Class Embarque
                         BBorrarno.Visible = False
                         ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
                         btnGuardarLote.Visible = False
-
+                        btnRegresar.Visible = True
+                        btnRegresarConEmbarque.Visible = False
                     End Using
 
                 End Using

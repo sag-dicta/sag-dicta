@@ -174,6 +174,7 @@ Public Class FichaPeso
             DivActa.Visible = "true"
             btnGuardarActa.Visible = True
             BtnNuevo.Visible = True
+            btnRegresarConficha.Visible = False
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
             Dim cadena As String = "nombre_multiplicador, departamento, municipio, aldea, caserio, representante_legal, telefono_multiplicador, categoria_registrado, tipo_cultivo, variedad, lote_registrado, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara, peso_lb"
@@ -204,7 +205,7 @@ Public Class FichaPeso
 
             total()
             llenaMinigrid()
-
+            verificar_Produc()
             Verificar()
         End If
 
@@ -220,6 +221,7 @@ Public Class FichaPeso
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False
+            BConfirm2.Visible = False
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
 
@@ -271,6 +273,7 @@ Public Class FichaPeso
             Label103.Text = If(dt.Rows(0)("observaciones") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones").ToString())
             BBorrarsi.Visible = False
             BBorrarno.Visible = False
+            BConfirm2.Visible = False
             BConfirm.Visible = True
             ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
         End If
@@ -376,6 +379,7 @@ Public Class FichaPeso
 
     Protected Sub btnGuardarActa_Click(sender As Object, e As EventArgs)
         'validarflag = 0
+        verificar_Produc()
         Verificar()
         If validarflag = 1 Then
             'Funcion para guardar en la BD
@@ -418,12 +422,14 @@ Public Class FichaPeso
                     Label103.Text = "¡Se ha registrado correctamente la ficha de peso al recibo lotes de semilla (pesaje y embolsado)!"
                     BBorrarsi.Visible = False
                     BBorrarno.Visible = False
+                    BConfirm2.Visible = False
                     BConfirm.Visible = True
                     ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
 
                     btnGuardarActa.Visible = False
                     BtnImprimir.Visible = False
                     BtnNuevo.Visible = True
+                    btnRegresarConficha.Visible = False
                 End Using
             End Using
 
@@ -648,7 +654,7 @@ Public Class FichaPeso
 
             Dim query As String = "UPDATE sag_ficha_cantidad 
                     SET estado = @estado
-                WHERE id_ficha = " & TextminigridCambiarestado.Text & ""
+                WHERE id_ficha = " & TxtID.Text & ""
 
             Using cmd As New MySqlCommand(query, connection)
 

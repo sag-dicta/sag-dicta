@@ -68,6 +68,15 @@ Partial Public Class Inventario
     Protected WithEvents certificada1 As Global.System.Web.UI.WebControls.ListItem
 
     '''<summary>
+    '''Control comercial.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comercial As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
     '''Control DDL_SelCult.
     '''</summary>
     '''<remarks>
