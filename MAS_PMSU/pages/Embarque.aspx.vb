@@ -1043,7 +1043,7 @@ Public Class Embarque
         If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
             c3 = " "
         Else
-            c3 = " AND categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
+            c3 = " AND categoria_registrad = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
         End If
 
         ' Agregar condiciones a la consulta SQL
