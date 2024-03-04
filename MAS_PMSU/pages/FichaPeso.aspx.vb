@@ -1013,9 +1013,9 @@ Public Class FichaPeso
                 Dim bytesPDF As Byte() = FileUploadToBytes(FileUploadPDF)
 
                 ' Actualizar bytes en la base de datos
-                Dim query As String = "UPDATE sag_registro_senasa SET acta_firmada = @acta_firmada WHERE ID=" & TxtID.Text & " "
+                Dim query As String = "UPDATE sag_registro_senasa SET ficha_firmado = @ficha_firmado WHERE ID=" & TxtID.Text & " "
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@acta_firmada", bytesPDF)
+                    cmd.Parameters.AddWithValue("@ficha_firmado", bytesPDF)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
@@ -1031,10 +1031,10 @@ Public Class FichaPeso
 
     End Sub
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Response.Redirect(String.Format("~/pages/AgregraActadeRecibo.aspx"))
+        Response.Redirect(String.Format("~/pages/FichaPeso.aspx"))
     End Sub
 
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
-        Response.Redirect(String.Format("~/pages/Acta_DescArch.aspx"))
+        Response.Redirect(String.Format("~/pages/ficha_DescArch.aspx"))
     End Sub
 End Class

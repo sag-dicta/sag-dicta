@@ -118,8 +118,11 @@
                                         <asp:BoundField DataField="semilla_QQ_basura" HeaderText="SEMILLA BASURA (QQ)" />
                                         <asp:BoundField DataField="semilla_QQ_total" HeaderText="SEMILLA TOTAL (QQ)" />
 
-                                        <asp:ButtonField ButtonType="Button" Text="observacion" ControlStyle-CssClass="btn btn-warning" HeaderText="Observaciones" CommandName="observacion">
+                                        <asp:ButtonField ButtonType="Button" Text="observacion" ControlStyle-CssClass="btn btn-warning" HeaderText="OBSERVACIONES" CommandName="observacion">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
+                                        </asp:ButtonField>
+                                        <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="CUADRO DE PROCESAMIENTO FIRMADO" CommandName="Subir">
+                                            <ControlStyle CssClass="btn btn-dark"></ControlStyle>
                                         </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -143,9 +146,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-2">
                             <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
+                        </div>
+                        <div class="col-lg-4">
+                            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary" Text="Ver los Archivos Subidos"><span class="glyphicon glyphicon-save"></span>&nbsp;Ver los Archivos Subidos</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -322,6 +328,55 @@
         </div>
     </div>
 
+    <div id="div_nuevo_prod" runat="server" visible="false">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="form-group">
+                                    <h4>Subir archivo</h4>
+                                    <div class="mb-3">
+                                        <label for="FileUploadPDF" class="form-label">Cuadro de Procesamiento Firmado:</label>
+                                        <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PDF se aceptan</asp:Label>
+                                        <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf" />
+                                    </div>
+                                    <br />
+
+                                    <asp:Label ID="Label23" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Antes debes ingresar toda la información</asp:Label>
+                                    <asp:Label ID="Label25" runat="server" Text="" BackColor="Green" ForeColor="White" Visible="false">Archivos ingresados con exito</asp:Label>
+                                    <br />
+                                    <asp:Button ID="BtnUpload" runat="server" Text="Guardar" OnClick="BtnUpload_Click" AutoPostBack="false" class="btn btn-primary" />
+                                    <asp:Button ID="Button4" runat="server" Text="Regresar" AutoPostBack="True" class="btn btn-primary" />
+                                    <hr />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="DeleteModal4" tabindex="-1" role="dialog" aria-labelledby="ModalTitle5" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="ModalTitle5">SAG - DICTA</h4>
+                    </div>
+                    <div class="modal-body">
+                        <asp:Label ID="Label26" runat="server" Text="El productor no tiene ningun lote registrado. ¿Desea agregarlo?"></asp:Label>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <asp:Button ID="Button6" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
     <div>
         <div class="col-lg-2">
             <div class="form-group">

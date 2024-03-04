@@ -167,6 +167,17 @@ Public Class CuadroProcesamiento
 
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
+        If (e.CommandName = "Subir") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+            div_nuevo_prod.Visible = True
+            DivGrid.Visible = False
+            DivActa.Visible = False
+            DivActaInfo.Visible = False
+        End If
+
         If (e.CommandName = "Editar") Then
             DivGrid.Visible = "false"
             DivActa.Visible = "true"
@@ -559,8 +570,8 @@ Public Class CuadroProcesamiento
             Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "semilla_QQ_total").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(16).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(18).Controls(0), Button)
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(17).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(19).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
@@ -691,5 +702,66 @@ Public Class CuadroProcesamiento
         txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
         txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
         txtLoteRegi.Text = If(dt.Rows(0)("lote_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("lote_registrado").ToString())
+    End Sub
+    Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
+        Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream
+            Dim length As Integer = fileUpload.PostedFile.ContentLength
+            Dim bytes As Byte() = New Byte(length - 1) {}
+            stream.Read(bytes, 0, length)
+            Return bytes
+        End Using
+    End Function
+    Private Function EsExtensionValida(fileName As String) As Boolean
+        Dim extension As String = Path.GetExtension(fileName)
+        Dim esValida As Boolean = False
+        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) Then
+            esValida = True
+        End If
+        Return esValida
+    End Function
+    Protected Function ValidarFormulario() As Boolean
+        Dim esValido As Boolean = True
+        LabelPDF.Visible = False
+
+        If Not FileUploadPDF.HasFile OrElse Not EsExtensionValida(FileUploadPDF.FileName) Then
+            LabelPDF.Visible = True
+            esValido = False
+        End If
+
+        Return esValido
+    End Function
+    Protected Sub BtnUpload_Click(sender As Object, e As EventArgs) Handles BtnUpload.Click
+
+        If ValidarFormulario() Then
+
+            Dim connectionString As String = conn
+            Using conn As New MySqlConnection(connectionString)
+                conn.Open()
+                Dim bytesPDF As Byte() = FileUploadToBytes(FileUploadPDF)
+
+                ' Actualizar bytes en la base de datos
+                Dim query As String = "UPDATE sag_registro_senasa SET cuadro_firmado = @cuadro_firmado WHERE ID=" & TxtID.Text & " "
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@cuadro_firmado", bytesPDF)
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
+
+            Label23.Visible = False
+            Label25.Visible = True
+            BtnUpload.Visible = False
+        Else
+            Label23.Visible = True
+            Label25.Visible = False
+            BtnUpload.Visible = True
+        End If
+
+    End Sub
+    Protected Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+    End Sub
+
+    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
+        Response.Redirect(String.Format("~/pages/Cuando_Procesamiento_DescArch.aspx"))
     End Sub
 End Class

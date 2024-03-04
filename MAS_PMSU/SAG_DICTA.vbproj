@@ -279,9 +279,11 @@
     <Content Include="pages\AgregarVehiculo.aspx" />
     <Content Include="pages\agregarMultiplicador.aspx" />
     <Content Include="pages\Cambiopassword.aspx" />
+    <Content Include="pages\Cuando_Procesamiento_DescArch.aspx" />
     <Content Include="pages\Embarque.aspx" />
     <Content Include="pages\ErrorPage.aspx" />
     <Content Include="pages\FichaPeso.aspx" />
+    <Content Include="pages\ficha_DescArch.aspx" />
     <Content Include="pages\flot.html" />
     <Content Include="pages\forms.html" />
     <Content Include="pages\generar_qrs.aspx" />
@@ -2317,6 +2319,13 @@
       <DependentUpon>AgregarMultiplicadorReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="pages\Cuando_Procesamiento_DescArch.aspx.designer.vb">
+      <DependentUpon>Cuando_Procesamiento_DescArch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Cuando_Procesamiento_DescArch.aspx.vb">
+      <DependentUpon>Cuando_Procesamiento_DescArch.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="pages\Embarque.aspx.designer.vb">
       <DependentUpon>Embarque.aspx</DependentUpon>
     </Compile>
@@ -2400,6 +2409,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FichaReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pages\ficha_DescArch.aspx.designer.vb">
+      <DependentUpon>ficha_DescArch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ficha_DescArch.aspx.vb">
+      <DependentUpon>ficha_DescArch.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\generar_qrs.aspx.designer.vb">
       <DependentUpon>generar_qrs.aspx</DependentUpon>
