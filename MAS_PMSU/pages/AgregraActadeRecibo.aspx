@@ -121,7 +121,7 @@
                                         <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO HUMEDO (QQ)" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
 
-                                        <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="Acta Firmada" CommandName="Subir">
+                                        <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="ACTA FIRMADA" CommandName="Subir">
                                             <ControlStyle CssClass="btn btn-dark"></ControlStyle>
                                         </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
@@ -296,7 +296,7 @@
                                     <h4>Subir archivo</h4>
                                     <div class="mb-3">
                                         <label for="FileUploadPDF" class="form-label">Acta de Recepción Firmada:</label>
-                                        <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                        <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PDF se aceptan</asp:Label>
                                         <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf" />
                                     </div>
                                     <br />
@@ -413,4 +413,3 @@
             return false;
         }
     </script>
-</asp:Content>
