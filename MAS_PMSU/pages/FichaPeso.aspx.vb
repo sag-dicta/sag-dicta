@@ -231,7 +231,7 @@ Public Class FichaPeso
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM vista_acta_lote_multi WHERE nombre_multiplicador = @valor AND ciclo_acta = @valor2 AND id_acta = @valor3"
+            Dim Str As String = "SELECT * FROM vista_ficha_informe WHERE nombre_multiplicador = @valor AND ciclo_acta = @valor2 AND id_acta = @valor3"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
             adap.SelectCommand.Parameters.AddWithValue("@valor2", HttpUtility.HtmlDecode(gvrow.Cells(4).Text).ToString)
@@ -240,7 +240,7 @@ Public Class FichaPeso
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "vista_acta_lote_multi")
+            adap.Fill(ds, "vista_ficha_informe")
 
             Dim nombre As String
 

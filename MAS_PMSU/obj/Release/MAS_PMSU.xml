@@ -153,6 +153,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_ficha_informeDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_senasaRow">
 <summary>
 Represents strongly named DataRow class.
@@ -179,6 +184,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSetMultiplicador.vista_acta_lote_multiRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_ficha_informeRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -213,6 +223,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.vista_ficha_informeRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_registro_senasaTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -239,6 +254,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.vista_acta_lote_multiTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.vista_ficha_informeTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
