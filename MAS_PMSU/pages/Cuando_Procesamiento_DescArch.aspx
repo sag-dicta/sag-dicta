@@ -81,7 +81,10 @@
 
                                             <%--<asp:BoundField DataField="Habilitado" HeaderText="HABILITADO" />--%>
 
-                                            <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Acta Firmada" CommandName="FichaLote">
+                                            <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Cuadro de Procesamiento Firmada" CommandName="FichaLote">
+                                                <ControlStyle CssClass="btn btn-info"></ControlStyle>
+                                            </asp:ButtonField>
+                                            <asp:ButtonField ButtonType="Button" Text="Descargar" ControlStyle-CssClass="btn btn-success" HeaderText="Ficha de SENASA" CommandName="Fichasenasa">
                                                 <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>

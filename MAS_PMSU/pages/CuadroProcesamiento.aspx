@@ -344,6 +344,11 @@
                                         <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PDF se aceptan</asp:Label>
                                         <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf" />
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="FileUploadimglote" class="form-label"> Ficha SENASA:</label>
+                                        <asp:Label ID="Labelimglote" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
+                                        <asp:FileUpload ID="FileUploadimglote" runat="server" class="form-control" accept=".png, .jpg, .jpeg" />
+                                    </div>
                                     <br />
 
                                     <asp:Label ID="Label23" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Antes debes ingresar toda la información</asp:Label>

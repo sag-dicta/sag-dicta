@@ -536,6 +536,24 @@ Partial Public Class CuadroProcesamiento
     Protected WithEvents FileUploadPDF As Global.System.Web.UI.WebControls.FileUpload
 
     '''<summary>
+    '''Control Labelimglote.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Labelimglote As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control FileUploadimglote.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents FileUploadimglote As Global.System.Web.UI.WebControls.FileUpload
+
+    '''<summary>
     '''Control Label23.
     '''</summary>
     '''<remarks>

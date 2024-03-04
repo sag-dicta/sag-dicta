@@ -714,7 +714,10 @@ Public Class CuadroProcesamiento
     Private Function EsExtensionValida(fileName As String) As Boolean
         Dim extension As String = Path.GetExtension(fileName)
         Dim esValida As Boolean = False
-        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) Then
+        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
+           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
             esValida = True
         End If
         Return esValida
@@ -722,9 +725,14 @@ Public Class CuadroProcesamiento
     Protected Function ValidarFormulario() As Boolean
         Dim esValido As Boolean = True
         LabelPDF.Visible = False
+        Labelimglote.Visible = False
 
         If Not FileUploadPDF.HasFile OrElse Not EsExtensionValida(FileUploadPDF.FileName) Then
             LabelPDF.Visible = True
+            esValido = False
+        End If
+        If Not FileUploadPDF.HasFile OrElse Not EsExtensionValida(FileUploadimglote.FileName) Then
+            Labelimglote.Visible = True
             esValido = False
         End If
 
@@ -738,11 +746,12 @@ Public Class CuadroProcesamiento
             Using conn As New MySqlConnection(connectionString)
                 conn.Open()
                 Dim bytesPDF As Byte() = FileUploadToBytes(FileUploadPDF)
-
+                Dim bytesIMGLOTE As Byte() = FileUploadToBytes(FileUploadimglote)
                 ' Actualizar bytes en la base de datos
-                Dim query As String = "UPDATE sag_registro_senasa SET cuadro_firmado = @cuadro_firmado WHERE ID=" & TxtID.Text & " "
+                Dim query As String = "UPDATE sag_registro_senasa SET cuadro_firmado = @cuadro_firmado, archivo_lote_senasa = @archivo_lote_senasa WHERE ID=" & TxtID.Text & " "
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@cuadro_firmado", bytesPDF)
+                    cmd.Parameters.AddWithValue("@archivo_lote_senasa", bytesIMGLOTE)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using

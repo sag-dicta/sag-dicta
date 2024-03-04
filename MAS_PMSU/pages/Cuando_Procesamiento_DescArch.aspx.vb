@@ -127,6 +127,57 @@ Public Class Cuando_Procesamiento_DescArch
                 End If
             Next
         End If
+
+        If (e.CommandName = "Fichasenasa") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            Dim Str As String = "SELECT archivo_lote_senasa FROM `vista_acta_lote_multi` WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+            Dim adap As New MySqlDataAdapter(Str, conn)
+            Dim dt As New DataTable
+            adap.Fill(dt)
+
+            Dim todosNulos As Boolean = True
+
+            For Each row As DataRow In dt.Rows
+                For Each column As DataColumn In dt.Columns
+                    If Not IsDBNull(row(column)) Then
+                        todosNulos = False
+                        Exit For
+                    End If
+                Next
+
+                If Not todosNulos Then
+                    Using connection As New MySqlConnection(conn)
+                        connection.Open()
+                        Using command As New MySqlCommand(Str, connection)
+                            Using reader As MySqlDataReader = command.ExecuteReader()
+                                If reader.Read() Then
+                                    Dim pdfData As Byte() = DirectCast(reader("archivo_lote_senasa"), Byte())
+                                    Dim nombre As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                                    Dim lote As String = HttpUtility.HtmlDecode(gvrow.Cells(3).Text).ToString
+                                    ' Configura la respuesta HTTP para descargar la imagen
+                                    HttpContext.Current.Response.Clear()
+                                    HttpContext.Current.Response.ContentType = "image/jpeg" ' Cambia el tipo de contenido a PDF
+                                    HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment; filename=FICHA DE SENASA_" & nombre & "_" & lote & ".png") ' Cambia el nombre del archivo con la extensión PDF
+                                    HttpContext.Current.Response.BinaryWrite(pdfData) ' Reemplaza pdfData con tus datos binarios del PDF
+                                    HttpContext.Current.Response.Flush()
+                                    HttpContext.Current.Response.End()
+
+                                End If
+                            End Using
+                        End Using
+                    End Using
+
+                    TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+                Else
+                    BBorrarsi.Visible = False
+                    BConfirm.Visible = True
+                    BBorrarno.Visible = False
+                    Label1.Text = "¡No hay archivo para descarga!"
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+                End If
+            Next
+        End If
     End Sub
 
 
@@ -166,7 +217,9 @@ Public Class Cuando_Procesamiento_DescArch
             ' Obtén los valores de los campos IMAGEN_FICHA, IMAGEN_PAGO_TGR, e IMAGEN_ETIQUETA_SEMILLA
             Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "lote_registrado").ToString()
             Dim imagenFicha As String = DataBinder.Eval(e.Row.DataItem, "cuadro_firmado").ToString()
+            Dim imagenFicha2 As String = DataBinder.Eval(e.Row.DataItem, "archivo_lote_senasa").ToString()
             Dim btnEditar As Button = DirectCast(e.Row.Cells(4).Controls(0), Button)
+            Dim btnEditar2 As Button = DirectCast(e.Row.Cells(5).Controls(0), Button)
 
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
                 btnEditar.Visible = True
@@ -179,6 +232,18 @@ Public Class Cuando_Procesamiento_DescArch
 
             ' Oculta los botones según las condiciones que necesites
             btnFicha.Visible = Not String.IsNullOrEmpty(imagenFicha)
+
+            If Not String.IsNullOrEmpty(estimadoProduccion) Then
+                btnEditar2.Visible = True
+            End If
+            ' Encuentra los botones en la fila por índice
+            Dim indexFicha2 As Integer = 5
+
+            ' Encuentra los botones en la fila
+            Dim btnFicha2 As Button = CType(e.Row.Cells(indexFicha2).Controls(0), Button)
+
+            ' Oculta los botones según las condiciones que necesites
+            btnFicha2.Visible = Not String.IsNullOrEmpty(imagenFicha2)
         End If
     End Sub
 

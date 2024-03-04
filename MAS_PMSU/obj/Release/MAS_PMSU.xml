@@ -1492,6 +1492,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.CuadroProcesamiento._Labelimglote">
+<summary>
+Control Labelimglote.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.CuadroProcesamiento._FileUploadimglote">
+<summary>
+Control FileUploadimglote.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.CuadroProcesamiento._Label23">
 <summary>
 Control Label23.
