@@ -454,7 +454,7 @@ Public Class FichaPeso
         End If
         '2
         If verificar_Produc() = 0 Then
-            lblmas.Text = "Debe ingresar al menos un producto de semilla."
+            lblmas.Text = "Debe ingresar la distribución de sacos y quintales correcta"
             validarflag = 0
         Else
             lblmas.Text = ""

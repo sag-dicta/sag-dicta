@@ -123,8 +123,8 @@
                                         <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-success" HeaderText="IMPRIMIR ACTA" CommandName="Imprimir">
-                                            <ControlStyle CssClass="btn btn-danger"></ControlStyle>
+                                        <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-warning" HeaderText="IMPRIMIR ACTA" CommandName="Imprimir">
+                                            <ControlStyle CssClass="btn btn-warning"></ControlStyle>
                                         </asp:ButtonField>
                                     </Columns>
                                     <EditRowStyle BackColor="#7C6F57" />
@@ -294,7 +294,7 @@
                                 <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                 <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                                 <EmptyDataTemplate>
-                                    ¡No hay productos inscritos!
+                                    ¡No hay datos registrados!
                                 </EmptyDataTemplate>
                                 <%--Paginador...--%>
                                 <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
