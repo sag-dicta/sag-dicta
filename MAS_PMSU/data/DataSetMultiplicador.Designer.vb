@@ -4594,6 +4594,14 @@ Partial Public Class DataSetMultiplicador
         
         Private columnPESO_LB As Global.System.Data.DataColumn
         
+        Private columnLOTE_REGISTRADO As Global.System.Data.DataColumn
+        
+        Private columnCATEGORIA_REGISTRADO As Global.System.Data.DataColumn
+        
+        Private columnACTA_FIRMADA As Global.System.Data.DataColumn
+        
+        Private columnRENDIMIETO_ORO_PESO As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -4886,6 +4894,38 @@ Partial Public Class DataSetMultiplicador
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LOTE_REGISTRADOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLOTE_REGISTRADO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CATEGORIA_REGISTRADOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCATEGORIA_REGISTRADO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ACTA_FIRMADAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnACTA_FIRMADA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property RENDIMIETO_ORO_PESOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRENDIMIETO_ORO_PESO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -4954,9 +4994,13 @@ Partial Public Class DataSetMultiplicador
                     ByVal TARA As Decimal,  _
                     ByVal CICLO_ACTA As String,  _
                     ByVal PESO_NETO As Decimal,  _
-                    ByVal PESO_LB As Decimal) As vista_acta_lote_multiRow
+                    ByVal PESO_LB As Decimal,  _
+                    ByVal LOTE_REGISTRADO As String,  _
+                    ByVal CATEGORIA_REGISTRADO As String,  _
+                    ByVal ACTA_FIRMADA() As Byte,  _
+                    ByVal RENDIMIETO_ORO_PESO As Decimal) As vista_acta_lote_multiRow
             Dim rowvista_acta_lote_multiRow As vista_acta_lote_multiRow = CType(Me.NewRow,vista_acta_lote_multiRow)
-            Dim columnValuesArray() As Object = New Object() {ID_MULTI, NOMBRE_MULTIPLICADOR, REPRESENTANTE_LEGAL, TELEFONO_MULTIPLICADOR, DEPARTAMENTO, MUNICIPIO, ALDEA, CASERIO, ESTADO_MULTI, ID_LOTE, CATEGORIA_ORIGEN, TIPO_CULTIVO, VARIEDAD, PRODUCTOR, NO_LOTE, ESTADO_LOTE, ID_ACTA, FECHA_ACTA, PORCENTAJE_HUMEDAD, ESTADO_SENA, NO_SACOS, PESO_HUMEDO_QQ, PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD, SEMILLA_QQ_ORO, SEMILLA_QQ_CONSUMO, SEMILLA_QQ_BASURA, SEMILLA_QQ_TOTAL, OBSERVACIONES, TARA, CICLO_ACTA, PESO_NETO, PESO_LB}
+            Dim columnValuesArray() As Object = New Object() {ID_MULTI, NOMBRE_MULTIPLICADOR, REPRESENTANTE_LEGAL, TELEFONO_MULTIPLICADOR, DEPARTAMENTO, MUNICIPIO, ALDEA, CASERIO, ESTADO_MULTI, ID_LOTE, CATEGORIA_ORIGEN, TIPO_CULTIVO, VARIEDAD, PRODUCTOR, NO_LOTE, ESTADO_LOTE, ID_ACTA, FECHA_ACTA, PORCENTAJE_HUMEDAD, ESTADO_SENA, NO_SACOS, PESO_HUMEDO_QQ, PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD, SEMILLA_QQ_ORO, SEMILLA_QQ_CONSUMO, SEMILLA_QQ_BASURA, SEMILLA_QQ_TOTAL, OBSERVACIONES, TARA, CICLO_ACTA, PESO_NETO, PESO_LB, LOTE_REGISTRADO, CATEGORIA_REGISTRADO, ACTA_FIRMADA, RENDIMIETO_ORO_PESO}
             rowvista_acta_lote_multiRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvista_acta_lote_multiRow)
             Return rowvista_acta_lote_multiRow
@@ -5011,6 +5055,10 @@ Partial Public Class DataSetMultiplicador
             Me.columnCICLO_ACTA = MyBase.Columns("CICLO_ACTA")
             Me.columnPESO_NETO = MyBase.Columns("PESO_NETO")
             Me.columnPESO_LB = MyBase.Columns("PESO_LB")
+            Me.columnLOTE_REGISTRADO = MyBase.Columns("LOTE_REGISTRADO")
+            Me.columnCATEGORIA_REGISTRADO = MyBase.Columns("CATEGORIA_REGISTRADO")
+            Me.columnACTA_FIRMADA = MyBase.Columns("ACTA_FIRMADA")
+            Me.columnRENDIMIETO_ORO_PESO = MyBase.Columns("RENDIMIETO_ORO_PESO")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5080,6 +5128,14 @@ Partial Public Class DataSetMultiplicador
             MyBase.Columns.Add(Me.columnPESO_NETO)
             Me.columnPESO_LB = New Global.System.Data.DataColumn("PESO_LB", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPESO_LB)
+            Me.columnLOTE_REGISTRADO = New Global.System.Data.DataColumn("LOTE_REGISTRADO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLOTE_REGISTRADO)
+            Me.columnCATEGORIA_REGISTRADO = New Global.System.Data.DataColumn("CATEGORIA_REGISTRADO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCATEGORIA_REGISTRADO)
+            Me.columnACTA_FIRMADA = New Global.System.Data.DataColumn("ACTA_FIRMADA", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnACTA_FIRMADA)
+            Me.columnRENDIMIETO_ORO_PESO = New Global.System.Data.DataColumn("RENDIMIETO_ORO_PESO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRENDIMIETO_ORO_PESO)
             Me.columnID_MULTI.AllowDBNull = false
             Me.columnNOMBRE_MULTIPLICADOR.MaxLength = 100
             Me.columnREPRESENTANTE_LEGAL.MaxLength = 100
@@ -5100,6 +5156,8 @@ Partial Public Class DataSetMultiplicador
             Me.columnESTADO_SENA.MaxLength = 2
             Me.columnOBSERVACIONES.MaxLength = 2000
             Me.columnCICLO_ACTA.MaxLength = 20
+            Me.columnLOTE_REGISTRADO.MaxLength = 255
+            Me.columnCATEGORIA_REGISTRADO.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11792,6 +11850,70 @@ Partial Public Class DataSetMultiplicador
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LOTE_REGISTRADO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi.LOTE_REGISTRADOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'LOTE_REGISTRADO' de la tabla 'vista_acta_lote_multi' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi.LOTE_REGISTRADOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CATEGORIA_REGISTRADO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi.CATEGORIA_REGISTRADOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CATEGORIA_REGISTRADO' de la tabla 'vista_acta_lote_multi'"& _ 
+                            " es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi.CATEGORIA_REGISTRADOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ACTA_FIRMADA() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi.ACTA_FIRMADAColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ACTA_FIRMADA' de la tabla 'vista_acta_lote_multi' es DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi.ACTA_FIRMADAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property RENDIMIETO_ORO_PESO() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi.RENDIMIETO_ORO_PESOColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RENDIMIETO_ORO_PESO' de la tabla 'vista_acta_lote_multi' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi.RENDIMIETO_ORO_PESOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsNOMBRE_MULTIPLICADORNull() As Boolean
             Return Me.IsNull(Me.tablevista_acta_lote_multi.NOMBRE_MULTIPLICADORColumn)
         End Function
@@ -12136,6 +12258,54 @@ Partial Public Class DataSetMultiplicador
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetPESO_LBNull()
             Me(Me.tablevista_acta_lote_multi.PESO_LBColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLOTE_REGISTRADONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi.LOTE_REGISTRADOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLOTE_REGISTRADONull()
+            Me(Me.tablevista_acta_lote_multi.LOTE_REGISTRADOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCATEGORIA_REGISTRADONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi.CATEGORIA_REGISTRADOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCATEGORIA_REGISTRADONull()
+            Me(Me.tablevista_acta_lote_multi.CATEGORIA_REGISTRADOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsACTA_FIRMADANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi.ACTA_FIRMADAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetACTA_FIRMADANull()
+            Me(Me.tablevista_acta_lote_multi.ACTA_FIRMADAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsRENDIMIETO_ORO_PESONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi.RENDIMIETO_ORO_PESOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetRENDIMIETO_ORO_PESONull()
+            Me(Me.tablevista_acta_lote_multi.RENDIMIETO_ORO_PESOColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -18353,6 +18523,10 @@ Namespace DataSetMultiplicadorTableAdapters
             tableMapping.ColumnMappings.Add("CICLO_ACTA", "CICLO_ACTA")
             tableMapping.ColumnMappings.Add("PESO_NETO", "PESO_NETO")
             tableMapping.ColumnMappings.Add("PESO_LB", "PESO_LB")
+            tableMapping.ColumnMappings.Add("LOTE_REGISTRADO", "LOTE_REGISTRADO")
+            tableMapping.ColumnMappings.Add("CATEGORIA_REGISTRADO", "CATEGORIA_REGISTRADO")
+            tableMapping.ColumnMappings.Add("ACTA_FIRMADA", "ACTA_FIRMADA")
+            tableMapping.ColumnMappings.Add("RENDIMIETO_ORO_PESO", "RENDIMIETO_ORO_PESO")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -18369,14 +18543,14 @@ Namespace DataSetMultiplicadorTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `ID_MULTI`, `NOMBRE_MULTIPLICADOR`, `REPRESENTANTE_LEGAL`, `TELEFONO_MULTI"& _ 
-                "PLICADOR`, `DEPARTAMENTO`, `MUNICIPIO`, `ALDEA`, `CASERIO`, `ESTADO_MULTI`, `ID_"& _ 
-                "LOTE`, `CATEGORIA_ORIGEN`, `TIPO_CULTIVO`, `VARIEDAD`, `PRODUCTOR`, `NO_LOTE`, `"& _ 
-                "ESTADO_LOTE`, `ID_ACTA`, `FECHA_ACTA`, `PORCENTAJE_HUMEDAD`, `ESTADO_SENA`, `NO_"& _ 
-                "SACOS`, `PESO_HUMEDO_QQ`, `PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD`, `SEMILLA_QQ_ORO"& _ 
-                "`, `SEMILLA_QQ_CONSUMO`, `SEMILLA_QQ_BASURA`, `SEMILLA_QQ_TOTAL`, `OBSERVACIONES"& _ 
-                "`, `TARA`, `CICLO_ACTA`, `PESO_NETO`, `PESO_LB` FROM `sag_dicta`.`vista_acta_lot"& _ 
-                "e_multi`"
+            Me._commandCollection(0).CommandText = "SELECT ID_MULTI, NOMBRE_MULTIPLICADOR, REPRESENTANTE_LEGAL, TELEFONO_MULTIPLICADO"& _ 
+                "R, DEPARTAMENTO, MUNICIPIO, ALDEA, CASERIO, ESTADO_MULTI, ID_LOTE, CATEGORIA_ORI"& _ 
+                "GEN, TIPO_CULTIVO, VARIEDAD, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  PRODUCTOR, NO_LOTE, ESTADO_LOTE"& _ 
+                ", ID_ACTA, FECHA_ACTA, PORCENTAJE_HUMEDAD, ESTADO_SENA, NO_SACOS, PESO_HUMEDO_QQ"& _ 
+                ", PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD, SEMILLA_QQ_ORO, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  SEMIL"& _ 
+                "LA_QQ_CONSUMO, SEMILLA_QQ_BASURA, SEMILLA_QQ_TOTAL, OBSERVACIONES, TARA, CICLO_A"& _ 
+                "CTA, PESO_NETO, PESO_LB, LOTE_REGISTRADO, CATEGORIA_REGISTRADO, ACTA_FIRMADA, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "                  RENDIMIETO_ORO_PESO"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     vista_acta_lote_multi"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         

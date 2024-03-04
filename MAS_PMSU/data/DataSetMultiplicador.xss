@@ -11,8 +11,8 @@
     <Shape ID="DesignTable:sag_registro_multiplicador" ZOrder="5" X="663" Y="121" Height="365" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
     <Shape ID="DesignTable:sag_registro_lote" ZOrder="4" X="973" Y="122" Height="365" Width="288" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
     <Shape ID="DesignTable:vista_multi_lote" ZOrder="3" X="43" Y="511" Height="365" Width="278" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
-    <Shape ID="DesignTable:vista_acta_lote_multi" ZOrder="2" X="362" Y="506" Height="365" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
-    <Shape ID="DesignTable:vista_ficha_informe" ZOrder="1" X="674" Y="506" Height="365" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
+    <Shape ID="DesignTable:vista_acta_lote_multi" ZOrder="1" X="362" Y="506" Height="365" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
+    <Shape ID="DesignTable:vista_ficha_informe" ZOrder="2" X="674" Y="506" Height="365" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
