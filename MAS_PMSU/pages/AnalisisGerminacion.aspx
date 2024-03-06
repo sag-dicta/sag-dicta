@@ -217,7 +217,7 @@
                                 <div class="form-group">
                                     <label for="txt">Año:</label>
                                     <asp:Label ID="lblaño" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox CssClass="form-control" ID="txtaño" TextMode="date" runat="server" Enabled="false"></asp:TextBox>
+                                    <asp:TextBox CssClass="form-control" ID="txtaño" runat="server" Enabled="false"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -329,34 +329,13 @@
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label>A Granel:</label>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtPesoInicialPlanta" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                    <asp:Label ID="lblGranel" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtGranel" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>En Sacos:</label>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtPesoInicialPlanta" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                    <asp:Label ID="lblEnSacos" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtEnSacos" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>En Bolsas:</label>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtPesoInicialPlanta" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                    <asp:Label ID="lblEnBolsas" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtEnBolsas" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>En Mazorca:</label>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPesoInicialPlanta" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                    <asp:Label ID="lblEnMazorca" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtEnMazorca" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
+                                    <label>Tipo:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDLGranel" runat="server" AutoPostBack="false">
+                                        <%--<asp:ListItem Text=" " Value="0"></asp:ListItem>--%>
+                                        <asp:ListItem Text="Granel en Sacos" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="Granel en Bolsas" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="En Mazorca" Value="3"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -431,26 +410,28 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label>Bolsas:</label>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtBolsas" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                    <asp:Label ID="lblBolsas" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtBolsas" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
+                                    <label>Tipo de Envase:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDLEnvasado" runat="server" AutoPostBack="false">
+                                        <%--<asp:ListItem Text=" " Value="0"></asp:ListItem>--%>
+                                        <asp:ListItem Text="En Sacos" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="En Bolsas" Value="2"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label>Sacos:</label>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtOtrosSacos" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                    <asp:Label ID="lblOtrosSacos" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtOtrosSacos" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
+                                    <label>Cantidad:</label>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtCantidadEnva" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                    <asp:Label ID="lblCantidadEnva" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox ID="txtCantidadEnva" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
                                     <label>Fase:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDLFase" runat="server" AutoPostBack="True">
+                                    <asp:DropDownList CssClass="form-control" ID="DDLFase" runat="server" AutoPostBack="false">
                                         <%--<asp:ListItem Text=" " Value="0"></asp:ListItem>--%>
                                         <asp:ListItem Text="Al Recibo" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="Al Secado" Value="2"></asp:ListItem>
@@ -464,9 +445,9 @@
                             </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label>Tamaño:</label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDLTamaño" runat="server" AutoPostBack="True">
-                                        <%--<asp:ListItem Text=" " Value="0"></asp:ListItem>--%>
+                                    <label>Tamaño Maiz:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDLTamañoMaiz" runat="server" AutoPostBack="false" Enabled="false">
+                                        <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                         <asp:ListItem Text="GP" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="MP" Value="2"></asp:ListItem>
                                         <asp:ListItem Text="PP" Value="3"></asp:ListItem>
@@ -486,7 +467,7 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label>Cantidad Existente (QQ):</label>
+                                    <label>Cantidad Existente/Final (QQ):</label>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator10" runat="server" ControlToValidate="txtCantExistente" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                     <asp:Label ID="lblCantExistente" class="label label-warning" runat="server" Text=""></asp:Label>
                                     <asp:TextBox ID="txtCantExistente" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>

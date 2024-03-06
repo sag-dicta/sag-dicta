@@ -997,33 +997,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._RegularExpressionValidator2">
-<summary>
-Control RegularExpressionValidator2.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._lblGranel">
-<summary>
-Control lblGranel.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._txtGranel">
-<summary>
-Control txtGranel.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.AnalisisGerminacion._RegularExpressionValidator3">
 <summary>
 Control RegularExpressionValidator3.
@@ -1915,6 +1888,87 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtTotalPlanNorm">
+<summary>
+Control txtTotalPlanNorm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtTotalPlanAnor">
+<summary>
+Control txtTotalPlanAnor.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtTotalSemiMuer">
+<summary>
+Control txtTotalSemiMuer.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtTotalSemiDura">
+<summary>
+Control txtTotalSemiDura.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtTotalDebiles">
+<summary>
+Control txtTotalDebiles.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtTotalMezcla">
+<summary>
+Control txtTotalMezcla.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtTotalNoDias">
+<summary>
+Control txtTotalNoDias.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._lblPorcGerm">
+<summary>
+Control lblPorcGerm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtPorcGerm">
+<summary>
+Control txtPorcGerm.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.AnalisisGerminacion._lblObserv">
 <summary>
 Control lblObserv.
@@ -1927,6 +1981,42 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AnalisisGerminacion._txtObserv">
 <summary>
 Control txtObserv.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._lblRespMuestreo">
+<summary>
+Control lblRespMuestreo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtRespMuestreo">
+<summary>
+Control txtRespMuestreo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._lblRespAnalisis">
+<summary>
+Control lblRespAnalisis.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtRespAnalisis">
+<summary>
+Control txtRespAnalisis.
 </summary>
 <remarks>
 Campo generado automáticamente.

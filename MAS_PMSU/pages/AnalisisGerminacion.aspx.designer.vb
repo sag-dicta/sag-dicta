@@ -518,112 +518,13 @@ Partial Public Class AnalisisGerminacion
     Protected WithEvents txtPesoInicialPlanta As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control RegularExpressionValidator2.
+    '''Control DDLGranel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents RegularExpressionValidator2 As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
-    '''<summary>
-    '''Control lblGranel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblGranel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control txtGranel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtGranel As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control RegularExpressionValidator3.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents RegularExpressionValidator3 As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
-    '''<summary>
-    '''Control lblEnSacos.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblEnSacos As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control txtEnSacos.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtEnSacos As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control RegularExpressionValidator4.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents RegularExpressionValidator4 As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
-    '''<summary>
-    '''Control lblEnBolsas.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblEnBolsas As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control txtEnBolsas.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtEnBolsas As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control RegularExpressionValidator5.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents RegularExpressionValidator5 As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
-    '''<summary>
-    '''Control lblEnMazorca.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblEnMazorca As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control txtEnMazorca.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtEnMazorca As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDLGranel As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control DivActaInfo4.
@@ -770,31 +671,13 @@ Partial Public Class AnalisisGerminacion
     Protected WithEvents DivActaInfo5 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control RegularExpressionValidator7.
+    '''Control DDLEnvasado.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents RegularExpressionValidator7 As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
-    '''<summary>
-    '''Control lblBolsas.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblBolsas As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control txtBolsas.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtBolsas As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDLEnvasado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control RegularExpressionValidator8.
@@ -806,22 +689,22 @@ Partial Public Class AnalisisGerminacion
     Protected WithEvents RegularExpressionValidator8 As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
-    '''Control lblOtrosSacos.
+    '''Control lblCantidadEnva.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lblOtrosSacos As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblCantidadEnva As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control txtOtrosSacos.
+    '''Control txtCantidadEnva.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents txtOtrosSacos As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtCantidadEnva As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control DDLFase.
@@ -833,13 +716,13 @@ Partial Public Class AnalisisGerminacion
     Protected WithEvents DDLFase As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control DDLTamaño.
+    '''Control DDLTamañoMaiz.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DDLTamaño As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDLTamañoMaiz As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control RegularExpressionValidator9.
