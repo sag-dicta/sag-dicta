@@ -77,7 +77,7 @@
                                     <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                     <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                                     <EmptyDataTemplate>
-                                        ¡No hay motoristas con esas caracteristicas!
+                                        ¡No hay cuandro de procesamiento con esas caracteristicas!
                                     </EmptyDataTemplate>
                                     <%--Paginador...--%>
                                     <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />

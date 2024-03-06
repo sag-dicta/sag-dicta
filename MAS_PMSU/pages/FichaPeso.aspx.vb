@@ -740,7 +740,7 @@ Public Class FichaPeso
                 Using cmd As New MySqlCommand(query, connection)
                     cmd.Parameters.AddWithValue("@cantidad_qq_ficha", txtCanQuinMiniGrid.Text)
                     cmd.Parameters.AddWithValue("@id_ficha", Convert.ToInt64(TxtID.Text))
-                    cmd.Parameters.AddWithValue("@peso_lb_ficha", txtPesoLibMiniGrid.Text)
+                    cmd.Parameters.AddWithValue("@peso_lb_ficha", Convert.ToDecimal(txtPesoLibMiniGrid.Text))
                     cmd.Parameters.AddWithValue("@cantidad_sacos_ficha", txtCanSacMiniGrid.Text)
                     cmd.Parameters.AddWithValue("@estado", "0")
 

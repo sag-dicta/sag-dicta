@@ -997,81 +997,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._RegularExpressionValidator3">
+<member name="F:MAS_PMSU.AnalisisGerminacion._DDLGranel">
 <summary>
-Control RegularExpressionValidator3.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._lblEnSacos">
-<summary>
-Control lblEnSacos.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._txtEnSacos">
-<summary>
-Control txtEnSacos.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._RegularExpressionValidator4">
-<summary>
-Control RegularExpressionValidator4.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._lblEnBolsas">
-<summary>
-Control lblEnBolsas.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._txtEnBolsas">
-<summary>
-Control txtEnBolsas.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._RegularExpressionValidator5">
-<summary>
-Control RegularExpressionValidator5.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._lblEnMazorca">
-<summary>
-Control lblEnMazorca.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._txtEnMazorca">
-<summary>
-Control txtEnMazorca.
+Control DDLGranel.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1222,54 +1150,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._RegularExpressionValidator7">
+<member name="F:MAS_PMSU.AnalisisGerminacion._DDLEnvasado">
 <summary>
-Control RegularExpressionValidator7.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._lblBolsas">
-<summary>
-Control lblBolsas.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._txtBolsas">
-<summary>
-Control txtBolsas.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._RegularExpressionValidator8">
-<summary>
-Control RegularExpressionValidator8.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._lblOtrosSacos">
-<summary>
-Control lblOtrosSacos.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._txtOtrosSacos">
-<summary>
-Control txtOtrosSacos.
+Control DDLEnvasado.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1285,9 +1168,9 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AnalisisGerminacion._DDLTamaño">
+<member name="F:MAS_PMSU.AnalisisGerminacion._DDLTamañoMaiz">
 <summary>
-Control DDLTamaño.
+Control DDLTamañoMaiz.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -2017,6 +1900,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AnalisisGerminacion._txtRespAnalisis">
 <summary>
 Control txtRespAnalisis.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._DDL_decision">
+<summary>
+Control DDL_decision.
 </summary>
 <remarks>
 Campo generado automáticamente.

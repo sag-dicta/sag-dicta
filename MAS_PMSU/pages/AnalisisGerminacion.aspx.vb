@@ -93,7 +93,7 @@ Public Class AnalisisGerminacion
         llenagrid()
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, lote_registrado, categoria_registrado, ciclo_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
+        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, lote_registrado, categoria_registrado, ciclo_acta, cantidad_existente, porcentaje_humedad, humedad_final, porcentaje_humedad, peso_inicial_g, PORCENTAJE_GERMINACION, decision"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -559,11 +559,11 @@ Public Class AnalisisGerminacion
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los datos de la fila actual
-            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "semilla_QQ_total").ToString()
+            Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "cantidad_existente").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(17).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(19).Controls(0), Button)
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(16).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(18).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
@@ -619,7 +619,7 @@ Public Class AnalisisGerminacion
         Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
     End Sub
     Private Sub llenarCampoLectura(ByVal id As String)
-        Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado"
+        Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado, tipo_semilla, ano_produ  "
         Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_ACTA=" & id & ""
         Dim adap As New MySqlDataAdapter(Str, conn)
         Dim dt As New DataTable
@@ -629,12 +629,28 @@ Public Class AnalisisGerminacion
         txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
         txtProductor.Text = If(dt.Rows(0)("nombre_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_multiplicador").ToString())
         txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
+
+        If dt.Rows(0)("tipo_cultivo").ToString() = "Maiz" Then
+            DDLTamañoMaiz.Enabled = True
+        End If
+
         txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
         txtCategoria.Text = If(dt.Rows(0)("categoria_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_registrado").ToString())
         txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
         txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
         txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
         txtLoteRegi.Text = If(dt.Rows(0)("lote_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("lote_registrado").ToString())
+        If dt.Rows(0)("tipo_semilla").ToString = "Hibrido" Then
+            txtHibrido.Text = "Si"
+        Else
+            txtHibrido.Text = "No"
+        End If
+        txtaño.Text = If(dt.Rows(0)("ano_produ") Is DBNull.Value, String.Empty, dt.Rows(0)("ano_produ").ToString())
+        txtProcedencia.Text = If(dt.Rows(0)("municipio") Is DBNull.Value, String.Empty, dt.Rows(0)("municipio").ToString())
+        txtDepartamento.Text = If(dt.Rows(0)("departamento") Is DBNull.Value, String.Empty, dt.Rows(0)("departamento").ToString())
+        txtMunicipio.Text = If(dt.Rows(0)("municipio") Is DBNull.Value, String.Empty, dt.Rows(0)("municipio").ToString())
+        txtLocallidad.Text = If(dt.Rows(0)("aldea") Is DBNull.Value, String.Empty, dt.Rows(0)("aldea").ToString())
+
     End Sub
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
         Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream

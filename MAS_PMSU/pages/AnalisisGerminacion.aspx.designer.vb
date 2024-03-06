@@ -680,33 +680,6 @@ Partial Public Class AnalisisGerminacion
     Protected WithEvents DDLEnvasado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control RegularExpressionValidator8.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents RegularExpressionValidator8 As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
-    '''<summary>
-    '''Control lblCantidadEnva.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblCantidadEnva As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control txtCantidadEnva.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents txtCantidadEnva As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Control DDLFase.
     '''</summary>
     '''<remarks>
@@ -1452,6 +1425,15 @@ Partial Public Class AnalisisGerminacion
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtRespAnalisis As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control DDL_decision.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDL_decision As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control div_nuevo_prod.

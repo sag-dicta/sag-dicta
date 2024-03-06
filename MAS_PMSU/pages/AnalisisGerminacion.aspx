@@ -65,7 +65,7 @@
                         <div class="col-lg-12">
                             <div class="table-responsive">
                                 <h4>
-                                    <span style="float: right;"><small># Cuadros Procesamientos:</small>
+                                    <span style="float: right;"><small># Análisis de germinación:</small>
                                         <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                 </h4>
                                 <p>&nbsp;</p>
@@ -77,7 +77,7 @@
                                     <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                                     <EmptyDataRowStyle ForeColor="Red" CssClass="table table-bordered" />
                                     <EmptyDataTemplate>
-                                        ¡No hay motoristas con esas caracteristicas!
+                                        ¡No hay análisis de germinación con esas caracteristicas!
                                     </EmptyDataTemplate>
                                     <%--Paginador...--%>
                                     <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
@@ -110,13 +110,13 @@
                                         <asp:BoundField DataField="categoria_registrado" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="lote_registrado" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
-                                        <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO PRIMA EN LA PLANTA" />
+                                        
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
-                                        <asp:BoundField DataField="peso_materia_prima_QQ_porce_humedad" HeaderText="PESO PRIMA SECA (QQ)" />
-                                        <asp:BoundField DataField="semilla_QQ_oro" HeaderText="SEMILLA ORO (QQ)" />
-                                        <asp:BoundField DataField="semilla_QQ_consumo" HeaderText="SEMILLA CONSUMO (QQ)" />
-                                        <asp:BoundField DataField="semilla_QQ_basura" HeaderText="SEMILLA BASURA (QQ)" />
-                                        <asp:BoundField DataField="semilla_QQ_total" HeaderText="SEMILLA TOTAL (QQ)" />
+                                        <asp:BoundField DataField="humedad_final" HeaderText="% DE HUMEDAD DE FINAL" />
+                                        <asp:BoundField DataField="cantidad_existente" HeaderText="CANTIDAD EXISTENTE" />
+                                        <asp:BoundField DataField="peso_inicial_g" HeaderText="PESO INICIAL EN PLANTA (QQ)" />
+                                        <asp:BoundField DataField="PORCENTAJE_GERMINACION" HeaderText="% DE GERMINACIÓN" />
+                                        <asp:BoundField DataField="decision" HeaderText="DECISION" />
 
                                         <asp:ButtonField ButtonType="Button" Text="observacion" ControlStyle-CssClass="btn btn-warning" HeaderText="OBSERVACIONES" CommandName="observacion">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
@@ -331,7 +331,7 @@
                                 <div class="form-group">
                                     <label>Tipo:</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDLGranel" runat="server" AutoPostBack="false">
-                                        <%--<asp:ListItem Text=" " Value="0"></asp:ListItem>--%>
+                                        <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                         <asp:ListItem Text="Granel en Sacos" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="Granel en Bolsas" Value="2"></asp:ListItem>
                                         <asp:ListItem Text="En Mazorca" Value="3"></asp:ListItem>
@@ -420,19 +420,11 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label>Cantidad:</label>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtCantidadEnva" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                    <asp:Label ID="lblCantidadEnva" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:TextBox ID="txtCantidadEnva" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
-                                </div>
-                            </div>
                             <div class="col-lg-2">
                                 <div class="form-group">
                                     <label>Fase:</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDLFase" runat="server" AutoPostBack="false">
-                                        <%--<asp:ListItem Text=" " Value="0"></asp:ListItem>--%>
+                                        <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                         <asp:ListItem Text="Al Recibo" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="Al Secado" Value="2"></asp:ListItem>
                                         <asp:ListItem Text="Al Desgrane" Value="3"></asp:ListItem>
@@ -877,6 +869,16 @@
                                 <asp:TextBox ID="txtRespAnalisis" CssClass="form-control" runat="server" AutoPostBack="false"></asp:TextBox>
                             </div>
                         </div>
+                        <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Decisión:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDL_decision" runat="server" AutoPostBack="false">
+                                        <asp:ListItem Text=" " Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="APROBADO" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="RECHAZADO" Value="2"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
