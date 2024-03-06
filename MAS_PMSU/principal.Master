@@ -14,9 +14,9 @@
     <link href="css/sb-admin-2.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    
+
     <link rel="stylesheet" href="Content/bootstrap-datetimepicker.min.css">
-    
+
     <asp:ContentPlaceHolder ID="head" runat="server" />
 
 </head>
@@ -24,10 +24,10 @@
 <body id="Body1" runat="server">
     <form runat="server">
         <div id="wrapper">
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #1edc98;background-image: linear-gradient(180deg,#00BCE4 10%,#00BCE4 100%);">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #1edc98; background-image: linear-gradient(180deg,#00BCE4 10%,#00BCE4 100%);">
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Inicio.aspx">
                     <div class="sidebar-brand-icon ">
-                        <img class="img-profile" src="../imagenes/sag.png" style="width:75px;"/>
+                        <img class="img-profile" src="../imagenes/sag.png" style="width: 75px;" />
                     </div>
                 </a>
                 <hr class="sidebar-divider my-0" />
@@ -40,22 +40,22 @@
                 <hr class="sidebar-divider" />
                 <%--<div class="sidebar-heading" style="font-size: .50rem;">Departamentos</div>--%>
 
-               
 
 
 
-                       <li class="nav-item" id="Li30" runat="server">
+
+                <li class="nav-item" id="Li30" runat="server">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse31"
                         aria-expanded="true" aria-controls="collapse3">
                         <i class="fas fa-fw fa-folder"></i>
-                        <span> Indicadores</span>
+                        <span>Indicadores</span>
                     </a>
                     <div id="collapse31" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="tc_multiplicadores.aspx"><i class="fa fa-clipboard"></i> TC: Multiplicadores</a>
-                            <a class="collapse-item" href="TC_lotes.aspx"><i class="fa fa-clipboard"></i> TC: Lotes</a>
-                            <a class="collapse-item" href="TC_INVENTARIOS.aspx"><i class="fa fa-clipboard"></i> TC:Inventario</a>
-                            <a class="collapse-item" href="tc_visitaAT.aspx"><i class="fa fa-clipboard"></i> TC: Registro de campo</a>
+                            <a class="collapse-item" href="tc_multiplicadores.aspx"><i class="fa fa-clipboard"></i>TC: Multiplicadores</a>
+                            <a class="collapse-item" href="TC_lotes.aspx"><i class="fa fa-clipboard"></i>TC: Lotes</a>
+                            <a class="collapse-item" href="TC_INVENTARIOS.aspx"><i class="fa fa-clipboard"></i>TC:Inventario</a>
+                            <a class="collapse-item" href="tc_visitaAT.aspx"><i class="fa fa-clipboard"></i>TC: Registro de campo</a>
                         </div>
                     </div>
                 </li>
@@ -73,23 +73,29 @@
                     </a>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i> Registrar Multiplicador</a>
-                            <a class="collapse-item" href="InscripcionLotes.aspx"><i class="fa fa-clipboard"></i> Inscripción de Lotes</a>
+                            <a class="collapse-item" href="agregarMultiplicador.aspx"><i class="fa fa-clipboard"></i>Registrar Multiplicador</a>
+                            <a class="collapse-item" href="InscripcionLotes.aspx"><i class="fa fa-clipboard"></i>Inscripción de Lotes</a>
 
                         </div>
                     </div>
                 </li>
 
 
-                   <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="AgregraActadeRecibo.aspx">
                         <i class="fas fa-light fa-file"></i>
                         <span>Actas de recepción</span>
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="AnalisisGerminacion.aspx">
+                        <i class="fas fa-light fa-file"></i>
+                        <span>Analisis de Germinación</span>
+                    </a>
+                </li>
 
-                  <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="CuadroProcesamiento.aspx">
                         <i class="fas fa-light fa-file"></i>
                         <span>Cuadro de Procesamiento</span>
@@ -97,21 +103,21 @@
                 </li>
 
 
-                   <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="FichaPeso.aspx">
                         <i class="fas fa-light fa-file"></i>
                         <span>Ficha de Peso</span>
                     </a>
                 </li>
 
-                   <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="Inventario.aspx">
                         <i class="fas fa-light fa-file"></i>
                         <span>Inventario</span>
                     </a>
                 </li>
 
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="Embarque.aspx">
                         <i class="fas fa-light fa-file"></i>
                         <span>Distribucion y Embarque</span>
@@ -119,7 +125,7 @@
                 </li>
 
 
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="visitaAT.aspx">
                         <i class="fas fa-light fa-file"></i>
                         <span>Registro campo</span>
@@ -134,8 +140,8 @@
                     </a>
                     <div id="collapse3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="AgregarVehiculo.aspx"><i class="fa fa-clipboard"></i> Agregar Vehiculo</a>
-                            <a class="collapse-item" href="AgregarConductor.aspx"><i class="fa fa-clipboard"></i> Agregar Motorista</a>
+                            <a class="collapse-item" href="AgregarVehiculo.aspx"><i class="fa fa-clipboard"></i>Agregar Vehiculo</a>
+                            <a class="collapse-item" href="AgregarConductor.aspx"><i class="fa fa-clipboard"></i>Agregar Motorista</a>
                         </div>
                     </div>
                 </li>
@@ -148,33 +154,33 @@
                     </a>
                     <div id="collapse4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="MonitoreoPlagas.aspx"><i class="fa fa-clipboard"></i> Monitoreo de Plagas</a>
-                            <a class="collapse-item" href="ControlHRTo.aspx"><i class="fa fa-clipboard"></i> Control de HR y To</a>
+                            <a class="collapse-item" href="MonitoreoPlagas.aspx"><i class="fa fa-clipboard"></i>Monitoreo de Plagas</a>
+                            <a class="collapse-item" href="ControlHRTo.aspx"><i class="fa fa-clipboard"></i>Control de HR y To</a>
                         </div>
                     </div>
                 </li>
 
-                     <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="generar_qrs.aspx">
                         <i class="fas fa-light fa-file"></i>
-                        <span> Generación QRs</span>
-                    </a
-
-
-                <li class="nav-item">
-                    <a class="nav-link" href="https://drive.google.com/drive/folders/1rPQC0mDA6_Rzw7nfdvsOGRtPhHW4WF7F?usp=drive_link">
-                        <i class="fas fa-light fa-file"></i>
-                        <span>Documentos</span>
+                        <span>Generación QRs</span>
                     </a>
-                </li>
 
 
-                   <hr class="sidebar-divider d-none d-md-block" />
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://drive.google.com/drive/folders/1rPQC0mDA6_Rzw7nfdvsOGRtPhHW4WF7F?usp=drive_link">
+                            <i class="fas fa-light fa-file"></i>
+                            <span>Documentos</span>
+                        </a>
+                    </li>
+
+
+                <hr class="sidebar-divider d-none d-md-block" />
                 <div class="text-center d-none d-md-inline">
                     <button class="rounded-circle border-0" id="sidebarToggle" type="button"></button>
                 </div>
-           
-                  
+
+
             </ul>
 
             <div id="content-wrapper" class="d-flex flex-column">
@@ -224,7 +230,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="userDropdown">
-                                         <a class="dropdown-item" href="Cambiopassword.aspx"><i class="fas fa-unlock-alt fa-sm fa-fw mr-2 text-gray-400"></i> Cambio contraseña</a>
+                                    <a class="dropdown-item" href="Cambiopassword.aspx"><i class="fas fa-unlock-alt fa-sm fa-fw mr-2 text-gray-400"></i>Cambio contraseña</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -236,7 +242,7 @@
                     </nav>
 
                     <!-- Contenido Principal -->
-                    <div class="container-fluid" style="padding-left: 3rem;padding-right: 3rem;">
+                    <div class="container-fluid" style="padding-left: 3rem; padding-right: 3rem;">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
@@ -285,7 +291,7 @@
         <script src="../js/demo/chart-pie-demo.js"></script>--%>
         <script src="../Scripts/moment.js"></script>
         <script src="../Content/bootstrap-datetimepicker.css"></script>
-        
+
     </form>
 </body>
 </html>

@@ -273,6 +273,7 @@
     <Content Include="pages\blank.html" />
     <Content Include="pages\buttons.html" />
     <Content Include="pages\ControlHRTo.aspx" />
+    <Content Include="pages\AnalisisGerminacion.aspx" />
     <Content Include="pages\CuadroProcesamiento.aspx" />
     <Content Include="pages\AgregraActadeRecibo.aspx" />
     <Content Include="pages\AgregarConductor.aspx" />
@@ -2252,6 +2253,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>visita_campo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="pages\AnalisisGerminacion.aspx.designer.vb">
+      <DependentUpon>AnalisisGerminacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\AnalisisGerminacion.aspx.vb">
+      <DependentUpon>AnalisisGerminacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\cuadro_procesamiento.vb">
       <DependentUpon>cuadro_procesamiento.rpt</DependentUpon>
