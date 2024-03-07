@@ -27,7 +27,7 @@ Public Class AnalisisGerminacion
         End If
     End Sub
     Protected Sub vaciar(sender As Object, e As EventArgs)
-        Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+        Response.Redirect(String.Format("~/pages/AnalisisGerminacion.aspx"))
     End Sub
     Private Sub llenarcomboCiclogrid()
         Dim StrCombo As String = "SELECT * FROM sag_ciclo"
@@ -144,38 +144,31 @@ Public Class AnalisisGerminacion
 
     End Sub
     Protected Function SeleccionarItemEnDropDownList(ByVal Prodname As DropDownList, ByVal DtCombo As String)
-        If DtCombo = "Frijol" Or DtCombo = "Maiz" Then
-            For Each item As ListItem In Prodname.Items
-                If item.Text = DtCombo Then
-                    Prodname.SelectedValue = item.Value
-                    Return True ' Se encontró una coincidencia, devolver verdadero
-                End If
-            Next
-        Else
-            For Each item As ListItem In Prodname.Items
-                If item.Text = DtCombo Then
-                    Prodname.SelectedValue = item.Value
-                    Return True ' Se encontró una coincidencia, devolver verdadero
-                End If
-            Next
-        End If
+        For Each item As ListItem In Prodname.Items
+            If item.Text = DtCombo Then
+                Prodname.SelectedValue = item.Value
+                Return True ' Se encontró una coincidencia, devolver verdadero
+            End If
+        Next
         ' No se encontró ninguna coincidencia
         Return 0
     End Function
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
-        'Dim fecha2 As Date
-
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
-        If (e.CommandName = "Subir") Then
+        If (e.CommandName = "Agregar") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            div_nuevo_prod.Visible = True
-            DivGrid.Visible = False
-            DivActa.Visible = False
-            DivActaInfo.Visible = False
+            DivGrid.Visible = "false"
+            DivActa.Visible = "true"
+            DivActaInfo.Visible = "true"
+            btnGuardarActa.Visible = True
+            BtnNuevo.Visible = True
+            txtrespaldito.Text = "Guardar"
+
+            llenarCampoLectura(TxtID.Text)
+            Verificar()
         End If
 
         If (e.CommandName = "Editar") Then
@@ -184,15 +177,94 @@ Public Class AnalisisGerminacion
             DivActaInfo.Visible = "true"
             btnGuardarActa.Visible = True
             BtnNuevo.Visible = True
-
+            btnGuardarActa.Text = "Actualizar"
+            txtrespaldito.Text = "Actualizar"
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, RENDIMIETO_ORO_PESO"
-            Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
+
+            Dim cadena As String = "*"
+            Dim Str As String = "SELECT " & cadena & " FROM sag_analisis_germinacion WHERE  ID_2=" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & ""
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
 
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+            txtFechaElab.Text = If(dt.Rows(0)("decha_elaboracion_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("decha_elaboracion_g"), DateTime).ToString("yyyy-MM-dd"))
+
+            txtEnvase.Text = If(dt.Rows(0)("no_envase") Is DBNull.Value, String.Empty, dt.Rows(0)("no_envase").ToString())
+
+            txtPesoInicialPlanta.Text = If(dt.Rows(0)("peso_inicial_g") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_inicial_g").ToString())
+            SeleccionarItemEnDropDownList(DDLGranel, dt.Rows(0)("tipo_granel").ToString())
+
+            txtFechaRecibo.Text = If(dt.Rows(0)("fecha_recibo_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_recibo_g"), DateTime).ToString("yyyy-MM-dd"))
+            txtFechaMuestreo.Text = If(dt.Rows(0)("fecha_muestreo_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_muestreo_g"), DateTime).ToString("yyyy-MM-dd"))
+            txtHumedadF.Text = If(dt.Rows(0)("humedad_final") Is DBNull.Value, String.Empty, dt.Rows(0)("humedad_final").ToString())
+            txtFechaEval.Text = If(dt.Rows(0)("fecha_evaluacion_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_evaluacion_g"), DateTime).ToString("yyyy-MM-dd"))
+
+            SeleccionarItemEnDropDownList(DDLEnvasado, dt.Rows(0)("tipo_envase").ToString())
+            SeleccionarItemEnDropDownList(DDLFase, dt.Rows(0)("fase_g").ToString())
+            SeleccionarItemEnDropDownList(DDLTamañoMaiz, dt.Rows(0)("tamano_maiz").ToString())
+            txtCantInicial.Text = If(dt.Rows(0)("cantidad_inicial") Is DBNull.Value, String.Empty, dt.Rows(0)("cantidad_inicial").ToString())
+            txtCantExistente.Text = If(dt.Rows(0)("cantidad_existente") Is DBNull.Value, String.Empty, dt.Rows(0)("cantidad_existente").ToString())
+            txtCamaraNo.Text = If(dt.Rows(0)("no_camara") Is DBNull.Value, String.Empty, dt.Rows(0)("no_camara").ToString())
+            txtPerimetro.Text = If(dt.Rows(0)("perimetro") Is DBNull.Value, String.Empty, dt.Rows(0)("perimetro").ToString())
+
+            txtCERTISEM.Text = If(dt.Rows(0)("certisem") Is DBNull.Value, String.Empty, dt.Rows(0)("certisem").ToString())
+            txtFechaCERTISEM.Text = If(dt.Rows(0)("fecha_certisem") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_certisem"), DateTime).ToString("yyyy-MM-dd"))
+            txtPlanta.Text = If(dt.Rows(0)("planta_g") Is DBNull.Value, String.Empty, dt.Rows(0)("planta_g").ToString())
+            txtFechaPlanta.Text = If(dt.Rows(0)("fecha_planta_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_planta_g"), DateTime).ToString("yyyy-MM-dd"))
+
+            txtSemillaPura.Text = If(dt.Rows(0)("semilla_pura") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_pura").ToString())
+            txtSemillaOtroCult.Text = If(dt.Rows(0)("semilla_otro_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_otro_cultivo").ToString())
+            txtSemillaMalezas.Text = If(dt.Rows(0)("semilla_maleza") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_maleza").ToString())
+            txtSemillaInerte.Text = If(dt.Rows(0)("materia_inerte") Is DBNull.Value, String.Empty, dt.Rows(0)("materia_inerte").ToString())
+
+            txtCam1PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_1") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_1").ToString())
+            txtCam1PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_1") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_1").ToString())
+            txtCam1SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_1").ToString())
+            txtCam1SemiDura.Text = If(dt.Rows(0)("semillas_duras_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_1").ToString())
+            txtCam1Debiles.Text = If(dt.Rows(0)("semillas_debiles_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_1").ToString())
+            txtCam1Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_1").ToString())
+            txtCam1NoDias.Text = If(dt.Rows(0)("no_dias_1") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_1").ToString())
+
+            txtCam2PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_2") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_2").ToString())
+            txtCam2PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_2") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_2").ToString())
+            txtCam2SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_2").ToString())
+            txtCam2SemiDura.Text = If(dt.Rows(0)("semillas_duras_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_2").ToString())
+            txtCam2Debiles.Text = If(dt.Rows(0)("semillas_debiles_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_2").ToString())
+            txtCam2Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_2").ToString())
+            txtCam2NoDias.Text = If(dt.Rows(0)("no_dias_2") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_2").ToString())
+
+            txtCam3PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_3") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_3").ToString())
+            txtCam3PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_3") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_3").ToString())
+            txtCam3SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_3").ToString())
+            txtCam3SemiDura.Text = If(dt.Rows(0)("semillas_duras_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_3").ToString())
+            txtCam3Debiles.Text = If(dt.Rows(0)("semillas_debiles_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_3").ToString())
+            txtCam3Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_3").ToString())
+            txtCam3NoDias.Text = If(dt.Rows(0)("no_dias_3") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_3").ToString())
+
+            txtCam4PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_4") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_4").ToString())
+            txtCam4PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_4") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_4").ToString())
+            txtCam4SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_4").ToString())
+            txtCam4SemiDura.Text = If(dt.Rows(0)("semillas_duras_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_4").ToString())
+            txtCam4Debiles.Text = If(dt.Rows(0)("semillas_debiles_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_4").ToString())
+            txtCam4Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_4").ToString())
+            txtCam4NoDias.Text = If(dt.Rows(0)("no_dias_4") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_4").ToString())
+
+            txtTotalPlanNorm.Text = If(dt.Rows(0)("plantulas_normales_total") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_total").ToString())
+            txtTotalPlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_total") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_total").ToString())
+            txtTotalSemiMuer.Text = If(dt.Rows(0)("semilla_muerta_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_total").ToString())
+            txtTotalSemiDura.Text = If(dt.Rows(0)("semillas_duras_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_total").ToString())
+            txtTotalDebiles.Text = If(dt.Rows(0)("semillas_debiles_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_total").ToString())
+            txtTotalMezcla.Text = If(dt.Rows(0)("semilla_mezcla_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_total").ToString())
+            txtTotalNoDias.Text = If(dt.Rows(0)("no_dias_total") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_total").ToString())
+
+            txtPorcGerm.Text = If(dt.Rows(0)("porcentaje_germnimacion") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_germnimacion").ToString())
+            txtObserv.Text = If(dt.Rows(0)("observaciones_g") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones_g").ToString())
+            txtRespMuestreo.Text = If(dt.Rows(0)("responsable_muestreo") Is DBNull.Value, String.Empty, dt.Rows(0)("responsable_muestreo").ToString())
+            txtRespAnalisis.Text = If(dt.Rows(0)("responsable_analisis") Is DBNull.Value, String.Empty, dt.Rows(0)("responsable_analisis").ToString())
+            SeleccionarItemEnDropDownList(DDL_decision, dt.Rows(0)("decision").ToString())
+
             llenarCampoLectura(TxtID.Text)
             Verificar()
         End If
@@ -247,19 +319,14 @@ Public Class AnalisisGerminacion
 
         End If
 
-        If (e.CommandName = "observacion") Then
+        If (e.CommandName = "Subir") Then
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "observaciones"
-            Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
-            Dim adap As New MySqlDataAdapter(Str, conn)
-            Dim dt As New DataTable
-            adap.Fill(dt)
+            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            Label103.Text = If(dt.Rows(0)("observaciones") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones").ToString())
-            BBorrarsi.Visible = False
-            BBorrarno.Visible = False
-            BConfirm.Visible = True
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+            div_nuevo_prod.Visible = True
+            DivGrid.Visible = False
+            DivActa.Visible = False
+            DivActaInfo.Visible = False
         End If
     End Sub
 
@@ -353,61 +420,248 @@ Public Class AnalisisGerminacion
     End Sub
 
     Protected Sub GuardarActa()
-        Dim oro As Decimal = 0
-        Dim prima As Decimal = 0
+        LabelGuardar.Visible = False
+        LabelGuardar.Text = ""
+        Dim fechaela As Date
+        Dim fechaReci As Date
+        Dim fechaMues As Date
+        Dim fechaEva As Date
+        Dim fechaCertim As Date
+        Dim fechaPlanta As Date
 
-        'If Decimal.TryParse(txtPeso12Hum.Text, prima) Then
-        '    prima = Convert.ToDecimal(txtPeso12Hum.Text)
-        'End If
-
-        'If Decimal.TryParse(txtSemOro.Text, oro) Then
-        '    oro = Convert.ToDecimal(txtSemOro.Text)
-        'End If
-
-        If oro <= prima Then
-            LabelGuardar.Visible = False
-            LabelGuardar.Text = ""
+        If txtrespaldito.Text = "Guardar" Then
             Dim connectionString As String = conn
             Using connection As New MySqlConnection(connectionString)
                 connection.Open()
 
-                Dim query As String = "UPDATE sag_registro_senasa SET
-                peso_materia_prima_QQ_porce_humedad = @peso_materia_prima_QQ_porce_humedad,
-                semilla_QQ_oro = @semilla_QQ_oro,
-                semilla_QQ_consumo = @semilla_QQ_consumo,
-                semilla_QQ_basura = @semilla_QQ_basura,
-                semilla_QQ_total = @semilla_QQ_total,
-                observaciones = @observaciones,
-                rendimiento_oro_peso = @rendimiento_oro_peso
-            WHERE id = " & TxtID.Text & ""
-
+                Dim query As String = "INSERT INTO sag_analisis_germinacion (
+                                   decha_elaboracion_g,
+                                   no_envase,
+                                   peso_inicial_g,
+                                   tipo_granel,
+                                   fecha_recibo_g,
+                                   fecha_muestreo_g,
+                                   humedad_final,
+                                   fecha_evaluacion_g,
+                                   tipo_envase,
+                                   fase_g,
+                                   tamano_maiz,
+                                   cantidad_inicial,
+                                   cantidad_existente,
+                                   no_camara,
+                                   perimetro,
+                                   certisem,
+                                   fecha_certisem,
+                                   planta_g,
+                                   fecha_planta_g,
+                                   semilla_pura,
+                                   semilla_otro_cultivo,
+                                   semilla_maleza,
+                                   materia_inerte,
+                                   plantulas_normales_1,
+                                   plantulas_anormales_1,
+                                   semilla_muerta_1,
+                                   semillas_duras_1,
+                                   semillas_debiles_1,
+                                   semilla_mezcla_1,
+                                   no_dias_1,
+                                   plantulas_normales_2,
+                                   plantulas_anormales_2,
+                                   semilla_muerta_2,
+                                   semillas_duras_2,
+                                   semillas_debiles_2,
+                                   semilla_mezcla_2,
+                                   no_dias_2,
+                                   plantulas_normales_3,
+                                   plantulas_anormales_3,
+                                   semilla_muerta_3,
+                                   semillas_duras_3,
+                                   semillas_debiles_3,
+                                   semilla_mezcla_3,
+                                   no_dias_3,
+                                   plantulas_normales_4,
+                                   plantulas_anormales_4,
+                                   semilla_muerta_4,
+                                   semillas_duras_4,
+                                   semillas_debiles_4,
+                                   semilla_mezcla_4,
+                                   no_dias_4,
+                                   plantulas_normales_total,
+                                   plantulas_anormales_total,
+                                   semilla_muerta_total,
+                                   semillas_duras_total,
+                                   semillas_debiles_total,
+                                   semilla_mezcla_total,
+                                   no_dias_total,
+                                   porcentaje_germnimacion,
+                                   observaciones_g,
+                                   responsable_muestreo,
+                                   responsable_analisis,
+                                   estado,
+                                   decision,
+                                   id_2) VALUES (
+                                   @decha_elaboracion_g,
+                                   @no_envase,
+                                   @peso_inicial_g,
+                                   @tipo_granel,
+                                   @fecha_recibo_g,
+                                   @fecha_muestreo_g,
+                                   @humedad_final,
+                                   @fecha_evaluacion_g,
+                                   @tipo_envase,
+                                   @fase_g,
+                                   @tamano_maiz,
+                                   @cantidad_inicial,
+                                   @cantidad_existente,
+                                   @no_camara,
+                                   @perimetro,
+                                   @certisem,
+                                   @fecha_certisem,
+                                   @planta_g,
+                                   @fecha_planta_g,
+                                   @semilla_pura,
+                                   @semilla_otro_cultivo,
+                                   @semilla_maleza,
+                                   @materia_inerte,
+                                   @plantulas_normales_1,
+                                   @plantulas_anormales_1,
+                                   @semilla_muerta_1,
+                                   @semillas_duras_1,
+                                   @semillas_debiles_1,
+                                   @semilla_mezcla_1,
+                                   @no_dias_1,
+                                   @plantulas_normales_2,
+                                   @plantulas_anormales_2,
+                                   @semilla_muerta_2,
+                                   @semillas_duras_2,
+                                   @semillas_debiles_2,
+                                   @semilla_mezcla_2,
+                                   @no_dias_2,
+                                   @plantulas_normales_3,
+                                   @plantulas_anormales_3,
+                                   @semilla_muerta_3,
+                                   @semillas_duras_3,
+                                   @semillas_debiles_3,
+                                   @semilla_mezcla_3,
+                                   @no_dias_3,
+                                   @plantulas_normales_4,
+                                   @plantulas_anormales_4,
+                                   @semilla_muerta_4,
+                                   @semillas_duras_4,
+                                   @semillas_debiles_4,
+                                   @semilla_mezcla_4,
+                                   @no_dias_4,
+                                   @plantulas_normales_total,
+                                   @plantulas_anormales_total,
+                                   @semilla_muerta_total,
+                                   @semillas_duras_total,
+                                   @semillas_debiles_total,
+                                   @semilla_mezcla_total,
+                                   @no_dias_total,
+                                   @porcentaje_germnimacion,
+                                   @observaciones_g,
+                                   @responsable_muestreo,
+                                   @responsable_analisis,
+                                   @estado,
+                                   @decision,
+                                   @id_2
+                                   )"
                 Using cmd As New MySqlCommand(query, connection)
 
-
-                    'cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", Convert.ToDecimal(txtPeso12Hum.Text)) ' Aquí se formatea correctamente como yyyy-MM-dd
-                    'cmd.Parameters.AddWithValue("@rendimiento_oro_peso", Convert.ToDecimal(txtrendimiento.Text))
-                    'cmd.Parameters.AddWithValue("@semilla_QQ_oro", Convert.ToDecimal(txtSemOro.Text))
-                    'If txtConsumo.Text = "" Then
-                    '    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
-                    'Else
-                    '    cmd.Parameters.AddWithValue("@semilla_QQ_consumo", Convert.ToDecimal(txtConsumo.Text))
-                    'End If
-                    'If txtBasura.Text = "" Then
-                    '    cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
-                    'Else
-                    '    cmd.Parameters.AddWithValue("@semilla_QQ_basura", Convert.ToDecimal(txtBasura.Text))
-                    'End If
-                    'cmd.Parameters.AddWithValue("@semilla_QQ_total", Convert.ToDecimal(txtTotal.Text))
-                    If txtObserv.Text = "" Then
-                        cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
-                    Else
-                        cmd.Parameters.AddWithValue("@observaciones", txtObserv.Text)
+                    If Date.TryParse(txtFechaElab.Text, fechaela) Then
+                        cmd.Parameters.AddWithValue("@decha_elaboracion_g", fechaela.ToString("yyyy-MM-dd"))
                     End If
+
+                    cmd.Parameters.AddWithValue("@no_envase", txtEnvase.Text)
+
+                    cmd.Parameters.AddWithValue("@peso_inicial_g", Convert.ToDecimal(txtPesoInicialPlanta.Text))
+                    cmd.Parameters.AddWithValue("@tipo_granel", DDLGranel.SelectedItem.Text)
+
+                    If Date.TryParse(txtFechaRecibo.Text, fechaReci) Then
+                        cmd.Parameters.AddWithValue("@fecha_recibo_g", fechaReci.ToString("yyyy-MM-dd"))
+                    End If
+                    If Date.TryParse(txtFechaMuestreo.Text, fechaMues) Then
+                        cmd.Parameters.AddWithValue("@fecha_muestreo_g", fechaMues.ToString("yyyy-MM-dd"))
+                    End If
+                    cmd.Parameters.AddWithValue("@humedad_final", Convert.ToDecimal(txtHumedadF.Text))
+                    If Date.TryParse(txtFechaEval.Text, fechaEva) Then
+                        cmd.Parameters.AddWithValue("@fecha_evaluacion_g", fechaEva.ToString("yyyy-MM-dd"))
+                    End If
+
+                    cmd.Parameters.AddWithValue("@tipo_envase", DDLEnvasado.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@fase_g", DDLFase.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@tamano_maiz", DDLTamañoMaiz.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@cantidad_inicial", Convert.ToDecimal(txtCantInicial.Text))
+                    cmd.Parameters.AddWithValue("@cantidad_existente", Convert.ToDecimal(txtCantExistente.Text))
+                    cmd.Parameters.AddWithValue("@no_camara", txtCamaraNo.Text)
+                    cmd.Parameters.AddWithValue("@perimetro", Convert.ToDecimal(txtPerimetro.Text))
+
+                    cmd.Parameters.AddWithValue("@certisem", Convert.ToDecimal(txtCERTISEM.Text))
+                    If Date.TryParse(txtFechaCERTISEM.Text, fechaCertim) Then
+                        cmd.Parameters.AddWithValue("@fecha_certisem", fechaCertim.ToString("yyyy-MM-dd"))
+                    End If
+                    cmd.Parameters.AddWithValue("@planta_g", txtPlanta.Text)
+                    If Date.TryParse(txtFechaPlanta.Text, fechaPlanta) Then
+                        cmd.Parameters.AddWithValue("@fecha_planta_g", fechaPlanta.ToString("yyyy-MM-dd"))
+                    End If
+
+                    cmd.Parameters.AddWithValue("@semilla_pura", Convert.ToDecimal(txtSemillaPura.Text))
+                    cmd.Parameters.AddWithValue("@semilla_otro_cultivo", Convert.ToDecimal(txtSemillaOtroCult.Text))
+                    cmd.Parameters.AddWithValue("@semilla_maleza", Convert.ToDecimal(txtSemillaMalezas.Text))
+                    cmd.Parameters.AddWithValue("@materia_inerte", Convert.ToDecimal(txtSemillaInerte.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_1", Convert.ToInt64(txtCam1PlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_1", Convert.ToInt64(txtCam1PlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_1", Convert.ToInt64(txtCam1SemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_1", Convert.ToInt64(txtCam1SemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_1", Convert.ToInt64(txtCam1Debiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_1", Convert.ToInt64(txtCam1Mezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_1", Convert.ToInt64(txtCam1NoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_2", Convert.ToInt64(txtCam2PlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_2", Convert.ToInt64(txtCam2PlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_2", Convert.ToInt64(txtCam2SemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_2", Convert.ToInt64(txtCam2SemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_2", Convert.ToInt64(txtCam2Debiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_2", Convert.ToInt64(txtCam2Mezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_2", Convert.ToInt64(txtCam2NoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_3", Convert.ToInt64(txtCam3PlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_3", Convert.ToInt64(txtCam3PlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_3", Convert.ToInt64(txtCam3SemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_3", Convert.ToInt64(txtCam3SemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_3", Convert.ToInt64(txtCam3Debiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_3", Convert.ToInt64(txtCam3Mezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_3", Convert.ToInt64(txtCam3NoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_4", Convert.ToInt64(txtCam4PlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_4", Convert.ToInt64(txtCam4PlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_4", Convert.ToInt64(txtCam4SemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_4", Convert.ToInt64(txtCam4SemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_4", Convert.ToInt64(txtCam4Debiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_4", Convert.ToInt64(txtCam4Mezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_4", Convert.ToInt64(txtCam4NoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_total", Convert.ToInt64(txtTotalPlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_total", Convert.ToInt64(txtTotalPlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_total", Convert.ToInt64(txtTotalSemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_total", Convert.ToInt64(txtTotalSemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_total", Convert.ToInt64(txtTotalDebiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_total", Convert.ToInt64(txtTotalMezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_total", Convert.ToInt64(txtTotalNoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@porcentaje_germnimacion", Convert.ToDecimal(txtPorcGerm.Text))
+                    cmd.Parameters.AddWithValue("@observaciones_g", txtObserv.Text)
+                    cmd.Parameters.AddWithValue("@responsable_muestreo", txtRespMuestreo.Text)
+                    cmd.Parameters.AddWithValue("@responsable_analisis", txtRespAnalisis.Text)
+                    cmd.Parameters.AddWithValue("@estado", "1")
+                    cmd.Parameters.AddWithValue("@decision", DDL_decision.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@id_2", Convert.ToInt64(TxtID.Text))
 
                     cmd.ExecuteNonQuery()
                     connection.Close()
 
-                    Label103.Text = "¡Se ha registrado correctamente el cuadro de procesamiento (secado, limpieza y clasificación)!"
+                    Label103.Text = "¡Se ha guardado correctamente el análisis de germinación de muestreo de semilla!"
                     BBorrarsi.Visible = False
                     BBorrarno.Visible = False
                     BConfirm.Visible = True
@@ -419,49 +673,420 @@ Public Class AnalisisGerminacion
 
                 End Using
             End Using
-        Else
-            Label1.Text = "¡No se puede guardar. El peso oro debe ser menor o igual al peso prima.!"
-            Button3.Visible = False
-            Button2.Visible = False
-            Button1.Visible = True
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal2').modal('show'); });", True)
+        End If
+        If txtrespaldito.Text = "Actualizar" Then
+            Dim connectionString As String = conn
+            Using connection As New MySqlConnection(connectionString)
+                connection.Open()
+
+                Dim query As String = "UPDATE sag_analisis_germinacion
+                        SET
+                          decha_elaboracion_g = @decha_elaboracion_g,
+                          no_envase = @no_envase,
+                          peso_inicial_g = @peso_inicial_g,
+                          tipo_granel = @tipo_granel,
+                          fecha_recibo_g = @fecha_recibo_g,
+                          fecha_muestreo_g = @fecha_muestreo_g,
+                          humedad_final = @humedad_final,
+                          fecha_evaluacion_g = @fecha_evaluacion_g,
+                          tipo_envase = @tipo_envase,
+                          fase_g = @fase_g,
+                          tamano_maiz = @tamano_maiz,
+                          cantidad_inicial = @cantidad_inicial,
+                          cantidad_existente = @cantidad_existente,
+                          no_camara = @no_camara,
+                          perimetro = @perimetro,
+                          certisem = @certisem,
+                          fecha_certisem = @fecha_certisem,
+                          planta_g = @planta_g,
+                          fecha_planta_g = @fecha_planta_g,
+                          semilla_pura = @semilla_pura,
+                          semilla_otro_cultivo = @semilla_otro_cultivo,
+                          semilla_maleza = @semilla_maleza,
+                          materia_inerte = @materia_inerte,
+                          plantulas_normales_1 = @plantulas_normales_1,
+                          plantulas_anormales_1 = @plantulas_anormales_1,
+                          semilla_muerta_1 = @semilla_muerta_1,
+                          semillas_duras_1 = @semillas_duras_1,
+                          semillas_debiles_1 = @semillas_debiles_1,
+                          semilla_mezcla_1 = @semilla_mezcla_1,
+                          no_dias_1 = @no_dias_1,
+                          plantulas_normales_2 = @plantulas_normales_2,
+                          plantulas_anormales_2 = @plantulas_anormales_2,
+                          semilla_muerta_2 = @semilla_muerta_2,
+                          semillas_duras_2 = @semillas_duras_2,
+                          semillas_debiles_2 = @semillas_debiles_2,
+                          semilla_mezcla_2 = @semilla_mezcla_2,
+                          no_dias_2 = @no_dias_2,
+                          plantulas_normales_3 = @plantulas_normales_3,
+                          plantulas_anormales_3 = @plantulas_anormales_3,
+                          semilla_muerta_3 = @semilla_muerta_3,
+                          semillas_duras_3 = @semillas_duras_3,
+                          semillas_debiles_3 = @semillas_debiles_3,
+                          semilla_mezcla_3 = @semilla_mezcla_3,
+                          no_dias_3 = @no_dias_3,
+                          plantulas_normales_4 = @plantulas_normales_4,
+                          plantulas_anormales_4 = @plantulas_anormales_4,
+                          semilla_muerta_4 = @semilla_muerta_4,
+                          semillas_duras_4 = @semillas_duras_4,
+                          semillas_debiles_4 = @semillas_debiles_4,
+                          semilla_mezcla_4 = @semilla_mezcla_4,
+                          no_dias_4 = @no_dias_4,
+                          plantulas_normales_total = @plantulas_normales_total,
+                          plantulas_anormales_total = @plantulas_anormales_total,
+                          semilla_muerta_total = @semilla_muerta_total,
+                          semillas_duras_total = @semillas_duras_total,
+                          semillas_debiles_total = @semillas_debiles_total,
+                          semilla_mezcla_total = @semilla_mezcla_total,
+                          no_dias_total =  @no_dias_total,
+                          porcentaje_germnimacion = @porcentaje_germnimacion,
+                          observaciones_g = @observaciones_g,
+                          responsable_muestreo = @responsable_muestreo,
+                          responsable_analisis = @responsable_analisis,
+                          decision = @decision
+                        WHERE
+                          id_2 = @id_2;"
+                Using cmd As New MySqlCommand(query, connection)
+
+                    If Date.TryParse(txtFechaElab.Text, fechaela) Then
+                        cmd.Parameters.AddWithValue("@decha_elaboracion_g", fechaela.ToString("yyyy-MM-dd"))
+                    End If
+
+                    cmd.Parameters.AddWithValue("@no_envase", txtEnvase.Text)
+
+                    cmd.Parameters.AddWithValue("@peso_inicial_g", Convert.ToDecimal(txtPesoInicialPlanta.Text))
+                    cmd.Parameters.AddWithValue("@tipo_granel", DDLGranel.SelectedItem.Text)
+
+                    If Date.TryParse(txtFechaRecibo.Text, fechaReci) Then
+                        cmd.Parameters.AddWithValue("@fecha_recibo_g", fechaReci.ToString("yyyy-MM-dd"))
+                    End If
+                    If Date.TryParse(txtFechaMuestreo.Text, fechaMues) Then
+                        cmd.Parameters.AddWithValue("@fecha_muestreo_g", fechaMues.ToString("yyyy-MM-dd"))
+                    End If
+                    cmd.Parameters.AddWithValue("@humedad_final", Convert.ToDecimal(txtHumedadF.Text))
+                    If Date.TryParse(txtFechaEval.Text, fechaEva) Then
+                        cmd.Parameters.AddWithValue("@fecha_evaluacion_g", fechaEva.ToString("yyyy-MM-dd"))
+                    End If
+
+                    cmd.Parameters.AddWithValue("@tipo_envase", DDLEnvasado.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@fase_g", DDLFase.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@tamano_maiz", DDLTamañoMaiz.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@cantidad_inicial", Convert.ToDecimal(txtCantInicial.Text))
+                    cmd.Parameters.AddWithValue("@cantidad_existente", Convert.ToDecimal(txtCantExistente.Text))
+                    cmd.Parameters.AddWithValue("@no_camara", txtCamaraNo.Text)
+                    cmd.Parameters.AddWithValue("@perimetro", Convert.ToDecimal(txtPerimetro.Text))
+
+                    cmd.Parameters.AddWithValue("@certisem", Convert.ToDecimal(txtCERTISEM.Text))
+                    If Date.TryParse(txtFechaCERTISEM.Text, fechaCertim) Then
+                        cmd.Parameters.AddWithValue("@fecha_certisem", fechaCertim.ToString("yyyy-MM-dd"))
+                    End If
+                    cmd.Parameters.AddWithValue("@planta_g", txtPlanta.Text)
+                    If Date.TryParse(txtFechaPlanta.Text, fechaPlanta) Then
+                        cmd.Parameters.AddWithValue("@fecha_planta_g", fechaPlanta.ToString("yyyy-MM-dd"))
+                    End If
+
+                    cmd.Parameters.AddWithValue("@semilla_pura", Convert.ToDecimal(txtSemillaPura.Text))
+                    cmd.Parameters.AddWithValue("@semilla_otro_cultivo", Convert.ToDecimal(txtSemillaOtroCult.Text))
+                    cmd.Parameters.AddWithValue("@semilla_maleza", Convert.ToDecimal(txtSemillaMalezas.Text))
+                    cmd.Parameters.AddWithValue("@materia_inerte", Convert.ToDecimal(txtSemillaInerte.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_1", Convert.ToInt64(txtCam1PlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_1", Convert.ToInt64(txtCam1PlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_1", Convert.ToInt64(txtCam1SemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_1", Convert.ToInt64(txtCam1SemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_1", Convert.ToInt64(txtCam1Debiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_1", Convert.ToInt64(txtCam1Mezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_1", Convert.ToInt64(txtCam1NoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_2", Convert.ToInt64(txtCam2PlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_2", Convert.ToInt64(txtCam2PlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_2", Convert.ToInt64(txtCam2SemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_2", Convert.ToInt64(txtCam2SemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_2", Convert.ToInt64(txtCam2Debiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_2", Convert.ToInt64(txtCam2Mezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_2", Convert.ToInt64(txtCam2NoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_3", Convert.ToInt64(txtCam3PlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_3", Convert.ToInt64(txtCam3PlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_3", Convert.ToInt64(txtCam3SemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_3", Convert.ToInt64(txtCam3SemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_3", Convert.ToInt64(txtCam3Debiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_3", Convert.ToInt64(txtCam3Mezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_3", Convert.ToInt64(txtCam3NoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_4", Convert.ToInt64(txtCam4PlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_4", Convert.ToInt64(txtCam4PlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_4", Convert.ToInt64(txtCam4SemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_4", Convert.ToInt64(txtCam4SemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_4", Convert.ToInt64(txtCam4Debiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_4", Convert.ToInt64(txtCam4Mezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_4", Convert.ToInt64(txtCam4NoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@plantulas_normales_total", Convert.ToInt64(txtTotalPlanNorm.Text))
+                    cmd.Parameters.AddWithValue("@plantulas_anormales_total", Convert.ToInt64(txtTotalPlanAnor.Text))
+                    cmd.Parameters.AddWithValue("@semilla_muerta_total", Convert.ToInt64(txtTotalSemiMuer.Text))
+                    cmd.Parameters.AddWithValue("@semillas_duras_total", Convert.ToInt64(txtTotalSemiDura.Text))
+                    cmd.Parameters.AddWithValue("@semillas_debiles_total", Convert.ToInt64(txtTotalDebiles.Text))
+                    cmd.Parameters.AddWithValue("@semilla_mezcla_total", Convert.ToInt64(txtTotalMezcla.Text))
+                    cmd.Parameters.AddWithValue("@no_dias_total", Convert.ToInt64(txtTotalNoDias.Text))
+
+                    cmd.Parameters.AddWithValue("@porcentaje_germnimacion", Convert.ToDecimal(txtPorcGerm.Text))
+                    cmd.Parameters.AddWithValue("@observaciones_g", txtObserv.Text)
+                    cmd.Parameters.AddWithValue("@responsable_muestreo", txtRespMuestreo.Text)
+                    cmd.Parameters.AddWithValue("@responsable_analisis", txtRespAnalisis.Text)
+                    cmd.Parameters.AddWithValue("@decision", DDL_decision.SelectedItem.Text)
+                    cmd.Parameters.AddWithValue("@id_2", Convert.ToInt64(TxtID.Text))
+
+                    cmd.ExecuteNonQuery()
+                    connection.Close()
+
+                    Label103.Text = "¡Se ha editado correctamente el análisis de germinación de muestreo de semilla!"
+                    BBorrarsi.Visible = False
+                    BBorrarno.Visible = False
+                    BConfirm.Visible = True
+                    ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal').modal('show'); });", True)
+
+                    btnGuardarActa.Visible = False
+                    BtnImprimir.Visible = False
+                    BtnNuevo.Visible = True
+
+                End Using
+            End Using
         End If
     End Sub
     Protected Sub Verificar()
-        '1
-        'If String.IsNullOrEmpty(txtPeso12Hum.Text) Then
-        '    lblPeso12Hum.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblPeso12Hum.Text = ""
-        '    validarflag += 1
-        'End If
-        ''2
-        'If String.IsNullOrEmpty(txtSemOro.Text) Then
-        '    lblSemOro.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblSemOro.Text = ""
-        '    validarflag += 1
-        'End If
-        ''3
-        'If String.IsNullOrEmpty(txtConsumo.Text) Then
-        '    lblConsumo.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblConsumo.Text = ""
-        '    validarflag += 1
-        'End If
-        ''4
-        'If String.IsNullOrEmpty(txtBasura.Text) Then
-        '    lblBasura.Text = "*"
-        '    validarflag = 0
-        'Else
-        '    lblBasura.Text = ""
-        '    validarflag += 1
-        'End If
 
-        If validarflag = 2 Then
+        '1
+        If String.IsNullOrEmpty(txtFechaElab.Text) Then
+            lblFechaElab.Text = "*"
+            validarflag = 0
+        Else
+            lblFechaElab.Text = ""
+            validarflag += 1
+        End If
+        ''2
+        If String.IsNullOrEmpty(txtEnvase.Text) Then
+            lblEnvase.Text = "*"
+            validarflag = 0
+        Else
+            lblEnvase.Text = ""
+            validarflag += 1
+        End If
+        ''3
+        If String.IsNullOrEmpty(txtPesoInicialPlanta.Text) Then
+            lblPesoInicialPlanta.Text = "*"
+            validarflag = 0
+        Else
+            lblPesoInicialPlanta.Text = ""
+            validarflag += 1
+        End If
+        ''4
+        If String.IsNullOrEmpty(txtFechaRecibo.Text) Then
+            lblFechaRecibo.Text = "*"
+            validarflag = 0
+        Else
+            lblFechaRecibo.Text = ""
+            validarflag += 1
+        End If
+        '5
+        If (DDLGranel.SelectedItem.Text = " ") Then
+            lblGranel.Text = "*"
+            validarflag = 0
+        Else
+            lblGranel.Text = ""
+            validarflag += 1
+        End If
+        '6
+        If String.IsNullOrEmpty(txtFechaMuestreo.Text) Then
+            lblFechaMuestreo.Text = "*"
+            validarflag = 0
+        Else
+            lblFechaMuestreo.Text = ""
+            validarflag += 1
+        End If
+        '7
+        If String.IsNullOrEmpty(txtHumedadF.Text) Then
+            lblHumedadF.Text = "*"
+            validarflag = 0
+        Else
+            lblHumedadF.Text = ""
+            validarflag += 1
+        End If
+        '8
+        If String.IsNullOrEmpty(txtFechaEval.Text) Then
+            lblFechaEval.Text = "*"
+            validarflag = 0
+        Else
+            lblFechaEval.Text = ""
+            validarflag += 1
+        End If
+        '9
+        If (DDLEnvasado.SelectedItem.Text = " ") Then
+            lblEnvasado.Text = "*"
+            validarflag = 0
+        Else
+            lblEnvasado.Text = ""
+            validarflag += 1
+        End If
+        '10
+        If (DDLFase.SelectedItem.Text = " ") Then
+            lblFase.Text = "*"
+            validarflag = 0
+        Else
+            lblFase.Text = ""
+            validarflag += 1
+        End If
+        '11
+        If txtCultivo.Text = "Maiz" Then
+            If (DDLTamañoMaiz.SelectedItem.Text = " ") Then
+                lblTamañoMaiz.Text = "*"
+                validarflag = 0
+            Else
+                lblTamañoMaiz.Text = ""
+                validarflag += 1
+            End If
+        End If
+        '12
+        If String.IsNullOrEmpty(txtCantInicial.Text) Then
+            lblCantInicial.Text = "*"
+            validarflag = 0
+        Else
+            lblCantInicial.Text = ""
+            validarflag += 1
+        End If
+        '13
+        If String.IsNullOrEmpty(txtCantExistente.Text) Then
+            lblCantExistente.Text = "*"
+            validarflag = 0
+        Else
+            lblCantExistente.Text = ""
+            validarflag += 1
+        End If
+        '14
+        If String.IsNullOrEmpty(txtCamaraNo.Text) Then
+            lblCamaraNo.Text = "*"
+            validarflag = 0
+        Else
+            lblCamaraNo.Text = ""
+            validarflag += 1
+        End If
+        '15
+        If String.IsNullOrEmpty(txtPerimetro.Text) Then
+            lblPerimetro.Text = "*"
+            validarflag = 0
+        Else
+            lblPerimetro.Text = ""
+            validarflag += 1
+        End If
+        '16
+        If String.IsNullOrEmpty(txtCERTISEM.Text) Then
+            lblCERTISEM.Text = "*"
+            validarflag = 0
+        Else
+            lblCERTISEM.Text = ""
+            validarflag += 1
+        End If
+        '17
+        If String.IsNullOrEmpty(txtFechaCERTISEM.Text) Then
+            lblFechaCERTISEM.Text = "*"
+            validarflag = 0
+        Else
+            lblFechaCERTISEM.Text = ""
+            validarflag += 1
+        End If
+        '18
+        If String.IsNullOrEmpty(txtPlanta.Text) Then
+            lblPlanta.Text = "*"
+            validarflag = 0
+        Else
+            lblPlanta.Text = ""
+            validarflag += 1
+        End If
+        '19
+        If String.IsNullOrEmpty(txtFechaPlanta.Text) Then
+            lblFechaPlanta.Text = "*"
+            validarflag = 0
+        Else
+            lblFechaPlanta.Text = ""
+            validarflag += 1
+        End If
+        '20
+        If String.IsNullOrEmpty(txtSemillaPura.Text) Then
+            lblSemillaPura.Text = "*"
+            validarflag = 0
+        Else
+            lblSemillaPura.Text = ""
+            validarflag += 1
+        End If
+        '21
+        If String.IsNullOrEmpty(txtSemillaOtroCult.Text) Then
+            lblSemillaOtroCult.Text = "*"
+            validarflag = 0
+        Else
+            lblSemillaOtroCult.Text = ""
+            validarflag += 1
+        End If
+        '22
+        If String.IsNullOrEmpty(txtSemillaMalezas.Text) Then
+            lblSemillaMalezas.Text = "*"
+            validarflag = 0
+        Else
+            lblSemillaMalezas.Text = ""
+            validarflag += 1
+        End If
+        '23
+        If String.IsNullOrEmpty(txtSemillaInerte.Text) Then
+            lblSemillaInerte.Text = "*"
+            validarflag = 0
+        Else
+            lblSemillaInerte.Text = ""
+            validarflag += 1
+        End If
+        '24
+        If String.IsNullOrEmpty(txtCam1PlanNorm.Text) Or String.IsNullOrEmpty(txtCam1PlanAnor.Text) Or String.IsNullOrEmpty(txtCam1SemiMuer.Text) Or String.IsNullOrEmpty(txtCam1SemiDura.Text) Or String.IsNullOrEmpty(txtCam1Debiles.Text) Or String.IsNullOrEmpty(txtCam1Mezcla.Text) Or String.IsNullOrEmpty(txtCam1NoDias.Text) Or
+           String.IsNullOrEmpty(txtCam2PlanNorm.Text) Or String.IsNullOrEmpty(txtCam2PlanAnor.Text) Or String.IsNullOrEmpty(txtCam2SemiMuer.Text) Or String.IsNullOrEmpty(txtCam2SemiDura.Text) Or String.IsNullOrEmpty(txtCam2Debiles.Text) Or String.IsNullOrEmpty(txtCam2Mezcla.Text) Or String.IsNullOrEmpty(txtCam2NoDias.Text) Or
+           String.IsNullOrEmpty(txtCam3PlanNorm.Text) Or String.IsNullOrEmpty(txtCam3PlanAnor.Text) Or String.IsNullOrEmpty(txtCam3SemiMuer.Text) Or String.IsNullOrEmpty(txtCam3SemiDura.Text) Or String.IsNullOrEmpty(txtCam3Debiles.Text) Or String.IsNullOrEmpty(txtCam3Mezcla.Text) Or String.IsNullOrEmpty(txtCam3NoDias.Text) Or
+           String.IsNullOrEmpty(txtCam4PlanNorm.Text) Or String.IsNullOrEmpty(txtCam4PlanAnor.Text) Or String.IsNullOrEmpty(txtCam4SemiMuer.Text) Or String.IsNullOrEmpty(txtCam4SemiDura.Text) Or String.IsNullOrEmpty(txtCam4Debiles.Text) Or String.IsNullOrEmpty(txtCam4Mezcla.Text) Or String.IsNullOrEmpty(txtCam4NoDias.Text) Then
+            lblmensaje.Text = "Seleccione todas las repeticiones."
+            validarflag = 0
+        Else
+            lblmensaje.Text = ""
+            validarflag += 1
+        End If
+        '25
+        If String.IsNullOrEmpty(txtObserv.Text) Then
+            lblObserv.Text = "*"
+            validarflag = 0
+        Else
+            lblObserv.Text = ""
+            validarflag += 1
+        End If
+        '26
+        If String.IsNullOrEmpty(txtRespMuestreo.Text) Then
+            lblRespMuestreo.Text = "*"
+            validarflag = 0
+        Else
+            lblRespMuestreo.Text = ""
+            validarflag += 1
+        End If
+        '27
+        If String.IsNullOrEmpty(txtRespAnalisis.Text) Then
+            lblRespAnalisis.Text = "*"
+            validarflag = 0
+        Else
+            lblRespAnalisis.Text = ""
+            validarflag += 1
+        End If
+        '28
+        If (DDL_decision.SelectedItem.Text = " ") Then
+            lbldecision.Text = "*"
+            validarflag = 0
+        Else
+            lbldecision.Text = ""
+            validarflag += 1
+        End If
+
+        If validarflag = 28 Or validarflag = 27 Then
             validarflag = 1
         Else
             validarflag = 0
@@ -564,16 +1189,17 @@ Public Class AnalisisGerminacion
             ' Encuentra los botones en la fila por índice
             Dim btnEditar As Button = DirectCast(e.Row.Cells(16).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
             Dim btnImprimir As Button = DirectCast(e.Row.Cells(18).Controls(0), Button)
+            Dim btnnuevo As Button = DirectCast(e.Row.Cells(15).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
-                btnEditar.Text = "Editar"
+                btnEditar.Visible = True
                 btnEditar.CssClass = "btn btn-primary"
                 btnEditar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
+                btnnuevo.Visible = False
             Else
-                btnEditar.Text = "Agregar"
-                btnEditar.CssClass = "btn btn-success"
-                btnEditar.Style("background-color") = "#28a745" ' Establece el color de fondo directamente
+                btnEditar.Visible = False
+                btnnuevo.Visible = True
             End If
 
             If btnEditar.Text = "Editar" Then
@@ -616,7 +1242,7 @@ Public Class AnalisisGerminacion
     End Sub
 
     Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
-        Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+        Response.Redirect(String.Format("~/pages/AnalisisGerminacion.aspx"))
     End Sub
     Private Sub llenarCampoLectura(ByVal id As String)
         Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado, tipo_semilla, ano_produ  "
@@ -721,5 +1347,208 @@ Public Class AnalisisGerminacion
 
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
         Response.Redirect(String.Format("~/pages/Cuando_Procesamiento_DescArch.aspx"))
+    End Sub
+    Protected Sub sumaGerminacion()
+        Dim noram1, noram2, noram3, noram4, noramT As Integer
+        Dim anorm1, anorm2, anorm3, anorm4, anormT As Integer
+        Dim muerta1, muerta2, muerta3, muerta4, muertaT As Integer
+        Dim dura1, dura2, dura3, dura4, duraT As Integer
+        Dim debiles1, debiles2, debiles3, debiles4, debilesT As Integer
+        Dim mezcla1, mezcla2, mezcla3, mezcla4, mezclaT As Integer
+        Dim dias1, dias2, dias3, dias4, diasT As Integer
+
+        If Integer.TryParse(txtCam1PlanNorm.Text, noram1) Then
+            noram1 = txtCam1PlanNorm.Text
+        End If
+        If Integer.TryParse(txtCam2PlanNorm.Text, noram2) Then
+            noram2 = txtCam2PlanNorm.Text
+        End If
+        If Integer.TryParse(txtCam3PlanNorm.Text, noram3) Then
+            noram3 = txtCam3PlanNorm.Text
+        End If
+        If Integer.TryParse(txtCam4PlanNorm.Text, noram4) Then
+            noram4 = txtCam4PlanNorm.Text
+        End If
+
+        If Integer.TryParse(txtCam1PlanAnor.Text, anorm1) Then
+            anorm1 = txtCam1PlanAnor.Text
+        End If
+        If Integer.TryParse(txtCam2PlanAnor.Text, anorm2) Then
+            anorm2 = txtCam2PlanAnor.Text
+        End If
+        If Integer.TryParse(txtCam3PlanAnor.Text, anorm3) Then
+            anorm3 = txtCam3PlanAnor.Text
+        End If
+        If Integer.TryParse(txtCam4PlanAnor.Text, anorm4) Then
+            anorm4 = txtCam4PlanAnor.Text
+        End If
+
+        If Integer.TryParse(txtCam1SemiMuer.Text, muerta1) Then
+            muerta1 = txtCam1SemiMuer.Text
+        End If
+        If Integer.TryParse(txtCam2SemiMuer.Text, muerta2) Then
+            muerta2 = txtCam2SemiMuer.Text
+        End If
+        If Integer.TryParse(txtCam3SemiMuer.Text, muerta3) Then
+            muerta3 = txtCam3SemiMuer.Text
+        End If
+        If Integer.TryParse(txtCam4SemiMuer.Text, muerta4) Then
+            muerta4 = txtCam4SemiMuer.Text
+        End If
+
+        If Integer.TryParse(txtCam1SemiDura.Text, dura1) Then
+            dura1 = txtCam1SemiDura.Text
+        End If
+        If Integer.TryParse(txtCam2SemiDura.Text, dura2) Then
+            dura2 = txtCam2SemiDura.Text
+        End If
+        If Integer.TryParse(txtCam3SemiDura.Text, dura3) Then
+            dura3 = txtCam3SemiDura.Text
+        End If
+        If Integer.TryParse(txtCam4SemiDura.Text, dura4) Then
+            dura4 = txtCam4SemiDura.Text
+        End If
+
+        If Integer.TryParse(txtCam1Debiles.Text, debiles1) Then
+            debiles1 = txtCam1Debiles.Text
+        End If
+        If Integer.TryParse(txtCam2Debiles.Text, debiles2) Then
+            debiles2 = txtCam2Debiles.Text
+        End If
+        If Integer.TryParse(txtCam3Debiles.Text, debiles3) Then
+            debiles3 = txtCam3Debiles.Text
+        End If
+        If Integer.TryParse(txtCam4Debiles.Text, debiles4) Then
+            debiles4 = txtCam4Debiles.Text
+        End If
+
+        If Integer.TryParse(txtCam1Mezcla.Text, mezcla1) Then
+            mezcla1 = txtCam1Mezcla.Text
+        End If
+        If Integer.TryParse(txtCam2Mezcla.Text, mezcla2) Then
+            mezcla2 = txtCam2Mezcla.Text
+        End If
+        If Integer.TryParse(txtCam3Mezcla.Text, mezcla3) Then
+            mezcla3 = txtCam3Mezcla.Text
+        End If
+        If Integer.TryParse(txtCam4Mezcla.Text, mezcla4) Then
+            mezcla4 = txtCam4Mezcla.Text
+        End If
+
+        If Integer.TryParse(txtCam1NoDias.Text, dias1) Then
+            dias1 = txtCam1NoDias.Text
+        End If
+        If Integer.TryParse(txtCam2NoDias.Text, dias2) Then
+            dias2 = txtCam2NoDias.Text
+        End If
+        If Integer.TryParse(txtCam3NoDias.Text, dias3) Then
+            dias3 = txtCam3NoDias.Text
+        End If
+        If Integer.TryParse(txtCam4NoDias.Text, dias4) Then
+            dias4 = txtCam4NoDias.Text
+        End If
+
+        noramT = (noram1 + noram2 + noram3 + noram4) / (4)
+        anormT = (anorm1 + anorm2 + anorm3 + anorm4) / (4)
+        muertaT = (muerta1 + muerta2 + muerta3 + muerta4) / (4)
+        duraT = (dura1 + dura2 + dura3 + dura4) / (4)
+        debilesT = (debiles1 + debiles2 + debiles3 + debiles4) / (4)
+        mezclaT = (mezcla1 + mezcla2 + mezcla3 + mezcla4) / (4)
+        diasT = (dias1 + dias2 + dias3 + dias4) / (4)
+
+        txtTotalPlanNorm.Text = noramT.ToString
+        txtPorcGerm.Text = noramT.ToString
+        txtTotalPlanAnor.Text = anormT.ToString
+        txtTotalSemiMuer.Text = muertaT.ToString
+        txtTotalSemiDura.Text = duraT.ToString
+        txtTotalDebiles.Text = debilesT.ToString
+        txtTotalMezcla.Text = mezclaT.ToString
+        txtTotalNoDias.Text = diasT.ToString
+
+    End Sub
+
+    Private Sub txtCam1PlanNorm_TextChanged(sender As Object, e As EventArgs) Handles txtCam1PlanNorm.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub txtCam2PlanNorm_TextChanged(sender As Object, e As EventArgs) Handles txtCam2PlanNorm.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub txtCam3PlanNorm_TextChanged(sender As Object, e As EventArgs) Handles txtCam3PlanNorm.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub txtCam4PlanNorm_TextChanged(sender As Object, e As EventArgs) Handles txtCam4PlanNorm.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam1PlanAnor_TextChanged(sender As Object, e As EventArgs) Handles txtCam1PlanAnor.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam2PanAnor_TextChanged(sender As Object, e As EventArgs) Handles txtCam2PlanAnor.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam3PlanAnor_TextChanged(sender As Object, e As EventArgs) Handles txtCam3PlanAnor.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam4PlanAnor_TextChanged(sender As Object, e As EventArgs) Handles txtCam4PlanAnor.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam1SemiMuer_TextChanged(sender As Object, e As EventArgs) Handles txtCam1SemiMuer.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam2SemiMuer_TextChanged(sender As Object, e As EventArgs) Handles txtCam2SemiMuer.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam3SemiMuer_TextChanged(sender As Object, e As EventArgs) Handles txtCam3SemiMuer.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam4SemiMuer_TextChanged(sender As Object, e As EventArgs) Handles txtCam4SemiMuer.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam1SemiDura_TextChanged(sender As Object, e As EventArgs) Handles txtCam1SemiDura.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam2SemiDura_TextChanged(sender As Object, e As EventArgs) Handles txtCam2SemiDura.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam3SemiDura_TextChanged(sender As Object, e As EventArgs) Handles txtCam3SemiDura.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam4SemiDura_TextChanged(sender As Object, e As EventArgs) Handles txtCam4SemiDura.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam1Debiles_TextChanged(sender As Object, e As EventArgs) Handles txtCam1Debiles.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam2Debiles_TextChanged(sender As Object, e As EventArgs) Handles txtCam2Debiles.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam3Debiles_TextChanged(sender As Object, e As EventArgs) Handles txtCam3Debiles.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam4Debiles_TextChanged(sender As Object, e As EventArgs) Handles txtCam4Debiles.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam1Mezcla_TextChanged(sender As Object, e As EventArgs) Handles txtCam1Mezcla.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam2Mezcla_TextChanged(sender As Object, e As EventArgs) Handles txtCam2Mezcla.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam3Mezcla_TextChanged(sender As Object, e As EventArgs) Handles txtCam3Mezcla.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam4Mezcla_TextChanged(sender As Object, e As EventArgs) Handles txtCam4Mezcla.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam1NoDias_TextChanged(sender As Object, e As EventArgs) Handles txtCam1NoDias.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam2NoDias_TextChanged(sender As Object, e As EventArgs) Handles txtCam2NoDias.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam3NoDias_TextChanged(sender As Object, e As EventArgs) Handles txtCam3NoDias.TextChanged
+        sumaGerminacion()
+    End Sub
+    Private Sub TxtCam4NoDias_TextChanged(sender As Object, e As EventArgs) Handles txtCam4NoDias.TextChanged
+        sumaGerminacion()
     End Sub
 End Class

@@ -997,6 +997,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._lblGranel">
+<summary>
+Control lblGranel.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.AnalisisGerminacion._DDLGranel">
 <summary>
 Control DDLGranel.
@@ -1150,6 +1159,15 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._lblEnvasado">
+<summary>
+Control lblEnvasado.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.AnalisisGerminacion._DDLEnvasado">
 <summary>
 Control DDLEnvasado.
@@ -1159,9 +1177,27 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._lblFase">
+<summary>
+Control lblFase.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.AnalisisGerminacion._DDLFase">
 <summary>
 Control DDLFase.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._lblTamañoMaiz">
+<summary>
+Control lblTamañoMaiz.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1396,6 +1432,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AnalisisGerminacion._TxtID">
 <summary>
 Control TxtID.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._txtrespaldito">
+<summary>
+Control txtrespaldito.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -1900,6 +1945,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.AnalisisGerminacion._txtRespAnalisis">
 <summary>
 Control txtRespAnalisis.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.AnalisisGerminacion._lbldecision">
+<summary>
+Control lbldecision.
 </summary>
 <remarks>
 Campo generado automáticamente.

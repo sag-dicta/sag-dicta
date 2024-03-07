@@ -518,6 +518,15 @@ Partial Public Class AnalisisGerminacion
     Protected WithEvents txtPesoInicialPlanta As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control lblGranel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblGranel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control DDLGranel.
     '''</summary>
     '''<remarks>
@@ -671,6 +680,15 @@ Partial Public Class AnalisisGerminacion
     Protected WithEvents DivActaInfo5 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control lblEnvasado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblEnvasado As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control DDLEnvasado.
     '''</summary>
     '''<remarks>
@@ -680,6 +698,15 @@ Partial Public Class AnalisisGerminacion
     Protected WithEvents DDLEnvasado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control lblFase.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblFase As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control DDLFase.
     '''</summary>
     '''<remarks>
@@ -687,6 +714,15 @@ Partial Public Class AnalisisGerminacion
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents DDLFase As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control lblTamañoMaiz.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblTamañoMaiz As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control DDLTamañoMaiz.
@@ -921,6 +957,15 @@ Partial Public Class AnalisisGerminacion
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents TxtID As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control txtrespaldito.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtrespaldito As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control RegularExpressionValidator15.
@@ -1425,6 +1470,15 @@ Partial Public Class AnalisisGerminacion
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtRespAnalisis As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lbldecision.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbldecision As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control DDL_decision.
