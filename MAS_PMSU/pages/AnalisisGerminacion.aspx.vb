@@ -275,9 +275,9 @@ Public Class AnalisisGerminacion
             TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
 
-            Label103.Text = "¿Desea eliminar la informacion almacenada que contiene el cuadro de procesamiento (secado, limpieza y clasificación)?
+            Label103.Text = "¿Desea eliminar la informacion almacenada que contiene este registro de análisis de germinación?
                               
-                            *NOTA: Solo se elimira la informacion que habia ingresado el usuario."
+                            *NOTA: Solo se elimira la informacion que habia registrado el usurio."
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False
@@ -335,28 +335,16 @@ Public Class AnalisisGerminacion
         Using connection As New MySqlConnection(connectionString)
             connection.Open()
 
-            Dim query As String = "UPDATE sag_registro_senasa 
-                    SET peso_materia_prima_QQ_porce_humedad = @peso_materia_prima_QQ_porce_humedad,
-                        semilla_QQ_oro = @semilla_QQ_oro,
-                        semilla_QQ_consumo = @semilla_QQ_consumo,
-                        semilla_QQ_basura = @semilla_QQ_basura,
-                        semilla_QQ_total = @semilla_QQ_total,
-                        observaciones = @observaciones,
-                        rendimiento_oro_peso = @rendimiento_oro_peso
-                WHERE id = " & TxtID.Text & ""
+            Dim query As String = "DELETE FROM sag_analisis_germinacion
+                        WHERE
+                          id_2 = @id_2;"
 
             Using cmd As New MySqlCommand(query, connection)
 
-                cmd.Parameters.AddWithValue("@peso_materia_prima_QQ_porce_humedad", DBNull.Value)
-                cmd.Parameters.AddWithValue("@semilla_QQ_oro", DBNull.Value)
-                cmd.Parameters.AddWithValue("@semilla_QQ_consumo", DBNull.Value)
-                cmd.Parameters.AddWithValue("@semilla_QQ_basura", DBNull.Value)
-                cmd.Parameters.AddWithValue("@semilla_QQ_total", DBNull.Value)
-                cmd.Parameters.AddWithValue("@observaciones", DBNull.Value)
-                cmd.Parameters.AddWithValue("@rendimiento_oro_peso", DBNull.Value)
+                cmd.Parameters.AddWithValue("@id_2", Convert.ToInt64(TxtID.Text))
                 cmd.ExecuteNonQuery()
                 connection.Close()
-                Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+                Response.Redirect(String.Format("~/pages/AnalisisGerminacion.aspx"))
             End Using
 
         End Using
@@ -1289,10 +1277,7 @@ Public Class AnalisisGerminacion
     Private Function EsExtensionValida(fileName As String) As Boolean
         Dim extension As String = Path.GetExtension(fileName)
         Dim esValida As Boolean = False
-        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
+        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) Then
             esValida = True
         End If
         Return esValida
@@ -1300,14 +1285,9 @@ Public Class AnalisisGerminacion
     Protected Function ValidarFormulario() As Boolean
         Dim esValido As Boolean = True
         LabelPDF.Visible = False
-        Labelimglote.Visible = False
 
         If Not FileUploadPDF.HasFile OrElse Not EsExtensionValida(FileUploadPDF.FileName) Then
             LabelPDF.Visible = True
-            esValido = False
-        End If
-        If Not FileUploadPDF.HasFile OrElse Not EsExtensionValida(FileUploadimglote.FileName) Then
-            Labelimglote.Visible = True
             esValido = False
         End If
 
@@ -1321,12 +1301,10 @@ Public Class AnalisisGerminacion
             Using conn As New MySqlConnection(connectionString)
                 conn.Open()
                 Dim bytesPDF As Byte() = FileUploadToBytes(FileUploadPDF)
-                Dim bytesIMGLOTE As Byte() = FileUploadToBytes(FileUploadimglote)
                 ' Actualizar bytes en la base de datos
-                Dim query As String = "UPDATE sag_registro_senasa SET cuadro_firmado = @cuadro_firmado, archivo_lote_senasa = @archivo_lote_senasa WHERE ID=" & TxtID.Text & " "
+                Dim query As String = "UPDATE sag_analisis_germinacion SET germinacion_firmada = @germinacion_firmada WHERE ID_2=" & TxtID.Text & " "
                 Using cmd As New MySqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@cuadro_firmado", bytesPDF)
-                    cmd.Parameters.AddWithValue("@archivo_lote_senasa", bytesIMGLOTE)
+                    cmd.Parameters.AddWithValue("@germinacion_firmada", bytesPDF)
                     cmd.ExecuteNonQuery()
                 End Using
             End Using
@@ -1342,11 +1320,11 @@ Public Class AnalisisGerminacion
 
     End Sub
     Protected Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
+        Response.Redirect(String.Format("~/pages/AnalisisGerminacion.aspx"))
     End Sub
 
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
-        Response.Redirect(String.Format("~/pages/Cuando_Procesamiento_DescArch.aspx"))
+        Response.Redirect(String.Format("~/pages/Analisis_DescArch.aspx"))
     End Sub
     Protected Sub sumaGerminacion()
         Dim noram1, noram2, noram3, noram4, noramT As Integer

@@ -270,6 +270,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\Analisis_DescArch.aspx" />
     <Content Include="pages\blank.html" />
     <Content Include="pages\buttons.html" />
     <Content Include="pages\ControlHRTo.aspx" />
@@ -2260,6 +2261,13 @@
     <Compile Include="pages\AnalisisGerminacion.aspx.vb">
       <DependentUpon>AnalisisGerminacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Analisis_DescArch.aspx.designer.vb">
+      <DependentUpon>Analisis_DescArch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Analisis_DescArch.aspx.vb">
+      <DependentUpon>Analisis_DescArch.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="pages\cuadro_procesamiento.vb">
       <DependentUpon>cuadro_procesamiento.rpt</DependentUpon>

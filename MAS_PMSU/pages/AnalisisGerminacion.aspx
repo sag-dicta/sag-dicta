@@ -113,13 +113,13 @@
                                         
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
                                         <asp:BoundField DataField="humedad_final" HeaderText="% DE HUMEDAD DE FINAL" />
-                                        <asp:BoundField DataField="cantidad_existente" HeaderText="CANTIDAD EXISTENTE" />
                                         <asp:BoundField DataField="peso_inicial_g" HeaderText="PESO INICIAL EN PLANTA (QQ)" />
+                                        <asp:BoundField DataField="cantidad_existente" HeaderText="CANTIDAD EXISTENTE" />                                       
                                         <asp:BoundField DataField="PORCENTAJE_GERMINACION" HeaderText="% DE GERMINACIÓN" />
                                         <asp:BoundField DataField="decision" HeaderText="DECISION" />
 
                                         
-                                        <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="CUADRO DE PROCESAMIENTO FIRMADO" CommandName="Subir">
+                                        <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="ANÁLISIS FIRMADO" CommandName="Subir">
                                             <ControlStyle CssClass="btn btn-dark"></ControlStyle>
                                         </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Agregar" ControlStyle-CssClass="btn btn-warning" HeaderText="AGREGAR" CommandName="Agregar">
@@ -904,14 +904,9 @@
                                 <div class="form-group">
                                     <h4>Subir archivo</h4>
                                     <div class="mb-3">
-                                        <label for="FileUploadPDF" class="form-label">Cuadro de Procesamiento Firmado:</label>
+                                        <label for="FileUploadPDF" class="form-label">Análisis De Germinación Firmado:</label>
                                         <asp:Label ID="LabelPDF" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PDF se aceptan</asp:Label>
                                         <asp:FileUpload ID="FileUploadPDF" runat="server" class="form-control" accept=".pdf" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="FileUploadimglote" class="form-label">Ficha SENASA:</label>
-                                        <asp:Label ID="Labelimglote" runat="server" Text="" BackColor="Red" ForeColor="White" Visible="false">Solo archivos PNG/JPG/JPEG se aceptan</asp:Label>
-                                        <asp:FileUpload ID="FileUploadimglote" runat="server" class="form-control" accept=".png, .jpg, .jpeg" />
                                     </div>
                                     <br />
 

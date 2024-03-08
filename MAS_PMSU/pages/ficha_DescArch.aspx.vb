@@ -289,7 +289,7 @@ Public Class ficha_DescArch
     End Sub
 
     Protected Sub limpiarFiltros(sender As Object, e As EventArgs)
-        Response.Redirect("InscSENASA_DescArch.aspx")
+        Response.Redirect("ficha_DescArch.aspx")
     End Sub
 
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
