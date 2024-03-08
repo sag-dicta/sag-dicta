@@ -93,7 +93,7 @@ Public Class CuadroProcesamiento
         llenagrid()
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, lote_registrado, categoria_registrado, ciclo_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
+        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, lote_registrado, categoria_registrado, ciclo_acta, CANTIDAD_EXISTENTE, HUMEDAD_FINAL, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -124,7 +124,7 @@ Public Class CuadroProcesamiento
         End If
 
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2 & " ORDER BY id_acta DESC"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND CANTIDAD_EXISTENTE IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2 & " ORDER BY id_acta DESC"
 
         GridDatos.DataBind()
     End Sub
@@ -477,7 +477,7 @@ Public Class CuadroProcesamiento
     End Sub
     Private Sub exportar()
 
-        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, lote_registrado, categoria_registrado, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta"
+        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, lote_registrado, categoria_registrado, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, CANTIDAD_EXISTENTE, HUMEDAD_FINAL, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
@@ -686,7 +686,7 @@ Public Class CuadroProcesamiento
         Response.Redirect(String.Format("~/pages/CuadroProcesamiento.aspx"))
     End Sub
     Private Sub llenarCampoLectura(ByVal id As String)
-        Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado"
+        Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, HUMEDAD_FINAL, no_sacos, CANTIDAD_EXISTENTE, ciclo_acta, lote_registrado, categoria_registrado"
         Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_ACTA=" & id & ""
         Dim adap As New MySqlDataAdapter(Str, conn)
         Dim dt As New DataTable
@@ -698,9 +698,9 @@ Public Class CuadroProcesamiento
         txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
         txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
         txtCategoria.Text = If(dt.Rows(0)("categoria_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_registrado").ToString())
-        txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
+        txtHumedad.Text = If(dt.Rows(0)("HUMEDAD_FINAL") Is DBNull.Value, String.Empty, dt.Rows(0)("HUMEDAD_FINAL").ToString())
         txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
-        txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
+        txtPesoH.Text = If(dt.Rows(0)("CANTIDAD_EXISTENTE") Is DBNull.Value, String.Empty, dt.Rows(0)("CANTIDAD_EXISTENTE").ToString())
         txtLoteRegi.Text = If(dt.Rows(0)("lote_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("lote_registrado").ToString())
     End Sub
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()

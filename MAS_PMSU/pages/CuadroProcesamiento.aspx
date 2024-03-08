@@ -110,8 +110,8 @@
                                         <asp:BoundField DataField="categoria_registrado" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="lote_registrado" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
-                                        <asp:BoundField DataField="peso_humedo_QQ" HeaderText="PESO PRIMA EN LA PLANTA" />
-                                        <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
+                                        <asp:BoundField DataField="CANTIDAD_EXISTENTE" HeaderText="PESO PRIMA EN LA PLANTA" />
+                                        <asp:BoundField DataField="HUMEDAD_FINAL" HeaderText="% DE HUMEDAD FINAL" />
                                         <asp:BoundField DataField="peso_materia_prima_QQ_porce_humedad" HeaderText="PESO PRIMA SECA (QQ)" />
                                         <asp:BoundField DataField="semilla_QQ_oro" HeaderText="SEMILLA ORO (QQ)" />
                                         <asp:BoundField DataField="semilla_QQ_consumo" HeaderText="SEMILLA CONSUMO (QQ)" />
@@ -214,7 +214,7 @@
                         </div>
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <label>% Humedad entrada:</label>
+                                <label>% Humedad Final:</label>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator42" runat="server" ControlToValidate="txtHumedad" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                 <asp:Label ID="lblHumedad" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox ID="txtHumedad" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>
@@ -229,7 +229,7 @@
                         </div>
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <label>Peso Humedo (QQ):</label>
+                                <label>Cantidad Existente (QQ):</label>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator43" runat="server" ControlToValidate="txtPesoH" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
                                 <asp:Label ID="lblPesoH" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox ID="txtPesoH" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="false"></asp:TextBox>

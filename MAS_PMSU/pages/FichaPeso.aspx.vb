@@ -93,7 +93,7 @@ Public Class FichaPeso
         llenagrid()
     End Sub
     Sub llenagrid()
-        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, representante_legal, ciclo_acta, categoria_registrado, tipo_cultivo, variedad, lote_registrado, porcentaje_humedad, no_sacos, peso_humedo_QQ, semilla_QQ_oro, tara, peso_neto"
+        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, representante_legal, ciclo_acta, categoria_registrado, tipo_cultivo, variedad, lote_registrado, HUMEDAD_FINAL, no_sacos, peso_humedo_QQ, semilla_QQ_oro, tara, peso_neto"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -187,7 +187,7 @@ Public Class FichaPeso
             btnRegresarConficha.Visible = False
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "nombre_multiplicador, departamento, municipio, aldea, caserio, representante_legal, telefono_multiplicador, categoria_registrado, tipo_cultivo, variedad, lote_registrado, porcentaje_humedad, no_sacos, semilla_QQ_oro, peso_neto, tara, peso_lb"
+            Dim cadena As String = "nombre_multiplicador, departamento, municipio, aldea, caserio, representante_legal, telefono_multiplicador, categoria_registrado, tipo_cultivo, variedad, lote_registrado, HUMEDAD_FINAL, no_sacos, semilla_QQ_oro, peso_neto, tara, peso_lb"
             Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_acta='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
@@ -203,7 +203,7 @@ Public Class FichaPeso
             txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
             txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
             TxtLote.Text = If(dt.Rows(0)("lote_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("lote_registrado").ToString())
-            txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
+            txtHumedad.Text = If(dt.Rows(0)("HUMEDAD_FINAL") Is DBNull.Value, String.Empty, dt.Rows(0)("HUMEDAD_FINAL").ToString())
             txtCantSaco.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
             txtPesoBrut.Text = If(dt.Rows(0)("semilla_QQ_oro") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_QQ_oro").ToString())
             txtPesoNeto.Text = If(dt.Rows(0)("peso_neto") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_neto").ToString())
@@ -479,7 +479,7 @@ Public Class FichaPeso
     End Sub
     Private Sub exportar()
 
-        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, categoria_registrado, lote_registrado, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta, peso_lb"
+        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, categoria_registrado, lote_registrado, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, HUMEDAD_FINAL, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta, peso_lb"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
