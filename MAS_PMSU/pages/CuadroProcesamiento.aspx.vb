@@ -124,7 +124,7 @@ Public Class CuadroProcesamiento
         End If
 
 
-        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND CANTIDAD_EXISTENTE IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2 & " ORDER BY id_acta DESC"
+        Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND CANTIDAD_EXISTENTE IS NOT NULL AND DECISION='APROBADO' AND estado_sena = '1' " & c1 & c3 & c4 & c2 & " ORDER BY id_acta DESC"
 
         GridDatos.DataBind()
     End Sub
