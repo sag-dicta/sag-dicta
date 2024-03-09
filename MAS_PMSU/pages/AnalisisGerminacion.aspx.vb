@@ -302,7 +302,7 @@ Public Class AnalisisGerminacion
 
             nombre = "Cuadro de procesamiento " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
 
-            rptdocument.Load(Server.MapPath("~/pages/cuadro_procesamiento.rpt"))
+            rptdocument.Load(Server.MapPath("~/pages/AnalisisGerminacionReport.rpt"))
 
             rptdocument.SetDataSource(ds)
             Response.Buffer = False

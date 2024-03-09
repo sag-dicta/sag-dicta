@@ -39,6 +39,8 @@ Partial Public Class DataSetMultiplicador
     
     Private tablevista_ficha_informe As vista_ficha_informeDataTable
     
+    Private tablevista_acta_lote_multi_germ As vista_acta_lote_multi_germDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -88,6 +90,9 @@ Partial Public Class DataSetMultiplicador
             End If
             If (Not (ds.Tables("vista_ficha_informe")) Is Nothing) Then
                 MyBase.Tables.Add(New vista_ficha_informeDataTable(ds.Tables("vista_ficha_informe")))
+            End If
+            If (Not (ds.Tables("vista_acta_lote_multi_germ")) Is Nothing) Then
+                MyBase.Tables.Add(New vista_acta_lote_multi_germDataTable(ds.Tables("vista_acta_lote_multi_germ")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -173,6 +178,16 @@ Partial Public Class DataSetMultiplicador
     Public ReadOnly Property vista_ficha_informe() As vista_ficha_informeDataTable
         Get
             Return Me.tablevista_ficha_informe
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property vista_acta_lote_multi_germ() As vista_acta_lote_multi_germDataTable
+        Get
+            Return Me.tablevista_acta_lote_multi_germ
         End Get
     End Property
     
@@ -264,6 +279,9 @@ Partial Public Class DataSetMultiplicador
             If (Not (ds.Tables("vista_ficha_informe")) Is Nothing) Then
                 MyBase.Tables.Add(New vista_ficha_informeDataTable(ds.Tables("vista_ficha_informe")))
             End If
+            If (Not (ds.Tables("vista_acta_lote_multi_germ")) Is Nothing) Then
+                MyBase.Tables.Add(New vista_acta_lote_multi_germDataTable(ds.Tables("vista_acta_lote_multi_germ")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -338,6 +356,12 @@ Partial Public Class DataSetMultiplicador
                 Me.tablevista_ficha_informe.InitVars
             End If
         End If
+        Me.tablevista_acta_lote_multi_germ = CType(MyBase.Tables("vista_acta_lote_multi_germ"),vista_acta_lote_multi_germDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablevista_acta_lote_multi_germ) Is Nothing) Then
+                Me.tablevista_acta_lote_multi_germ.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -362,6 +386,8 @@ Partial Public Class DataSetMultiplicador
         MyBase.Tables.Add(Me.tablevista_acta_lote_multi)
         Me.tablevista_ficha_informe = New vista_ficha_informeDataTable()
         MyBase.Tables.Add(Me.tablevista_ficha_informe)
+        Me.tablevista_acta_lote_multi_germ = New vista_acta_lote_multi_germDataTable()
+        MyBase.Tables.Add(Me.tablevista_acta_lote_multi_germ)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -403,6 +429,12 @@ Partial Public Class DataSetMultiplicador
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Private Function ShouldSerializevista_ficha_informe() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Private Function ShouldSerializevista_acta_lote_multi_germ() As Boolean
         Return false
     End Function
     
@@ -484,6 +516,9 @@ Partial Public Class DataSetMultiplicador
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
     Public Delegate Sub vista_ficha_informeRowChangeEventHandler(ByVal sender As Object, ByVal e As vista_ficha_informeRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Delegate Sub vista_acta_lote_multi_germRowChangeEventHandler(ByVal sender As Object, ByVal e As vista_acta_lote_multi_germRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -6066,6 +6101,1793 @@ Partial Public Class DataSetMultiplicador
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "vista_ficha_informeDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class vista_acta_lote_multi_germDataTable
+        Inherits Global.System.Data.TypedTableBase(Of vista_acta_lote_multi_germRow)
+        
+        Private columnID_MULTI As Global.System.Data.DataColumn
+        
+        Private columnNOMBRE_MULTIPLICADOR As Global.System.Data.DataColumn
+        
+        Private columnREPRESENTANTE_LEGAL As Global.System.Data.DataColumn
+        
+        Private columnTELEFONO_MULTIPLICADOR As Global.System.Data.DataColumn
+        
+        Private columnDEPARTAMENTO As Global.System.Data.DataColumn
+        
+        Private columnMUNICIPIO As Global.System.Data.DataColumn
+        
+        Private columnALDEA As Global.System.Data.DataColumn
+        
+        Private columnCASERIO As Global.System.Data.DataColumn
+        
+        Private columnESTADO_MULTI As Global.System.Data.DataColumn
+        
+        Private columnID_LOTE As Global.System.Data.DataColumn
+        
+        Private columnCATEGORIA_ORIGEN As Global.System.Data.DataColumn
+        
+        Private columnTIPO_CULTIVO As Global.System.Data.DataColumn
+        
+        Private columnVARIEDAD As Global.System.Data.DataColumn
+        
+        Private columnPRODUCTOR As Global.System.Data.DataColumn
+        
+        Private columnNO_LOTE As Global.System.Data.DataColumn
+        
+        Private columnESTADO_LOTE As Global.System.Data.DataColumn
+        
+        Private columnANO_PRODU As Global.System.Data.DataColumn
+        
+        Private columnTIPO_SEMILLA As Global.System.Data.DataColumn
+        
+        Private columnID_ACTA As Global.System.Data.DataColumn
+        
+        Private columnFECHA_ACTA As Global.System.Data.DataColumn
+        
+        Private columnPORCENTAJE_HUMEDAD As Global.System.Data.DataColumn
+        
+        Private columnESTADO_SENA As Global.System.Data.DataColumn
+        
+        Private columnNO_SACOS As Global.System.Data.DataColumn
+        
+        Private columnPESO_HUMEDO_QQ As Global.System.Data.DataColumn
+        
+        Private columnPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD As Global.System.Data.DataColumn
+        
+        Private columnSEMILLA_QQ_ORO As Global.System.Data.DataColumn
+        
+        Private columnSEMILLA_QQ_CONSUMO As Global.System.Data.DataColumn
+        
+        Private columnSEMILLA_QQ_BASURA As Global.System.Data.DataColumn
+        
+        Private columnSEMILLA_QQ_TOTAL As Global.System.Data.DataColumn
+        
+        Private columnOBSERVACIONES As Global.System.Data.DataColumn
+        
+        Private columnTARA As Global.System.Data.DataColumn
+        
+        Private columnCICLO_ACTA As Global.System.Data.DataColumn
+        
+        Private columnPESO_NETO As Global.System.Data.DataColumn
+        
+        Private columnPESO_LB As Global.System.Data.DataColumn
+        
+        Private columnLOTE_REGISTRADO As Global.System.Data.DataColumn
+        
+        Private columnCATEGORIA_REGISTRADO As Global.System.Data.DataColumn
+        
+        Private columnACTA_FIRMADA As Global.System.Data.DataColumn
+        
+        Private columnFICHA_FIRMADO As Global.System.Data.DataColumn
+        
+        Private columnCUADRO_FIRMADO As Global.System.Data.DataColumn
+        
+        Private columnarchivo_lote_senasa As Global.System.Data.DataColumn
+        
+        Private columnRENDIMIETO_ORO_PESO As Global.System.Data.DataColumn
+        
+        Private columnid As Global.System.Data.DataColumn
+        
+        Private columndecha_elaboracion_g As Global.System.Data.DataColumn
+        
+        Private columnno_envase As Global.System.Data.DataColumn
+        
+        Private columnpeso_inicial_g As Global.System.Data.DataColumn
+        
+        Private columntipo_granel As Global.System.Data.DataColumn
+        
+        Private columnfecha_recibo_g As Global.System.Data.DataColumn
+        
+        Private columnfecha_muestreo_g As Global.System.Data.DataColumn
+        
+        Private columnhumedad_final As Global.System.Data.DataColumn
+        
+        Private columnfecha_evaluacion_g As Global.System.Data.DataColumn
+        
+        Private columntipo_envase As Global.System.Data.DataColumn
+        
+        Private columnfase_g As Global.System.Data.DataColumn
+        
+        Private columntamano_maiz As Global.System.Data.DataColumn
+        
+        Private columncantidad_inicial As Global.System.Data.DataColumn
+        
+        Private columncantidad_existente As Global.System.Data.DataColumn
+        
+        Private columnno_camara As Global.System.Data.DataColumn
+        
+        Private columnperimetro As Global.System.Data.DataColumn
+        
+        Private columncertisem As Global.System.Data.DataColumn
+        
+        Private columnfecha_certisem As Global.System.Data.DataColumn
+        
+        Private columnplanta_g As Global.System.Data.DataColumn
+        
+        Private columnfecha_planta_g As Global.System.Data.DataColumn
+        
+        Private columnsemilla_pura As Global.System.Data.DataColumn
+        
+        Private columnsemilla_otro_cultivo As Global.System.Data.DataColumn
+        
+        Private columnsemilla_maleza As Global.System.Data.DataColumn
+        
+        Private columnmateria_inerte As Global.System.Data.DataColumn
+        
+        Private columnplantulas_normales_1 As Global.System.Data.DataColumn
+        
+        Private columnplantulas_anormales_1 As Global.System.Data.DataColumn
+        
+        Private columnsemilla_muerta_1 As Global.System.Data.DataColumn
+        
+        Private columnsemillas_duras_1 As Global.System.Data.DataColumn
+        
+        Private columnsemillas_debiles_1 As Global.System.Data.DataColumn
+        
+        Private columnsemilla_mezcla_1 As Global.System.Data.DataColumn
+        
+        Private columnno_dias_1 As Global.System.Data.DataColumn
+        
+        Private columnplantulas_normales_2 As Global.System.Data.DataColumn
+        
+        Private columnplantulas_anormales_2 As Global.System.Data.DataColumn
+        
+        Private columnsemilla_muerta_2 As Global.System.Data.DataColumn
+        
+        Private columnsemillas_duras_2 As Global.System.Data.DataColumn
+        
+        Private columnsemillas_debiles_2 As Global.System.Data.DataColumn
+        
+        Private columnsemilla_mezcla_2 As Global.System.Data.DataColumn
+        
+        Private columnno_dias_2 As Global.System.Data.DataColumn
+        
+        Private columnplantulas_normales_3 As Global.System.Data.DataColumn
+        
+        Private columnplantulas_anormales_3 As Global.System.Data.DataColumn
+        
+        Private columnsemilla_muerta_3 As Global.System.Data.DataColumn
+        
+        Private columnsemillas_duras_3 As Global.System.Data.DataColumn
+        
+        Private columnsemillas_debiles_3 As Global.System.Data.DataColumn
+        
+        Private columnsemilla_mezcla_3 As Global.System.Data.DataColumn
+        
+        Private columnno_dias_3 As Global.System.Data.DataColumn
+        
+        Private columnplantulas_normales_4 As Global.System.Data.DataColumn
+        
+        Private columnplantulas_anormales_4 As Global.System.Data.DataColumn
+        
+        Private columnsemilla_muerta_4 As Global.System.Data.DataColumn
+        
+        Private columnsemillas_duras_4 As Global.System.Data.DataColumn
+        
+        Private columnsemillas_debiles_4 As Global.System.Data.DataColumn
+        
+        Private columnsemilla_mezcla_4 As Global.System.Data.DataColumn
+        
+        Private columnno_dias_4 As Global.System.Data.DataColumn
+        
+        Private columnplantulas_normales_total As Global.System.Data.DataColumn
+        
+        Private columnplantulas_anormales_total As Global.System.Data.DataColumn
+        
+        Private columnsemilla_muerta_total As Global.System.Data.DataColumn
+        
+        Private columnsemillas_duras_total As Global.System.Data.DataColumn
+        
+        Private columnsemillas_debiles_total As Global.System.Data.DataColumn
+        
+        Private columnsemilla_mezcla_total As Global.System.Data.DataColumn
+        
+        Private columnno_dias_total As Global.System.Data.DataColumn
+        
+        Private columnporcentaje_germnimacion As Global.System.Data.DataColumn
+        
+        Private columnobservaciones_g As Global.System.Data.DataColumn
+        
+        Private columnresponsable_muestreo As Global.System.Data.DataColumn
+        
+        Private columnresponsable_analisis As Global.System.Data.DataColumn
+        
+        Private columnestado As Global.System.Data.DataColumn
+        
+        Private columndecision As Global.System.Data.DataColumn
+        
+        Private columnid_2 As Global.System.Data.DataColumn
+        
+        Private columngerminacion_firmada As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "vista_acta_lote_multi_germ"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ID_MULTIColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_MULTI
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property NOMBRE_MULTIPLICADORColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNOMBRE_MULTIPLICADOR
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property REPRESENTANTE_LEGALColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnREPRESENTANTE_LEGAL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TELEFONO_MULTIPLICADORColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTELEFONO_MULTIPLICADOR
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property DEPARTAMENTOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDEPARTAMENTO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property MUNICIPIOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMUNICIPIO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ALDEAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnALDEA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CASERIOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCASERIO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ESTADO_MULTIColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnESTADO_MULTI
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ID_LOTEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_LOTE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CATEGORIA_ORIGENColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCATEGORIA_ORIGEN
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TIPO_CULTIVOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTIPO_CULTIVO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property VARIEDADColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVARIEDAD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PRODUCTORColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPRODUCTOR
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property NO_LOTEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNO_LOTE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ESTADO_LOTEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnESTADO_LOTE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ANO_PRODUColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnANO_PRODU
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TIPO_SEMILLAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTIPO_SEMILLA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ID_ACTAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_ACTA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property FECHA_ACTAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFECHA_ACTA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PORCENTAJE_HUMEDADColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPORCENTAJE_HUMEDAD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ESTADO_SENAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnESTADO_SENA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property NO_SACOSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNO_SACOS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PESO_HUMEDO_QQColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPESO_HUMEDO_QQ
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SEMILLA_QQ_OROColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSEMILLA_QQ_ORO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SEMILLA_QQ_CONSUMOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSEMILLA_QQ_CONSUMO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SEMILLA_QQ_BASURAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSEMILLA_QQ_BASURA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property SEMILLA_QQ_TOTALColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSEMILLA_QQ_TOTAL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property OBSERVACIONESColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOBSERVACIONES
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property TARAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTARA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CICLO_ACTAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCICLO_ACTA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PESO_NETOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPESO_NETO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property PESO_LBColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPESO_LB
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property LOTE_REGISTRADOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLOTE_REGISTRADO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CATEGORIA_REGISTRADOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCATEGORIA_REGISTRADO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ACTA_FIRMADAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnACTA_FIRMADA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property FICHA_FIRMADOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnFICHA_FIRMADO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CUADRO_FIRMADOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCUADRO_FIRMADO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property archivo_lote_senasaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnarchivo_lote_senasa
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property RENDIMIETO_ORO_PESOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRENDIMIETO_ORO_PESO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property decha_elaboracion_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndecha_elaboracion_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property no_envaseColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnno_envase
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property peso_inicial_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpeso_inicial_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property tipo_granelColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntipo_granel
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fecha_recibo_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfecha_recibo_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fecha_muestreo_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfecha_muestreo_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property humedad_finalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnhumedad_final
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fecha_evaluacion_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfecha_evaluacion_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property tipo_envaseColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntipo_envase
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fase_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfase_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property tamano_maizColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columntamano_maiz
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property cantidad_inicialColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncantidad_inicial
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property cantidad_existenteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncantidad_existente
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property no_camaraColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnno_camara
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property perimetroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnperimetro
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property certisemColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncertisem
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fecha_certisemColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfecha_certisem
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property planta_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplanta_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fecha_planta_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfecha_planta_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_puraColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_pura
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_otro_cultivoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_otro_cultivo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_malezaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_maleza
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property materia_inerteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmateria_inerte
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_normales_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_normales_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_anormales_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_anormales_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_muerta_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_muerta_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_duras_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_duras_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_debiles_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_debiles_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_mezcla_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_mezcla_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property no_dias_1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnno_dias_1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_normales_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_normales_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_anormales_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_anormales_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_muerta_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_muerta_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_duras_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_duras_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_debiles_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_debiles_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_mezcla_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_mezcla_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property no_dias_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnno_dias_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_normales_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_normales_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_anormales_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_anormales_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_muerta_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_muerta_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_duras_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_duras_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_debiles_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_debiles_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_mezcla_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_mezcla_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property no_dias_3Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnno_dias_3
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_normales_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_normales_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_anormales_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_anormales_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_muerta_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_muerta_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_duras_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_duras_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_debiles_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_debiles_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_mezcla_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_mezcla_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property no_dias_4Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnno_dias_4
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_normales_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_normales_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property plantulas_anormales_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnplantulas_anormales_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_muerta_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_muerta_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_duras_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_duras_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semillas_debiles_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemillas_debiles_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property semilla_mezcla_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnsemilla_mezcla_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property no_dias_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnno_dias_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property porcentaje_germnimacionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnporcentaje_germnimacion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property observaciones_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnobservaciones_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property responsable_muestreoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnresponsable_muestreo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property responsable_analisisColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnresponsable_analisis
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property estadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnestado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property decisionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndecision
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property id_2Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnid_2
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property germinacion_firmadaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columngerminacion_firmada
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As vista_acta_lote_multi_germRow
+            Get
+                Return CType(Me.Rows(index),vista_acta_lote_multi_germRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event vista_acta_lote_multi_germRowChanging As vista_acta_lote_multi_germRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event vista_acta_lote_multi_germRowChanged As vista_acta_lote_multi_germRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event vista_acta_lote_multi_germRowDeleting As vista_acta_lote_multi_germRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Event vista_acta_lote_multi_germRowDeleted As vista_acta_lote_multi_germRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Sub Addvista_acta_lote_multi_germRow(ByVal row As vista_acta_lote_multi_germRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overloads Function Addvista_acta_lote_multi_germRow( _
+                    ByVal ID_MULTI As Integer,  _
+                    ByVal NOMBRE_MULTIPLICADOR As String,  _
+                    ByVal REPRESENTANTE_LEGAL As String,  _
+                    ByVal TELEFONO_MULTIPLICADOR As String,  _
+                    ByVal DEPARTAMENTO As String,  _
+                    ByVal MUNICIPIO As String,  _
+                    ByVal ALDEA As String,  _
+                    ByVal CASERIO As String,  _
+                    ByVal ESTADO_MULTI As String,  _
+                    ByVal ID_LOTE As Integer,  _
+                    ByVal CATEGORIA_ORIGEN As String,  _
+                    ByVal TIPO_CULTIVO As String,  _
+                    ByVal VARIEDAD As String,  _
+                    ByVal PRODUCTOR As String,  _
+                    ByVal NO_LOTE As String,  _
+                    ByVal ESTADO_LOTE As String,  _
+                    ByVal ANO_PRODU As String,  _
+                    ByVal TIPO_SEMILLA As String,  _
+                    ByVal ID_ACTA As Integer,  _
+                    ByVal FECHA_ACTA As Date,  _
+                    ByVal PORCENTAJE_HUMEDAD As Decimal,  _
+                    ByVal ESTADO_SENA As String,  _
+                    ByVal NO_SACOS As Integer,  _
+                    ByVal PESO_HUMEDO_QQ As Decimal,  _
+                    ByVal PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD As Decimal,  _
+                    ByVal SEMILLA_QQ_ORO As Decimal,  _
+                    ByVal SEMILLA_QQ_CONSUMO As Decimal,  _
+                    ByVal SEMILLA_QQ_BASURA As Decimal,  _
+                    ByVal SEMILLA_QQ_TOTAL As Decimal,  _
+                    ByVal OBSERVACIONES As String,  _
+                    ByVal TARA As Decimal,  _
+                    ByVal CICLO_ACTA As String,  _
+                    ByVal PESO_NETO As Decimal,  _
+                    ByVal PESO_LB As Decimal,  _
+                    ByVal LOTE_REGISTRADO As String,  _
+                    ByVal CATEGORIA_REGISTRADO As String,  _
+                    ByVal ACTA_FIRMADA() As Byte,  _
+                    ByVal FICHA_FIRMADO() As Byte,  _
+                    ByVal CUADRO_FIRMADO() As Byte,  _
+                    ByVal archivo_lote_senasa() As Byte,  _
+                    ByVal RENDIMIETO_ORO_PESO As Decimal,  _
+                    ByVal id As Integer,  _
+                    ByVal decha_elaboracion_g As Date,  _
+                    ByVal no_envase As String,  _
+                    ByVal peso_inicial_g As Decimal,  _
+                    ByVal tipo_granel As String,  _
+                    ByVal fecha_recibo_g As Date,  _
+                    ByVal fecha_muestreo_g As Date,  _
+                    ByVal humedad_final As Decimal,  _
+                    ByVal fecha_evaluacion_g As Date,  _
+                    ByVal tipo_envase As String,  _
+                    ByVal fase_g As String,  _
+                    ByVal tamano_maiz As String,  _
+                    ByVal cantidad_inicial As Decimal,  _
+                    ByVal cantidad_existente As Decimal,  _
+                    ByVal no_camara As String,  _
+                    ByVal perimetro As Decimal,  _
+                    ByVal certisem As Decimal,  _
+                    ByVal fecha_certisem As Date,  _
+                    ByVal planta_g As String,  _
+                    ByVal fecha_planta_g As Date,  _
+                    ByVal semilla_pura As Decimal,  _
+                    ByVal semilla_otro_cultivo As Decimal,  _
+                    ByVal semilla_maleza As Decimal,  _
+                    ByVal materia_inerte As Decimal,  _
+                    ByVal plantulas_normales_1 As Integer,  _
+                    ByVal plantulas_anormales_1 As Integer,  _
+                    ByVal semilla_muerta_1 As Integer,  _
+                    ByVal semillas_duras_1 As Integer,  _
+                    ByVal semillas_debiles_1 As Integer,  _
+                    ByVal semilla_mezcla_1 As Integer,  _
+                    ByVal no_dias_1 As Integer,  _
+                    ByVal plantulas_normales_2 As Integer,  _
+                    ByVal plantulas_anormales_2 As Integer,  _
+                    ByVal semilla_muerta_2 As Integer,  _
+                    ByVal semillas_duras_2 As Integer,  _
+                    ByVal semillas_debiles_2 As Integer,  _
+                    ByVal semilla_mezcla_2 As Integer,  _
+                    ByVal no_dias_2 As Integer,  _
+                    ByVal plantulas_normales_3 As Integer,  _
+                    ByVal plantulas_anormales_3 As Integer,  _
+                    ByVal semilla_muerta_3 As Integer,  _
+                    ByVal semillas_duras_3 As Integer,  _
+                    ByVal semillas_debiles_3 As Integer,  _
+                    ByVal semilla_mezcla_3 As Integer,  _
+                    ByVal no_dias_3 As Integer,  _
+                    ByVal plantulas_normales_4 As Integer,  _
+                    ByVal plantulas_anormales_4 As Integer,  _
+                    ByVal semilla_muerta_4 As Integer,  _
+                    ByVal semillas_duras_4 As Integer,  _
+                    ByVal semillas_debiles_4 As Integer,  _
+                    ByVal semilla_mezcla_4 As Integer,  _
+                    ByVal no_dias_4 As Integer,  _
+                    ByVal plantulas_normales_total As Integer,  _
+                    ByVal plantulas_anormales_total As Integer,  _
+                    ByVal semilla_muerta_total As Integer,  _
+                    ByVal semillas_duras_total As Integer,  _
+                    ByVal semillas_debiles_total As Integer,  _
+                    ByVal semilla_mezcla_total As Integer,  _
+                    ByVal no_dias_total As Integer,  _
+                    ByVal porcentaje_germnimacion As Decimal,  _
+                    ByVal observaciones_g As String,  _
+                    ByVal responsable_muestreo As String,  _
+                    ByVal responsable_analisis As String,  _
+                    ByVal estado As String,  _
+                    ByVal decision As String,  _
+                    ByVal id_2 As Integer,  _
+                    ByVal germinacion_firmada() As Byte) As vista_acta_lote_multi_germRow
+            Dim rowvista_acta_lote_multi_germRow As vista_acta_lote_multi_germRow = CType(Me.NewRow,vista_acta_lote_multi_germRow)
+            Dim columnValuesArray() As Object = New Object() {ID_MULTI, NOMBRE_MULTIPLICADOR, REPRESENTANTE_LEGAL, TELEFONO_MULTIPLICADOR, DEPARTAMENTO, MUNICIPIO, ALDEA, CASERIO, ESTADO_MULTI, ID_LOTE, CATEGORIA_ORIGEN, TIPO_CULTIVO, VARIEDAD, PRODUCTOR, NO_LOTE, ESTADO_LOTE, ANO_PRODU, TIPO_SEMILLA, ID_ACTA, FECHA_ACTA, PORCENTAJE_HUMEDAD, ESTADO_SENA, NO_SACOS, PESO_HUMEDO_QQ, PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD, SEMILLA_QQ_ORO, SEMILLA_QQ_CONSUMO, SEMILLA_QQ_BASURA, SEMILLA_QQ_TOTAL, OBSERVACIONES, TARA, CICLO_ACTA, PESO_NETO, PESO_LB, LOTE_REGISTRADO, CATEGORIA_REGISTRADO, ACTA_FIRMADA, FICHA_FIRMADO, CUADRO_FIRMADO, archivo_lote_senasa, RENDIMIETO_ORO_PESO, id, decha_elaboracion_g, no_envase, peso_inicial_g, tipo_granel, fecha_recibo_g, fecha_muestreo_g, humedad_final, fecha_evaluacion_g, tipo_envase, fase_g, tamano_maiz, cantidad_inicial, cantidad_existente, no_camara, perimetro, certisem, fecha_certisem, planta_g, fecha_planta_g, semilla_pura, semilla_otro_cultivo, semilla_maleza, materia_inerte, plantulas_normales_1, plantulas_anormales_1, semilla_muerta_1, semillas_duras_1, semillas_debiles_1, semilla_mezcla_1, no_dias_1, plantulas_normales_2, plantulas_anormales_2, semilla_muerta_2, semillas_duras_2, semillas_debiles_2, semilla_mezcla_2, no_dias_2, plantulas_normales_3, plantulas_anormales_3, semilla_muerta_3, semillas_duras_3, semillas_debiles_3, semilla_mezcla_3, no_dias_3, plantulas_normales_4, plantulas_anormales_4, semilla_muerta_4, semillas_duras_4, semillas_debiles_4, semilla_mezcla_4, no_dias_4, plantulas_normales_total, plantulas_anormales_total, semilla_muerta_total, semillas_duras_total, semillas_debiles_total, semilla_mezcla_total, no_dias_total, porcentaje_germnimacion, observaciones_g, responsable_muestreo, responsable_analisis, estado, decision, id_2, germinacion_firmada}
+            rowvista_acta_lote_multi_germRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowvista_acta_lote_multi_germRow)
+            Return rowvista_acta_lote_multi_germRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As vista_acta_lote_multi_germDataTable = CType(MyBase.Clone,vista_acta_lote_multi_germDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New vista_acta_lote_multi_germDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnID_MULTI = MyBase.Columns("ID_MULTI")
+            Me.columnNOMBRE_MULTIPLICADOR = MyBase.Columns("NOMBRE_MULTIPLICADOR")
+            Me.columnREPRESENTANTE_LEGAL = MyBase.Columns("REPRESENTANTE_LEGAL")
+            Me.columnTELEFONO_MULTIPLICADOR = MyBase.Columns("TELEFONO_MULTIPLICADOR")
+            Me.columnDEPARTAMENTO = MyBase.Columns("DEPARTAMENTO")
+            Me.columnMUNICIPIO = MyBase.Columns("MUNICIPIO")
+            Me.columnALDEA = MyBase.Columns("ALDEA")
+            Me.columnCASERIO = MyBase.Columns("CASERIO")
+            Me.columnESTADO_MULTI = MyBase.Columns("ESTADO_MULTI")
+            Me.columnID_LOTE = MyBase.Columns("ID_LOTE")
+            Me.columnCATEGORIA_ORIGEN = MyBase.Columns("CATEGORIA_ORIGEN")
+            Me.columnTIPO_CULTIVO = MyBase.Columns("TIPO_CULTIVO")
+            Me.columnVARIEDAD = MyBase.Columns("VARIEDAD")
+            Me.columnPRODUCTOR = MyBase.Columns("PRODUCTOR")
+            Me.columnNO_LOTE = MyBase.Columns("NO_LOTE")
+            Me.columnESTADO_LOTE = MyBase.Columns("ESTADO_LOTE")
+            Me.columnANO_PRODU = MyBase.Columns("ANO_PRODU")
+            Me.columnTIPO_SEMILLA = MyBase.Columns("TIPO_SEMILLA")
+            Me.columnID_ACTA = MyBase.Columns("ID_ACTA")
+            Me.columnFECHA_ACTA = MyBase.Columns("FECHA_ACTA")
+            Me.columnPORCENTAJE_HUMEDAD = MyBase.Columns("PORCENTAJE_HUMEDAD")
+            Me.columnESTADO_SENA = MyBase.Columns("ESTADO_SENA")
+            Me.columnNO_SACOS = MyBase.Columns("NO_SACOS")
+            Me.columnPESO_HUMEDO_QQ = MyBase.Columns("PESO_HUMEDO_QQ")
+            Me.columnPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD = MyBase.Columns("PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD")
+            Me.columnSEMILLA_QQ_ORO = MyBase.Columns("SEMILLA_QQ_ORO")
+            Me.columnSEMILLA_QQ_CONSUMO = MyBase.Columns("SEMILLA_QQ_CONSUMO")
+            Me.columnSEMILLA_QQ_BASURA = MyBase.Columns("SEMILLA_QQ_BASURA")
+            Me.columnSEMILLA_QQ_TOTAL = MyBase.Columns("SEMILLA_QQ_TOTAL")
+            Me.columnOBSERVACIONES = MyBase.Columns("OBSERVACIONES")
+            Me.columnTARA = MyBase.Columns("TARA")
+            Me.columnCICLO_ACTA = MyBase.Columns("CICLO_ACTA")
+            Me.columnPESO_NETO = MyBase.Columns("PESO_NETO")
+            Me.columnPESO_LB = MyBase.Columns("PESO_LB")
+            Me.columnLOTE_REGISTRADO = MyBase.Columns("LOTE_REGISTRADO")
+            Me.columnCATEGORIA_REGISTRADO = MyBase.Columns("CATEGORIA_REGISTRADO")
+            Me.columnACTA_FIRMADA = MyBase.Columns("ACTA_FIRMADA")
+            Me.columnFICHA_FIRMADO = MyBase.Columns("FICHA_FIRMADO")
+            Me.columnCUADRO_FIRMADO = MyBase.Columns("CUADRO_FIRMADO")
+            Me.columnarchivo_lote_senasa = MyBase.Columns("archivo_lote_senasa")
+            Me.columnRENDIMIETO_ORO_PESO = MyBase.Columns("RENDIMIETO_ORO_PESO")
+            Me.columnid = MyBase.Columns("id")
+            Me.columndecha_elaboracion_g = MyBase.Columns("decha_elaboracion_g")
+            Me.columnno_envase = MyBase.Columns("no_envase")
+            Me.columnpeso_inicial_g = MyBase.Columns("peso_inicial_g")
+            Me.columntipo_granel = MyBase.Columns("tipo_granel")
+            Me.columnfecha_recibo_g = MyBase.Columns("fecha_recibo_g")
+            Me.columnfecha_muestreo_g = MyBase.Columns("fecha_muestreo_g")
+            Me.columnhumedad_final = MyBase.Columns("humedad_final")
+            Me.columnfecha_evaluacion_g = MyBase.Columns("fecha_evaluacion_g")
+            Me.columntipo_envase = MyBase.Columns("tipo_envase")
+            Me.columnfase_g = MyBase.Columns("fase_g")
+            Me.columntamano_maiz = MyBase.Columns("tamano_maiz")
+            Me.columncantidad_inicial = MyBase.Columns("cantidad_inicial")
+            Me.columncantidad_existente = MyBase.Columns("cantidad_existente")
+            Me.columnno_camara = MyBase.Columns("no_camara")
+            Me.columnperimetro = MyBase.Columns("perimetro")
+            Me.columncertisem = MyBase.Columns("certisem")
+            Me.columnfecha_certisem = MyBase.Columns("fecha_certisem")
+            Me.columnplanta_g = MyBase.Columns("planta_g")
+            Me.columnfecha_planta_g = MyBase.Columns("fecha_planta_g")
+            Me.columnsemilla_pura = MyBase.Columns("semilla_pura")
+            Me.columnsemilla_otro_cultivo = MyBase.Columns("semilla_otro_cultivo")
+            Me.columnsemilla_maleza = MyBase.Columns("semilla_maleza")
+            Me.columnmateria_inerte = MyBase.Columns("materia_inerte")
+            Me.columnplantulas_normales_1 = MyBase.Columns("plantulas_normales_1")
+            Me.columnplantulas_anormales_1 = MyBase.Columns("plantulas_anormales_1")
+            Me.columnsemilla_muerta_1 = MyBase.Columns("semilla_muerta_1")
+            Me.columnsemillas_duras_1 = MyBase.Columns("semillas_duras_1")
+            Me.columnsemillas_debiles_1 = MyBase.Columns("semillas_debiles_1")
+            Me.columnsemilla_mezcla_1 = MyBase.Columns("semilla_mezcla_1")
+            Me.columnno_dias_1 = MyBase.Columns("no_dias_1")
+            Me.columnplantulas_normales_2 = MyBase.Columns("plantulas_normales_2")
+            Me.columnplantulas_anormales_2 = MyBase.Columns("plantulas_anormales_2")
+            Me.columnsemilla_muerta_2 = MyBase.Columns("semilla_muerta_2")
+            Me.columnsemillas_duras_2 = MyBase.Columns("semillas_duras_2")
+            Me.columnsemillas_debiles_2 = MyBase.Columns("semillas_debiles_2")
+            Me.columnsemilla_mezcla_2 = MyBase.Columns("semilla_mezcla_2")
+            Me.columnno_dias_2 = MyBase.Columns("no_dias_2")
+            Me.columnplantulas_normales_3 = MyBase.Columns("plantulas_normales_3")
+            Me.columnplantulas_anormales_3 = MyBase.Columns("plantulas_anormales_3")
+            Me.columnsemilla_muerta_3 = MyBase.Columns("semilla_muerta_3")
+            Me.columnsemillas_duras_3 = MyBase.Columns("semillas_duras_3")
+            Me.columnsemillas_debiles_3 = MyBase.Columns("semillas_debiles_3")
+            Me.columnsemilla_mezcla_3 = MyBase.Columns("semilla_mezcla_3")
+            Me.columnno_dias_3 = MyBase.Columns("no_dias_3")
+            Me.columnplantulas_normales_4 = MyBase.Columns("plantulas_normales_4")
+            Me.columnplantulas_anormales_4 = MyBase.Columns("plantulas_anormales_4")
+            Me.columnsemilla_muerta_4 = MyBase.Columns("semilla_muerta_4")
+            Me.columnsemillas_duras_4 = MyBase.Columns("semillas_duras_4")
+            Me.columnsemillas_debiles_4 = MyBase.Columns("semillas_debiles_4")
+            Me.columnsemilla_mezcla_4 = MyBase.Columns("semilla_mezcla_4")
+            Me.columnno_dias_4 = MyBase.Columns("no_dias_4")
+            Me.columnplantulas_normales_total = MyBase.Columns("plantulas_normales_total")
+            Me.columnplantulas_anormales_total = MyBase.Columns("plantulas_anormales_total")
+            Me.columnsemilla_muerta_total = MyBase.Columns("semilla_muerta_total")
+            Me.columnsemillas_duras_total = MyBase.Columns("semillas_duras_total")
+            Me.columnsemillas_debiles_total = MyBase.Columns("semillas_debiles_total")
+            Me.columnsemilla_mezcla_total = MyBase.Columns("semilla_mezcla_total")
+            Me.columnno_dias_total = MyBase.Columns("no_dias_total")
+            Me.columnporcentaje_germnimacion = MyBase.Columns("porcentaje_germnimacion")
+            Me.columnobservaciones_g = MyBase.Columns("observaciones_g")
+            Me.columnresponsable_muestreo = MyBase.Columns("responsable_muestreo")
+            Me.columnresponsable_analisis = MyBase.Columns("responsable_analisis")
+            Me.columnestado = MyBase.Columns("estado")
+            Me.columndecision = MyBase.Columns("decision")
+            Me.columnid_2 = MyBase.Columns("id_2")
+            Me.columngerminacion_firmada = MyBase.Columns("germinacion_firmada")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnID_MULTI = New Global.System.Data.DataColumn("ID_MULTI", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_MULTI)
+            Me.columnNOMBRE_MULTIPLICADOR = New Global.System.Data.DataColumn("NOMBRE_MULTIPLICADOR", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNOMBRE_MULTIPLICADOR)
+            Me.columnREPRESENTANTE_LEGAL = New Global.System.Data.DataColumn("REPRESENTANTE_LEGAL", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnREPRESENTANTE_LEGAL)
+            Me.columnTELEFONO_MULTIPLICADOR = New Global.System.Data.DataColumn("TELEFONO_MULTIPLICADOR", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTELEFONO_MULTIPLICADOR)
+            Me.columnDEPARTAMENTO = New Global.System.Data.DataColumn("DEPARTAMENTO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDEPARTAMENTO)
+            Me.columnMUNICIPIO = New Global.System.Data.DataColumn("MUNICIPIO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMUNICIPIO)
+            Me.columnALDEA = New Global.System.Data.DataColumn("ALDEA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnALDEA)
+            Me.columnCASERIO = New Global.System.Data.DataColumn("CASERIO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCASERIO)
+            Me.columnESTADO_MULTI = New Global.System.Data.DataColumn("ESTADO_MULTI", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnESTADO_MULTI)
+            Me.columnID_LOTE = New Global.System.Data.DataColumn("ID_LOTE", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_LOTE)
+            Me.columnCATEGORIA_ORIGEN = New Global.System.Data.DataColumn("CATEGORIA_ORIGEN", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCATEGORIA_ORIGEN)
+            Me.columnTIPO_CULTIVO = New Global.System.Data.DataColumn("TIPO_CULTIVO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTIPO_CULTIVO)
+            Me.columnVARIEDAD = New Global.System.Data.DataColumn("VARIEDAD", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVARIEDAD)
+            Me.columnPRODUCTOR = New Global.System.Data.DataColumn("PRODUCTOR", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPRODUCTOR)
+            Me.columnNO_LOTE = New Global.System.Data.DataColumn("NO_LOTE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNO_LOTE)
+            Me.columnESTADO_LOTE = New Global.System.Data.DataColumn("ESTADO_LOTE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnESTADO_LOTE)
+            Me.columnANO_PRODU = New Global.System.Data.DataColumn("ANO_PRODU", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnANO_PRODU)
+            Me.columnTIPO_SEMILLA = New Global.System.Data.DataColumn("TIPO_SEMILLA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTIPO_SEMILLA)
+            Me.columnID_ACTA = New Global.System.Data.DataColumn("ID_ACTA", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_ACTA)
+            Me.columnFECHA_ACTA = New Global.System.Data.DataColumn("FECHA_ACTA", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFECHA_ACTA)
+            Me.columnPORCENTAJE_HUMEDAD = New Global.System.Data.DataColumn("PORCENTAJE_HUMEDAD", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPORCENTAJE_HUMEDAD)
+            Me.columnESTADO_SENA = New Global.System.Data.DataColumn("ESTADO_SENA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnESTADO_SENA)
+            Me.columnNO_SACOS = New Global.System.Data.DataColumn("NO_SACOS", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNO_SACOS)
+            Me.columnPESO_HUMEDO_QQ = New Global.System.Data.DataColumn("PESO_HUMEDO_QQ", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPESO_HUMEDO_QQ)
+            Me.columnPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD = New Global.System.Data.DataColumn("PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD)
+            Me.columnSEMILLA_QQ_ORO = New Global.System.Data.DataColumn("SEMILLA_QQ_ORO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSEMILLA_QQ_ORO)
+            Me.columnSEMILLA_QQ_CONSUMO = New Global.System.Data.DataColumn("SEMILLA_QQ_CONSUMO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSEMILLA_QQ_CONSUMO)
+            Me.columnSEMILLA_QQ_BASURA = New Global.System.Data.DataColumn("SEMILLA_QQ_BASURA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSEMILLA_QQ_BASURA)
+            Me.columnSEMILLA_QQ_TOTAL = New Global.System.Data.DataColumn("SEMILLA_QQ_TOTAL", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSEMILLA_QQ_TOTAL)
+            Me.columnOBSERVACIONES = New Global.System.Data.DataColumn("OBSERVACIONES", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOBSERVACIONES)
+            Me.columnTARA = New Global.System.Data.DataColumn("TARA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTARA)
+            Me.columnCICLO_ACTA = New Global.System.Data.DataColumn("CICLO_ACTA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCICLO_ACTA)
+            Me.columnPESO_NETO = New Global.System.Data.DataColumn("PESO_NETO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPESO_NETO)
+            Me.columnPESO_LB = New Global.System.Data.DataColumn("PESO_LB", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPESO_LB)
+            Me.columnLOTE_REGISTRADO = New Global.System.Data.DataColumn("LOTE_REGISTRADO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLOTE_REGISTRADO)
+            Me.columnCATEGORIA_REGISTRADO = New Global.System.Data.DataColumn("CATEGORIA_REGISTRADO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCATEGORIA_REGISTRADO)
+            Me.columnACTA_FIRMADA = New Global.System.Data.DataColumn("ACTA_FIRMADA", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnACTA_FIRMADA)
+            Me.columnFICHA_FIRMADO = New Global.System.Data.DataColumn("FICHA_FIRMADO", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnFICHA_FIRMADO)
+            Me.columnCUADRO_FIRMADO = New Global.System.Data.DataColumn("CUADRO_FIRMADO", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCUADRO_FIRMADO)
+            Me.columnarchivo_lote_senasa = New Global.System.Data.DataColumn("archivo_lote_senasa", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnarchivo_lote_senasa)
+            Me.columnRENDIMIETO_ORO_PESO = New Global.System.Data.DataColumn("RENDIMIETO_ORO_PESO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRENDIMIETO_ORO_PESO)
+            Me.columnid = New Global.System.Data.DataColumn("id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid)
+            Me.columndecha_elaboracion_g = New Global.System.Data.DataColumn("decha_elaboracion_g", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndecha_elaboracion_g)
+            Me.columnno_envase = New Global.System.Data.DataColumn("no_envase", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnno_envase)
+            Me.columnpeso_inicial_g = New Global.System.Data.DataColumn("peso_inicial_g", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpeso_inicial_g)
+            Me.columntipo_granel = New Global.System.Data.DataColumn("tipo_granel", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntipo_granel)
+            Me.columnfecha_recibo_g = New Global.System.Data.DataColumn("fecha_recibo_g", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfecha_recibo_g)
+            Me.columnfecha_muestreo_g = New Global.System.Data.DataColumn("fecha_muestreo_g", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfecha_muestreo_g)
+            Me.columnhumedad_final = New Global.System.Data.DataColumn("humedad_final", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnhumedad_final)
+            Me.columnfecha_evaluacion_g = New Global.System.Data.DataColumn("fecha_evaluacion_g", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfecha_evaluacion_g)
+            Me.columntipo_envase = New Global.System.Data.DataColumn("tipo_envase", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntipo_envase)
+            Me.columnfase_g = New Global.System.Data.DataColumn("fase_g", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfase_g)
+            Me.columntamano_maiz = New Global.System.Data.DataColumn("tamano_maiz", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columntamano_maiz)
+            Me.columncantidad_inicial = New Global.System.Data.DataColumn("cantidad_inicial", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncantidad_inicial)
+            Me.columncantidad_existente = New Global.System.Data.DataColumn("cantidad_existente", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncantidad_existente)
+            Me.columnno_camara = New Global.System.Data.DataColumn("no_camara", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnno_camara)
+            Me.columnperimetro = New Global.System.Data.DataColumn("perimetro", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnperimetro)
+            Me.columncertisem = New Global.System.Data.DataColumn("certisem", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncertisem)
+            Me.columnfecha_certisem = New Global.System.Data.DataColumn("fecha_certisem", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfecha_certisem)
+            Me.columnplanta_g = New Global.System.Data.DataColumn("planta_g", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplanta_g)
+            Me.columnfecha_planta_g = New Global.System.Data.DataColumn("fecha_planta_g", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfecha_planta_g)
+            Me.columnsemilla_pura = New Global.System.Data.DataColumn("semilla_pura", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_pura)
+            Me.columnsemilla_otro_cultivo = New Global.System.Data.DataColumn("semilla_otro_cultivo", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_otro_cultivo)
+            Me.columnsemilla_maleza = New Global.System.Data.DataColumn("semilla_maleza", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_maleza)
+            Me.columnmateria_inerte = New Global.System.Data.DataColumn("materia_inerte", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmateria_inerte)
+            Me.columnplantulas_normales_1 = New Global.System.Data.DataColumn("plantulas_normales_1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_normales_1)
+            Me.columnplantulas_anormales_1 = New Global.System.Data.DataColumn("plantulas_anormales_1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_anormales_1)
+            Me.columnsemilla_muerta_1 = New Global.System.Data.DataColumn("semilla_muerta_1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_muerta_1)
+            Me.columnsemillas_duras_1 = New Global.System.Data.DataColumn("semillas_duras_1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_duras_1)
+            Me.columnsemillas_debiles_1 = New Global.System.Data.DataColumn("semillas_debiles_1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_debiles_1)
+            Me.columnsemilla_mezcla_1 = New Global.System.Data.DataColumn("semilla_mezcla_1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_mezcla_1)
+            Me.columnno_dias_1 = New Global.System.Data.DataColumn("no_dias_1", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnno_dias_1)
+            Me.columnplantulas_normales_2 = New Global.System.Data.DataColumn("plantulas_normales_2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_normales_2)
+            Me.columnplantulas_anormales_2 = New Global.System.Data.DataColumn("plantulas_anormales_2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_anormales_2)
+            Me.columnsemilla_muerta_2 = New Global.System.Data.DataColumn("semilla_muerta_2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_muerta_2)
+            Me.columnsemillas_duras_2 = New Global.System.Data.DataColumn("semillas_duras_2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_duras_2)
+            Me.columnsemillas_debiles_2 = New Global.System.Data.DataColumn("semillas_debiles_2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_debiles_2)
+            Me.columnsemilla_mezcla_2 = New Global.System.Data.DataColumn("semilla_mezcla_2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_mezcla_2)
+            Me.columnno_dias_2 = New Global.System.Data.DataColumn("no_dias_2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnno_dias_2)
+            Me.columnplantulas_normales_3 = New Global.System.Data.DataColumn("plantulas_normales_3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_normales_3)
+            Me.columnplantulas_anormales_3 = New Global.System.Data.DataColumn("plantulas_anormales_3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_anormales_3)
+            Me.columnsemilla_muerta_3 = New Global.System.Data.DataColumn("semilla_muerta_3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_muerta_3)
+            Me.columnsemillas_duras_3 = New Global.System.Data.DataColumn("semillas_duras_3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_duras_3)
+            Me.columnsemillas_debiles_3 = New Global.System.Data.DataColumn("semillas_debiles_3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_debiles_3)
+            Me.columnsemilla_mezcla_3 = New Global.System.Data.DataColumn("semilla_mezcla_3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_mezcla_3)
+            Me.columnno_dias_3 = New Global.System.Data.DataColumn("no_dias_3", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnno_dias_3)
+            Me.columnplantulas_normales_4 = New Global.System.Data.DataColumn("plantulas_normales_4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_normales_4)
+            Me.columnplantulas_anormales_4 = New Global.System.Data.DataColumn("plantulas_anormales_4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_anormales_4)
+            Me.columnsemilla_muerta_4 = New Global.System.Data.DataColumn("semilla_muerta_4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_muerta_4)
+            Me.columnsemillas_duras_4 = New Global.System.Data.DataColumn("semillas_duras_4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_duras_4)
+            Me.columnsemillas_debiles_4 = New Global.System.Data.DataColumn("semillas_debiles_4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_debiles_4)
+            Me.columnsemilla_mezcla_4 = New Global.System.Data.DataColumn("semilla_mezcla_4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_mezcla_4)
+            Me.columnno_dias_4 = New Global.System.Data.DataColumn("no_dias_4", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnno_dias_4)
+            Me.columnplantulas_normales_total = New Global.System.Data.DataColumn("plantulas_normales_total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_normales_total)
+            Me.columnplantulas_anormales_total = New Global.System.Data.DataColumn("plantulas_anormales_total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnplantulas_anormales_total)
+            Me.columnsemilla_muerta_total = New Global.System.Data.DataColumn("semilla_muerta_total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_muerta_total)
+            Me.columnsemillas_duras_total = New Global.System.Data.DataColumn("semillas_duras_total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_duras_total)
+            Me.columnsemillas_debiles_total = New Global.System.Data.DataColumn("semillas_debiles_total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemillas_debiles_total)
+            Me.columnsemilla_mezcla_total = New Global.System.Data.DataColumn("semilla_mezcla_total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnsemilla_mezcla_total)
+            Me.columnno_dias_total = New Global.System.Data.DataColumn("no_dias_total", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnno_dias_total)
+            Me.columnporcentaje_germnimacion = New Global.System.Data.DataColumn("porcentaje_germnimacion", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnporcentaje_germnimacion)
+            Me.columnobservaciones_g = New Global.System.Data.DataColumn("observaciones_g", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnobservaciones_g)
+            Me.columnresponsable_muestreo = New Global.System.Data.DataColumn("responsable_muestreo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnresponsable_muestreo)
+            Me.columnresponsable_analisis = New Global.System.Data.DataColumn("responsable_analisis", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnresponsable_analisis)
+            Me.columnestado = New Global.System.Data.DataColumn("estado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnestado)
+            Me.columndecision = New Global.System.Data.DataColumn("decision", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndecision)
+            Me.columnid_2 = New Global.System.Data.DataColumn("id_2", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnid_2)
+            Me.columngerminacion_firmada = New Global.System.Data.DataColumn("germinacion_firmada", GetType(Byte()), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columngerminacion_firmada)
+            Me.columnID_MULTI.AllowDBNull = false
+            Me.columnNOMBRE_MULTIPLICADOR.MaxLength = 100
+            Me.columnREPRESENTANTE_LEGAL.MaxLength = 100
+            Me.columnTELEFONO_MULTIPLICADOR.MaxLength = 100
+            Me.columnDEPARTAMENTO.MaxLength = 100
+            Me.columnMUNICIPIO.MaxLength = 100
+            Me.columnALDEA.MaxLength = 100
+            Me.columnCASERIO.MaxLength = 100
+            Me.columnESTADO_MULTI.MaxLength = 2
+            Me.columnID_LOTE.AllowDBNull = false
+            Me.columnCATEGORIA_ORIGEN.MaxLength = 100
+            Me.columnTIPO_CULTIVO.MaxLength = 100
+            Me.columnVARIEDAD.MaxLength = 100
+            Me.columnPRODUCTOR.MaxLength = 100
+            Me.columnNO_LOTE.MaxLength = 100
+            Me.columnESTADO_LOTE.MaxLength = 2
+            Me.columnANO_PRODU.MaxLength = 20
+            Me.columnTIPO_SEMILLA.MaxLength = 100
+            Me.columnID_ACTA.AllowDBNull = false
+            Me.columnESTADO_SENA.MaxLength = 2
+            Me.columnOBSERVACIONES.MaxLength = 2000
+            Me.columnCICLO_ACTA.MaxLength = 20
+            Me.columnLOTE_REGISTRADO.MaxLength = 255
+            Me.columnCATEGORIA_REGISTRADO.MaxLength = 255
+            Me.columnno_envase.MaxLength = 50
+            Me.columntipo_granel.MaxLength = 50
+            Me.columntipo_envase.MaxLength = 50
+            Me.columnfase_g.MaxLength = 50
+            Me.columntamano_maiz.MaxLength = 10
+            Me.columnno_camara.MaxLength = 10
+            Me.columnplanta_g.MaxLength = 100
+            Me.columnobservaciones_g.MaxLength = 500
+            Me.columnresponsable_muestreo.MaxLength = 100
+            Me.columnresponsable_analisis.MaxLength = 100
+            Me.columnestado.MaxLength = 2
+            Me.columndecision.MaxLength = 30
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Newvista_acta_lote_multi_germRow() As vista_acta_lote_multi_germRow
+            Return CType(Me.NewRow,vista_acta_lote_multi_germRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New vista_acta_lote_multi_germRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(vista_acta_lote_multi_germRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.vista_acta_lote_multi_germRowChangedEvent) Is Nothing) Then
+                RaiseEvent vista_acta_lote_multi_germRowChanged(Me, New vista_acta_lote_multi_germRowChangeEvent(CType(e.Row,vista_acta_lote_multi_germRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.vista_acta_lote_multi_germRowChangingEvent) Is Nothing) Then
+                RaiseEvent vista_acta_lote_multi_germRowChanging(Me, New vista_acta_lote_multi_germRowChangeEvent(CType(e.Row,vista_acta_lote_multi_germRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.vista_acta_lote_multi_germRowDeletedEvent) Is Nothing) Then
+                RaiseEvent vista_acta_lote_multi_germRowDeleted(Me, New vista_acta_lote_multi_germRowChangeEvent(CType(e.Row,vista_acta_lote_multi_germRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.vista_acta_lote_multi_germRowDeletingEvent) Is Nothing) Then
+                RaiseEvent vista_acta_lote_multi_germRowDeleting(Me, New vista_acta_lote_multi_germRowChangeEvent(CType(e.Row,vista_acta_lote_multi_germRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Removevista_acta_lote_multi_germRow(ByVal row As vista_acta_lote_multi_germRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As DataSetMultiplicador = New DataSetMultiplicador()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "vista_acta_lote_multi_germDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -13382,6 +15204,2994 @@ Partial Public Class DataSetMultiplicador
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class vista_acta_lote_multi_germRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablevista_acta_lote_multi_germ As vista_acta_lote_multi_germDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablevista_acta_lote_multi_germ = CType(Me.Table,vista_acta_lote_multi_germDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ID_MULTI() As Integer
+            Get
+                Return CType(Me(Me.tablevista_acta_lote_multi_germ.ID_MULTIColumn),Integer)
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ID_MULTIColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property NOMBRE_MULTIPLICADOR() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.NOMBRE_MULTIPLICADORColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NOMBRE_MULTIPLICADOR' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.NOMBRE_MULTIPLICADORColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property REPRESENTANTE_LEGAL() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.REPRESENTANTE_LEGALColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'REPRESENTANTE_LEGAL' de la tabla 'vista_acta_lote_multi_g"& _ 
+                            "erm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.REPRESENTANTE_LEGALColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TELEFONO_MULTIPLICADOR() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.TELEFONO_MULTIPLICADORColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TELEFONO_MULTIPLICADOR' de la tabla 'vista_acta_lote_mult"& _ 
+                            "i_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.TELEFONO_MULTIPLICADORColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property DEPARTAMENTO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.DEPARTAMENTOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'DEPARTAMENTO' de la tabla 'vista_acta_lote_multi_germ' es"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.DEPARTAMENTOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property MUNICIPIO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.MUNICIPIOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MUNICIPIO' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.MUNICIPIOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ALDEA() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.ALDEAColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ALDEA' de la tabla 'vista_acta_lote_multi_germ' es DBNull"& _ 
+                            ".", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ALDEAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CASERIO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.CASERIOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CASERIO' de la tabla 'vista_acta_lote_multi_germ' es DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.CASERIOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ESTADO_MULTI() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.ESTADO_MULTIColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ESTADO_MULTI' de la tabla 'vista_acta_lote_multi_germ' es"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ESTADO_MULTIColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ID_LOTE() As Integer
+            Get
+                Return CType(Me(Me.tablevista_acta_lote_multi_germ.ID_LOTEColumn),Integer)
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ID_LOTEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CATEGORIA_ORIGEN() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.CATEGORIA_ORIGENColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CATEGORIA_ORIGEN' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.CATEGORIA_ORIGENColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TIPO_CULTIVO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.TIPO_CULTIVOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TIPO_CULTIVO' de la tabla 'vista_acta_lote_multi_germ' es"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.TIPO_CULTIVOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property VARIEDAD() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.VARIEDADColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'VARIEDAD' de la tabla 'vista_acta_lote_multi_germ' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.VARIEDADColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PRODUCTOR() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.PRODUCTORColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PRODUCTOR' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.PRODUCTORColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property NO_LOTE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.NO_LOTEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NO_LOTE' de la tabla 'vista_acta_lote_multi_germ' es DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.NO_LOTEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ESTADO_LOTE() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.ESTADO_LOTEColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ESTADO_LOTE' de la tabla 'vista_acta_lote_multi_germ' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ESTADO_LOTEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ANO_PRODU() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.ANO_PRODUColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ANO_PRODU' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ANO_PRODUColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TIPO_SEMILLA() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.TIPO_SEMILLAColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TIPO_SEMILLA' de la tabla 'vista_acta_lote_multi_germ' es"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.TIPO_SEMILLAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ID_ACTA() As Integer
+            Get
+                Return CType(Me(Me.tablevista_acta_lote_multi_germ.ID_ACTAColumn),Integer)
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ID_ACTAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property FECHA_ACTA() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.FECHA_ACTAColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FECHA_ACTA' de la tabla 'vista_acta_lote_multi_germ' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.FECHA_ACTAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PORCENTAJE_HUMEDAD() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.PORCENTAJE_HUMEDADColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PORCENTAJE_HUMEDAD' de la tabla 'vista_acta_lote_multi_ge"& _ 
+                            "rm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.PORCENTAJE_HUMEDADColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ESTADO_SENA() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.ESTADO_SENAColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ESTADO_SENA' de la tabla 'vista_acta_lote_multi_germ' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ESTADO_SENAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property NO_SACOS() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.NO_SACOSColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NO_SACOS' de la tabla 'vista_acta_lote_multi_germ' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.NO_SACOSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PESO_HUMEDO_QQ() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.PESO_HUMEDO_QQColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESO_HUMEDO_QQ' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.PESO_HUMEDO_QQColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD' de la tabla 'vista_a"& _ 
+                            "cta_lote_multi_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SEMILLA_QQ_ORO() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_OROColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SEMILLA_QQ_ORO' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_OROColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SEMILLA_QQ_CONSUMO() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_CONSUMOColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SEMILLA_QQ_CONSUMO' de la tabla 'vista_acta_lote_multi_ge"& _ 
+                            "rm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_CONSUMOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SEMILLA_QQ_BASURA() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_BASURAColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SEMILLA_QQ_BASURA' de la tabla 'vista_acta_lote_multi_ger"& _ 
+                            "m' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_BASURAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property SEMILLA_QQ_TOTAL() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_TOTALColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'SEMILLA_QQ_TOTAL' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_TOTALColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property OBSERVACIONES() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.OBSERVACIONESColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'OBSERVACIONES' de la tabla 'vista_acta_lote_multi_germ' e"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.OBSERVACIONESColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property TARA() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.TARAColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'TARA' de la tabla 'vista_acta_lote_multi_germ' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.TARAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CICLO_ACTA() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.CICLO_ACTAColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CICLO_ACTA' de la tabla 'vista_acta_lote_multi_germ' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.CICLO_ACTAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PESO_NETO() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.PESO_NETOColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESO_NETO' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.PESO_NETOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property PESO_LB() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.PESO_LBColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'PESO_LB' de la tabla 'vista_acta_lote_multi_germ' es DBNu"& _ 
+                            "ll.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.PESO_LBColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property LOTE_REGISTRADO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.LOTE_REGISTRADOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'LOTE_REGISTRADO' de la tabla 'vista_acta_lote_multi_germ'"& _ 
+                            " es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.LOTE_REGISTRADOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CATEGORIA_REGISTRADO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.CATEGORIA_REGISTRADOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CATEGORIA_REGISTRADO' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.CATEGORIA_REGISTRADOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ACTA_FIRMADA() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.ACTA_FIRMADAColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ACTA_FIRMADA' de la tabla 'vista_acta_lote_multi_germ' es"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.ACTA_FIRMADAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property FICHA_FIRMADO() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.FICHA_FIRMADOColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'FICHA_FIRMADO' de la tabla 'vista_acta_lote_multi_germ' e"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.FICHA_FIRMADOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CUADRO_FIRMADO() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.CUADRO_FIRMADOColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CUADRO_FIRMADO' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.CUADRO_FIRMADOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property archivo_lote_senasa() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.archivo_lote_senasaColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'archivo_lote_senasa' de la tabla 'vista_acta_lote_multi_g"& _ 
+                            "erm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.archivo_lote_senasaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property RENDIMIETO_ORO_PESO() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.RENDIMIETO_ORO_PESOColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'RENDIMIETO_ORO_PESO' de la tabla 'vista_acta_lote_multi_g"& _ 
+                            "erm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.RENDIMIETO_ORO_PESOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'id' de la tabla 'vista_acta_lote_multi_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property decha_elaboracion_g() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.decha_elaboracion_gColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'decha_elaboracion_g' de la tabla 'vista_acta_lote_multi_g"& _ 
+                            "erm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.decha_elaboracion_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property no_envase() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.no_envaseColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_envase' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.no_envaseColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property peso_inicial_g() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.peso_inicial_gColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'peso_inicial_g' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.peso_inicial_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property tipo_granel() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.tipo_granelColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'tipo_granel' de la tabla 'vista_acta_lote_multi_germ' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.tipo_granelColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fecha_recibo_g() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.fecha_recibo_gColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_recibo_g' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.fecha_recibo_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fecha_muestreo_g() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.fecha_muestreo_gColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_muestreo_g' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.fecha_muestreo_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property humedad_final() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.humedad_finalColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'humedad_final' de la tabla 'vista_acta_lote_multi_germ' e"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.humedad_finalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fecha_evaluacion_g() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.fecha_evaluacion_gColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_evaluacion_g' de la tabla 'vista_acta_lote_multi_ge"& _ 
+                            "rm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.fecha_evaluacion_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property tipo_envase() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.tipo_envaseColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'tipo_envase' de la tabla 'vista_acta_lote_multi_germ' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.tipo_envaseColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fase_g() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.fase_gColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fase_g' de la tabla 'vista_acta_lote_multi_germ' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.fase_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property tamano_maiz() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.tamano_maizColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'tamano_maiz' de la tabla 'vista_acta_lote_multi_germ' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.tamano_maizColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property cantidad_inicial() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.cantidad_inicialColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cantidad_inicial' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.cantidad_inicialColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property cantidad_existente() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.cantidad_existenteColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cantidad_existente' de la tabla 'vista_acta_lote_multi_ge"& _ 
+                            "rm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.cantidad_existenteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property no_camara() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.no_camaraColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_camara' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.no_camaraColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property perimetro() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.perimetroColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'perimetro' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.perimetroColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property certisem() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.certisemColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'certisem' de la tabla 'vista_acta_lote_multi_germ' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.certisemColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fecha_certisem() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.fecha_certisemColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_certisem' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.fecha_certisemColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property planta_g() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.planta_gColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'planta_g' de la tabla 'vista_acta_lote_multi_germ' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.planta_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fecha_planta_g() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.fecha_planta_gColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_planta_g' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.fecha_planta_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_pura() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_puraColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_pura' de la tabla 'vista_acta_lote_multi_germ' es"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_puraColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_otro_cultivo() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_otro_cultivoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_otro_cultivo' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_otro_cultivoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_maleza() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_malezaColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_maleza' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_malezaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property materia_inerte() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.materia_inerteColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'materia_inerte' de la tabla 'vista_acta_lote_multi_germ' "& _ 
+                            "es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.materia_inerteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_normales_1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_normales_1' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_anormales_1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_anormales_1' de la tabla 'vista_acta_lote_multi"& _ 
+                            "_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_muerta_1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_muerta_1' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_duras_1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_duras_1' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_debiles_1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_debiles_1' de la tabla 'vista_acta_lote_multi_ge"& _ 
+                            "rm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_mezcla_1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_mezcla_1' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property no_dias_1() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.no_dias_1Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_dias_1' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.no_dias_1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_normales_2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_normales_2' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_anormales_2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_anormales_2' de la tabla 'vista_acta_lote_multi"& _ 
+                            "_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_muerta_2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_muerta_2' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_duras_2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_duras_2' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_debiles_2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_debiles_2' de la tabla 'vista_acta_lote_multi_ge"& _ 
+                            "rm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_mezcla_2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_mezcla_2' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property no_dias_2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.no_dias_2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_dias_2' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.no_dias_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_normales_3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_normales_3' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_anormales_3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_anormales_3' de la tabla 'vista_acta_lote_multi"& _ 
+                            "_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_muerta_3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_muerta_3' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_duras_3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_duras_3' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_debiles_3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_debiles_3' de la tabla 'vista_acta_lote_multi_ge"& _ 
+                            "rm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_mezcla_3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_mezcla_3' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property no_dias_3() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.no_dias_3Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_dias_3' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.no_dias_3Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_normales_4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_normales_4' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_anormales_4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_anormales_4' de la tabla 'vista_acta_lote_multi"& _ 
+                            "_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_muerta_4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_muerta_4' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_duras_4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_duras_4' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_debiles_4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_debiles_4' de la tabla 'vista_acta_lote_multi_ge"& _ 
+                            "rm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_mezcla_4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_mezcla_4' de la tabla 'vista_acta_lote_multi_germ"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property no_dias_4() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.no_dias_4Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_dias_4' de la tabla 'vista_acta_lote_multi_germ' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.no_dias_4Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_normales_total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_normales_total' de la tabla 'vista_acta_lote_mu"& _ 
+                            "lti_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property plantulas_anormales_total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'plantulas_anormales_total' de la tabla 'vista_acta_lote_m"& _ 
+                            "ulti_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_muerta_total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_muerta_total' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_duras_total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_duras_total' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semillas_debiles_total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semillas_debiles_total' de la tabla 'vista_acta_lote_mult"& _ 
+                            "i_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property semilla_mezcla_total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'semilla_mezcla_total' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property no_dias_total() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.no_dias_totalColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_dias_total' de la tabla 'vista_acta_lote_multi_germ' e"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.no_dias_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property porcentaje_germnimacion() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.porcentaje_germnimacionColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'porcentaje_germnimacion' de la tabla 'vista_acta_lote_mul"& _ 
+                            "ti_germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.porcentaje_germnimacionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property observaciones_g() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.observaciones_gColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'observaciones_g' de la tabla 'vista_acta_lote_multi_germ'"& _ 
+                            " es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.observaciones_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property responsable_muestreo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.responsable_muestreoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'responsable_muestreo' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.responsable_muestreoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property responsable_analisis() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.responsable_analisisColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'responsable_analisis' de la tabla 'vista_acta_lote_multi_"& _ 
+                            "germ' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.responsable_analisisColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property estado() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.estadoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'estado' de la tabla 'vista_acta_lote_multi_germ' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.estadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property decision() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.decisionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'decision' de la tabla 'vista_acta_lote_multi_germ' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.decisionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property id_2() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.id_2Column),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'id_2' de la tabla 'vista_acta_lote_multi_germ' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.id_2Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property germinacion_firmada() As Byte()
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_acta_lote_multi_germ.germinacion_firmadaColumn),Byte())
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'germinacion_firmada' de la tabla 'vista_acta_lote_multi_g"& _ 
+                            "erm' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_acta_lote_multi_germ.germinacion_firmadaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNOMBRE_MULTIPLICADORNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.NOMBRE_MULTIPLICADORColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNOMBRE_MULTIPLICADORNull()
+            Me(Me.tablevista_acta_lote_multi_germ.NOMBRE_MULTIPLICADORColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsREPRESENTANTE_LEGALNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.REPRESENTANTE_LEGALColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetREPRESENTANTE_LEGALNull()
+            Me(Me.tablevista_acta_lote_multi_germ.REPRESENTANTE_LEGALColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTELEFONO_MULTIPLICADORNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.TELEFONO_MULTIPLICADORColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTELEFONO_MULTIPLICADORNull()
+            Me(Me.tablevista_acta_lote_multi_germ.TELEFONO_MULTIPLICADORColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsDEPARTAMENTONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.DEPARTAMENTOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetDEPARTAMENTONull()
+            Me(Me.tablevista_acta_lote_multi_germ.DEPARTAMENTOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsMUNICIPIONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.MUNICIPIOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetMUNICIPIONull()
+            Me(Me.tablevista_acta_lote_multi_germ.MUNICIPIOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsALDEANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.ALDEAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetALDEANull()
+            Me(Me.tablevista_acta_lote_multi_germ.ALDEAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCASERIONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.CASERIOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCASERIONull()
+            Me(Me.tablevista_acta_lote_multi_germ.CASERIOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsESTADO_MULTINull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.ESTADO_MULTIColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetESTADO_MULTINull()
+            Me(Me.tablevista_acta_lote_multi_germ.ESTADO_MULTIColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCATEGORIA_ORIGENNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.CATEGORIA_ORIGENColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCATEGORIA_ORIGENNull()
+            Me(Me.tablevista_acta_lote_multi_germ.CATEGORIA_ORIGENColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTIPO_CULTIVONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.TIPO_CULTIVOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTIPO_CULTIVONull()
+            Me(Me.tablevista_acta_lote_multi_germ.TIPO_CULTIVOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsVARIEDADNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.VARIEDADColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetVARIEDADNull()
+            Me(Me.tablevista_acta_lote_multi_germ.VARIEDADColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPRODUCTORNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.PRODUCTORColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPRODUCTORNull()
+            Me(Me.tablevista_acta_lote_multi_germ.PRODUCTORColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNO_LOTENull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.NO_LOTEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNO_LOTENull()
+            Me(Me.tablevista_acta_lote_multi_germ.NO_LOTEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsESTADO_LOTENull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.ESTADO_LOTEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetESTADO_LOTENull()
+            Me(Me.tablevista_acta_lote_multi_germ.ESTADO_LOTEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsANO_PRODUNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.ANO_PRODUColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetANO_PRODUNull()
+            Me(Me.tablevista_acta_lote_multi_germ.ANO_PRODUColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTIPO_SEMILLANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.TIPO_SEMILLAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTIPO_SEMILLANull()
+            Me(Me.tablevista_acta_lote_multi_germ.TIPO_SEMILLAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsFECHA_ACTANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.FECHA_ACTAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetFECHA_ACTANull()
+            Me(Me.tablevista_acta_lote_multi_germ.FECHA_ACTAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPORCENTAJE_HUMEDADNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.PORCENTAJE_HUMEDADColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPORCENTAJE_HUMEDADNull()
+            Me(Me.tablevista_acta_lote_multi_germ.PORCENTAJE_HUMEDADColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsESTADO_SENANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.ESTADO_SENAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetESTADO_SENANull()
+            Me(Me.tablevista_acta_lote_multi_germ.ESTADO_SENAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNO_SACOSNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.NO_SACOSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNO_SACOSNull()
+            Me(Me.tablevista_acta_lote_multi_germ.NO_SACOSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPESO_HUMEDO_QQNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.PESO_HUMEDO_QQColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPESO_HUMEDO_QQNull()
+            Me(Me.tablevista_acta_lote_multi_germ.PESO_HUMEDO_QQColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADNull()
+            Me(Me.tablevista_acta_lote_multi_germ.PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSEMILLA_QQ_ORONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_OROColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSEMILLA_QQ_ORONull()
+            Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_OROColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSEMILLA_QQ_CONSUMONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_CONSUMOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSEMILLA_QQ_CONSUMONull()
+            Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_CONSUMOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSEMILLA_QQ_BASURANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_BASURAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSEMILLA_QQ_BASURANull()
+            Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_BASURAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsSEMILLA_QQ_TOTALNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_TOTALColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetSEMILLA_QQ_TOTALNull()
+            Me(Me.tablevista_acta_lote_multi_germ.SEMILLA_QQ_TOTALColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsOBSERVACIONESNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.OBSERVACIONESColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetOBSERVACIONESNull()
+            Me(Me.tablevista_acta_lote_multi_germ.OBSERVACIONESColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsTARANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.TARAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetTARANull()
+            Me(Me.tablevista_acta_lote_multi_germ.TARAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCICLO_ACTANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.CICLO_ACTAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCICLO_ACTANull()
+            Me(Me.tablevista_acta_lote_multi_germ.CICLO_ACTAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPESO_NETONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.PESO_NETOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPESO_NETONull()
+            Me(Me.tablevista_acta_lote_multi_germ.PESO_NETOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsPESO_LBNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.PESO_LBColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetPESO_LBNull()
+            Me(Me.tablevista_acta_lote_multi_germ.PESO_LBColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsLOTE_REGISTRADONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.LOTE_REGISTRADOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetLOTE_REGISTRADONull()
+            Me(Me.tablevista_acta_lote_multi_germ.LOTE_REGISTRADOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCATEGORIA_REGISTRADONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.CATEGORIA_REGISTRADOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCATEGORIA_REGISTRADONull()
+            Me(Me.tablevista_acta_lote_multi_germ.CATEGORIA_REGISTRADOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsACTA_FIRMADANull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.ACTA_FIRMADAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetACTA_FIRMADANull()
+            Me(Me.tablevista_acta_lote_multi_germ.ACTA_FIRMADAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsFICHA_FIRMADONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.FICHA_FIRMADOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetFICHA_FIRMADONull()
+            Me(Me.tablevista_acta_lote_multi_germ.FICHA_FIRMADOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCUADRO_FIRMADONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.CUADRO_FIRMADOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCUADRO_FIRMADONull()
+            Me(Me.tablevista_acta_lote_multi_germ.CUADRO_FIRMADOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isarchivo_lote_senasaNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.archivo_lote_senasaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setarchivo_lote_senasaNull()
+            Me(Me.tablevista_acta_lote_multi_germ.archivo_lote_senasaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsRENDIMIETO_ORO_PESONull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.RENDIMIETO_ORO_PESOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetRENDIMIETO_ORO_PESONull()
+            Me(Me.tablevista_acta_lote_multi_germ.RENDIMIETO_ORO_PESOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsidNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetidNull()
+            Me(Me.tablevista_acta_lote_multi_germ.idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isdecha_elaboracion_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.decha_elaboracion_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setdecha_elaboracion_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.decha_elaboracion_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isno_envaseNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.no_envaseColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setno_envaseNull()
+            Me(Me.tablevista_acta_lote_multi_germ.no_envaseColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Ispeso_inicial_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.peso_inicial_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setpeso_inicial_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.peso_inicial_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Istipo_granelNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.tipo_granelColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Settipo_granelNull()
+            Me(Me.tablevista_acta_lote_multi_germ.tipo_granelColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfecha_recibo_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.fecha_recibo_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfecha_recibo_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.fecha_recibo_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfecha_muestreo_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.fecha_muestreo_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfecha_muestreo_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.fecha_muestreo_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Ishumedad_finalNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.humedad_finalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Sethumedad_finalNull()
+            Me(Me.tablevista_acta_lote_multi_germ.humedad_finalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfecha_evaluacion_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.fecha_evaluacion_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfecha_evaluacion_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.fecha_evaluacion_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Istipo_envaseNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.tipo_envaseColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Settipo_envaseNull()
+            Me(Me.tablevista_acta_lote_multi_germ.tipo_envaseColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfase_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.fase_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfase_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.fase_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Istamano_maizNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.tamano_maizColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Settamano_maizNull()
+            Me(Me.tablevista_acta_lote_multi_germ.tamano_maizColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Iscantidad_inicialNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.cantidad_inicialColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setcantidad_inicialNull()
+            Me(Me.tablevista_acta_lote_multi_germ.cantidad_inicialColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Iscantidad_existenteNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.cantidad_existenteColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setcantidad_existenteNull()
+            Me(Me.tablevista_acta_lote_multi_germ.cantidad_existenteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isno_camaraNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.no_camaraColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setno_camaraNull()
+            Me(Me.tablevista_acta_lote_multi_germ.no_camaraColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsperimetroNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.perimetroColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetperimetroNull()
+            Me(Me.tablevista_acta_lote_multi_germ.perimetroColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IscertisemNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.certisemColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetcertisemNull()
+            Me(Me.tablevista_acta_lote_multi_germ.certisemColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfecha_certisemNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.fecha_certisemColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfecha_certisemNull()
+            Me(Me.tablevista_acta_lote_multi_germ.fecha_certisemColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplanta_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.planta_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplanta_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.planta_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfecha_planta_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.fecha_planta_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfecha_planta_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.fecha_planta_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_puraNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_puraColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_puraNull()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_puraColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_otro_cultivoNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_otro_cultivoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_otro_cultivoNull()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_otro_cultivoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_malezaNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_malezaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_malezaNull()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_malezaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Ismateria_inerteNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.materia_inerteColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setmateria_inerteNull()
+            Me(Me.tablevista_acta_lote_multi_germ.materia_inerteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_normales_1Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_normales_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_normales_1Null()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_anormales_1Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_anormales_1Null()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_muerta_1Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_muerta_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_muerta_1Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_duras_1Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_duras_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_duras_1Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_debiles_1Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_debiles_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_debiles_1Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_mezcla_1Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_mezcla_1Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isno_dias_1Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.no_dias_1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setno_dias_1Null()
+            Me(Me.tablevista_acta_lote_multi_germ.no_dias_1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_normales_2Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_normales_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_normales_2Null()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_anormales_2Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_anormales_2Null()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_muerta_2Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_muerta_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_muerta_2Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_duras_2Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_duras_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_duras_2Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_debiles_2Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_debiles_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_debiles_2Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_mezcla_2Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_mezcla_2Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isno_dias_2Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.no_dias_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setno_dias_2Null()
+            Me(Me.tablevista_acta_lote_multi_germ.no_dias_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_normales_3Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_normales_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_normales_3Null()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_anormales_3Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_anormales_3Null()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_muerta_3Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_muerta_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_muerta_3Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_duras_3Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_duras_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_duras_3Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_debiles_3Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_debiles_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_debiles_3Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_mezcla_3Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_mezcla_3Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isno_dias_3Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.no_dias_3Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setno_dias_3Null()
+            Me(Me.tablevista_acta_lote_multi_germ.no_dias_3Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_normales_4Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_normales_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_normales_4Null()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_anormales_4Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_anormales_4Null()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_muerta_4Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_muerta_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_muerta_4Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_duras_4Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_duras_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_duras_4Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_debiles_4Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_debiles_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_debiles_4Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_mezcla_4Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_mezcla_4Null()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isno_dias_4Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.no_dias_4Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setno_dias_4Null()
+            Me(Me.tablevista_acta_lote_multi_germ.no_dias_4Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_normales_totalNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_normales_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_normales_totalNull()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_normales_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isplantulas_anormales_totalNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setplantulas_anormales_totalNull()
+            Me(Me.tablevista_acta_lote_multi_germ.plantulas_anormales_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_muerta_totalNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_muerta_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_muerta_totalNull()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_muerta_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_duras_totalNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_duras_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_duras_totalNull()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_duras_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemillas_debiles_totalNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semillas_debiles_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemillas_debiles_totalNull()
+            Me(Me.tablevista_acta_lote_multi_germ.semillas_debiles_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Issemilla_mezcla_totalNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setsemilla_mezcla_totalNull()
+            Me(Me.tablevista_acta_lote_multi_germ.semilla_mezcla_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isno_dias_totalNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.no_dias_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setno_dias_totalNull()
+            Me(Me.tablevista_acta_lote_multi_germ.no_dias_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isporcentaje_germnimacionNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.porcentaje_germnimacionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setporcentaje_germnimacionNull()
+            Me(Me.tablevista_acta_lote_multi_germ.porcentaje_germnimacionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isobservaciones_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.observaciones_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setobservaciones_gNull()
+            Me(Me.tablevista_acta_lote_multi_germ.observaciones_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isresponsable_muestreoNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.responsable_muestreoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setresponsable_muestreoNull()
+            Me(Me.tablevista_acta_lote_multi_germ.responsable_muestreoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isresponsable_analisisNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.responsable_analisisColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setresponsable_analisisNull()
+            Me(Me.tablevista_acta_lote_multi_germ.responsable_analisisColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsestadoNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.estadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetestadoNull()
+            Me(Me.tablevista_acta_lote_multi_germ.estadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsdecisionNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.decisionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetdecisionNull()
+            Me(Me.tablevista_acta_lote_multi_germ.decisionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isid_2Null() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.id_2Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setid_2Null()
+            Me(Me.tablevista_acta_lote_multi_germ.id_2Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isgerminacion_firmadaNull() As Boolean
+            Return Me.IsNull(Me.tablevista_acta_lote_multi_germ.germinacion_firmadaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setgerminacion_firmadaNull()
+            Me(Me.tablevista_acta_lote_multi_germ.germinacion_firmadaColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -13619,6 +18429,42 @@ Partial Public Class DataSetMultiplicador
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property Row() As vista_ficha_informeRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+    Public Class vista_acta_lote_multi_germRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As vista_acta_lote_multi_germRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New(ByVal row As vista_acta_lote_multi_germRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property Row() As vista_acta_lote_multi_germRow
             Get
                 Return Me.eventRow
             End Get
@@ -18795,6 +23641,311 @@ Namespace DataSetMultiplicadorTableAdapters
         Public Overloads Overridable Function GetData() As DataSetMultiplicador.vista_ficha_informeDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Dim dataTable As DataSetMultiplicador.vista_ficha_informeDataTable = New DataSetMultiplicador.vista_ficha_informeDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class vista_acta_lote_multi_germTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
+        
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
+        
+        Private _transaction As Global.MySql.Data.MySqlClient.MySqlTransaction
+        
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Friend Property Transaction() As Global.MySql.Data.MySqlClient.MySqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "vista_acta_lote_multi_germ"
+            tableMapping.ColumnMappings.Add("ID_MULTI", "ID_MULTI")
+            tableMapping.ColumnMappings.Add("NOMBRE_MULTIPLICADOR", "NOMBRE_MULTIPLICADOR")
+            tableMapping.ColumnMappings.Add("REPRESENTANTE_LEGAL", "REPRESENTANTE_LEGAL")
+            tableMapping.ColumnMappings.Add("TELEFONO_MULTIPLICADOR", "TELEFONO_MULTIPLICADOR")
+            tableMapping.ColumnMappings.Add("DEPARTAMENTO", "DEPARTAMENTO")
+            tableMapping.ColumnMappings.Add("MUNICIPIO", "MUNICIPIO")
+            tableMapping.ColumnMappings.Add("ALDEA", "ALDEA")
+            tableMapping.ColumnMappings.Add("CASERIO", "CASERIO")
+            tableMapping.ColumnMappings.Add("ESTADO_MULTI", "ESTADO_MULTI")
+            tableMapping.ColumnMappings.Add("ID_LOTE", "ID_LOTE")
+            tableMapping.ColumnMappings.Add("CATEGORIA_ORIGEN", "CATEGORIA_ORIGEN")
+            tableMapping.ColumnMappings.Add("TIPO_CULTIVO", "TIPO_CULTIVO")
+            tableMapping.ColumnMappings.Add("VARIEDAD", "VARIEDAD")
+            tableMapping.ColumnMappings.Add("PRODUCTOR", "PRODUCTOR")
+            tableMapping.ColumnMappings.Add("NO_LOTE", "NO_LOTE")
+            tableMapping.ColumnMappings.Add("ESTADO_LOTE", "ESTADO_LOTE")
+            tableMapping.ColumnMappings.Add("ANO_PRODU", "ANO_PRODU")
+            tableMapping.ColumnMappings.Add("TIPO_SEMILLA", "TIPO_SEMILLA")
+            tableMapping.ColumnMappings.Add("ID_ACTA", "ID_ACTA")
+            tableMapping.ColumnMappings.Add("FECHA_ACTA", "FECHA_ACTA")
+            tableMapping.ColumnMappings.Add("PORCENTAJE_HUMEDAD", "PORCENTAJE_HUMEDAD")
+            tableMapping.ColumnMappings.Add("ESTADO_SENA", "ESTADO_SENA")
+            tableMapping.ColumnMappings.Add("NO_SACOS", "NO_SACOS")
+            tableMapping.ColumnMappings.Add("PESO_HUMEDO_QQ", "PESO_HUMEDO_QQ")
+            tableMapping.ColumnMappings.Add("PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD", "PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD")
+            tableMapping.ColumnMappings.Add("SEMILLA_QQ_ORO", "SEMILLA_QQ_ORO")
+            tableMapping.ColumnMappings.Add("SEMILLA_QQ_CONSUMO", "SEMILLA_QQ_CONSUMO")
+            tableMapping.ColumnMappings.Add("SEMILLA_QQ_BASURA", "SEMILLA_QQ_BASURA")
+            tableMapping.ColumnMappings.Add("SEMILLA_QQ_TOTAL", "SEMILLA_QQ_TOTAL")
+            tableMapping.ColumnMappings.Add("OBSERVACIONES", "OBSERVACIONES")
+            tableMapping.ColumnMappings.Add("TARA", "TARA")
+            tableMapping.ColumnMappings.Add("CICLO_ACTA", "CICLO_ACTA")
+            tableMapping.ColumnMappings.Add("PESO_NETO", "PESO_NETO")
+            tableMapping.ColumnMappings.Add("PESO_LB", "PESO_LB")
+            tableMapping.ColumnMappings.Add("LOTE_REGISTRADO", "LOTE_REGISTRADO")
+            tableMapping.ColumnMappings.Add("CATEGORIA_REGISTRADO", "CATEGORIA_REGISTRADO")
+            tableMapping.ColumnMappings.Add("ACTA_FIRMADA", "ACTA_FIRMADA")
+            tableMapping.ColumnMappings.Add("FICHA_FIRMADO", "FICHA_FIRMADO")
+            tableMapping.ColumnMappings.Add("CUADRO_FIRMADO", "CUADRO_FIRMADO")
+            tableMapping.ColumnMappings.Add("archivo_lote_senasa", "archivo_lote_senasa")
+            tableMapping.ColumnMappings.Add("RENDIMIETO_ORO_PESO", "RENDIMIETO_ORO_PESO")
+            tableMapping.ColumnMappings.Add("id", "id")
+            tableMapping.ColumnMappings.Add("decha_elaboracion_g", "decha_elaboracion_g")
+            tableMapping.ColumnMappings.Add("no_envase", "no_envase")
+            tableMapping.ColumnMappings.Add("peso_inicial_g", "peso_inicial_g")
+            tableMapping.ColumnMappings.Add("tipo_granel", "tipo_granel")
+            tableMapping.ColumnMappings.Add("fecha_recibo_g", "fecha_recibo_g")
+            tableMapping.ColumnMappings.Add("fecha_muestreo_g", "fecha_muestreo_g")
+            tableMapping.ColumnMappings.Add("humedad_final", "humedad_final")
+            tableMapping.ColumnMappings.Add("fecha_evaluacion_g", "fecha_evaluacion_g")
+            tableMapping.ColumnMappings.Add("tipo_envase", "tipo_envase")
+            tableMapping.ColumnMappings.Add("fase_g", "fase_g")
+            tableMapping.ColumnMappings.Add("tamano_maiz", "tamano_maiz")
+            tableMapping.ColumnMappings.Add("cantidad_inicial", "cantidad_inicial")
+            tableMapping.ColumnMappings.Add("cantidad_existente", "cantidad_existente")
+            tableMapping.ColumnMappings.Add("no_camara", "no_camara")
+            tableMapping.ColumnMappings.Add("perimetro", "perimetro")
+            tableMapping.ColumnMappings.Add("certisem", "certisem")
+            tableMapping.ColumnMappings.Add("fecha_certisem", "fecha_certisem")
+            tableMapping.ColumnMappings.Add("planta_g", "planta_g")
+            tableMapping.ColumnMappings.Add("fecha_planta_g", "fecha_planta_g")
+            tableMapping.ColumnMappings.Add("semilla_pura", "semilla_pura")
+            tableMapping.ColumnMappings.Add("semilla_otro_cultivo", "semilla_otro_cultivo")
+            tableMapping.ColumnMappings.Add("semilla_maleza", "semilla_maleza")
+            tableMapping.ColumnMappings.Add("materia_inerte", "materia_inerte")
+            tableMapping.ColumnMappings.Add("plantulas_normales_1", "plantulas_normales_1")
+            tableMapping.ColumnMappings.Add("plantulas_anormales_1", "plantulas_anormales_1")
+            tableMapping.ColumnMappings.Add("semilla_muerta_1", "semilla_muerta_1")
+            tableMapping.ColumnMappings.Add("semillas_duras_1", "semillas_duras_1")
+            tableMapping.ColumnMappings.Add("semillas_debiles_1", "semillas_debiles_1")
+            tableMapping.ColumnMappings.Add("semilla_mezcla_1", "semilla_mezcla_1")
+            tableMapping.ColumnMappings.Add("no_dias_1", "no_dias_1")
+            tableMapping.ColumnMappings.Add("plantulas_normales_2", "plantulas_normales_2")
+            tableMapping.ColumnMappings.Add("plantulas_anormales_2", "plantulas_anormales_2")
+            tableMapping.ColumnMappings.Add("semilla_muerta_2", "semilla_muerta_2")
+            tableMapping.ColumnMappings.Add("semillas_duras_2", "semillas_duras_2")
+            tableMapping.ColumnMappings.Add("semillas_debiles_2", "semillas_debiles_2")
+            tableMapping.ColumnMappings.Add("semilla_mezcla_2", "semilla_mezcla_2")
+            tableMapping.ColumnMappings.Add("no_dias_2", "no_dias_2")
+            tableMapping.ColumnMappings.Add("plantulas_normales_3", "plantulas_normales_3")
+            tableMapping.ColumnMappings.Add("plantulas_anormales_3", "plantulas_anormales_3")
+            tableMapping.ColumnMappings.Add("semilla_muerta_3", "semilla_muerta_3")
+            tableMapping.ColumnMappings.Add("semillas_duras_3", "semillas_duras_3")
+            tableMapping.ColumnMappings.Add("semillas_debiles_3", "semillas_debiles_3")
+            tableMapping.ColumnMappings.Add("semilla_mezcla_3", "semilla_mezcla_3")
+            tableMapping.ColumnMappings.Add("no_dias_3", "no_dias_3")
+            tableMapping.ColumnMappings.Add("plantulas_normales_4", "plantulas_normales_4")
+            tableMapping.ColumnMappings.Add("plantulas_anormales_4", "plantulas_anormales_4")
+            tableMapping.ColumnMappings.Add("semilla_muerta_4", "semilla_muerta_4")
+            tableMapping.ColumnMappings.Add("semillas_duras_4", "semillas_duras_4")
+            tableMapping.ColumnMappings.Add("semillas_debiles_4", "semillas_debiles_4")
+            tableMapping.ColumnMappings.Add("semilla_mezcla_4", "semilla_mezcla_4")
+            tableMapping.ColumnMappings.Add("no_dias_4", "no_dias_4")
+            tableMapping.ColumnMappings.Add("plantulas_normales_total", "plantulas_normales_total")
+            tableMapping.ColumnMappings.Add("plantulas_anormales_total", "plantulas_anormales_total")
+            tableMapping.ColumnMappings.Add("semilla_muerta_total", "semilla_muerta_total")
+            tableMapping.ColumnMappings.Add("semillas_duras_total", "semillas_duras_total")
+            tableMapping.ColumnMappings.Add("semillas_debiles_total", "semillas_debiles_total")
+            tableMapping.ColumnMappings.Add("semilla_mezcla_total", "semilla_mezcla_total")
+            tableMapping.ColumnMappings.Add("no_dias_total", "no_dias_total")
+            tableMapping.ColumnMappings.Add("porcentaje_germnimacion", "porcentaje_germnimacion")
+            tableMapping.ColumnMappings.Add("observaciones_g", "observaciones_g")
+            tableMapping.ColumnMappings.Add("responsable_muestreo", "responsable_muestreo")
+            tableMapping.ColumnMappings.Add("responsable_analisis", "responsable_analisis")
+            tableMapping.ColumnMappings.Add("estado", "estado")
+            tableMapping.ColumnMappings.Add("decision", "decision")
+            tableMapping.ColumnMappings.Add("id_2", "id_2")
+            tableMapping.ColumnMappings.Add("germinacion_firmada", "germinacion_firmada")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
+            Me._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings("sag_dictaConnectionString1").ConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT `ID_MULTI`, `NOMBRE_MULTIPLICADOR`, `REPRESENTANTE_LEGAL`, `TELEFONO_MULTI"& _ 
+                "PLICADOR`, `DEPARTAMENTO`, `MUNICIPIO`, `ALDEA`, `CASERIO`, `ESTADO_MULTI`, `ID_"& _ 
+                "LOTE`, `CATEGORIA_ORIGEN`, `TIPO_CULTIVO`, `VARIEDAD`, `PRODUCTOR`, `NO_LOTE`, `"& _ 
+                "ESTADO_LOTE`, `ANO_PRODU`, `TIPO_SEMILLA`, `ID_ACTA`, `FECHA_ACTA`, `PORCENTAJE_"& _ 
+                "HUMEDAD`, `ESTADO_SENA`, `NO_SACOS`, `PESO_HUMEDO_QQ`, `PESO_MATERIA_PRIMA_QQ_PO"& _ 
+                "RCE_HUMEDAD`, `SEMILLA_QQ_ORO`, `SEMILLA_QQ_CONSUMO`, `SEMILLA_QQ_BASURA`, `SEMI"& _ 
+                "LLA_QQ_TOTAL`, `OBSERVACIONES`, `TARA`, `CICLO_ACTA`, `PESO_NETO`, `PESO_LB`, `L"& _ 
+                "OTE_REGISTRADO`, `CATEGORIA_REGISTRADO`, `ACTA_FIRMADA`, `FICHA_FIRMADO`, `CUADR"& _ 
+                "O_FIRMADO`, `archivo_lote_senasa`, `RENDIMIETO_ORO_PESO`, `id`, `decha_elaboraci"& _ 
+                "on_g`, `no_envase`, `peso_inicial_g`, `tipo_granel`, `fecha_recibo_g`, `fecha_mu"& _ 
+                "estreo_g`, `humedad_final`, `fecha_evaluacion_g`, `tipo_envase`, `fase_g`, `tama"& _ 
+                "no_maiz`, `cantidad_inicial`, `cantidad_existente`, `no_camara`, `perimetro`, `c"& _ 
+                "ertisem`, `fecha_certisem`, `planta_g`, `fecha_planta_g`, `semilla_pura`, `semil"& _ 
+                "la_otro_cultivo`, `semilla_maleza`, `materia_inerte`, `plantulas_normales_1`, `p"& _ 
+                "lantulas_anormales_1`, `semilla_muerta_1`, `semillas_duras_1`, `semillas_debiles"& _ 
+                "_1`, `semilla_mezcla_1`, `no_dias_1`, `plantulas_normales_2`, `plantulas_anormal"& _ 
+                "es_2`, `semilla_muerta_2`, `semillas_duras_2`, `semillas_debiles_2`, `semilla_me"& _ 
+                "zcla_2`, `no_dias_2`, `plantulas_normales_3`, `plantulas_anormales_3`, `semilla_"& _ 
+                "muerta_3`, `semillas_duras_3`, `semillas_debiles_3`, `semilla_mezcla_3`, `no_dia"& _ 
+                "s_3`, `plantulas_normales_4`, `plantulas_anormales_4`, `semilla_muerta_4`, `semi"& _ 
+                "llas_duras_4`, `semillas_debiles_4`, `semilla_mezcla_4`, `no_dias_4`, `plantulas"& _ 
+                "_normales_total`, `plantulas_anormales_total`, `semilla_muerta_total`, `semillas"& _ 
+                "_duras_total`, `semillas_debiles_total`, `semilla_mezcla_total`, `no_dias_total`"& _ 
+                ", `porcentaje_germnimacion`, `observaciones_g`, `responsable_muestreo`, `respons"& _ 
+                "able_analisis`, `estado`, `decision`, `id_2`, `germinacion_firmada` FROM `sag_di"& _ 
+                "cta`.`vista_acta_lote_multi_germ`"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As DataSetMultiplicador.vista_acta_lote_multi_germDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As DataSetMultiplicador.vista_acta_lote_multi_germDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DataSetMultiplicador.vista_acta_lote_multi_germDataTable = New DataSetMultiplicador.vista_acta_lote_multi_germDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

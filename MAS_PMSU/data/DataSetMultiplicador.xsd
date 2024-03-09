@@ -719,6 +719,129 @@ FROM     vista_acta_lote_multi</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vista_acta_lote_multi_germTableAdapter" GeneratorDataComponentClassName="vista_acta_lote_multi_germTableAdapter" Name="vista_acta_lote_multi_germ" UserDataComponentName="vista_acta_lote_multi_germTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sag_dictaConnectionString1 (Web.config)" DbObjectName="sag_dicta.vista_acta_lote_multi_germ" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `ID_MULTI`, `NOMBRE_MULTIPLICADOR`, `REPRESENTANTE_LEGAL`, `TELEFONO_MULTIPLICADOR`, `DEPARTAMENTO`, `MUNICIPIO`, `ALDEA`, `CASERIO`, `ESTADO_MULTI`, `ID_LOTE`, `CATEGORIA_ORIGEN`, `TIPO_CULTIVO`, `VARIEDAD`, `PRODUCTOR`, `NO_LOTE`, `ESTADO_LOTE`, `ANO_PRODU`, `TIPO_SEMILLA`, `ID_ACTA`, `FECHA_ACTA`, `PORCENTAJE_HUMEDAD`, `ESTADO_SENA`, `NO_SACOS`, `PESO_HUMEDO_QQ`, `PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD`, `SEMILLA_QQ_ORO`, `SEMILLA_QQ_CONSUMO`, `SEMILLA_QQ_BASURA`, `SEMILLA_QQ_TOTAL`, `OBSERVACIONES`, `TARA`, `CICLO_ACTA`, `PESO_NETO`, `PESO_LB`, `LOTE_REGISTRADO`, `CATEGORIA_REGISTRADO`, `ACTA_FIRMADA`, `FICHA_FIRMADO`, `CUADRO_FIRMADO`, `archivo_lote_senasa`, `RENDIMIETO_ORO_PESO`, `id`, `decha_elaboracion_g`, `no_envase`, `peso_inicial_g`, `tipo_granel`, `fecha_recibo_g`, `fecha_muestreo_g`, `humedad_final`, `fecha_evaluacion_g`, `tipo_envase`, `fase_g`, `tamano_maiz`, `cantidad_inicial`, `cantidad_existente`, `no_camara`, `perimetro`, `certisem`, `fecha_certisem`, `planta_g`, `fecha_planta_g`, `semilla_pura`, `semilla_otro_cultivo`, `semilla_maleza`, `materia_inerte`, `plantulas_normales_1`, `plantulas_anormales_1`, `semilla_muerta_1`, `semillas_duras_1`, `semillas_debiles_1`, `semilla_mezcla_1`, `no_dias_1`, `plantulas_normales_2`, `plantulas_anormales_2`, `semilla_muerta_2`, `semillas_duras_2`, `semillas_debiles_2`, `semilla_mezcla_2`, `no_dias_2`, `plantulas_normales_3`, `plantulas_anormales_3`, `semilla_muerta_3`, `semillas_duras_3`, `semillas_debiles_3`, `semilla_mezcla_3`, `no_dias_3`, `plantulas_normales_4`, `plantulas_anormales_4`, `semilla_muerta_4`, `semillas_duras_4`, `semillas_debiles_4`, `semilla_mezcla_4`, `no_dias_4`, `plantulas_normales_total`, `plantulas_anormales_total`, `semilla_muerta_total`, `semillas_duras_total`, `semillas_debiles_total`, `semilla_mezcla_total`, `no_dias_total`, `porcentaje_germnimacion`, `observaciones_g`, `responsable_muestreo`, `responsable_analisis`, `estado`, `decision`, `id_2`, `germinacion_firmada` FROM `sag_dicta`.`vista_acta_lote_multi_germ`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ID_MULTI" DataSetColumn="ID_MULTI" />
+              <Mapping SourceColumn="NOMBRE_MULTIPLICADOR" DataSetColumn="NOMBRE_MULTIPLICADOR" />
+              <Mapping SourceColumn="REPRESENTANTE_LEGAL" DataSetColumn="REPRESENTANTE_LEGAL" />
+              <Mapping SourceColumn="TELEFONO_MULTIPLICADOR" DataSetColumn="TELEFONO_MULTIPLICADOR" />
+              <Mapping SourceColumn="DEPARTAMENTO" DataSetColumn="DEPARTAMENTO" />
+              <Mapping SourceColumn="MUNICIPIO" DataSetColumn="MUNICIPIO" />
+              <Mapping SourceColumn="ALDEA" DataSetColumn="ALDEA" />
+              <Mapping SourceColumn="CASERIO" DataSetColumn="CASERIO" />
+              <Mapping SourceColumn="ESTADO_MULTI" DataSetColumn="ESTADO_MULTI" />
+              <Mapping SourceColumn="ID_LOTE" DataSetColumn="ID_LOTE" />
+              <Mapping SourceColumn="CATEGORIA_ORIGEN" DataSetColumn="CATEGORIA_ORIGEN" />
+              <Mapping SourceColumn="TIPO_CULTIVO" DataSetColumn="TIPO_CULTIVO" />
+              <Mapping SourceColumn="VARIEDAD" DataSetColumn="VARIEDAD" />
+              <Mapping SourceColumn="PRODUCTOR" DataSetColumn="PRODUCTOR" />
+              <Mapping SourceColumn="NO_LOTE" DataSetColumn="NO_LOTE" />
+              <Mapping SourceColumn="ESTADO_LOTE" DataSetColumn="ESTADO_LOTE" />
+              <Mapping SourceColumn="ANO_PRODU" DataSetColumn="ANO_PRODU" />
+              <Mapping SourceColumn="TIPO_SEMILLA" DataSetColumn="TIPO_SEMILLA" />
+              <Mapping SourceColumn="ID_ACTA" DataSetColumn="ID_ACTA" />
+              <Mapping SourceColumn="FECHA_ACTA" DataSetColumn="FECHA_ACTA" />
+              <Mapping SourceColumn="PORCENTAJE_HUMEDAD" DataSetColumn="PORCENTAJE_HUMEDAD" />
+              <Mapping SourceColumn="ESTADO_SENA" DataSetColumn="ESTADO_SENA" />
+              <Mapping SourceColumn="NO_SACOS" DataSetColumn="NO_SACOS" />
+              <Mapping SourceColumn="PESO_HUMEDO_QQ" DataSetColumn="PESO_HUMEDO_QQ" />
+              <Mapping SourceColumn="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" DataSetColumn="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" />
+              <Mapping SourceColumn="SEMILLA_QQ_ORO" DataSetColumn="SEMILLA_QQ_ORO" />
+              <Mapping SourceColumn="SEMILLA_QQ_CONSUMO" DataSetColumn="SEMILLA_QQ_CONSUMO" />
+              <Mapping SourceColumn="SEMILLA_QQ_BASURA" DataSetColumn="SEMILLA_QQ_BASURA" />
+              <Mapping SourceColumn="SEMILLA_QQ_TOTAL" DataSetColumn="SEMILLA_QQ_TOTAL" />
+              <Mapping SourceColumn="OBSERVACIONES" DataSetColumn="OBSERVACIONES" />
+              <Mapping SourceColumn="TARA" DataSetColumn="TARA" />
+              <Mapping SourceColumn="CICLO_ACTA" DataSetColumn="CICLO_ACTA" />
+              <Mapping SourceColumn="PESO_NETO" DataSetColumn="PESO_NETO" />
+              <Mapping SourceColumn="PESO_LB" DataSetColumn="PESO_LB" />
+              <Mapping SourceColumn="LOTE_REGISTRADO" DataSetColumn="LOTE_REGISTRADO" />
+              <Mapping SourceColumn="CATEGORIA_REGISTRADO" DataSetColumn="CATEGORIA_REGISTRADO" />
+              <Mapping SourceColumn="ACTA_FIRMADA" DataSetColumn="ACTA_FIRMADA" />
+              <Mapping SourceColumn="FICHA_FIRMADO" DataSetColumn="FICHA_FIRMADO" />
+              <Mapping SourceColumn="CUADRO_FIRMADO" DataSetColumn="CUADRO_FIRMADO" />
+              <Mapping SourceColumn="archivo_lote_senasa" DataSetColumn="archivo_lote_senasa" />
+              <Mapping SourceColumn="RENDIMIETO_ORO_PESO" DataSetColumn="RENDIMIETO_ORO_PESO" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="decha_elaboracion_g" DataSetColumn="decha_elaboracion_g" />
+              <Mapping SourceColumn="no_envase" DataSetColumn="no_envase" />
+              <Mapping SourceColumn="peso_inicial_g" DataSetColumn="peso_inicial_g" />
+              <Mapping SourceColumn="tipo_granel" DataSetColumn="tipo_granel" />
+              <Mapping SourceColumn="fecha_recibo_g" DataSetColumn="fecha_recibo_g" />
+              <Mapping SourceColumn="fecha_muestreo_g" DataSetColumn="fecha_muestreo_g" />
+              <Mapping SourceColumn="humedad_final" DataSetColumn="humedad_final" />
+              <Mapping SourceColumn="fecha_evaluacion_g" DataSetColumn="fecha_evaluacion_g" />
+              <Mapping SourceColumn="tipo_envase" DataSetColumn="tipo_envase" />
+              <Mapping SourceColumn="fase_g" DataSetColumn="fase_g" />
+              <Mapping SourceColumn="tamano_maiz" DataSetColumn="tamano_maiz" />
+              <Mapping SourceColumn="cantidad_inicial" DataSetColumn="cantidad_inicial" />
+              <Mapping SourceColumn="cantidad_existente" DataSetColumn="cantidad_existente" />
+              <Mapping SourceColumn="no_camara" DataSetColumn="no_camara" />
+              <Mapping SourceColumn="perimetro" DataSetColumn="perimetro" />
+              <Mapping SourceColumn="certisem" DataSetColumn="certisem" />
+              <Mapping SourceColumn="fecha_certisem" DataSetColumn="fecha_certisem" />
+              <Mapping SourceColumn="planta_g" DataSetColumn="planta_g" />
+              <Mapping SourceColumn="fecha_planta_g" DataSetColumn="fecha_planta_g" />
+              <Mapping SourceColumn="semilla_pura" DataSetColumn="semilla_pura" />
+              <Mapping SourceColumn="semilla_otro_cultivo" DataSetColumn="semilla_otro_cultivo" />
+              <Mapping SourceColumn="semilla_maleza" DataSetColumn="semilla_maleza" />
+              <Mapping SourceColumn="materia_inerte" DataSetColumn="materia_inerte" />
+              <Mapping SourceColumn="plantulas_normales_1" DataSetColumn="plantulas_normales_1" />
+              <Mapping SourceColumn="plantulas_anormales_1" DataSetColumn="plantulas_anormales_1" />
+              <Mapping SourceColumn="semilla_muerta_1" DataSetColumn="semilla_muerta_1" />
+              <Mapping SourceColumn="semillas_duras_1" DataSetColumn="semillas_duras_1" />
+              <Mapping SourceColumn="semillas_debiles_1" DataSetColumn="semillas_debiles_1" />
+              <Mapping SourceColumn="semilla_mezcla_1" DataSetColumn="semilla_mezcla_1" />
+              <Mapping SourceColumn="no_dias_1" DataSetColumn="no_dias_1" />
+              <Mapping SourceColumn="plantulas_normales_2" DataSetColumn="plantulas_normales_2" />
+              <Mapping SourceColumn="plantulas_anormales_2" DataSetColumn="plantulas_anormales_2" />
+              <Mapping SourceColumn="semilla_muerta_2" DataSetColumn="semilla_muerta_2" />
+              <Mapping SourceColumn="semillas_duras_2" DataSetColumn="semillas_duras_2" />
+              <Mapping SourceColumn="semillas_debiles_2" DataSetColumn="semillas_debiles_2" />
+              <Mapping SourceColumn="semilla_mezcla_2" DataSetColumn="semilla_mezcla_2" />
+              <Mapping SourceColumn="no_dias_2" DataSetColumn="no_dias_2" />
+              <Mapping SourceColumn="plantulas_normales_3" DataSetColumn="plantulas_normales_3" />
+              <Mapping SourceColumn="plantulas_anormales_3" DataSetColumn="plantulas_anormales_3" />
+              <Mapping SourceColumn="semilla_muerta_3" DataSetColumn="semilla_muerta_3" />
+              <Mapping SourceColumn="semillas_duras_3" DataSetColumn="semillas_duras_3" />
+              <Mapping SourceColumn="semillas_debiles_3" DataSetColumn="semillas_debiles_3" />
+              <Mapping SourceColumn="semilla_mezcla_3" DataSetColumn="semilla_mezcla_3" />
+              <Mapping SourceColumn="no_dias_3" DataSetColumn="no_dias_3" />
+              <Mapping SourceColumn="plantulas_normales_4" DataSetColumn="plantulas_normales_4" />
+              <Mapping SourceColumn="plantulas_anormales_4" DataSetColumn="plantulas_anormales_4" />
+              <Mapping SourceColumn="semilla_muerta_4" DataSetColumn="semilla_muerta_4" />
+              <Mapping SourceColumn="semillas_duras_4" DataSetColumn="semillas_duras_4" />
+              <Mapping SourceColumn="semillas_debiles_4" DataSetColumn="semillas_debiles_4" />
+              <Mapping SourceColumn="semilla_mezcla_4" DataSetColumn="semilla_mezcla_4" />
+              <Mapping SourceColumn="no_dias_4" DataSetColumn="no_dias_4" />
+              <Mapping SourceColumn="plantulas_normales_total" DataSetColumn="plantulas_normales_total" />
+              <Mapping SourceColumn="plantulas_anormales_total" DataSetColumn="plantulas_anormales_total" />
+              <Mapping SourceColumn="semilla_muerta_total" DataSetColumn="semilla_muerta_total" />
+              <Mapping SourceColumn="semillas_duras_total" DataSetColumn="semillas_duras_total" />
+              <Mapping SourceColumn="semillas_debiles_total" DataSetColumn="semillas_debiles_total" />
+              <Mapping SourceColumn="semilla_mezcla_total" DataSetColumn="semilla_mezcla_total" />
+              <Mapping SourceColumn="no_dias_total" DataSetColumn="no_dias_total" />
+              <Mapping SourceColumn="porcentaje_germnimacion" DataSetColumn="porcentaje_germnimacion" />
+              <Mapping SourceColumn="observaciones_g" DataSetColumn="observaciones_g" />
+              <Mapping SourceColumn="responsable_muestreo" DataSetColumn="responsable_muestreo" />
+              <Mapping SourceColumn="responsable_analisis" DataSetColumn="responsable_analisis" />
+              <Mapping SourceColumn="estado" DataSetColumn="estado" />
+              <Mapping SourceColumn="decision" DataSetColumn="decision" />
+              <Mapping SourceColumn="id_2" DataSetColumn="id_2" />
+              <Mapping SourceColumn="germinacion_firmada" DataSetColumn="germinacion_firmada" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -727,7 +850,7 @@ FROM     vista_acta_lote_multi</CommandText>
   <xs:element name="DataSetMultiplicador" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetMultiplicador" msprop:Generator_UserDSName="DataSetMultiplicador">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="sag_registro_senasa" msprop:Generator_TableClassName="sag_registro_senasaDataTable" msprop:Generator_TableVarName="tablesag_registro_senasa" msprop:Generator_RowChangedName="sag_registro_senasaRowChanged" msprop:Generator_TablePropName="sag_registro_senasa" msprop:Generator_RowDeletingName="sag_registro_senasaRowDeleting" msprop:Generator_RowChangingName="sag_registro_senasaRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_senasaRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_senasaRowDeleted" msprop:Generator_RowClassName="sag_registro_senasaRow" msprop:Generator_UserTableName="sag_registro_senasa" msprop:Generator_RowEvArgName="sag_registro_senasaRowChangeEvent">
+        <xs:element name="sag_registro_senasa" msprop:Generator_TableClassName="sag_registro_senasaDataTable" msprop:Generator_TableVarName="tablesag_registro_senasa" msprop:Generator_TablePropName="sag_registro_senasa" msprop:Generator_RowDeletingName="sag_registro_senasaRowDeleting" msprop:Generator_RowChangingName="sag_registro_senasaRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_senasaRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_senasaRowDeleted" msprop:Generator_UserTableName="sag_registro_senasa" msprop:Generator_RowChangedName="sag_registro_senasaRowChanged" msprop:Generator_RowEvArgName="sag_registro_senasaRowChangeEvent" msprop:Generator_RowClassName="sag_registro_senasaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -939,7 +1062,7 @@ FROM     vista_acta_lote_multi</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sag_registro_senasa1" msprop:Generator_TableClassName="sag_registro_senasa1DataTable" msprop:Generator_TableVarName="tablesag_registro_senasa1" msprop:Generator_TablePropName="sag_registro_senasa1" msprop:Generator_RowDeletingName="sag_registro_senasa1RowDeleting" msprop:Generator_RowChangingName="sag_registro_senasa1RowChanging" msprop:Generator_RowEvHandlerName="sag_registro_senasa1RowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_senasa1RowDeleted" msprop:Generator_UserTableName="sag_registro_senasa1" msprop:Generator_RowChangedName="sag_registro_senasa1RowChanged" msprop:Generator_RowEvArgName="sag_registro_senasa1RowChangeEvent" msprop:Generator_RowClassName="sag_registro_senasa1Row">
+        <xs:element name="sag_registro_senasa1" msprop:Generator_TableClassName="sag_registro_senasa1DataTable" msprop:Generator_TableVarName="tablesag_registro_senasa1" msprop:Generator_RowChangedName="sag_registro_senasa1RowChanged" msprop:Generator_TablePropName="sag_registro_senasa1" msprop:Generator_RowDeletingName="sag_registro_senasa1RowDeleting" msprop:Generator_RowChangingName="sag_registro_senasa1RowChanging" msprop:Generator_RowEvHandlerName="sag_registro_senasa1RowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_senasa1RowDeleted" msprop:Generator_RowClassName="sag_registro_senasa1Row" msprop:Generator_UserTableName="sag_registro_senasa1" msprop:Generator_RowEvArgName="sag_registro_senasa1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -1184,7 +1307,7 @@ FROM     vista_acta_lote_multi</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sag_registro_multiplicador" msprop:Generator_TableClassName="sag_registro_multiplicadorDataTable" msprop:Generator_TableVarName="tablesag_registro_multiplicador" msprop:Generator_RowChangedName="sag_registro_multiplicadorRowChanged" msprop:Generator_TablePropName="sag_registro_multiplicador" msprop:Generator_RowDeletingName="sag_registro_multiplicadorRowDeleting" msprop:Generator_RowChangingName="sag_registro_multiplicadorRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_multiplicadorRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_multiplicadorRowDeleted" msprop:Generator_RowClassName="sag_registro_multiplicadorRow" msprop:Generator_UserTableName="sag_registro_multiplicador" msprop:Generator_RowEvArgName="sag_registro_multiplicadorRowChangeEvent">
+        <xs:element name="sag_registro_multiplicador" msprop:Generator_TableClassName="sag_registro_multiplicadorDataTable" msprop:Generator_TableVarName="tablesag_registro_multiplicador" msprop:Generator_TablePropName="sag_registro_multiplicador" msprop:Generator_RowDeletingName="sag_registro_multiplicadorRowDeleting" msprop:Generator_RowChangingName="sag_registro_multiplicadorRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_multiplicadorRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_multiplicadorRowDeleted" msprop:Generator_UserTableName="sag_registro_multiplicador" msprop:Generator_RowChangedName="sag_registro_multiplicadorRowChanged" msprop:Generator_RowEvArgName="sag_registro_multiplicadorRowChangeEvent" msprop:Generator_RowClassName="sag_registro_multiplicadorRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -1312,7 +1435,7 @@ FROM     vista_acta_lote_multi</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sag_registro_lote" msprop:Generator_TableClassName="sag_registro_loteDataTable" msprop:Generator_TableVarName="tablesag_registro_lote" msprop:Generator_RowChangedName="sag_registro_loteRowChanged" msprop:Generator_TablePropName="sag_registro_lote" msprop:Generator_RowDeletingName="sag_registro_loteRowDeleting" msprop:Generator_RowChangingName="sag_registro_loteRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_loteRowDeleted" msprop:Generator_RowClassName="sag_registro_loteRow" msprop:Generator_UserTableName="sag_registro_lote" msprop:Generator_RowEvArgName="sag_registro_loteRowChangeEvent">
+        <xs:element name="sag_registro_lote" msprop:Generator_TableClassName="sag_registro_loteDataTable" msprop:Generator_TableVarName="tablesag_registro_lote" msprop:Generator_TablePropName="sag_registro_lote" msprop:Generator_RowDeletingName="sag_registro_loteRowDeleting" msprop:Generator_RowChangingName="sag_registro_loteRowChanging" msprop:Generator_RowEvHandlerName="sag_registro_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="sag_registro_loteRowDeleted" msprop:Generator_UserTableName="sag_registro_lote" msprop:Generator_RowChangedName="sag_registro_loteRowChanged" msprop:Generator_RowEvArgName="sag_registro_loteRowChangeEvent" msprop:Generator_RowClassName="sag_registro_loteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -1530,7 +1653,7 @@ FROM     vista_acta_lote_multi</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vista_multi_lote" msprop:Generator_TableClassName="vista_multi_loteDataTable" msprop:Generator_TableVarName="tablevista_multi_lote" msprop:Generator_TablePropName="vista_multi_lote" msprop:Generator_RowDeletingName="vista_multi_loteRowDeleting" msprop:Generator_RowChangingName="vista_multi_loteRowChanging" msprop:Generator_RowEvHandlerName="vista_multi_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_multi_loteRowDeleted" msprop:Generator_UserTableName="vista_multi_lote" msprop:Generator_RowChangedName="vista_multi_loteRowChanged" msprop:Generator_RowEvArgName="vista_multi_loteRowChangeEvent" msprop:Generator_RowClassName="vista_multi_loteRow">
+        <xs:element name="vista_multi_lote" msprop:Generator_TableClassName="vista_multi_loteDataTable" msprop:Generator_TableVarName="tablevista_multi_lote" msprop:Generator_RowChangedName="vista_multi_loteRowChanged" msprop:Generator_TablePropName="vista_multi_lote" msprop:Generator_RowDeletingName="vista_multi_loteRowDeleting" msprop:Generator_RowChangingName="vista_multi_loteRowChanging" msprop:Generator_RowEvHandlerName="vista_multi_loteRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_multi_loteRowDeleted" msprop:Generator_RowClassName="vista_multi_loteRow" msprop:Generator_UserTableName="vista_multi_lote" msprop:Generator_RowEvArgName="vista_multi_loteRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_MULTI" msprop:Generator_ColumnVarNameInTable="columnID_MULTI" msprop:Generator_ColumnPropNameInRow="ID_MULTI" msprop:Generator_ColumnPropNameInTable="ID_MULTIColumn" msprop:Generator_UserColumnName="ID_MULTI" type="xs:int" />
@@ -1763,7 +1886,7 @@ FROM     vista_acta_lote_multi</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vista_acta_lote_multi" msprop:Generator_TableClassName="vista_acta_lote_multiDataTable" msprop:Generator_TableVarName="tablevista_acta_lote_multi" msprop:Generator_TablePropName="vista_acta_lote_multi" msprop:Generator_RowDeletingName="vista_acta_lote_multiRowDeleting" msprop:Generator_RowChangingName="vista_acta_lote_multiRowChanging" msprop:Generator_RowEvHandlerName="vista_acta_lote_multiRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_acta_lote_multiRowDeleted" msprop:Generator_UserTableName="vista_acta_lote_multi" msprop:Generator_RowChangedName="vista_acta_lote_multiRowChanged" msprop:Generator_RowEvArgName="vista_acta_lote_multiRowChangeEvent" msprop:Generator_RowClassName="vista_acta_lote_multiRow">
+        <xs:element name="vista_acta_lote_multi" msprop:Generator_TableClassName="vista_acta_lote_multiDataTable" msprop:Generator_TableVarName="tablevista_acta_lote_multi" msprop:Generator_RowChangedName="vista_acta_lote_multiRowChanged" msprop:Generator_TablePropName="vista_acta_lote_multi" msprop:Generator_RowDeletingName="vista_acta_lote_multiRowDeleting" msprop:Generator_RowChangingName="vista_acta_lote_multiRowChanging" msprop:Generator_RowEvHandlerName="vista_acta_lote_multiRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_acta_lote_multiRowDeleted" msprop:Generator_RowClassName="vista_acta_lote_multiRow" msprop:Generator_UserTableName="vista_acta_lote_multi" msprop:Generator_RowEvArgName="vista_acta_lote_multiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_MULTI" msprop:Generator_ColumnVarNameInTable="columnID_MULTI" msprop:Generator_ColumnPropNameInRow="ID_MULTI" msprop:Generator_ColumnPropNameInTable="ID_MULTIColumn" msprop:Generator_UserColumnName="ID_MULTI" type="xs:int" />
@@ -1919,7 +2042,7 @@ FROM     vista_acta_lote_multi</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="vista_ficha_informe" msprop:Generator_TableClassName="vista_ficha_informeDataTable" msprop:Generator_TableVarName="tablevista_ficha_informe" msprop:Generator_RowChangedName="vista_ficha_informeRowChanged" msprop:Generator_TablePropName="vista_ficha_informe" msprop:Generator_RowDeletingName="vista_ficha_informeRowDeleting" msprop:Generator_RowChangingName="vista_ficha_informeRowChanging" msprop:Generator_RowEvHandlerName="vista_ficha_informeRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_ficha_informeRowDeleted" msprop:Generator_RowClassName="vista_ficha_informeRow" msprop:Generator_UserTableName="vista_ficha_informe" msprop:Generator_RowEvArgName="vista_ficha_informeRowChangeEvent">
+        <xs:element name="vista_ficha_informe" msprop:Generator_TableClassName="vista_ficha_informeDataTable" msprop:Generator_TableVarName="tablevista_ficha_informe" msprop:Generator_TablePropName="vista_ficha_informe" msprop:Generator_RowDeletingName="vista_ficha_informeRowDeleting" msprop:Generator_RowChangingName="vista_ficha_informeRowChanging" msprop:Generator_RowEvHandlerName="vista_ficha_informeRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_ficha_informeRowDeleted" msprop:Generator_UserTableName="vista_ficha_informe" msprop:Generator_RowChangedName="vista_ficha_informeRowChanged" msprop:Generator_RowEvArgName="vista_ficha_informeRowChangeEvent" msprop:Generator_RowClassName="vista_ficha_informeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_MULTI" msprop:Generator_ColumnVarNameInTable="columnID_MULTI" msprop:Generator_ColumnPropNameInRow="ID_MULTI" msprop:Generator_ColumnPropNameInTable="ID_MULTIColumn" msprop:Generator_UserColumnName="ID_MULTI" type="xs:int" />
@@ -2082,6 +2205,318 @@ FROM     vista_acta_lote_multi</CommandText>
               </xs:element>
               <xs:element name="peso_lb_ficha" msprop:Generator_ColumnVarNameInTable="columnpeso_lb_ficha" msprop:Generator_ColumnPropNameInRow="peso_lb_ficha" msprop:Generator_ColumnPropNameInTable="peso_lb_fichaColumn" msprop:Generator_UserColumnName="peso_lb_ficha" type="xs:decimal" minOccurs="0" />
               <xs:element name="cantidad_sacos_ficha" msprop:Generator_ColumnVarNameInTable="columncantidad_sacos_ficha" msprop:Generator_ColumnPropNameInRow="cantidad_sacos_ficha" msprop:Generator_ColumnPropNameInTable="cantidad_sacos_fichaColumn" msprop:Generator_UserColumnName="cantidad_sacos_ficha" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vista_acta_lote_multi_germ" msprop:Generator_TableClassName="vista_acta_lote_multi_germDataTable" msprop:Generator_TableVarName="tablevista_acta_lote_multi_germ" msprop:Generator_TablePropName="vista_acta_lote_multi_germ" msprop:Generator_RowDeletingName="vista_acta_lote_multi_germRowDeleting" msprop:Generator_RowChangingName="vista_acta_lote_multi_germRowChanging" msprop:Generator_RowEvHandlerName="vista_acta_lote_multi_germRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_acta_lote_multi_germRowDeleted" msprop:Generator_UserTableName="vista_acta_lote_multi_germ" msprop:Generator_RowChangedName="vista_acta_lote_multi_germRowChanged" msprop:Generator_RowEvArgName="vista_acta_lote_multi_germRowChangeEvent" msprop:Generator_RowClassName="vista_acta_lote_multi_germRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_MULTI" msprop:Generator_ColumnVarNameInTable="columnID_MULTI" msprop:Generator_ColumnPropNameInRow="ID_MULTI" msprop:Generator_ColumnPropNameInTable="ID_MULTIColumn" msprop:Generator_UserColumnName="ID_MULTI" type="xs:int" />
+              <xs:element name="NOMBRE_MULTIPLICADOR" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_MULTIPLICADOR" msprop:Generator_ColumnPropNameInRow="NOMBRE_MULTIPLICADOR" msprop:Generator_ColumnPropNameInTable="NOMBRE_MULTIPLICADORColumn" msprop:Generator_UserColumnName="NOMBRE_MULTIPLICADOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="REPRESENTANTE_LEGAL" msprop:Generator_ColumnVarNameInTable="columnREPRESENTANTE_LEGAL" msprop:Generator_ColumnPropNameInRow="REPRESENTANTE_LEGAL" msprop:Generator_ColumnPropNameInTable="REPRESENTANTE_LEGALColumn" msprop:Generator_UserColumnName="REPRESENTANTE_LEGAL" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TELEFONO_MULTIPLICADOR" msprop:Generator_ColumnVarNameInTable="columnTELEFONO_MULTIPLICADOR" msprop:Generator_ColumnPropNameInRow="TELEFONO_MULTIPLICADOR" msprop:Generator_ColumnPropNameInTable="TELEFONO_MULTIPLICADORColumn" msprop:Generator_UserColumnName="TELEFONO_MULTIPLICADOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEPARTAMENTO" msprop:Generator_ColumnVarNameInTable="columnDEPARTAMENTO" msprop:Generator_ColumnPropNameInRow="DEPARTAMENTO" msprop:Generator_ColumnPropNameInTable="DEPARTAMENTOColumn" msprop:Generator_UserColumnName="DEPARTAMENTO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MUNICIPIO" msprop:Generator_ColumnVarNameInTable="columnMUNICIPIO" msprop:Generator_ColumnPropNameInRow="MUNICIPIO" msprop:Generator_ColumnPropNameInTable="MUNICIPIOColumn" msprop:Generator_UserColumnName="MUNICIPIO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ALDEA" msprop:Generator_ColumnVarNameInTable="columnALDEA" msprop:Generator_ColumnPropNameInRow="ALDEA" msprop:Generator_ColumnPropNameInTable="ALDEAColumn" msprop:Generator_UserColumnName="ALDEA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CASERIO" msprop:Generator_ColumnVarNameInTable="columnCASERIO" msprop:Generator_ColumnPropNameInRow="CASERIO" msprop:Generator_ColumnPropNameInTable="CASERIOColumn" msprop:Generator_UserColumnName="CASERIO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ESTADO_MULTI" msprop:Generator_ColumnVarNameInTable="columnESTADO_MULTI" msprop:Generator_ColumnPropNameInRow="ESTADO_MULTI" msprop:Generator_ColumnPropNameInTable="ESTADO_MULTIColumn" msprop:Generator_UserColumnName="ESTADO_MULTI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_LOTE" msprop:Generator_ColumnVarNameInTable="columnID_LOTE" msprop:Generator_ColumnPropNameInRow="ID_LOTE" msprop:Generator_ColumnPropNameInTable="ID_LOTEColumn" msprop:Generator_UserColumnName="ID_LOTE" type="xs:int" />
+              <xs:element name="CATEGORIA_ORIGEN" msprop:Generator_ColumnVarNameInTable="columnCATEGORIA_ORIGEN" msprop:Generator_ColumnPropNameInRow="CATEGORIA_ORIGEN" msprop:Generator_ColumnPropNameInTable="CATEGORIA_ORIGENColumn" msprop:Generator_UserColumnName="CATEGORIA_ORIGEN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TIPO_CULTIVO" msprop:Generator_ColumnVarNameInTable="columnTIPO_CULTIVO" msprop:Generator_ColumnPropNameInRow="TIPO_CULTIVO" msprop:Generator_ColumnPropNameInTable="TIPO_CULTIVOColumn" msprop:Generator_UserColumnName="TIPO_CULTIVO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VARIEDAD" msprop:Generator_ColumnVarNameInTable="columnVARIEDAD" msprop:Generator_ColumnPropNameInRow="VARIEDAD" msprop:Generator_ColumnPropNameInTable="VARIEDADColumn" msprop:Generator_UserColumnName="VARIEDAD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRODUCTOR" msprop:Generator_ColumnVarNameInTable="columnPRODUCTOR" msprop:Generator_ColumnPropNameInRow="PRODUCTOR" msprop:Generator_ColumnPropNameInTable="PRODUCTORColumn" msprop:Generator_UserColumnName="PRODUCTOR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NO_LOTE" msprop:Generator_ColumnVarNameInTable="columnNO_LOTE" msprop:Generator_ColumnPropNameInRow="NO_LOTE" msprop:Generator_ColumnPropNameInTable="NO_LOTEColumn" msprop:Generator_UserColumnName="NO_LOTE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ESTADO_LOTE" msprop:Generator_ColumnVarNameInTable="columnESTADO_LOTE" msprop:Generator_ColumnPropNameInRow="ESTADO_LOTE" msprop:Generator_ColumnPropNameInTable="ESTADO_LOTEColumn" msprop:Generator_UserColumnName="ESTADO_LOTE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ANO_PRODU" msprop:Generator_ColumnVarNameInTable="columnANO_PRODU" msprop:Generator_ColumnPropNameInRow="ANO_PRODU" msprop:Generator_ColumnPropNameInTable="ANO_PRODUColumn" msprop:Generator_UserColumnName="ANO_PRODU" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TIPO_SEMILLA" msprop:Generator_ColumnVarNameInTable="columnTIPO_SEMILLA" msprop:Generator_ColumnPropNameInRow="TIPO_SEMILLA" msprop:Generator_ColumnPropNameInTable="TIPO_SEMILLAColumn" msprop:Generator_UserColumnName="TIPO_SEMILLA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_ACTA" msprop:Generator_ColumnVarNameInTable="columnID_ACTA" msprop:Generator_ColumnPropNameInRow="ID_ACTA" msprop:Generator_ColumnPropNameInTable="ID_ACTAColumn" msprop:Generator_UserColumnName="ID_ACTA" type="xs:int" />
+              <xs:element name="FECHA_ACTA" msprop:Generator_ColumnVarNameInTable="columnFECHA_ACTA" msprop:Generator_ColumnPropNameInRow="FECHA_ACTA" msprop:Generator_ColumnPropNameInTable="FECHA_ACTAColumn" msprop:Generator_UserColumnName="FECHA_ACTA" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PORCENTAJE_HUMEDAD" msprop:Generator_ColumnVarNameInTable="columnPORCENTAJE_HUMEDAD" msprop:Generator_ColumnPropNameInRow="PORCENTAJE_HUMEDAD" msprop:Generator_ColumnPropNameInTable="PORCENTAJE_HUMEDADColumn" msprop:Generator_UserColumnName="PORCENTAJE_HUMEDAD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ESTADO_SENA" msprop:Generator_ColumnVarNameInTable="columnESTADO_SENA" msprop:Generator_ColumnPropNameInRow="ESTADO_SENA" msprop:Generator_ColumnPropNameInTable="ESTADO_SENAColumn" msprop:Generator_UserColumnName="ESTADO_SENA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NO_SACOS" msprop:Generator_ColumnVarNameInTable="columnNO_SACOS" msprop:Generator_ColumnPropNameInRow="NO_SACOS" msprop:Generator_ColumnPropNameInTable="NO_SACOSColumn" msprop:Generator_UserColumnName="NO_SACOS" type="xs:int" minOccurs="0" />
+              <xs:element name="PESO_HUMEDO_QQ" msprop:Generator_ColumnVarNameInTable="columnPESO_HUMEDO_QQ" msprop:Generator_ColumnPropNameInRow="PESO_HUMEDO_QQ" msprop:Generator_ColumnPropNameInTable="PESO_HUMEDO_QQColumn" msprop:Generator_UserColumnName="PESO_HUMEDO_QQ" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" msprop:Generator_ColumnVarNameInTable="columnPESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" msprop:Generator_ColumnPropNameInRow="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" msprop:Generator_ColumnPropNameInTable="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDADColumn" msprop:Generator_UserColumnName="PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEMILLA_QQ_ORO" msprop:Generator_ColumnVarNameInTable="columnSEMILLA_QQ_ORO" msprop:Generator_ColumnPropNameInRow="SEMILLA_QQ_ORO" msprop:Generator_ColumnPropNameInTable="SEMILLA_QQ_OROColumn" msprop:Generator_UserColumnName="SEMILLA_QQ_ORO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEMILLA_QQ_CONSUMO" msprop:Generator_ColumnVarNameInTable="columnSEMILLA_QQ_CONSUMO" msprop:Generator_ColumnPropNameInRow="SEMILLA_QQ_CONSUMO" msprop:Generator_ColumnPropNameInTable="SEMILLA_QQ_CONSUMOColumn" msprop:Generator_UserColumnName="SEMILLA_QQ_CONSUMO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEMILLA_QQ_BASURA" msprop:Generator_ColumnVarNameInTable="columnSEMILLA_QQ_BASURA" msprop:Generator_ColumnPropNameInRow="SEMILLA_QQ_BASURA" msprop:Generator_ColumnPropNameInTable="SEMILLA_QQ_BASURAColumn" msprop:Generator_UserColumnName="SEMILLA_QQ_BASURA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SEMILLA_QQ_TOTAL" msprop:Generator_ColumnVarNameInTable="columnSEMILLA_QQ_TOTAL" msprop:Generator_ColumnPropNameInRow="SEMILLA_QQ_TOTAL" msprop:Generator_ColumnPropNameInTable="SEMILLA_QQ_TOTALColumn" msprop:Generator_UserColumnName="SEMILLA_QQ_TOTAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="OBSERVACIONES" msprop:Generator_ColumnVarNameInTable="columnOBSERVACIONES" msprop:Generator_ColumnPropNameInRow="OBSERVACIONES" msprop:Generator_ColumnPropNameInTable="OBSERVACIONESColumn" msprop:Generator_UserColumnName="OBSERVACIONES" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TARA" msprop:Generator_ColumnVarNameInTable="columnTARA" msprop:Generator_ColumnPropNameInRow="TARA" msprop:Generator_ColumnPropNameInTable="TARAColumn" msprop:Generator_UserColumnName="TARA" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CICLO_ACTA" msprop:Generator_ColumnVarNameInTable="columnCICLO_ACTA" msprop:Generator_ColumnPropNameInRow="CICLO_ACTA" msprop:Generator_ColumnPropNameInTable="CICLO_ACTAColumn" msprop:Generator_UserColumnName="CICLO_ACTA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PESO_NETO" msprop:Generator_ColumnVarNameInTable="columnPESO_NETO" msprop:Generator_ColumnPropNameInRow="PESO_NETO" msprop:Generator_ColumnPropNameInTable="PESO_NETOColumn" msprop:Generator_UserColumnName="PESO_NETO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PESO_LB" msprop:Generator_ColumnVarNameInTable="columnPESO_LB" msprop:Generator_ColumnPropNameInRow="PESO_LB" msprop:Generator_ColumnPropNameInTable="PESO_LBColumn" msprop:Generator_UserColumnName="PESO_LB" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LOTE_REGISTRADO" msprop:Generator_ColumnVarNameInTable="columnLOTE_REGISTRADO" msprop:Generator_ColumnPropNameInRow="LOTE_REGISTRADO" msprop:Generator_ColumnPropNameInTable="LOTE_REGISTRADOColumn" msprop:Generator_UserColumnName="LOTE_REGISTRADO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CATEGORIA_REGISTRADO" msprop:Generator_ColumnVarNameInTable="columnCATEGORIA_REGISTRADO" msprop:Generator_ColumnPropNameInRow="CATEGORIA_REGISTRADO" msprop:Generator_ColumnPropNameInTable="CATEGORIA_REGISTRADOColumn" msprop:Generator_UserColumnName="CATEGORIA_REGISTRADO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ACTA_FIRMADA" msprop:Generator_ColumnVarNameInTable="columnACTA_FIRMADA" msprop:Generator_ColumnPropNameInRow="ACTA_FIRMADA" msprop:Generator_ColumnPropNameInTable="ACTA_FIRMADAColumn" msprop:Generator_UserColumnName="ACTA_FIRMADA" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="FICHA_FIRMADO" msprop:Generator_ColumnVarNameInTable="columnFICHA_FIRMADO" msprop:Generator_ColumnPropNameInRow="FICHA_FIRMADO" msprop:Generator_ColumnPropNameInTable="FICHA_FIRMADOColumn" msprop:Generator_UserColumnName="FICHA_FIRMADO" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="CUADRO_FIRMADO" msprop:Generator_ColumnVarNameInTable="columnCUADRO_FIRMADO" msprop:Generator_ColumnPropNameInRow="CUADRO_FIRMADO" msprop:Generator_ColumnPropNameInTable="CUADRO_FIRMADOColumn" msprop:Generator_UserColumnName="CUADRO_FIRMADO" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="archivo_lote_senasa" msprop:Generator_ColumnVarNameInTable="columnarchivo_lote_senasa" msprop:Generator_ColumnPropNameInRow="archivo_lote_senasa" msprop:Generator_ColumnPropNameInTable="archivo_lote_senasaColumn" msprop:Generator_UserColumnName="archivo_lote_senasa" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="RENDIMIETO_ORO_PESO" msprop:Generator_ColumnVarNameInTable="columnRENDIMIETO_ORO_PESO" msprop:Generator_ColumnPropNameInRow="RENDIMIETO_ORO_PESO" msprop:Generator_ColumnPropNameInTable="RENDIMIETO_ORO_PESOColumn" msprop:Generator_UserColumnName="RENDIMIETO_ORO_PESO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="decha_elaboracion_g" msprop:Generator_ColumnVarNameInTable="columndecha_elaboracion_g" msprop:Generator_ColumnPropNameInRow="decha_elaboracion_g" msprop:Generator_ColumnPropNameInTable="decha_elaboracion_gColumn" msprop:Generator_UserColumnName="decha_elaboracion_g" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="no_envase" msprop:Generator_ColumnVarNameInTable="columnno_envase" msprop:Generator_ColumnPropNameInRow="no_envase" msprop:Generator_ColumnPropNameInTable="no_envaseColumn" msprop:Generator_UserColumnName="no_envase" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="peso_inicial_g" msprop:Generator_ColumnVarNameInTable="columnpeso_inicial_g" msprop:Generator_ColumnPropNameInRow="peso_inicial_g" msprop:Generator_ColumnPropNameInTable="peso_inicial_gColumn" msprop:Generator_UserColumnName="peso_inicial_g" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tipo_granel" msprop:Generator_ColumnVarNameInTable="columntipo_granel" msprop:Generator_ColumnPropNameInRow="tipo_granel" msprop:Generator_ColumnPropNameInTable="tipo_granelColumn" msprop:Generator_UserColumnName="tipo_granel" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fecha_recibo_g" msprop:Generator_ColumnVarNameInTable="columnfecha_recibo_g" msprop:Generator_ColumnPropNameInRow="fecha_recibo_g" msprop:Generator_ColumnPropNameInTable="fecha_recibo_gColumn" msprop:Generator_UserColumnName="fecha_recibo_g" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="fecha_muestreo_g" msprop:Generator_ColumnVarNameInTable="columnfecha_muestreo_g" msprop:Generator_ColumnPropNameInRow="fecha_muestreo_g" msprop:Generator_ColumnPropNameInTable="fecha_muestreo_gColumn" msprop:Generator_UserColumnName="fecha_muestreo_g" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="humedad_final" msprop:Generator_ColumnVarNameInTable="columnhumedad_final" msprop:Generator_ColumnPropNameInRow="humedad_final" msprop:Generator_ColumnPropNameInTable="humedad_finalColumn" msprop:Generator_UserColumnName="humedad_final" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fecha_evaluacion_g" msprop:Generator_ColumnVarNameInTable="columnfecha_evaluacion_g" msprop:Generator_ColumnPropNameInRow="fecha_evaluacion_g" msprop:Generator_ColumnPropNameInTable="fecha_evaluacion_gColumn" msprop:Generator_UserColumnName="fecha_evaluacion_g" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="tipo_envase" msprop:Generator_ColumnVarNameInTable="columntipo_envase" msprop:Generator_ColumnPropNameInRow="tipo_envase" msprop:Generator_ColumnPropNameInTable="tipo_envaseColumn" msprop:Generator_UserColumnName="tipo_envase" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fase_g" msprop:Generator_ColumnVarNameInTable="columnfase_g" msprop:Generator_ColumnPropNameInRow="fase_g" msprop:Generator_ColumnPropNameInTable="fase_gColumn" msprop:Generator_UserColumnName="fase_g" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tamano_maiz" msprop:Generator_ColumnVarNameInTable="columntamano_maiz" msprop:Generator_ColumnPropNameInRow="tamano_maiz" msprop:Generator_ColumnPropNameInTable="tamano_maizColumn" msprop:Generator_UserColumnName="tamano_maiz" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cantidad_inicial" msprop:Generator_ColumnVarNameInTable="columncantidad_inicial" msprop:Generator_ColumnPropNameInRow="cantidad_inicial" msprop:Generator_ColumnPropNameInTable="cantidad_inicialColumn" msprop:Generator_UserColumnName="cantidad_inicial" type="xs:decimal" minOccurs="0" />
+              <xs:element name="cantidad_existente" msprop:Generator_ColumnVarNameInTable="columncantidad_existente" msprop:Generator_ColumnPropNameInRow="cantidad_existente" msprop:Generator_ColumnPropNameInTable="cantidad_existenteColumn" msprop:Generator_UserColumnName="cantidad_existente" type="xs:decimal" minOccurs="0" />
+              <xs:element name="no_camara" msprop:Generator_ColumnVarNameInTable="columnno_camara" msprop:Generator_ColumnPropNameInRow="no_camara" msprop:Generator_ColumnPropNameInTable="no_camaraColumn" msprop:Generator_UserColumnName="no_camara" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="perimetro" msprop:Generator_ColumnVarNameInTable="columnperimetro" msprop:Generator_ColumnPropNameInRow="perimetro" msprop:Generator_ColumnPropNameInTable="perimetroColumn" msprop:Generator_UserColumnName="perimetro" type="xs:decimal" minOccurs="0" />
+              <xs:element name="certisem" msprop:Generator_ColumnVarNameInTable="columncertisem" msprop:Generator_ColumnPropNameInRow="certisem" msprop:Generator_ColumnPropNameInTable="certisemColumn" msprop:Generator_UserColumnName="certisem" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fecha_certisem" msprop:Generator_ColumnVarNameInTable="columnfecha_certisem" msprop:Generator_ColumnPropNameInRow="fecha_certisem" msprop:Generator_ColumnPropNameInTable="fecha_certisemColumn" msprop:Generator_UserColumnName="fecha_certisem" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="planta_g" msprop:Generator_ColumnVarNameInTable="columnplanta_g" msprop:Generator_ColumnPropNameInRow="planta_g" msprop:Generator_ColumnPropNameInTable="planta_gColumn" msprop:Generator_UserColumnName="planta_g" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fecha_planta_g" msprop:Generator_ColumnVarNameInTable="columnfecha_planta_g" msprop:Generator_ColumnPropNameInRow="fecha_planta_g" msprop:Generator_ColumnPropNameInTable="fecha_planta_gColumn" msprop:Generator_UserColumnName="fecha_planta_g" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="semilla_pura" msprop:Generator_ColumnVarNameInTable="columnsemilla_pura" msprop:Generator_ColumnPropNameInRow="semilla_pura" msprop:Generator_ColumnPropNameInTable="semilla_puraColumn" msprop:Generator_UserColumnName="semilla_pura" type="xs:decimal" minOccurs="0" />
+              <xs:element name="semilla_otro_cultivo" msprop:Generator_ColumnVarNameInTable="columnsemilla_otro_cultivo" msprop:Generator_ColumnPropNameInRow="semilla_otro_cultivo" msprop:Generator_ColumnPropNameInTable="semilla_otro_cultivoColumn" msprop:Generator_UserColumnName="semilla_otro_cultivo" type="xs:decimal" minOccurs="0" />
+              <xs:element name="semilla_maleza" msprop:Generator_ColumnVarNameInTable="columnsemilla_maleza" msprop:Generator_ColumnPropNameInRow="semilla_maleza" msprop:Generator_ColumnPropNameInTable="semilla_malezaColumn" msprop:Generator_UserColumnName="semilla_maleza" type="xs:decimal" minOccurs="0" />
+              <xs:element name="materia_inerte" msprop:Generator_ColumnVarNameInTable="columnmateria_inerte" msprop:Generator_ColumnPropNameInRow="materia_inerte" msprop:Generator_ColumnPropNameInTable="materia_inerteColumn" msprop:Generator_UserColumnName="materia_inerte" type="xs:decimal" minOccurs="0" />
+              <xs:element name="plantulas_normales_1" msprop:Generator_ColumnVarNameInTable="columnplantulas_normales_1" msprop:Generator_ColumnPropNameInRow="plantulas_normales_1" msprop:Generator_ColumnPropNameInTable="plantulas_normales_1Column" msprop:Generator_UserColumnName="plantulas_normales_1" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_anormales_1" msprop:Generator_ColumnVarNameInTable="columnplantulas_anormales_1" msprop:Generator_ColumnPropNameInRow="plantulas_anormales_1" msprop:Generator_ColumnPropNameInTable="plantulas_anormales_1Column" msprop:Generator_UserColumnName="plantulas_anormales_1" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_muerta_1" msprop:Generator_ColumnVarNameInTable="columnsemilla_muerta_1" msprop:Generator_ColumnPropNameInRow="semilla_muerta_1" msprop:Generator_ColumnPropNameInTable="semilla_muerta_1Column" msprop:Generator_UserColumnName="semilla_muerta_1" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_duras_1" msprop:Generator_ColumnVarNameInTable="columnsemillas_duras_1" msprop:Generator_ColumnPropNameInRow="semillas_duras_1" msprop:Generator_ColumnPropNameInTable="semillas_duras_1Column" msprop:Generator_UserColumnName="semillas_duras_1" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_debiles_1" msprop:Generator_ColumnVarNameInTable="columnsemillas_debiles_1" msprop:Generator_ColumnPropNameInRow="semillas_debiles_1" msprop:Generator_ColumnPropNameInTable="semillas_debiles_1Column" msprop:Generator_UserColumnName="semillas_debiles_1" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_mezcla_1" msprop:Generator_ColumnVarNameInTable="columnsemilla_mezcla_1" msprop:Generator_ColumnPropNameInRow="semilla_mezcla_1" msprop:Generator_ColumnPropNameInTable="semilla_mezcla_1Column" msprop:Generator_UserColumnName="semilla_mezcla_1" type="xs:int" minOccurs="0" />
+              <xs:element name="no_dias_1" msprop:Generator_ColumnVarNameInTable="columnno_dias_1" msprop:Generator_ColumnPropNameInRow="no_dias_1" msprop:Generator_ColumnPropNameInTable="no_dias_1Column" msprop:Generator_UserColumnName="no_dias_1" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_normales_2" msprop:Generator_ColumnVarNameInTable="columnplantulas_normales_2" msprop:Generator_ColumnPropNameInRow="plantulas_normales_2" msprop:Generator_ColumnPropNameInTable="plantulas_normales_2Column" msprop:Generator_UserColumnName="plantulas_normales_2" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_anormales_2" msprop:Generator_ColumnVarNameInTable="columnplantulas_anormales_2" msprop:Generator_ColumnPropNameInRow="plantulas_anormales_2" msprop:Generator_ColumnPropNameInTable="plantulas_anormales_2Column" msprop:Generator_UserColumnName="plantulas_anormales_2" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_muerta_2" msprop:Generator_ColumnVarNameInTable="columnsemilla_muerta_2" msprop:Generator_ColumnPropNameInRow="semilla_muerta_2" msprop:Generator_ColumnPropNameInTable="semilla_muerta_2Column" msprop:Generator_UserColumnName="semilla_muerta_2" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_duras_2" msprop:Generator_ColumnVarNameInTable="columnsemillas_duras_2" msprop:Generator_ColumnPropNameInRow="semillas_duras_2" msprop:Generator_ColumnPropNameInTable="semillas_duras_2Column" msprop:Generator_UserColumnName="semillas_duras_2" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_debiles_2" msprop:Generator_ColumnVarNameInTable="columnsemillas_debiles_2" msprop:Generator_ColumnPropNameInRow="semillas_debiles_2" msprop:Generator_ColumnPropNameInTable="semillas_debiles_2Column" msprop:Generator_UserColumnName="semillas_debiles_2" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_mezcla_2" msprop:Generator_ColumnVarNameInTable="columnsemilla_mezcla_2" msprop:Generator_ColumnPropNameInRow="semilla_mezcla_2" msprop:Generator_ColumnPropNameInTable="semilla_mezcla_2Column" msprop:Generator_UserColumnName="semilla_mezcla_2" type="xs:int" minOccurs="0" />
+              <xs:element name="no_dias_2" msprop:Generator_ColumnVarNameInTable="columnno_dias_2" msprop:Generator_ColumnPropNameInRow="no_dias_2" msprop:Generator_ColumnPropNameInTable="no_dias_2Column" msprop:Generator_UserColumnName="no_dias_2" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_normales_3" msprop:Generator_ColumnVarNameInTable="columnplantulas_normales_3" msprop:Generator_ColumnPropNameInRow="plantulas_normales_3" msprop:Generator_ColumnPropNameInTable="plantulas_normales_3Column" msprop:Generator_UserColumnName="plantulas_normales_3" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_anormales_3" msprop:Generator_ColumnVarNameInTable="columnplantulas_anormales_3" msprop:Generator_ColumnPropNameInRow="plantulas_anormales_3" msprop:Generator_ColumnPropNameInTable="plantulas_anormales_3Column" msprop:Generator_UserColumnName="plantulas_anormales_3" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_muerta_3" msprop:Generator_ColumnVarNameInTable="columnsemilla_muerta_3" msprop:Generator_ColumnPropNameInRow="semilla_muerta_3" msprop:Generator_ColumnPropNameInTable="semilla_muerta_3Column" msprop:Generator_UserColumnName="semilla_muerta_3" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_duras_3" msprop:Generator_ColumnVarNameInTable="columnsemillas_duras_3" msprop:Generator_ColumnPropNameInRow="semillas_duras_3" msprop:Generator_ColumnPropNameInTable="semillas_duras_3Column" msprop:Generator_UserColumnName="semillas_duras_3" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_debiles_3" msprop:Generator_ColumnVarNameInTable="columnsemillas_debiles_3" msprop:Generator_ColumnPropNameInRow="semillas_debiles_3" msprop:Generator_ColumnPropNameInTable="semillas_debiles_3Column" msprop:Generator_UserColumnName="semillas_debiles_3" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_mezcla_3" msprop:Generator_ColumnVarNameInTable="columnsemilla_mezcla_3" msprop:Generator_ColumnPropNameInRow="semilla_mezcla_3" msprop:Generator_ColumnPropNameInTable="semilla_mezcla_3Column" msprop:Generator_UserColumnName="semilla_mezcla_3" type="xs:int" minOccurs="0" />
+              <xs:element name="no_dias_3" msprop:Generator_ColumnVarNameInTable="columnno_dias_3" msprop:Generator_ColumnPropNameInRow="no_dias_3" msprop:Generator_ColumnPropNameInTable="no_dias_3Column" msprop:Generator_UserColumnName="no_dias_3" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_normales_4" msprop:Generator_ColumnVarNameInTable="columnplantulas_normales_4" msprop:Generator_ColumnPropNameInRow="plantulas_normales_4" msprop:Generator_ColumnPropNameInTable="plantulas_normales_4Column" msprop:Generator_UserColumnName="plantulas_normales_4" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_anormales_4" msprop:Generator_ColumnVarNameInTable="columnplantulas_anormales_4" msprop:Generator_ColumnPropNameInRow="plantulas_anormales_4" msprop:Generator_ColumnPropNameInTable="plantulas_anormales_4Column" msprop:Generator_UserColumnName="plantulas_anormales_4" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_muerta_4" msprop:Generator_ColumnVarNameInTable="columnsemilla_muerta_4" msprop:Generator_ColumnPropNameInRow="semilla_muerta_4" msprop:Generator_ColumnPropNameInTable="semilla_muerta_4Column" msprop:Generator_UserColumnName="semilla_muerta_4" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_duras_4" msprop:Generator_ColumnVarNameInTable="columnsemillas_duras_4" msprop:Generator_ColumnPropNameInRow="semillas_duras_4" msprop:Generator_ColumnPropNameInTable="semillas_duras_4Column" msprop:Generator_UserColumnName="semillas_duras_4" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_debiles_4" msprop:Generator_ColumnVarNameInTable="columnsemillas_debiles_4" msprop:Generator_ColumnPropNameInRow="semillas_debiles_4" msprop:Generator_ColumnPropNameInTable="semillas_debiles_4Column" msprop:Generator_UserColumnName="semillas_debiles_4" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_mezcla_4" msprop:Generator_ColumnVarNameInTable="columnsemilla_mezcla_4" msprop:Generator_ColumnPropNameInRow="semilla_mezcla_4" msprop:Generator_ColumnPropNameInTable="semilla_mezcla_4Column" msprop:Generator_UserColumnName="semilla_mezcla_4" type="xs:int" minOccurs="0" />
+              <xs:element name="no_dias_4" msprop:Generator_ColumnVarNameInTable="columnno_dias_4" msprop:Generator_ColumnPropNameInRow="no_dias_4" msprop:Generator_ColumnPropNameInTable="no_dias_4Column" msprop:Generator_UserColumnName="no_dias_4" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_normales_total" msprop:Generator_ColumnVarNameInTable="columnplantulas_normales_total" msprop:Generator_ColumnPropNameInRow="plantulas_normales_total" msprop:Generator_ColumnPropNameInTable="plantulas_normales_totalColumn" msprop:Generator_UserColumnName="plantulas_normales_total" type="xs:int" minOccurs="0" />
+              <xs:element name="plantulas_anormales_total" msprop:Generator_ColumnVarNameInTable="columnplantulas_anormales_total" msprop:Generator_ColumnPropNameInRow="plantulas_anormales_total" msprop:Generator_ColumnPropNameInTable="plantulas_anormales_totalColumn" msprop:Generator_UserColumnName="plantulas_anormales_total" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_muerta_total" msprop:Generator_ColumnVarNameInTable="columnsemilla_muerta_total" msprop:Generator_ColumnPropNameInRow="semilla_muerta_total" msprop:Generator_ColumnPropNameInTable="semilla_muerta_totalColumn" msprop:Generator_UserColumnName="semilla_muerta_total" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_duras_total" msprop:Generator_ColumnVarNameInTable="columnsemillas_duras_total" msprop:Generator_ColumnPropNameInRow="semillas_duras_total" msprop:Generator_ColumnPropNameInTable="semillas_duras_totalColumn" msprop:Generator_UserColumnName="semillas_duras_total" type="xs:int" minOccurs="0" />
+              <xs:element name="semillas_debiles_total" msprop:Generator_ColumnVarNameInTable="columnsemillas_debiles_total" msprop:Generator_ColumnPropNameInRow="semillas_debiles_total" msprop:Generator_ColumnPropNameInTable="semillas_debiles_totalColumn" msprop:Generator_UserColumnName="semillas_debiles_total" type="xs:int" minOccurs="0" />
+              <xs:element name="semilla_mezcla_total" msprop:Generator_ColumnVarNameInTable="columnsemilla_mezcla_total" msprop:Generator_ColumnPropNameInRow="semilla_mezcla_total" msprop:Generator_ColumnPropNameInTable="semilla_mezcla_totalColumn" msprop:Generator_UserColumnName="semilla_mezcla_total" type="xs:int" minOccurs="0" />
+              <xs:element name="no_dias_total" msprop:Generator_ColumnVarNameInTable="columnno_dias_total" msprop:Generator_ColumnPropNameInRow="no_dias_total" msprop:Generator_ColumnPropNameInTable="no_dias_totalColumn" msprop:Generator_UserColumnName="no_dias_total" type="xs:int" minOccurs="0" />
+              <xs:element name="porcentaje_germnimacion" msprop:Generator_ColumnVarNameInTable="columnporcentaje_germnimacion" msprop:Generator_ColumnPropNameInRow="porcentaje_germnimacion" msprop:Generator_ColumnPropNameInTable="porcentaje_germnimacionColumn" msprop:Generator_UserColumnName="porcentaje_germnimacion" type="xs:decimal" minOccurs="0" />
+              <xs:element name="observaciones_g" msprop:Generator_ColumnVarNameInTable="columnobservaciones_g" msprop:Generator_ColumnPropNameInRow="observaciones_g" msprop:Generator_ColumnPropNameInTable="observaciones_gColumn" msprop:Generator_UserColumnName="observaciones_g" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="responsable_muestreo" msprop:Generator_ColumnVarNameInTable="columnresponsable_muestreo" msprop:Generator_ColumnPropNameInRow="responsable_muestreo" msprop:Generator_ColumnPropNameInTable="responsable_muestreoColumn" msprop:Generator_UserColumnName="responsable_muestreo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="responsable_analisis" msprop:Generator_ColumnVarNameInTable="columnresponsable_analisis" msprop:Generator_ColumnPropNameInRow="responsable_analisis" msprop:Generator_ColumnPropNameInTable="responsable_analisisColumn" msprop:Generator_UserColumnName="responsable_analisis" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="decision" msprop:Generator_ColumnVarNameInTable="columndecision" msprop:Generator_ColumnPropNameInRow="decision" msprop:Generator_ColumnPropNameInTable="decisionColumn" msprop:Generator_UserColumnName="decision" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="id_2" msprop:Generator_ColumnVarNameInTable="columnid_2" msprop:Generator_ColumnPropNameInRow="id_2" msprop:Generator_ColumnPropNameInTable="id_2Column" msprop:Generator_UserColumnName="id_2" type="xs:int" minOccurs="0" />
+              <xs:element name="germinacion_firmada" msprop:Generator_ColumnVarNameInTable="columngerminacion_firmada" msprop:Generator_ColumnPropNameInRow="germinacion_firmada" msprop:Generator_ColumnPropNameInTable="germinacion_firmadaColumn" msprop:Generator_UserColumnName="germinacion_firmada" type="xs:base64Binary" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

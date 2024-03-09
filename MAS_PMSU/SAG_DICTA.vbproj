@@ -2269,6 +2269,12 @@
       <DependentUpon>Analisis_DescArch.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="pages\AnalisisGerminacionReport.vb">
+      <DependentUpon>AnalisisGerminacionReport.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="pages\cuadro_procesamiento.vb">
       <DependentUpon>cuadro_procesamiento.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2562,6 +2568,10 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\AnalisisGerminacionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AnalisisGerminacionReport.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cuadro_procesamiento.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
