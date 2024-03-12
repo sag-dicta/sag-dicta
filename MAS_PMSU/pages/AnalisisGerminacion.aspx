@@ -122,11 +122,8 @@
                                         <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="ANÁLISIS FIRMADO" CommandName="Subir">
                                             <ControlStyle CssClass="btn btn-dark"></ControlStyle>
                                         </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Agregar" ControlStyle-CssClass="btn btn-warning" HeaderText="AGREGAR" CommandName="Agregar">
-                                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
-                                        </asp:ButtonField>
-                                        <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-warning" HeaderText="EDITAR" CommandName="Editar">
-                                            <ControlStyle CssClass="btn btn-info"></ControlStyle>
+                                        <asp:ButtonField ButtonType="Button" Text="Editar" ControlStyle-CssClass="btn btn-success" HeaderText="EDITAR" CommandName="Editar">
+                                            <ControlStyle CssClass="btn btn-success"></ControlStyle>
                                         </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar">
                                             <ControlStyle CssClass="btn btn-danger"></ControlStyle>

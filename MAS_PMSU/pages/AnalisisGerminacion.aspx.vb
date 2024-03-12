@@ -155,21 +155,6 @@ Public Class AnalisisGerminacion
     Protected Sub GridDatos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridDatos.RowCommand
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
-        If (e.CommandName = "Agregar") Then
-            Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-
-            DivGrid.Visible = "false"
-            DivActa.Visible = "true"
-            DivActaInfo.Visible = "true"
-            btnGuardarActa.Visible = True
-            BtnNuevo.Visible = True
-            txtrespaldito.Text = "Guardar"
-
-            llenarCampoLectura(TxtID.Text)
-            Verificar()
-        End If
-
         If (e.CommandName = "Editar") Then
             DivGrid.Visible = "false"
             DivActa.Visible = "true"
@@ -186,86 +171,102 @@ Public Class AnalisisGerminacion
             Dim dt As New DataTable
             adap.Fill(dt)
 
-            TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            If dt.Rows.Count > 0 Then
+                TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
 
-            txtFechaElab.Text = If(dt.Rows(0)("decha_elaboracion_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("decha_elaboracion_g"), DateTime).ToString("yyyy-MM-dd"))
+                txtFechaElab.Text = If(dt.Rows(0)("decha_elaboracion_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("decha_elaboracion_g"), DateTime).ToString("yyyy-MM-dd"))
 
-            txtEnvase.Text = If(dt.Rows(0)("no_envase") Is DBNull.Value, String.Empty, dt.Rows(0)("no_envase").ToString())
+                txtEnvase.Text = If(dt.Rows(0)("no_envase") Is DBNull.Value, String.Empty, dt.Rows(0)("no_envase").ToString())
 
-            txtPesoInicialPlanta.Text = If(dt.Rows(0)("peso_inicial_g") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_inicial_g").ToString())
-            SeleccionarItemEnDropDownList(DDLGranel, dt.Rows(0)("tipo_granel").ToString())
+                txtPesoInicialPlanta.Text = If(dt.Rows(0)("peso_inicial_g") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_inicial_g").ToString())
+                SeleccionarItemEnDropDownList(DDLGranel, dt.Rows(0)("tipo_granel").ToString())
 
-            txtFechaRecibo.Text = If(dt.Rows(0)("fecha_recibo_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_recibo_g"), DateTime).ToString("yyyy-MM-dd"))
-            txtFechaMuestreo.Text = If(dt.Rows(0)("fecha_muestreo_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_muestreo_g"), DateTime).ToString("yyyy-MM-dd"))
-            txtHumedadF.Text = If(dt.Rows(0)("humedad_final") Is DBNull.Value, String.Empty, dt.Rows(0)("humedad_final").ToString())
-            txtFechaEval.Text = If(dt.Rows(0)("fecha_evaluacion_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_evaluacion_g"), DateTime).ToString("yyyy-MM-dd"))
+                txtFechaRecibo.Text = If(dt.Rows(0)("fecha_recibo_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_recibo_g"), DateTime).ToString("yyyy-MM-dd"))
+                txtFechaMuestreo.Text = If(dt.Rows(0)("fecha_muestreo_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_muestreo_g"), DateTime).ToString("yyyy-MM-dd"))
+                txtHumedadF.Text = If(dt.Rows(0)("humedad_final") Is DBNull.Value, String.Empty, dt.Rows(0)("humedad_final").ToString())
+                txtFechaEval.Text = If(dt.Rows(0)("fecha_evaluacion_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_evaluacion_g"), DateTime).ToString("yyyy-MM-dd"))
 
-            SeleccionarItemEnDropDownList(DDLEnvasado, dt.Rows(0)("tipo_envase").ToString())
-            SeleccionarItemEnDropDownList(DDLFase, dt.Rows(0)("fase_g").ToString())
-            SeleccionarItemEnDropDownList(DDLTamañoMaiz, dt.Rows(0)("tamano_maiz").ToString())
-            txtCantInicial.Text = If(dt.Rows(0)("cantidad_inicial") Is DBNull.Value, String.Empty, dt.Rows(0)("cantidad_inicial").ToString())
-            txtCantExistente.Text = If(dt.Rows(0)("cantidad_existente") Is DBNull.Value, String.Empty, dt.Rows(0)("cantidad_existente").ToString())
-            txtCamaraNo.Text = If(dt.Rows(0)("no_camara") Is DBNull.Value, String.Empty, dt.Rows(0)("no_camara").ToString())
-            txtPerimetro.Text = If(dt.Rows(0)("perimetro") Is DBNull.Value, String.Empty, dt.Rows(0)("perimetro").ToString())
+                SeleccionarItemEnDropDownList(DDLEnvasado, dt.Rows(0)("tipo_envase").ToString())
+                SeleccionarItemEnDropDownList(DDLFase, dt.Rows(0)("fase_g").ToString())
+                SeleccionarItemEnDropDownList(DDLTamañoMaiz, dt.Rows(0)("tamano_maiz").ToString())
+                txtCantInicial.Text = If(dt.Rows(0)("cantidad_inicial") Is DBNull.Value, String.Empty, dt.Rows(0)("cantidad_inicial").ToString())
+                txtCantExistente.Text = If(dt.Rows(0)("cantidad_existente") Is DBNull.Value, String.Empty, dt.Rows(0)("cantidad_existente").ToString())
+                txtCamaraNo.Text = If(dt.Rows(0)("no_camara") Is DBNull.Value, String.Empty, dt.Rows(0)("no_camara").ToString())
+                txtPerimetro.Text = If(dt.Rows(0)("perimetro") Is DBNull.Value, String.Empty, dt.Rows(0)("perimetro").ToString())
 
-            txtCERTISEM.Text = If(dt.Rows(0)("certisem") Is DBNull.Value, String.Empty, dt.Rows(0)("certisem").ToString())
-            txtFechaCERTISEM.Text = If(dt.Rows(0)("fecha_certisem") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_certisem"), DateTime).ToString("yyyy-MM-dd"))
-            txtPlanta.Text = If(dt.Rows(0)("planta_g") Is DBNull.Value, String.Empty, dt.Rows(0)("planta_g").ToString())
-            txtFechaPlanta.Text = If(dt.Rows(0)("fecha_planta_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_planta_g"), DateTime).ToString("yyyy-MM-dd"))
+                txtCERTISEM.Text = If(dt.Rows(0)("certisem") Is DBNull.Value, String.Empty, dt.Rows(0)("certisem").ToString())
+                txtFechaCERTISEM.Text = If(dt.Rows(0)("fecha_certisem") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_certisem"), DateTime).ToString("yyyy-MM-dd"))
+                txtPlanta.Text = If(dt.Rows(0)("planta_g") Is DBNull.Value, String.Empty, dt.Rows(0)("planta_g").ToString())
+                txtFechaPlanta.Text = If(dt.Rows(0)("fecha_planta_g") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_planta_g"), DateTime).ToString("yyyy-MM-dd"))
 
-            txtSemillaPura.Text = If(dt.Rows(0)("semilla_pura") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_pura").ToString())
-            txtSemillaOtroCult.Text = If(dt.Rows(0)("semilla_otro_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_otro_cultivo").ToString())
-            txtSemillaMalezas.Text = If(dt.Rows(0)("semilla_maleza") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_maleza").ToString())
-            txtSemillaInerte.Text = If(dt.Rows(0)("materia_inerte") Is DBNull.Value, String.Empty, dt.Rows(0)("materia_inerte").ToString())
+                txtSemillaPura.Text = If(dt.Rows(0)("semilla_pura") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_pura").ToString())
+                txtSemillaOtroCult.Text = If(dt.Rows(0)("semilla_otro_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_otro_cultivo").ToString())
+                txtSemillaMalezas.Text = If(dt.Rows(0)("semilla_maleza") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_maleza").ToString())
+                txtSemillaInerte.Text = If(dt.Rows(0)("materia_inerte") Is DBNull.Value, String.Empty, dt.Rows(0)("materia_inerte").ToString())
 
-            txtCam1PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_1") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_1").ToString())
-            txtCam1PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_1") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_1").ToString())
-            txtCam1SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_1").ToString())
-            txtCam1SemiDura.Text = If(dt.Rows(0)("semillas_duras_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_1").ToString())
-            txtCam1Debiles.Text = If(dt.Rows(0)("semillas_debiles_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_1").ToString())
-            txtCam1Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_1").ToString())
-            txtCam1NoDias.Text = If(dt.Rows(0)("no_dias_1") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_1").ToString())
+                txtCam1PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_1") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_1").ToString())
+                txtCam1PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_1") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_1").ToString())
+                txtCam1SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_1").ToString())
+                txtCam1SemiDura.Text = If(dt.Rows(0)("semillas_duras_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_1").ToString())
+                txtCam1Debiles.Text = If(dt.Rows(0)("semillas_debiles_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_1").ToString())
+                txtCam1Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_1") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_1").ToString())
+                txtCam1NoDias.Text = If(dt.Rows(0)("no_dias_1") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_1").ToString())
 
-            txtCam2PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_2") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_2").ToString())
-            txtCam2PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_2") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_2").ToString())
-            txtCam2SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_2").ToString())
-            txtCam2SemiDura.Text = If(dt.Rows(0)("semillas_duras_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_2").ToString())
-            txtCam2Debiles.Text = If(dt.Rows(0)("semillas_debiles_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_2").ToString())
-            txtCam2Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_2").ToString())
-            txtCam2NoDias.Text = If(dt.Rows(0)("no_dias_2") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_2").ToString())
+                txtCam2PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_2") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_2").ToString())
+                txtCam2PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_2") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_2").ToString())
+                txtCam2SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_2").ToString())
+                txtCam2SemiDura.Text = If(dt.Rows(0)("semillas_duras_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_2").ToString())
+                txtCam2Debiles.Text = If(dt.Rows(0)("semillas_debiles_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_2").ToString())
+                txtCam2Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_2") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_2").ToString())
+                txtCam2NoDias.Text = If(dt.Rows(0)("no_dias_2") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_2").ToString())
 
-            txtCam3PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_3") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_3").ToString())
-            txtCam3PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_3") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_3").ToString())
-            txtCam3SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_3").ToString())
-            txtCam3SemiDura.Text = If(dt.Rows(0)("semillas_duras_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_3").ToString())
-            txtCam3Debiles.Text = If(dt.Rows(0)("semillas_debiles_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_3").ToString())
-            txtCam3Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_3").ToString())
-            txtCam3NoDias.Text = If(dt.Rows(0)("no_dias_3") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_3").ToString())
+                txtCam3PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_3") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_3").ToString())
+                txtCam3PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_3") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_3").ToString())
+                txtCam3SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_3").ToString())
+                txtCam3SemiDura.Text = If(dt.Rows(0)("semillas_duras_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_3").ToString())
+                txtCam3Debiles.Text = If(dt.Rows(0)("semillas_debiles_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_3").ToString())
+                txtCam3Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_3") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_3").ToString())
+                txtCam3NoDias.Text = If(dt.Rows(0)("no_dias_3") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_3").ToString())
 
-            txtCam4PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_4") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_4").ToString())
-            txtCam4PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_4") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_4").ToString())
-            txtCam4SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_4").ToString())
-            txtCam4SemiDura.Text = If(dt.Rows(0)("semillas_duras_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_4").ToString())
-            txtCam4Debiles.Text = If(dt.Rows(0)("semillas_debiles_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_4").ToString())
-            txtCam4Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_4").ToString())
-            txtCam4NoDias.Text = If(dt.Rows(0)("no_dias_4") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_4").ToString())
+                txtCam4PlanNorm.Text = If(dt.Rows(0)("plantulas_normales_4") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_4").ToString())
+                txtCam4PlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_4") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_4").ToString())
+                txtCam4SemiMuer.Text = If(dt.Rows(0)("semilla_muerta_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_4").ToString())
+                txtCam4SemiDura.Text = If(dt.Rows(0)("semillas_duras_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_4").ToString())
+                txtCam4Debiles.Text = If(dt.Rows(0)("semillas_debiles_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_4").ToString())
+                txtCam4Mezcla.Text = If(dt.Rows(0)("semilla_mezcla_4") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_4").ToString())
+                txtCam4NoDias.Text = If(dt.Rows(0)("no_dias_4") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_4").ToString())
 
-            txtTotalPlanNorm.Text = If(dt.Rows(0)("plantulas_normales_total") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_total").ToString())
-            txtTotalPlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_total") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_total").ToString())
-            txtTotalSemiMuer.Text = If(dt.Rows(0)("semilla_muerta_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_total").ToString())
-            txtTotalSemiDura.Text = If(dt.Rows(0)("semillas_duras_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_total").ToString())
-            txtTotalDebiles.Text = If(dt.Rows(0)("semillas_debiles_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_total").ToString())
-            txtTotalMezcla.Text = If(dt.Rows(0)("semilla_mezcla_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_total").ToString())
-            txtTotalNoDias.Text = If(dt.Rows(0)("no_dias_total") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_total").ToString())
+                txtTotalPlanNorm.Text = If(dt.Rows(0)("plantulas_normales_total") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_normales_total").ToString())
+                txtTotalPlanAnor.Text = If(dt.Rows(0)("plantulas_anormales_total") Is DBNull.Value, String.Empty, dt.Rows(0)("plantulas_anormales_total").ToString())
+                txtTotalSemiMuer.Text = If(dt.Rows(0)("semilla_muerta_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_muerta_total").ToString())
+                txtTotalSemiDura.Text = If(dt.Rows(0)("semillas_duras_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_duras_total").ToString())
+                txtTotalDebiles.Text = If(dt.Rows(0)("semillas_debiles_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semillas_debiles_total").ToString())
+                txtTotalMezcla.Text = If(dt.Rows(0)("semilla_mezcla_total") Is DBNull.Value, String.Empty, dt.Rows(0)("semilla_mezcla_total").ToString())
+                txtTotalNoDias.Text = If(dt.Rows(0)("no_dias_total") Is DBNull.Value, String.Empty, dt.Rows(0)("no_dias_total").ToString())
 
-            txtPorcGerm.Text = If(dt.Rows(0)("porcentaje_germnimacion") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_germnimacion").ToString())
-            txtObserv.Text = If(dt.Rows(0)("observaciones_g") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones_g").ToString())
-            txtRespMuestreo.Text = If(dt.Rows(0)("responsable_muestreo") Is DBNull.Value, String.Empty, dt.Rows(0)("responsable_muestreo").ToString())
-            txtRespAnalisis.Text = If(dt.Rows(0)("responsable_analisis") Is DBNull.Value, String.Empty, dt.Rows(0)("responsable_analisis").ToString())
-            SeleccionarItemEnDropDownList(DDL_decision, dt.Rows(0)("decision").ToString())
+                txtPorcGerm.Text = If(dt.Rows(0)("porcentaje_germnimacion") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_germnimacion").ToString())
+                txtObserv.Text = If(dt.Rows(0)("observaciones_g") Is DBNull.Value, String.Empty, dt.Rows(0)("observaciones_g").ToString())
+                txtRespMuestreo.Text = If(dt.Rows(0)("responsable_muestreo") Is DBNull.Value, String.Empty, dt.Rows(0)("responsable_muestreo").ToString())
+                txtRespAnalisis.Text = If(dt.Rows(0)("responsable_analisis") Is DBNull.Value, String.Empty, dt.Rows(0)("responsable_analisis").ToString())
+                SeleccionarItemEnDropDownList(DDL_decision, dt.Rows(0)("decision").ToString())
 
-            llenarCampoLectura(TxtID.Text)
-            Verificar()
+                llenarCampoLectura(TxtID.Text)
+                Verificar()
+            Else
+                TxtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+                DivGrid.Visible = "false"
+                DivActa.Visible = "true"
+                DivActaInfo.Visible = "true"
+                btnGuardarActa.Visible = True
+                BtnNuevo.Visible = True
+                txtrespaldito.Text = "Guardar"
+                btnGuardarActa.Text = "Guardar"
+
+                llenarCampoLectura(TxtID.Text)
+                Verificar()
+            End If
+
         End If
 
         If (e.CommandName = "Eliminar") Then
@@ -275,8 +276,8 @@ Public Class AnalisisGerminacion
 
 
             Label103.Text = "¿Desea eliminar la informacion almacenada que contiene este registro de análisis de germinación?
-                              
-                            *NOTA: Solo se elimira la informacion que habia registrado el usurio."
+                      
+                    *NOTA: Solo se elimira la informacion que habia registrado el usurio."
             BBorrarsi.Visible = True
             BBorrarno.Visible = True
             BConfirm.Visible = False
@@ -328,7 +329,6 @@ Public Class AnalisisGerminacion
             DivActaInfo.Visible = False
         End If
     End Sub
-
     Private Sub llenarCampoLectura(ByVal id As String)
         Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado, tipo_semilla, ano_produ  "
         Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_ACTA=" & id & ""
@@ -1202,25 +1202,25 @@ Public Class AnalisisGerminacion
         'Textrespaldo.Text = resultado
     End Sub
 
+
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Obtén los datos de la fila actual
             Dim estimadoProduccion As String = DataBinder.Eval(e.Row.DataItem, "cantidad_existente").ToString()
 
             ' Encuentra los botones en la fila por índice
-            Dim btnEditar As Button = DirectCast(e.Row.Cells(16).Controls(0), Button) ' Ajusta el índice según la posición de tu botón en la fila
-            Dim btnImprimir As Button = DirectCast(e.Row.Cells(18).Controls(0), Button)
-            Dim btnnuevo As Button = DirectCast(e.Row.Cells(15).Controls(0), Button)
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(15).Controls(0), Button)
+            Dim btnImprimir As Button = DirectCast(e.Row.Cells(17).Controls(0), Button)
 
             ' Modifica el texto y el color de los botones según la lógica que desees
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
                 btnEditar.Visible = True
+                btnEditar.Text = "Editar"
                 btnEditar.CssClass = "btn btn-primary"
-                btnEditar.Style("background-color") = "#007bff" ' Establece el color de fondo directamente
-                btnnuevo.Visible = False
+                btnEditar.Style("background-color") = "#007bff"
             Else
-                btnEditar.Visible = False
-                btnnuevo.Visible = True
+                btnEditar.Visible = True
+                btnEditar.Text = "Agregar"
             End If
 
             If Not String.IsNullOrEmpty(estimadoProduccion) Then
