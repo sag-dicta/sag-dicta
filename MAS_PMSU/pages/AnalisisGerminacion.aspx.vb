@@ -289,18 +289,18 @@ Public Class AnalisisGerminacion
             Dim rptdocument As New ReportDocument
             'nombre de dataset
             Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM vista_acta_lote_multi WHERE ID_acta = @valor"
+            Dim Str As String = "SELECT * FROM vista_acta_lote_multi_germ WHERE ID_acta = @valor"
             Dim adap As New MySqlDataAdapter(Str, conn)
             adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString)
             Dim dt As New DataTable
 
             'nombre de la vista del data set
 
-            adap.Fill(ds, "vista_acta_lote_multi")
+            adap.Fill(ds, "vista_acta_lote_multi_germ")
 
             Dim nombre As String
 
-            nombre = "Cuadro de procesamiento " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
+            nombre = "Analisis de Germinación de Semilla " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
 
             rptdocument.Load(Server.MapPath("~/pages/AnalisisGerminacionReport.rpt"))
 
@@ -329,6 +329,40 @@ Public Class AnalisisGerminacion
         End If
     End Sub
 
+    Private Sub llenarCampoLectura(ByVal id As String)
+        Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado, tipo_semilla, ano_produ  "
+        Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_ACTA=" & id & ""
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+        adap.Fill(dt)
+
+        Textciclo2.Text = If(dt.Rows(0)("ciclo_acta") Is DBNull.Value, String.Empty, dt.Rows(0)("ciclo_acta").ToString())
+        txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
+        txtProductor.Text = If(dt.Rows(0)("nombre_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_multiplicador").ToString())
+        txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
+
+        If dt.Rows(0)("tipo_cultivo").ToString() = "Maiz" Then
+            DDLTamañoMaiz.Enabled = True
+        End If
+
+        txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
+        txtCategoria.Text = If(dt.Rows(0)("categoria_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_registrado").ToString())
+        txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
+        txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
+        txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
+        txtLoteRegi.Text = If(dt.Rows(0)("lote_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("lote_registrado").ToString())
+        If dt.Rows(0)("tipo_semilla").ToString = "Hibrido" Then
+            txtHibrido.Text = "Si"
+        Else
+            txtHibrido.Text = "No"
+        End If
+        txtaño.Text = If(dt.Rows(0)("ano_produ") Is DBNull.Value, String.Empty, dt.Rows(0)("ano_produ").ToString())
+        txtProcedencia.Text = If(dt.Rows(0)("municipio") Is DBNull.Value, String.Empty, dt.Rows(0)("municipio").ToString())
+        txtDepartamento.Text = If(dt.Rows(0)("departamento") Is DBNull.Value, String.Empty, dt.Rows(0)("departamento").ToString())
+        txtMunicipio.Text = If(dt.Rows(0)("municipio") Is DBNull.Value, String.Empty, dt.Rows(0)("municipio").ToString())
+        txtLocallidad.Text = If(dt.Rows(0)("aldea") Is DBNull.Value, String.Empty, dt.Rows(0)("aldea").ToString())
+
+    End Sub
     Protected Sub elminar(sender As Object, e As EventArgs) Handles BBorrarsi.Click
         Dim connectionString As String = conn
         Using connection As New MySqlConnection(connectionString)
@@ -1081,7 +1115,7 @@ Public Class AnalisisGerminacion
     End Sub
     Private Sub exportar()
 
-        Dim cadena As String = "id_acta, nombre_multiplicador, departamento, tipo_cultivo, variedad, lote_registrado, categoria_registrado, DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, peso_humedo_QQ, porcentaje_humedad, peso_materia_prima_QQ_porce_humedad, semilla_QQ_oro, semilla_QQ_consumo, semilla_QQ_basura, semilla_QQ_total, observaciones, ciclo_acta"
+        Dim cadena As String = "*"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
@@ -1113,7 +1147,7 @@ Public Class AnalisisGerminacion
         End If
 
 
-        query = "SELECT " & cadena & " FROM `vista_acta_lote_multi` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2
+        query = "SELECT " & cadena & " FROM `vista_acta_lote_multi_germ` WHERE 1 = 1 AND fecha_acta IS NOT NULL AND estado_sena = '1' " & c1 & c3 & c4 & c2
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -1124,11 +1158,11 @@ Public Class AnalisisGerminacion
                         sda.Fill(ds)
 
                         ' Set Name of DataTables.
-                        ds.Tables(0).TableName = "CUADRO DE PROCESAMIENTO"
+                        ds.Tables(0).TableName = "Analisis de Germinación"
 
                         Using wb As New XLWorkbook()
                             ' Add DataTable as Worksheet.
-                            wb.Worksheets.Add(ds.Tables(0), "sag_registro_senasa")
+                            wb.Worksheets.Add(ds.Tables(0), "vista_acta_lote_multi_germ")
 
                             ' Set auto width for all columns based on content.
                             wb.Worksheet(1).Columns().AdjustToContents()
@@ -1189,7 +1223,7 @@ Public Class AnalisisGerminacion
                 btnnuevo.Visible = True
             End If
 
-            If btnEditar.Text = "Editar" Then
+            If Not String.IsNullOrEmpty(estimadoProduccion) Then
                 btnImprimir.Visible = True
             Else
                 btnImprimir.Visible = False
@@ -1230,40 +1264,6 @@ Public Class AnalisisGerminacion
 
     Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/AnalisisGerminacion.aspx"))
-    End Sub
-    Private Sub llenarCampoLectura(ByVal id As String)
-        Dim cadena As String = "fecha_acta, nombre_multiplicador, departamento, municipio, aldea, caserio, no_lote, tipo_cultivo, variedad, categoria_origen, porcentaje_humedad, no_sacos, peso_humedo_QQ, ciclo_acta, lote_registrado, categoria_registrado, tipo_semilla, ano_produ  "
-        Dim Str As String = "SELECT " & cadena & " FROM vista_acta_lote_multi WHERE  ID_ACTA=" & id & ""
-        Dim adap As New MySqlDataAdapter(Str, conn)
-        Dim dt As New DataTable
-        adap.Fill(dt)
-
-        Textciclo2.Text = If(dt.Rows(0)("ciclo_acta") Is DBNull.Value, String.Empty, dt.Rows(0)("ciclo_acta").ToString())
-        txtFechaSiembra.Text = If(dt.Rows(0)("fecha_acta") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_acta"), DateTime).ToString("yyyy-MM-dd"))
-        txtProductor.Text = If(dt.Rows(0)("nombre_multiplicador") Is DBNull.Value, String.Empty, dt.Rows(0)("nombre_multiplicador").ToString())
-        txtCultivo.Text = If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString())
-
-        If dt.Rows(0)("tipo_cultivo").ToString() = "Maiz" Then
-            DDLTamañoMaiz.Enabled = True
-        End If
-
-        txtVariedad.Text = If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString())
-        txtCategoria.Text = If(dt.Rows(0)("categoria_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_registrado").ToString())
-        txtHumedad.Text = If(dt.Rows(0)("porcentaje_humedad") Is DBNull.Value, String.Empty, dt.Rows(0)("porcentaje_humedad").ToString())
-        txtSacos.Text = If(dt.Rows(0)("no_sacos") Is DBNull.Value, String.Empty, dt.Rows(0)("no_sacos").ToString())
-        txtPesoH.Text = If(dt.Rows(0)("peso_humedo_QQ") Is DBNull.Value, String.Empty, dt.Rows(0)("peso_humedo_QQ").ToString())
-        txtLoteRegi.Text = If(dt.Rows(0)("lote_registrado") Is DBNull.Value, String.Empty, dt.Rows(0)("lote_registrado").ToString())
-        If dt.Rows(0)("tipo_semilla").ToString = "Hibrido" Then
-            txtHibrido.Text = "Si"
-        Else
-            txtHibrido.Text = "No"
-        End If
-        txtaño.Text = If(dt.Rows(0)("ano_produ") Is DBNull.Value, String.Empty, dt.Rows(0)("ano_produ").ToString())
-        txtProcedencia.Text = If(dt.Rows(0)("municipio") Is DBNull.Value, String.Empty, dt.Rows(0)("municipio").ToString())
-        txtDepartamento.Text = If(dt.Rows(0)("departamento") Is DBNull.Value, String.Empty, dt.Rows(0)("departamento").ToString())
-        txtMunicipio.Text = If(dt.Rows(0)("municipio") Is DBNull.Value, String.Empty, dt.Rows(0)("municipio").ToString())
-        txtLocallidad.Text = If(dt.Rows(0)("aldea") Is DBNull.Value, String.Empty, dt.Rows(0)("aldea").ToString())
-
     End Sub
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
         Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream
