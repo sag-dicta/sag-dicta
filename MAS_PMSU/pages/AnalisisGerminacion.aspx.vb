@@ -1115,7 +1115,7 @@ Public Class AnalisisGerminacion
     End Sub
     Private Sub exportar()
 
-        Dim cadena As String = "*"
+        Dim cadena As String = "ID_MULTI, NOMBRE_MULTIPLICADOR, REPRESENTANTE_LEGAL, TELEFONO_MULTIPLICADOR, DEPARTAMENTO, MUNICIPIO, ALDEA, CASERIO, ESTADO_MULTI, ID_LOTE, CATEGORIA_ORIGEN, TIPO_CULTIVO, VARIEDAD, PRODUCTOR, NO_LOTE, ESTADO_LOTE, ANO_PRODU, TIPO_SEMILLA, ID_ACTA, FECHA_ACTA, PORCENTAJE_HUMEDAD, ESTADO_SENA, NO_SACOS, PESO_HUMEDO_QQ, PESO_MATERIA_PRIMA_QQ_PORCE_HUMEDAD, SEMILLA_QQ_ORO, SEMILLA_QQ_CONSUMO, SEMILLA_QQ_BASURA, SEMILLA_QQ_TOTAL, OBSERVACIONES, TARA, CICLO_ACTA, PESO_NETO, PESO_LB, LOTE_REGISTRADO, CATEGORIA_REGISTRADO, RENDIMIETO_ORO_PESO, id, decha_elaboracion_g, no_envase, peso_inicial_g, tipo_granel, fecha_recibo_g, fecha_muestreo_g, humedad_final, fecha_evaluacion_g, tipo_envase, fase_g, tamano_maiz, cantidad_inicial, cantidad_existente, no_camara, perimetro, certisem, fecha_certisem, planta_g, fecha_planta_g, semilla_pura, semilla_otro_cultivo, semilla_maleza, materia_inerte, plantulas_normales_1, plantulas_anormales_1, semilla_muerta_1, semillas_duras_1, semillas_debiles_1, semilla_mezcla_1, no_dias_1, plantulas_normales_2, plantulas_anormales_2, semilla_muerta_2, semillas_duras_2, semillas_debiles_2, semilla_mezcla_2, no_dias_2, plantulas_normales_3, plantulas_anormales_3, semilla_muerta_3, semillas_duras_3, semillas_debiles_3, semilla_mezcla_3, no_dias_3, plantulas_normales_4, plantulas_anormales_4, semilla_muerta_4, semillas_duras_4, semillas_debiles_4, semilla_mezcla_4, no_dias_4, plantulas_normales_total, plantulas_anormales_total, semilla_muerta_total, semillas_duras_total, semillas_debiles_total, semilla_mezcla_total, no_dias_total, porcentaje_germnimacion, observaciones_g, responsable_muestreo, responsable_analisis, decision"
         Dim query As String = ""
         Dim c1 As String = ""
         Dim c3 As String = ""
@@ -1172,7 +1172,7 @@ Public Class AnalisisGerminacion
                             Response.Buffer = True
                             Response.Charset = ""
                             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                            Response.AddHeader("content-disposition", "attachment;filename=Cuadro_de_procesamiento.xlsx")
+                            Response.AddHeader("content-disposition", "attachment;filename=Analisis_de_Germinación.xlsx")
                             Using MyMemoryStream As New MemoryStream()
                                 wb.SaveAs(MyMemoryStream)
                                 MyMemoryStream.WriteTo(Response.OutputStream)
