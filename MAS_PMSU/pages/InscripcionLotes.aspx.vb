@@ -1443,12 +1443,12 @@ Public Class InscripcionLotes
         adaptcombo.Fill(DtCombo)
 
         DropDownList1.Items.Clear()
-        DropDownList1.DataSource = DtCombo
+        DropDownList1.DataSource = DtCombo.Copy() ' Clonar el DataTable para DropDownList5
         DropDownList1.DataValueField = DtCombo.Columns(0).ToString()
         DropDownList1.DataTextField = DtCombo.Columns(0).ToString
         DropDownList1.DataBind()
         Dim newitem As New ListItem(" ", " ")
-
+        DropDownList1.Items.Insert(0, newitem)
         VerificarTextBox()
     End Sub
 
@@ -1459,14 +1459,12 @@ Public Class InscripcionLotes
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
 
-        DropDownList1.Items.Clear()
-        Dim newitem As New ListItem(" ", " ")
-        DropDownList1.Items.Insert(0, newitem)
-
-        DropDownList2.DataSource = DtCombo
+        DropDownList2.Items.Clear()
+        DropDownList2.DataSource = DtCombo.Copy() ' Clonar el DataTable para DropDownList5
         DropDownList2.DataValueField = DtCombo.Columns(0).ToString()
         DropDownList2.DataTextField = DtCombo.Columns(0).ToString
         DropDownList2.DataBind()
+        Dim newitem As New ListItem(" ", " ")
         DropDownList2.Items.Insert(0, newitem)
         VerificarTextBox()
     End Sub
@@ -1544,10 +1542,6 @@ Public Class InscripcionLotes
             variedadmaiz2.Visible = True
             variedadfrijol2.Visible = False
             DropDownList1.SelectedIndex = 0
-        ElseIf Not String.IsNullOrEmpty(selectedValue) Then
-            DropDownList2.SelectedIndex = 0
-            variedadfrijol2.Visible = True
-            variedadmaiz2.Visible = False
         Else
             variedadmaiz2.Visible = False
             variedadfrijol2.Visible = False
