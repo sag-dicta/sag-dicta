@@ -95,7 +95,7 @@ Public Class InscripcionLotes
                         cmd.Parameters.AddWithValue("@tipo_semilla", DdlTipo.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@cultivo_semilla", DropDownList3.SelectedItem.Text)
                         Dim selectedValue2 As String = DropDownList3.SelectedItem.Text
-                        If selectedValue = "Frijol" Then
+                        If selectedValue = "Frijol" Or Not String.IsNullOrEmpty(selectedValue2) Then
                             cmd.Parameters.AddWithValue("@variedad_frijol", DropDownList1.SelectedItem.Text)
                         Else
                             cmd.Parameters.AddWithValue("@variedad_frijol", DBNull.Value)
@@ -809,7 +809,6 @@ Public Class InscripcionLotes
         DivCrearNuevo.Visible = True
         DivGrid.Visible = False
         btnGuardarLote.Text = "Guardar"
-
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -883,8 +882,6 @@ Public Class InscripcionLotes
             DivGrid.Visible = False
             div_nuevo_prod.Visible = False
 
-
-
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
             Dim cadena As String = "id_lote, nombre_productor,representante_legal,identidad_productor,extendida,residencia_productor,telefono_productor,no_registro_productor,nombre_multiplicador,cedula_multiplicador,telefono_multiplicador,nombre_finca,nombre_persona_finca,departamento,municipio,aldea,caserio,nombre_lote,tipo_cultivo,variedad,productor,no_lote,fecha_analisis,ano_produ,categoria_semilla,tipo_semilla,cultivo_semilla,variedad_maiz,variedad_frijol,superficie_hectarea,fecha_aprox_siembra,fecha_aprox_cosecha,produccion_est_hectareas,destino, categoria_origen, caducidad_lote"
             Dim Str As String = "SELECT " & cadena & " FROM `vista_multi_lote` WHERE  ID_lote='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
@@ -918,10 +915,15 @@ Public Class InscripcionLotes
             SeleccionarItemEnDropDownList(gb_caserio_new, dt.Rows(0)("caserio").ToString())
             TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
             TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
-
+            llenarcomboCultivo()
+            llenarcomboCultivo2()
             SeleccionarItemEnDropDownList(CmbTipoSemilla, If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString()))
 
-            If dt.Rows(0)("tipo_cultivo").ToString() = "Frijol" Then
+            llenarcomboVariedad()
+            llenarcomboVariedad2()
+            llenarcomboCategoria()
+            llenarcomboCategoria2()
+            If Not String.IsNullOrEmpty(dt.Rows(0)("tipo_cultivo").ToString()) And dt.Rows(0)("tipo_cultivo").ToString() <> "Maiz" Then
                 VariedadFrijol.Visible = True
                 VariedadMaiz.Visible = False
                 SeleccionarItemEnDropDownList(DropDownList5, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
