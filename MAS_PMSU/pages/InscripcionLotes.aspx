@@ -331,19 +331,6 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="form-group">
-                                        <label>Categoria</label><asp:Label ID="Label5" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:DropDownList CssClass="form-control" ID="categoria_origen_ddl" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
-                                            <asp:ListItem Text=""></asp:ListItem>
-                                            <asp:ListItem id="basica1" Text="Basica"></asp:ListItem>
-                                            <asp:ListItem id="registrada1" Text="Registrada"></asp:ListItem>
-                                            <asp:ListItem id="certificada1" Text="Certificada"></asp:ListItem>
-                                            <asp:ListItem id="comercial1" Text="Comercial"></asp:ListItem>
-                                            <asp:ListItem id="Fito_Mejorador1" Text="Fito Mejorador"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
                                         <label>Cultivo</label><asp:Label ID="Label2" class="label label-warning" runat="server" Text=""></asp:Label>
                                         <asp:DropDownList CssClass="form-control" ID="CmbTipoSemilla" runat="server" AutoPostBack="true" OnSelectedIndexChanged="CmbTipoSemilla_SelectedIndexChanged">
                                             <asp:ListItem Text=""></asp:ListItem>
@@ -356,9 +343,9 @@
                                 <div class="col-lg-3" id="VariedadFrijol" runat="server" visible="false">
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <label>Variedad Frijol</label>
+                                            <label>Variedades</label>
                                             <asp:Label ID="Label4" class="label label-warning" runat="server" Text=""></asp:Label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList5" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList5" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList5_SelectedIndexChanged">
                                                 <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem id="Amadeus77v1" Text="Amadeus-77"></asp:ListItem>
                                                 <asp:ListItem id="Carrizalitov1" Text="Carrizalito"></asp:ListItem>
@@ -376,12 +363,26 @@
 
                                 <div class="col-lg-3" id="VariedadMaiz" runat="server" visible="false">
                                     <div class="form-group">
-                                        <label>Variedades Maiz</label><asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                        <label>Variedades</label><asp:Label ID="Label6" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:DropDownList CssClass="form-control" ID="DropDownList6" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList6_SelectedIndexChanged">
                                             <asp:ListItem Text=""></asp:ListItem>
                                             <asp:ListItem id="DictaMayav1" Text="Dicta Maya"></asp:ListItem>
                                             <asp:ListItem id="DictaVictoriav1" Text="Dicta Victoria"></asp:ListItem>
                                             <asp:ListItem id="OtroMaizv1" Text="Otro"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Categorias</label><asp:Label ID="Label5" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:DropDownList CssClass="form-control" ID="categoria_origen_ddl" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:ListItem Text=""></asp:ListItem>
+                                            <asp:ListItem id="basica1" Text="Basica"></asp:ListItem>
+                                            <asp:ListItem id="registrada1" Text="Registrada"></asp:ListItem>
+                                            <asp:ListItem id="certificada1" Text="Certificada"></asp:ListItem>
+                                            <asp:ListItem id="comercial1" Text="Comercial"></asp:ListItem>
+                                            <asp:ListItem id="Fito_Mejorador1" Text="Fito Mejorador"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -431,19 +432,6 @@
 
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label>Categoria</label><asp:Label ID="Label7" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:DropDownList CssClass="form-control" ID="DdlCategoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
-                                            <asp:ListItem Text=""></asp:ListItem>
-                                            <asp:ListItem id="basica" Text="Basica"></asp:ListItem>
-                                            <asp:ListItem id="registrada" Text="Registrada"></asp:ListItem>
-                                            <asp:ListItem id="certificada" Text="Certificada"></asp:ListItem>
-                                            <asp:ListItem id="comercial" Text="Comercial"></asp:ListItem>
-                                            <asp:ListItem id="Fito_Mejorador" Text="Fito Mejorador"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
 
                                 <div class="col-lg-3">
                                     <div class="form-group">
@@ -477,7 +465,7 @@
                                         <div class="form-group">
                                             <label>Variedad Frijol</label>
                                             <asp:Label ID="Label15" class="label label-warning" runat="server" Text=""></asp:Label>
-                                            <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                                                 <asp:ListItem Text=""></asp:ListItem>
                                                 <asp:ListItem id="Amadeus77v" Text="Amadeus-77"></asp:ListItem>
                                                 <asp:ListItem id="Carrizalitov" Text="Carrizalito"></asp:ListItem>
@@ -496,11 +484,25 @@
                                 <div class="col-lg-3" visible="false" id="variedadmaiz2" runat="server">
                                     <div class="form-group">
                                         <label>Variedades Maiz</label><asp:Label ID="Label16" class="label label-warning" runat="server" Text=""></asp:Label>
-                                        <asp:DropDownList CssClass="form-control" ID="DropDownList2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                        <asp:DropDownList CssClass="form-control" ID="DropDownList2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                                             <asp:ListItem Text=""></asp:ListItem>
                                             <asp:ListItem id="DictaMayav" Text="Dicta Maya"></asp:ListItem>
                                             <asp:ListItem id="DictaVictoriav" Text="Dicta Victoria"></asp:ListItem>
                                             <asp:ListItem id="OtroMaizv" Text="Otro"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label>Categoria</label><asp:Label ID="Label7" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:DropDownList CssClass="form-control" ID="DdlCategoria" runat="server" AutoPostBack="true" OnSelectedIndexChanged="VerificarTextBox">
+                                            <asp:ListItem Text=""></asp:ListItem>
+                                            <asp:ListItem id="basica" Text="Basica"></asp:ListItem>
+                                            <asp:ListItem id="registrada" Text="Registrada"></asp:ListItem>
+                                            <asp:ListItem id="certificada" Text="Certificada"></asp:ListItem>
+                                            <asp:ListItem id="comercial" Text="Comercial"></asp:ListItem>
+                                            <asp:ListItem id="Fito_Mejorador" Text="Fito Mejorador"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>

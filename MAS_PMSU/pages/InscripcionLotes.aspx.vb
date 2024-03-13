@@ -21,6 +21,12 @@ Public Class InscripcionLotes
                 llenarcomboDeptoGrid()
                 VerificarTextBox()
                 llenarcomboProductor3()
+                llenarcomboCultivo()
+                llenarcomboCultivo2()
+                llenarcomboVariedad()
+                llenarcomboVariedad2()
+                llenarcomboCategoria()
+                llenarcomboCategoria2()
                 llenagrid()
                 btnGuardarLote.Visible = True
                 btnRegresar.Visible = True
@@ -451,12 +457,20 @@ Public Class InscripcionLotes
                 Label4.Text = ""
                 validarflag += 1
             End If
-        Else
+        ElseIf CmbTipoSemilla.SelectedItem.Text = "Maiz" Then
             If String.IsNullOrEmpty(DropDownList6.Text) Then
                 Label6.Text = "*"
                 validarflag = 0
             Else
                 Label6.Text = ""
+                validarflag += 1
+            End If
+        Else
+            If String.IsNullOrEmpty(DropDownList5.Text) Then
+                Label4.Text = "*"
+                validarflag = 0
+            Else
+                Label4.Text = ""
                 validarflag += 1
             End If
         End If
@@ -525,13 +539,21 @@ Public Class InscripcionLotes
                 Label15.Text = ""
                 validarflag += 1
             End If
-        Else
+        ElseIf DropDownList3.SelectedItem.Text = "Maiz" Then
             If String.IsNullOrEmpty(DropDownList2.Text) Then
                 Label16.Text = "*"
                 validarflag = 0
             Else
                 validarflag += 1
                 Label16.Text = ""
+            End If
+        Else
+            If String.IsNullOrEmpty(DropDownList1.Text) Then
+                Label15.Text = "*"
+                validarflag = 0
+            Else
+                Label15.Text = ""
+                validarflag += 1
             End If
         End If
         '11
@@ -1079,53 +1101,6 @@ Public Class InscripcionLotes
 
     '**************************************************************************************************************************************
 
-
-    Protected Sub CmbTipoSemilla_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-        ' Obtiene el valor seleccionado en la DropDownList
-        Dim selectedValue As String = CmbTipoSemilla.SelectedValue
-
-        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
-        If selectedValue = "Frijol" Then
-            DropDownList6.SelectedIndex = 0
-            VariedadFrijol.Visible = True
-            VariedadMaiz.Visible = False
-        ElseIf selectedValue = "Maiz" Then
-            VariedadMaiz.Visible = True
-            VariedadFrijol.Visible = False
-            DropDownList5.SelectedIndex = 0
-        Else
-            VariedadMaiz.Visible = False
-            VariedadFrijol.Visible = False
-            DropDownList5.SelectedIndex = 0
-            DropDownList6.SelectedIndex = 0
-        End If
-
-        VerificarTextBox()
-    End Sub
-
-    Protected Sub DropDownList3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
-        ' Obtiene el valor seleccionado en la DropDownList
-        Dim selectedValue As String = DropDownList3.SelectedValue
-
-        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
-        If selectedValue = "Frijol" Then
-            DropDownList2.SelectedIndex = 0
-            variedadfrijol2.Visible = True
-            variedadmaiz2.Visible = False
-        ElseIf selectedValue = "Maiz" Then
-            variedadmaiz2.Visible = True
-            variedadfrijol2.Visible = False
-            DropDownList1.SelectedIndex = 0
-        Else
-            variedadmaiz2.Visible = False
-            variedadfrijol2.Visible = False
-            DropDownList1.SelectedIndex = 0
-            DropDownList2.SelectedIndex = 0
-        End If
-
-        VerificarTextBox()
-    End Sub
-
     Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
         Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream
             Dim length As Integer = fileUpload.PostedFile.ContentLength
@@ -1363,6 +1338,189 @@ Public Class InscripcionLotes
 
             connection.Close()
         End Using
+    End Sub
+
+    '************************************************************************************************************************
+
+    Private Sub llenarcomboCultivo()
+        Dim StrCombo As String = "SELECT DISTINCT Cultivo FROM sag_cultivos"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        CmbTipoSemilla.DataSource = DtCombo
+        CmbTipoSemilla.DataValueField = DtCombo.Columns(0).ToString()
+        CmbTipoSemilla.DataTextField = DtCombo.Columns(0).ToString
+        CmbTipoSemilla.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        CmbTipoSemilla.Items.Insert(0, newitem)
+        VerificarTextBox()
+    End Sub
+    Private Sub llenarcomboVariedad()
+        Dim cultivo As String = CmbTipoSemilla.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT Variedad FROM sag_cultivos WHERE Cultivo='" & cultivo & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DropDownList5.DataSource = DtCombo
+        DropDownList5.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList5.DataTextField = DtCombo.Columns(0).ToString
+        DropDownList5.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DropDownList5.Items.Insert(0, newitem)
+
+        DropDownList6.DataSource = DtCombo
+        DropDownList6.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList6.DataTextField = DtCombo.Columns(0).ToString
+        DropDownList6.DataBind()
+        DropDownList6.Items.Insert(0, newitem)
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub DropDownList5_SelectedIndexChanged(sender As Object, e As EventArgs)
+        llenarcomboCategoria()
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub DropDownList6_SelectedIndexChanged(sender As Object, e As EventArgs)
+        llenarcomboCategoria()
+        VerificarTextBox()
+    End Sub
+
+    Private Sub llenarcomboCategoria()
+        Dim cultivo As String = CmbTipoSemilla.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT Tipo FROM sag_cultivos WHERE Cultivo='" & cultivo & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        categoria_origen_ddl.DataSource = DtCombo
+        categoria_origen_ddl.DataValueField = DtCombo.Columns(0).ToString()
+        categoria_origen_ddl.DataTextField = DtCombo.Columns(0).ToString
+        categoria_origen_ddl.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        categoria_origen_ddl.Items.Insert(0, newitem)
+        VerificarTextBox()
+    End Sub
+
+
+    Private Sub llenarcomboCultivo2()
+        Dim StrCombo As String = "SELECT DISTINCT Cultivo FROM sag_cultivos"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DropDownList3.DataSource = DtCombo
+        DropDownList3.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList3.DataTextField = DtCombo.Columns(0).ToString
+        DropDownList3.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DropDownList3.Items.Insert(0, newitem)
+        VerificarTextBox()
+    End Sub
+
+    Private Sub llenarcomboVariedad2()
+        Dim cultivo As String = DropDownList3.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT Variedad FROM sag_cultivos WHERE Cultivo='" & cultivo & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DropDownList1.DataSource = DtCombo
+        DropDownList1.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList1.DataTextField = DtCombo.Columns(0).ToString
+        DropDownList1.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DropDownList1.Items.Insert(0, newitem)
+
+        DropDownList2.DataSource = DtCombo
+        DropDownList2.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList2.DataTextField = DtCombo.Columns(0).ToString
+        DropDownList2.DataBind()
+        DropDownList2.Items.Insert(0, newitem)
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
+        llenarcomboCategoria2()
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub DropDownList2_SelectedIndexChanged(sender As Object, e As EventArgs)
+        llenarcomboCategoria2()
+        VerificarTextBox()
+    End Sub
+
+    Private Sub llenarcomboCategoria2()
+        Dim cultivo As String = DropDownList3.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT Tipo FROM sag_cultivos WHERE Cultivo='" & cultivo & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DdlCategoria.DataSource = DtCombo
+        DdlCategoria.DataValueField = DtCombo.Columns(0).ToString()
+        DdlCategoria.DataTextField = DtCombo.Columns(0).ToString
+        DdlCategoria.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DdlCategoria.Items.Insert(0, newitem)
+        VerificarTextBox()
+    End Sub
+
+
+    Protected Sub CmbTipoSemilla_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        ' Obtiene el valor seleccionado en la DropDownList
+        Dim selectedValue As String = CmbTipoSemilla.SelectedItem.Text
+
+        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
+        If selectedValue = "Frijol" Then
+            DropDownList6.SelectedIndex = 0
+            VariedadFrijol.Visible = True
+            VariedadMaiz.Visible = False
+        ElseIf selectedValue = "Maiz" Then
+            VariedadMaiz.Visible = True
+            VariedadFrijol.Visible = False
+            DropDownList5.SelectedIndex = 0
+        ElseIf Not String.IsNullOrEmpty(selectedValue) Then
+            DropDownList6.SelectedIndex = 0
+            VariedadFrijol.Visible = True
+            VariedadMaiz.Visible = False
+        Else
+            VariedadMaiz.Visible = False
+            VariedadFrijol.Visible = False
+            DropDownList5.SelectedIndex = 0
+            DropDownList6.SelectedIndex = 0
+        End If
+        llenarcomboVariedad()
+        VerificarTextBox()
+    End Sub
+
+    Protected Sub DropDownList3_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
+        ' Obtiene el valor seleccionado en la DropDownList
+        Dim selectedValue As String = DropDownList3.SelectedItem.Text
+
+        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
+        If selectedValue = "Frijol" Then
+            DropDownList2.SelectedIndex = 0
+            variedadfrijol2.Visible = True
+            variedadmaiz2.Visible = False
+        ElseIf selectedValue = "Maiz" Then
+            variedadmaiz2.Visible = True
+            variedadfrijol2.Visible = False
+            DropDownList1.SelectedIndex = 0
+        ElseIf Not String.IsNullOrEmpty(selectedValue) Then
+            DropDownList2.SelectedIndex = 0
+            variedadfrijol2.Visible = True
+            variedadmaiz2.Visible = False
+        Else
+            variedadmaiz2.Visible = False
+            variedadfrijol2.Visible = False
+            DropDownList1.SelectedIndex = 0
+            DropDownList2.SelectedIndex = 0
+        End If
+        llenarcomboVariedad2()
+        VerificarTextBox()
     End Sub
 
 End Class
