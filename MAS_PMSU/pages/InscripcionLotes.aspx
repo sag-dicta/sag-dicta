@@ -463,7 +463,7 @@
                                 <div class="col-lg-3" visible="false" id="variedadfrijol2" runat="server">
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <label>Variedad Frijol</label>
+                                            <label>Variedades</label>
                                             <asp:Label ID="Label15" class="label label-warning" runat="server" Text=""></asp:Label>
                                             <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                                                 <asp:ListItem Text=""></asp:ListItem>
@@ -483,7 +483,7 @@
 
                                 <div class="col-lg-3" visible="false" id="variedadmaiz2" runat="server">
                                     <div class="form-group">
-                                        <label>Variedades Maiz</label><asp:Label ID="Label16" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <label>Variedades</label><asp:Label ID="Label16" class="label label-warning" runat="server" Text=""></asp:Label>
                                         <asp:DropDownList CssClass="form-control" ID="DropDownList2" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                                             <asp:ListItem Text=""></asp:ListItem>
                                             <asp:ListItem id="DictaMayav" Text="Dicta Maya"></asp:ListItem>

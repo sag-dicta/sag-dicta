@@ -24,7 +24,9 @@ Public Class InscripcionLotes
                 llenarcomboCultivo()
                 llenarcomboCultivo2()
                 llenarcomboVariedad()
+                llenarcomboVariedadB()
                 llenarcomboVariedad2()
+                llenarcomboVariedad2B()
                 llenarcomboCategoria()
                 llenarcomboCategoria2()
                 llenagrid()
@@ -441,7 +443,7 @@ Public Class InscripcionLotes
 
     Protected Sub VerificarTextBox()
         '1
-        If String.IsNullOrEmpty(CmbTipoSemilla.Text) Then
+        If CmbTipoSemilla.SelectedItem.Text = " " Then
             Label2.Text = "*"
             validarflag = 0
         Else
@@ -450,7 +452,7 @@ Public Class InscripcionLotes
         End If
         '2
         If CmbTipoSemilla.SelectedItem.Text = "Frijol" Then
-            If String.IsNullOrEmpty(DropDownList5.Text) Then
+            If DropDownList5.SelectedItem.Text = " " Then
                 Label4.Text = "*"
                 validarflag = 0
             Else
@@ -458,7 +460,7 @@ Public Class InscripcionLotes
                 validarflag += 1
             End If
         ElseIf CmbTipoSemilla.SelectedItem.Text = "Maiz" Then
-            If String.IsNullOrEmpty(DropDownList6.Text) Then
+            If DropDownList6.SelectedItem.Text = " " Then
                 Label6.Text = "*"
                 validarflag = 0
             Else
@@ -466,7 +468,7 @@ Public Class InscripcionLotes
                 validarflag += 1
             End If
         Else
-            If String.IsNullOrEmpty(DropDownList5.Text) Then
+            If DropDownList5.SelectedItem.Text = " " Then
                 Label4.Text = "*"
                 validarflag = 0
             Else
@@ -507,7 +509,7 @@ Public Class InscripcionLotes
             validarflag += 1
         End If
         '7
-        If String.IsNullOrEmpty(DdlCategoria.Text) Then
+        If DdlCategoria.SelectedItem.Text = " " Then
             Label7.Text = "*"
             validarflag = 0
         Else
@@ -523,7 +525,7 @@ Public Class InscripcionLotes
             validarflag += 1
         End If
         '9
-        If String.IsNullOrEmpty(DropDownList3.Text) Then
+        If DropDownList3.SelectedItem.Text = " " Then
             Label12.Text = "*"
             validarflag = 0
         Else
@@ -532,7 +534,7 @@ Public Class InscripcionLotes
         End If
         '10
         If DropDownList3.SelectedItem.Text = "Frijol" Then
-            If String.IsNullOrEmpty(DropDownList1.Text) Then
+            If DropDownList1.SelectedItem.Text = " " Then
                 Label15.Text = "*"
                 validarflag = 0
             Else
@@ -540,7 +542,7 @@ Public Class InscripcionLotes
                 validarflag += 1
             End If
         ElseIf DropDownList3.SelectedItem.Text = "Maiz" Then
-            If String.IsNullOrEmpty(DropDownList2.Text) Then
+            If DropDownList2.SelectedItem.Text = " " Then
                 Label16.Text = "*"
                 validarflag = 0
             Else
@@ -597,7 +599,7 @@ Public Class InscripcionLotes
             validarflag += 1
         End If
         '16
-        If String.IsNullOrEmpty(categoria_origen_ddl.Text) Then
+        If categoria_origen_ddl.SelectedItem.Text = " " Then
             Label5.Text = "*"
             validarflag = 0
         Else
@@ -916,20 +918,17 @@ Public Class InscripcionLotes
             TxtPersonaFinca.Text = dt.Rows(0)("nombre_persona_finca").ToString()
             TxtLote.Text = dt.Rows(0)("nombre_lote").ToString()
             llenarcomboCultivo()
-            llenarcomboCultivo2()
             SeleccionarItemEnDropDownList(CmbTipoSemilla, If(dt.Rows(0)("tipo_cultivo") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_cultivo").ToString()))
 
-            llenarcomboVariedad()
-            llenarcomboVariedad2()
-            llenarcomboCategoria()
-            llenarcomboCategoria2()
-            If Not String.IsNullOrEmpty(dt.Rows(0)("tipo_cultivo").ToString()) And dt.Rows(0)("tipo_cultivo").ToString() <> "Maiz" Then
+            If dt.Rows(0)("tipo_cultivo").ToString() <> "Maiz" Then
                 VariedadFrijol.Visible = True
                 VariedadMaiz.Visible = False
+                llenarcomboVariedad()
                 SeleccionarItemEnDropDownList(DropDownList5, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
             ElseIf dt.Rows(0)("tipo_cultivo").ToString() = "Maiz" Then
                 VariedadFrijol.Visible = False
                 VariedadMaiz.Visible = True
+                llenarcomboVariedadB()
                 SeleccionarItemEnDropDownList(DropDownList6, If(dt.Rows(0)("variedad") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad").ToString()))
             Else
                 VariedadFrijol.Visible = False
@@ -937,25 +936,28 @@ Public Class InscripcionLotes
             End If
 
             txtprodsem.Text = If(dt.Rows(0)("productor") Is DBNull.Value, String.Empty, dt.Rows(0)("productor").ToString())
+            llenarcomboCategoria()
             SeleccionarItemEnDropDownList(categoria_origen_ddl, If(dt.Rows(0)("categoria_origen") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_origen").ToString()))
             TextBox3.Text = If(dt.Rows(0)("no_lote") Is DBNull.Value, String.Empty, dt.Rows(0)("no_lote").ToString())
             TextBox4.Text = If(dt.Rows(0)("fecha_analisis") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_analisis"), DateTime).ToString("yyyy-MM-dd"))
             txtFechaCad.Text = If(dt.Rows(0)("caducidad_lote") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("caducidad_lote"), DateTime).ToString("yyyy-MM-dd"))
             TextBox6.Text = If(dt.Rows(0)("ano_produ") Is DBNull.Value, String.Empty, dt.Rows(0)("ano_produ").ToString())
 
-
+            llenarcomboCultivo2()
+            SeleccionarItemEnDropDownList(DropDownList3, If(dt.Rows(0)("cultivo_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("cultivo_semilla").ToString()))
+            llenarcomboCategoria2()
             SeleccionarItemEnDropDownList(DdlCategoria, If(dt.Rows(0)("categoria_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("categoria_semilla").ToString()))
             SeleccionarItemEnDropDownList(DdlTipo, If(dt.Rows(0)("tipo_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("tipo_semilla").ToString()))
-            SeleccionarItemEnDropDownList(DropDownList3, If(dt.Rows(0)("cultivo_semilla") Is DBNull.Value, String.Empty, dt.Rows(0)("cultivo_semilla").ToString()))
 
-
-            If dt.Rows(0)("cultivo_semilla").ToString() = "Frijol" Then
+            If dt.Rows(0)("tipo_cultivo").ToString() <> "Maiz" Then
                 variedadfrijol2.Visible = True
                 variedadmaiz2.Visible = False
+                llenarcomboVariedad2()
                 SeleccionarItemEnDropDownList(DropDownList1, If(dt.Rows(0)("variedad_frijol") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad_frijol").ToString()))
             ElseIf dt.Rows(0)("cultivo_semilla").ToString() = "Maiz" Then
                 variedadfrijol2.Visible = False
                 variedadmaiz2.Visible = True
+                llenarcomboVariedad2B()
                 SeleccionarItemEnDropDownList(DropDownList2, If(dt.Rows(0)("variedad_maiz") Is DBNull.Value, String.Empty, dt.Rows(0)("variedad_maiz").ToString()))
             Else
                 variedadfrijol2.Visible = False
@@ -1365,21 +1367,32 @@ Public Class InscripcionLotes
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
 
-        DropDownList5.DataSource = DtCombo
+        DropDownList5.Items.Clear()
+        DropDownList5.DataSource = DtCombo.Copy() ' Clonar el DataTable para DropDownList5
         DropDownList5.DataValueField = DtCombo.Columns(0).ToString()
         DropDownList5.DataTextField = DtCombo.Columns(0).ToString
         DropDownList5.DataBind()
         Dim newitem As New ListItem(" ", " ")
         DropDownList5.Items.Insert(0, newitem)
-
-        DropDownList6.DataSource = DtCombo
-        DropDownList6.DataValueField = DtCombo.Columns(0).ToString()
-        DropDownList6.DataTextField = DtCombo.Columns(0).ToString
-        DropDownList6.DataBind()
-        DropDownList6.Items.Insert(0, newitem)
         VerificarTextBox()
     End Sub
 
+    Private Sub llenarcomboVariedadB()
+        Dim cultivo As String = CmbTipoSemilla.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT Variedad FROM sag_cultivos WHERE Cultivo='" & cultivo & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DropDownList6.Items.Clear()
+        DropDownList6.DataSource = DtCombo.Copy() ' Clonar el DataTable para DropDownList5
+        DropDownList6.DataValueField = DtCombo.Columns(0).ToString()
+        DropDownList6.DataTextField = DtCombo.Columns(0).ToString
+        DropDownList6.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DropDownList6.Items.Insert(0, newitem)
+        VerificarTextBox()
+    End Sub
     Protected Sub DropDownList5_SelectedIndexChanged(sender As Object, e As EventArgs)
         llenarcomboCategoria()
         VerificarTextBox()
@@ -1429,10 +1442,24 @@ Public Class InscripcionLotes
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
 
+        DropDownList1.Items.Clear()
         DropDownList1.DataSource = DtCombo
         DropDownList1.DataValueField = DtCombo.Columns(0).ToString()
         DropDownList1.DataTextField = DtCombo.Columns(0).ToString
         DropDownList1.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+
+        VerificarTextBox()
+    End Sub
+
+    Private Sub llenarcomboVariedad2B()
+        Dim cultivo As String = DropDownList3.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT Variedad FROM sag_cultivos WHERE Cultivo='" & cultivo & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DropDownList1.Items.Clear()
         Dim newitem As New ListItem(" ", " ")
         DropDownList1.Items.Insert(0, newitem)
 
@@ -1443,7 +1470,6 @@ Public Class InscripcionLotes
         DropDownList2.Items.Insert(0, newitem)
         VerificarTextBox()
     End Sub
-
     Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs)
         llenarcomboCategoria2()
         VerificarTextBox()
@@ -1495,6 +1521,7 @@ Public Class InscripcionLotes
             DropDownList6.SelectedIndex = 0
         End If
         llenarcomboVariedad()
+        llenarcomboVariedadB()
         VerificarTextBox()
     End Sub
 
@@ -1522,6 +1549,7 @@ Public Class InscripcionLotes
             DropDownList2.SelectedIndex = 0
         End If
         llenarcomboVariedad2()
+        llenarcomboVariedad2B()
         VerificarTextBox()
     End Sub
 
