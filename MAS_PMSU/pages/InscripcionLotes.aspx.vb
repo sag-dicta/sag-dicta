@@ -81,7 +81,11 @@ Public Class InscripcionLotes
                         cmd.Parameters.AddWithValue("@categoria_origen", categoria_origen_ddl.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
                         Dim selectedValue As String = CmbTipoSemilla.SelectedValue
-                        If selectedValue = "Frijol" Then
+                        If selectedValue = "Frijol" Or
+                           selectedValue = "Sorgo" Or
+                           selectedValue = "Arroz" Or
+                           selectedValue = "Ajonjoli" Or
+                           selectedValue = "Papa" Then
                             cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
                         ElseIf selectedValue = "Maiz" Then
                             cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
@@ -97,7 +101,11 @@ Public Class InscripcionLotes
                         cmd.Parameters.AddWithValue("@tipo_semilla", DdlTipo.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@cultivo_semilla", DropDownList3.SelectedItem.Text)
                         Dim selectedValue2 As String = DropDownList3.SelectedItem.Text
-                        If selectedValue = "Frijol" Or Not String.IsNullOrEmpty(selectedValue2) Then
+                        If selectedValue = "Frijol" Or
+                           selectedValue = "Sorgo" Or
+                           selectedValue = "Arroz" Or
+                           selectedValue = "Ajonjoli" Or
+                           selectedValue = "Papa" Then
                             cmd.Parameters.AddWithValue("@variedad_frijol", DropDownList1.SelectedItem.Text)
                         Else
                             cmd.Parameters.AddWithValue("@variedad_frijol", DBNull.Value)
@@ -194,7 +202,11 @@ Public Class InscripcionLotes
                         cmd.Parameters.AddWithValue("@categoria_origen", categoria_origen_ddl.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@tipo_cultivo", CmbTipoSemilla.SelectedItem.Text)
                         Dim selectedValue As String = CmbTipoSemilla.SelectedValue
-                        If selectedValue = "Frijol" Then
+                        If selectedValue = "Frijol" Or
+                           selectedValue = "Sorgo" Or
+                           selectedValue = "Arroz" Or
+                           selectedValue = "Ajonjoli" Or
+                           selectedValue = "Papa" Then
                             cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
                         ElseIf selectedValue = "Maiz" Then
                             cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
@@ -210,7 +222,11 @@ Public Class InscripcionLotes
                         cmd.Parameters.AddWithValue("@tipo_semilla", DdlTipo.SelectedItem.Text)
                         cmd.Parameters.AddWithValue("@cultivo_semilla", DropDownList3.SelectedItem.Text)
                         Dim selectedValue2 As String = DropDownList3.SelectedItem.Text
-                        If selectedValue = "Frijol" Then
+                        If selectedValue = "Frijol" Or
+                           selectedValue = "Sorgo" Or
+                           selectedValue = "Arroz" Or
+                           selectedValue = "Ajonjoli" Or
+                           selectedValue = "Papa" Then
                             cmd.Parameters.AddWithValue("@variedad_frijol", DropDownList1.SelectedItem.Text)
                         Else
                             cmd.Parameters.AddWithValue("@variedad_frijol", DBNull.Value)
@@ -550,7 +566,7 @@ Public Class InscripcionLotes
                 Label16.Text = ""
             End If
         Else
-            If String.IsNullOrEmpty(DropDownList1.Text) Then
+            If DropDownList1.SelectedItem.Text = " " Then
                 Label15.Text = "*"
                 validarflag = 0
             Else

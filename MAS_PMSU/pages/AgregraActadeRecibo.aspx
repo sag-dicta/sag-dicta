@@ -227,7 +227,6 @@
                                     <asp:ListItem id="registrada1" Text="Registrada"></asp:ListItem>
                                     <asp:ListItem id="certificada1" Text="Certificada"></asp:ListItem>
                                     <asp:ListItem id="comercial1" Text="Comercial"></asp:ListItem>
-                                    <asp:ListItem id="Fito_Mejorador1" Text="Fito Mejorador"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
