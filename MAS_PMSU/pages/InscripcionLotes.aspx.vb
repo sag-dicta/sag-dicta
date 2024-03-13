@@ -1501,27 +1501,27 @@ Public Class InscripcionLotes
         ' Obtiene el valor seleccionado en la DropDownList
         Dim selectedValue As String = CmbTipoSemilla.SelectedItem.Text
 
-        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
-        If selectedValue = "Frijol" Then
+        llenarcomboVariedad()
+        llenarcomboVariedadB()
+        llenarcomboCategoria()
+        If selectedValue = "Frijol" Or
+           selectedValue = "Sorgo" Or
+           selectedValue = "Arroz" Or
+           selectedValue = "Ajonjoli" Or
+           selectedValue = "Papa" Then
             DropDownList6.SelectedIndex = 0
             VariedadFrijol.Visible = True
             VariedadMaiz.Visible = False
         ElseIf selectedValue = "Maiz" Then
+            DropDownList5.SelectedIndex = 0
             VariedadMaiz.Visible = True
             VariedadFrijol.Visible = False
-            DropDownList5.SelectedIndex = 0
-        ElseIf Not String.IsNullOrEmpty(selectedValue) Then
-            DropDownList6.SelectedIndex = 0
-            VariedadFrijol.Visible = True
-            VariedadMaiz.Visible = False
         Else
             VariedadMaiz.Visible = False
             VariedadFrijol.Visible = False
             DropDownList5.SelectedIndex = 0
             DropDownList6.SelectedIndex = 0
         End If
-        llenarcomboVariedad()
-        llenarcomboVariedadB()
         VerificarTextBox()
     End Sub
 
@@ -1529,8 +1529,14 @@ Public Class InscripcionLotes
         ' Obtiene el valor seleccionado en la DropDownList
         Dim selectedValue As String = DropDownList3.SelectedItem.Text
 
-        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
-        If selectedValue = "Frijol" Then
+        llenarcomboVariedad2()
+        llenarcomboVariedad2B()
+        llenarcomboCategoria2()
+        If selectedValue = "Frijol" Or
+           selectedValue = "Sorgo" Or
+           selectedValue = "Arroz" Or
+           selectedValue = "Ajonjoli" Or
+           selectedValue = "Papa" Then
             DropDownList2.SelectedIndex = 0
             variedadfrijol2.Visible = True
             variedadmaiz2.Visible = False
@@ -1548,8 +1554,6 @@ Public Class InscripcionLotes
             DropDownList1.SelectedIndex = 0
             DropDownList2.SelectedIndex = 0
         End If
-        llenarcomboVariedad2()
-        llenarcomboVariedad2B()
         VerificarTextBox()
     End Sub
 
