@@ -19,6 +19,7 @@ Public Class Inventario
             If IsPostBack Then
 
             Else
+                llenarcomboCultivo()
                 llenagrid()
             End If
         End If
@@ -592,4 +593,19 @@ Public Class Inventario
     Protected Sub BConfirm_Click(sender As Object, e As EventArgs)
         Response.Redirect(String.Format("~/pages/Inventario.aspx"))
     End Sub
+
+    Private Sub llenarcomboCultivo()
+        Dim StrCombo As String = "SELECT DISTINCT tipo_cultivo FROM vista_inventario ORDER BY tipo_cultivo DESC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDL_SelCult.DataSource = DtCombo
+        DDL_SelCult.DataValueField = DtCombo.Columns(0).ToString()
+        DDL_SelCult.DataTextField = DtCombo.Columns(0).ToString
+        DDL_SelCult.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDL_SelCult.Items.Insert(0, newitem)
+    End Sub
+
 End Class
