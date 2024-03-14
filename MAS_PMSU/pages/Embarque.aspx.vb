@@ -516,8 +516,12 @@ Public Class Embarque
 
             Dim year As String = DateTime.Now.Year.ToString()
 
-            Dim resultadoFormateado As String = total.ToString("D3") & " - " & year
-
+            Dim resultadoFormateado As String
+            If total > 999 Then
+                resultadoFormateado = total.ToString("D4") & " - " & year
+            Else
+                resultadoFormateado = total.ToString("D3") & " - " & year
+            End If
             txtConoNo.Text = resultadoFormateado
         Else
             Dim total1 As Integer = 1
@@ -851,7 +855,7 @@ Public Class Embarque
     Private Sub llenarcomboFrijol()
         Dim StrCombo As String
 
-        StrCombo = "SELECT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = 'Frijol' ORDER BY variedad ASC"
+        StrCombo = "SELECT DISTINCT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = 'Frijol' ORDER BY variedad ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -866,7 +870,7 @@ Public Class Embarque
     Private Sub llenarcomboMaiz()
         Dim StrCombo As String
 
-        StrCombo = "SELECT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = 'Maiz' ORDER BY variedad ASC"
+        StrCombo = "SELECT DISTINCT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = 'Maiz' ORDER BY variedad ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
