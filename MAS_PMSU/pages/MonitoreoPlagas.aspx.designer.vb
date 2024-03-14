@@ -203,6 +203,24 @@ Partial Public Class MonitoreoPlagas
     Protected WithEvents Camara1SorgoCheckbox As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
+    '''Control Camara1PapaCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara1PapaCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara1AjonjoliCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara1AjonjoliCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
     '''Control Camara2MaizCheckbox.
     '''</summary>
     '''<remarks>
@@ -237,6 +255,24 @@ Partial Public Class MonitoreoPlagas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Camara2SorgoCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara2PapaCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara2PapaCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara2AjonjoliCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara2AjonjoliCheckbox As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
     '''Control Camara3MaizCheckbox.
@@ -275,6 +311,24 @@ Partial Public Class MonitoreoPlagas
     Protected WithEvents Camara3SorgoCheckbox As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
+    '''Control Camara3PapaCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara3PapaCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara3AjonjoliCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara3AjonjoliCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
     '''Control Camara4MaizCheckbox.
     '''</summary>
     '''<remarks>
@@ -309,6 +363,24 @@ Partial Public Class MonitoreoPlagas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Camara4SorgoCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara4PapaCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara4PapaCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara4AjonjoliCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara4AjonjoliCheckbox As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
     '''Control Camara5MaizCheckbox.
@@ -347,6 +419,24 @@ Partial Public Class MonitoreoPlagas
     Protected WithEvents Camara5SorgoCheckbox As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
+    '''Control Camara5PapaCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara5PapaCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara5AjonjoliCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara5AjonjoliCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
     '''Control Camara6MaizCheckbox.
     '''</summary>
     '''<remarks>
@@ -381,6 +471,24 @@ Partial Public Class MonitoreoPlagas
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Camara6SorgoCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara6PapaCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara6PapaCheckbox As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''Control Camara6AjonjoliCheckbox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Camara6AjonjoliCheckbox As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
     '''Control txtTotalInc.

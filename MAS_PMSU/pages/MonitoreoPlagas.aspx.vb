@@ -74,12 +74,12 @@ Public Class MonitoreoPlagas
 
         ' 3
         ' Verificar al menos un CheckBox seleccionado
-        If Not (Camara1MaizCheckbox.Checked Or Camara1FrijolCheckbox.Checked Or Camara1ArrozCheckbox.Checked Or Camara1SorgoCheckbox.Checked Or
-                Camara2MaizCheckbox.Checked Or Camara2FrijolCheckbox.Checked Or Camara2ArrozCheckbox.Checked Or Camara2SorgoCheckbox.Checked Or
-                Camara3MaizCheckbox.Checked Or Camara3FrijolCheckbox.Checked Or Camara3ArrozCheckbox.Checked Or Camara3SorgoCheckbox.Checked Or
-                Camara4MaizCheckbox.Checked Or Camara4FrijolCheckbox.Checked Or Camara4ArrozCheckbox.Checked Or Camara4SorgoCheckbox.Checked Or
-                Camara5MaizCheckbox.Checked Or Camara5FrijolCheckbox.Checked Or Camara5ArrozCheckbox.Checked Or Camara5SorgoCheckbox.Checked Or
-                Camara6MaizCheckbox.Checked Or Camara6FrijolCheckbox.Checked Or Camara6ArrozCheckbox.Checked Or Camara6SorgoCheckbox.Checked) Then
+        If Not (Camara1MaizCheckbox.Checked Or Camara1FrijolCheckbox.Checked Or Camara1ArrozCheckbox.Checked Or Camara1SorgoCheckbox.Checked Or Camara1PapaCheckbox.Checked Or Camara1AjonjoliCheckbox.Checked Or
+                Camara2MaizCheckbox.Checked Or Camara2FrijolCheckbox.Checked Or Camara2ArrozCheckbox.Checked Or Camara2SorgoCheckbox.Checked Or Camara2PapaCheckbox.Checked Or Camara2AjonjoliCheckbox.Checked Or
+                Camara3MaizCheckbox.Checked Or Camara3FrijolCheckbox.Checked Or Camara3ArrozCheckbox.Checked Or Camara3SorgoCheckbox.Checked Or Camara3PapaCheckbox.Checked Or Camara3AjonjoliCheckbox.Checked Or
+                Camara4MaizCheckbox.Checked Or Camara4FrijolCheckbox.Checked Or Camara4ArrozCheckbox.Checked Or Camara4SorgoCheckbox.Checked Or Camara4PapaCheckbox.Checked Or Camara4AjonjoliCheckbox.Checked Or
+                Camara5MaizCheckbox.Checked Or Camara5FrijolCheckbox.Checked Or Camara5ArrozCheckbox.Checked Or Camara5SorgoCheckbox.Checked Or Camara5PapaCheckbox.Checked Or Camara5AjonjoliCheckbox.Checked Or
+                Camara6MaizCheckbox.Checked Or Camara6FrijolCheckbox.Checked Or Camara6ArrozCheckbox.Checked Or Camara6SorgoCheckbox.Checked Or Camara6PapaCheckbox.Checked Or Camara6AjonjoliCheckbox.Checked) Then
             lblmensaje.Text = "Seleccione al menos una semilla."
             validarflag = 0
         Else
@@ -158,7 +158,7 @@ Public Class MonitoreoPlagas
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "id, DATE_FORMAT(fecha_monitoreo, '%d-%m-%Y') AS fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo, camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara3_maiz, camara3_frijol, camara3_arroz, camara3_sorgo, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara5_maiz, camara5_frijol, camara5_arroz, camara5_sorgo, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, total_incidencias"
+        Dim cadena As String = "id, DATE_FORMAT(fecha_monitoreo, '%d-%m-%Y') AS fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo, camara1_papa, camara1_ajonjoli, camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara2_papa, camara2_ajonjoli, camara3_maiz, camara3_frijol, camara3_arroz, camara3_sorgo, camara3_papa, camara3_ajonjoli, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara4_papa, camara4_ajonjoli, camara5_maiz, camara5_frijol, camara5_arroz, camara5_sorgo, camara5_papa, camara5_ajonjoli, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, camara6_papa, camara6_ajonjoli, total_incidencias"
         Dim c1 As String = ""
 
         If (TxtMultiplicador.SelectedItem.Text = "Todos") Then
@@ -183,32 +183,32 @@ Public Class MonitoreoPlagas
 
             HeaderCell = New TableCell()
             HeaderCell.Text = "Camara 1"
-            HeaderCell.ColumnSpan = 4
+            HeaderCell.ColumnSpan = 6
             HeaderGridRow.Cells.Add(HeaderCell)
 
             HeaderCell = New TableCell()
             HeaderCell.Text = "Camara 2"
-            HeaderCell.ColumnSpan = 4
+            HeaderCell.ColumnSpan = 6
             HeaderGridRow.Cells.Add(HeaderCell)
 
             HeaderCell = New TableCell()
             HeaderCell.Text = "Camara 3"
-            HeaderCell.ColumnSpan = 4
+            HeaderCell.ColumnSpan = 6
             HeaderGridRow.Cells.Add(HeaderCell)
 
             HeaderCell = New TableCell()
             HeaderCell.Text = "Camara 4"
-            HeaderCell.ColumnSpan = 4
+            HeaderCell.ColumnSpan = 6
             HeaderGridRow.Cells.Add(HeaderCell)
 
             HeaderCell = New TableCell()
             HeaderCell.Text = "Camara 5"
-            HeaderCell.ColumnSpan = 4
+            HeaderCell.ColumnSpan = 6
             HeaderGridRow.Cells.Add(HeaderCell)
 
             HeaderCell = New TableCell()
             HeaderCell.Text = "Camara 6"
-            HeaderCell.ColumnSpan = 4
+            HeaderCell.ColumnSpan = 6
             HeaderGridRow.Cells.Add(HeaderCell)
 
             GridDatos.Controls(0).Controls.AddAt(0, HeaderGridRow)
@@ -218,7 +218,7 @@ Public Class MonitoreoPlagas
     Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             ' Empezar desde la segunda celda (índice 1)
-            For i As Integer = 3 To e.Row.Cells.Count - 1
+            For i As Integer = 3 To e.Row.Cells.Count - 5
                 Dim cell As TableCell = e.Row.Cells(i)
 
                 If cell.Text = "1" Then
@@ -298,7 +298,7 @@ Public Class MonitoreoPlagas
             btnRegresar.Visible = True
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim cadena As String = "fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo, camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara3_maiz, camara3_frijol, camara3_arroz, camara3_sorgo, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara5_maiz, camara5_frijol, camara5_arroz, camara5_sorgo, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, total_incidencias"
+            Dim cadena As String = "fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo, camara1_papa, camara1_ajonjoli, camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara2_papa, camara2_ajonjoli, camara3_maiz, camara3_frijol, camara3_arroz, camara3_sorgo, camara3_papa, camara3_ajonjoli, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara4_papa, camara4_ajonjoli, camara5_maiz, camara5_frijol, camara5_arroz, camara5_sorgo, camara5_papa, camara5_ajonjoli, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, camara6_papa, camara6_ajonjoli, total_incidencias"
             Dim Str As String = "SELECT " & cadena & " FROM sag_monitoreo_plagas_semilla WHERE  ID ='" & HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString & "' "
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
@@ -314,36 +314,48 @@ Public Class MonitoreoPlagas
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_frijol").ToString, Camara1FrijolCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_arroz").ToString, Camara1ArrozCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_sorgo").ToString, Camara1SorgoCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_papa").ToString, Camara1PapaCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara1_ajonjoli").ToString, Camara1AjonjoliCheckbox)
 
             '2
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_maiz").ToString, Camara2MaizCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_frijol").ToString, Camara2FrijolCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_arroz").ToString, Camara2ArrozCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_sorgo").ToString, Camara2SorgoCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_papa").ToString, Camara2PapaCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara2_ajonjoli").ToString, Camara2AjonjoliCheckbox)
 
             '3
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_maiz").ToString, Camara3MaizCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_frijol").ToString, Camara3FrijolCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_arroz").ToString, Camara3ArrozCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_sorgo").ToString, Camara3SorgoCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_papa").ToString, Camara3PapaCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara3_ajonjoli").ToString, Camara3AjonjoliCheckbox)
 
             '4
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_maiz").ToString, Camara4MaizCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_frijol").ToString, Camara4FrijolCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_arroz").ToString, Camara4ArrozCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_sorgo").ToString, Camara4SorgoCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_papa").ToString, Camara4PapaCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara4_ajonjoli").ToString, Camara4AjonjoliCheckbox)
 
             '5
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_maiz").ToString, Camara5MaizCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_frijol").ToString, Camara5FrijolCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_arroz").ToString, Camara5ArrozCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_sorgo").ToString, Camara5SorgoCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_papa").ToString, Camara5PapaCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara5_ajonjoli").ToString, Camara5AjonjoliCheckbox)
 
             '6
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_maiz").ToString, Camara6MaizCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_frijol").ToString, Camara6FrijolCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_arroz").ToString, Camara6ArrozCheckbox)
             ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_sorgo").ToString, Camara6SorgoCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_papa").ToString, Camara6PapaCheckbox)
+            ConvertirVarbinaryABooleano(dt.Rows(0)("camara6_ajonjoli").ToString, Camara6AjonjoliCheckbox)
 
             txtTotalInc.Text = dt.Rows(0)("total_incidencias").ToString
             VerificarTextBox()
@@ -516,38 +528,50 @@ Public Class MonitoreoPlagas
                                                                             Camara1FrijolCheckbox.CheckedChanged,
                                                                             Camara1ArrozCheckbox.CheckedChanged,
                                                                             Camara1SorgoCheckbox.CheckedChanged,
+                                                                            Camara1PapaCheckbox.CheckedChanged,
+                                                                            Camara1AjonjoliCheckbox.CheckedChanged,
                                                                             Camara2MaizCheckbox.CheckedChanged,
                                                                             Camara2FrijolCheckbox.CheckedChanged,
                                                                             Camara2ArrozCheckbox.CheckedChanged,
                                                                             Camara2SorgoCheckbox.CheckedChanged,
+                                                                            Camara2PapaCheckbox.CheckedChanged,
+                                                                            Camara2AjonjoliCheckbox.CheckedChanged,
                                                                             Camara3MaizCheckbox.CheckedChanged,
                                                                             Camara3FrijolCheckbox.CheckedChanged,
                                                                             Camara3ArrozCheckbox.CheckedChanged,
                                                                             Camara3SorgoCheckbox.CheckedChanged,
+                                                                            Camara3PapaCheckbox.CheckedChanged,
+                                                                            Camara3AjonjoliCheckbox.CheckedChanged,
                                                                             Camara4MaizCheckbox.CheckedChanged,
                                                                             Camara4FrijolCheckbox.CheckedChanged,
                                                                             Camara4ArrozCheckbox.CheckedChanged,
                                                                             Camara4SorgoCheckbox.CheckedChanged,
+                                                                            Camara4PapaCheckbox.CheckedChanged,
+                                                                            Camara4AjonjoliCheckbox.CheckedChanged,
                                                                             Camara5MaizCheckbox.CheckedChanged,
                                                                             Camara5FrijolCheckbox.CheckedChanged,
                                                                             Camara5ArrozCheckbox.CheckedChanged,
                                                                             Camara5SorgoCheckbox.CheckedChanged,
+                                                                            Camara5PapaCheckbox.CheckedChanged,
+                                                                            Camara5AjonjoliCheckbox.CheckedChanged,
                                                                             Camara6MaizCheckbox.CheckedChanged,
                                                                             Camara6FrijolCheckbox.CheckedChanged,
                                                                             Camara6ArrozCheckbox.CheckedChanged,
-                                                                            Camara6SorgoCheckbox.CheckedChanged
+                                                                            Camara6SorgoCheckbox.CheckedChanged,
+                                                                            Camara6PapaCheckbox.CheckedChanged,
+                                                                            Camara6AjonjoliCheckbox.CheckedChanged
 
         Dim totalSeleccionadas As Integer = 0
         btnGuardarLote.Visible = False
 
         ' Lista de todos los CheckBoxes
         Dim checkBoxes As New List(Of CheckBox) From {
-        Camara1MaizCheckbox, Camara1FrijolCheckbox, Camara1ArrozCheckbox, Camara1SorgoCheckbox,
-        Camara2MaizCheckbox, Camara2FrijolCheckbox, Camara2ArrozCheckbox, Camara2SorgoCheckbox,
-        Camara3MaizCheckbox, Camara3FrijolCheckbox, Camara3ArrozCheckbox, Camara3SorgoCheckbox,
-        Camara4MaizCheckbox, Camara4FrijolCheckbox, Camara4ArrozCheckbox, Camara4SorgoCheckbox,
-        Camara5MaizCheckbox, Camara5FrijolCheckbox, Camara5ArrozCheckbox, Camara5SorgoCheckbox,
-        Camara6MaizCheckbox, Camara6FrijolCheckbox, Camara6ArrozCheckbox, Camara6SorgoCheckbox
+        Camara1MaizCheckbox, Camara1FrijolCheckbox, Camara1ArrozCheckbox, Camara1SorgoCheckbox, Camara1PapaCheckbox, Camara1AjonjoliCheckbox,
+        Camara2MaizCheckbox, Camara2FrijolCheckbox, Camara2ArrozCheckbox, Camara2SorgoCheckbox, Camara2PapaCheckbox, Camara2AjonjoliCheckbox,
+        Camara3MaizCheckbox, Camara3FrijolCheckbox, Camara3ArrozCheckbox, Camara3SorgoCheckbox, Camara3PapaCheckbox, Camara3AjonjoliCheckbox,
+        Camara4MaizCheckbox, Camara4FrijolCheckbox, Camara4ArrozCheckbox, Camara4SorgoCheckbox, Camara4PapaCheckbox, Camara4AjonjoliCheckbox,
+        Camara5MaizCheckbox, Camara5FrijolCheckbox, Camara5ArrozCheckbox, Camara5SorgoCheckbox, Camara5PapaCheckbox, Camara5AjonjoliCheckbox,
+        Camara6MaizCheckbox, Camara6FrijolCheckbox, Camara6ArrozCheckbox, Camara6SorgoCheckbox, Camara6PapaCheckbox, Camara6AjonjoliCheckbox
     }
 
         ' Contar las CheckBoxes seleccionadas
@@ -579,6 +603,12 @@ Public Class MonitoreoPlagas
     Protected Sub Camara1sorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara1SorgoCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
+    Protected Sub Camara1papaCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara1PapaCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara1ajonjoliCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara1AjonjoliCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
     Protected Sub Camara2maizCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara2MaizCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
@@ -589,6 +619,12 @@ Public Class MonitoreoPlagas
         VerificarTextBox()
     End Sub
     Protected Sub Camara2sorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara2SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara2papaCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara2PapaCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara2ajonjoliCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara2AjonjoliCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
     Protected Sub Camara3frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara3FrijolCheckbox.CheckedChanged
@@ -603,6 +639,12 @@ Public Class MonitoreoPlagas
     Protected Sub Camara3SorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara3SorgoCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
+    Protected Sub Camara3papaCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara3PapaCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara3ajonjoliCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara3AjonjoliCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
     Protected Sub Camara4frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara4FrijolCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
@@ -613,6 +655,12 @@ Public Class MonitoreoPlagas
         VerificarTextBox()
     End Sub
     Protected Sub Camara4SorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara4SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara4papaCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara4PapaCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara4ajonjoliCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara4AjonjoliCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
     Protected Sub Camara5frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara5FrijolCheckbox.CheckedChanged
@@ -627,6 +675,12 @@ Public Class MonitoreoPlagas
     Protected Sub Camara5SorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara5SorgoCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
+    Protected Sub Camara5papaCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara5PapaCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara5ajonjoliCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara5AjonjoliCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
     Protected Sub Camara6frijolCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara6FrijolCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
@@ -637,6 +691,12 @@ Public Class MonitoreoPlagas
         VerificarTextBox()
     End Sub
     Protected Sub Camara6SorgoCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara6SorgoCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara6papaCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara6PapaCheckbox.CheckedChanged
+        VerificarTextBox()
+    End Sub
+    Protected Sub Camara6ajonjoliCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles Camara6AjonjoliCheckbox.CheckedChanged
         VerificarTextBox()
     End Sub
 
@@ -675,26 +735,38 @@ Public Class MonitoreoPlagas
                         camara1_frijol = @camara1_frijol, 
                         camara1_arroz = @camara1_arroz,
                         camara1_sorgo = @camara1_sorgo,
+                        camara1_papa = @camara1_papa,
+                        camara1_ajonjoli = @camara1_ajonjoli,
                         camara2_maiz = @camara2_maiz,
                         camara2_frijol = @camara2_frijol, 
                         camara2_arroz = @camara2_arroz, 
-                        camara2_sorgo = @camara2_sorgo, 
+                        camara2_sorgo = @camara2_sorgo,
+                        camara2_papa = @camara2_papa,
+                        camara2_ajonjoli = @camara2_ajonjoli,
                         camara3_maiz = @camara3_maiz,
                         camara3_frijol = @camara3_frijol, 
                         camara3_arroz = @camara3_arroz, 
-                        camara3_sorgo = @camara3_sorgo, 
+                        camara3_sorgo = @camara3_sorgo,
+                        camara3_papa = @camara3_papa,
+                        camara3_ajonjoli = @camara3_ajonjoli,
                         camara4_maiz = @camara4_maiz,
                         camara4_frijol = @camara4_frijol, 
                         camara4_arroz = @camara4_arroz, 
-                        camara4_sorgo = @camara4_sorgo, 
+                        camara4_sorgo = @camara4_sorgo,
+                        camara4_papa = @camara4_papa,
+                        camara4_ajonjoli = @camara4_ajonjoli,
                         camara5_maiz = @camara5_maiz,
                         camara5_frijol = @camara5_frijol, 
                         camara5_arroz = @camara5_arroz,
                         camara5_sorgo = @camara5_sorgo,
+                        camara5_papa = @camara5_papa,
+                        camara5_ajonjoli = @camara5_ajonjoli,
                         camara6_maiz = @camara6_maiz,
                         camara6_frijol = @camara6_frijol, 
                         camara6_arroz = @camara6_arroz, 
-                        camara6_sorgo = @camara6_sorgo, 
+                        camara6_sorgo = @camara6_sorgo,
+                        camara6_papa = @camara6_papa,
+                        camara6_ajonjoli = @camara6_ajonjoli,
                         total_incidencias = @total_incidencias
                         WHERE ID = " & Textid.Text & ""
 
@@ -728,6 +800,16 @@ Public Class MonitoreoPlagas
                     Else
                         cmd.Parameters.AddWithValue("@camara1_sorgo", "0")
                     End If
+                    If Camara1PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_papa", "0")
+                    End If
+                    If Camara1AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_ajonjoli", "0")
+                    End If
                     '2
                     If Camara2MaizCheckbox.Checked = True Then
                         cmd.Parameters.AddWithValue("@camara2_maiz", "1")
@@ -748,6 +830,16 @@ Public Class MonitoreoPlagas
                         cmd.Parameters.AddWithValue("@camara2_sorgo", "1")
                     Else
                         cmd.Parameters.AddWithValue("@camara2_sorgo", "0")
+                    End If
+                    If Camara2PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_papa", "0")
+                    End If
+                    If Camara2AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_ajonjoli", "0")
                     End If
                     '3
                     If Camara3MaizCheckbox.Checked = True Then
@@ -770,6 +862,16 @@ Public Class MonitoreoPlagas
                     Else
                         cmd.Parameters.AddWithValue("@camara3_sorgo", "0")
                     End If
+                    If Camara3PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_papa", "0")
+                    End If
+                    If Camara3AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_ajonjoli", "0")
+                    End If
                     '4
                     If Camara4MaizCheckbox.Checked = True Then
                         cmd.Parameters.AddWithValue("@camara4_maiz", "1")
@@ -790,6 +892,16 @@ Public Class MonitoreoPlagas
                         cmd.Parameters.AddWithValue("@camara4_sorgo", "1")
                     Else
                         cmd.Parameters.AddWithValue("@camara4_sorgo", "0")
+                    End If
+                    If Camara4PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_papa", "0")
+                    End If
+                    If Camara4AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_ajonjoli", "0")
                     End If
                     '5
                     If Camara5MaizCheckbox.Checked = True Then
@@ -812,6 +924,16 @@ Public Class MonitoreoPlagas
                     Else
                         cmd.Parameters.AddWithValue("@camara5_sorgo", "0")
                     End If
+                    If Camara5PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_papa", "0")
+                    End If
+                    If Camara5AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_ajonjoli", "0")
+                    End If
                     '6
                     If Camara6MaizCheckbox.Checked = True Then
                         cmd.Parameters.AddWithValue("@camara6_maiz", "1")
@@ -832,6 +954,16 @@ Public Class MonitoreoPlagas
                         cmd.Parameters.AddWithValue("@camara6_sorgo", "1")
                     Else
                         cmd.Parameters.AddWithValue("@camara6_sorgo", "0")
+                    End If
+                    If Camara6PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_papa", "0")
+                    End If
+                    If Camara6AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_ajonjoli", "0")
                     End If
 
                     cmd.Parameters.AddWithValue("@total_incidencias", Convert.ToInt64(txtTotalInc.Text))
@@ -857,14 +989,14 @@ Public Class MonitoreoPlagas
             Using connection As New MySqlConnection(connectionString)
                 connection.Open()
 
-                Dim sql As String = "INSERT INTO sag_monitoreo_plagas_semilla (fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo,
-                        camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara3_maiz, camara3_frijol, camara3_arroz,
-                        camara3_sorgo, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara5_maiz, camara5_frijol,
-                        camara5_arroz, camara5_sorgo, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, total_incidencias, estado)
-                        VALUES (@fecha_monitoreo, @responsable, @camara1_maiz, @camara1_frijol, @camara1_arroz, @camara1_sorgo,
-                        @camara2_maiz, @camara2_frijol, @camara2_arroz, @camara2_sorgo, @camara3_maiz, @camara3_frijol, @camara3_arroz,
-                        @camara3_sorgo, @camara4_maiz, @camara4_frijol, @camara4_arroz, @camara4_sorgo, @camara5_maiz, @camara5_frijol,
-                        @camara5_arroz, @camara5_sorgo, @camara6_maiz, @camara6_frijol, @camara6_arroz, @camara6_sorgo, @total_incidencias, @estado)"
+                Dim sql As String = "INSERT INTO sag_monitoreo_plagas_semilla (fecha_monitoreo, responsable, camara1_maiz, camara1_frijol, camara1_arroz, camara1_sorgo, camara1_papa, camara1_ajonjoli,
+                        camara2_maiz, camara2_frijol, camara2_arroz, camara2_sorgo, camara2_papa, camara2_ajonjoli, camara3_maiz, camara3_frijol, camara3_arroz,
+                        camara3_sorgo, camara3_papa, camara3_ajonjoli, camara4_maiz, camara4_frijol, camara4_arroz, camara4_sorgo, camara4_papa, camara4_ajonjoli, camara5_maiz, camara5_frijol,
+                        camara5_arroz, camara5_sorgo, camara5_papa, camara5_ajonjoli, camara6_maiz, camara6_frijol, camara6_arroz, camara6_sorgo, camara6_papa, camara6_ajonjoli, total_incidencias, estado)
+                        VALUES (@fecha_monitoreo, @responsable, @camara1_maiz, @camara1_frijol, @camara1_arroz, @camara1_sorgo, @camara1_papa, @camara1_ajonjoli,
+                        @camara2_maiz, @camara2_frijol, @camara2_arroz, @camara2_sorgo, @camara2_papa, @camara2_ajonjoli, @camara3_maiz, @camara3_frijol, @camara3_arroz,
+                        @camara3_sorgo, @camara3_papa, @camara3_ajonjoli, @camara4_maiz, @camara4_frijol, @camara4_arroz, @camara4_sorgo, @camara4_papa, @camara4_ajonjoli, @camara5_maiz, @camara5_frijol,
+                        @camara5_arroz, @camara5_sorgo, @camara5_papa, @camara5_ajonjoli, @camara6_maiz, @camara6_frijol, @camara6_arroz, @camara6_sorgo, @camara6_papa, @camara6_ajonjoli, @total_incidencias, @estado)"
                 Using cmd As New MySqlCommand(sql, connection)
 
                     If DateTime.TryParse(TxtFechaMonitoreo.Text, fechaConvertida) Then
@@ -892,6 +1024,16 @@ Public Class MonitoreoPlagas
                     Else
                         cmd.Parameters.AddWithValue("@camara1_sorgo", "0")
                     End If
+                    If Camara1PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_papa", "0")
+                    End If
+                    If Camara1AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara1_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara1_ajonjoli", "0")
+                    End If
                     '2
                     If Camara2MaizCheckbox.Checked = True Then
                         cmd.Parameters.AddWithValue("@camara2_maiz", "1")
@@ -912,6 +1054,16 @@ Public Class MonitoreoPlagas
                         cmd.Parameters.AddWithValue("@camara2_sorgo", "1")
                     Else
                         cmd.Parameters.AddWithValue("@camara2_sorgo", "0")
+                    End If
+                    If Camara2PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_papa", "0")
+                    End If
+                    If Camara2AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara2_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara2_ajonjoli", "0")
                     End If
                     '3
                     If Camara3MaizCheckbox.Checked = True Then
@@ -934,6 +1086,16 @@ Public Class MonitoreoPlagas
                     Else
                         cmd.Parameters.AddWithValue("@camara3_sorgo", "0")
                     End If
+                    If Camara3PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_papa", "0")
+                    End If
+                    If Camara3AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara3_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara3_ajonjoli", "0")
+                    End If
                     '4
                     If Camara4MaizCheckbox.Checked = True Then
                         cmd.Parameters.AddWithValue("@camara4_maiz", "1")
@@ -954,6 +1116,16 @@ Public Class MonitoreoPlagas
                         cmd.Parameters.AddWithValue("@camara4_sorgo", "1")
                     Else
                         cmd.Parameters.AddWithValue("@camara4_sorgo", "0")
+                    End If
+                    If Camara4PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_papa", "0")
+                    End If
+                    If Camara4AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara4_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara4_ajonjoli", "0")
                     End If
                     '5
                     If Camara5MaizCheckbox.Checked = True Then
@@ -976,6 +1148,16 @@ Public Class MonitoreoPlagas
                     Else
                         cmd.Parameters.AddWithValue("@camara5_sorgo", "0")
                     End If
+                    If Camara5PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_papa", "0")
+                    End If
+                    If Camara5AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara5_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara5_ajonjoli", "0")
+                    End If
                     '6
                     If Camara6MaizCheckbox.Checked = True Then
                         cmd.Parameters.AddWithValue("@camara6_maiz", "1")
@@ -996,6 +1178,16 @@ Public Class MonitoreoPlagas
                         cmd.Parameters.AddWithValue("@camara6_sorgo", "1")
                     Else
                         cmd.Parameters.AddWithValue("@camara6_sorgo", "0")
+                    End If
+                    If Camara6PapaCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_papa", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_papa", "0")
+                    End If
+                    If Camara6AjonjoliCheckbox.Checked = True Then
+                        cmd.Parameters.AddWithValue("@camara6_ajonjoli", "1")
+                    Else
+                        cmd.Parameters.AddWithValue("@camara6_ajonjoli", "0")
                     End If
 
                     cmd.Parameters.AddWithValue("@total_incidencias", Convert.ToInt64(txtTotalInc.Text))

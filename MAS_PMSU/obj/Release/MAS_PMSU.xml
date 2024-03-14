@@ -3906,15 +3906,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.AgregraActadeRecibo._Fito_Mejorador1">
-<summary>
-Control Fito_Mejorador1.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:MAS_PMSU.AgregraActadeRecibo._lblLote">
 <summary>
 Control lblLote.
@@ -11142,6 +11133,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara1PapaCheckbox">
+<summary>
+Control Camara1PapaCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara1AjonjoliCheckbox">
+<summary>
+Control Camara1AjonjoliCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.MonitoreoPlagas._Camara2MaizCheckbox">
 <summary>
 Control Camara2MaizCheckbox.
@@ -11172,6 +11181,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.MonitoreoPlagas._Camara2SorgoCheckbox">
 <summary>
 Control Camara2SorgoCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara2PapaCheckbox">
+<summary>
+Control Camara2PapaCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara2AjonjoliCheckbox">
+<summary>
+Control Camara2AjonjoliCheckbox.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -11214,6 +11241,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara3PapaCheckbox">
+<summary>
+Control Camara3PapaCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara3AjonjoliCheckbox">
+<summary>
+Control Camara3AjonjoliCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.MonitoreoPlagas._Camara4MaizCheckbox">
 <summary>
 Control Camara4MaizCheckbox.
@@ -11244,6 +11289,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.MonitoreoPlagas._Camara4SorgoCheckbox">
 <summary>
 Control Camara4SorgoCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara4PapaCheckbox">
+<summary>
+Control Camara4PapaCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara4AjonjoliCheckbox">
+<summary>
+Control Camara4AjonjoliCheckbox.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -11286,6 +11349,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara5PapaCheckbox">
+<summary>
+Control Camara5PapaCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara5AjonjoliCheckbox">
+<summary>
+Control Camara5AjonjoliCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.MonitoreoPlagas._Camara6MaizCheckbox">
 <summary>
 Control Camara6MaizCheckbox.
@@ -11316,6 +11397,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.MonitoreoPlagas._Camara6SorgoCheckbox">
 <summary>
 Control Camara6SorgoCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara6PapaCheckbox">
+<summary>
+Control Camara6PapaCheckbox.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.MonitoreoPlagas._Camara6AjonjoliCheckbox">
+<summary>
+Control Camara6AjonjoliCheckbox.
 </summary>
 <remarks>
 Campo generado automáticamente.

@@ -101,31 +101,43 @@
                                             <asp:BoundField DataField="camara1_frijol" HeaderText="Frijol" />
                                             <asp:BoundField DataField="camara1_arroz" HeaderText="Arroz" />
                                             <asp:BoundField DataField="camara1_sorgo" HeaderText="Sorgo" />
+                                            <asp:BoundField DataField="camara1_papa" HeaderText="Papa" />
+                                            <asp:BoundField DataField="camara1_ajonjoli" HeaderText="Ajonjolí" />
 
                                             <asp:BoundField DataField="camara2_maiz" HeaderText="Maíz" />
                                             <asp:BoundField DataField="camara2_frijol" HeaderText="Frijol" />
                                             <asp:BoundField DataField="camara2_arroz" HeaderText="Arroz" />
                                             <asp:BoundField DataField="camara2_sorgo" HeaderText="Sorgo" />
+                                            <asp:BoundField DataField="camara2_papa" HeaderText="Papa" />
+                                            <asp:BoundField DataField="camara2_ajonjoli" HeaderText="Ajonjolí" />
 
                                             <asp:BoundField DataField="camara3_maiz" HeaderText="Maíz" />
                                             <asp:BoundField DataField="camara3_frijol" HeaderText="Frijol" />
                                             <asp:BoundField DataField="camara3_arroz" HeaderText="Arroz" />
                                             <asp:BoundField DataField="camara3_sorgo" HeaderText="Sorgo" />
+                                            <asp:BoundField DataField="camara3_papa" HeaderText="Papa" />
+                                            <asp:BoundField DataField="camara3_ajonjoli" HeaderText="Ajonjolí" />
 
                                             <asp:BoundField DataField="camara4_maiz" HeaderText="Maíz" />
                                             <asp:BoundField DataField="camara4_frijol" HeaderText="Frijol" />
                                             <asp:BoundField DataField="camara4_arroz" HeaderText="Arroz" />
                                             <asp:BoundField DataField="camara4_sorgo" HeaderText="Sorgo" />
+                                            <asp:BoundField DataField="camara4_papa" HeaderText="Papa" />
+                                            <asp:BoundField DataField="camara4_ajonjoli" HeaderText="Ajonjolí" />
 
                                             <asp:BoundField DataField="camara5_maiz" HeaderText="Maíz" />
                                             <asp:BoundField DataField="camara5_frijol" HeaderText="Frijol" />
                                             <asp:BoundField DataField="camara5_arroz" HeaderText="Arroz" />
                                             <asp:BoundField DataField="camara5_sorgo" HeaderText="Sorgo" />
+                                            <asp:BoundField DataField="camara5_papa" HeaderText="Papa" />
+                                            <asp:BoundField DataField="camara5_ajonjoli" HeaderText="Ajonjolí" />
 
                                             <asp:BoundField DataField="camara6_maiz" HeaderText="Maíz" />
                                             <asp:BoundField DataField="camara6_frijol" HeaderText="Frijol" />
                                             <asp:BoundField DataField="camara6_arroz" HeaderText="Arroz" />
                                             <asp:BoundField DataField="camara6_sorgo" HeaderText="Sorgo" />
+                                            <asp:BoundField DataField="camara6_papa" HeaderText="Papa" />
+                                            <asp:BoundField DataField="camara6_ajonjoli" HeaderText="Ajonjolí" />
 
                                             <asp:BoundField DataField="total_incidencias" HeaderText="Total Incidencias" />
 
@@ -218,6 +230,16 @@
                                         <asp:CheckBox ID="Camara1SorgoCheckbox" runat="server" Text="Sorgo" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
                                     </div>
                                 </div>
+                                <div class="col-lg-1">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara1PapaCheckbox" runat="server" Text="Papa" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara1AjonjoliCheckbox" runat="server" Text="Ajonjolí" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -245,6 +267,16 @@
                                 <div class="col-lg-1">
                                     <div class="form-group">
                                         <asp:CheckBox ID="Camara2SorgoCheckbox" runat="server" Text="Sorgo" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara2PapaCheckbox" runat="server" Text="Papa" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara2AjonjoliCheckbox" runat="server" Text="Ajonjolí" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
                                     </div>
                                 </div>
                             </div>
@@ -276,6 +308,16 @@
                                         <asp:CheckBox ID="Camara3SorgoCheckbox" runat="server" Text="Sorgo" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
                                     </div>
                                 </div>
+                                <div class="col-lg-1">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara3PapaCheckbox" runat="server" Text="Papa" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara3AjonjoliCheckbox" runat="server" Text="Ajonjolí" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -303,6 +345,16 @@
                                 <div class="col-lg-1">
                                     <div class="form-group">
                                         <asp:CheckBox ID="Camara4SorgoCheckbox" runat="server" Text="Sorgo" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara4PapaCheckbox" runat="server" Text="Papa" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara4AjonjoliCheckbox" runat="server" Text="Ajonjolí" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
                                     </div>
                                 </div>
                             </div>
@@ -334,6 +386,16 @@
                                         <asp:CheckBox ID="Camara5SorgoCheckbox" runat="server" Text="Sorgo" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
                                     </div>
                                 </div>
+                                <div class="col-lg-1">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara5PapaCheckbox" runat="server" Text="Papa" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara5AjonjoliCheckbox" runat="server" Text="Ajonjolí" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row">
@@ -361,6 +423,16 @@
                                 <div class="col-lg-1">
                                     <div class="form-group">
                                         <asp:CheckBox ID="Camara6SorgoCheckbox" runat="server" Text="Sorgo" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara6PapaCheckbox" runat="server" Text="Papa" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="Camara6AjonjoliCheckbox" runat="server" Text="Ajonjolí" OnCheckedChanged="CalcularTotalInc" AutoPostBack="True" />
                                     </div>
                                 </div>
                             </div>
