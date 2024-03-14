@@ -23,6 +23,7 @@ Public Class FichaPeso
                 llenarcomboCiclogrid()
                 llenarcomboDepto()
                 eliminarMiniGrid2()
+                llenarcomboCultivo()
                 llenagrid()
             End If
         End If
@@ -1037,4 +1038,19 @@ Public Class FichaPeso
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
         Response.Redirect(String.Format("~/pages/ficha_DescArch.aspx"))
     End Sub
+
+    Private Sub llenarcomboCultivo()
+        Dim StrCombo As String = "SELECT DISTINCT tipo_cultivo FROM vista_acta_lote_multi WHERE 1 = 1 AND semilla_QQ_oro IS NOT NULL AND estado_sena = '1' ORDER BY tipo_cultivo DESC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDL_SelCult.DataSource = DtCombo
+        DDL_SelCult.DataValueField = DtCombo.Columns(0).ToString()
+        DDL_SelCult.DataTextField = DtCombo.Columns(0).ToString
+        DDL_SelCult.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDL_SelCult.Items.Insert(0, newitem)
+    End Sub
+
 End Class
