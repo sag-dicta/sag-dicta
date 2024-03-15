@@ -117,10 +117,14 @@
                                     </PagerTemplate>
                                     <AlternatingRowStyle BackColor="White" />
                                     <Columns>
-
-                                        <asp:BoundField DataField="categoria_registrado" HeaderText="CATEGORÍA" />
+                                        <asp:BoundField DataField="fecha_acta" HeaderText="FECHA DE INGRESO" />
                                         <asp:BoundField DataField="tipo_cultivo" HeaderText="CULTIVO" />
                                         <asp:BoundField DataField="variedad" HeaderText="VARIEDAD" />
+                                        <asp:BoundField DataField="categoria_registrado" HeaderText="CATEGORÍA" />
+                                        <asp:BoundField DataField="lote_registrado" HeaderText="LOTE NO." />
+                                        <asp:BoundField DataField="procedencia" HeaderText="PROCEDENCIA" />
+                                        <asp:BoundField DataField="humedad_final" HeaderText="HUMEDAD FINAL (%)" />
+                                        <asp:BoundField DataField="nombre_multiplicador" HeaderText="PRODUCTOR" />
                                         <asp:BoundField DataField="peso_neto_resta" HeaderText="PESO NETO (QQ)" />
 
                                         <asp:ButtonField ButtonType="Button" Text="VER" ControlStyle-CssClass="btn btn-warning" HeaderText="DETALLE" CommandName="Editar"  Visible="false">

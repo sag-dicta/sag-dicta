@@ -29,7 +29,7 @@ Public Class Inventario
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "categoria_registrado, tipo_cultivo, variedad, peso_neto_resta"
+        Dim cadena As String = "DATE_FORMAT(fecha_acta, '%d-%m-%Y') AS fecha_acta, lote_registrado, categoria_registrado, tipo_cultivo, variedad, peso_neto_resta, procedencia, nombre_multiplicador, humedad_final"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""

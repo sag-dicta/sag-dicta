@@ -880,6 +880,7 @@
                                         <asp:ListItem Text=" " Value="0"></asp:ListItem>
                                         <asp:ListItem Text="APROBADO" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="RECHAZADO" Value="2"></asp:ListItem>
+                                        <asp:ListItem Text="PENDIENTE" Value="3"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
