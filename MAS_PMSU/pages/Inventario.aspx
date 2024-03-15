@@ -29,58 +29,34 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Categoria:</label>
-                                <asp:DropDownList CssClass="form-control" ID="TxtCateogiraGrid" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Text="Todos"></asp:ListItem>
-                                    <asp:ListItem id="basica1" Text="Basica"></asp:ListItem>
-                                    <asp:ListItem id="registrada1" Text="Registrada"></asp:ListItem>
-                                    <asp:ListItem id="certificada1" Text="Certificada"></asp:ListItem>
-                                    <asp:ListItem id="comercial" Text="Comercial"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
                                 <label>Seleccione Cultivo:</label>
                                 <asp:DropDownList CssClass="form-control" ID="DDL_SelCult" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
-                                    <asp:ListItem Text="Frijol"></asp:ListItem>
-                                    <asp:ListItem Text="Maiz"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
 
-                        <div class="col-lg-3" id="divVarFrij" runat="server" visible="false">
+                        <div class="col-lg-3" id="divVarFrij" runat="server" visible="true">
                             <div class="form-group">
                                 <div class="form-group">
                                     <label>Seleccione Variedad:</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDLVarFrij" runat="server" AutoPostBack="true">
                                         <asp:ListItem Text="Todos"></asp:ListItem>
-                                        <asp:ListItem id="Amadeus77v" Text="Amadeus-77"></asp:ListItem>
-                                        <asp:ListItem id="Carrizalitov" Text="Carrizalito"></asp:ListItem>
-                                        <asp:ListItem id="Azabachev" Text="Azabache"></asp:ListItem>
-                                        <asp:ListItem id="Paraisitomejoradov" Text="Paraisito mejorado PM-2"></asp:ListItem>
-                                        <asp:ListItem id="Deorhov" Text="Deorho"></asp:ListItem>
-                                        <asp:ListItem id="IntaCardenasv" Text="Inta Cárdenas"></asp:ListItem>
-                                        <asp:ListItem id="Lencaprecozv" Text="Lenca precoz"></asp:ListItem>
-                                        <asp:ListItem id="Rojochortív" Text="Rojo chortí"></asp:ListItem>
-                                        <asp:ListItem id="Tolupanrojov" Text="Tolupan rojo"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-3" id="divVarMaiz" runat="server" visible="false">
+                        <div class="col-lg-3">
                             <div class="form-group">
-                                <label>Seleccione Variedad:</label>
-                                <asp:DropDownList CssClass="form-control" ID="DDLVarMaiz" runat="server" AutoPostBack="true">
+                                <label>Seleccione Categoria:</label>
+                                <asp:DropDownList CssClass="form-control" ID="TxtCateogiraGrid" runat="server" AutoPostBack="True">
                                     <asp:ListItem Text="Todos"></asp:ListItem>
-                                    <asp:ListItem id="DictaMayav" Text="Dicta Maya"></asp:ListItem>
-                                    <asp:ListItem id="DictaVictoriav" Text="Dicta Victoria"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive">

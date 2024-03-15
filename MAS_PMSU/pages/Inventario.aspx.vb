@@ -20,6 +20,8 @@ Public Class Inventario
 
             Else
                 llenarcomboCultivo()
+                llenarcomboVariedad()
+                llenarcomboCategoria()
                 llenagrid()
             End If
         End If
@@ -46,19 +48,12 @@ Public Class Inventario
             c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
         End If
 
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            If (DDLVarFrij.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DDLVarFrij.SelectedItem.Text & "' "
-            End If
+        If (DDLVarFrij.SelectedItem.Text = "Todos") Then
+            c4 = " "
         Else
-            If (DDLVarMaiz.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DDLVarMaiz.SelectedItem.Text & "' "
-            End If
+            c4 = "AND variedad = '" & DDLVarFrij.SelectedItem.Text & "' "
         End If
+
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `vista_inventario` WHERE 1 = 1 " & c1 & c3 & c4
 
         GridDatos.DataBind()
@@ -87,36 +82,15 @@ Public Class Inventario
     End Sub
 
     Protected Sub DDL_SelCult_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDL_SelCult.SelectedIndexChanged
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            llenagrid()
-            divVarMaiz.Visible = False
-            DDLVarMaiz.SelectedIndex = 0
-            divVarFrij.Visible = True
-        End If
-
-        If DDL_SelCult.SelectedItem.Text = "Maiz" Then
-            divVarMaiz.Visible = True
-            DDLVarFrij.SelectedIndex = 0
-            divVarFrij.Visible = False
-            llenagrid()
-        End If
-
-        If DDL_SelCult.SelectedItem.Text = "Todos" Then
-            divVarMaiz.Visible = False
-            DDLVarFrij.SelectedIndex = 0
-            divVarFrij.Visible = False
-            DDLVarMaiz.SelectedIndex = 0
-            llenagrid()
-        End If
+        llenarcomboVariedad()
+        llenarcomboCategoria()
+        llenagrid()
     End Sub
 
     Protected Sub DDLVarFrij_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLVarFrij.SelectedIndexChanged
         llenagrid()
     End Sub
 
-    Protected Sub DDLVarMaiz_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DDLVarMaiz.SelectedIndexChanged
-        llenagrid()
-    End Sub
     Protected Sub SqlDataSource1_Selected(sender As Object, e As SqlDataSourceStatusEventArgs) Handles SqlDataSource1.Selected
 
         lblTotalClientes.Text = e.AffectedRows.ToString()
@@ -449,18 +423,10 @@ Public Class Inventario
             c3 = "AND tipo_cultivo = '" & DDL_SelCult.SelectedItem.Text & "' "
         End If
 
-        If DDL_SelCult.SelectedItem.Text = "Frijol" Then
-            If (DDLVarFrij.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DDLVarFrij.SelectedItem.Text & "' "
-            End If
+        If (DDLVarFrij.SelectedItem.Text = "Todos") Then
+            c4 = " "
         Else
-            If (DDLVarMaiz.SelectedItem.Text = "Todos") Then
-                c4 = " "
-            Else
-                c4 = "AND variedad = '" & DDLVarMaiz.SelectedItem.Text & "' "
-            End If
+            c4 = "AND variedad = '" & DDLVarFrij.SelectedItem.Text & "' "
         End If
 
         query = "SELECT " & cadena & " FROM `vista_inventario` WHERE 1 = 1 " & c1 & c3 & c4
@@ -608,4 +574,34 @@ Public Class Inventario
         DDL_SelCult.Items.Insert(0, newitem)
     End Sub
 
+    Private Sub llenarcomboVariedad()
+        Dim cultivo As String = DDL_SelCult.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT variedad FROM vista_inventario WHERE tipo_cultivo='" & cultivo & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLVarFrij.Items.Clear()
+        DDLVarFrij.DataSource = DtCombo.Copy() ' Clonar el DataTable para DropDownList5
+        DDLVarFrij.DataValueField = DtCombo.Columns(0).ToString()
+        DDLVarFrij.DataTextField = DtCombo.Columns(0).ToString
+        DDLVarFrij.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLVarFrij.Items.Insert(0, newitem)
+    End Sub
+
+    Private Sub llenarcomboCategoria()
+        Dim cultivo As String = DDL_SelCult.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT categoria_registrado FROM vista_inventario WHERE tipo_cultivo='" & cultivo & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        TxtCateogiraGrid.DataSource = DtCombo
+        TxtCateogiraGrid.DataValueField = DtCombo.Columns(0).ToString()
+        TxtCateogiraGrid.DataTextField = DtCombo.Columns(0).ToString
+        TxtCateogiraGrid.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        TxtCateogiraGrid.Items.Insert(0, newitem)
+    End Sub
 End Class
