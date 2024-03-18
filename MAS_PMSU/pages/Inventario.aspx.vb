@@ -604,4 +604,36 @@ Public Class Inventario
         Dim newitem As New ListItem("Todos", "Todos")
         TxtCateogiraGrid.Items.Insert(0, newitem)
     End Sub
+
+    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
+
+        Dim rptdocument As New ReportDocument
+        'nombre de dataset
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM vista_inventario_informe"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        Dim nombre As String
+
+        nombre = "Acta de Recepción de Semilla " + " " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
+        'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+
+    End Sub
 End Class

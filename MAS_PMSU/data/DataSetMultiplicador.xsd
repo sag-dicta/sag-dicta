@@ -842,6 +842,56 @@ FROM     vista_acta_lote_multi</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vista_inventarioTableAdapter" GeneratorDataComponentClassName="vista_inventarioTableAdapter" Name="vista_inventario" UserDataComponentName="vista_inventarioTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sag_dictaConnectionString1 (Web.config)" DbObjectName="sag_dicta.vista_inventario" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `fecha_acta`, `categoria_registrado`, `tipo_cultivo`, `lote_registrado`, `procedencia`, `nombre_multiplicador`, `humedad_final`, `fase_g`, `variedad`, `peso_neto_resta`, `entrada`, `salida` FROM `sag_dicta`.`vista_inventario`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="fecha_acta" DataSetColumn="fecha_acta" />
+              <Mapping SourceColumn="categoria_registrado" DataSetColumn="categoria_registrado" />
+              <Mapping SourceColumn="tipo_cultivo" DataSetColumn="tipo_cultivo" />
+              <Mapping SourceColumn="lote_registrado" DataSetColumn="lote_registrado" />
+              <Mapping SourceColumn="procedencia" DataSetColumn="procedencia" />
+              <Mapping SourceColumn="nombre_multiplicador" DataSetColumn="nombre_multiplicador" />
+              <Mapping SourceColumn="humedad_final" DataSetColumn="humedad_final" />
+              <Mapping SourceColumn="fase_g" DataSetColumn="fase_g" />
+              <Mapping SourceColumn="variedad" DataSetColumn="variedad" />
+              <Mapping SourceColumn="peso_neto_resta" DataSetColumn="peso_neto_resta" />
+              <Mapping SourceColumn="entrada" DataSetColumn="entrada" />
+              <Mapping SourceColumn="salida" DataSetColumn="salida" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vista_inventario_informeTableAdapter" GeneratorDataComponentClassName="vista_inventario_informeTableAdapter" Name="vista_inventario_informe" UserDataComponentName="vista_inventario_informeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="sag_dictaConnectionString1 (Web.config)" DbObjectName="sag_dicta.vista_inventario_informe" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `categoria_registrado`, `tipo_cultivo`, `variedad`, `peso_neto_resta`, `entrada`, `salida`, `precio`, `valor_neto_resta` FROM `sag_dicta`.`vista_inventario_informe`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="categoria_registrado" DataSetColumn="categoria_registrado" />
+              <Mapping SourceColumn="tipo_cultivo" DataSetColumn="tipo_cultivo" />
+              <Mapping SourceColumn="variedad" DataSetColumn="variedad" />
+              <Mapping SourceColumn="peso_neto_resta" DataSetColumn="peso_neto_resta" />
+              <Mapping SourceColumn="entrada" DataSetColumn="entrada" />
+              <Mapping SourceColumn="salida" DataSetColumn="salida" />
+              <Mapping SourceColumn="precio" DataSetColumn="precio" />
+              <Mapping SourceColumn="valor_neto_resta" DataSetColumn="valor_neto_resta" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -2517,6 +2567,98 @@ FROM     vista_acta_lote_multi</CommandText>
               </xs:element>
               <xs:element name="id_2" msprop:Generator_ColumnVarNameInTable="columnid_2" msprop:Generator_ColumnPropNameInRow="id_2" msprop:Generator_ColumnPropNameInTable="id_2Column" msprop:Generator_UserColumnName="id_2" type="xs:int" minOccurs="0" />
               <xs:element name="germinacion_firmada" msprop:Generator_ColumnVarNameInTable="columngerminacion_firmada" msprop:Generator_ColumnPropNameInRow="germinacion_firmada" msprop:Generator_ColumnPropNameInTable="germinacion_firmadaColumn" msprop:Generator_UserColumnName="germinacion_firmada" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vista_inventario" msprop:Generator_TableClassName="vista_inventarioDataTable" msprop:Generator_TableVarName="tablevista_inventario" msprop:Generator_RowChangedName="vista_inventarioRowChanged" msprop:Generator_TablePropName="vista_inventario" msprop:Generator_RowDeletingName="vista_inventarioRowDeleting" msprop:Generator_RowChangingName="vista_inventarioRowChanging" msprop:Generator_RowEvHandlerName="vista_inventarioRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_inventarioRowDeleted" msprop:Generator_RowClassName="vista_inventarioRow" msprop:Generator_UserTableName="vista_inventario" msprop:Generator_RowEvArgName="vista_inventarioRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="fecha_acta" msprop:Generator_ColumnVarNameInTable="columnfecha_acta" msprop:Generator_ColumnPropNameInRow="fecha_acta" msprop:Generator_ColumnPropNameInTable="fecha_actaColumn" msprop:Generator_UserColumnName="fecha_acta" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="categoria_registrado" msprop:Generator_ColumnVarNameInTable="columncategoria_registrado" msprop:Generator_ColumnPropNameInRow="categoria_registrado" msprop:Generator_ColumnPropNameInTable="categoria_registradoColumn" msprop:Generator_UserColumnName="categoria_registrado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tipo_cultivo" msprop:Generator_ColumnVarNameInTable="columntipo_cultivo" msprop:Generator_ColumnPropNameInRow="tipo_cultivo" msprop:Generator_ColumnPropNameInTable="tipo_cultivoColumn" msprop:Generator_UserColumnName="tipo_cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lote_registrado" msprop:Generator_ColumnVarNameInTable="columnlote_registrado" msprop:Generator_ColumnPropNameInRow="lote_registrado" msprop:Generator_ColumnPropNameInTable="lote_registradoColumn" msprop:Generator_UserColumnName="lote_registrado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="procedencia" msprop:Generator_ColumnVarNameInTable="columnprocedencia" msprop:Generator_ColumnPropNameInRow="procedencia" msprop:Generator_ColumnPropNameInTable="procedenciaColumn" msprop:Generator_UserColumnName="procedencia" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="202" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nombre_multiplicador" msprop:Generator_ColumnVarNameInTable="columnnombre_multiplicador" msprop:Generator_ColumnPropNameInRow="nombre_multiplicador" msprop:Generator_ColumnPropNameInTable="nombre_multiplicadorColumn" msprop:Generator_UserColumnName="nombre_multiplicador" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="humedad_final" msprop:Generator_ColumnVarNameInTable="columnhumedad_final" msprop:Generator_ColumnPropNameInRow="humedad_final" msprop:Generator_ColumnPropNameInTable="humedad_finalColumn" msprop:Generator_UserColumnName="humedad_final" type="xs:decimal" minOccurs="0" />
+              <xs:element name="fase_g" msprop:Generator_ColumnVarNameInTable="columnfase_g" msprop:Generator_ColumnPropNameInRow="fase_g" msprop:Generator_ColumnPropNameInTable="fase_gColumn" msprop:Generator_UserColumnName="fase_g" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="variedad" msprop:Generator_ColumnVarNameInTable="columnvariedad" msprop:Generator_ColumnPropNameInRow="variedad" msprop:Generator_ColumnPropNameInTable="variedadColumn" msprop:Generator_UserColumnName="variedad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="peso_neto_resta" msprop:Generator_ColumnVarNameInTable="columnpeso_neto_resta" msprop:Generator_ColumnPropNameInRow="peso_neto_resta" msprop:Generator_ColumnPropNameInTable="peso_neto_restaColumn" msprop:Generator_UserColumnName="peso_neto_resta" type="xs:decimal" minOccurs="0" />
+              <xs:element name="entrada" msprop:Generator_ColumnVarNameInTable="columnentrada" msprop:Generator_ColumnPropNameInRow="entrada" msprop:Generator_ColumnPropNameInTable="entradaColumn" msprop:Generator_UserColumnName="entrada" type="xs:decimal" minOccurs="0" />
+              <xs:element name="salida" msprop:Generator_ColumnVarNameInTable="columnsalida" msprop:Generator_ColumnPropNameInRow="salida" msprop:Generator_ColumnPropNameInTable="salidaColumn" msprop:Generator_UserColumnName="salida" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vista_inventario_informe" msprop:Generator_TableClassName="vista_inventario_informeDataTable" msprop:Generator_TableVarName="tablevista_inventario_informe" msprop:Generator_TablePropName="vista_inventario_informe" msprop:Generator_RowDeletingName="vista_inventario_informeRowDeleting" msprop:Generator_RowChangingName="vista_inventario_informeRowChanging" msprop:Generator_RowEvHandlerName="vista_inventario_informeRowChangeEventHandler" msprop:Generator_RowDeletedName="vista_inventario_informeRowDeleted" msprop:Generator_UserTableName="vista_inventario_informe" msprop:Generator_RowChangedName="vista_inventario_informeRowChanged" msprop:Generator_RowEvArgName="vista_inventario_informeRowChangeEvent" msprop:Generator_RowClassName="vista_inventario_informeRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="categoria_registrado" msprop:Generator_ColumnVarNameInTable="columncategoria_registrado" msprop:Generator_ColumnPropNameInRow="categoria_registrado" msprop:Generator_ColumnPropNameInTable="categoria_registradoColumn" msprop:Generator_UserColumnName="categoria_registrado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tipo_cultivo" msprop:Generator_ColumnVarNameInTable="columntipo_cultivo" msprop:Generator_ColumnPropNameInRow="tipo_cultivo" msprop:Generator_ColumnPropNameInTable="tipo_cultivoColumn" msprop:Generator_UserColumnName="tipo_cultivo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="variedad" msprop:Generator_ColumnVarNameInTable="columnvariedad" msprop:Generator_ColumnPropNameInRow="variedad" msprop:Generator_ColumnPropNameInTable="variedadColumn" msprop:Generator_UserColumnName="variedad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="peso_neto_resta" msprop:Generator_ColumnVarNameInTable="columnpeso_neto_resta" msprop:Generator_ColumnPropNameInRow="peso_neto_resta" msprop:Generator_ColumnPropNameInTable="peso_neto_restaColumn" msprop:Generator_UserColumnName="peso_neto_resta" type="xs:decimal" minOccurs="0" />
+              <xs:element name="entrada" msprop:Generator_ColumnVarNameInTable="columnentrada" msprop:Generator_ColumnPropNameInRow="entrada" msprop:Generator_ColumnPropNameInTable="entradaColumn" msprop:Generator_UserColumnName="entrada" type="xs:decimal" minOccurs="0" />
+              <xs:element name="salida" msprop:Generator_ColumnVarNameInTable="columnsalida" msprop:Generator_ColumnPropNameInRow="salida" msprop:Generator_ColumnPropNameInTable="salidaColumn" msprop:Generator_UserColumnName="salida" type="xs:decimal" minOccurs="0" />
+              <xs:element name="precio" msprop:Generator_ColumnVarNameInTable="columnprecio" msprop:Generator_ColumnPropNameInRow="precio" msprop:Generator_ColumnPropNameInTable="precioColumn" msprop:Generator_UserColumnName="precio" type="xs:decimal" minOccurs="0" />
+              <xs:element name="valor_neto_resta" msprop:Generator_ColumnVarNameInTable="columnvalor_neto_resta" msprop:Generator_ColumnPropNameInRow="valor_neto_resta" msprop:Generator_ColumnPropNameInTable="valor_neto_restaColumn" msprop:Generator_UserColumnName="valor_neto_resta" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
