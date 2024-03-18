@@ -128,7 +128,6 @@
                         <div class="col-lg-12">
                             <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-warning" Text="Imprimir Informe"><span class="glyphicon glyphicon-save"></span>&nbsp;Imprimir Informe</asp:LinkButton>
                         </div>
                     </div>
                 </div>
@@ -144,6 +143,43 @@
                         <div class="col-lg-12 text-right">
                             <asp:Label ID="Label1" runat="server" Text="Total (QQ):" Font-Size="Large" Font-Bold="True"></asp:Label>
                             <asp:Label ID="Label2" runat="server" Text="0000" Font-Size="Larger" Font-Bold="True"></asp:Label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Div2" runat="server" visible="true">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Imprimir Informe
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label>Seleccione Tipo de Informe:</label>
+                                <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AutoPostBack="True">
+                                    <asp:ListItem Text="Inventario Todo - Categoria"></asp:ListItem>
+                                    <asp:ListItem Text="Inventario Procesado"></asp:ListItem>
+                                    <asp:ListItem Text="Inventario Sin Procesar"></asp:ListItem>
+                                    <asp:ListItem Text="Por Cultivo - Granos Basicos"></asp:ListItem>
+                                    <asp:ListItem Text="Por Ciclo - Variedades/Productos"></asp:ListItem>
+                                    <asp:ListItem Text="Por Fecha"></asp:ListItem>
+                                    <asp:ListItem Text="Por Año"></asp:ListItem>
+                                    <asp:ListItem Text="Proveedores"></asp:ListItem>
+                                    <asp:ListItem Text="Por Lote"></asp:ListItem>
+                                    <asp:ListItem Text="Por Categoria"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-warning" Text="Imprimir Informe"><span class="glyphicon glyphicon-save"></span>&nbsp;Imprimir Informe</asp:LinkButton>
                         </div>
                     </div>
                 </div>

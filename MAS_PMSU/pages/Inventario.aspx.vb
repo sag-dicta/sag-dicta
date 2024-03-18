@@ -620,7 +620,7 @@ Public Class Inventario
 
         Dim nombre As String
 
-        nombre = "Acta de Recepción de Semilla " + " " + Today
+        nombre = "Informe de Inventario " + " " + Today
 
         rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
 
