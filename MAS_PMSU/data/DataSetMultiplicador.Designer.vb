@@ -8427,6 +8427,16 @@ Partial Public Class DataSetMultiplicador
         
         Private columnvalor_neto_resta As Global.System.Data.DataColumn
         
+        Private columnfase_g As Global.System.Data.DataColumn
+        
+        Private columnnombre_multiplicador As Global.System.Data.DataColumn
+        
+        Private columnprocedencia As Global.System.Data.DataColumn
+        
+        Private columnlote_registrado As Global.System.Data.DataColumn
+        
+        Private columnfecha_acta As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -8527,6 +8537,46 @@ Partial Public Class DataSetMultiplicador
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fase_gColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfase_g
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property nombre_multiplicadorColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnombre_multiplicador
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property procedenciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnprocedencia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property lote_registradoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlote_registrado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property fecha_actaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnfecha_acta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -8563,9 +8613,9 @@ Partial Public Class DataSetMultiplicador
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function Addvista_inventario_informeRow(ByVal categoria_registrado As String, ByVal tipo_cultivo As String, ByVal variedad As String, ByVal peso_neto_resta As Decimal, ByVal entrada As Decimal, ByVal salida As Decimal, ByVal precio As Decimal, ByVal valor_neto_resta As Decimal) As vista_inventario_informeRow
+        Public Overloads Function Addvista_inventario_informeRow(ByVal categoria_registrado As String, ByVal tipo_cultivo As String, ByVal variedad As String, ByVal peso_neto_resta As Decimal, ByVal entrada As Decimal, ByVal salida As Decimal, ByVal precio As Decimal, ByVal valor_neto_resta As Decimal, ByVal fase_g As String, ByVal nombre_multiplicador As String, ByVal procedencia As String, ByVal lote_registrado As String, ByVal fecha_acta As Date) As vista_inventario_informeRow
             Dim rowvista_inventario_informeRow As vista_inventario_informeRow = CType(Me.NewRow,vista_inventario_informeRow)
-            Dim columnValuesArray() As Object = New Object() {categoria_registrado, tipo_cultivo, variedad, peso_neto_resta, entrada, salida, precio, valor_neto_resta}
+            Dim columnValuesArray() As Object = New Object() {categoria_registrado, tipo_cultivo, variedad, peso_neto_resta, entrada, salida, precio, valor_neto_resta, fase_g, nombre_multiplicador, procedencia, lote_registrado, fecha_acta}
             rowvista_inventario_informeRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowvista_inventario_informeRow)
             Return rowvista_inventario_informeRow
@@ -8596,6 +8646,11 @@ Partial Public Class DataSetMultiplicador
             Me.columnsalida = MyBase.Columns("salida")
             Me.columnprecio = MyBase.Columns("precio")
             Me.columnvalor_neto_resta = MyBase.Columns("valor_neto_resta")
+            Me.columnfase_g = MyBase.Columns("fase_g")
+            Me.columnnombre_multiplicador = MyBase.Columns("nombre_multiplicador")
+            Me.columnprocedencia = MyBase.Columns("procedencia")
+            Me.columnlote_registrado = MyBase.Columns("lote_registrado")
+            Me.columnfecha_acta = MyBase.Columns("fecha_acta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8617,9 +8672,23 @@ Partial Public Class DataSetMultiplicador
             MyBase.Columns.Add(Me.columnprecio)
             Me.columnvalor_neto_resta = New Global.System.Data.DataColumn("valor_neto_resta", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnvalor_neto_resta)
+            Me.columnfase_g = New Global.System.Data.DataColumn("fase_g", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfase_g)
+            Me.columnnombre_multiplicador = New Global.System.Data.DataColumn("nombre_multiplicador", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnombre_multiplicador)
+            Me.columnprocedencia = New Global.System.Data.DataColumn("procedencia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnprocedencia)
+            Me.columnlote_registrado = New Global.System.Data.DataColumn("lote_registrado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlote_registrado)
+            Me.columnfecha_acta = New Global.System.Data.DataColumn("fecha_acta", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnfecha_acta)
             Me.columncategoria_registrado.MaxLength = 255
             Me.columntipo_cultivo.MaxLength = 100
             Me.columnvariedad.MaxLength = 100
+            Me.columnfase_g.MaxLength = 50
+            Me.columnnombre_multiplicador.MaxLength = 100
+            Me.columnprocedencia.MaxLength = 202
+            Me.columnlote_registrado.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -19498,6 +19567,86 @@ Partial Public Class DataSetMultiplicador
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fase_g() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_inventario_informe.fase_gColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fase_g' de la tabla 'vista_inventario_informe' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_inventario_informe.fase_gColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property nombre_multiplicador() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_inventario_informe.nombre_multiplicadorColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nombre_multiplicador' de la tabla 'vista_inventario_infor"& _ 
+                            "me' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_inventario_informe.nombre_multiplicadorColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property procedencia() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_inventario_informe.procedenciaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'procedencia' de la tabla 'vista_inventario_informe' es DB"& _ 
+                            "Null.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_inventario_informe.procedenciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property lote_registrado() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_inventario_informe.lote_registradoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'lote_registrado' de la tabla 'vista_inventario_informe' e"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_inventario_informe.lote_registradoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property fecha_acta() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablevista_inventario_informe.fecha_actaColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'fecha_acta' de la tabla 'vista_inventario_informe' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablevista_inventario_informe.fecha_actaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function Iscategoria_registradoNull() As Boolean
             Return Me.IsNull(Me.tablevista_inventario_informe.categoria_registradoColumn)
         End Function
@@ -19590,6 +19739,66 @@ Partial Public Class DataSetMultiplicador
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Setvalor_neto_restaNull()
             Me(Me.tablevista_inventario_informe.valor_neto_restaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfase_gNull() As Boolean
+            Return Me.IsNull(Me.tablevista_inventario_informe.fase_gColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfase_gNull()
+            Me(Me.tablevista_inventario_informe.fase_gColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isnombre_multiplicadorNull() As Boolean
+            Return Me.IsNull(Me.tablevista_inventario_informe.nombre_multiplicadorColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setnombre_multiplicadorNull()
+            Me(Me.tablevista_inventario_informe.nombre_multiplicadorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsprocedenciaNull() As Boolean
+            Return Me.IsNull(Me.tablevista_inventario_informe.procedenciaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetprocedenciaNull()
+            Me(Me.tablevista_inventario_informe.procedenciaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Islote_registradoNull() As Boolean
+            Return Me.IsNull(Me.tablevista_inventario_informe.lote_registradoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setlote_registradoNull()
+            Me(Me.tablevista_inventario_informe.lote_registradoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isfecha_actaNull() As Boolean
+            Return Me.IsNull(Me.tablevista_inventario_informe.fecha_actaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setfecha_actaNull()
+            Me(Me.tablevista_inventario_informe.fecha_actaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -25746,6 +25955,11 @@ Namespace DataSetMultiplicadorTableAdapters
             tableMapping.ColumnMappings.Add("salida", "salida")
             tableMapping.ColumnMappings.Add("precio", "precio")
             tableMapping.ColumnMappings.Add("valor_neto_resta", "valor_neto_resta")
+            tableMapping.ColumnMappings.Add("fase_g", "fase_g")
+            tableMapping.ColumnMappings.Add("nombre_multiplicador", "nombre_multiplicador")
+            tableMapping.ColumnMappings.Add("procedencia", "procedencia")
+            tableMapping.ColumnMappings.Add("lote_registrado", "lote_registrado")
+            tableMapping.ColumnMappings.Add("fecha_acta", "fecha_acta")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -25762,9 +25976,9 @@ Namespace DataSetMultiplicadorTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `categoria_registrado`, `tipo_cultivo`, `variedad`, `peso_neto_resta`, `en"& _ 
-                "trada`, `salida`, `precio`, `valor_neto_resta` FROM `sag_dicta`.`vista_inventari"& _ 
-                "o_informe`"
+            Me._commandCollection(0).CommandText = "SELECT categoria_registrado, tipo_cultivo, variedad, peso_neto_resta, entrada, sa"& _ 
+                "lida, precio, valor_neto_resta, fase_g, nombre_multiplicador, procedencia, lote_"& _ 
+                "registrado, fecha_acta"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     vista_inventario_informe"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
