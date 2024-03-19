@@ -95,24 +95,6 @@ Partial Public Class Inventario
     Protected WithEvents GridDatos As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Control LinkButton1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
-
-    '''<summary>
-    '''Control Div1.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents Div1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
-
-    '''<summary>
     '''Control Label1.
     '''</summary>
     '''<remarks>
@@ -129,6 +111,24 @@ Partial Public Class Inventario
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control LinkButton1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents LinkButton1 As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''Control Div1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Div1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control Div2.
@@ -176,13 +176,40 @@ Partial Public Class Inventario
     Protected WithEvents DDLImpCultivo As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control divfecha.
+    '''Control divfecha1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents divfecha As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents divfecha1 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control txtFechaDesde.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFechaDesde As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control divfecha2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents divfecha2 As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control txtFechaHasta.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFechaHasta As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control LinkButton2.

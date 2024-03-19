@@ -103,7 +103,7 @@
                                         <asp:BoundField DataField="nombre_multiplicador" HeaderText="PRODUCTOR" />
                                         <asp:BoundField DataField="peso_neto_resta" HeaderText="PESO NETO (QQ)" />
 
-                                        <asp:ButtonField ButtonType="Button" Text="VER" ControlStyle-CssClass="btn btn-warning" HeaderText="DETALLE" CommandName="Editar"  Visible="false">
+                                        <asp:ButtonField ButtonType="Button" Text="VER" ControlStyle-CssClass="btn btn-warning" HeaderText="DETALLE" CommandName="Editar" Visible="false">
                                             <ControlStyle CssClass="btn btn-info"></ControlStyle>
                                         </asp:ButtonField>
                                         <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar" Visible="false">
@@ -125,6 +125,12 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-lg-12 text-right">
+                            <asp:Label ID="Label1" runat="server" Text="Total (QQ):" Font-Size="Large" Font-Bold="True"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="0000" Font-Size="Larger" Font-Bold="True"></asp:Label>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-12">
                             <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                             <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
@@ -135,16 +141,10 @@
         </div>
     </div>
 
-    <div id="Div1" runat="server" visible="true">
+    <div id="Div1" runat="server" visible="false">
         <div class="row">
             <div class="panel panel-primary">
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12 text-right">
-                            <asp:Label ID="Label1" runat="server" Text="Total (QQ):" Font-Size="Large" Font-Bold="True"></asp:Label>
-                            <asp:Label ID="Label2" runat="server" Text="0000" Font-Size="Larger" Font-Bold="True"></asp:Label>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -170,13 +170,13 @@
                                     <asp:ListItem Text="Por Cultivo"></asp:ListItem>
                                     <asp:ListItem Text="Por Variedades"></asp:ListItem>
                                     <asp:ListItem Text="Por Fecha"></asp:ListItem>
-                                    <asp:ListItem Text="Por Año"></asp:ListItem>
+                                    <asp:ListItem Text="Por Ciclo"></asp:ListItem>
                                     <asp:ListItem Text="Proveedores"></asp:ListItem>
                                     <asp:ListItem Text="Por Lote"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        
+
                         <div class="col-lg-3" id="divcultivo" runat="server" visible="false">
                             <div class="form-group">
                                 <label id="lblSeleccion" runat="server">Seleccione :</label>
@@ -185,9 +185,18 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div class="col-lg-3" id="divfecha" runat="server" visible="false">
+
+                        <div class="col-lg-3" id="divfecha1" runat="server" visible="false">
                             <div class="form-group">
-                                
+                                <label>Seleccione Fecha desde:</label>
+                                <asp:TextBox CssClass="form-control" ID="txtFechaDesde" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaDesde_TextChanged"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3" id="divfecha2" runat="server" visible="false">
+                            <div class="form-group">
+                                <label>Seleccione Fecha hasta:</label>
+                                <asp:TextBox CssClass="form-control" ID="txtFechaHasta" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaHasta_TextChanged"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -360,7 +369,7 @@
                     <asp:Label ID="Label103" runat="server" Text="El Acta de Recepcion de semilla ha sido almacenada con exito"></asp:Label>
                 </div>
                 <div class="modal-footer" style="text-align: center">
-                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click"/>
+                    <asp:Button ID="BConfirm" Text="Aceptar" Width="80px" runat="server" Class="btn btn-primary" OnClick="BConfirm_Click" />
                     <asp:Button ID="BBorrarsi" Text="SI" Width="80px" runat="server" Class="btn btn-primary" />
                     <asp:Button ID="BBorrarno" Text="NO" Width="80px" runat="server" Class="btn btn-primary" />
                 </div>

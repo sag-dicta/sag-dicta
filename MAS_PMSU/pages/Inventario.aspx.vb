@@ -619,8 +619,8 @@ Public Class Inventario
             PorCicloVariedadesProductos()
         ElseIf DDLTipoInforme.SelectedItem.Text = "Por Fecha" Then
             PorFecha()
-        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Año" Then
-            PorAnio()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Ciclo" Then
+            PorCiclo()
         ElseIf DDLTipoInforme.SelectedItem.Text = "Proveedores" Then
             Proveedores()
         ElseIf DDLTipoInforme.SelectedItem.Text = "Por Lote" Then
@@ -643,7 +643,7 @@ Public Class Inventario
 
         adap.Fill(ds, "vista_inventario_informe")
 
-        nombre = "Informe de Inventario por Categoria" + " " + Today
+        nombre = "Informe de Inventario Completo" + " " + Today
 
         rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
 
@@ -660,10 +660,59 @@ Public Class Inventario
 
     Protected Sub InventarioProcesado()
 
+        Dim var As String = DDLImpCultivo.SelectedItem.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM vista_inventario_informe WHERE fase_g= 'Procesado'"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario Procesado" + " " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport5.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
     End Sub
 
     Protected Sub InventarioSinProcesar()
+        Dim var As String = DDLImpCultivo.SelectedItem.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM vista_inventario_informe WHERE fase_g <> 'Procesado'"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
 
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario Sin Procesar" + " " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport5.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
     End Sub
 
     Protected Sub PorCultivoGranosBasicos()
@@ -679,7 +728,7 @@ Public Class Inventario
 
         adap.Fill(ds, "vista_inventario_informe")
 
-        nombre = "Informe de Inventario por Cultivo" + " " + Today
+        nombre = "Informe de Inventario por Cultivo - " + var + " - " + Today
 
         rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
 
@@ -707,7 +756,7 @@ Public Class Inventario
 
         adap.Fill(ds, "vista_inventario_informe")
 
-        nombre = "Informe de Inventario por Variedades" + " " + Today
+        nombre = "Informe de Inventario por Variedades - " + var + " - " + Today
 
         rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
 
@@ -721,20 +770,168 @@ Public Class Inventario
 
         Response.End()
     End Sub
+    Protected Sub inicializarfechas()
+        ' Inicializar txtFechaDesde
+        txtFechaDesde.Text = New DateTime(2010, 1, 1).ToString("yyyy-MM-dd")
 
+        ' Inicializar txtFechaHasta 
+        txtFechaHasta.Text = DateTime.Now.ToString("yyyy-MM-dd")
+    End Sub
+
+    Protected Sub txtFechaDesde_TextChanged(sender As Object, e As EventArgs) Handles txtFechaDesde.TextChanged
+        ' Verificar si txtFechaDesde es mayor que txtFechaHasta
+        If DateTime.Parse(txtFechaDesde.Text) > DateTime.Parse(txtFechaHasta.Text) Then
+            ' Si txtFechaDesde es mayor, establecer txtFechaHasta igual a txtFechaDesde
+            txtFechaHasta.Text = txtFechaDesde.Text
+        End If
+    End Sub
+
+    Protected Sub txtFechaHasta_TextChanged(sender As Object, e As EventArgs) Handles txtFechaHasta.TextChanged
+        ' Verificar si txtFechaHasta es menor que txtFechaDesde
+        If DateTime.Parse(txtFechaHasta.Text) < DateTime.Parse(txtFechaDesde.Text) Then
+            ' Si txtFechaHasta es menor, establecer txtFechaDesde igual a txtFechaHasta
+            txtFechaDesde.Text = txtFechaHasta.Text
+        End If
+    End Sub
     Protected Sub PorFecha()
+        Dim fechaDesde As Date = txtFechaDesde.Text
+        Dim fechaHasta As Date = txtFechaHasta.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM vista_inventario_informe WHERE fecha_acta BETWEEN @fechaDesde AND @fechaHasta"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+
+        adap.SelectCommand.Parameters.AddWithValue("@fechaDesde", fechaDesde)
+        adap.SelectCommand.Parameters.AddWithValue("@fechaHasta", fechaHasta)
+
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario por Fecha -" + " " + fechaDesde + " al " + fechaHasta
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport6.rpt"))
+        rptdocument.SetDataSource(ds)
+
+        rptdocument.SetParameterValue("FechaDesde", fechaDesde)
+        rptdocument.SetParameterValue("FechaHasta", fechaHasta)
+
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
 
     End Sub
 
-    Protected Sub PorAnio()
+    Protected Sub PorCiclo()
+        Dim var As String = DDLImpCultivo.SelectedItem.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String
+        If var = "Todos" Then
+            Str = "SELECT * FROM vista_inventario_informe"
+        Else
+            Str = "SELECT * FROM vista_inventario_informe WHERE ciclo_acta = '" & var & "'"
+        End If
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
 
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario por Ciclos - " + var + " - " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport7.rpt"))
+
+        rptdocument.SetDataSource(ds)
+
+        rptdocument.SetParameterValue("Ciclo", var)
+
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
     End Sub
 
     Protected Sub Proveedores()
+        Dim var As String = DDLImpCultivo.SelectedItem.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String
+        If var = "Todos" Then
+            Str = "SELECT * FROM vista_inventario_informe"
+        Else
+            Str = "SELECT * FROM vista_inventario_informe WHERE nombre_multiplicador = '" & var & "'"
+        End If
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario por Proveedores - " + var + " - " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport3.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
 
     End Sub
 
     Protected Sub PorLote()
+
+        Dim var As String = DDLImpCultivo.SelectedItem.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String
+        If var = "Todos" Then
+            Str = "SELECT * FROM vista_inventario_informe"
+        Else
+            Str = "SELECT * FROM vista_inventario_informe WHERE lote_registrado = '" & var & "'"
+        End If
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario por Lotes - " + var + " - " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport4.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
 
     End Sub
 
@@ -751,7 +948,7 @@ Public Class Inventario
 
         adap.Fill(ds, "vista_inventario_informe")
 
-        nombre = "Informe de Inventario por Categoria" + " " + Today
+        nombre = "Informe de Inventario por Categoria - " + var + " - " + Today
 
         rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
 
@@ -769,47 +966,62 @@ Public Class Inventario
     Protected Sub DDLTipoInforme_SelectedIndexChanged(sender As Object, e As EventArgs)
         If DDLTipoInforme.SelectedItem.Text = "Inventario - Todo" Then
             divcultivo.Visible = False
-            divfecha.Visible = False
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         ElseIf DDLTipoInforme.SelectedItem.Text = "Inventario Procesado" Then
             divcultivo.Visible = False
-            divfecha.Visible = False
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         ElseIf DDLTipoInforme.SelectedItem.Text = "Inventario Sin Procesar" Then
             divcultivo.Visible = False
-            divfecha.Visible = False
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         ElseIf DDLTipoInforme.SelectedItem.Text = "Por Cultivo" Then
-            lblSeleccion.InnerText = "Seleccione Cultivo:"
             llenarcultivo()
+            lblSeleccion.InnerText = "Seleccione Cultivo:"
             divcultivo.Visible = True
-            divfecha.Visible = False
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         ElseIf DDLTipoInforme.SelectedItem.Text = "Por Variedades" Then
             llenarvariedad()
             lblSeleccion.InnerText = "Seleccione Variedades:"
             divcultivo.Visible = True
-            divfecha.Visible = False
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         ElseIf DDLTipoInforme.SelectedItem.Text = "Por Categoria" Then
             llenarcategoria()
             lblSeleccion.InnerText = "Seleccione Categoria:"
             divcultivo.Visible = True
-            divfecha.Visible = False
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         ElseIf DDLTipoInforme.SelectedItem.Text = "Por Fecha" Then
+            inicializarfechas()
             divcultivo.Visible = False
-            divfecha.Visible = True
-        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Año" Then
-            divcultivo.Visible = False
-            divfecha.Visible = True
+            divfecha1.Visible = True
+            divfecha2.Visible = True
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Ciclo" Then
+            llenarciclos()
+            lblSeleccion.InnerText = "Seleccione Ciclo:"
+            divcultivo.Visible = True
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         ElseIf DDLTipoInforme.SelectedItem.Text = "Proveedores" Then
+            llenarproveedores()
             lblSeleccion.InnerText = "Seleccione Proveedor:"
             divcultivo.Visible = True
-            divfecha.Visible = False
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         ElseIf DDLTipoInforme.SelectedItem.Text = "Por Lote" Then
+            llenarlotes()
             lblSeleccion.InnerText = "Seleccione Lote:"
             divcultivo.Visible = True
-            divfecha.Visible = False
+            divfecha1.Visible = False
+            divfecha2.Visible = False
         End If
     End Sub
 
     Protected Sub llenarcultivo()
-        Dim StrCombo As String = "SELECT DISTINCT tipo_cultivo FROM vista_inventario ORDER BY tipo_cultivo DESC"
+        Dim StrCombo As String = "SELECT DISTINCT tipo_cultivo FROM vista_inventario ORDER BY tipo_cultivo ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -820,7 +1032,7 @@ Public Class Inventario
         DDLImpCultivo.DataBind()
     End Sub
     Protected Sub llenarvariedad()
-        Dim StrCombo As String = "SELECT DISTINCT variedad FROM vista_inventario ORDER BY variedad DESC"
+        Dim StrCombo As String = "SELECT DISTINCT variedad FROM vista_inventario ORDER BY variedad ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -831,7 +1043,7 @@ Public Class Inventario
         DDLImpCultivo.DataBind()
     End Sub
     Protected Sub llenarcategoria()
-        Dim StrCombo As String = "SELECT DISTINCT categoria_registrado FROM vista_inventario ORDER BY categoria_registrado DESC"
+        Dim StrCombo As String = "SELECT DISTINCT categoria_registrado FROM vista_inventario ORDER BY categoria_registrado ASC"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -840,5 +1052,44 @@ Public Class Inventario
         DDLImpCultivo.DataValueField = DtCombo.Columns(0).ToString()
         DDLImpCultivo.DataTextField = DtCombo.Columns(0).ToString
         DDLImpCultivo.DataBind()
+    End Sub
+    Protected Sub llenarproveedores()
+        Dim StrCombo As String = "SELECT DISTINCT nombre_multiplicador FROM vista_inventario ORDER BY nombre_multiplicador ASC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLImpCultivo.DataSource = DtCombo
+        DDLImpCultivo.DataValueField = DtCombo.Columns(0).ToString()
+        DDLImpCultivo.DataTextField = DtCombo.Columns(0).ToString
+        DDLImpCultivo.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLImpCultivo.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub llenarlotes()
+        Dim StrCombo As String = "SELECT DISTINCT lote_registrado FROM vista_inventario ORDER BY lote_registrado ASC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLImpCultivo.DataSource = DtCombo
+        DDLImpCultivo.DataValueField = DtCombo.Columns(0).ToString()
+        DDLImpCultivo.DataTextField = DtCombo.Columns(0).ToString
+        DDLImpCultivo.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLImpCultivo.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub llenarciclos()
+        Dim StrCombo As String = "SELECT DISTINCT ciclo_acta FROM vista_inventario_informe ORDER BY ciclo_acta ASC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLImpCultivo.DataSource = DtCombo
+        DDLImpCultivo.DataValueField = DtCombo.Columns(0).ToString()
+        DDLImpCultivo.DataTextField = DtCombo.Columns(0).ToString
+        DDLImpCultivo.DataBind()
+        Dim newitem As New ListItem("Todos", "Todos")
+        DDLImpCultivo.Items.Insert(0, newitem)
     End Sub
 End Class
