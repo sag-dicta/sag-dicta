@@ -162,21 +162,36 @@
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <label>Seleccione Tipo de Informe:</label>
-                                <asp:DropDownList CssClass="form-control" ID="DropDownList1" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Text="Inventario Todo - Categoria"></asp:ListItem>
+                                <asp:DropDownList CssClass="form-control" ID="DDLTipoInforme" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLTipoInforme_SelectedIndexChanged">
+                                    <asp:ListItem Text="Inventario - Todo"></asp:ListItem>
                                     <asp:ListItem Text="Inventario Procesado"></asp:ListItem>
                                     <asp:ListItem Text="Inventario Sin Procesar"></asp:ListItem>
-                                    <asp:ListItem Text="Por Cultivo - Granos Basicos"></asp:ListItem>
-                                    <asp:ListItem Text="Por Ciclo - Variedades/Productos"></asp:ListItem>
+                                    <asp:ListItem Text="Por Categoria"></asp:ListItem>
+                                    <asp:ListItem Text="Por Cultivo"></asp:ListItem>
+                                    <asp:ListItem Text="Por Variedades"></asp:ListItem>
                                     <asp:ListItem Text="Por Fecha"></asp:ListItem>
                                     <asp:ListItem Text="Por Año"></asp:ListItem>
                                     <asp:ListItem Text="Proveedores"></asp:ListItem>
                                     <asp:ListItem Text="Por Lote"></asp:ListItem>
-                                    <asp:ListItem Text="Por Categoria"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
+                        
+                        <div class="col-lg-3" id="divcultivo" runat="server" visible="false">
+                            <div class="form-group">
+                                <label id="lblSeleccion" runat="server">Seleccione :</label>
+                                <asp:DropDownList CssClass="form-control" ID="DDLImpCultivo" runat="server" AutoPostBack="True">
+                                    <asp:ListItem Text="Todos"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" id="divfecha" runat="server" visible="false">
+                            <div class="form-group">
+                                
+                            </div>
+                        </div>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-3">
                             <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-warning" Text="Imprimir Informe"><span class="glyphicon glyphicon-save"></span>&nbsp;Imprimir Informe</asp:LinkButton>

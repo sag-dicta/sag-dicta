@@ -607,8 +607,33 @@ Public Class Inventario
 
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
 
+        If DDLTipoInforme.SelectedItem.Text = "Inventario - Todo" Then
+            InventarioTodoCategoria()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Inventario Procesado" Then
+            InventarioProcesado()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Inventario Sin Procesar" Then
+            InventarioSinProcesar()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Cultivo" Then
+            PorCultivoGranosBasicos()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Variedades" Then
+            PorCicloVariedadesProductos()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Fecha" Then
+            PorFecha()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Año" Then
+            PorAnio()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Proveedores" Then
+            Proveedores()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Lote" Then
+            PorLote()
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Categoria" Then
+            PorCategoria()
+        End If
+
+    End Sub
+
+    Protected Sub InventarioTodoCategoria()
+        Dim nombre As String
         Dim rptdocument As New ReportDocument
-        'nombre de dataset
         Dim ds As New DataSetMultiplicador
         Dim Str As String = "SELECT * FROM vista_inventario_informe"
         Dim adap As New MySqlDataAdapter(Str, conn)
@@ -618,9 +643,7 @@ Public Class Inventario
 
         adap.Fill(ds, "vista_inventario_informe")
 
-        Dim nombre As String
-
-        nombre = "Informe de Inventario " + " " + Today
+        nombre = "Informe de Inventario por Categoria" + " " + Today
 
         rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
 
@@ -633,7 +656,189 @@ Public Class Inventario
         rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
 
         Response.End()
-        'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+    End Sub
 
+    Protected Sub InventarioProcesado()
+
+    End Sub
+
+    Protected Sub InventarioSinProcesar()
+
+    End Sub
+
+    Protected Sub PorCultivoGranosBasicos()
+        Dim var As String = DDLImpCultivo.SelectedItem.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM vista_inventario_informe WHERE tipo_cultivo = '" & var & "'"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario por Cultivo" + " " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
+    End Sub
+
+    Protected Sub PorCicloVariedadesProductos()
+        Dim var As String = DDLImpCultivo.SelectedItem.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM vista_inventario_informe WHERE variedad = '" & var & "'"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario por Variedades" + " " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
+    End Sub
+
+    Protected Sub PorFecha()
+
+    End Sub
+
+    Protected Sub PorAnio()
+
+    End Sub
+
+    Protected Sub Proveedores()
+
+    End Sub
+
+    Protected Sub PorLote()
+
+    End Sub
+
+    Protected Sub PorCategoria()
+        Dim var As String = DDLImpCultivo.SelectedItem.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String = "SELECT * FROM vista_inventario_informe WHERE categoria_registrado = '" & var & "'"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "Informe de Inventario por Categoria" + " " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/InventarioReport2.rpt"))
+
+        rptdocument.SetDataSource(ds)
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
+    End Sub
+
+    Protected Sub DDLTipoInforme_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If DDLTipoInforme.SelectedItem.Text = "Inventario - Todo" Then
+            divcultivo.Visible = False
+            divfecha.Visible = False
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Inventario Procesado" Then
+            divcultivo.Visible = False
+            divfecha.Visible = False
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Inventario Sin Procesar" Then
+            divcultivo.Visible = False
+            divfecha.Visible = False
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Cultivo" Then
+            lblSeleccion.InnerText = "Seleccione Cultivo:"
+            llenarcultivo()
+            divcultivo.Visible = True
+            divfecha.Visible = False
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Variedades" Then
+            llenarvariedad()
+            lblSeleccion.InnerText = "Seleccione Variedades:"
+            divcultivo.Visible = True
+            divfecha.Visible = False
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Categoria" Then
+            llenarcategoria()
+            lblSeleccion.InnerText = "Seleccione Categoria:"
+            divcultivo.Visible = True
+            divfecha.Visible = False
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Fecha" Then
+            divcultivo.Visible = False
+            divfecha.Visible = True
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Año" Then
+            divcultivo.Visible = False
+            divfecha.Visible = True
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Proveedores" Then
+            lblSeleccion.InnerText = "Seleccione Proveedor:"
+            divcultivo.Visible = True
+            divfecha.Visible = False
+        ElseIf DDLTipoInforme.SelectedItem.Text = "Por Lote" Then
+            lblSeleccion.InnerText = "Seleccione Lote:"
+            divcultivo.Visible = True
+            divfecha.Visible = False
+        End If
+    End Sub
+
+    Protected Sub llenarcultivo()
+        Dim StrCombo As String = "SELECT DISTINCT tipo_cultivo FROM vista_inventario ORDER BY tipo_cultivo DESC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLImpCultivo.DataSource = DtCombo
+        DDLImpCultivo.DataValueField = DtCombo.Columns(0).ToString()
+        DDLImpCultivo.DataTextField = DtCombo.Columns(0).ToString
+        DDLImpCultivo.DataBind()
+    End Sub
+    Protected Sub llenarvariedad()
+        Dim StrCombo As String = "SELECT DISTINCT variedad FROM vista_inventario ORDER BY variedad DESC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLImpCultivo.DataSource = DtCombo
+        DDLImpCultivo.DataValueField = DtCombo.Columns(0).ToString()
+        DDLImpCultivo.DataTextField = DtCombo.Columns(0).ToString
+        DDLImpCultivo.DataBind()
+    End Sub
+    Protected Sub llenarcategoria()
+        Dim StrCombo As String = "SELECT DISTINCT categoria_registrado FROM vista_inventario ORDER BY categoria_registrado DESC"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLImpCultivo.DataSource = DtCombo
+        DDLImpCultivo.DataValueField = DtCombo.Columns(0).ToString()
+        DDLImpCultivo.DataTextField = DtCombo.Columns(0).ToString
+        DDLImpCultivo.DataBind()
     End Sub
 End Class

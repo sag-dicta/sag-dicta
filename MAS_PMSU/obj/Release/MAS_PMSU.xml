@@ -10390,9 +10390,45 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:MAS_PMSU.Inventario._DropDownList1">
+<member name="F:MAS_PMSU.Inventario._DDLTipoInforme">
 <summary>
-Control DropDownList1.
+Control DDLTipoInforme.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Inventario._divcultivo">
+<summary>
+Control divcultivo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Inventario._lblSeleccion">
+<summary>
+Control lblSeleccion.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Inventario._DDLImpCultivo">
+<summary>
+Control DDLImpCultivo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Inventario._divfecha">
+<summary>
+Control divfecha.
 </summary>
 <remarks>
 Campo generado automáticamente.
