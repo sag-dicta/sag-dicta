@@ -770,6 +770,15 @@ Partial Public Class Embarque
     Protected WithEvents txtEntreg As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control divPrecio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents divPrecio As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''Control lblPrecio.
     '''</summary>
     '''<remarks>

@@ -393,7 +393,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-lg-2" id="divPrecio" runat="server">
                             <div class="form-group">
                                 <label>Precio Unitario (Lps):</label><asp:Label ID="lblPrecio" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtPrecio" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return numericOnly(this);"></asp:TextBox>

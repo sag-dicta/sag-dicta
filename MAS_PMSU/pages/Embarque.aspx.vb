@@ -497,7 +497,7 @@ Public Class Embarque
         TxtCateogiraGrid.SelectedIndex = 0
         txtUnid.Text = "QQ"
         txtEntreg.Text = ""
-        txtPrecio.Text = ""
+        txtPrecio.Text = "0"
         txtObser.Text = ""
     End Sub
     Protected Sub CrearIdentificador()
@@ -1317,6 +1317,17 @@ Public Class Embarque
             divInfoConduc.Visible = False
             divInfoObser.Visible = False
             txtFecha.Text = ""
+        ElseIf ddl_tiposalida.SelectedItem.Text = "Actas" Then
+            divconvenio.Visible = False
+            idcultivo.Visible = True
+            idpara.Visible = True
+            divInfoEnvio.Visible = True
+            divInfoConduc.Visible = True
+            divInfoObser.Visible = True
+            txtFecha2.Text = ""
+            txtFecha.Text = ""
+            divPrecio.Visible = False
+            txtPrecio.Text = "0"
         Else
             divconvenio.Visible = False
             idcultivo.Visible = True
