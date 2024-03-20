@@ -122,6 +122,24 @@ Partial Public Class Embarque
     Protected WithEvents DivCrearNuevo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control lbltiposalida.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lbltiposalida As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control ddl_tiposalida.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ddl_tiposalida As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control lblConoNo.
     '''</summary>
     '''<remarks>
@@ -174,6 +192,33 @@ Partial Public Class Embarque
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtFecha As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control divconvenio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents divconvenio As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control lblFecha2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblFecha2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtFecha2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtFecha2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Control lblCultivo.
@@ -462,6 +507,15 @@ Partial Public Class Embarque
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents comercial As Global.System.Web.UI.WebControls.ListItem
+
+    '''<summary>
+    '''Control Ddl_nolote.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Ddl_nolote As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control lblUnid.

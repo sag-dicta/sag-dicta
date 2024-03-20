@@ -5800,6 +5800,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:MAS_PMSU.Embarque._lbltiposalida">
+<summary>
+Control lbltiposalida.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Embarque._ddl_tiposalida">
+<summary>
+Control ddl_tiposalida.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:MAS_PMSU.Embarque._lblConoNo">
 <summary>
 Control lblConoNo.
@@ -5848,6 +5866,33 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Embarque._txtFecha">
 <summary>
 Control txtFecha.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Embarque._divconvenio">
+<summary>
+Control divconvenio.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Embarque._lblFecha2">
+<summary>
+Control lblFecha2.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Embarque._txtFecha2">
+<summary>
+Control txtFecha2.
 </summary>
 <remarks>
 Campo generado automáticamente.
@@ -6136,6 +6181,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Embarque._comercial">
 <summary>
 Control comercial.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Embarque._Ddl_nolote">
+<summary>
+Control Ddl_nolote.
 </summary>
 <remarks>
 Campo generado automáticamente.

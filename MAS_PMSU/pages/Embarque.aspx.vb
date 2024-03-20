@@ -22,6 +22,7 @@ Public Class Embarque
 
                 llenarcomboProductor()
                 llenarcomboConocimiento()
+                llenarcomboCultivo()
                 VerificarTextBox()
                 llenagrid()
                 eliminarMiniGrid2()
@@ -277,8 +278,17 @@ Public Class Embarque
                 lblmas.Text = ""
                 validarflag += 1
             End If
+            '11
+            If ddl_tiposalida.SelectedItem.Text <> " " Then
+                lbltiposalida.Text = ""
+                validarflag += 1
 
-            If validarflag = 10 Then
+            Else
+                lbltiposalida.Text = "*"
+                validarflag = 0
+            End If
+
+            If validarflag = 11 Then
                 validarflag = 1
             Else
                 validarflag = 0
@@ -412,6 +422,7 @@ Public Class Embarque
         btnRegresar.Visible = True
         btnRegresarConEmbarque.Visible = False
         TextBanderita.Text = "Guardar"
+        llenarcomboCultivo()
         Llenar_conocimiento()
         llenarcomboConductor()
         verificar_Produc()
@@ -833,7 +844,11 @@ Public Class Embarque
         Dim selectedValue As String = DDLCultivo.SelectedItem.Text
 
         ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
-        If selectedValue = "Frijol" Then
+        If selectedValue = "Frijol" Or
+           selectedValue = "Sorgo" Or
+           selectedValue = "Arroz" Or
+           selectedValue = "Ajonjoli" Or
+           selectedValue = "Papa" Then
             DropDownList6.SelectedIndex = 0
             VariedadFrijol.Visible = True
             VariedadMaiz.Visible = False
@@ -854,8 +869,8 @@ Public Class Embarque
     End Sub
     Private Sub llenarcomboFrijol()
         Dim StrCombo As String
-
-        StrCombo = "SELECT DISTINCT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = 'Frijol' ORDER BY variedad ASC"
+        Dim cultivo = DDLCultivo.SelectedItem.Text
+        StrCombo = "SELECT DISTINCT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = '" & cultivo & "' ORDER BY variedad ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -1023,49 +1038,21 @@ Public Class Embarque
         TxtCateogiraGrid.Items.Insert(0, newitem)
     End Sub
     Protected Sub TxtCateogiraGrid_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Dim selectedValue As String = DDLCultivo.SelectedItem.Text
 
-        ' Obtener el valor ingresado en txtEntreg
-        Dim entregado As Integer = 0
-        ' Construir la consulta SQL dinámica
-        Dim c1 As String = "SELECT peso_neto_resta FROM vista_inventario2 WHERE 1=1 "
-        Dim c2 As String
-        Dim c3 As String
-
-        ' Obtener las selecciones de los DropDownList
-        If DropDownList5.SelectedItem.Text = "Todos" And DropDownList6.SelectedItem.Text <> "Todos" Then
-            c2 = " AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
-        Else
-            c2 = " "
+        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
+        If ((selectedValue = "Frijol" Or
+           selectedValue = "Sorgo" Or
+           selectedValue = "Arroz" Or
+           selectedValue = "Ajonjoli" Or
+           selectedValue = "Papa") And DropDownList5.SelectedItem.Text <> " ") Then
+            llenarcombolote()
+            verificardatosproductos()
+        ElseIf selectedValue = "Maiz" And DropDownList6.SelectedItem.Text <> " " Then
+            llenarcombolotemaiz()
+            verificardatosproductos()
         End If
-
-        If DropDownList6.SelectedItem.Text = "Todos" And DropDownList5.SelectedItem.Text <> "Todos" Then
-            c2 = " AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
-        Else
-            c2 = " "
-        End If
-
-        If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
-            c3 = " "
-        Else
-            c3 = " AND categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
-        End If
-
-        ' Agregar condiciones a la consulta SQL
-        Dim query As String = c1 & c2 & c3
-
-        Dim strCombo As String = query
-        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
-        Dim DtCombo As New DataTable()
-        adaptcombo.Fill(DtCombo)
-
-        If DtCombo.Rows.Count > 0 AndAlso Not IsDBNull(DtCombo.Rows(0)("peso_neto_resta")) Then
-            pesoTotal = Convert.ToInt32(DtCombo.Rows(0)("peso_neto_resta"))
-            txtEntreg.Text = pesoTotal
-        End If
-
-        'txtEntreg.Text = ""
         verificardatosproductos()
-        VerificarTextBox()
     End Sub
     Protected Sub txtEntreg_TextChanged(sender As Object, e As EventArgs) Handles txtEntreg.TextChanged
         ' Obtener el valor ingresado en txtEntreg
@@ -1235,7 +1222,7 @@ Public Class Embarque
 
     Sub verificardatosproductos()
         Dim validar As Integer = 0
-
+        '1
         If String.IsNullOrEmpty(txtEntreg.Text) Then
             lblLugarD.Text = "*"
             validar = 0
@@ -1243,7 +1230,7 @@ Public Class Embarque
             lblLugarD.Text = ""
             validar += 1
         End If
-
+        '2
         If String.IsNullOrEmpty(txtPrecio.Text) Then
             lblLugarD.Text = "*"
             validar = 0
@@ -1251,7 +1238,7 @@ Public Class Embarque
             lblLugarD.Text = ""
             validar += 1
         End If
-
+        '3
         If String.IsNullOrEmpty(txtObser.Text) Then
             lblLugarD.Text = "*"
             validar = 0
@@ -1259,9 +1246,8 @@ Public Class Embarque
             lblLugarD.Text = ""
             validar += 1
         End If
-
-
-        If DDLCultivo.SelectedItem.Text = "Frijol" Then
+        '4
+        If DDLCultivo.SelectedItem.Text = "Frijol" Or DDLCultivo.SelectedItem.Text = "Sorgo" Or DDLCultivo.SelectedItem.Text = "Arroz" Or DDLCultivo.SelectedItem.Text = "Ajonjoli" Or DDLCultivo.SelectedItem.Text = "Papa" Then
             If DropDownList5.SelectedItem.Text <> " " Then
                 Label1.Text = ""
                 validar += 1
@@ -1280,7 +1266,7 @@ Public Class Embarque
                 validar = 0
             End If
         End If
-
+        '5
         If TxtCateogiraGrid.SelectedItem.Text <> " " Then
             Label1.Text = ""
             validar += 1
@@ -1289,11 +1275,139 @@ Public Class Embarque
             Label1.Text = "*"
             validar = 0
         End If
+        '6
+        If Ddl_nolote.SelectedItem.Text <> " " Then
+            Label1.Text = ""
+            validar += 1
 
-        If validar = 5 Then
+        Else
+            Label1.Text = "*"
+            validar = 0
+        End If
+        If validar = 6 Then
             btnAgregar.Visible = True
         Else
             btnAgregar.Visible = False
         End If
+    End Sub
+    Protected Sub txtFecha2_TextChanged()
+        ' Obtener la fecha seleccionada en el primer TextBox
+
+        Dim fechaSeleccionada As Date = DateTime.Parse(txtFecha.Text)
+
+        ' Sumar 129 días a la fecha seleccionada
+        Dim fechaCalculada As Date = fechaSeleccionada.AddDays(129)
+
+        ' Establecer el valor del segundo TextBox con la fecha calculada
+        txtFecha2.Text = fechaCalculada.ToString("yyyy-MM-dd")
+    End Sub
+    Protected Sub txtFecha_TextChanged(sender As Object, e As EventArgs) Handles txtFecha.TextChanged
+        If ddl_tiposalida.SelectedItem.Text = "Convenio" And txtFecha.Text <> "" Then
+            txtFecha2_TextChanged()
+        Else
+            txtFecha2.Text = ""
+        End If
+    End Sub
+    Protected Sub ddl_tiposalida_TextChanged(sender As Object, e As EventArgs) Handles ddl_tiposalida.SelectedIndexChanged
+        If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+            divconvenio.Visible = True
+            txtFecha.Text = ""
+        Else
+            divconvenio.Visible = False
+            txtFecha2.Text = ""
+            txtFecha.Text = ""
+        End If
+    End Sub
+    Private Sub llenarcomboCultivo()
+        Dim StrCombo As String = "SELECT DISTINCT tipo_cultivo FROM vista_inventario"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        DDLCultivo.DataSource = DtCombo
+        DDLCultivo.DataValueField = DtCombo.Columns(0).ToString()
+        DDLCultivo.DataTextField = DtCombo.Columns(0).ToString
+        DDLCultivo.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        DDLCultivo.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub llenarcombolote()
+        Dim variedad, categoria, tipo As String
+        tipo = DDLCultivo.SelectedItem.Text
+        variedad = DropDownList5.SelectedItem.Text
+        categoria = TxtCateogiraGrid.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT lote_registrado FROM vista_inventario WHERE tipo_cultivo = '" & tipo & "' AND variedad = '" & variedad & "' AND categoria_registrado = '" & categoria & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        Ddl_nolote.DataSource = DtCombo
+        Ddl_nolote.DataValueField = DtCombo.Columns(0).ToString()
+        Ddl_nolote.DataTextField = DtCombo.Columns(0).ToString
+        Ddl_nolote.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        Ddl_nolote.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub llenarcombolotemaiz()
+        Dim variedad, categoria, tipo As String
+        tipo = DDLCultivo.SelectedItem.Text
+        variedad = DropDownList6.SelectedItem.Text
+        categoria = TxtCateogiraGrid.SelectedItem.Text
+        Dim StrCombo As String = "SELECT DISTINCT lote_registrado FROM vista_inventario WHERE tipo_cultivo = '" & tipo & "' AND variedad = '" & variedad & "' AND categoria_registrado = '" & categoria & "'"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        Ddl_nolote.DataSource = DtCombo
+        Ddl_nolote.DataValueField = DtCombo.Columns(0).ToString()
+        Ddl_nolote.DataTextField = DtCombo.Columns(0).ToString
+        Ddl_nolote.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        Ddl_nolote.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub Ddl_nolote_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Ddl_nolote.SelectedIndexChanged
+
+        ' Obtener el valor ingresado en txtEntreg
+        Dim entregado As Integer = 0
+        ' Construir la consulta SQL dinámica
+        Dim c1 As String = "SELECT peso_neto_resta FROM vista_inventario2 WHERE 1=1 "
+        Dim c2 As String
+        Dim c3 As String
+
+        ' Obtener las selecciones de los DropDownList
+        If DropDownList5.SelectedItem.Text = "Todos" And DropDownList6.SelectedItem.Text <> "Todos" Then
+            c2 = " AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
+        Else
+            c2 = " "
+        End If
+
+        If DropDownList6.SelectedItem.Text = "Todos" And DropDownList5.SelectedItem.Text <> "Todos" Then
+            c2 = " AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
+        Else
+            c2 = " "
+        End If
+
+        If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
+            c3 = " "
+        Else
+            c3 = " AND categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
+        End If
+
+        ' Agregar condiciones a la consulta SQL
+        Dim query As String = c1 & c2 & c3
+
+        Dim strCombo As String = query
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
+
+        If DtCombo.Rows.Count > 0 AndAlso Not IsDBNull(DtCombo.Rows(0)("peso_neto_resta")) Then
+            pesoTotal = Convert.ToInt32(DtCombo.Rows(0)("peso_neto_resta"))
+            txtEntreg.Text = pesoTotal
+        End If
+
+        'txtEntreg.Text = ""
+        verificardatosproductos()
+        VerificarTextBox()
     End Sub
 End Class
