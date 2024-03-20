@@ -2275,6 +2275,11 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="pages\Convenio.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Convenio.rpt</DependentUpon>
+    </Compile>
     <Compile Include="pages\cuadro_procesamiento.vb">
       <DependentUpon>cuadro_procesamiento.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2614,6 +2619,10 @@
     <EmbeddedResource Include="pages\AnalisisGerminacionReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>AnalisisGerminacionReport.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\Convenio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Convenio.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\cuadro_procesamiento.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
