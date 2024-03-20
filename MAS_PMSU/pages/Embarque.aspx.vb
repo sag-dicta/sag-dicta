@@ -1623,4 +1623,36 @@ Public Class Embarque
         End If
     End Sub
 
+    Protected Sub ImprimirConvenio()
+        Dim var As String = txtConoNo.Text
+        Dim nombre As String
+        Dim rptdocument As New ReportDocument
+        Dim ds As New DataSetMultiplicador
+        Dim Str As String
+        Str = "SELECT * FROM sag_embarque_info WHERE no_conocimiento = '" & var & "'"
+        Dim adap As New MySqlDataAdapter(Str, conn)
+        Dim dt As New DataTable
+
+        'nombre de la vista del data set
+
+        adap.Fill(ds, "vista_inventario_informe")
+
+        nombre = "CONVENIO DE COINVERSION PARA LA PRODUCCION DE SEMILLA MEJORADA DE FRIJOL  - " + var + " - " + Today
+
+        rptdocument.Load(Server.MapPath("~/pages/Convenio.rpt"))
+
+        rptdocument.SetDataSource(ds)
+
+        rptdocument.SetParameterValue("NombreDirector", "AquiVaElNombreDelDirector")
+        rptdocument.SetParameterValue("IdentidadDirector", "AquiVaLaIdentidadDelDirector")
+
+        Response.Buffer = False
+
+        Response.ClearContent()
+        Response.ClearHeaders()
+
+        rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+        Response.End()
+    End Sub
 End Class
