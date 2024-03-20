@@ -214,7 +214,7 @@ Public Class Embarque
                 validarflag += 1
             End If
             '3
-            If DDLCultivo.SelectedItem.Text = "Todos" Then
+            If DDLCultivo.SelectedItem.Text = " " Then
                 lblCultivo.Text = "*"
                 validarflag = 0
             Else
@@ -1311,9 +1311,19 @@ Public Class Embarque
     Protected Sub ddl_tiposalida_TextChanged(sender As Object, e As EventArgs) Handles ddl_tiposalida.SelectedIndexChanged
         If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
             divconvenio.Visible = True
+            idcultivo.Visible = False
+            idpara.Visible = False
+            divInfoEnvio.Visible = False
+            divInfoConduc.Visible = False
+            divInfoObser.Visible = False
             txtFecha.Text = ""
         Else
             divconvenio.Visible = False
+            idcultivo.Visible = True
+            idpara.Visible = True
+            divInfoEnvio.Visible = True
+            divInfoConduc.Visible = True
+            divInfoObser.Visible = True
             txtFecha2.Text = ""
             txtFecha.Text = ""
         End If

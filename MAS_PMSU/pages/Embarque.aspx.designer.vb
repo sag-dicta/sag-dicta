@@ -158,6 +158,15 @@ Partial Public Class Embarque
     Protected WithEvents txtConoNo As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control idpara.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents idpara As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''Control lblPara.
     '''</summary>
     '''<remarks>
@@ -194,6 +203,33 @@ Partial Public Class Embarque
     Protected WithEvents txtFecha As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control idcultivo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents idcultivo As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control lblCultivo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCultivo As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DDLCultivo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDLCultivo As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control divconvenio.
     '''</summary>
     '''<remarks>
@@ -221,22 +257,193 @@ Partial Public Class Embarque
     Protected WithEvents txtFecha2 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control lblCultivo.
+    '''Control lblParaConv.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lblCultivo As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents lblParaConv As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control DDLCultivo.
+    '''Control txtParaConv.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DDLCultivo As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents txtParaConv As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblParaIdent.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblParaIdent As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtParaIdent.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtParaIdent As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblMzSembrar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblMzSembrar As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtMzSembrar.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtMzSembrar As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblCultiConv.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCultiConv As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtCultiConv.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCultiConv As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control lblVariedadConv.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblVariedadConv As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtVariedadConv.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtVariedadConv As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control lblCategConv.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCategConv As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtCategConv.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCategConv As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control lblProducAprox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblProducAprox As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtProducAprox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtProducAprox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblPrecioMinimoCompra.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblPrecioMinimoCompra As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPrecioMinimoCompra.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPrecioMinimoCompra As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblCompPerd.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCompPerd As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtCompPerd.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtCompPerd As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control lblPrecioFinal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblPrecioFinal As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control txtPrecioFinal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtPrecioFinal As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control divInfoEnvio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents divInfoEnvio As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control lblremi.
@@ -309,6 +516,15 @@ Partial Public Class Embarque
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtLugarD As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control divInfoProd.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents divInfoProd As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control VariedadFrijol.
@@ -671,6 +887,15 @@ Partial Public Class Embarque
     Protected WithEvents GridProductos As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
+    '''Control divInfoConduc.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents divInfoConduc As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
     '''Control Label1.
     '''</summary>
     '''<remarks>
@@ -705,6 +930,15 @@ Partial Public Class Embarque
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents txtVehic As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control divInfoObser.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents divInfoObser As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control lblObser2.

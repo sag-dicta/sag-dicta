@@ -183,7 +183,7 @@
                                 <asp:TextBox CssClass="form-control" ID="txtConoNo" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3" id="idpara" runat="server" visible="true">
                             <div class="form-group">
                                 <label>Para:</label><asp:Label ID="lblPara" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtPara" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
@@ -195,13 +195,7 @@
                                 <asp:TextBox CssClass="form-control" ID="txtFecha" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" TextMode="Date"></asp:TextBox>
                             </div>
                         </div>
-                        <div class="col-lg-2" id="divconvenio" runat="server" visible="false">
-                            <div class="form-group">
-                                <label>Fecha final convenio:</label><asp:Label ID="lblFecha2" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox CssClass="form-control" ID="txtFecha2" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" TextMode="Date" Enabled="false"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-2" id="idcultivo" runat="server" visible="true">
                             <div class="form-group">
                                 <label>Cultivo:</label><asp:Label ID="lblCultivo" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:DropDownList CssClass="form-control" ID="DDLCultivo" runat="server" AutoPostBack="True">
@@ -209,12 +203,85 @@
                             </div>
                         </div>
 
+                        <div class="row" id="divconvenio" runat="server" visible="false">
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Fecha final convenio:</label><asp:Label ID="lblFecha2" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtFecha2" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" TextMode="Date" Enabled="false"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Para:</label><asp:Label ID="lblParaConv" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtParaConv" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label>Identidad:</label><asp:Label ID="lblParaIdent" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtParaIdent" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Mz. a Sembrar:</label><asp:Label ID="lblMzSembrar" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtMzSembrar" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Cultivo:</label><asp:Label ID="lblCultiConv" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control" ID="txtCultiConv" runat="server" AutoPostBack="True">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Variedad:</label><asp:Label ID="lblVariedadConv" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control" ID="txtVariedadConv" runat="server" AutoPostBack="True">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Categoria:</label><asp:Label ID="lblCategConv" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:DropDownList CssClass="form-control" ID="txtCategConv" runat="server" AutoPostBack="True">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Producción Aprox. (QQ/Mz):</label><asp:Label ID="lblProducAprox" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtProducAprox" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Precio Mínimo de Compra:</label><asp:Label ID="lblPrecioMinimoCompra" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtPrecioMinimoCompra" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Compensación por la pérdida:</label><asp:Label ID="lblCompPerd" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtCompPerd" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Precio Final:</label><asp:Label ID="lblPrecioFinal" class="label label-warning" runat="server" Text=""></asp:Label>
+                                    <asp:TextBox CssClass="form-control" ID="txtPrecioFinal" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" onkeypress="return lettersOnly(this);" Enabled="false"></asp:TextBox>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="divInfoEnvio" runat="server">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Información de Envio
@@ -252,7 +319,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="divInfoProd" runat="server">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Información del Producto
@@ -418,7 +485,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row" id="divInfoConduc" runat="server">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Información del Conductor
@@ -446,7 +513,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="divInfoObser" runat="server">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Observaciones generales
