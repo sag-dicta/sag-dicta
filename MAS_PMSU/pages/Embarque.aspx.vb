@@ -23,6 +23,7 @@ Public Class Embarque
                 llenarcomboProductor()
                 llenarcomboConocimiento()
                 llenarcomboCultivo()
+                llenarcomboCultivo2()
                 VerificarTextBox()
                 llenagrid()
                 eliminarMiniGrid2()
@@ -195,8 +196,9 @@ Public Class Embarque
 
     Protected Sub VerificarTextBox()
         verificardatosproductos()
+        TextBanderita.Text = ddl_tiposalida.SelectedItem.Text
         'Aqui van las verificaciones
-        If TextBanderita.Text = "Guardar" Then
+        If TextBanderita.Text = " " Or TextBanderita.Text = "Distribución y embarque" Or TextBanderita.Text = "Actas" Then
             '1
             If String.IsNullOrEmpty(txtPara.Text) Then
                 lblPara.Text = "*"
@@ -294,8 +296,105 @@ Public Class Embarque
                 validarflag = 0
             End If
         Else
+            '1
+            If String.IsNullOrEmpty(txtParaConv.Text) Then
+                lblParaConv.Text = "*"
+                validarflag = 0
+            Else
+                lblParaConv.Text = ""
+                validarflag += 1
+            End If
+            '2
+            If String.IsNullOrEmpty(txtCompPerd.Text) Then
+                lblCompPerd.Text = "*"
+                validarflag = 0
+            Else
+                lblCompPerd.Text = ""
+                validarflag += 1
+            End If
+            '3
+            If txtCultiConv.SelectedItem.Text = " " Then
+                lblCultiConv.Text = "*"
+                validarflag = 0
+            Else
+                lblCultiConv.Text = ""
+                validarflag += 1
+            End If
+            '4
+            If String.IsNullOrEmpty(txtParaIdent.Text) Then
+                lblParaIdent.Text = "*"
+                validarflag = 0
+            Else
+                lblParaIdent.Text = ""
+                validarflag += 1
+            End If
+            '5
+            If String.IsNullOrEmpty(txtMzSembrar.Text) Then
+                lblMzSembrar.Text = "*"
+                validarflag = 0
+            Else
+                lblMzSembrar.Text = ""
+                validarflag += 1
+            End If
+            '6
+            If txtVariedadConv.SelectedItem.Text = " " Then
+                lblVariedadConv.Text = "*"
+                validarflag = 0
+            Else
+                lblVariedadConv.Text = ""
+                validarflag += 1
+            End If
+            '7
+            If txtCategConv.SelectedItem.Text = " " Then
+                lblCategConv.Text = "*"
+                validarflag = 0
+            Else
+                lblCategConv.Text = ""
+                validarflag += 1
+            End If
+            '8
+            If String.IsNullOrEmpty(txtProducAprox.Text) Then
+                lblProducAprox.Text = "*"
+                validarflag = 0
+            Else
+                lblProducAprox.Text = ""
+                validarflag += 1
+            End If
+            '9
+            If String.IsNullOrEmpty(txtPrecioMinimoCompra.Text) Then
+                lblPrecioMinimoCompra.Text = "*"
+                validarflag = 0
+            Else
+                lblPrecioMinimoCompra.Text = ""
+                validarflag += 1
+            End If
+            '10
+            If verificar_Produc() = 0 Then
+                lblmas.Text = "Debe ingresar al menos un producto de semilla."
+                validarflag = 0
+            Else
+                lblmas.Text = ""
+                validarflag += 1
+            End If
+            '11
+            If ddl_tiposalida.SelectedItem.Text <> " " Then
+                lbltiposalida.Text = ""
+                validarflag += 1
 
-            If validarflag = 17 Then
+            Else
+                lbltiposalida.Text = "*"
+                validarflag = 0
+            End If
+            '12
+            If String.IsNullOrEmpty(txtFecha.Text) Then
+                lblFecha.Text = "*"
+                validarflag = 0
+            Else
+                lblFecha.Text = ""
+                validarflag += 1
+            End If
+
+            If validarflag = 12 Then
                 validarflag = 1
             Else
                 validarflag = 0
@@ -421,12 +520,14 @@ Public Class Embarque
         DivGrid.Visible = False
         btnRegresar.Visible = True
         btnRegresarConEmbarque.Visible = False
-        TextBanderita.Text = "Guardar"
+        TextBanderita.Text = " "
         llenarcomboCultivo()
+        llenarcomboCultivo2()
         Llenar_conocimiento()
         llenarcomboConductor()
         verificar_Produc()
         VerificarTextBox()
+
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
 
     End Sub
@@ -587,7 +688,7 @@ Public Class Embarque
             btnRegresar.Visible = True
             btnRegresarConEmbarque.Visible = False
 
-            TextBanderita.Text = "Guardar"
+            'TextBanderita.Text = "Guardar"
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
             txtID.Text = ""
@@ -1317,6 +1418,8 @@ Public Class Embarque
             divInfoConduc.Visible = False
             divInfoObser.Visible = False
             txtFecha.Text = ""
+            divPrecio.Visible = False
+            txtPrecio.Text = "0"
         ElseIf ddl_tiposalida.SelectedItem.Text = "Actas" Then
             divconvenio.Visible = False
             idcultivo.Visible = True
@@ -1337,6 +1440,8 @@ Public Class Embarque
             divInfoObser.Visible = True
             txtFecha2.Text = ""
             txtFecha.Text = ""
+            divPrecio.Visible = True
+            txtPrecio.Text = "0"
         End If
     End Sub
     Private Sub llenarcomboCultivo()
@@ -1351,6 +1456,20 @@ Public Class Embarque
         DDLCultivo.DataBind()
         Dim newitem As New ListItem(" ", " ")
         DDLCultivo.Items.Insert(0, newitem)
+    End Sub
+
+    Private Sub llenarcomboCultivo2()
+        Dim StrCombo As String = "SELECT DISTINCT tipo_cultivo FROM vista_inventario"
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+
+        txtCultiConv.DataSource = DtCombo
+        txtCultiConv.DataValueField = DtCombo.Columns(0).ToString()
+        txtCultiConv.DataTextField = DtCombo.Columns(0).ToString
+        txtCultiConv.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        txtCultiConv.Items.Insert(0, newitem)
     End Sub
     Protected Sub llenarcombolote()
         Dim variedad, categoria, tipo As String
@@ -1431,4 +1550,77 @@ Public Class Embarque
         verificardatosproductos()
         VerificarTextBox()
     End Sub
+    Private Sub llenarcombovariedad()
+        Dim StrCombo As String
+        Dim cultivo = txtCultiConv.SelectedItem.Text
+        StrCombo = "SELECT DISTINCT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = '" & cultivo & "' ORDER BY variedad ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        txtVariedadConv.DataSource = DtCombo
+        txtVariedadConv.DataValueField = DtCombo.Columns(0).ToString()
+        txtVariedadConv.DataTextField = DtCombo.Columns(0).ToString()
+        txtVariedadConv.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        txtVariedadConv.Items.Insert(0, newitem)
+    End Sub
+    Private Sub llenarcomboCategoria()
+        Dim StrCombo As String
+        Dim variedad = txtVariedadConv.SelectedItem.Text
+        StrCombo = "SELECT DISTINCT categoria_registrado FROM vista_suma_tabla_a WHERE variedad = '" & variedad & "' ORDER BY categoria_registrado ASC"
+
+        Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
+        Dim DtCombo As New DataTable
+        adaptcombo.Fill(DtCombo)
+        txtCategConv.DataSource = DtCombo
+        txtCategConv.DataValueField = DtCombo.Columns(0).ToString()
+        txtCategConv.DataTextField = DtCombo.Columns(0).ToString()
+        txtCategConv.DataBind()
+        Dim newitem As New ListItem(" ", " ")
+        txtCategConv.Items.Insert(0, newitem)
+    End Sub
+    Protected Sub txtCultiConv_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtCultiConv.SelectedIndexChanged
+        If txtCultiConv.SelectedItem.Text <> " " Then
+            llenarcombovariedad()
+            verificardatosproductos()
+            VerificarTextBox()
+        Else
+            verificardatosproductos()
+            VerificarTextBox()
+        End If
+    End Sub
+    Protected Sub txtVariedadConv_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtVariedadConv.SelectedIndexChanged
+        If txtVariedadConv.SelectedItem.Text <> " " Then
+            llenarcomboCategoria()
+            verificardatosproductos()
+            VerificarTextBox()
+        Else
+            verificardatosproductos()
+            VerificarTextBox()
+        End If
+    End Sub
+
+    Protected Sub txtPrecioMinimoCompra_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtPrecioMinimoCompra.TextChanged
+        If txtPrecioMinimoCompra.Text <> " " Then
+            'funcion sumar
+            verificardatosproductos()
+            VerificarTextBox()
+        Else
+            verificardatosproductos()
+            VerificarTextBox()
+        End If
+    End Sub
+
+    Protected Sub txtCompPerd_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtCompPerd.TextChanged
+        If txtCompPerd.Text <> " " Then
+            'funcion sumar
+            verificardatosproductos()
+            VerificarTextBox()
+        Else
+            verificardatosproductos()
+            VerificarTextBox()
+        End If
+    End Sub
+
 End Class
