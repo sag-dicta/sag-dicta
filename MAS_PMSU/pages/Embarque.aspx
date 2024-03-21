@@ -112,7 +112,7 @@
                                                 <ItemStyle CssClass="hiding" />
                                             </asp:BoundField>
                                             <asp:BoundField DataField="no_conocimiento" HeaderText="N° DE CONOCIMIENTO" />
-                                            <asp:BoundField DataField="destinatario" HeaderText="DESTINATARIO" />
+                                            <asp:BoundField DataField="para_general" HeaderText="Dirigir" />
                                             <asp:BoundField DataField="fecha_elaboracion" HeaderText="FECHA DE ELABORACION" />
                                             <asp:BoundField DataField="cultivo_general" HeaderText="CULTIVO GENERAL" />
                                             <asp:BoundField DataField="lugar_destinatario" HeaderText="LUGAR DESTINATARIO" />
@@ -179,7 +179,7 @@
                         </div>
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <label>Conocimiento No.:</label><asp:Label ID="lblConoNo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="Label7" runat="server" Text="Conocimiento No.:" Visible="true"></asp:Label><asp:Label ID="lblConoNo" class="label label-warning" runat="server" Text=""></asp:Label>
                                 <asp:TextBox CssClass="form-control" ID="txtConoNo" runat="server" AutoPostBack="true" OnTextChanged="VerificarTextBox" Enabled="false"></asp:TextBox>
                             </div>
                         </div>

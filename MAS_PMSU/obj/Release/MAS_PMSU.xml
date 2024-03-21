@@ -173,6 +173,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_embarque_infoDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetMultiplicador.sag_registro_senasaRow">
 <summary>
 Represents strongly named DataRow class.
@@ -219,6 +224,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSetMultiplicador.vista_inventario_informeRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_embarque_infoRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -273,6 +283,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:MAS_PMSU.DataSetMultiplicador.sag_embarque_infoRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_registro_senasaTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -319,6 +334,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.vista_inventario_informeTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:MAS_PMSU.DataSetMultiplicadorTableAdapters.sag_embarque_infoTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>
@@ -5812,6 +5832,15 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:MAS_PMSU.Embarque._ddl_tiposalida">
 <summary>
 Control ddl_tiposalida.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:MAS_PMSU.Embarque._Label7">
+<summary>
+Control Label7.
 </summary>
 <remarks>
 Campo generado automáticamente.

@@ -140,6 +140,15 @@ Partial Public Class Embarque
     Protected WithEvents ddl_tiposalida As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control Label7.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control lblConoNo.
     '''</summary>
     '''<remarks>

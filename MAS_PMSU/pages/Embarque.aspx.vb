@@ -33,9 +33,14 @@ Public Class Embarque
     End Sub
 
     Protected Sub guardarSoli_lote(sender As Object, e As EventArgs)
-        verificar_Produc()
+        If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+            verificar_Produc_convenio()
+        Else
+            verificar_Produc()
+        End If
         VerificarTextBox()
         Dim fechaConvertida As Date
+        Dim fechaconvenio As Date
         If validarflag = 0 Then
             LabelGuardar.Visible = True
             LabelGuardar.Text = "Ingrese toda la información para poder guardarla"
@@ -48,57 +53,119 @@ Public Class Embarque
                     connection.Open()
 
                     Dim query As String = "INSERT INTO sag_embarque_info (
-                    estado,
-                    no_conocimiento,
-                    para_general,
-                    fecha_elaboracion,
-                    cultivo_general,
-                    remitente,
-                    destinatario,
-                    lugar_remitente,
-                    lugar_destinatario,
-                    conductor,
-                    vehiculo,
-                    observacion2,
-                    duplicado,
-                    triplicado
-                    ) VALUES (@estado,
-                    @no_conocimiento,
-                    @para_general,
-                    @fecha_elaboracion,
-                    @cultivo_general,
-                    @remitente,
-                    @destinatario,
-                    @lugar_remitente,
-                    @lugar_destinatario,
-                    @conductor,
-                    @vehiculo,
-                    @observacion2,
-                    @duplicado,
-                    @triplicado)"
+                        estado,
+                        no_conocimiento,
+                        para_general,
+                        fecha_elaboracion,
+                        cultivo_general,
+                        remitente,
+                        destinatario,
+                        lugar_remitente,
+                        lugar_destinatario,
+                        conductor,
+                        vehiculo,
+                        observacion2,
+                        tipo_salida,
+                        fecha_final_convenio,
+                        identidad,
+                        mz_sembrar_qq,
+                        variedad_conve,
+                        categoria_conve,
+                        produ_apro_qq_mz,
+                        precio_minimo,
+                        compensacion,
+                        precio_final,
+                        no_convenio
+                        ) VALUES (@estado,
+                        @no_conocimiento,
+                        @para_general,
+                        @fecha_elaboracion,
+                        @cultivo_general,
+                        @remitente,
+                        @destinatario,
+                        @lugar_remitente,
+                        @lugar_destinatario,
+                        @conductor,
+                        @vehiculo,
+                        @observacion2,
+                        @tipo_salida,
+                        @fecha_final_convenio,
+                        @identidad,
+                        @mz_sembrar_qq,
+                        @variedad_conve,
+                        @categoria_conve,
+                        @produ_apro_qq_mz,
+                        @precio_minimo,
+                        @compensacion,
+                        @precio_final,
+                        @no_convenio)"
 
                     Using cmd As New MySqlCommand(query, connection)
 
-                        cmd.Parameters.AddWithValue("@no_conocimiento", txtConoNo.Text)
-                        cmd.Parameters.AddWithValue("@para_general", txtPara.Text)
-                        If Date.TryParse(txtFecha.Text, fechaConvertida) Then
-                            cmd.Parameters.AddWithValue("@fecha_elaboracion", fechaConvertida.ToString("yyyy-MM-dd"))
+                        If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+                            cmd.Parameters.AddWithValue("@tipo_salida", ddl_tiposalida.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@no_convenio", txtConoNo.Text)
+                            cmd.Parameters.AddWithValue("@no_conocimiento", DBNull.Value)
+                            If Date.TryParse(txtFecha.Text, fechaConvertida) Then
+                                cmd.Parameters.AddWithValue("@fecha_elaboracion", fechaConvertida.ToString("yyyy-MM-dd"))
+                            End If
+                            If Date.TryParse(txtFecha2.Text, fechaconvenio) Then
+                                cmd.Parameters.AddWithValue("@fecha_final_convenio", fechaconvenio.ToString("yyyy-MM-dd"))
+                            End If
+                            cmd.Parameters.AddWithValue("@para_general", txtParaConv.Text)
+                            cmd.Parameters.AddWithValue("@identidad", txtParaIdent.Text)
+                            cmd.Parameters.AddWithValue("@mz_sembrar_qq", txtMzSembrar.Text)
+                            cmd.Parameters.AddWithValue("@cultivo_general", txtCultiConv.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@variedad_conve", txtVariedadConv.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@categoria_conve", txtCategConv.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@produ_apro_qq_mz", Convert.ToDecimal(txtProducAprox.Text))
+                            cmd.Parameters.AddWithValue("@precio_minimo", Convert.ToDecimal(txtPrecioMinimoCompra.Text))
+                            cmd.Parameters.AddWithValue("@compensacion", Convert.ToDecimal(txtCompPerd.Text))
+                            cmd.Parameters.AddWithValue("@precio_final", Convert.ToDecimal(txtPrecioFinal.Text))
+
+                            cmd.Parameters.AddWithValue("@remitente", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@destinatario", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@lugar_remitente", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@lugar_destinatario", DBNull.Value)
+
+                            cmd.Parameters.AddWithValue("@conductor", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@vehiculo", DBNull.Value)
+
+                            cmd.Parameters.AddWithValue("@observacion2", DBNull.Value)
+
+                            cmd.Parameters.AddWithValue("@estado", "1")
+                        Else
+                            cmd.Parameters.AddWithValue("@tipo_salida", ddl_tiposalida.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@no_conocimiento", txtConoNo.Text)
+                            cmd.Parameters.AddWithValue("@no_convenio", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@para_general", txtPara.Text)
+                            If Date.TryParse(txtFecha.Text, fechaConvertida) Then
+                                cmd.Parameters.AddWithValue("@fecha_elaboracion", fechaConvertida.ToString("yyyy-MM-dd"))
+                            End If
+                            cmd.Parameters.AddWithValue("@cultivo_general", DDLCultivo.SelectedItem.Text)
+
+                            cmd.Parameters.AddWithValue("@remitente", txtRemi.Text)
+                            cmd.Parameters.AddWithValue("@destinatario", txtDestin.Text)
+                            cmd.Parameters.AddWithValue("@lugar_remitente", txtLugarR.Text)
+                            cmd.Parameters.AddWithValue("@lugar_destinatario", txtLugarD.Text)
+
+                            cmd.Parameters.AddWithValue("@conductor", DDLConductor.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@vehiculo", txtVehic.Text)
+
+                            cmd.Parameters.AddWithValue("@observacion2", txtObser2.Text)
+
+                            cmd.Parameters.AddWithValue("@variedad_conve", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@categoria_conve", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@produ_apro_qq_mz", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@precio_minimo", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@compensacion", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@precio_final", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@fecha_final_convenio", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@identidad", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@mz_sembrar_qq", DBNull.Value)
+
+                            cmd.Parameters.AddWithValue("@estado", "1")
                         End If
-                        cmd.Parameters.AddWithValue("@cultivo_general", DDLCultivo.SelectedItem.Text)
-
-                        cmd.Parameters.AddWithValue("@remitente", txtRemi.Text)
-                        cmd.Parameters.AddWithValue("@destinatario", txtDestin.Text)
-                        cmd.Parameters.AddWithValue("@lugar_remitente", txtLugarR.Text)
-                        cmd.Parameters.AddWithValue("@lugar_destinatario", txtLugarD.Text)
-
-                        cmd.Parameters.AddWithValue("@conductor", DDLConductor.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@vehiculo", txtVehic.Text)
-
-                        cmd.Parameters.AddWithValue("@observacion2", txtObser2.Text)
-                        cmd.Parameters.AddWithValue("@duplicado", DBNull.Value)
-                        cmd.Parameters.AddWithValue("@triplicado", DBNull.Value)
-                        cmd.Parameters.AddWithValue("@estado", "1")
-
                         cmd.ExecuteNonQuery()
                         connection.Close()
 
@@ -123,41 +190,97 @@ Public Class Embarque
                     connection.Open()
 
                     Dim query As String = "UPDATE sag_embarque_info SET
-                        para_general = @para_general,
-                        fecha_elaboracion = @fecha_elaboracion,
-                        cultivo_general = @cultivo_general,
-                        remitente = @remitente,
-                        destinatario = @destinatario,
-                        lugar_remitente = @lugar_remitente,
-                        lugar_destinatario = @lugar_destinatario,
-                        conductor = @conductor,
-                        vehiculo = @vehiculo,
-                        observacion2 = @observacion2,
-                        duplicado = @duplicado,
-                        triplicado = @triplicado
-                    WHERE id = " & txtID.Text & ""
+                            para_general = @para_general,
+                            fecha_elaboracion = @fecha_elaboracion,
+                            cultivo_general = @cultivo_general,
+                            remitente = @remitente,
+                            destinatario = @destinatario,
+                            lugar_remitente = @lugar_remitente,
+                            lugar_destinatario = @lugar_destinatario,
+                            conductor = @conductor,
+                            vehiculo = @vehiculo,
+                            observacion2 = @observacion2,
+                            tipo_salida = @tipo_salida,
+                            fecha_final_convenio = @fecha_final_convenio,
+                            identidad = @identidad,
+                            mz_sembrar_qq= @mz_sembrar_qq,
+                            variedad_conve = @variedad_conve,
+                            categoria_conve = @categoria_conve,
+                            produ_apro_qq_mz = @produ_apro_qq_mz,
+                            precio_minimo = @precio_minimo,
+                            compensacion = @compensacion,
+                            precio_final = @precio_final,
+                            no_convenio = @no_convenio
+                            
+                        WHERE id = " & txtID.Text & ""
 
 
                     Using cmd As New MySqlCommand(query, connection)
 
-                        cmd.Parameters.AddWithValue("@para_general", txtPara.Text)
-                        If Date.TryParse(txtFecha.Text, fechaConvertida) Then
-                            cmd.Parameters.AddWithValue("@fecha_elaboracion", fechaConvertida.ToString("yyyy-MM-dd"))
+                        If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+                            cmd.Parameters.AddWithValue("@tipo_salida", ddl_tiposalida.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@no_convenio", txtConoNo.Text)
+                            cmd.Parameters.AddWithValue("@no_conocimiento", DBNull.Value)
+                            If Date.TryParse(txtFecha.Text, fechaConvertida) Then
+                                cmd.Parameters.AddWithValue("@fecha_elaboracion", fechaConvertida.ToString("yyyy-MM-dd"))
+                            End If
+                            If Date.TryParse(txtFecha2.Text, fechaconvenio) Then
+                                cmd.Parameters.AddWithValue("@fecha_final_convenio", fechaconvenio.ToString("yyyy-MM-dd"))
+                            End If
+                            cmd.Parameters.AddWithValue("@para_general", txtParaConv.Text)
+                            cmd.Parameters.AddWithValue("@identidad", txtParaIdent.Text)
+                            cmd.Parameters.AddWithValue("@mz_sembrar_qq", txtMzSembrar.Text)
+                            cmd.Parameters.AddWithValue("@cultivo_general", txtCultiConv.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@variedad_conve", txtVariedadConv.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@categoria_conve", txtCategConv.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@produ_apro_qq_mz", Convert.ToDecimal(txtProducAprox.Text))
+                            cmd.Parameters.AddWithValue("@precio_minimo", Convert.ToDecimal(txtPrecioMinimoCompra.Text))
+                            cmd.Parameters.AddWithValue("@compensacion", Convert.ToDecimal(txtCompPerd.Text))
+                            cmd.Parameters.AddWithValue("@precio_final", Convert.ToDecimal(txtPrecioFinal.Text))
+
+                            cmd.Parameters.AddWithValue("@remitente", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@destinatario", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@lugar_remitente", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@lugar_destinatario", DBNull.Value)
+
+                            cmd.Parameters.AddWithValue("@conductor", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@vehiculo", DBNull.Value)
+
+                            cmd.Parameters.AddWithValue("@observacion2", DBNull.Value)
+
+                            cmd.Parameters.AddWithValue("@estado", "1")
+                        Else
+                            cmd.Parameters.AddWithValue("@tipo_salida", ddl_tiposalida.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@no_conocimiento", txtConoNo.Text)
+                            cmd.Parameters.AddWithValue("@no_convenio", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@para_general", txtPara.Text)
+                            If Date.TryParse(txtFecha.Text, fechaConvertida) Then
+                                cmd.Parameters.AddWithValue("@fecha_elaboracion", fechaConvertida.ToString("yyyy-MM-dd"))
+                            End If
+                            cmd.Parameters.AddWithValue("@cultivo_general", DDLCultivo.SelectedItem.Text)
+
+                            cmd.Parameters.AddWithValue("@remitente", txtRemi.Text)
+                            cmd.Parameters.AddWithValue("@destinatario", txtDestin.Text)
+                            cmd.Parameters.AddWithValue("@lugar_remitente", txtLugarR.Text)
+                            cmd.Parameters.AddWithValue("@lugar_destinatario", txtLugarD.Text)
+
+                            cmd.Parameters.AddWithValue("@conductor", DDLConductor.SelectedItem.Text)
+                            cmd.Parameters.AddWithValue("@vehiculo", txtVehic.Text)
+
+                            cmd.Parameters.AddWithValue("@observacion2", txtObser2.Text)
+
+                            cmd.Parameters.AddWithValue("@variedad_conve", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@categoria_conve", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@produ_apro_qq_mz", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@precio_minimo", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@compensacion", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@precio_final", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@fecha_final_convenio", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@identidad", DBNull.Value)
+                            cmd.Parameters.AddWithValue("@mz_sembrar_qq", DBNull.Value)
+
+                            cmd.Parameters.AddWithValue("@estado", "1")
                         End If
-                        cmd.Parameters.AddWithValue("@cultivo_general", DDLCultivo.SelectedItem.Text)
-
-                        cmd.Parameters.AddWithValue("@remitente", txtRemi.Text)
-                        cmd.Parameters.AddWithValue("@destinatario", txtDestin.Text)
-                        cmd.Parameters.AddWithValue("@lugar_remitente", txtLugarR.Text)
-                        cmd.Parameters.AddWithValue("@lugar_destinatario", txtLugarD.Text)
-
-                        cmd.Parameters.AddWithValue("@conductor", DDLConductor.SelectedItem.Text)
-                        cmd.Parameters.AddWithValue("@vehiculo", txtVehic.Text)
-
-                        cmd.Parameters.AddWithValue("@observacion2", txtObser2.Text)
-                        cmd.Parameters.AddWithValue("@duplicado", DBNull.Value)
-                        cmd.Parameters.AddWithValue("@triplicado", DBNull.Value)
-                        cmd.Parameters.AddWithValue("@estado", "1")
 
                         cmd.ExecuteNonQuery()
                         connection.Close()
@@ -273,12 +396,22 @@ Public Class Embarque
                 validarflag += 1
             End If
             '10
-            If verificar_Produc() = 0 Then
-                lblmas.Text = "Debe ingresar al menos un producto de semilla."
-                validarflag = 0
+            If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+                If verificar_Produc_convenio() = 0 Then
+                    lblmas.Text = "Debe ingresar al menos un producto de semilla."
+                    validarflag = 0
+                Else
+                    lblmas.Text = ""
+                    validarflag += 1
+                End If
             Else
-                lblmas.Text = ""
-                validarflag += 1
+                If verificar_Produc() = 0 Then
+                    lblmas.Text = "Debe ingresar al menos un producto de semilla."
+                    validarflag = 0
+                Else
+                    lblmas.Text = ""
+                    validarflag += 1
+                End If
             End If
             '11
             If ddl_tiposalida.SelectedItem.Text <> " " Then
@@ -369,12 +502,22 @@ Public Class Embarque
                 validarflag += 1
             End If
             '10
-            If verificar_Produc() = 0 Then
-                lblmas.Text = "Debe ingresar al menos un producto de semilla."
-                validarflag = 0
+            If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+                If verificar_Produc_convenio() = 0 Then
+                    lblmas.Text = "Debe ingresar al menos un producto de semilla."
+                    validarflag = 0
+                Else
+                    lblmas.Text = ""
+                    validarflag += 1
+                End If
             Else
-                lblmas.Text = ""
-                validarflag += 1
+                If verificar_Produc() = 0 Then
+                    lblmas.Text = "Debe ingresar al menos un producto de semilla."
+                    validarflag = 0
+                Else
+                    lblmas.Text = ""
+                    validarflag += 1
+                End If
             End If
             '11
             If ddl_tiposalida.SelectedItem.Text <> " " Then
@@ -523,9 +666,15 @@ Public Class Embarque
         TextBanderita.Text = " "
         llenarcomboCultivo()
         llenarcomboCultivo2()
-        Llenar_conocimiento()
+        If ddl_tiposalida.SelectedItem.Text = "Distribución y embarque" Or ddl_tiposalida.SelectedItem.Text = "Actas" Or ddl_tiposalida.SelectedItem.Text = " " Then
+            Llenar_conocimiento()
+        End If
         llenarcomboConductor()
-        verificar_Produc()
+        If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+            verificar_Produc_convenio()
+        Else
+            verificar_Produc()
+        End If
         VerificarTextBox()
 
         'ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
@@ -568,13 +717,25 @@ Public Class Embarque
                 cmd.Parameters.AddWithValue("@observaciones", txtObser.Text)
                 cmd.Parameters.AddWithValue("@unidad", txtUnid.Text)
                 cmd.Parameters.AddWithValue("@categoria_origen", TxtCateogiraGrid.SelectedItem.Text)
-                cmd.Parameters.AddWithValue("@tipo_cultivo", DDLCultivo.SelectedItem.Text)
-                If DDLCultivo.SelectedItem.Text = "Frijol" Then
+
+                If DDLCultivo.SelectedItem.Text <> " " Then
+                    cmd.Parameters.AddWithValue("@tipo_cultivo", DDLCultivo.SelectedItem.Text)
+                ElseIf txtCultiConv.SelectedItem.Text <> " " Then
+                    cmd.Parameters.AddWithValue("@tipo_cultivo", txtCultiConv.SelectedItem.Text)
+                End If
+
+                If DDLCultivo.SelectedItem.Text = "Frijol" Or DDLCultivo.SelectedItem.Text = "Sorgo" Or DDLCultivo.SelectedItem.Text = "Arroz" Or DDLCultivo.SelectedItem.Text = "Ajonjoli" Or DDLCultivo.SelectedItem.Text = "Papa" Then
+                    cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
+                ElseIf txtCultiConv.SelectedItem.Text = "Frijol" Or txtCultiConv.SelectedItem.Text = "Sorgo" Or txtCultiConv.SelectedItem.Text = "Arroz" Or txtCultiConv.SelectedItem.Text = "Ajonjoli" Or txtCultiConv.SelectedItem.Text = "Papa" Then
                     cmd.Parameters.AddWithValue("@variedad", DropDownList5.SelectedItem.Text)
                 End If
+
                 If DDLCultivo.SelectedItem.Text = "Maiz" Then
                     cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
+                ElseIf txtCultiConv.SelectedItem.Text = "Maiz" Then
+                    cmd.Parameters.AddWithValue("@variedad", DropDownList6.SelectedItem.Text)
                 End If
+
                 cmd.Parameters.AddWithValue("@peso_neto", Convert.ToDecimal(txtEntreg.Text))
                 cmd.Parameters.AddWithValue("@precio_uni", Convert.ToDecimal(txtPrecio.Text))
                 cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(Convert.ToDecimal(txtEntreg.Text) * Convert.ToDecimal(txtPrecio.Text)))
@@ -589,13 +750,18 @@ Public Class Embarque
         btnRegresar.Visible = False
         btnRegresarConEmbarque.Visible = True
         vaciarCamposProductos()
-        verificar_Produc()
+        If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+            verificar_Produc_convenio()
+        Else
+            verificar_Produc()
+        End If
         VerificarTextBox()
     End Sub
     Protected Sub vaciarCamposProductos()
         DropDownList5.SelectedIndex = 0
         DropDownList6.SelectedIndex = 0
         TxtCateogiraGrid.SelectedIndex = 0
+        Ddl_nolote.SelectedIndex = 0
         txtUnid.Text = "QQ"
         txtEntreg.Text = ""
         txtPrecio.Text = "0"
@@ -617,11 +783,12 @@ Public Class Embarque
         txtRespaldito.Text = resultado
     End Sub
     Private Sub Llenar_conocimiento()
-        Dim strCombo As String = "SELECT COUNT(*) AS no_conocimiento FROM sag_embarque_info"
+        Dim strCombo As String = "SELECT COUNT(no_conocimiento) AS no_conocimiento FROM sag_embarque_info"
         Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
         Dim DtCombo As New DataTable()
         adaptcombo.Fill(DtCombo)
 
+        Label7.Text = "Conocimiento No.:"
         If DtCombo.Rows.Count > 0 AndAlso DtCombo.Columns.Count > 0 Then
             Dim total As Integer = DtCombo.Rows(0)("no_conocimiento")
             total += 1
@@ -638,6 +805,31 @@ Public Class Embarque
         Else
             Dim total1 As Integer = 1
             txtConoNo.Text = total1.ToString("D3") & " - " & DateTime.Now.Year.ToString()
+        End If
+    End Sub
+    Private Sub Llenar_convenio()
+        Dim strCombo As String = "SELECT COUNT(no_convenio) AS no_convenio FROM sag_embarque_info"
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
+
+        Label7.Text = "Convenio- PNS:"
+        If DtCombo.Rows.Count > 0 AndAlso DtCombo.Columns.Count > 0 Then
+            Dim total As Integer = CInt(DtCombo.Rows(0)("no_convenio")) + 1
+
+            ' Obtener el mes actual en formato de tres dígitos
+            Dim mesActual As String = DateTime.Now.Month.ToString("D3")
+
+            Dim year As String = DateTime.Now.Year.ToString()
+
+            ' Formatear el número de convenio
+            Dim resultadoFormateado As String = total.ToString("D3") & "-" & mesActual & "-" & year
+            txtConoNo.Text = resultadoFormateado
+        Else
+            ' Si no hay ningún convenio en la base de datos, comenzar desde 001
+            Dim total1 As Integer = 1
+            Dim mesActual As String = DateTime.Now.Month.ToString("D3")
+            txtConoNo.Text = total1.ToString("D3") & "-" & DateTime.Now.Month.ToString("D3") & "-" & DateTime.Now.Year.ToString()
         End If
     End Sub
 
@@ -687,7 +879,7 @@ Public Class Embarque
 
             btnRegresar.Visible = True
             btnRegresarConEmbarque.Visible = False
-
+            ddl_tiposalida.Enabled = False
             'TextBanderita.Text = "Guardar"
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
@@ -697,26 +889,99 @@ Public Class Embarque
             Dim adap As New MySqlDataAdapter(Str, conn)
             Dim dt As New DataTable
             adap.Fill(dt)
+            If dt.Rows(0)("tipo_salida").ToString() = "Convenio" Then
 
-            txtConoNo.Text = dt.Rows(0)("NO_CONOCIMIENTO_EMBARQUE_INFO").ToString()
-            txtPara.Text = dt.Rows(0)("PARA_GENERAL").ToString()
-            txtFecha.Text = If(dt.Rows(0)("FECHA_ELABORACION") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("FECHA_ELABORACION"), DateTime).ToString("yyyy-MM-dd"))
-            SeleccionarItemEnDropDownList(DDLCultivo, dt.Rows(0)("CULTIVO_GENERAL").ToString())
-            DDLCultivo.Enabled = False
-            If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Frijol" Then
-                VariedadFrijol.Visible = True
+                divconvenio.Visible = True
+                idcultivo.Visible = False
+                idpara.Visible = False
+                divInfoEnvio.Visible = False
+                divInfoConduc.Visible = False
+                divInfoObser.Visible = False
+                divPrecio.Visible = False
+                DDLCultivo.SelectedIndex = 0
+
+                SeleccionarItemEnDropDownList(ddl_tiposalida, dt.Rows(0)("tipo_salida").ToString())
+                txtConoNo.Text = dt.Rows(0)("no_convenio").ToString()
+                txtFecha.Text = If(dt.Rows(0)("FECHA_ELABORACION") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("FECHA_ELABORACION"), DateTime).ToString("yyyy-MM-dd"))
+                txtFecha2.Text = If(dt.Rows(0)("fecha_final_convenio") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("fecha_final_convenio"), DateTime).ToString("yyyy-MM-dd"))
+                txtParaConv.Text = dt.Rows(0)("PARA_GENERAL").ToString()
+                txtParaIdent.Text = dt.Rows(0)("identidad").ToString()
+                txtMzSembrar.Text = dt.Rows(0)("mz_sembrar_qq").ToString()
+                SeleccionarItemEnDropDownList(txtCultiConv, dt.Rows(0)("CULTIVO_GENERAL").ToString())
+                llenarcombovariedad()
+                SeleccionarItemEnDropDownList(txtVariedadConv, dt.Rows(0)("variedad_conve").ToString())
+                llenarcomboCategoria()
+                SeleccionarItemEnDropDownList(txtCategConv, dt.Rows(0)("categoria_conve").ToString())
+                txtProducAprox.Text = dt.Rows(0)("produ_apro_qq_mz").ToString()
+                txtPrecioMinimoCompra.Text = dt.Rows(0)("precio_minimo").ToString()
+                txtCompPerd.Text = dt.Rows(0)("compensacion").ToString()
+                txtPrecioFinal.Text = dt.Rows(0)("precio_final").ToString()
+            ElseIf ddl_tiposalida.SelectedItem.Text = "Actas" Then
+                divconvenio.Visible = False
+                idcultivo.Visible = True
+                idpara.Visible = True
+                divInfoEnvio.Visible = True
+                divInfoConduc.Visible = True
+                divInfoObser.Visible = True
+                txtFecha2.Text = ""
+                divPrecio.Visible = False
+                txtCultiConv.SelectedIndex = 0
+
+                SeleccionarItemEnDropDownList(ddl_tiposalida, dt.Rows(0)("tipo_salida").ToString())
+                txtConoNo.Text = dt.Rows(0)("NO_CONOCIMIENTO_EMBARQUE_INFO").ToString()
+                txtPara.Text = dt.Rows(0)("PARA_GENERAL").ToString()
+                txtFecha.Text = If(dt.Rows(0)("FECHA_ELABORACION") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("FECHA_ELABORACION"), DateTime).ToString("yyyy-MM-dd"))
+                SeleccionarItemEnDropDownList(DDLCultivo, dt.Rows(0)("CULTIVO_GENERAL").ToString())
+                DDLCultivo.Enabled = False
+                If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Frijol" Then
+                    VariedadFrijol.Visible = True
+                End If
+                If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Maiz" Then
+                    VariedadMaiz.Visible = True
+                End If
+                txtRemi.Text = dt.Rows(0)("REMITENTE").ToString()
+                txtDestin.Text = dt.Rows(0)("DESTINATARIO").ToString()
+                txtLugarR.Text = dt.Rows(0)("LUGAR_REMITENTE").ToString()
+                txtLugarD.Text = dt.Rows(0)("LUGAR_DESTINATARIO").ToString()
+                SeleccionarItemEnDropDownList(DDLConductor, dt.Rows(0)("CONDUCTOR").ToString())
+                txtVehic.Text = dt.Rows(0)("VEHICULO").ToString()
+            Else
+                divconvenio.Visible = False
+                idcultivo.Visible = True
+                idpara.Visible = True
+                divInfoEnvio.Visible = True
+                divInfoConduc.Visible = True
+                divInfoObser.Visible = True
+                txtFecha2.Text = ""
+                divPrecio.Visible = True
+                txtCultiConv.SelectedIndex = 0
+
+                SeleccionarItemEnDropDownList(ddl_tiposalida, dt.Rows(0)("tipo_salida").ToString())
+                txtConoNo.Text = dt.Rows(0)("NO_CONOCIMIENTO_EMBARQUE_INFO").ToString()
+                txtPara.Text = dt.Rows(0)("PARA_GENERAL").ToString()
+                txtFecha.Text = If(dt.Rows(0)("FECHA_ELABORACION") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("FECHA_ELABORACION"), DateTime).ToString("yyyy-MM-dd"))
+                SeleccionarItemEnDropDownList(DDLCultivo, dt.Rows(0)("CULTIVO_GENERAL").ToString())
+                DDLCultivo.Enabled = False
+                If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Frijol" Then
+                    VariedadFrijol.Visible = True
+                End If
+                If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Maiz" Then
+                    VariedadMaiz.Visible = True
+                End If
+                txtRemi.Text = dt.Rows(0)("REMITENTE").ToString()
+                txtDestin.Text = dt.Rows(0)("DESTINATARIO").ToString()
+                txtLugarR.Text = dt.Rows(0)("LUGAR_REMITENTE").ToString()
+                txtLugarD.Text = dt.Rows(0)("LUGAR_DESTINATARIO").ToString()
+                SeleccionarItemEnDropDownList(DDLConductor, dt.Rows(0)("CONDUCTOR").ToString())
+                txtVehic.Text = dt.Rows(0)("VEHICULO").ToString()
             End If
-            If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Maiz" Then
-                VariedadMaiz.Visible = True
-            End If
-            txtRemi.Text = dt.Rows(0)("REMITENTE").ToString()
-            txtDestin.Text = dt.Rows(0)("DESTINATARIO").ToString()
-            txtLugarR.Text = dt.Rows(0)("LUGAR_REMITENTE").ToString()
-            txtLugarD.Text = dt.Rows(0)("LUGAR_DESTINATARIO").ToString()
-            SeleccionarItemEnDropDownList(DDLConductor, dt.Rows(0)("CONDUCTOR").ToString())
-            txtVehic.Text = dt.Rows(0)("VEHICULO").ToString()
+
             llenaMinigrid()
-            verificar_Produc()
+            If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+                verificar_Produc_convenio()
+            Else
+                verificar_Produc()
+            End If
             VerificarTextBox()
         End If
 
@@ -724,6 +989,7 @@ Public Class Embarque
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
             TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
 
             Label3.Text = "¿Desea eliminar el conocimiento de embarque?"
@@ -969,8 +1235,13 @@ Public Class Embarque
         VerificarTextBox()
     End Sub
     Private Sub llenarcomboFrijol()
-        Dim StrCombo As String
-        Dim cultivo = DDLCultivo.SelectedItem.Text
+        Dim StrCombo, cultivo As String
+
+        If DDLCultivo.SelectedItem.Text <> " " Then
+            cultivo = DDLCultivo.SelectedItem.Text
+        ElseIf txtCultiConv.SelectedItem.Text <> " " Then
+            cultivo = txtCultiConv.SelectedItem.Text
+        End If
         StrCombo = "SELECT DISTINCT variedad FROM vista_suma_tabla_a WHERE tipo_cultivo = '" & cultivo & "' ORDER BY variedad ASC"
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
@@ -1054,7 +1325,11 @@ Public Class Embarque
             End Using
             llenaMinigrid()
         End Using
-        verificar_Produc()
+        If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+            verificar_Produc_convenio()
+        Else
+            verificar_Produc()
+        End If
         VerificarTextBox()
     End Sub
     Protected Sub GridProductos_RowCommand(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCommandEventArgs) Handles GridProductos.RowCommand
@@ -1139,7 +1414,13 @@ Public Class Embarque
         TxtCateogiraGrid.Items.Insert(0, newitem)
     End Sub
     Protected Sub TxtCateogiraGrid_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Dim selectedValue As String = DDLCultivo.SelectedItem.Text
+        Dim selectedValue As String
+
+        If DDLCultivo.SelectedItem.Text <> " " Then
+            selectedValue = DDLCultivo.SelectedItem.Text
+        ElseIf txtCultiConv.SelectedItem.Text <> " " Then
+            selectedValue = txtCultiConv.SelectedItem.Text
+        End If
 
         ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
         If ((selectedValue = "Frijol" Or
@@ -1320,7 +1601,14 @@ Public Class Embarque
 
         Return DtCombo.Rows.Count
     End Function
+    Private Function verificar_Produc_convenio()
+        Dim strCombo As String = "SELECT * FROM sag_embarque WHERE no_conocimiento = '" & txtConoNo.Text & "'"
+        Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
+        Dim DtCombo As New DataTable()
+        adaptcombo.Fill(DtCombo)
 
+        Return DtCombo.Rows.Count
+    End Function
     Sub verificardatosproductos()
         Dim validar As Integer = 0
         '1
@@ -1420,6 +1708,8 @@ Public Class Embarque
             txtFecha.Text = ""
             divPrecio.Visible = False
             txtPrecio.Text = "0"
+            DDLCultivo.SelectedIndex = 0
+            Llenar_convenio()
         ElseIf ddl_tiposalida.SelectedItem.Text = "Actas" Then
             divconvenio.Visible = False
             idcultivo.Visible = True
@@ -1431,6 +1721,8 @@ Public Class Embarque
             txtFecha.Text = ""
             divPrecio.Visible = False
             txtPrecio.Text = "0"
+            txtCultiConv.SelectedIndex = 0
+            Llenar_conocimiento()
         Else
             divconvenio.Visible = False
             idcultivo.Visible = True
@@ -1442,6 +1734,8 @@ Public Class Embarque
             txtFecha.Text = ""
             divPrecio.Visible = True
             txtPrecio.Text = "0"
+            txtCultiConv.SelectedIndex = 0
+            Llenar_conocimiento()
         End If
     End Sub
     Private Sub llenarcomboCultivo()
@@ -1473,7 +1767,12 @@ Public Class Embarque
     End Sub
     Protected Sub llenarcombolote()
         Dim variedad, categoria, tipo As String
-        tipo = DDLCultivo.SelectedItem.Text
+
+        If DDLCultivo.SelectedItem.Text <> " " Then
+            tipo = DDLCultivo.SelectedItem.Text
+        ElseIf txtCultiConv.SelectedItem.Text <> " " Then
+            tipo = txtCultiConv.SelectedItem.Text
+        End If
         variedad = DropDownList5.SelectedItem.Text
         categoria = TxtCateogiraGrid.SelectedItem.Text
         Dim StrCombo As String = "SELECT DISTINCT lote_registrado FROM vista_inventario WHERE tipo_cultivo = '" & tipo & "' AND variedad = '" & variedad & "' AND categoria_registrado = '" & categoria & "'"
@@ -1489,11 +1788,12 @@ Public Class Embarque
         Ddl_nolote.Items.Insert(0, newitem)
     End Sub
     Protected Sub llenarcombolotemaiz()
-        Dim variedad, categoria, tipo As String
-        tipo = DDLCultivo.SelectedItem.Text
+        Dim variedad, categoria As String
+
         variedad = DropDownList6.SelectedItem.Text
         categoria = TxtCateogiraGrid.SelectedItem.Text
-        Dim StrCombo As String = "SELECT DISTINCT lote_registrado FROM vista_inventario WHERE tipo_cultivo = '" & tipo & "' AND variedad = '" & variedad & "' AND categoria_registrado = '" & categoria & "'"
+
+        Dim StrCombo As String = "SELECT DISTINCT lote_registrado FROM vista_inventario WHERE tipo_cultivo = 'Maiz' AND variedad = '" & variedad & "' AND categoria_registrado = '" & categoria & "'"
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
         adaptcombo.Fill(DtCombo)
@@ -1589,6 +1889,32 @@ Public Class Embarque
             verificardatosproductos()
             VerificarTextBox()
         End If
+
+        Dim selectedValue As String = txtCultiConv.SelectedItem.Text
+
+        ' Si selecciona "Frijol," muestra la TextBox de Variedad; de lo contrario, ocúltala
+        If selectedValue = "Frijol" Or
+           selectedValue = "Sorgo" Or
+           selectedValue = "Arroz" Or
+           selectedValue = "Ajonjoli" Or
+           selectedValue = "Papa" Then
+            DropDownList6.SelectedIndex = 0
+            VariedadFrijol.Visible = True
+            VariedadMaiz.Visible = False
+            llenarcomboFrijol()
+        ElseIf selectedValue = "Maiz" Then
+            VariedadMaiz.Visible = True
+            VariedadFrijol.Visible = False
+            DropDownList5.SelectedIndex = 0
+            llenarcomboMaiz()
+        Else
+            VariedadMaiz.Visible = False
+            VariedadFrijol.Visible = False
+            DropDownList5.SelectedIndex = 0
+            DropDownList6.SelectedIndex = 0
+        End If
+
+        VerificarTextBox()
     End Sub
     Protected Sub txtVariedadConv_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtVariedadConv.SelectedIndexChanged
         If txtVariedadConv.SelectedItem.Text <> " " Then
@@ -1600,10 +1926,22 @@ Public Class Embarque
             VerificarTextBox()
         End If
     End Sub
+    Protected Sub sumaprecioFinal()
+        Dim preciomin, compensacion, preciofinal As Decimal
 
+
+        If Decimal.TryParse(txtPrecioMinimoCompra.Text, preciomin) Then
+            preciomin = txtPrecioMinimoCompra.Text
+        End If
+        If Decimal.TryParse(txtCompPerd.Text, compensacion) Then
+            compensacion = txtCompPerd.Text
+        End If
+        preciofinal = preciomin + compensacion
+        txtPrecioFinal.Text = preciofinal.ToString
+    End Sub
     Protected Sub txtPrecioMinimoCompra_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtPrecioMinimoCompra.TextChanged
         If txtPrecioMinimoCompra.Text <> " " Then
-            'funcion sumar
+            sumaprecioFinal()
             verificardatosproductos()
             VerificarTextBox()
         Else
@@ -1614,7 +1952,7 @@ Public Class Embarque
 
     Protected Sub txtCompPerd_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txtCompPerd.TextChanged
         If txtCompPerd.Text <> " " Then
-            'funcion sumar
+            sumaprecioFinal()
             verificardatosproductos()
             VerificarTextBox()
         Else
@@ -1622,7 +1960,6 @@ Public Class Embarque
             VerificarTextBox()
         End If
     End Sub
-
     Protected Sub ImprimirConvenio()
         Dim var As String = txtConoNo.Text
         Dim nombre As String
