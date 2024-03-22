@@ -697,7 +697,8 @@ Public Class Embarque
                     precio_uni,
                     total,
                     observaciones,
-                    unidad
+                    unidad,
+                    lote_registrado
                     ) VALUES (@variedad_categoria,
                     @categoria_origen,
                     @tipo_cultivo,
@@ -708,7 +709,8 @@ Public Class Embarque
                     @precio_uni,
                     @total,
                     @observaciones,
-                    @unidad
+                    @unidad,
+                    @lote_registrado
                     )"
 
             Using cmd As New MySqlCommand(query, connection)
@@ -740,6 +742,7 @@ Public Class Embarque
                 cmd.Parameters.AddWithValue("@precio_uni", Convert.ToDecimal(txtPrecio.Text))
                 cmd.Parameters.AddWithValue("@total", Convert.ToDecimal(Convert.ToDecimal(txtEntreg.Text) * Convert.ToDecimal(txtPrecio.Text)))
                 cmd.Parameters.AddWithValue("@no_conocimiento", txtConoNo.Text)
+                cmd.Parameters.AddWithValue("@lote_registrado", Ddl_nolote.SelectedItem.Text)
                 cmd.Parameters.AddWithValue("@estado", "0")
 
                 cmd.ExecuteNonQuery()
@@ -1402,7 +1405,13 @@ Public Class Embarque
             adap.Fill(dt)
 
             SeleccionarItemEnDropDownListFrijolOMaiz(dt.Rows(0)("variedad").ToString(), dt.Rows(0)("tipo_cultivo").ToString())
+            If dt.Rows(0)("tipo_cultivo").ToString() = "Frijol" Or dt.Rows(0)("tipo_cultivo").ToString() = "Sorgo" Or dt.Rows(0)("tipo_cultivo").ToString() = "Arroz" Or dt.Rows(0)("tipo_cultivo").ToString() = "Ajonjoli" Or dt.Rows(0)("tipo_cultivo").ToString() = "Papa" Then
+                llenarcomboCategoriaFrijol()
+            Else
+                llenarcomboCategoriaMaiz()
+            End If
             SeleccionarItemEnDropDownList(TxtCateogiraGrid, dt.Rows(0)("categoria_origen").ToString())
+            SeleccionarItemEnDropDownList(Ddl_nolote, dt.Rows(0)("lote_registrado").ToString())
             txtUnid.Text = dt.Rows(0)("unidad").ToString()
             txtEntreg.Text = dt.Rows(0)("peso_neto").ToString()
             txtPrecio.Text = dt.Rows(0)("precio_uni").ToString()
@@ -1649,12 +1658,6 @@ Public Class Embarque
         Dim DtCombo As New DataTable()
         adaptcombo.Fill(DtCombo)
 
-        If DtCombo.Rows.Count >= 1 Then
-            btnAgregar.Visible = False
-        Else
-            btnAgregar.Visible = True
-        End If
-
         Return DtCombo.Rows.Count
     End Function
     Sub verificardatosproductos()
@@ -1791,7 +1794,11 @@ Public Class Embarque
                 validar = 0
             End If
             If validar = 6 Then
-                btnAgregar.Visible = True
+                If verificar_Produc_convenio() >= 1 Then
+                    btnAgregar.Visible = False
+                ElseIf verificar_Produc_convenio() = 0 Then
+                    btnAgregar.Visible = True
+                End If
             Else
                 btnAgregar.Visible = False
             End If
