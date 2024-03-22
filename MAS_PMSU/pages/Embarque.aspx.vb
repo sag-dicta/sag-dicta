@@ -1109,7 +1109,7 @@ Public Class Embarque
         End If
     End Sub
     Protected Function SeleccionarItemEnDropDownListFrijolOMaiz(ByVal DtCombo As String, ByVal DtCombo2 As String)
-        If DtCombo2 = "Frijol" Then
+        If DtCombo2 = "Frijol" Or DtCombo2 = "Sorgo" Or DtCombo2 = "Ajonjoli" Or DtCombo2 = "Arroz" Or DtCombo2 = "Papa" Then
             For Each item As ListItem In DropDownList5.Items
                 If item.Text = DtCombo Then
                     DropDownList5.SelectedValue = item.Value
@@ -1389,7 +1389,7 @@ Public Class Embarque
             DropDownList6.SelectedIndex = 0
             TxtCateogiraGrid.SelectedIndex = 0
             txtEntreg.Text = ""
-            txtPrecio.Text = ""
+            txtPrecio.Text = "0"
             txtObser.Text = ""
 
         End If
@@ -1497,19 +1497,19 @@ Public Class Embarque
             Dim c3 As String
 
             ' Obtener las selecciones de los DropDownList
-            If DropDownList5.SelectedItem.Text = "Todos" And DropDownList6.SelectedItem.Text <> "Todos" Then
+            If DropDownList5.SelectedItem.Text = " " And DropDownList6.SelectedItem.Text <> " " Then
                 c2 = " AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
             Else
                 c2 = " "
             End If
 
-            If DropDownList6.SelectedItem.Text = "Todos" And DropDownList5.SelectedItem.Text <> "Todos" Then
+            If DropDownList6.SelectedItem.Text = " " And DropDownList5.SelectedItem.Text <> " " Then
                 c2 = " AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
             Else
                 c2 = " "
             End If
 
-            If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
+            If (TxtCateogiraGrid.SelectedItem.Text = " ") Then
                 c3 = " "
             Else
                 c3 = " AND categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
@@ -1940,19 +1940,19 @@ Public Class Embarque
         Dim c3 As String
 
         ' Obtener las selecciones de los DropDownList
-        If DropDownList5.SelectedItem.Text = "Todos" And DropDownList6.SelectedItem.Text <> "Todos" Then
+        If DropDownList5.SelectedItem.Text = " " And DropDownList6.SelectedItem.Text <> " " Then
             c2 = " AND variedad = '" & DropDownList6.SelectedItem.Text & "' "
         Else
             c2 = " "
         End If
 
-        If DropDownList6.SelectedItem.Text = "Todos" And DropDownList5.SelectedItem.Text <> "Todos" Then
+        If DropDownList6.SelectedItem.Text = " " And DropDownList5.SelectedItem.Text <> " " Then
             c2 = " AND variedad = '" & DropDownList5.SelectedItem.Text & "' "
         Else
             c2 = " "
         End If
 
-        If (TxtCateogiraGrid.SelectedItem.Text = "Todos") Then
+        If (TxtCateogiraGrid.SelectedItem.Text = " ") Then
             c3 = " "
         Else
             c3 = " AND categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
