@@ -131,6 +131,8 @@
                                             <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-warning" HeaderText="HOJA DE DATOS" CommandName="Imprimir">
                                                 <ControlStyle CssClass="btn btn-warning"></ControlStyle>
                                             </asp:ButtonField>
+                                            <asp:BoundField DataField="tipo_salida" HeaderText="Tipo de Salida" />
+                                            <asp:BoundField DataField="no_convenio" HeaderText="N° DE CONVENIO" />
                                         </Columns>
                                         <EditRowStyle BackColor="#7C6F57" />
                                         <RowStyle BackColor="#E3EAEB" />
@@ -421,6 +423,7 @@
                         <asp:TextBox ID="TextBanderita" runat="server" Visible="false"></asp:TextBox>
                         <asp:TextBox ID="txtRespaldito" runat="server" Visible="false"></asp:TextBox>
                         <asp:TextBox ID="TextminigridCambiarestado" runat="server" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="txtsalida" runat="server" Visible="false"></asp:TextBox>
                     </div>
 
                     <div class="row">

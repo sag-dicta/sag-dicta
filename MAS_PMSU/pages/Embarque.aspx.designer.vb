@@ -878,6 +878,15 @@ Partial Public Class Embarque
     Protected WithEvents TextminigridCambiarestado As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control txtsalida.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents txtsalida As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control lblmas.
     '''</summary>
     '''<remarks>

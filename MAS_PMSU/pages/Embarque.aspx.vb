@@ -607,7 +607,7 @@ Public Class Embarque
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "Id, estado, no_conocimiento, para_general, DATE_FORMAT(fecha_elaboracion, '%d-%m-%Y') AS fecha_elaboracion, cultivo_general, remitente, destinatario, lugar_remitente, lugar_destinatario, conductor, vehiculo, observacion2"
+        Dim cadena As String = "Id, estado, no_conocimiento, para_general, DATE_FORMAT(fecha_elaboracion, '%d-%m-%Y') AS fecha_elaboracion, cultivo_general, remitente, destinatario, lugar_remitente, lugar_destinatario, conductor, vehiculo, observacion2, tipo_salida, no_convenio"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -899,6 +899,7 @@ Public Class Embarque
                 divInfoObser.Visible = False
                 divPrecio.Visible = False
                 DDLCultivo.SelectedIndex = 0
+                txtCultiConv.Enabled = False
 
                 SeleccionarItemEnDropDownList(ddl_tiposalida, dt.Rows(0)("tipo_salida").ToString())
                 txtConoNo.Text = dt.Rows(0)("no_convenio").ToString()
@@ -908,6 +909,17 @@ Public Class Embarque
                 txtParaIdent.Text = dt.Rows(0)("identidad").ToString()
                 txtMzSembrar.Text = dt.Rows(0)("mz_sembrar_qq").ToString()
                 SeleccionarItemEnDropDownList(txtCultiConv, dt.Rows(0)("CULTIVO_GENERAL").ToString())
+                If txtCultiConv.SelectedItem.Text = "Frijol" Or txtCultiConv.SelectedItem.Text = "Sorgo" Or txtCultiConv.SelectedItem.Text = "Arroz" Or txtCultiConv.SelectedItem.Text = "Ajonjoli" Or txtCultiConv.SelectedItem.Text = "Papa" Then
+                    DropDownList6.SelectedIndex = 0
+                    VariedadFrijol.Visible = True
+                    VariedadMaiz.Visible = False
+                    llenarcomboFrijol()
+                Else
+                    VariedadMaiz.Visible = True
+                    VariedadFrijol.Visible = False
+                    DropDownList5.SelectedIndex = 0
+                    llenarcomboMaiz()
+                End If
                 llenarcombovariedad()
                 SeleccionarItemEnDropDownList(txtVariedadConv, dt.Rows(0)("variedad_conve").ToString())
                 llenarcomboCategoria()
@@ -916,6 +928,7 @@ Public Class Embarque
                 txtPrecioMinimoCompra.Text = dt.Rows(0)("precio_minimo").ToString()
                 txtCompPerd.Text = dt.Rows(0)("compensacion").ToString()
                 txtPrecioFinal.Text = dt.Rows(0)("precio_final").ToString()
+                VerificarTextBox()
             ElseIf ddl_tiposalida.SelectedItem.Text = "Actas" Then
                 divconvenio.Visible = False
                 idcultivo.Visible = True
@@ -933,11 +946,22 @@ Public Class Embarque
                 txtFecha.Text = If(dt.Rows(0)("FECHA_ELABORACION") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("FECHA_ELABORACION"), DateTime).ToString("yyyy-MM-dd"))
                 SeleccionarItemEnDropDownList(DDLCultivo, dt.Rows(0)("CULTIVO_GENERAL").ToString())
                 DDLCultivo.Enabled = False
-                If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Frijol" Then
+                If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Frijol" Or dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Arroz" Or dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Ajonjoli" Or dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Papa" Then
                     VariedadFrijol.Visible = True
                 End If
                 If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Maiz" Then
                     VariedadMaiz.Visible = True
+                End If
+                If DDLCultivo.SelectedItem.Text = "Frijol" Or DDLCultivo.SelectedItem.Text = "Sorgo" Or DDLCultivo.SelectedItem.Text = "Arroz" Or DDLCultivo.SelectedItem.Text = "Ajonjoli" Or DDLCultivo.SelectedItem.Text = "Papa" Then
+                    DropDownList6.SelectedIndex = 0
+                    VariedadFrijol.Visible = True
+                    VariedadMaiz.Visible = False
+                    llenarcomboFrijol()
+                Else
+                    VariedadMaiz.Visible = True
+                    VariedadFrijol.Visible = False
+                    DropDownList5.SelectedIndex = 0
+                    llenarcomboMaiz()
                 End If
                 txtRemi.Text = dt.Rows(0)("REMITENTE").ToString()
                 txtDestin.Text = dt.Rows(0)("DESTINATARIO").ToString()
@@ -945,6 +969,7 @@ Public Class Embarque
                 txtLugarD.Text = dt.Rows(0)("LUGAR_DESTINATARIO").ToString()
                 SeleccionarItemEnDropDownList(DDLConductor, dt.Rows(0)("CONDUCTOR").ToString())
                 txtVehic.Text = dt.Rows(0)("VEHICULO").ToString()
+                VerificarTextBox()
             Else
                 divconvenio.Visible = False
                 idcultivo.Visible = True
@@ -962,11 +987,22 @@ Public Class Embarque
                 txtFecha.Text = If(dt.Rows(0)("FECHA_ELABORACION") Is DBNull.Value, String.Empty, DirectCast(dt.Rows(0)("FECHA_ELABORACION"), DateTime).ToString("yyyy-MM-dd"))
                 SeleccionarItemEnDropDownList(DDLCultivo, dt.Rows(0)("CULTIVO_GENERAL").ToString())
                 DDLCultivo.Enabled = False
-                If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Frijol" Then
+                If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Frijol" Or dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Arroz" Or dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Ajonjoli" Or dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Papa" Then
                     VariedadFrijol.Visible = True
                 End If
                 If dt.Rows(0)("CULTIVO_GENERAL").ToString() = "Maiz" Then
                     VariedadMaiz.Visible = True
+                End If
+                If DDLCultivo.SelectedItem.Text = "Frijol" Or DDLCultivo.SelectedItem.Text = "Sorgo" Or DDLCultivo.SelectedItem.Text = "Arroz" Or DDLCultivo.SelectedItem.Text = "Ajonjoli" Or DDLCultivo.SelectedItem.Text = "Papa" Then
+                    DropDownList6.SelectedIndex = 0
+                    VariedadFrijol.Visible = True
+                    VariedadMaiz.Visible = False
+                    llenarcomboFrijol()
+                Else
+                    VariedadMaiz.Visible = True
+                    VariedadFrijol.Visible = False
+                    DropDownList5.SelectedIndex = 0
+                    llenarcomboMaiz()
                 End If
                 txtRemi.Text = dt.Rows(0)("REMITENTE").ToString()
                 txtDestin.Text = dt.Rows(0)("DESTINATARIO").ToString()
@@ -974,6 +1010,7 @@ Public Class Embarque
                 txtLugarD.Text = dt.Rows(0)("LUGAR_DESTINATARIO").ToString()
                 SeleccionarItemEnDropDownList(DDLConductor, dt.Rows(0)("CONDUCTOR").ToString())
                 txtVehic.Text = dt.Rows(0)("VEHICULO").ToString()
+                VerificarTextBox()
             End If
 
             llenaMinigrid()
@@ -989,8 +1026,13 @@ Public Class Embarque
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+            txtsalida.Text = HttpUtility.HtmlDecode(gvrow.Cells(12).Text).ToString
 
-            TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
+            If txtsalida.Text = "Convenio" Then
+                TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(13).Text).ToString
+            Else
+                TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
+            End If
 
             Label3.Text = "¿Desea eliminar el conocimiento de embarque?"
             BBorrarsi.Visible = True
@@ -1607,37 +1649,63 @@ Public Class Embarque
         Dim DtCombo As New DataTable()
         adaptcombo.Fill(DtCombo)
 
+        If DtCombo.Rows.Count >= 1 Then
+            btnAgregar.Visible = False
+        Else
+            btnAgregar.Visible = True
+        End If
+
         Return DtCombo.Rows.Count
     End Function
     Sub verificardatosproductos()
         Dim validar As Integer = 0
-        '1
-        If String.IsNullOrEmpty(txtEntreg.Text) Then
-            lblLugarD.Text = "*"
-            validar = 0
-        Else
-            lblLugarD.Text = ""
-            validar += 1
-        End If
-        '2
-        If String.IsNullOrEmpty(txtPrecio.Text) Then
-            lblLugarD.Text = "*"
-            validar = 0
-        Else
-            lblLugarD.Text = ""
-            validar += 1
-        End If
-        '3
-        If String.IsNullOrEmpty(txtObser.Text) Then
-            lblLugarD.Text = "*"
-            validar = 0
-        Else
-            lblLugarD.Text = ""
-            validar += 1
-        End If
-        '4
-        If DDLCultivo.SelectedItem.Text = "Frijol" Or DDLCultivo.SelectedItem.Text = "Sorgo" Or DDLCultivo.SelectedItem.Text = "Arroz" Or DDLCultivo.SelectedItem.Text = "Ajonjoli" Or DDLCultivo.SelectedItem.Text = "Papa" Then
-            If DropDownList5.SelectedItem.Text <> " " Then
+        If TextBanderita.Text = " " Or TextBanderita.Text = "Distribución y embarque" Or TextBanderita.Text = "Actas" Then
+            '1
+            If String.IsNullOrEmpty(txtEntreg.Text) Then
+                lblLugarD.Text = "*"
+                validar = 0
+            Else
+                lblLugarD.Text = ""
+                validar += 1
+            End If
+            '2
+            If String.IsNullOrEmpty(txtPrecio.Text) Then
+                lblLugarD.Text = "*"
+                validar = 0
+            Else
+                lblLugarD.Text = ""
+                validar += 1
+            End If
+            '3
+            If String.IsNullOrEmpty(txtObser.Text) Then
+                lblLugarD.Text = "*"
+                validar = 0
+            Else
+                lblLugarD.Text = ""
+                validar += 1
+            End If
+            '4
+            If DDLCultivo.SelectedItem.Text = "Frijol" Or DDLCultivo.SelectedItem.Text = "Sorgo" Or DDLCultivo.SelectedItem.Text = "Arroz" Or DDLCultivo.SelectedItem.Text = "Ajonjoli" Or DDLCultivo.SelectedItem.Text = "Papa" Then
+                If DropDownList5.SelectedItem.Text <> " " Then
+                    Label1.Text = ""
+                    validar += 1
+
+                Else
+                    Label1.Text = "*"
+                    validar = 0
+                End If
+            ElseIf DDLCultivo.SelectedItem.Text = "Maiz" Then
+                If DropDownList6.SelectedItem.Text <> " " Then
+                    Label1.Text = ""
+                    validar += 1
+
+                Else
+                    Label1.Text = "*"
+                    validar = 0
+                End If
+            End If
+            '5
+            If TxtCateogiraGrid.SelectedItem.Text <> " " Then
                 Label1.Text = ""
                 validar += 1
 
@@ -1645,8 +1713,8 @@ Public Class Embarque
                 Label1.Text = "*"
                 validar = 0
             End If
-        Else
-            If DropDownList6.SelectedItem.Text <> " " Then
+            '6
+            If Ddl_nolote.SelectedItem.Text <> " " Then
                 Label1.Text = ""
                 validar += 1
 
@@ -1654,29 +1722,79 @@ Public Class Embarque
                 Label1.Text = "*"
                 validar = 0
             End If
-        End If
-        '5
-        If TxtCateogiraGrid.SelectedItem.Text <> " " Then
-            Label1.Text = ""
-            validar += 1
+            If validar = 6 Then
+                btnAgregar.Visible = True
+            Else
+                btnAgregar.Visible = False
+            End If
+        Else
+            '1
+            If String.IsNullOrEmpty(txtEntreg.Text) Then
+                lblLugarD.Text = "*"
+                validar = 0
+            Else
+                lblLugarD.Text = ""
+                validar += 1
+            End If
+            '2
+            If String.IsNullOrEmpty(txtPrecio.Text) Then
+                lblLugarD.Text = "*"
+                validar = 0
+            Else
+                lblLugarD.Text = ""
+                validar += 1
+            End If
+            '3
+            If String.IsNullOrEmpty(txtObser.Text) Then
+                lblLugarD.Text = "*"
+                validar = 0
+            Else
+                lblLugarD.Text = ""
+                validar += 1
+            End If
+            '4
+            If txtCultiConv.SelectedItem.Text = "Frijol" Or txtCultiConv.SelectedItem.Text = "Sorgo" Or txtCultiConv.SelectedItem.Text = "Arroz" Or txtCultiConv.SelectedItem.Text = "Ajonjoli" Or txtCultiConv.SelectedItem.Text = "Papa" Then
+                If DropDownList5.SelectedItem.Text <> " " Then
+                    Label1.Text = ""
+                    validar += 1
 
-        Else
-            Label1.Text = "*"
-            validar = 0
-        End If
-        '6
-        If Ddl_nolote.SelectedItem.Text <> " " Then
-            Label1.Text = ""
-            validar += 1
+                Else
+                    Label1.Text = "*"
+                    validar = 0
+                End If
+            ElseIf txtCultiConv.SelectedItem.Text = "Maiz" Then
+                If DropDownList6.SelectedItem.Text <> " " Then
+                    Label1.Text = ""
+                    validar += 1
 
-        Else
-            Label1.Text = "*"
-            validar = 0
-        End If
-        If validar = 6 Then
-            btnAgregar.Visible = True
-        Else
-            btnAgregar.Visible = False
+                Else
+                    Label1.Text = "*"
+                    validar = 0
+                End If
+            End If
+            '5
+            If TxtCateogiraGrid.SelectedItem.Text <> " " Then
+                Label1.Text = ""
+                validar += 1
+
+            Else
+                Label1.Text = "*"
+                validar = 0
+            End If
+            '6
+            If Ddl_nolote.SelectedItem.Text <> " " Then
+                Label1.Text = ""
+                validar += 1
+
+            Else
+                Label1.Text = "*"
+                validar = 0
+            End If
+            If validar = 6 Then
+                btnAgregar.Visible = True
+            Else
+                btnAgregar.Visible = False
+            End If
         End If
     End Sub
     Protected Sub txtFecha2_TextChanged()
