@@ -1471,7 +1471,7 @@ Public Class Embarque
     End Sub
     Protected Sub TxtCateogiraGrid_SelectedIndexChanged(sender As Object, e As EventArgs)
         Dim selectedValue As String
-
+        txtEntreg.Text = 0
         If DDLCultivo.SelectedItem.Text <> " " Then
             selectedValue = DDLCultivo.SelectedItem.Text
         ElseIf txtCultiConv.SelectedItem.Text <> " " Then
@@ -1494,12 +1494,13 @@ Public Class Embarque
     End Sub
     Protected Sub txtEntreg_TextChanged(sender As Object, e As EventArgs) Handles txtEntreg.TextChanged
         ' Obtener el valor ingresado en txtEntreg
-        Dim entregado As Integer = 0
+
         If Integer.TryParse(txtEntreg.Text, entregado) Then
             ' Construir la consulta SQL dinámica
             Dim c1 As String = "SELECT peso_neto_resta FROM vista_inventario2 WHERE 1=1 "
             Dim c2 As String
             Dim c3 As String
+            Dim c4 As String
 
             ' Obtener las selecciones de los DropDownList
             If DropDownList5.SelectedItem.Text = " " And DropDownList6.SelectedItem.Text <> " " Then
@@ -1520,8 +1521,14 @@ Public Class Embarque
                 c3 = " AND categoria_registrado = '" & TxtCateogiraGrid.SelectedItem.Text & "' "
             End If
 
+            If (Ddl_nolote.SelectedItem.Text = " ") Then
+                c4 = " "
+            Else
+                c4 = " AND lote_registrado = '" & Ddl_nolote.SelectedItem.Text & "' "
+            End If
+
             ' Agregar condiciones a la consulta SQL
-            Dim query As String = c1 & c2 & c3
+            Dim query As String = c1 & c2 & c3 & c4
 
             Dim strCombo As String = query
             Dim adaptcombo As New MySqlDataAdapter(strCombo, conn)
@@ -1936,7 +1943,6 @@ Public Class Embarque
         Ddl_nolote.Items.Insert(0, newitem)
     End Sub
     Protected Sub Ddl_nolote_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Ddl_nolote.SelectedIndexChanged
-
         ' Obtener el valor ingresado en txtEntreg
         Dim entregado As Integer = 0
         ' Construir la consulta SQL dinámica
