@@ -768,7 +768,7 @@ Public Class Embarque
         txtUnid.Text = "QQ"
         txtEntreg.Text = ""
         txtPrecio.Text = "0"
-        txtObser.Text = ""
+        txtObser.Text = "Ninguno"
     End Sub
     Protected Sub CrearIdentificador()
         Dim variedad As String
@@ -1842,6 +1842,7 @@ Public Class Embarque
             txtPrecio.Text = "0"
             DDLCultivo.SelectedIndex = 0
             Llenar_convenio()
+            vaciarCamposSalida()
         ElseIf ddl_tiposalida.SelectedItem.Text = "Actas" Then
             divconvenio.Visible = False
             idcultivo.Visible = True
@@ -1855,6 +1856,7 @@ Public Class Embarque
             txtPrecio.Text = "0"
             txtCultiConv.SelectedIndex = 0
             Llenar_conocimiento()
+            vaciarCamposSalida()
         Else
             divconvenio.Visible = False
             idcultivo.Visible = True
@@ -1868,6 +1870,7 @@ Public Class Embarque
             txtPrecio.Text = "0"
             txtCultiConv.SelectedIndex = 0
             Llenar_conocimiento()
+            vaciarCamposSalida()
         End If
     End Sub
     Private Sub llenarcomboCultivo()
@@ -2133,5 +2136,57 @@ Public Class Embarque
         rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
 
         Response.End()
+    End Sub
+
+    Protected Sub vaciarCamposSalida()
+        If ddl_tiposalida.SelectedItem.Text = "Convenio" Then
+            '1
+            txtParaConv.Text = ""
+            '2
+            txtCompPerd.Text = ""
+            '3
+            txtCultiConv.SelectedIndex = 0
+            '4
+            txtParaIdent.Text = ""
+            '5
+            txtMzSembrar.Text = ""
+            '6
+            txtVariedadConv.SelectedIndex = 0
+            '7
+            txtCategConv.SelectedIndex = 0
+            '8
+            txtProducAprox.Text = ""
+            '9
+            txtPrecioMinimoCompra.Text = ""
+            '10
+            txtFecha.Text = ""
+            '11
+            txtFecha2.Text = ""
+            '12
+            txtPrecioFinal.Text = ""
+            vaciarCamposProductos()
+        Else
+            '1
+            txtPara.Text = ""
+            '2
+            txtFecha.Text = ""
+            '3
+            DDLCultivo.SelectedIndex = 0
+            '4
+            txtRemi.Text = ""
+            '5
+            txtDestin.Text = ""
+            '6
+            txtLugarR.Text = ""
+            '7
+            txtLugarD.Text = ""
+            '8
+            DDLConductor.SelectedIndex = 0
+            '9
+            txtObser2.Text = ""
+            '10
+            txtVehic.Text = ""
+            vaciarCamposProductos()
+        End If
     End Sub
 End Class
