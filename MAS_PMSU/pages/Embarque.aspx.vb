@@ -624,6 +624,12 @@ Public Class Embarque
             c3 = "AND no_conocimiento = '" & DDLConoc.SelectedItem.Text & "' "
         End If
 
+        If (DDLTipoSalida.SelectedItem.Text = "Todos") Then
+            c4 = " "
+        Else
+            c4 = "AND tipo_salida = '" & DDLTipoSalida.SelectedItem.Text & "' "
+        End If
+
         BAgregar.Visible = True
         Me.SqlDataSource1.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque_info` WHERE 1 = 1 AND estado = '1' " & c1 & c3 & c4 & " AND fecha_elaboracion >= '" & txtFechaDesde.Text & "' AND fecha_elaboracion <= '" & txtFechaHasta.Text & "'" & " ORDER BY id DESC"
 
@@ -645,7 +651,14 @@ Public Class Embarque
     Private Sub llenarcomboProductor()
         Dim StrCombo As String
 
-        StrCombo = "SELECT para_general FROM sag_embarque_info WHERE estado = '1' ORDER BY para_general ASC"
+        If DDLTipoSalida.SelectedItem.Text = "Convenio" Then
+            StrCombo = "SELECT para_general FROM sag_embarque_info WHERE estado = '1' AND no_convenio IS NOT NULL AND no_convenio <> '' ORDER BY para_general ASC"
+        ElseIf DDLTipoSalida.SelectedItem.Text = "Todos" Then
+            StrCombo = "SELECT para_general FROM sag_embarque_info WHERE estado = '1' ORDER BY para_general ASC"
+        Else
+            StrCombo = "SELECT para_general FROM sag_embarque_info WHERE estado = '1' AND no_conocimiento IS NOT NULL AND no_conocimiento <> '' ORDER BY para_general ASC"
+        End If
+
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -859,18 +872,33 @@ Public Class Embarque
         Dim index As Integer = Convert.ToInt32(e.CommandArgument)
 
         If (e.CommandName = "Detalles") Then
-
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            txtConoNo.Text = ""
-            txtConoNo.Text = HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(1).Text).ToString
-            ModalTitle3.InnerText = "Información del Embarque " & HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(1).Text).ToString
-            Dim cadena As String = "*"
+            txtsalida.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
 
-            Me.SqlDataSource3.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque` WHERE no_conocimiento = '" & txtConoNo.Text & "'"
+            If txtsalida.Text = "Convenio" Then
+                txtConoNo.Text = ""
+                txtConoNo.Text = HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(2).Text).ToString
+                ModalTitle3.InnerText = "Información del Embarque " & HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(2).Text).ToString
+                Dim cadena As String = "*"
 
-            GridDetalles.DataBind()
+                Me.SqlDataSource3.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque` WHERE no_conocimiento = '" & txtConoNo.Text & "'"
 
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal3').modal('show'); });", True)
+                GridDetalles.DataBind()
+
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal3').modal('show'); });", True)
+
+            Else
+                txtConoNo.Text = ""
+                txtConoNo.Text = HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(3).Text).ToString
+                ModalTitle3.InnerText = "Información del Embarque " & HttpUtility.HtmlDecode(GridDatos.Rows(index).Cells(3).Text).ToString
+                Dim cadena As String = "*"
+
+                Me.SqlDataSource3.SelectCommand = "SELECT " & cadena & " FROM `sag_embarque` WHERE no_conocimiento = '" & txtConoNo.Text & "'"
+
+                GridDetalles.DataBind()
+
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#DeleteModal3').modal('show'); });", True)
+            End If
 
         End If
 
@@ -1030,12 +1058,12 @@ Public Class Embarque
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
 
             txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
-            txtsalida.Text = HttpUtility.HtmlDecode(gvrow.Cells(12).Text).ToString
+            txtsalida.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
 
             If txtsalida.Text = "Convenio" Then
-                TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(13).Text).ToString
+                TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
             Else
-                TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
+                TextminigridCambiarestado.Text = HttpUtility.HtmlDecode(gvrow.Cells(3).Text).ToString
             End If
 
             Label3.Text = "¿Desea eliminar el conocimiento de embarque?"
@@ -1048,35 +1076,40 @@ Public Class Embarque
         If (e.CommandName = "Imprimir") Then
 
             Dim gvrow As GridViewRow = GridDatos.Rows(index)
-            Dim rptdocument As New ReportDocument
-            'nombre de dataset
-            Dim ds As New DataSetMultiplicador
-            Dim Str As String = "SELECT * FROM vista_embarque_informe WHERE NO_CONOCIMIENTO_EMBARQUE_INFO = @valor"
-            Dim adap As New MySqlDataAdapter(Str, conn)
-            adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString)
-            Dim dt As New DataTable
+            txtsalida.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
 
-            'nombre de la vista del data set
+            If txtsalida.Text = "Convenio" Then
+                ImprimirConvenio(HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString)
+            Else
+                Dim rptdocument As New ReportDocument
+                'nombre de dataset
+                Dim ds As New DataSetMultiplicador
+                Dim Str As String = "SELECT * FROM vista_embarque_informe WHERE NO_CONOCIMIENTO_EMBARQUE_INFO = @valor"
+                Dim adap As New MySqlDataAdapter(Str, conn)
+                adap.SelectCommand.Parameters.AddWithValue("@valor", HttpUtility.HtmlDecode(gvrow.Cells(3).Text).ToString)
+                Dim dt As New DataTable
 
-            adap.Fill(ds, "vista_embarque_informe")
+                'nombre de la vista del data set
 
-            Dim nombre As String
+                adap.Fill(ds, "vista_embarque_informe")
 
-            nombre = "Conocimiento de Embarque No " + HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString + " " + Today
+                Dim nombre As String
 
-            rptdocument.Load(Server.MapPath("~/pages/EmbarqueReport.rpt"))
+                nombre = "Conocimiento de Embarque No " + HttpUtility.HtmlDecode(gvrow.Cells(3).Text).ToString + " " + Today
 
-            rptdocument.SetDataSource(ds)
-            Response.Buffer = False
+                rptdocument.Load(Server.MapPath("~/pages/EmbarqueReport.rpt"))
 
+                rptdocument.SetDataSource(ds)
+                Response.Buffer = False
 
-            Response.ClearContent()
-            Response.ClearHeaders()
+                Response.ClearContent()
+                Response.ClearHeaders()
 
-            rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+                rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
 
-            Response.End()
-            ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+                Response.End()
+                ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
+            End If
 
         End If
     End Sub
@@ -1203,7 +1236,13 @@ Public Class Embarque
             c3 = "AND NO_CONOCIMIENTO_EMBARQUE_INFO = '" & DDLConoc.SelectedItem.Text & "' "
         End If
 
-        query = "SELECT " & cadena & " FROM `vista_embarque_general` WHERE 1 = 1 " & c1 & c3 & " AND FECHA_ELABORACION >= '" & txtFechaDesde.Text & "' AND FECHA_ELABORACION <= '" & txtFechaHasta.Text & "'"
+        If (DDLTipoSalida.SelectedItem.Text = "Todos") Then
+            c4 = " "
+        Else
+            c4 = "AND tipo_salida = '" & DDLTipoSalida.SelectedItem.Text & "' "
+        End If
+
+        query = "SELECT " & cadena & " FROM `vista_embarque_general` WHERE 1 = 1 " & c1 & c3 & c4 & " AND FECHA_ELABORACION >= '" & txtFechaDesde.Text & "' AND FECHA_ELABORACION <= '" & txtFechaHasta.Text & "'"
 
         Using con As New MySqlConnection(conn)
             Using cmd As New MySqlCommand(query)
@@ -1607,7 +1646,16 @@ Public Class Embarque
     Private Sub llenarcomboConocimiento()
         Dim StrCombo As String
 
-        StrCombo = "SELECT no_conocimiento FROM sag_embarque_info WHERE estado = '1' ORDER BY no_conocimiento ASC"
+        If DDLTipoSalida.SelectedItem.Text = "Convenio" Then
+            StrCombo = "SELECT no_convenio FROM sag_embarque_info WHERE estado = '1' AND no_convenio IS NOT NULL AND no_convenio <> '' ORDER BY no_convenio ASC"
+        ElseIf DDLTipoSalida.SelectedItem.Text = "Todos" Then
+            StrCombo = "SELECT no_convenio FROM sag_embarque_info WHERE estado = '1' AND no_convenio IS NOT NULL AND no_convenio <> '' " &
+                       "UNION " &
+                       "SELECT no_conocimiento FROM sag_embarque_info WHERE estado = '1' AND no_conocimiento IS NOT NULL AND no_conocimiento <> '' " &
+                       "ORDER BY 1 ASC"
+        Else
+            StrCombo = "SELECT no_conocimiento FROM sag_embarque_info WHERE estado = '1' AND no_conocimiento IS NOT NULL AND no_conocimiento <> '' ORDER BY no_conocimiento ASC"
+        End If
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -1622,7 +1670,16 @@ Public Class Embarque
     Private Sub llenarcomboConocimiento2()
         Dim StrCombo As String
 
-        StrCombo = "SELECT no_conocimiento FROM sag_embarque_info WHERE estado = '1' AND para_general= '" & TxtMultiplicador.SelectedItem.Text & "' ORDER BY no_conocimiento ASC"
+        If DDLTipoSalida.SelectedItem.Text = "Convenio" Then
+            StrCombo = "SELECT no_convenio FROM sag_embarque_info WHERE estado = '1' AND no_convenio IS NOT NULL AND no_convenio <> '' AND para_general= '" & TxtMultiplicador.SelectedItem.Text & "' ORDER BY no_convenio ASC"
+        ElseIf DDLTipoSalida.SelectedItem.Text = "Todos" Then
+            StrCombo = "SELECT no_convenio FROM sag_embarque_info WHERE estado = '1' AND no_convenio IS NOT NULL AND no_convenio <> '' " &
+                   "UNION " &
+                   "SELECT no_conocimiento FROM sag_embarque_info WHERE estado = '1' AND no_conocimiento IS NOT NULL AND no_conocimiento <> '' " &
+                   "ORDER BY 1 ASC"
+        Else
+            StrCombo = "SELECT no_conocimiento FROM sag_embarque_info WHERE estado = '1' AND no_conocimiento IS NOT NULL AND no_conocimiento <> '' AND para_general= '" & TxtMultiplicador.SelectedItem.Text & "' ORDER BY no_conocimiento ASC"
+        End If
 
         Dim adaptcombo As New MySqlDataAdapter(StrCombo, conn)
         Dim DtCombo As New DataTable
@@ -2105,8 +2162,7 @@ Public Class Embarque
             VerificarTextBox()
         End If
     End Sub
-    Protected Sub ImprimirConvenio()
-        Dim var As String = txtConoNo.Text
+    Protected Sub ImprimirConvenio(ByVal var As String)
         Dim nombre As String
         Dim rptdocument As New ReportDocument
         Dim ds As New DataSetMultiplicador
@@ -2136,6 +2192,12 @@ Public Class Embarque
         rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
 
         Response.End()
+    End Sub
+
+    Protected Sub DDLTipoSalida_SelectedIndexChanged(sender As Object, e As EventArgs)
+        llenarcomboProductor()
+        llenarcomboConocimiento()
+        llenagrid()
     End Sub
 
     Protected Sub vaciarCamposSalida()

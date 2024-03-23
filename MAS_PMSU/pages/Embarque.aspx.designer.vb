@@ -32,6 +32,15 @@ Partial Public Class Embarque
     Protected WithEvents DivGrid As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
+    '''Control DDLTipoSalida.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DDLTipoSalida As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control txtFechaDesde.
     '''</summary>
     '''<remarks>

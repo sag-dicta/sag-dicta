@@ -23,7 +23,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Registro de Embarque</h1>
+            <h1 class="page-header">Registro de Salidas</h1>
         </div>
     </div>
 
@@ -33,30 +33,42 @@
                 <div class="panel panel-primary">
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-3">
+
+                            <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label>Seleccione Fecha desde:</label>
+                                    <label>Tipo de Salida:</label>
+                                    <asp:DropDownList CssClass="form-control" ID="DDLTipoSalida" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLTipoSalida_SelectedIndexChanged">
+                                        <asp:ListItem Value="0" Text="Todos"></asp:ListItem>
+                                        <asp:ListItem Value="1" Text="Convenio"></asp:ListItem>
+                                        <asp:ListItem Value="2" Text="Distribución y embarque"></asp:ListItem>
+                                        <asp:ListItem Value="3" Text="Actas"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="form-group">
+                                    <label>Fecha desde:</label>
                                     <asp:TextBox CssClass="form-control" ID="txtFechaDesde" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaDesde_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label>Seleccione Fecha hasta:</label>
+                                    <label>Fecha hasta:</label>
                                     <asp:TextBox CssClass="form-control" ID="txtFechaHasta" TextMode="date" runat="server" AutoPostBack="true" OnTextChanged="txtFechaHasta_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label>Seleccione Destinatario:</label>
+                                    <label>Destinatario:</label>
                                     <asp:DropDownList CssClass="form-control" ID="TxtMultiplicador" runat="server" AutoPostBack="True" OnSelectedIndexChanged="TxtMultiplicador_SelectedIndexChanged">
                                         <asp:ListItem Text="Todos"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
 
-                            <div class="col-lg-3">
+                            <div class="col-lg-2">
                                 <div class="form-group">
-                                    <label>Seleccione No. Conocimiento:</label>
+                                    <label>No. Conocimiento:</label>
                                     <asp:DropDownList CssClass="form-control" ID="DDLConoc" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDLConoc_SelectedIndexChanged">
                                         <asp:ListItem Text="Todos"></asp:ListItem>
                                     </asp:DropDownList>
@@ -66,7 +78,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <%--<asp:Label ID="Label2" runat="server" CssClass="label label-warning" Text="Para crear un plan nuevo primero seleccione el departamento, el municipio y el multiplicador" />--%>
-                                <asp:Button ID="BAgregar" runat="server" Text="Agregar Embarque" CssClass="btn btn-success" Visible="true" />
+                                <asp:Button ID="BAgregar" runat="server" Text="Nueva Salida" CssClass="btn btn-success" Visible="true" />
                             </div>
                         </div>
                         <div class="row">
@@ -111,6 +123,8 @@
                                                 <HeaderStyle CssClass="hiding" />
                                                 <ItemStyle CssClass="hiding" />
                                             </asp:BoundField>
+                                            <asp:BoundField DataField="tipo_salida" HeaderText="TIPO DE SALIDA" />
+                                            <asp:BoundField DataField="no_convenio" HeaderText="N° DE CONVENIO" />
                                             <asp:BoundField DataField="no_conocimiento" HeaderText="N° DE CONOCIMIENTO" />
                                             <asp:BoundField DataField="para_general" HeaderText="Dirigir" />
                                             <asp:BoundField DataField="fecha_elaboracion" HeaderText="FECHA DE ELABORACION" />
@@ -128,11 +142,9 @@
                                             <asp:ButtonField ButtonType="Button" Text="Eliminar" ControlStyle-CssClass="btn btn-danger" HeaderText="ELIMINAR" CommandName="Eliminar">
                                                 <ControlStyle CssClass="btn btn-danger"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-warning" HeaderText="HOJA DE DATOS" CommandName="Imprimir">
+                                            <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-warning" HeaderText="IMPRIMIR CONVENIO/EMBARQUE" CommandName="Imprimir">
                                                 <ControlStyle CssClass="btn btn-warning"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:BoundField DataField="tipo_salida" HeaderText="Tipo de Salida" />
-                                            <asp:BoundField DataField="no_convenio" HeaderText="N° DE CONVENIO" />
                                         </Columns>
                                         <EditRowStyle BackColor="#7C6F57" />
                                         <RowStyle BackColor="#E3EAEB" />
