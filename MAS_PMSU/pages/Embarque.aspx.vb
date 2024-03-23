@@ -2183,6 +2183,7 @@ Public Class Embarque
 
         rptdocument.SetParameterValue("NombreDirector", "AquiVaElNombreDelDirector")
         rptdocument.SetParameterValue("IdentidadDirector", "AquiVaLaIdentidadDelDirector")
+        rptdocument.SetParameterValue("NoConvenio", var)
 
         Response.Buffer = False
 
