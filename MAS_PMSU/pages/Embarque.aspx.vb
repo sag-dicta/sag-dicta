@@ -773,9 +773,10 @@ Public Class Embarque
     Protected Sub CrearIdentificador()
         Dim variedad As String
 
-        If DDLCultivo.SelectedItem.Text = "Frijol" Then
+        If DDLCultivo.SelectedItem.Text = "Frijol" Or DDLCultivo.SelectedItem.Text = "Sorgo" Or DDLCultivo.SelectedItem.Text = "Arroz" Or DDLCultivo.SelectedItem.Text = "Ajonjoli" Or DDLCultivo.SelectedItem.Text = "Papa" Or
+            txtCultiConv.SelectedItem.Text = "Frijol" Or txtCultiConv.SelectedItem.Text = "Sorgo" Or txtCultiConv.SelectedItem.Text = "Arroz" Or txtCultiConv.SelectedItem.Text = "Ajonjoli" Or txtCultiConv.SelectedItem.Text = "Papa" Then
             variedad = DropDownList5.SelectedItem.Text
-        Else
+        ElseIf DDLCultivo.SelectedItem.Text = "Maiz" Or txtCultiConv.SelectedItem.Text = "Maiz" Then
             variedad = DropDownList6.SelectedItem.Text
         End If
 
@@ -1262,6 +1263,7 @@ Public Class Embarque
            selectedValue = "Ajonjoli" Or
            selectedValue = "Papa" Then
             DropDownList6.SelectedIndex = 0
+            DropDownList5.Visible = True
             VariedadFrijol.Visible = True
             VariedadMaiz.Visible = False
             llenarcomboFrijol()
@@ -1269,12 +1271,15 @@ Public Class Embarque
             VariedadMaiz.Visible = True
             VariedadFrijol.Visible = False
             DropDownList5.SelectedIndex = 0
+            DropDownList6.Visible = True
             llenarcomboMaiz()
         Else
             VariedadMaiz.Visible = False
             VariedadFrijol.Visible = False
             DropDownList5.SelectedIndex = 0
             DropDownList6.SelectedIndex = 0
+            DropDownList6.Visible = False
+            DropDownList5.Visible = False
         End If
 
         VerificarTextBox()
@@ -2024,6 +2029,7 @@ Public Class Embarque
            selectedValue = "Ajonjoli" Or
            selectedValue = "Papa" Then
             DropDownList6.SelectedIndex = 0
+            DropDownList5.Visible = True
             VariedadFrijol.Visible = True
             VariedadMaiz.Visible = False
             llenarcomboFrijol()
@@ -2031,12 +2037,15 @@ Public Class Embarque
             VariedadMaiz.Visible = True
             VariedadFrijol.Visible = False
             DropDownList5.SelectedIndex = 0
+            DropDownList6.Visible = True
             llenarcomboMaiz()
         Else
             VariedadMaiz.Visible = False
             VariedadFrijol.Visible = False
             DropDownList5.SelectedIndex = 0
             DropDownList6.SelectedIndex = 0
+            DropDownList6.Visible = False
+            DropDownList5.Visible = False
         End If
 
         VerificarTextBox()
