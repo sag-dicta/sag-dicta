@@ -8921,6 +8921,8 @@ Partial Public Class DataSetMultiplicador
         
         Private columnprecio_final As Global.System.Data.DataColumn
         
+        Private columnno_convenio As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -9141,6 +9143,14 @@ Partial Public Class DataSetMultiplicador
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property no_convenioColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnno_convenio
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -9199,9 +9209,10 @@ Partial Public Class DataSetMultiplicador
                     ByVal produ_apro_qq_mz As Decimal,  _
                     ByVal precio_minimo As Decimal,  _
                     ByVal compensacion As Decimal,  _
-                    ByVal precio_final As Decimal) As sag_embarque_infoRow
+                    ByVal precio_final As Decimal,  _
+                    ByVal no_convenio As String) As sag_embarque_infoRow
             Dim rowsag_embarque_infoRow As sag_embarque_infoRow = CType(Me.NewRow,sag_embarque_infoRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, estado, no_conocimiento, para_general, fecha_elaboracion, cultivo_general, remitente, destinatario, lugar_remitente, lugar_destinatario, conductor, vehiculo, observacion2, tipo_salida, fecha_final_convenio, identidad, mz_sembrar_qq, variedad_conve, categoria_conve, produ_apro_qq_mz, precio_minimo, compensacion, precio_final}
+            Dim columnValuesArray() As Object = New Object() {Nothing, estado, no_conocimiento, para_general, fecha_elaboracion, cultivo_general, remitente, destinatario, lugar_remitente, lugar_destinatario, conductor, vehiculo, observacion2, tipo_salida, fecha_final_convenio, identidad, mz_sembrar_qq, variedad_conve, categoria_conve, produ_apro_qq_mz, precio_minimo, compensacion, precio_final, no_convenio}
             rowsag_embarque_infoRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowsag_embarque_infoRow)
             Return rowsag_embarque_infoRow
@@ -9253,6 +9264,7 @@ Partial Public Class DataSetMultiplicador
             Me.columnprecio_minimo = MyBase.Columns("precio_minimo")
             Me.columncompensacion = MyBase.Columns("compensacion")
             Me.columnprecio_final = MyBase.Columns("precio_final")
+            Me.columnno_convenio = MyBase.Columns("no_convenio")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9304,6 +9316,8 @@ Partial Public Class DataSetMultiplicador
             MyBase.Columns.Add(Me.columncompensacion)
             Me.columnprecio_final = New Global.System.Data.DataColumn("precio_final", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnprecio_final)
+            Me.columnno_convenio = New Global.System.Data.DataColumn("no_convenio", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnno_convenio)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId}, true))
             Me.columnId.AutoIncrement = true
             Me.columnId.AutoIncrementSeed = -1
@@ -9325,6 +9339,7 @@ Partial Public Class DataSetMultiplicador
             Me.columnidentidad.MaxLength = 50
             Me.columnvariedad_conve.MaxLength = 100
             Me.columncategoria_conve.MaxLength = 100
+            Me.columnno_convenio.MaxLength = 100
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -20835,6 +20850,21 @@ Partial Public Class DataSetMultiplicador
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property no_convenio() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablesag_embarque_info.no_convenioColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'no_convenio' de la tabla 'sag_embarque_info' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesag_embarque_info.no_convenioColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsestadoNull() As Boolean
             Return Me.IsNull(Me.tablesag_embarque_info.estadoColumn)
         End Function
@@ -21095,6 +21125,18 @@ Partial Public Class DataSetMultiplicador
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub Setprecio_finalNull()
             Me(Me.tablesag_embarque_info.precio_finalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function Isno_convenioNull() As Boolean
+            Return Me.IsNull(Me.tablesag_embarque_info.no_convenioColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub Setno_convenioNull()
+            Me(Me.tablesag_embarque_info.no_convenioColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -27490,6 +27532,7 @@ Namespace DataSetMultiplicadorTableAdapters
             tableMapping.ColumnMappings.Add("precio_minimo", "precio_minimo")
             tableMapping.ColumnMappings.Add("compensacion", "compensacion")
             tableMapping.ColumnMappings.Add("precio_final", "precio_final")
+            tableMapping.ColumnMappings.Add("no_convenio", "no_convenio")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -27510,8 +27553,8 @@ Namespace DataSetMultiplicadorTableAdapters
                 "te`, `lugar_destinatario`, `conductor`, `vehiculo`, `observacion2`, `tipo_salida"& _ 
                 "`, `fecha_final_convenio`, `identidad`, `mz_sembrar_qq`, `variedad_conve`, `cate"& _ 
                 "goria_conve`, `produ_apro_qq_mz`, `precio_minimo`, `compensacion`, `precio_final"& _ 
-                "`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, "& _ 
-                "@p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22)"
+                "`, `no_convenio`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p1"& _ 
+                "1, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -27667,6 +27710,13 @@ Namespace DataSetMultiplicadorTableAdapters
             param.IsNullable = true
             param.SourceColumn = "precio_final"
             Me._adapter.InsertCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p23"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "no_convenio"
+            Me._adapter.InsertCommand.Parameters.Add(param)
             Me._adapter.UpdateCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `sag_embarque_info` SET `estado` = @p1, `no_conocimiento` = @p2, `para_gen"& _ 
@@ -27675,8 +27725,8 @@ Namespace DataSetMultiplicadorTableAdapters
                 "conductor` = @p10, `vehiculo` = @p11, `observacion2` = @p12, `tipo_salida` = @p1"& _ 
                 "3, `fecha_final_convenio` = @p14, `identidad` = @p15, `mz_sembrar_qq` = @p16, `v"& _ 
                 "ariedad_conve` = @p17, `categoria_conve` = @p18, `produ_apro_qq_mz` = @p19, `pre"& _ 
-                "cio_minimo` = @p20, `compensacion` = @p21, `precio_final` = @p22 WHERE ((`Id` = "& _ 
-                "@p23))"
+                "cio_minimo` = @p20, `compensacion` = @p21, `precio_final` = @p22, `no_convenio` "& _ 
+                "= @p23 WHERE ((`Id` = @p24))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p1"
@@ -27834,6 +27884,13 @@ Namespace DataSetMultiplicadorTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(param)
             param = New Global.MySql.Data.MySqlClient.MySqlParameter()
             param.ParameterName = "@p23"
+            param.DbType = Global.System.Data.DbType.[String]
+            param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.VarChar
+            param.IsNullable = true
+            param.SourceColumn = "no_convenio"
+            Me._adapter.UpdateCommand.Parameters.Add(param)
+            param = New Global.MySql.Data.MySqlClient.MySqlParameter()
+            param.ParameterName = "@p24"
             param.DbType = Global.System.Data.DbType.Int32
             param.MySqlDbType = Global.MySql.Data.MySqlClient.MySqlDbType.Int32
             param.IsNullable = true
@@ -27855,12 +27912,11 @@ Namespace DataSetMultiplicadorTableAdapters
             Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
             Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT `Id`, `estado`, `no_conocimiento`, `para_general`, `fecha_elaboracion`, `c"& _ 
-                "ultivo_general`, `remitente`, `destinatario`, `lugar_remitente`, `lugar_destinat"& _ 
-                "ario`, `conductor`, `vehiculo`, `observacion2`, `tipo_salida`, `fecha_final_conv"& _ 
-                "enio`, `identidad`, `mz_sembrar_qq`, `variedad_conve`, `categoria_conve`, `produ"& _ 
-                "_apro_qq_mz`, `precio_minimo`, `compensacion`, `precio_final` FROM `sag_embarque"& _ 
-                "_info`"
+            Me._commandCollection(0).CommandText = "SELECT Id, estado, no_conocimiento, para_general, fecha_elaboracion, cultivo_gene"& _ 
+                "ral, remitente, destinatario, lugar_remitente, lugar_destinatario, conductor, ve"& _ 
+                "hiculo, observacion2, tipo_salida, fecha_final_convenio, identidad, mz_sembrar_q"& _ 
+                "q, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  variedad_conve, categoria_conve, produ_apro_qq_mz, precio"& _ 
+                "_minimo, compensacion, precio_final, no_convenio"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     sag_embarque_info"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -27963,7 +28019,8 @@ Namespace DataSetMultiplicadorTableAdapters
                     ByVal p19 As Global.System.Nullable(Of Decimal),  _
                     ByVal p20 As Global.System.Nullable(Of Decimal),  _
                     ByVal p21 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p22 As Global.System.Nullable(Of Decimal)) As Integer
+                    ByVal p22 As Global.System.Nullable(Of Decimal),  _
+                    ByVal p23 As String) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -28074,6 +28131,11 @@ Namespace DataSetMultiplicadorTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
             End If
+            If (p23 Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(p23,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -28116,7 +28178,8 @@ Namespace DataSetMultiplicadorTableAdapters
                     ByVal p20 As Global.System.Nullable(Of Decimal),  _
                     ByVal p21 As Global.System.Nullable(Of Decimal),  _
                     ByVal p22 As Global.System.Nullable(Of Decimal),  _
-                    ByVal p23 As Integer) As Integer
+                    ByVal p23 As String,  _
+                    ByVal p24 As Integer) As Integer
             If (p1 Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -28227,7 +28290,12 @@ Namespace DataSetMultiplicadorTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(22).Value = CType(p23,Integer)
+            If (p23 Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(p23,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(23).Value = CType(p24,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then

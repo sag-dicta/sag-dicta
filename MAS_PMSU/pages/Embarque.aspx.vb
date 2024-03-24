@@ -1079,7 +1079,42 @@ Public Class Embarque
             txtsalida.Text = HttpUtility.HtmlDecode(gvrow.Cells(1).Text).ToString
 
             If txtsalida.Text = "Convenio" Then
-                ImprimirConvenio(HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString)
+                Dim var As String = HttpUtility.HtmlDecode(gvrow.Cells(2).Text).ToString
+                Dim nombre As String
+                Dim años As String = ObtenerAños()
+                Dim ciclo As String = ObtenerCiclo()
+
+                Dim rptdocument As New ReportDocument
+                Dim ds As New DataSetMultiplicador
+                Dim Str As String
+                Str = "SELECT * FROM sag_embarque_info WHERE no_convenio = '" & var & "'"
+                Dim adap As New MySqlDataAdapter(Str, conn)
+                Dim dt As New DataTable
+
+                'nombre de la vista del data set
+
+                adap.Fill(ds, "sag_embarque_info")
+
+                nombre = "CONVENIO DE COINVERSION PARA LA PRODUCCION DE SEMILLA MEJORADA DE FRIJOL  - " + var + " - " + Today
+
+                rptdocument.Load(Server.MapPath("~/pages/Convenio.rpt"))
+
+                rptdocument.SetDataSource(ds)
+
+                rptdocument.SetParameterValue("NombreDirector", "AquiVaElNombreDelDirector")
+                rptdocument.SetParameterValue("IdentidadDirector", "AquiVaLaIdentidadDelDirector")
+                rptdocument.SetParameterValue("NoConvenio", var)
+                rptdocument.SetParameterValue("Años", años)
+                rptdocument.SetParameterValue("Ciclo", ciclo)
+
+                Response.Buffer = False
+
+                Response.ClearContent()
+                Response.ClearHeaders()
+
+                rptdocument.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, System.Web.HttpContext.Current.Response, True, nombre)
+
+                Response.End()
             Else
                 Dim rptdocument As New ReportDocument
                 'nombre de dataset
@@ -2164,10 +2199,13 @@ Public Class Embarque
     End Sub
     Protected Sub ImprimirConvenio(ByVal var As String)
         Dim nombre As String
+        Dim años As String = ObtenerAños()
+        Dim ciclo As String = ObtenerCiclo()
+
         Dim rptdocument As New ReportDocument
         Dim ds As New DataSetMultiplicador
         Dim Str As String
-        Str = "SELECT * FROM sag_embarque_info WHERE no_conocimiento = '" & var & "'"
+        Str = "SELECT * FROM sag_embarque_info WHERE no_convenio = '" & var & "'"
         Dim adap As New MySqlDataAdapter(Str, conn)
         Dim dt As New DataTable
 
@@ -2184,6 +2222,8 @@ Public Class Embarque
         rptdocument.SetParameterValue("NombreDirector", "AquiVaElNombreDelDirector")
         rptdocument.SetParameterValue("IdentidadDirector", "AquiVaLaIdentidadDelDirector")
         rptdocument.SetParameterValue("NoConvenio", var)
+        rptdocument.SetParameterValue("Años", años)
+        rptdocument.SetParameterValue("Ciclo", ciclo)
 
         Response.Buffer = False
 
@@ -2252,4 +2292,35 @@ Public Class Embarque
             vaciarCamposProductos()
         End If
     End Sub
+
+    Private Function ObtenerAños() As String
+        ' Obtener el año actual
+        Dim añoActual As Integer = DateTime.Now.Year
+
+        ' Obtener el año siguiente
+        Dim añoSiguiente As Integer = añoActual + 1
+
+        ' Almacenar ambos años en una variable de tipo String
+        Dim años As String = añoActual.ToString() & "-" & añoSiguiente.ToString()
+
+        Return años
+    End Function
+
+    Private Function ObtenerCiclo() As String
+
+        Dim mesActual As Integer = DateTime.Now.Month
+        Dim añoActual As Integer = DateTime.Now.Year
+
+        Dim ciclo As String = ""
+        Select Case mesActual
+            Case 3 To 6
+                ciclo = "Ciclo A-" & añoActual.ToString()
+            Case 7 To 11
+                ciclo = "Ciclo B-" & añoActual.ToString()
+            Case Else
+                ciclo = "Ciclo C-" & añoActual.ToString()
+        End Select
+
+        Return ciclo
+    End Function
 End Class
