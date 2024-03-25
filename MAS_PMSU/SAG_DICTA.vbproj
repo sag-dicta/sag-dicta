@@ -270,6 +270,7 @@
     <Content Include="LPlanesSA.aspx" />
     <Content Include="morris.html" />
     <Content Include="notifications.html" />
+    <Content Include="pages\Embarque_DescArch.aspx" />
     <Content Include="pages\Analisis_DescArch.aspx" />
     <Content Include="pages\blank.html" />
     <Content Include="pages\buttons.html" />
@@ -2255,6 +2256,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>visita_campo.xsd</DependentUpon>
     </Compile>
+    <Compile Include="pages\Embarque_DescArch.aspx.designer.vb">
+      <DependentUpon>Embarque_DescArch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Embarque_DescArch.aspx.vb">
+      <DependentUpon>Embarque_DescArch.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="pages\AnalisisGerminacion.aspx.designer.vb">
       <DependentUpon>AnalisisGerminacion.aspx</DependentUpon>
     </Compile>
@@ -2279,6 +2287,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Convenio.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="pages\cuadro_procesamiento.vb">
       <DependentUpon>cuadro_procesamiento.rpt</DependentUpon>

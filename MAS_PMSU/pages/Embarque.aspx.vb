@@ -1093,7 +1093,7 @@ Public Class Embarque
 
                 adap.Fill(ds, "sag_embarque_info")
 
-                nombre = "CONVENIO DE COINVERSION PARA LA PRODUCCION DE SEMILLA MEJORADA DE FRIJOL  - " + var + " - " + Today
+                nombre = "CONVENIO DE COINVERSION PARA LA PRODUCCION DE SEMILLA MEJORADA - " + var + " - " + Today
 
                 rptdocument.Load(Server.MapPath("~/pages/Convenio.rpt"))
 
@@ -2334,7 +2334,7 @@ Public Class Embarque
         Response.Redirect(String.Format("~/pages/Embarque.aspx"))
     End Sub
     Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
-        Response.Redirect(String.Format("~/pages/Embaarque_DescArch.aspx"))
+        Response.Redirect(String.Format("~/pages/Embarque_DescArch.aspx"))
     End Sub
     Protected Function ValidarFormulario() As Boolean
         Dim esValido As Boolean = True
