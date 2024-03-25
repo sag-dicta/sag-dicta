@@ -145,7 +145,7 @@
                                             <asp:ButtonField ButtonType="Button" Text="Imprimir" ControlStyle-CssClass="btn btn-warning" HeaderText="IMPRIMIR CONVENIO/EMBARQUE" CommandName="Imprimir">
                                                 <ControlStyle CssClass="btn btn-warning"></ControlStyle>
                                             </asp:ButtonField>
-                                            <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="DOCUMENTOS FIRMADOS DE SALDIAS" CommandName="Subir">
+                                            <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="DOCUMENTOS FIRMADOS DE SALIDAS" CommandName="Subir">
                                             <ControlStyle CssClass="btn btn-dark"></ControlStyle>
                                             </asp:ButtonField>
                                         </Columns>
@@ -161,7 +161,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-2">
                                 <%--<asp:Button ID="Button1" runat="server" Text="Exportar Datos" CssClass="btn btn-success" />--%>
                                 <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-warning" Text="Exportar Datos"><span class="glyphicon glyphicon-save"></span>&nbsp;Exportar Datos</asp:LinkButton>
                             </div>

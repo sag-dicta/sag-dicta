@@ -605,7 +605,7 @@ Public Class Embarque
     End Sub
 
     Sub llenagrid()
-        Dim cadena As String = "Id, estado, no_conocimiento, para_general, DATE_FORMAT(fecha_elaboracion, '%d-%m-%Y') AS fecha_elaboracion, cultivo_general, remitente, destinatario, lugar_remitente, lugar_destinatario, conductor, vehiculo, observacion2, tipo_salida, no_convenio"
+        Dim cadena As String = "Id, estado, no_conocimiento, para_general, DATE_FORMAT(fecha_elaboracion, '%d-%m-%Y') AS fecha_elaboracion, cultivo_general, remitente, destinatario, lugar_remitente, lugar_destinatario, conductor, vehiculo, observacion2, tipo_salida, no_convenio, salida_firmada"
         Dim c1 As String = ""
         Dim c3 As String = ""
         Dim c4 As String = ""
@@ -2380,5 +2380,20 @@ Public Class Embarque
             BtnUpload.Visible = True
         End If
 
+    End Sub
+
+    Protected Sub GridDatos_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs) Handles GridDatos.RowDataBound
+        ' Verifica si es una fila de datos y no el encabezado o el pie de página
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            ' Obtén los valores de los campos IMAGEN_FICHA, IMAGEN_PAGO_TGR, e IMAGEN_ETIQUETA_SEMILLA
+            Dim hayimagen As String = DataBinder.Eval(e.Row.DataItem, "salida_firmada").ToString()
+            Dim btnEditar As Button = DirectCast(e.Row.Cells(14).Controls(0), Button)
+
+            If Not String.IsNullOrEmpty(hayimagen) Then
+                btnEditar.Text = "Resubir"
+            Else
+                btnEditar.Text = "Subir"
+            End If
+        End If
     End Sub
 End Class
