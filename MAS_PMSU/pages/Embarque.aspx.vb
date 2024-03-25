@@ -579,9 +579,7 @@ Public Class Embarque
     Private Function EsExtensionValida(fileName As String) As Boolean
         Dim extension As String = Path.GetExtension(fileName)
         Dim esValida As Boolean = False
-        If extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) OrElse
-           extension.Equals(".png", StringComparison.OrdinalIgnoreCase) Then
+        If extension.Equals(".pdf", StringComparison.OrdinalIgnoreCase) Then
             esValida = True
         End If
         Return esValida
@@ -1145,7 +1143,16 @@ Public Class Embarque
                 Response.End()
                 ClientScript.RegisterStartupScript(Me.GetType(), "JS", "$(function () { $('#AdInscrip').modal('show'); });", True)
             End If
+        End If
 
+        If (e.CommandName = "Subir") Then
+            Dim gvrow As GridViewRow = GridDatos.Rows(index)
+
+            txtID.Text = HttpUtility.HtmlDecode(gvrow.Cells(0).Text).ToString
+
+            div_nuevo_prod.Visible = True
+            DivGrid.Visible = False
+            DivCrearNuevo.Visible = False
         End If
     End Sub
     Protected Sub GridDatos_DataBound(sender As Object, e As EventArgs) Handles GridDatos.DataBound
@@ -2323,4 +2330,55 @@ Public Class Embarque
 
         Return ciclo
     End Function
+    Protected Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Response.Redirect(String.Format("~/pages/Embarque.aspx"))
+    End Sub
+    Protected Sub LinkButton2_Click(sender As Object, e As EventArgs) Handles LinkButton2.Click
+        Response.Redirect(String.Format("~/pages/Embaarque_DescArch.aspx"))
+    End Sub
+    Protected Function ValidarFormulario() As Boolean
+        Dim esValido As Boolean = True
+        LabelPDF.Visible = False
+
+        If Not FileUploadPDF.HasFile OrElse Not EsExtensionValida(FileUploadPDF.FileName) Then
+            LabelPDF.Visible = True
+            esValido = False
+        End If
+
+        Return esValido
+    End Function
+    Private Function FileUploadToBytes(fileUpload As FileUpload) As Byte()
+        Using stream As System.IO.Stream = fileUpload.PostedFile.InputStream
+            Dim length As Integer = fileUpload.PostedFile.ContentLength
+            Dim bytes As Byte() = New Byte(length - 1) {}
+            stream.Read(bytes, 0, length)
+            Return bytes
+        End Using
+    End Function
+    Protected Sub BtnUpload_Click(sender As Object, e As EventArgs) Handles BtnUpload.Click
+
+        If ValidarFormulario() Then
+
+            Dim connectionString As String = conn
+            Using conn As New MySqlConnection(connectionString)
+                conn.Open()
+                Dim bytesPDF As Byte() = FileUploadToBytes(FileUploadPDF)
+                ' Actualizar bytes en la base de datos
+                Dim query As String = "UPDATE sag_embarque_info SET salida_firmada = @salida_firmada WHERE ID=" & txtID.Text & " "
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@salida_firmada", bytesPDF)
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
+
+            Label23.Visible = False
+            Label25.Visible = True
+            BtnUpload.Visible = False
+        Else
+            Label23.Visible = True
+            Label25.Visible = False
+            BtnUpload.Visible = True
+        End If
+
+    End Sub
 End Class
