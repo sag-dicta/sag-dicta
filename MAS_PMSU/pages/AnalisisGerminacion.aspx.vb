@@ -877,7 +877,6 @@ Public Class AnalisisGerminacion
         End If
     End Sub
     Protected Sub Verificar()
-
         '1
         If String.IsNullOrEmpty(txtFechaElab.Text) Then
             lblFechaElab.Text = "*"
@@ -1107,11 +1106,18 @@ Public Class AnalisisGerminacion
             lbldecision.Text = ""
             validarflag += 1
         End If
-
-        If validarflag = 28 Or validarflag = 27 Then
-            validarflag = 1
+        If txtCultivo.Text = "Maiz" Then
+            If validarflag = 28 Then
+                validarflag = 1
+            Else
+                validarflag = 0
+            End If
         Else
-            validarflag = 0
+            If validarflag = 27 Then
+                validarflag = 1
+            Else
+                validarflag = 0
+            End If
         End If
     End Sub
     Private Sub exportar()

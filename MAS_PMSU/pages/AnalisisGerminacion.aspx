@@ -110,15 +110,15 @@
                                         <asp:BoundField DataField="categoria_registrado" HeaderText="CATEGORÍA" />
                                         <asp:BoundField DataField="lote_registrado" HeaderText="N° DE LOTE" />
                                         <asp:BoundField DataField="ciclo_acta" HeaderText="CICLO" />
-                                        
+
                                         <asp:BoundField DataField="porcentaje_humedad" HeaderText="% DE HUMEDAD DE INGRESO" />
                                         <asp:BoundField DataField="humedad_final" HeaderText="% DE HUMEDAD DE FINAL" />
                                         <asp:BoundField DataField="peso_inicial_g" HeaderText="PESO INICIAL EN PLANTA (QQ)" />
-                                        <asp:BoundField DataField="cantidad_existente" HeaderText="CANTIDAD EXISTENTE" />                                       
+                                        <asp:BoundField DataField="cantidad_existente" HeaderText="CANTIDAD EXISTENTE" />
                                         <asp:BoundField DataField="PORCENTAJE_GERMINACION" HeaderText="% DE GERMINACIÓN" />
                                         <asp:BoundField DataField="decision" HeaderText="DECISION" />
 
-                                        
+
                                         <asp:ButtonField ButtonType="Button" Text="Subir" ControlStyle-CssClass="btn btn-dark" HeaderText="ANÁLISIS FIRMADO" CommandName="Subir">
                                             <ControlStyle CssClass="btn btn-dark"></ControlStyle>
                                         </asp:ButtonField>
@@ -534,361 +534,364 @@
             </div>
         </div>
     </div>
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>
+            <div id="DivActa" runat="server" visible="false">
+                <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Pureza y Germinación
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-4" runat="server" visible="false">
+                                    <div class="form-group">
+                                        <label for="txt">ID:</label>
+                                        <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
+                                        <asp:TextBox CssClass="form-control" ID="txtrespaldito" runat="server" AutoPostBack="false"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <label>Semilla Pura %:</label>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator15" runat="server" ControlToValidate="txtSemillaPura" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                        <asp:Label ID="lblSemillaPura" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtSemillaPura" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <label>Semilla Otro Cultivo %:</label>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator16" runat="server" ControlToValidate="txtSemillaOtroCult" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                        <asp:Label ID="lblSemillaOtroCult" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtSemillaOtroCult" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <label>Semilla Malezas %:</label>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator17" runat="server" ControlToValidate="txtSemillaMalezas" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                        <asp:Label ID="lblSemillaMalezas" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtSemillaMalezas" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <label>Materia Inerte %:</label>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator18" runat="server" ControlToValidate="txtSemillaInerte" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
+                                        <asp:Label ID="lblSemillaInerte" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtSemillaInerte" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
 
-    <div id="DivActa" runat="server" visible="false">
-        <div class="row">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Pureza y Germinación
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-4" runat="server" visible="false">
-                            <div class="form-group">
-                                <label for="txt">ID:</label>
-                                <asp:TextBox CssClass="form-control" ID="TxtID" runat="server" AutoPostBack="false"></asp:TextBox>
-                                <asp:TextBox CssClass="form-control" ID="txtrespaldito" runat="server" AutoPostBack="false"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <label>Semilla Pura %:</label>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator15" runat="server" ControlToValidate="txtSemillaPura" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                <asp:Label ID="lblSemillaPura" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtSemillaPura" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <label>Semilla Otro Cultivo %:</label>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator16" runat="server" ControlToValidate="txtSemillaOtroCult" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                <asp:Label ID="lblSemillaOtroCult" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtSemillaOtroCult" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <label>Semilla Malezas %:</label>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator17" runat="server" ControlToValidate="txtSemillaMalezas" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                <asp:Label ID="lblSemillaMalezas" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtSemillaMalezas" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <label>Materia Inerte %:</label>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator18" runat="server" ControlToValidate="txtSemillaInerte" ValidationExpression="^\d+(\.\d+)?$" ErrorMessage="Ingresa un número válido." Display="Dynamic" Style="color: red;" />
-                                <asp:Label ID="lblSemillaInerte" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtSemillaInerte" CssClass="form-control" runat="server" onkeypress="return numericOnly(this);" OnTextChanged="Verificar" AutoPostBack="true" Enabled="true"></asp:TextBox>
-                            </div>
-                        </div>
-                    </div>
+                            <div class="row">
+                                <asp:Label ID="lblmensaje" class="label label-warning" runat="server" Text=""></asp:Label>
 
-                    <div class="row">
-                        <asp:Label ID="lblmensaje" class="label label-warning" runat="server" Text=""></asp:Label>
-                        
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>Repetición 1:</label><br />
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Repetición 1:</label><br />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Normales:</label>
+                                            <asp:TextBox ID="txtCam1PlanNorm" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Anormales:</label>
+                                            <asp:TextBox ID="txtCam1PlanAnor" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Muertas:</label>
+                                            <asp:TextBox ID="txtCam1SemiMuer" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semillas Duras:</label>
+                                            <asp:TextBox ID="txtCam1SemiDura" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Debiles:</label>
+                                            <asp:TextBox ID="txtCam1Debiles" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Mezcla:</label>
+                                            <asp:TextBox ID="txtCam1Mezcla" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>N° de Dias:</label>
+                                            <asp:TextBox ID="txtCam1NoDias" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Normales:</label>
-                                    <asp:TextBox ID="txtCam1PlanNorm" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Anormales:</label>
-                                    <asp:TextBox ID="txtCam1PlanAnor" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Muertas:</label>
-                                    <asp:TextBox ID="txtCam1SemiMuer" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semillas Duras:</label>
-                                    <asp:TextBox ID="txtCam1SemiDura" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Debiles:</label>
-                                    <asp:TextBox ID="txtCam1Debiles" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Mezcla:</label>
-                                    <asp:TextBox ID="txtCam1Mezcla" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>N° de Dias:</label>
-                                    <asp:TextBox ID="txtCam1NoDias" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
+                                <br />
 
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>Repetición 2:</label><br />
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Repetición 2:</label><br />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Normales:</label>
+                                            <asp:TextBox ID="txtCam2PlanNorm" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Anormales:</label>
+                                            <asp:TextBox ID="txtCam2PlanAnor" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Muertas:</label>
+                                            <asp:TextBox ID="txtCam2SemiMuer" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semillas Duras:</label>
+                                            <asp:TextBox ID="txtCam2SemiDura" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Debiles:</label>
+                                            <asp:TextBox ID="txtCam2Debiles" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Mezcla:</label>
+                                            <asp:TextBox ID="txtCam2Mezcla" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>N° de Dias:</label>
+                                            <asp:TextBox ID="txtCam2NoDias" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Normales:</label>
-                                    <asp:TextBox ID="txtCam2PlanNorm" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Anormales:</label>
-                                    <asp:TextBox ID="txtCam2PlanAnor" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Muertas:</label>
-                                    <asp:TextBox ID="txtCam2SemiMuer" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semillas Duras:</label>
-                                    <asp:TextBox ID="txtCam2SemiDura" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Debiles:</label>
-                                    <asp:TextBox ID="txtCam2Debiles" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Mezcla:</label>
-                                    <asp:TextBox ID="txtCam2Mezcla" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>N° de Dias:</label>
-                                    <asp:TextBox ID="txtCam2NoDias" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <br />       
-                        
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>Repetición 3:</label><br />
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Normales:</label>
-                                    <asp:TextBox ID="txtCam3PlanNorm" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Anormales:</label>
-                                    <asp:TextBox ID="txtCam3PlanAnor" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Muertas:</label>
-                                    <asp:TextBox ID="txtCam3SemiMuer" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semillas Duras:</label>
-                                    <asp:TextBox ID="txtCam3SemiDura" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Debiles:</label>
-                                    <asp:TextBox ID="txtCam3Debiles" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Mezcla:</label>
-                                    <asp:TextBox ID="txtCam3Mezcla" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>N° de Dias:</label>
-                                    <asp:TextBox ID="txtCam3NoDias" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <br />       
-                        
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>Repetición 4:</label><br />
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Normales:</label>
-                                    <asp:TextBox ID="txtCam4PlanNorm" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Anormales:</label>
-                                    <asp:TextBox ID="txtCam4PlanAnor" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Muertas:</label>
-                                    <asp:TextBox ID="txtCam4SemiMuer" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semillas Duras:</label>
-                                    <asp:TextBox ID="txtCam4SemiDura" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Debiles:</label>
-                                    <asp:TextBox ID="txtCam4Debiles" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Mezcla:</label>
-                                    <asp:TextBox ID="txtCam4Mezcla" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>N° de Dias:</label>
-                                    <asp:TextBox ID="txtCam4NoDias" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <br />  
-                        <br />
-                        
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>Totales:</label><br />
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Normales:</label>
-                                    <asp:TextBox ID="txtTotalPlanNorm" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Plantulas Anormales:</label>
-                                    <asp:TextBox ID="txtTotalPlanAnor" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Muertas:</label>
-                                    <asp:TextBox ID="txtTotalSemiMuer" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semillas Duras:</label>
-                                    <asp:TextBox ID="txtTotalSemiDura" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Debiles:</label>
-                                    <asp:TextBox ID="txtTotalDebiles" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>Semilla Mezcla:</label>
-                                    <asp:TextBox ID="txtTotalMezcla" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="col-lg-1">
-                                <div class="form-group">
-                                    <label>N° de Dias:</label>
-                                    <asp:TextBox ID="txtTotalNoDias" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>
+                                <br />
 
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="txtObserv">Porcentaje (%) de Germinación:</label>
-                                <asp:Label ID="lblPorcGerm" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtPorcGerm" CssClass="form-control" runat="server" AutoPostBack="false" Enabled="False"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="txtObserv">Observaciones:</label>
-                                <asp:Label ID="lblObserv" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtObserv" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="txtObserv">Responsable del Muestreo:</label>
-                                <asp:Label ID="lblRespMuestreo" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtRespMuestreo" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label for="txtObserv">Responsable del Análisis:</label>
-                                <asp:Label ID="lblRespAnalisis" class="label label-warning" runat="server" Text=""></asp:Label>
-                                <asp:TextBox ID="txtRespAnalisis" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                                <div class="form-group">
-                                    <label>Decisión:</label>
-                                    <asp:Label ID="lbldecision" class="label label-warning" runat="server" Text=""></asp:Label>
-                                    <asp:DropDownList CssClass="form-control" ID="DDL_decision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Verificar">
-                                        <asp:ListItem Text=" " Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="APROBADO" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="RECHAZADO" Value="2"></asp:ListItem>
-                                        <asp:ListItem Text="PENDIENTE" Value="3"></asp:ListItem>
-                                    </asp:DropDownList>
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Repetición 3:</label><br />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Normales:</label>
+                                            <asp:TextBox ID="txtCam3PlanNorm" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Anormales:</label>
+                                            <asp:TextBox ID="txtCam3PlanAnor" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Muertas:</label>
+                                            <asp:TextBox ID="txtCam3SemiMuer" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semillas Duras:</label>
+                                            <asp:TextBox ID="txtCam3SemiDura" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Debiles:</label>
+                                            <asp:TextBox ID="txtCam3Debiles" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Mezcla:</label>
+                                            <asp:TextBox ID="txtCam3Mezcla" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>N° de Dias:</label>
+                                            <asp:TextBox ID="txtCam3NoDias" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Repetición 4:</label><br />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Normales:</label>
+                                            <asp:TextBox ID="txtCam4PlanNorm" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Anormales:</label>
+                                            <asp:TextBox ID="txtCam4PlanAnor" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Muertas:</label>
+                                            <asp:TextBox ID="txtCam4SemiMuer" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semillas Duras:</label>
+                                            <asp:TextBox ID="txtCam4SemiDura" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Debiles:</label>
+                                            <asp:TextBox ID="txtCam4Debiles" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Mezcla:</label>
+                                            <asp:TextBox ID="txtCam4Mezcla" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>N° de Dias:</label>
+                                            <asp:TextBox ID="txtCam4NoDias" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="Verificar" onkeypress="return numericOnly(this);"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <div class="form-group">
+                                            <label>Totales:</label><br />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Normales:</label>
+                                            <asp:TextBox ID="txtTotalPlanNorm" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Plantulas Anormales:</label>
+                                            <asp:TextBox ID="txtTotalPlanAnor" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Muertas:</label>
+                                            <asp:TextBox ID="txtTotalSemiMuer" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semillas Duras:</label>
+                                            <asp:TextBox ID="txtTotalSemiDura" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Debiles:</label>
+                                            <asp:TextBox ID="txtTotalDebiles" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>Semilla Mezcla:</label>
+                                            <asp:TextBox ID="txtTotalMezcla" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <div class="form-group">
+                                            <label>N° de Dias:</label>
+                                            <asp:TextBox ID="txtTotalNoDias" runat="server" CssClass="form-control" AutoPostBack="True" onkeypress="return numericOnly(this);" Enabled="false"></asp:TextBox>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="txtObserv">Porcentaje (%) de Germinación:</label>
+                                        <asp:Label ID="lblPorcGerm" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtPorcGerm" CssClass="form-control" runat="server" AutoPostBack="false" Enabled="False"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="txtObserv">Observaciones:</label>
+                                        <asp:Label ID="lblObserv" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtObserv" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="txtObserv">Responsable del Muestreo:</label>
+                                        <asp:Label ID="lblRespMuestreo" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtRespMuestreo" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="txtObserv">Responsable del Análisis:</label>
+                                        <asp:Label ID="lblRespAnalisis" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:TextBox ID="txtRespAnalisis" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="Verificar"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="form-group">
+                                        <label>Decisión:</label>
+                                        <asp:Label ID="lbldecision" class="label label-warning" runat="server" Text=""></asp:Label>
+                                        <asp:DropDownList CssClass="form-control" ID="DDL_decision" runat="server" AutoPostBack="true" OnSelectedIndexChanged="Verificar">
+                                            <asp:ListItem Text=" " Value="0"></asp:ListItem>
+                                            <asp:ListItem Text="APROBADO" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="RECHAZADO" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="PENDIENTE" Value="3"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
     <div id="div_nuevo_prod" runat="server" visible="false">
 

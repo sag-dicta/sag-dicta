@@ -13,7 +13,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        Descargar de Acta de Recepción Firmados
+                        Descargar Analisis de Germinacíon Firmados
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -36,7 +36,7 @@
                             <div class="col-lg-12">
                                 <div class="table-responsive">
                                     <h3>
-                                        <span style="float: right;"><small># Lotes:</small>
+                                        <span style="float: right;"><small># Analísis:</small>
                                             <asp:Label ID="lblTotalClientes" runat="server" CssClass="label label-warning" /></span>
                                     </h3>
                                     <p>&nbsp;</p>
